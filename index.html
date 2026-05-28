@@ -258,13 +258,28 @@
     }
 
     @media (max-width: 480px) {
+      .hero-inner,
+      .section-inner {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 60px;
+      }
+
       .actions {
         flex-direction: column;
         align-items: stretch;
       }
 
       .button {
-        width: 100%;
+        width: calc(100vw - 80px);
+        max-width: calc(100vw - 80px);
+      }
+
+      .subhead,
+      .lead {
+        width: calc(100vw - 80px);
+        max-width: calc(100vw - 80px);
       }
     }
   </style>
@@ -275,7 +290,7 @@
       <div class="hero-copy">
         <p class="eyebrow">AI-assisted PMO and portfolio governance</p>
         <h1>Marco Policani</h1>
-        <p class="subhead">I build operating systems for complex work: portfolio governance, executive decision support, intake discipline, value realization, and practical AI-enabled workflows that keep accountability with people.</p>
+        <p class="subhead">I build operating systems for complex work:<br>portfolio governance,<br>executive decision support,<br>intake discipline, value realization,<br>and accountable AI-enabled workflows.</p>
         <div class="actions">
           <a class="button primary" href="https://github.com/policani/Policani">View GitHub Portfolio</a>
           <a class="button" href="https://github.com/policani/operating-patterns/wiki">Read Operating Patterns</a>
