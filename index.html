@@ -37,6 +37,7 @@
       color: var(--ink);
       background: var(--paper);
       line-height: 1.55;
+      overflow-x: hidden;
     }
 
     a {
@@ -57,7 +58,8 @@
 
     .hero-inner,
     .section-inner {
-      width: min(1120px, calc(100% - 40px));
+      width: calc(100% - 40px);
+      max-width: 1120px;
       margin: 0 auto;
     }
 
@@ -232,11 +234,37 @@
 
       .hero-copy {
         padding-top: 48px;
+        max-width: 100%;
+      }
+
+      .subhead {
+        max-width: 100%;
+        overflow-wrap: break-word;
+      }
+
+      .actions {
+        max-width: 100%;
+      }
+
+      .button {
+        white-space: normal;
+        text-align: center;
       }
 
       .grid,
       .repo {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
       }
     }
   </style>
@@ -337,4 +365,3 @@
   </footer>
 </body>
 </html>
-
