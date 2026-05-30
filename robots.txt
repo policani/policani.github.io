@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://policani.github.io/sitemap.xml
-
