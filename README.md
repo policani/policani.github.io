@@ -1,29 +1,15 @@
-# Marco Policani Portfolio Site
+# Hero Background Fix
 
-Public landing page for Marco Policani's AI-assisted PMO, portfolio governance,
-executive decision support, and operating-model portfolio.
+Replace the root `styles.css` file in `policani.github.io` with this version.
 
-Live site target:
+It restores the hero background using the existing asset:
 
-https://policani.github.io
+`assets/portfolio-governance-hero.png`
 
-## Purpose
+No change is required to `index.html` as long as the homepage still uses:
 
-This site is the search-friendly front door for a portfolio that otherwise lives
-across GitHub repositories and GitHub Wiki pages. It is intentionally written for
-hiring managers, PMO/portfolio leaders, AI operations teams, and recruiters who
-need a clear path through the work without already knowing GitHub.
+`<section class="hero">`
 
-## Source Repositories
+If the image does not appear after upload, confirm the image still exists at:
 
-- GitHub profile: https://github.com/policani/Policani
-- Portfolio index: https://github.com/policani
-- Operating patterns: https://github.com/policani/operating-patterns
-
-## Privacy Standard
-
-The site uses public-safe, generalized language. Do not add employer names,
-client names, logos, screenshots, internal terminology, exact dates, financial
-figures, proprietary processes, or details that could identify a prior
-organization.
-
+`/assets/portfolio-governance-hero.png`
