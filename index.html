@@ -3,56 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Marco Policani | AI PMO, Portfolio Governance, and Operating Systems</title>
-  <meta name="description" content="Marco Policani's public portfolio of AI-assisted PMO systems, portfolio governance workflows, operating model patterns, executive decision support, and career evidence tools.">
-  <meta name="keywords" content="Marco Policani, AI PMO, PMO, EPMO, portfolio governance, AI portfolio management, AI governance, operating model, executive decision support, portfolio prioritization, project charter, business case, value realization, delivery readiness, PMO operations, resume evidence engine, job search workflow, AI writing quality">
-  <meta name="author" content="Marco Policani">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Marco Policani | AI PMO and Portfolio Governance Portfolio">
-  <meta property="og:description" content="Public-safe examples of AI-assisted operating systems, portfolio governance, PMO workflows, decision-support patterns, and evidence-bound career workflow tools.">
+  <title>Marco Policani | PMO, Portfolio Governance, and AI Operating Systems</title>
+  <meta name="description" content="Public-safe portfolio of PMO, portfolio governance, executive decision support, readiness, sequencing, value realization, controls, and human-governed AI operating systems by Marco Policani.">
+  <meta name="keywords" content="Marco Policani, PMO, EPMO, portfolio governance, program governance, executive decision support, project portfolio management, intake governance, portfolio prioritization, value realization, release readiness, UAT governance, AI governance, operating model, program management">
+  <meta property="og:title" content="Marco Policani | PMO and Portfolio Governance Portfolio">
+  <meta property="og:description" content="Operating-model and workflow design portfolio for PMO, portfolio governance, executive decision support, and human-governed AI systems.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://policani.github.io/">
   <meta property="og:image" content="https://policani.github.io/assets/portfolio-governance-hero.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://policani.github.io/">
-  <link rel="preload" as="image" href="assets/portfolio-governance-hero.png">
   <style>
     :root {
       --ink: #111827;
-      --ink-soft: #1f2937;
       --muted: #4b5563;
       --quiet: #6b7280;
-      --line: #d7dde4;
-      --line-strong: #b8c3cf;
-      --paper: #f7f8fa;
+      --line: #d9e1ea;
+      --paper: #f6f7f9;
       --panel: #ffffff;
-      --panel-tint: #f3f7f7;
-      --teal: #0f766e;
-      --teal-dark: #115e59;
-      --gold: #b7791f;
+      --panel-soft: #eef3f7;
       --blue: #1d4e89;
-      --blue-soft: #eaf2fb;
-      --green-soft: #eaf6f2;
-      --gold-soft: #fff7e8;
-      --radius: 14px;
-      --shadow: 0 18px 45px rgba(17, 24, 39, 0.10);
+      --teal: #0f766e;
+      --gold: #a16207;
+      --red: #9f1239;
+      --shadow: 0 16px 44px rgba(17, 24, 39, 0.10);
+      --radius: 18px;
+      --max: 1180px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
       background: var(--paper);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       line-height: 1.55;
-      overflow-x: hidden;
     }
 
     a {
@@ -61,749 +49,876 @@
       text-underline-offset: 0.18em;
     }
 
-    a:hover {
-      color: var(--teal-dark);
-    }
+    a:hover { color: #153b66; }
 
-    .skip-link {
+    .skip {
       position: absolute;
       left: -999px;
-      top: 12px;
+      top: 16px;
       z-index: 10;
-      padding: 10px 14px;
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 12px;
+      border: 1px solid var(--line);
       border-radius: 8px;
-      background: var(--ink);
-      color: #ffffff;
     }
 
-    .skip-link:focus {
-      left: 12px;
-    }
+    .skip:focus { left: 16px; }
 
-    .hero {
-      min-height: 88vh;
-      display: grid;
-      align-items: center;
-      background:
-        linear-gradient(90deg, rgba(247, 248, 250, 0.98) 0%, rgba(247, 248, 250, 0.93) 42%, rgba(247, 248, 250, 0.45) 72%),
-        url("assets/portfolio-governance-hero.png") center right / cover no-repeat,
-        radial-gradient(circle at 82% 22%, #d8ece9 0%, #f7f8fa 48%);
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(246, 247, 249, 0.94);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
 
-    .section-inner,
-    .hero-inner {
+    .nav {
       width: calc(100% - 40px);
-      max-width: 1180px;
+      max-width: var(--max);
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px 16px;
+      font-size: 0.94rem;
+    }
+
+    .nav-links a {
+      color: #334155;
+      text-decoration: none;
+      font-weight: 650;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .hero {
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,247,249,0.98) 0%, rgba(246,247,249,0.94) 44%, rgba(246,247,249,0.68) 100%),
+        url("assets/portfolio-governance-hero.png") center right / cover no-repeat;
+    }
+
+    .hero-inner,
+    .section-inner {
+      width: calc(100% - 40px);
+      max-width: var(--max);
       margin: 0 auto;
     }
 
-    .hero-copy {
-      max-width: 770px;
-      padding: 78px 0 62px;
+    .hero-grid {
+      min-height: 82vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.75fr);
+      gap: 42px;
+      align-items: center;
+      padding: 72px 0;
     }
 
     .eyebrow {
-      margin: 0 0 16px;
+      margin: 0 0 14px;
       color: var(--teal);
       font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-weight: 850;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      overflow-wrap: break-word;
     }
 
     h1 {
       margin: 0;
-      max-width: 11ch;
-      font-size: clamp(2.6rem, 6vw, 5.5rem);
-      line-height: 0.96;
-      letter-spacing: -0.055em;
-    }
-
-    h2 {
-      margin: 0 0 16px;
-      font-size: clamp(1.65rem, 3vw, 2.55rem);
-      line-height: 1.08;
-      letter-spacing: -0.035em;
-    }
-
-    h3 {
-      margin: 0 0 9px;
-      font-size: 1.08rem;
-      line-height: 1.25;
-      letter-spacing: -0.015em;
+      max-width: 760px;
+      font-size: clamp(2.3rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
     }
 
     .subhead {
       margin: 24px 0 0;
-      max-width: 720px;
-      color: #263241;
-      font-size: clamp(1.06rem, 2vw, 1.36rem);
-    }
-
-    .hero-proof {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
       max-width: 760px;
-      margin-top: 28px;
+      color: #263241;
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
     }
 
-    .proof-pill {
-      min-height: 72px;
-      padding: 13px 14px;
-      border: 1px solid rgba(15, 118, 110, 0.24);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(2px);
-    }
-
-    .proof-pill strong {
-      display: block;
-      font-size: 0.95rem;
-    }
-
-    .proof-pill span {
-      display: block;
-      margin-top: 4px;
+    .hero-note {
+      margin-top: 22px;
+      max-width: 720px;
       color: var(--muted);
-      font-size: 0.86rem;
+      font-size: 1rem;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 32px;
+      margin-top: 30px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 46px;
-      padding: 11px 16px;
+      min-height: 44px;
+      padding: 10px 16px;
       border: 1px solid var(--ink);
-      border-radius: 8px;
+      border-radius: 10px;
       color: var(--ink);
-      background: rgba(255, 255, 255, 0.88);
-      font-weight: 750;
+      background: rgba(255, 255, 255, 0.86);
+      font-weight: 760;
       text-decoration: none;
     }
 
     .button.primary {
-      color: #ffffff;
+      color: #fff;
       background: var(--ink);
     }
 
-    .button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 25px rgba(17, 24, 39, 0.10);
+    .hero-card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
     }
 
-    nav.local-nav {
-      position: sticky;
-      top: 0;
-      z-index: 4;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(8px);
+    .hero-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
     }
 
-    .nav-inner {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 20px;
-      align-items: center;
-      justify-content: space-between;
-      width: calc(100% - 40px);
-      max-width: 1180px;
-      margin: 0 auto;
+    .proof-list {
+      display: grid;
+      gap: 12px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .proof-list li {
       padding: 12px 0;
+      border-top: 1px solid var(--line);
     }
 
-    .nav-title {
-      color: var(--ink-soft);
-      font-weight: 800;
-      text-decoration: none;
+    .proof-list strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--ink);
     }
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 16px;
-      align-items: center;
-      font-size: 0.92rem;
-    }
-
-    .nav-links a {
+    .proof-list span {
+      display: block;
       color: var(--muted);
-      font-weight: 650;
-      text-decoration: none;
+      font-size: 0.95rem;
     }
 
-    main {
-      background: var(--paper);
-    }
+    main { background: var(--paper); }
 
     section {
       padding: 62px 0;
       border-bottom: 1px solid var(--line);
     }
 
-    .lead {
-      max-width: 900px;
+    .section-head {
+      max-width: 840px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.65rem, 3vw, 2.45rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    p { margin: 0 0 14px; }
+
+    .lede {
       color: var(--muted);
       font-size: 1.08rem;
+      max-width: 840px;
     }
 
-    .compact {
-      max-width: 780px;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 0.86fr) minmax(300px, 1.14fr);
-      gap: 26px;
-      align-items: start;
-    }
-
-    .panel {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
-    }
-
-    .tag-row {
+    .pill-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 20px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #334155;
+      font-size: 0.82rem;
+      font-weight: 680;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 22px rgba(17, 24, 39, 0.06);
+      padding: 22px;
+    }
+
+    .panel p,
+    .card p {
+      color: var(--muted);
+    }
+
+    .module-group {
+      margin-top: 34px;
+    }
+
+    .group-title {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .group-title h3 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .group-title span {
+      color: var(--quiet);
+      font-size: 0.95rem;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 100%;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 22px rgba(17, 24, 39, 0.06);
+      padding: 20px;
+    }
+
+    .card.featured {
+      border-top: 4px solid var(--teal);
+    }
+
+    .card .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 4px;
     }
 
     .tag {
       display: inline-flex;
       align-items: center;
-      min-height: 30px;
-      padding: 5px 10px;
-      border: 1px solid #c4d2dc;
+      min-height: 24px;
+      padding: 4px 8px;
       border-radius: 999px;
-      color: #1f3c4c;
-      background: #eef5f4;
-      font-size: 0.9rem;
-      font-weight: 650;
+      background: var(--panel-soft);
+      color: #334155;
+      font-size: 0.78rem;
+      font-weight: 720;
     }
 
-    .theme-grid,
-    .repo-grid {
+    .stage-map {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 26px;
-    }
-
-    .theme-card,
-    .repo-card {
-      min-height: 100%;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
-    }
-
-    .theme-card p,
-    .repo-card p {
-      margin: 8px 0 0;
-      color: var(--muted);
-    }
-
-    .repo-card {
-      display: flex;
-      flex-direction: column;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 12px;
+      counter-reset: stage;
     }
 
-    .repo-card.featured {
-      border-color: rgba(15, 118, 110, 0.36);
-      background: linear-gradient(180deg, #ffffff 0%, #f4faf8 100%);
+    .stage {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      min-height: 180px;
     }
 
-    .repo-card.utility {
-      background: linear-gradient(180deg, #ffffff 0%, #f5f8fc 100%);
-    }
-
-    .repo-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: auto;
-      padding-top: 4px;
-    }
-
-    .small-tag {
+    .stage::before {
+      counter-increment: stage;
+      content: counter(stage);
       display: inline-flex;
       align-items: center;
-      min-height: 24px;
-      padding: 3px 8px;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 12px;
       border-radius: 999px;
-      background: #eef2f7;
-      color: #3d4b5f;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-
-    .section-kicker {
-      margin: 0 0 10px;
-      color: var(--teal);
-      font-size: 0.79rem;
+      color: #fff;
+      background: var(--ink);
+      font-size: 0.85rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
 
-    .workflow {
-      display: grid;
-      gap: 12px;
-      margin-top: 26px;
-      counter-reset: step;
+    .stage h3 {
+      font-size: 1rem;
     }
 
-    .workflow-step {
-      position: relative;
-      display: grid;
-      grid-template-columns: 54px 1fr;
-      gap: 14px;
-      align-items: start;
-      padding: 18px;
+    .stage p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: #ffffff;
+      background: #fff;
     }
 
-    .workflow-step::before {
-      counter-increment: step;
-      content: counter(step);
-      display: inline-grid;
-      place-items: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      color: #ffffff;
-      background: var(--ink);
-      font-weight: 800;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
     }
 
-    .workflow-step p {
-      margin: 5px 0 0;
-      color: var(--muted);
+    th,
+    td {
+      padding: 13px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
     }
 
-    .note {
-      margin-top: 24px;
-      padding: 17px 19px;
-      border-left: 4px solid var(--gold);
-      border-radius: 0 10px 10px 0;
-      background: var(--gold-soft);
-      color: #3f3320;
+    th {
+      background: #edf2f7;
+      color: #1f2937;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
-    .note p {
-      margin: 0;
-    }
+    tr:last-child td { border-bottom: 0; }
+
+    td { color: var(--muted); }
+
+    td strong { color: var(--ink); }
 
     .callout {
-      border: 1px solid rgba(15, 118, 110, 0.28);
-      background: var(--green-soft);
-    }
-
-    .link-list {
+      background: #0f172a;
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
       display: grid;
-      gap: 10px;
-      margin: 18px 0 0;
-      padding: 0;
-      list-style: none;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: center;
     }
 
-    .link-list li {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .link-list span {
-      color: var(--quiet);
+    .callout p {
+      color: #dbe4ef;
+      margin-bottom: 0;
     }
 
     footer {
-      padding: 38px 0;
-      color: var(--muted);
-      background: #ffffff;
+      padding: 34px 0;
+      color: var(--quiet);
+      background: #fff;
     }
 
-    footer p {
-      margin: 0;
+    footer .section-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    @media (max-width: 960px) {
-      .hero-proof,
-      .theme-grid,
-      .repo-grid,
-      .two-col {
+    footer a { color: #334155; }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .module-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        min-height: 78vh;
-        background:
-          linear-gradient(180deg, rgba(247, 248, 250, 0.98) 0%, rgba(247, 248, 250, 0.94) 58%, rgba(247, 248, 250, 0.64) 100%),
-          url("assets/portfolio-governance-hero.png") center bottom / cover no-repeat,
-          radial-gradient(circle at 82% 22%, #d8ece9 0%, #f7f8fa 48%);
+      .stage-map {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .hero-copy {
-        max-width: 100%;
-        padding-top: 54px;
+      .callout {
+        grid-template-columns: 1fr;
       }
+    }
 
-      .nav-inner {
+    @media (max-width: 680px) {
+      .nav {
         align-items: flex-start;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .section-inner,
-      .hero-inner,
-      .nav-inner {
-        width: 100%;
-        max-width: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      section {
-        padding: 46px 0;
-      }
-
-      .actions {
         flex-direction: column;
-        align-items: stretch;
+        padding: 14px 0;
       }
 
-      .button {
-        width: 100%;
-        text-align: center;
+      .nav-links {
+        justify-content: flex-start;
       }
 
-      .workflow-step {
+      .hero-grid {
+        min-height: auto;
+        padding: 50px 0;
+      }
+
+      .stage-map {
         grid-template-columns: 1fr;
       }
 
-      .link-list li {
-        flex-direction: column;
-      }
+      section { padding: 46px 0; }
     }
   </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "name": "Marco Policani Portfolio",
-    "url": "https://policani.github.io/",
-    "about": {
-      "@type": "Person",
-      "name": "Marco Policani",
-      "url": "https://github.com/policani",
-      "sameAs": [
-        "https://github.com/policani",
-        "https://www.linkedin.com/in/marcpolicani"
-      ],
-      "knowsAbout": [
-        "PMO leadership",
-        "portfolio governance",
-        "AI governance",
-        "executive decision support",
-        "program management",
-        "operating models",
-        "value realization",
-        "delivery readiness"
-      ]
-    },
-    "hasPart": [
-      {"@type": "CreativeWork", "name": "Operating Patterns", "url": "https://github.com/policani/operating-patterns"},
-      {"@type": "CreativeWork", "name": "AI Opportunity Intelligence Review System", "url": "https://github.com/policani/ai-opportunity-intelligence-review-system"},
-      {"@type": "CreativeWork", "name": "AI Artifact Lifecycle Governance System", "url": "https://github.com/policani/ai-artifact-lifecycle-governance-system"},
-      {"@type": "CreativeWork", "name": "Business Case System", "url": "https://github.com/policani/business-case-system"},
-      {"@type": "CreativeWork", "name": "Project Charter Initiation Agent", "url": "https://github.com/policani/project-charter-initiation-agent"},
-      {"@type": "CreativeWork", "name": "Portfolio Prioritization Scoring Agent", "url": "https://github.com/policani/portfolio-prioritization-scoring-agent"},
-      {"@type": "CreativeWork", "name": "PMO Governance Operations Log", "url": "https://github.com/policani/pmo-governance-operations-log"},
-      {"@type": "CreativeWork", "name": "Resume Evidence Engine", "url": "https://github.com/policani/resume-evidence-engine"},
-      {"@type": "CreativeWork", "name": "Jobs Scanner", "url": "https://github.com/policani/jobs-scanner"},
-      {"@type": "CreativeWork", "name": "AI Prose Pattern Detector", "url": "https://github.com/policani/ai-prose-pattern-detector"}
-    ]
-  }
-  </script>
 </head>
+
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow">AI-assisted PMO, portfolio governance, and operating systems</p>
-        <h1>Marco Policani</h1>
-        <p class="subhead">I build practical operating systems for complex work: portfolio governance, executive cadence, delivery readiness, decision support, and accountable AI-enabled workflows.</p>
-        <div class="hero-proof" aria-label="Portfolio proof points">
-          <div class="proof-pill">
-            <strong>Not a code showcase</strong>
-            <span>Operating-model and workflow design evidence.</span>
-          </div>
-          <div class="proof-pill">
-            <strong>Human-governed AI</strong>
-            <span>Structure and synthesis without handing over accountability.</span>
-          </div>
-          <div class="proof-pill">
-            <strong>Public-safe examples</strong>
-            <span>Synthetic, generalized, and scrubbed artifacts.</span>
-          </div>
-        </div>
-        <div class="actions">
-          <a class="button primary" href="https://github.com/policani/Policani">View GitHub Portfolio</a>
-          <a class="button" href="https://github.com/policani/operating-patterns">Operating Patterns</a>
-          <a class="button" href="https://github.com/policani">All Repositories</a>
-          <a class="button" href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <nav class="local-nav" aria-label="Page sections">
-    <div class="nav-inner">
-      <a class="nav-title" href="#main">Marco Policani</a>
+  <header>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#">Marco Policani</a>
       <div class="nav-links">
-        <a href="#portfolio">Portfolio</a>
-        <a href="#workflow">Workflow</a>
-        <a href="#themes">Themes</a>
+        <a href="#system">Operating system</a>
+        <a href="#modules">Modules</a>
+        <a href="#map">Lifecycle map</a>
+        <a href="#proof">Proof themes</a>
         <a href="#connect">Connect</a>
       </div>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">PMO, portfolio, program governance, and accountable AI</p>
+          <h1 id="hero-title">Operating systems for governable work.</h1>
+          <p class="subhead">
+            I build practical systems that turn scattered demand, unclear ownership, portfolio noise,
+            readiness gaps, capacity constraints, and executive ambiguity into decision-ready work.
+          </p>
+          <p class="hero-note">
+            This is not a product-management portfolio and not a software engineering showcase. It is public-safe
+            evidence of operating-model design, portfolio governance, executive cadence, delivery readiness,
+            value realization, and human-governed AI workflow architecture.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#modules">Review the modules</a>
+            <a class="button" href="https://github.com/policani">View GitHub portfolio</a>
+            <a class="button" href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Portfolio readout">
+          <h2>How to read this body of work</h2>
+          <p>
+            Each repository handles one leadership workflow. The value is in the boundary:
+            what comes in, what gets clarified, what remains human-owned, and what moves downstream.
+          </p>
+          <ul class="proof-list">
+            <li>
+              <strong>Signal before decision</strong>
+              <span>Clean up status, ownership, readiness, risk, and dependency evidence before executives act.</span>
+            </li>
+            <li>
+              <strong>Governance without theater</strong>
+              <span>Use the smallest structure that creates visibility, decision quality, and follow-through.</span>
+            </li>
+            <li>
+              <strong>AI with accountability</strong>
+              <span>Use AI for structure, synthesis, review, and repeatability. Keep approvals and risk with people.</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
     </div>
-  </nav>
+  </section>
 
   <main id="main">
-    <section aria-labelledby="what-this-is">
-      <div class="section-inner two-col">
-        <div>
-          <p class="section-kicker">What this site is</p>
-          <h2 id="what-this-is">A public portfolio for governable work.</h2>
-          <p class="lead">This site collects public-safe examples of how I structure messy work so leaders can see ownership, constraints, risks, dependencies, tradeoffs, value, and next decisions.</p>
+    <section id="system">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="eyebrow">What this site is</p>
+          <h2>A public portfolio for enterprise operating discipline.</h2>
+          <p class="lede">
+            The portfolio shows how rough ideas, scattered initiatives, informal AI artifacts, delivery risks,
+            and executive decision points can be turned into structured intake, reviewable evidence, sequencing
+            options, readiness gates, governance logs, and outcome tracking.
+          </p>
+          <div class="pill-row">
+            <span class="pill">PMO formation</span>
+            <span class="pill">Portfolio governance</span>
+            <span class="pill">Program governance</span>
+            <span class="pill">Executive decision support</span>
+            <span class="pill">Delivery readiness</span>
+            <span class="pill">Value realization</span>
+            <span class="pill">AI governance</span>
+          </div>
         </div>
-        <div class="panel callout">
-          <h3>How to read the portfolio</h3>
-          <p>Evaluate the work as operating-model and workflow design evidence, not as a traditional software engineering portfolio. The repositories show how rough demand becomes structured intake, decision-ready artifacts, governance rhythms, and follow-through.</p>
-          <div class="tag-row" aria-label="Focus areas">
-            <span class="tag">Portfolio governance</span>
-            <span class="tag">AI value realization</span>
-            <span class="tag">Executive decision support</span>
-            <span class="tag">Project initiation</span>
-            <span class="tag">PMO operations</span>
-            <span class="tag">Career evidence systems</span>
+
+        <div class="grid-3">
+          <article class="panel">
+            <h3>For executives</h3>
+            <p>Decision-ready views of what is blocked, what changed, what needs approval, and what tradeoffs are real.</p>
+          </article>
+          <article class="panel">
+            <h3>For PMO and portfolio leaders</h3>
+            <p>Reusable operating modules for intake, prioritization, sequencing, readiness, controls, and follow-through.</p>
+          </article>
+          <article class="panel">
+            <h3>For AI operations teams</h3>
+            <p>Human-governed patterns for AI-assisted analysis, artifact lifecycle review, and value-based adoption.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="modules">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="eyebrow">New module layer</p>
+          <h2>The expanded PMO and portfolio governance system.</h2>
+          <p class="lede">
+            These modules extend the portfolio beyond idea review and project initiation into the operating work
+            senior PMO, portfolio, and program leaders are actually accountable for: signal quality, intake,
+            executive review, sequencing, readiness, controls, partner governance, innovation governance,
+            and value realization.
+          </p>
+        </div>
+
+        <div class="module-group">
+          <div class="group-title">
+            <h3>Portfolio signal and intake</h3>
+            <span>Clean the demand before it becomes false work-in-flight.</span>
+          </div>
+          <div class="module-grid">
+            <article class="card featured">
+              <h3><a href="https://github.com/policani/portfolio-signal-quality-auditor">Portfolio Signal Quality Auditor</a></h3>
+              <p>Audits portfolio inventories for stale status, missing ownership, weak sponsor data, duplicate demand, inconsistent fields, readiness ambiguity, and KPI drift.</p>
+              <div class="meta">
+                <span class="tag">Signal integrity</span>
+                <span class="tag">Portfolio hygiene</span>
+                <span class="tag">Executive reporting risk</span>
+              </div>
+            </article>
+
+            <article class="card featured">
+              <h3><a href="https://github.com/policani/portfolio-intake-readiness-triage-system">Portfolio Intake and Readiness Triage System</a></h3>
+              <p>Classifies incoming ideas, mandates, AI use cases, compliance needs, and executive requests before they become premature business cases, charters, or portfolio noise.</p>
+              <div class="meta">
+                <span class="tag">Intake discipline</span>
+                <span class="tag">Readiness gates</span>
+                <span class="tag">Routing</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="module-group">
+          <div class="group-title">
+            <h3>Executive portfolio decisions</h3>
+            <span>Turn portfolio data into sponsor-ready decisions.</span>
+          </div>
+          <div class="module-grid">
+            <article class="card featured">
+              <h3><a href="https://github.com/policani/executive-portfolio-review-pack-builder">Executive Portfolio Review Pack Builder</a></h3>
+              <p>Creates executive review packs with portfolio health, decision requests, risk and dependency views, capacity pressure, and follow-up registers.</p>
+              <div class="meta">
+                <span class="tag">Executive cadence</span>
+                <span class="tag">Decision requests</span>
+                <span class="tag">Portfolio health</span>
+              </div>
+            </article>
+
+            <article class="card featured">
+              <h3><a href="https://github.com/policani/portfolio-capacity-sequencing-planner">Portfolio Capacity and Sequencing Planner</a></h3>
+              <p>Builds sequencing scenarios against constrained capacity, shared resources, fixed dates, dependency chains, and milestone exposure.</p>
+              <div class="meta">
+                <span class="tag">Capacity fit</span>
+                <span class="tag">Sequencing</span>
+                <span class="tag">Tradeoff options</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="module-group">
+          <div class="group-title">
+            <h3>Delivery readiness, controls, and outcomes</h3>
+            <span>Keep execution governed after the decision is made.</span>
+          </div>
+          <div class="module-grid">
+            <article class="card featured">
+              <h3><a href="https://github.com/policani/release-readiness-uat-governance-pack">Release Readiness and UAT Governance Pack</a></h3>
+              <p>Creates readiness gates, entry and exit criteria, evidence checks, signoff views, blocker escalation, and launch decision briefs for validation and release.</p>
+              <div class="meta">
+                <span class="tag">UAT readiness</span>
+                <span class="tag">Launch gates</span>
+                <span class="tag">Signoff</span>
+              </div>
+            </article>
+
+            <article class="card featured">
+              <h3><a href="https://github.com/policani/value-realization-governance-ledger">Value Realization Governance Ledger</a></h3>
+              <p>Tracks expected benefits against owners, measures, baselines, targets, actuals, confidence, evidence gaps, and continue, hold, scale, or retire recommendations.</p>
+              <div class="meta">
+                <span class="tag">Benefits governance</span>
+                <span class="tag">Outcome tracking</span>
+                <span class="tag">Evidence confidence</span>
+              </div>
+            </article>
+
+            <article class="card featured">
+              <h3><a href="https://github.com/policani/controls-exposure-governance-toolkit">Controls and Exposure Governance Toolkit</a></h3>
+              <p>Structures exposure registers, control-owner maps, remediation trackers, exception logs, evidence registers, and escalation paths for human review.</p>
+              <div class="meta">
+                <span class="tag">Controls</span>
+                <span class="tag">Exposure</span>
+                <span class="tag">Remediation</span>
+              </div>
+            </article>
+
+            <article class="card featured">
+              <h3><a href="https://github.com/policani/partner-ecosystem-governance-pack">Partner Ecosystem Governance Pack</a></h3>
+              <p>Defines partner tiers, qualification paths, evidence workflows, readiness gates, operating cadence, controls, and escalation paths for external delivery networks.</p>
+              <div class="meta">
+                <span class="tag">Partner governance</span>
+                <span class="tag">Readiness evidence</span>
+                <span class="tag">Provider networks</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="module-group">
+          <div class="group-title">
+            <h3>Formation and innovation governance</h3>
+            <span>Stand up governance without killing useful ambiguity.</span>
+          </div>
+          <div class="module-grid">
+            <article class="card featured">
+              <h3><a href="https://github.com/policani/ppmo-formation-kit">PPMO Formation Kit</a></h3>
+              <p>Creates a practical formation package for decision rights, intake, portfolio taxonomy, sponsor councils, reporting, decision logs, and a 30/60/90 operating plan.</p>
+              <div class="meta">
+                <span class="tag">PPMO setup</span>
+                <span class="tag">Decision rights</span>
+                <span class="tag">Governance council</span>
+              </div>
+            </article>
+
+            <article class="card featured">
+              <h3><a href="https://github.com/policani/innovation-portfolio-governance-model">Innovation Portfolio Governance Model</a></h3>
+              <p>Governs R&D, AI exploration, emerging technology, and ambiguous strategic work through value, feasibility, risk, learning, funding gates, and capacity fit.</p>
+              <div class="meta">
+                <span class="tag">Innovation governance</span>
+                <span class="tag">Learning milestones</span>
+                <span class="tag">Funding gates</span>
+              </div>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="portfolio" aria-labelledby="portfolio-heading">
+    <section id="map">
       <div class="section-inner">
-        <p class="section-kicker">Start here</p>
-        <h2 id="portfolio-heading">Portfolio repositories</h2>
-        <p class="lead">The strongest pattern is modular: each repository handles a distinct decision or workflow layer, then hands cleaner evidence into the next layer.</p>
+        <div class="section-head">
+          <p class="eyebrow">Lifecycle map</p>
+          <h2>From rough demand to governed execution.</h2>
+          <p class="lede">
+            The portfolio is designed as a modular operating chain. Each module has a narrow job and a clear handoff,
+            so the system does not confuse idea review, business case, chartering, scoring, sequencing, execution
+            governance, readiness, controls, and value tracking.
+          </p>
+        </div>
 
-        <div class="repo-grid">
-          <article class="repo-card featured">
+        <div class="stage-map">
+          <article class="stage">
+            <h3>Clean the signal</h3>
+            <p>Audit portfolio data, status, owners, sponsors, dates, duplicate demand, readiness, and KPI hygiene.</p>
+          </article>
+          <article class="stage">
+            <h3>Classify intake</h3>
+            <p>Route new demand to clarify, hold, reject, business case, charter, or portfolio scoring.</p>
+          </article>
+          <article class="stage">
+            <h3>Shape investment</h3>
+            <p>Build business cases, charters, scoring views, and governance formation artifacts.</p>
+          </article>
+          <article class="stage">
+            <h3>Sequence commitments</h3>
+            <p>Show capacity pressure, dependencies, milestone exposure, and executive tradeoff options.</p>
+          </article>
+          <article class="stage">
+            <h3>Govern execution</h3>
+            <p>Run review packs, operations logs, readiness gates, controls, ecosystem governance, and value realization.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="foundation">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="eyebrow">Foundation modules</p>
+          <h2>The original portfolio layer still matters.</h2>
+          <p class="lede">
+            The newer modules expand the system, but the foundation still handles opportunity review, artifact lifecycle,
+            business case logic, charter initiation, portfolio scoring, and governance follow-through.
+          </p>
+        </div>
+
+        <div class="module-grid">
+          <article class="card">
             <h3><a href="https://github.com/policani/operating-patterns">Operating Patterns</a></h3>
-            <p>A public-safe library of AI, PMO, and portfolio operating patterns for governance, decision support, value realization, resource allocation, and executive cadence design.</p>
-            <div class="repo-meta"><span class="small-tag">Pattern library</span><span class="small-tag">PMO</span><span class="small-tag">AI governance</span></div>
+            <p>Reusable PMO, AI governance, value realization, resource allocation, executive cadence, and decision-support patterns.</p>
           </article>
-
-          <article class="repo-card featured">
+          <article class="card">
             <h3><a href="https://github.com/policani/ai-opportunity-intelligence-review-system">AI Opportunity Intelligence Review System</a></h3>
-            <p>Decomposes rough AI ideas into architecture, proof requirements, governance controls, and build/buy/wait routes before demos, vendors, proofs of concept, or delivery planning consume time.</p>
-            <div class="repo-meta"><span class="small-tag">Opportunity review</span><span class="small-tag">AI portfolio</span><span class="small-tag">Decision support</span></div>
+            <p>Reviews rough AI opportunities before demos, vendors, proofs of concept, or delivery plans consume time.</p>
           </article>
-
-          <article class="repo-card featured">
+          <article class="card">
             <h3><a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">AI Artifact Lifecycle Governance System</a></h3>
-            <p>Classifies AI tools, scripts, agents, dashboards, and informal software artifacts that already exist, then routes them to keep, hold, promote, formalize, demote, or retire.</p>
-            <div class="repo-meta"><span class="small-tag">Artifact governance</span><span class="small-tag">Prototype commons</span><span class="small-tag">Reliance risk</span></div>
+            <p>Classifies informal AI tools, scripts, agents, dashboards, and other artifacts already in use.</p>
           </article>
-
-          <article class="repo-card featured">
+          <article class="card">
             <h3><a href="https://github.com/policani/business-case-system">Business Case System</a></h3>
-            <p>Turns rough ideas and source artifacts into decision-ready business cases with root-cause challenge, option discipline, assumptions, financial logic, risks, and review gates.</p>
-            <div class="repo-meta"><span class="small-tag">Business case</span><span class="small-tag">Investment logic</span><span class="small-tag">Review gates</span></div>
+            <p>Turns rough ideas into decision-ready business cases with options, assumptions, risks, evidence, and review gates.</p>
           </article>
-
-          <article class="repo-card featured">
+          <article class="card">
             <h3><a href="https://github.com/policani/project-charter-initiation-agent">Project Charter Initiation Agent</a></h3>
-            <p>Converts approved intent into sponsor-ready project charters with scope, ownership, governance rhythm, risks, dependencies, assumptions, and planning handoff.</p>
-            <div class="repo-meta"><span class="small-tag">Project initiation</span><span class="small-tag">Charter</span><span class="small-tag">Governance</span></div>
+            <p>Converts approved intent into sponsor-ready charters with scope, ownership, governance rhythm, risks, and handoff.</p>
           </article>
-
-          <article class="repo-card featured">
+          <article class="card">
             <h3><a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Portfolio Prioritization Scoring Agent</a></h3>
-            <p>Supports transparent portfolio scoring, sequencing views, constraints review, and executive tradeoff discussion without pretending the tool makes funding decisions.</p>
-            <div class="repo-meta"><span class="small-tag">Portfolio scoring</span><span class="small-tag">Prioritization</span><span class="small-tag">Tradeoffs</span></div>
+            <p>Supports transparent scoring, constraints review, sequencing discussion, and executive tradeoff decisions.</p>
           </article>
-
-          <article class="repo-card featured">
+          <article class="card">
             <h3><a href="https://github.com/policani/pmo-governance-operations-log">PMO Governance Operations Log</a></h3>
-            <p>Turns rough operating notes into governance summaries, action registers, decision logs, escalation briefs, plan-update recommendations, and next-meeting preparation.</p>
-            <div class="repo-meta"><span class="small-tag">PMO operations</span><span class="small-tag">Decision log</span><span class="small-tag">Follow-through</span></div>
+            <p>Turns operating notes into governance summaries, action registers, decision logs, escalation briefs, and follow-up.</p>
           </article>
-
-          <article class="repo-card utility">
+          <article class="card">
             <h3><a href="https://github.com/policani/resume-evidence-engine">Resume Evidence Engine</a></h3>
-            <p>An evidence-bound career workflow for role scoring, resume drafting, cover letters, proof narratives, local builders, and Markdown-to-DOCX handoff.</p>
-            <div class="repo-meta"><span class="small-tag">Career evidence</span><span class="small-tag">Resume</span><span class="small-tag">DOCX handoff</span></div>
+            <p>An evidence-bound career workflow for role scoring, resume drafting, cover letters, and proof narratives.</p>
           </article>
-
-          <article class="repo-card utility">
-            <h3><a href="https://github.com/policani/Job-Search-Workbench">Job Search Workbench</a></h3>
-            <p>A local-first workflow for collecting, filtering, and evidence-ranking public job postings by title, location, salary, posting age, source health, and job-description signal.</p>
-            <div class="repo-meta"><span class="small-tag">Job search</span><span class="small-tag">Filtering</span><span class="small-tag">Evidence ranking</span></div>
-          </article>
-
-          <article class="repo-card utility">
-            <h3><a href="https://github.com/policani/ai-prose-pattern-detector">AI Prose Pattern Detector</a></h3>
-            <p>A prose quality toolkit for finding AI-shaped writing patterns, condensed expert language, generic business prose, and revision opportunities.</p>
-            <div class="repo-meta"><span class="small-tag">Writing QA</span><span class="small-tag">Editing</span><span class="small-tag">Human voice</span></div>
-          </article>
-
-          <article class="repo-card utility">
-            <h3><a href="https://github.com/policani/Policani">Policani Portfolio Repository</a></h3>
-            <p>The source portfolio space that organizes public-safe project examples, operating workflow artifacts, and repository-level orientation.</p>
-            <div class="repo-meta"><span class="small-tag">Portfolio source</span><span class="small-tag">GitHub profile</span></div>
-          </article>
-
-          <article class="repo-card utility">
-            <h3><a href="https://github.com/policani/policani.github.io">Website Source</a></h3>
-            <p>The GitHub Pages source for this search-friendly portfolio landing page.</p>
-            <div class="repo-meta"><span class="small-tag">GitHub Pages</span><span class="small-tag">Index page</span></div>
-          </article>
-        </div>
-
-        <div class="note" role="note">
-          <p>Public examples are generalized, synthetic, or scrubbed. They are designed to show judgment, structure, and workflow logic without exposing employer details, client information, proprietary process material, confidential screenshots, or private career data.</p>
         </div>
       </div>
     </section>
 
-    <section id="workflow" aria-labelledby="workflow-heading">
+    <section id="proof">
       <div class="section-inner">
-        <p class="section-kicker">How the modules fit together</p>
-        <h2 id="workflow-heading">From rough idea to governed execution.</h2>
-        <p class="lead compact">The portfolio is strongest when the repositories are read as a staged operating system. Each module answers a different management question.</p>
+        <div class="section-head">
+          <p class="eyebrow">Operating proof themes</p>
+          <h2>What the portfolio demonstrates.</h2>
+        </div>
 
-        <div class="workflow">
-          <article class="workflow-step">
-            <div>
-              <h3>What should exist?</h3>
-              <p><a href="https://github.com/policani/ai-opportunity-intelligence-review-system">AI Opportunity Intelligence Review System</a> reviews AI ideas before they become demos, proofs of concept, or unmanaged demand.</p>
-            </div>
-          </article>
-          <article class="workflow-step">
-            <div>
-              <h3>Something already exists. Should the business rely on it?</h3>
-              <p><a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">AI Artifact Lifecycle Governance System</a> classifies informal artifacts, screens reliance risk, and routes each artifact to the right next step.</p>
-            </div>
-          </article>
-          <article class="workflow-step">
-            <div>
-              <h3>Is formal investment justified?</h3>
-              <p><a href="https://github.com/policani/business-case-system">Business Case System</a> turns the opportunity or artifact handoff into a decision-ready investment narrative.</p>
-            </div>
-          </article>
-          <article class="workflow-step">
-            <div>
-              <h3>What are we authorizing?</h3>
-              <p><a href="https://github.com/policani/project-charter-initiation-agent">Project Charter Initiation Agent</a> converts approved intent into a clear charter, governance model, and planning handoff.</p>
-            </div>
-          </article>
-          <article class="workflow-step">
-            <div>
-              <h3>What should be sequenced and funded?</h3>
-              <p><a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Portfolio Prioritization Scoring Agent</a> makes criteria, constraints, risk, and tradeoffs visible for human decision-makers.</p>
-            </div>
-          </article>
-          <article class="workflow-step">
-            <div>
-              <h3>How do decisions, risks, and actions stay visible?</h3>
-              <p><a href="https://github.com/policani/pmo-governance-operations-log">PMO Governance Operations Log</a> captures operating signals, meeting outcomes, escalations, and follow-through.</p>
-            </div>
-          </article>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Theme</th>
+                <th>What it means</th>
+                <th>Where it shows up</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Make work governable</strong></td>
+                <td>Turn scattered work, unclear ownership, and noisy status into visible intake, sequencing, decisions, risks, dependencies, and follow-through.</td>
+                <td>Signal Quality Auditor, Intake Triage, Executive Review Pack, PMO Operations Log</td>
+              </tr>
+              <tr>
+                <td><strong>Separate signal from theater</strong></td>
+                <td>Favor tools that clarify tradeoffs, assumptions, constraints, readiness, ownership, and decision rights over artifacts that only look polished.</td>
+                <td>Portfolio Scoring, Capacity Sequencing, Release Readiness, Value Ledger</td>
+              </tr>
+              <tr>
+                <td><strong>Preserve human accountability</strong></td>
+                <td>Use AI for structure, synthesis, drafting, critique, and repeatability while people retain funding, scope, approvals, risk acceptance, and commitments.</td>
+                <td>AI Opportunity Review, Artifact Lifecycle Governance, Controls Toolkit</td>
+              </tr>
+              <tr>
+                <td><strong>Build only enough process</strong></td>
+                <td>Add enough structure to create clarity, trust, reviewability, and follow-through without turning governance into bureaucracy.</td>
+                <td>PPMO Formation Kit, Innovation Governance Model, Business Case System</td>
+              </tr>
+              <tr>
+                <td><strong>Design for handoff</strong></td>
+                <td>Make each module produce useful inputs for the next decision point rather than duplicate reviews under different names.</td>
+                <td>All modules</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
-    <section id="themes" aria-labelledby="themes-heading">
+    <section id="connect">
       <div class="section-inner">
-        <p class="section-kicker">Core proof themes</p>
-        <h2 id="themes-heading">What the body of work demonstrates</h2>
-        <div class="theme-grid">
-          <article class="theme-card">
-            <h3>Make work governable</h3>
-            <p>Convert scattered demand, vague ownership, noisy status, and unclear readiness into visible intake, sequencing, decisions, risks, dependencies, and follow-through.</p>
-          </article>
-          <article class="theme-card">
-            <h3>Use AI without losing accountability</h3>
-            <p>Use AI for structure, synthesis, drafting, critique, evidence review, and repeatability while keeping funding, scope, approvals, risk acceptance, and commitments with people.</p>
-          </article>
-          <article class="theme-card">
-            <h3>Separate signal from theater</h3>
-            <p>Favor tools that clarify tradeoffs, assumptions, constraints, readiness, ownership, and decision rights over artifacts that merely look polished.</p>
-          </article>
-          <article class="theme-card">
-            <h3>Protect source material</h3>
-            <p>Show capability through synthetic examples, public-safe templates, and generalized operating patterns instead of exposing employer, client, financial, or proprietary details.</p>
-          </article>
-          <article class="theme-card">
-            <h3>Design for handoff</h3>
-            <p>Structure each module so its outputs become useful inputs for adjacent modules rather than duplicate reviews with different labels.</p>
-          </article>
-          <article class="theme-card">
-            <h3>Build only enough process</h3>
-            <p>Add enough structure to create clarity, trust, reviewability, and follow-through without turning the workflow into unnecessary bureaucracy.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="connect" aria-labelledby="connect-heading">
-      <div class="section-inner two-col">
-        <div>
-          <p class="section-kicker">Connect</p>
-          <h2 id="connect-heading">Where to go next</h2>
-          <p class="lead">For a quick read, start with the operating-pattern library and the AI/PMO workflow systems. For the full source picture, review the GitHub profile and portfolio repository.</p>
-        </div>
-        <div class="panel">
-          <h3>Primary links</h3>
-          <ul class="link-list">
-            <li><a href="https://github.com/policani">GitHub profile</a><span>All public repositories</span></li>
-            <li><a href="https://github.com/policani/Policani">Portfolio repository</a><span>Project index and orientation</span></li>
-            <li><a href="https://github.com/policani/operating-patterns">Operating Patterns</a><span>Reusable PMO and AI governance patterns</span></li>
-            <li><a href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a><span>Professional background and contact path</span></li>
-          </ul>
+        <div class="callout">
+          <div>
+            <p class="eyebrow" style="color:#93c5fd; margin-bottom:10px;">Where to go next</p>
+            <h2 style="color:#fff; margin-bottom:10px;">Start with the operating chain, not a single repo.</h2>
+            <p>
+              For the fastest read, review the new portfolio signal, intake, executive review, sequencing,
+              readiness, and value-realization modules first. Then use the foundation modules to see how ideas,
+              business cases, charters, scoring, and governance follow-through connect.
+            </p>
+          </div>
+          <div class="actions" style="margin-top:0;">
+            <a class="button primary" style="background:#fff;color:#111827;border-color:#fff;" href="https://github.com/policani">GitHub profile</a>
+            <a class="button" style="color:#fff;border-color:#64748b;background:transparent;" href="https://github.com/policani/policani.github.io">Website source</a>
+          </div>
         </div>
       </div>
     </section>
@@ -811,8 +926,36 @@
 
   <footer>
     <div class="section-inner">
-      <p>Marco Policani | <a href="https://github.com/policani">GitHub</a> | <a href="https://github.com/policani/policani.github.io">Website source</a> | <a href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a></p>
+      <span>Marco Policani | PMO, portfolio governance, program governance, and accountable AI operating systems</span>
+      <span>
+        <a href="https://github.com/policani">GitHub</a> |
+        <a href="https://github.com/policani/policani.github.io">Website source</a> |
+        <a href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a>
+      </span>
     </div>
   </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Marco Policani",
+    "url": "https://policani.github.io/",
+    "sameAs": [
+      "https://github.com/policani",
+      "https://www.linkedin.com/in/marcpolicani"
+    ],
+    "knowsAbout": [
+      "PMO",
+      "portfolio governance",
+      "program governance",
+      "executive decision support",
+      "value realization",
+      "release readiness",
+      "AI governance",
+      "operating model design"
+    ]
+  }
+  </script>
 </body>
 </html>
