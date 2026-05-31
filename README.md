@@ -13,7 +13,7 @@ https://policani.github.io
 This site is the search-friendly front door for a portfolio that otherwise lives
 across GitHub repositories and GitHub Wiki pages. It is intentionally written to
 help readers start from an operating problem, then find the relevant proof
-modules, generalized operating patterns, and career evidence workflow systems.
+modules, anonymized portfolio artifacts, and career evidence workflow systems.
 
 The public positioning should make Marco discoverable for portfolio governance,
 executive operating cadence, PMO operating models, AI-assisted workflow
@@ -36,7 +36,8 @@ like a direct sales pitch.
 
 - GitHub profile: https://github.com/policani
 - Portfolio index: https://github.com/policani
-- Operating patterns: https://github.com/policani/operating-patterns
+- Portfolio artifacts wiki: https://github.com/policani/Policani/wiki
+- Anonymized artifact source: https://github.com/policani/operating-patterns
 
 ## Privacy Standard
 
