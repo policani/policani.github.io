@@ -403,7 +403,8 @@
     }
 
     .navigator-meta,
-    .navigator-flow {
+    .navigator-flow,
+    .navigator-lifecycle {
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
@@ -416,6 +417,40 @@
 
     .navigator-flow {
       margin-top: 18px;
+    }
+
+    .navigator-lifecycle {
+      gap: 8px;
+      margin-top: 20px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .navigator-lifecycle strong {
+      margin-right: 4px;
+      color: var(--ink-soft);
+      font-size: 0.88rem;
+    }
+
+    .navigator-lifecycle span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 8px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .navigator-lifecycle span + span::before {
+      content: ">";
+      margin-right: 8px;
+      color: var(--quiet);
     }
 
     .navigator-flow::before {
@@ -444,9 +479,9 @@
     }
 
     .navigator-badge {
-      border-color: rgba(15, 118, 110, 0.24);
-      color: var(--teal-dark);
-      background: rgba(238, 247, 241, 0.86);
+      border-color: rgba(36, 90, 146, 0.26);
+      color: var(--blue-dark);
+      background: rgba(237, 244, 251, 0.86);
     }
 
     .navigator-step {
@@ -792,8 +827,9 @@
         <a href="#journeys">Problems</a>
         <a href="#proof">Proof</a>
         <a href="#modules">Modules</a>
-        <a href="#tools">Free tools</a>
         <a href="#patterns">Artifacts</a>
+        <a href="#boundaries">Boundaries</a>
+        <a href="#tools">Free tools</a>
         <a href="#connect">Connect</a>
       </div>
     </div>
@@ -825,11 +861,20 @@
         <h2 id="navigator-heading">Start with the maturity route.</h2>
         <p class="lead">Use this map when you want the shortest path through the collection. Each lane shows the operating phases it supports, who should start there, and which repositories are most ready for review.</p>
 
+        <div class="navigator-lifecycle" aria-label="Operating lifecycle sequence">
+          <strong>Lifecycle:</strong>
+          <span>Intake</span>
+          <span>Tradeoffs</span>
+          <span>Funding</span>
+          <span>Readiness</span>
+          <span>Value</span>
+        </div>
+
         <div class="navigator-grid" aria-label="Portfolio module navigator">
           <article class="navigator-card">
             <div class="navigator-meta">
-              <span class="navigator-stage">Intake and signal</span>
-              <span class="navigator-badge">Start here</span>
+              <span class="navigator-stage">Lane: Intake and signal</span>
+              <span class="navigator-badge">Route: Start here</span>
             </div>
             <h3>Demand becomes governable</h3>
             <p>For PMO, EPMO, PPMO, and portfolio leaders who need rough requests, mandates, ideas, and initiative lists to become owned, routed, and decision-ready.</p>
@@ -845,8 +890,8 @@
 
           <article class="navigator-card">
             <div class="navigator-meta">
-              <span class="navigator-stage">Prioritize and sequence</span>
-              <span class="navigator-badge">Flagship route</span>
+              <span class="navigator-stage">Lane: Prioritize and sequence</span>
+              <span class="navigator-badge">Route: Flagship path</span>
             </div>
             <h3>Tradeoffs become discussable</h3>
             <p>For leaders who need clearer scoring, capacity pressure, dependency visibility, sequencing choices, and executive review material.</p>
@@ -862,8 +907,8 @@
 
           <article class="navigator-card">
             <div class="navigator-meta">
-              <span class="navigator-stage">AI governance</span>
-              <span class="navigator-badge">High visibility</span>
+              <span class="navigator-stage">Lane: AI governance</span>
+              <span class="navigator-badge">Route: High visibility</span>
             </div>
             <h3>AI activity gets proof and boundaries</h3>
             <p>For AI operations, governance, and portfolio teams that need value logic, reliance boundaries, artifact classification, and human review before adoption.</p>
@@ -881,8 +926,8 @@
 
           <article class="navigator-card">
             <div class="navigator-meta">
-              <span class="navigator-stage">Authorize and initiate</span>
-              <span class="navigator-badge">Handoff path</span>
+              <span class="navigator-stage">Lane: Authorize and initiate</span>
+              <span class="navigator-badge">Route: Handoff path</span>
             </div>
             <h3>Intent becomes a funded starting point</h3>
             <p>For sponsors and delivery leaders who need early ideas to become business cases, then approved intent to become scoped charters.</p>
@@ -898,8 +943,8 @@
 
           <article class="navigator-card">
             <div class="navigator-meta">
-              <span class="navigator-stage">Readiness and value</span>
-              <span class="navigator-badge">Evidence chain</span>
+              <span class="navigator-stage">Lane: Readiness and value</span>
+              <span class="navigator-badge">Route: Evidence chain</span>
             </div>
             <h3>Execution risk becomes reviewable</h3>
             <p>For delivery, controls, and portfolio teams that need launch evidence, blockers, exceptions, signoffs, value claims, and realization confidence.</p>
@@ -917,8 +962,8 @@
 
           <article class="navigator-card">
             <div class="navigator-meta">
-              <span class="navigator-stage">Artifacts and patterns</span>
-              <span class="navigator-badge">Context layer</span>
+              <span class="navigator-stage">Lane: Artifacts and patterns</span>
+              <span class="navigator-badge">Route: Context layer</span>
             </div>
             <h3>Capability evidence stays public-safe</h3>
             <p>For readers who want the governance frameworks, operating models, playbooks, templates, lessons learned, and partner ecosystem material behind the modules.</p>
@@ -938,8 +983,8 @@
 
           <article class="navigator-card">
             <div class="navigator-meta">
-              <span class="navigator-stage">Career and writing tools</span>
-              <span class="navigator-badge">Separate utility lane</span>
+              <span class="navigator-stage">Lane: Career and writing tools</span>
+              <span class="navigator-badge">Route: Separate utility lane</span>
             </div>
             <h3>Public utilities stay distinct</h3>
             <p>For job seekers, writers, and reviewers who need career documentation, posting triage, or prose quality checks outside the PMO operating-module story.</p>
@@ -956,7 +1001,7 @@
           </article>
         </div>
 
-        <p class="navigator-note">The operating lifecycle runs from intake to value realization. Each card highlights the phases where that lane is most useful; the career and writing tools stay separate so they do not blur the operating-module portfolio.</p>
+        <p class="navigator-note">The top pills identify the lane and the recommended route. The dark "Covers" pills show which lifecycle phases that lane supports. Color accents are visual grouping only; the labels carry the meaning.</p>
       </div>
     </section>
 
@@ -1135,6 +1180,52 @@
       </div>
     </section>
 
+    <section id="patterns" class="section-white" aria-labelledby="patterns-heading">
+      <div class="section-inner two-col">
+        <div>
+          <p class="section-kicker">Portfolio artifacts</p>
+          <h2 id="patterns-heading">Anonymized artifacts, not generic theory.</h2>
+          <p class="lead">The artifact library translates real operating experience into public-safe governance frameworks, operating models, playbooks, templates, lessons learned, and pattern pages. It keeps the useful part visible: the problem type, decision structure, intervention logic, and capability demonstrated.</p>
+        </div>
+        <div>
+          <ul class="compact-list">
+            <li><strong>Portfolio governance:</strong> intake discipline, sequencing, signal recovery, and tradeoff visibility.</li>
+            <li><strong>Decision support:</strong> structured review, ambiguous stakeholder alignment, readiness evidence, and follow-through.</li>
+            <li><strong>AI and innovation governance:</strong> business-value allocation, proof requirements, human review, learning gates, and bounded reliance.</li>
+            <li><strong>Partner ecosystems:</strong> qualification logic, readiness evidence, governance cadence, and escalation paths for external delivery networks.</li>
+            <li><strong>Public safety:</strong> no employer names, client names, logos, screenshots, exact dates, confidential figures, or proprietary process detail.</li>
+          </ul>
+          <div class="repo-links">
+            <a href="https://github.com/policani/Policani/tree/main/wiki">Portfolio artifacts</a>
+            <a href="https://github.com/policani/operating-patterns">Artifact source repository</a>
+            <a href="https://github.com/policani/operating-patterns/tree/main/wiki/Capability-Index.md">Capability index</a>
+            <a href="https://github.com/policani/operating-patterns/tree/main/wiki/Operating-Patterns.md">Pattern pages</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="boundaries" aria-labelledby="boundaries-heading">
+      <div class="section-inner">
+        <p class="section-kicker">Boundaries</p>
+        <h2 id="boundaries-heading">What this portfolio does not claim.</h2>
+        <div class="theme-grid">
+          <article class="theme-card">
+            <h3>Not software engineering ownership</h3>
+            <p>The repositories show workflow architecture, operating design, local tooling, and structured artifacts, not a claim of production software engineering ownership.</p>
+          </article>
+          <article class="theme-card">
+            <h3>Not autonomous AI decisioning</h3>
+            <p>AI supports synthesis, review, drafting, classification, and repeatability. People own approvals, commitments, risk acceptance, funding, and final communication.</p>
+          </article>
+          <article class="theme-card">
+            <h3>Not employer case studies</h3>
+            <p>Examples are synthetic, generalized, or scrubbed so the public work can demonstrate judgment without exposing confidential or identifying detail.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="tools" class="section-white" aria-labelledby="tools-heading">
       <div class="section-inner">
         <p class="section-kicker">Free tools</p>
@@ -1164,52 +1255,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="patterns" class="section-white" aria-labelledby="patterns-heading">
-      <div class="section-inner two-col">
-        <div>
-          <p class="section-kicker">Portfolio artifacts</p>
-          <h2 id="patterns-heading">Anonymized artifacts, not generic theory.</h2>
-          <p class="lead">The artifact library translates real operating experience into public-safe governance frameworks, operating models, playbooks, templates, lessons learned, and pattern pages. It keeps the useful part visible: the problem type, decision structure, intervention logic, and capability demonstrated.</p>
-        </div>
-        <div>
-          <ul class="compact-list">
-            <li><strong>Portfolio governance:</strong> intake discipline, sequencing, signal recovery, and tradeoff visibility.</li>
-            <li><strong>Decision support:</strong> structured review, ambiguous stakeholder alignment, readiness evidence, and follow-through.</li>
-            <li><strong>AI and innovation governance:</strong> business-value allocation, proof requirements, human review, learning gates, and bounded reliance.</li>
-            <li><strong>Partner ecosystems:</strong> qualification logic, readiness evidence, governance cadence, and escalation paths for external delivery networks.</li>
-            <li><strong>Public safety:</strong> no employer names, client names, logos, screenshots, exact dates, confidential figures, or proprietary process detail.</li>
-          </ul>
-          <div class="repo-links">
-            <a href="https://github.com/policani/Policani/tree/main/wiki">Portfolio artifacts</a>
-            <a href="https://github.com/policani/operating-patterns">Artifact source repository</a>
-            <a href="https://github.com/policani/operating-patterns/tree/main/wiki/Capability-Index.md">Capability index</a>
-            <a href="https://github.com/policani/operating-patterns/tree/main/wiki/Operating-Patterns.md">Pattern pages</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="boundaries-heading">
-      <div class="section-inner">
-        <p class="section-kicker">Boundaries</p>
-        <h2 id="boundaries-heading">What this portfolio does not claim.</h2>
-        <div class="theme-grid">
-          <article class="theme-card">
-            <h3>Not software engineering ownership</h3>
-            <p>The repositories show workflow architecture, operating design, local tooling, and structured artifacts, not a claim of production software engineering ownership.</p>
-          </article>
-          <article class="theme-card">
-            <h3>Not autonomous AI decisioning</h3>
-            <p>AI supports synthesis, review, drafting, classification, and repeatability. People own approvals, commitments, risk acceptance, funding, and final communication.</p>
-          </article>
-          <article class="theme-card">
-            <h3>Not employer case studies</h3>
-            <p>Examples are synthetic, generalized, or scrubbed so the public work can demonstrate judgment without exposing confidential or identifying detail.</p>
-          </article>
         </div>
       </div>
     </section>
