@@ -365,6 +365,7 @@
     .repo-links a {
       display: inline-flex;
       align-items: center;
+      max-width: 100%;
       min-height: 30px;
       padding: 5px 9px;
       border: 1px solid var(--line-strong);
@@ -374,6 +375,50 @@
       font-size: 0.84rem;
       font-weight: 720;
       text-decoration: none;
+      white-space: normal;
+    }
+
+    .tool-table-wrap {
+      margin-top: 26px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .tool-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+    }
+
+    .tool-table th,
+    .tool-table td {
+      padding: 15px 17px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .tool-table th {
+      color: var(--ink-soft);
+      background: #eef3f7;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tool-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .tool-table td {
+      color: var(--muted);
+    }
+
+    .tool-table a {
+      color: var(--blue-dark);
+      font-weight: 760;
     }
 
     .proof-strip {
@@ -603,7 +648,7 @@
         </div>
         <div class="actions">
           <a class="button primary" href="#journeys">Choose an operating problem</a>
-          <a class="button" href="https://github.com/policani/Policani">GitHub profile</a>
+          <a class="button" href="https://github.com/policani">GitHub profile</a>
           <a class="button" href="https://github.com/policani/operating-patterns">Operating patterns</a>
           <a class="button" href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a>
         </div>
@@ -618,6 +663,7 @@
         <a href="#journeys">Problems</a>
         <a href="#proof">Proof</a>
         <a href="#modules">Modules</a>
+        <a href="#tools">Free tools</a>
         <a href="#patterns">Patterns</a>
         <a href="#connect">Connect</a>
       </div>
@@ -636,8 +682,8 @@
           <h3>How to evaluate it</h3>
           <p>Look for how scattered inputs become structured decisions: intake, route recommendations, scorecards, readiness checks, executive review packs, evidence registers, value ledgers, and follow-up mechanisms.</p>
           <div class="repo-links" aria-label="Primary links">
-            <a href="https://github.com/policani/Policani">Profile README</a>
-            <a href="https://github.com/policani">All repositories</a>
+            <a href="https://github.com/policani">GitHub profile</a>
+            <a href="https://github.com/policani?tab=repositories">All repositories</a>
             <a href="https://github.com/policani/operating-patterns/tree/main/wiki">Source pages</a>
           </div>
         </div>
@@ -701,11 +747,9 @@
           </article>
 
           <article class="journey-card">
-            <h3>Narrative work needs source truth</h3>
-            <p>When high-stakes writing, role evaluation, proof selection, and prose quality need evidence routing, hard stops, and human review.</p>
+            <h3>Business writing needs quality control</h3>
+            <p>When executive updates, portfolio narratives, AI-assisted drafts, or stakeholder messages need sharper language, less generic phrasing, and human review.</p>
             <div class="repo-links">
-              <a href="https://github.com/policani/resume-evidence-engine">Evidence engine</a>
-              <a href="https://github.com/policani/jobs-scanner">Role scanner</a>
               <a href="https://github.com/policani/ai-prose-pattern-detector">Prose QA</a>
             </div>
           </article>
@@ -751,11 +795,11 @@
         <div class="distinction">
           <div class="proof-box">
             <h3>Proof-of-concept operating modules</h3>
-            <p>The PMO, portfolio, AI governance, readiness, controls, and value modules are public-safe portfolio samples. They demonstrate operating design and decision-support patterns. They should not be read as deployed production systems or software-engineering claims.</p>
+            <p>The PMO, portfolio, AI governance, readiness, controls, and value modules are public-safe portfolio samples. They demonstrate operating design and decision-support patterns as adaptable starting points for real operating needs.</p>
           </div>
           <div class="proof-box">
-            <h3>Real career evidence workflow systems</h3>
-            <p>The evidence engine, role scanner, and prose QA toolkit are working career workflow systems. Their public value is the transferable architecture: source truth, routing, fit scoring, hard stops, prose review, document handoff, and bounded AI assistance.</p>
+            <h3>Free career and writing tools</h3>
+            <p>The resume engine, jobs scanner, and prose detector are practical public utilities and proofs of concept. They sit beside the PMO portfolio module set as career and writing tools.</p>
           </div>
         </div>
       </div>
@@ -764,8 +808,8 @@
     <section id="modules" aria-labelledby="modules-heading">
       <div class="section-inner">
         <p class="section-kicker">Repository groupings</p>
-        <h2 id="modules-heading">Modules by operating lane.</h2>
-        <p class="lead">Each module is designed to stand alone, but the stronger story is how they hand cleaner evidence into the next decision point.</p>
+        <h2 id="modules-heading">Proof-of-Concept Operating Modules.</h2>
+        <p class="lead">Each module is designed to stand alone, but the stronger story is how they hand cleaner evidence into the next decision point. These are public-safe examples of PMO, portfolio, readiness, governance, and decision-support design: standalone starting points that can be adapted, extended, or combined for real operating needs.</p>
 
         <div class="lane-grid">
           <article class="lane-card">
@@ -774,17 +818,7 @@
             <div class="repo-links">
               <a href="https://github.com/policani/ppmo-formation-kit">PPMO Formation Kit</a>
               <a href="https://github.com/policani/portfolio-signal-quality-auditor">Portfolio Signal Quality Auditor</a>
-              <a href="https://github.com/policani/portfolio-intake-readiness-triage-system">Portfolio Intake Triage</a>
-            </div>
-          </article>
-
-          <article class="lane-card">
-            <h3>Portfolio decisions and sequencing</h3>
-            <p>Turn portfolio data into scoring, decision asks, dependency views, capacity pressure, and tradeoff options.</p>
-            <div class="repo-links">
-              <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Executive Review Pack Builder</a>
-              <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Portfolio Scoring Agent</a>
-              <a href="https://github.com/policani/portfolio-capacity-sequencing-planner">Capacity Sequencing Planner</a>
+              <a href="https://github.com/policani/portfolio-intake-readiness-triage-system">Portfolio Intake and Readiness Triage System</a>
             </div>
           </article>
 
@@ -792,8 +826,8 @@
             <h3>AI opportunity and artifact governance</h3>
             <p>Separate AI ideas from existing artifacts, then route each through proof, value, ownership, reliance risk, and review.</p>
             <div class="repo-links">
-              <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">AI Opportunity Review</a>
-              <a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">AI Artifact Lifecycle</a>
+              <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">AI Opportunity Intelligence Review System</a>
+              <a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">AI Artifact Lifecycle Governance System</a>
               <a href="https://github.com/policani/operating-patterns">Operating Patterns</a>
             </div>
           </article>
@@ -808,25 +842,58 @@
           </article>
 
           <article class="lane-card">
-            <h3>Readiness, controls, and outcomes</h3>
-            <p>Track decisions, blockers, evidence gaps, controls, signoffs, benefits, confidence, and follow-through.</p>
+            <h3>Portfolio decisions and sequencing</h3>
+            <p>Turn portfolio data into scoring, sequencing, capacity pressure, dependency views, tradeoff options, and decision asks.</p>
             <div class="repo-links">
-              <a href="https://github.com/policani/pmo-governance-operations-log">PMO Governance Operations Log</a>
-              <a href="https://github.com/policani/release-readiness-uat-governance-pack">Release Readiness and UAT</a>
-              <a href="https://github.com/policani/controls-exposure-governance-toolkit">Controls Toolkit</a>
-              <a href="https://github.com/policani/value-realization-governance-ledger">Value Realization Ledger</a>
+              <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Portfolio Prioritization Scoring Agent</a>
+              <a href="https://github.com/policani/portfolio-capacity-sequencing-planner">Portfolio Capacity and Sequencing Planner</a>
+              <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Executive Review Pack Builder</a>
             </div>
           </article>
 
           <article class="lane-card">
-            <h3>Evidence and prose workflow systems</h3>
-            <p>Score fit, route proof, prevent unsupported claims, review prose quality, and produce clean document handoffs.</p>
+            <h3>Readiness, controls, and outcomes</h3>
+            <p>Track decisions, blockers, evidence gaps, controls, signoffs, benefits, confidence, and follow-through.</p>
             <div class="repo-links">
-              <a href="https://github.com/policani/resume-evidence-engine">Resume Evidence Engine</a>
-              <a href="https://github.com/policani/jobs-scanner">Jobs Scanner</a>
-              <a href="https://github.com/policani/ai-prose-pattern-detector">AI Prose Pattern Detector</a>
+              <a href="https://github.com/policani/pmo-governance-operations-log">PMO Governance Operations Log</a>
+              <a href="https://github.com/policani/release-readiness-uat-governance-pack">Release Readiness and UAT Governance Pack</a>
+              <a href="https://github.com/policani/controls-exposure-governance-toolkit">Controls and Exposure Governance Toolkit</a>
+              <a href="https://github.com/policani/value-realization-governance-ledger">Value Realization Ledger</a>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools" class="section-white" aria-labelledby="tools-heading">
+      <div class="section-inner">
+        <p class="section-kicker">Free tools</p>
+        <h2 id="tools-heading">Free Career and Writing Tools.</h2>
+        <p class="lead">These are small public utilities and proofs of concept for job-search workflow, career documentation, and writing review. They sit outside the PMO and portfolio operating-system examples.</p>
+
+        <div class="tool-table-wrap">
+          <table class="tool-table">
+            <thead>
+              <tr>
+                <th>Tool</th>
+                <th>What it is</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://github.com/policani/resume-evidence-engine">Resume Evidence Engine</a></td>
+                <td>A career documentation tool that grounds AI-assisted drafting in actual career evidence, keeping pivots defensible while producing role-fit notes, resume drafts, cover letters, proof narratives, and DOCX handoff.</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/policani/jobs-scanner">Jobs Scanner</a></td>
+                <td>A local-first job-search utility for collecting, filtering, and ranking public job postings by fit, posting signal, salary, location, source health, and age.</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/policani/ai-prose-pattern-detector">AI Prose Pattern Detector</a></td>
+                <td>A writing review tool for spotting AI-shaped phrasing, generic business language, and revision opportunities.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -881,13 +948,12 @@
         <div>
           <p class="section-kicker">Connect</p>
           <h2 id="connect-heading">Where to go next</h2>
-          <p class="lead">For the shortest path, start with the profile README and operating-pattern library. For deeper evaluation, follow one operating problem through the linked modules.</p>
+          <p class="lead">For the shortest path, start with the GitHub profile and operating-pattern library. For deeper evaluation, follow one operating problem through the linked modules.</p>
         </div>
         <div class="proof-box">
           <h3>Primary links</h3>
           <ul class="link-list">
-            <li><a href="https://github.com/policani">GitHub profile</a><span>All public repositories</span></li>
-            <li><a href="https://github.com/policani/Policani">Profile README</a><span>Grouped portfolio map</span></li>
+            <li><a href="https://github.com/policani">GitHub profile</a><span>Grouped portfolio map and public repositories</span></li>
             <li><a href="https://github.com/policani/operating-patterns">Operating Patterns</a><span>Public-safe pattern library</span></li>
             <li><a href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a><span>Professional background and contact path</span></li>
           </ul>

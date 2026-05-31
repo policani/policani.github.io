@@ -34,7 +34,7 @@ like a direct sales pitch.
 
 ## Source Repositories
 
-- GitHub profile: https://github.com/policani/Policani
+- GitHub profile: https://github.com/policani
 - Portfolio index: https://github.com/policani
 - Operating patterns: https://github.com/policani/operating-patterns
 
