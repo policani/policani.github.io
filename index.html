@@ -418,6 +418,15 @@
       margin-top: 18px;
     }
 
+    .navigator-flow::before {
+      content: "Covers";
+      color: var(--quiet);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
     .navigator-stage,
     .navigator-badge {
       display: inline-flex;
@@ -444,15 +453,17 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 30px;
-      height: 30px;
+      min-height: 30px;
+      padding: 5px 9px;
       border: 1px solid var(--line-strong);
       border-radius: 999px;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.66);
       color: var(--ink-soft);
-      font-size: 0.86rem;
-      font-weight: 900;
+      font-size: 0.78rem;
+      font-weight: 820;
       flex: 0 0 auto;
+      max-width: 100%;
+      overflow-wrap: anywhere;
     }
 
     .navigator-step.active {
@@ -812,7 +823,7 @@
       <div class="section-inner">
         <p class="section-kicker">Module navigator</p>
         <h2 id="navigator-heading">Start with the maturity route.</h2>
-        <p class="lead">Use this map when you want the shortest path through the collection. Each lane shows where the module sits in the operating lifecycle, who should start there, and which repositories are most ready for review.</p>
+        <p class="lead">Use this map when you want the shortest path through the collection. Each lane shows the operating phases it supports, who should start there, and which repositories are most ready for review.</p>
 
         <div class="navigator-grid" aria-label="Portfolio module navigator">
           <article class="navigator-card">
@@ -822,12 +833,8 @@
             </div>
             <h3>Demand becomes governable</h3>
             <p>For PMO, EPMO, PPMO, and portfolio leaders who need rough requests, mandates, ideas, and initiative lists to become owned, routed, and decision-ready.</p>
-            <div class="navigator-flow" aria-label="Lifecycle position">
-              <span class="navigator-step active">1</span>
-              <span class="navigator-step">2</span>
-              <span class="navigator-step">3</span>
-              <span class="navigator-step">4</span>
-              <span class="navigator-step">5</span>
+            <div class="navigator-flow" aria-label="Operating phases covered">
+              <span class="navigator-step active">Intake</span>
             </div>
             <div class="repo-links">
               <a href="https://github.com/policani/ppmo-formation-kit">PPMO Formation Kit</a>
@@ -843,12 +850,8 @@
             </div>
             <h3>Tradeoffs become discussable</h3>
             <p>For leaders who need clearer scoring, capacity pressure, dependency visibility, sequencing choices, and executive review material.</p>
-            <div class="navigator-flow" aria-label="Lifecycle position">
-              <span class="navigator-step">1</span>
-              <span class="navigator-step active">2</span>
-              <span class="navigator-step">3</span>
-              <span class="navigator-step">4</span>
-              <span class="navigator-step">5</span>
+            <div class="navigator-flow" aria-label="Operating phases covered">
+              <span class="navigator-step active">Tradeoffs</span>
             </div>
             <div class="repo-links">
               <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Executive Review Pack</a>
@@ -864,12 +867,10 @@
             </div>
             <h3>AI activity gets proof and boundaries</h3>
             <p>For AI operations, governance, and portfolio teams that need value logic, reliance boundaries, artifact classification, and human review before adoption.</p>
-            <div class="navigator-flow" aria-label="Lifecycle position">
-              <span class="navigator-step active">1</span>
-              <span class="navigator-step active">2</span>
-              <span class="navigator-step">3</span>
-              <span class="navigator-step active">4</span>
-              <span class="navigator-step">5</span>
+            <div class="navigator-flow" aria-label="Operating phases covered">
+              <span class="navigator-step active">Intake</span>
+              <span class="navigator-step active">Tradeoffs</span>
+              <span class="navigator-step active">Readiness</span>
             </div>
             <div class="repo-links">
               <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">AI Opportunity Review</a>
@@ -885,12 +886,9 @@
             </div>
             <h3>Intent becomes a funded starting point</h3>
             <p>For sponsors and delivery leaders who need early ideas to become business cases, then approved intent to become scoped charters.</p>
-            <div class="navigator-flow" aria-label="Lifecycle position">
-              <span class="navigator-step">1</span>
-              <span class="navigator-step active">2</span>
-              <span class="navigator-step active">3</span>
-              <span class="navigator-step">4</span>
-              <span class="navigator-step">5</span>
+            <div class="navigator-flow" aria-label="Operating phases covered">
+              <span class="navigator-step active">Tradeoffs</span>
+              <span class="navigator-step active">Funding</span>
             </div>
             <div class="repo-links">
               <a href="https://github.com/policani/business-case-system">Business Case System</a>
@@ -905,12 +903,9 @@
             </div>
             <h3>Execution risk becomes reviewable</h3>
             <p>For delivery, controls, and portfolio teams that need launch evidence, blockers, exceptions, signoffs, value claims, and realization confidence.</p>
-            <div class="navigator-flow" aria-label="Lifecycle position">
-              <span class="navigator-step">1</span>
-              <span class="navigator-step">2</span>
-              <span class="navigator-step">3</span>
-              <span class="navigator-step active">4</span>
-              <span class="navigator-step active">5</span>
+            <div class="navigator-flow" aria-label="Operating phases covered">
+              <span class="navigator-step active">Readiness</span>
+              <span class="navigator-step active">Value</span>
             </div>
             <div class="repo-links">
               <a href="https://github.com/policani/pmo-governance-operations-log">Operations Log</a>
@@ -927,12 +922,12 @@
             </div>
             <h3>Capability evidence stays public-safe</h3>
             <p>For readers who want the governance frameworks, operating models, playbooks, templates, lessons learned, and partner ecosystem material behind the modules.</p>
-            <div class="navigator-flow" aria-label="Lifecycle position">
-              <span class="navigator-step active">1</span>
-              <span class="navigator-step active">2</span>
-              <span class="navigator-step active">3</span>
-              <span class="navigator-step active">4</span>
-              <span class="navigator-step active">5</span>
+            <div class="navigator-flow" aria-label="Operating phases covered">
+              <span class="navigator-step active">Intake</span>
+              <span class="navigator-step active">Tradeoffs</span>
+              <span class="navigator-step active">Funding</span>
+              <span class="navigator-step active">Readiness</span>
+              <span class="navigator-step active">Value</span>
             </div>
             <div class="repo-links">
               <a href="https://github.com/policani/Policani/tree/main/wiki">Portfolio Artifacts</a>
@@ -948,10 +943,10 @@
             </div>
             <h3>Public utilities stay distinct</h3>
             <p>For job seekers, writers, and reviewers who need career documentation, posting triage, or prose quality checks outside the PMO operating-module story.</p>
-            <div class="navigator-flow" aria-label="Lifecycle position">
-              <span class="navigator-step active">A</span>
-              <span class="navigator-step active">B</span>
-              <span class="navigator-step active">C</span>
+            <div class="navigator-flow" aria-label="Utility areas covered">
+              <span class="navigator-step active">Resume</span>
+              <span class="navigator-step active">Jobs</span>
+              <span class="navigator-step active">Writing QA</span>
             </div>
             <div class="repo-links">
               <a href="https://github.com/policani/resume-evidence-engine">Resume Evidence Engine</a>
@@ -961,7 +956,7 @@
           </article>
         </div>
 
-        <p class="navigator-note">Lifecycle key: 1 intake and signal, 2 prioritization and tradeoffs, 3 authorization and initiation, 4 governance and readiness, 5 value and follow-through. The career and writing tools are intentionally separated so they do not blur the operating-module portfolio.</p>
+        <p class="navigator-note">The operating lifecycle runs from intake to value realization. Each card highlights the phases where that lane is most useful; the career and writing tools stay separate so they do not blur the operating-module portfolio.</p>
       </div>
     </section>
 
