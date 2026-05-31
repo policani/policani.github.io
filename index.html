@@ -167,6 +167,8 @@
     .small-tag {
       display: inline-flex;
       align-items: center;
+      max-width: 100%;
+      min-width: 0;
       min-height: 28px;
       border: 1px solid rgba(15, 118, 110, 0.24);
       border-radius: 999px;
@@ -174,6 +176,8 @@
       color: #214552;
       font-size: 0.84rem;
       font-weight: 700;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
 
     .hero-tag {
@@ -198,6 +202,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      max-width: 100%;
       min-height: 46px;
       padding: 11px 16px;
       border: 1px solid var(--ink);
@@ -285,6 +290,7 @@
 
     .journey-grid,
     .lane-grid,
+    .navigator-grid,
     .theme-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -294,8 +300,10 @@
 
     .journey-card,
     .lane-card,
+    .navigator-card,
     .theme-card,
     .proof-box {
+      min-width: 0;
       min-height: 100%;
       padding: 20px;
       border: 1px solid var(--line);
@@ -305,37 +313,44 @@
     }
 
     .journey-card:nth-child(1),
-    .lane-card:nth-child(1) {
+    .lane-card:nth-child(1),
+    .navigator-card:nth-child(1) {
       background: var(--panel-blue);
     }
 
     .journey-card:nth-child(2),
-    .lane-card:nth-child(2) {
+    .lane-card:nth-child(2),
+    .navigator-card:nth-child(2) {
       background: var(--panel-green);
     }
 
     .journey-card:nth-child(3),
-    .lane-card:nth-child(3) {
+    .lane-card:nth-child(3),
+    .navigator-card:nth-child(3) {
       background: var(--panel-gold);
     }
 
     .journey-card:nth-child(4),
-    .lane-card:nth-child(4) {
+    .lane-card:nth-child(4),
+    .navigator-card:nth-child(4) {
       background: #ffffff;
     }
 
     .journey-card:nth-child(5),
-    .lane-card:nth-child(5) {
+    .lane-card:nth-child(5),
+    .navigator-card:nth-child(5) {
       background: var(--panel-rose);
     }
 
     .journey-card:nth-child(6),
-    .lane-card:nth-child(6) {
+    .lane-card:nth-child(6),
+    .navigator-card:nth-child(6) {
       background: #f4f7fb;
     }
 
     .journey-card p,
     .lane-card p,
+    .navigator-card p,
     .theme-card p,
     .proof-box p {
       color: var(--muted);
@@ -343,6 +358,7 @@
 
     .journey-card ul,
     .lane-card ul,
+    .navigator-card ul,
     .proof-box ul {
       margin: 14px 0 0;
       padding-left: 1.15rem;
@@ -351,8 +367,108 @@
 
     .journey-card li,
     .lane-card li,
+    .navigator-card li,
     .proof-box li {
       margin: 6px 0;
+    }
+
+    .navigator-card {
+      position: relative;
+      overflow: hidden;
+      border-top: 5px solid var(--blue);
+    }
+
+    .navigator-card:nth-child(2) {
+      border-top-color: var(--teal);
+    }
+
+    .navigator-card:nth-child(3) {
+      border-top-color: var(--gold);
+    }
+
+    .navigator-card:nth-child(4) {
+      border-top-color: var(--blue-dark);
+    }
+
+    .navigator-card:nth-child(5) {
+      border-top-color: var(--rose);
+    }
+
+    .navigator-card:nth-child(6) {
+      border-top-color: var(--teal-dark);
+    }
+
+    .navigator-card:nth-child(7) {
+      border-top-color: var(--gold);
+    }
+
+    .navigator-meta,
+    .navigator-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .navigator-meta {
+      margin-bottom: 13px;
+    }
+
+    .navigator-flow {
+      margin-top: 18px;
+    }
+
+    .navigator-stage,
+    .navigator-badge {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      min-height: 28px;
+      padding: 4px 8px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.80);
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .navigator-badge {
+      border-color: rgba(15, 118, 110, 0.24);
+      color: var(--teal-dark);
+      background: rgba(238, 247, 241, 0.86);
+    }
+
+    .navigator-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--ink-soft);
+      font-size: 0.86rem;
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    .navigator-step.active {
+      color: #ffffff;
+      border-color: var(--ink);
+      background: var(--ink);
+    }
+
+    .navigator-note {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--teal);
+      border-radius: var(--radius);
+      background: #ffffff;
+      color: var(--muted);
     }
 
     .repo-links {
@@ -529,6 +645,7 @@
 
       .journey-grid,
       .lane-grid,
+      .navigator-grid,
       .theme-grid,
       .proof-strip,
       .two-col,
@@ -647,7 +764,7 @@
           <span class="hero-tag">Value realization</span>
         </div>
         <div class="actions">
-          <a class="button primary" href="#journeys">Choose an operating problem</a>
+          <a class="button primary" href="#navigator">Explore the module navigator</a>
           <a class="button" href="https://github.com/policani">GitHub profile</a>
           <a class="button" href="https://github.com/policani/Policani/tree/main/wiki">Portfolio artifacts</a>
           <a class="button" href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a>
@@ -660,6 +777,7 @@
     <div class="nav-inner">
       <a class="nav-title" href="#main">Marco Policani</a>
       <div class="nav-links">
+        <a href="#navigator">Navigator</a>
         <a href="#journeys">Problems</a>
         <a href="#proof">Proof</a>
         <a href="#modules">Modules</a>
@@ -687,6 +805,163 @@
             <a href="https://github.com/policani/Policani/tree/main/wiki">Portfolio artifacts</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="navigator" aria-labelledby="navigator-heading">
+      <div class="section-inner">
+        <p class="section-kicker">Module navigator</p>
+        <h2 id="navigator-heading">Start with the maturity route.</h2>
+        <p class="lead">Use this map when you want the shortest path through the collection. Each lane shows where the module sits in the operating lifecycle, who should start there, and which repositories are most ready for review.</p>
+
+        <div class="navigator-grid" aria-label="Portfolio module navigator">
+          <article class="navigator-card">
+            <div class="navigator-meta">
+              <span class="navigator-stage">Intake and signal</span>
+              <span class="navigator-badge">Start here</span>
+            </div>
+            <h3>Demand becomes governable</h3>
+            <p>For PMO, EPMO, PPMO, and portfolio leaders who need rough requests, mandates, ideas, and initiative lists to become owned, routed, and decision-ready.</p>
+            <div class="navigator-flow" aria-label="Lifecycle position">
+              <span class="navigator-step active">1</span>
+              <span class="navigator-step">2</span>
+              <span class="navigator-step">3</span>
+              <span class="navigator-step">4</span>
+              <span class="navigator-step">5</span>
+            </div>
+            <div class="repo-links">
+              <a href="https://github.com/policani/ppmo-formation-kit">PPMO Formation Kit</a>
+              <a href="https://github.com/policani/portfolio-signal-quality-auditor">Signal Quality Auditor</a>
+              <a href="https://github.com/policani/portfolio-intake-readiness-triage-system">Intake Readiness Triage</a>
+            </div>
+          </article>
+
+          <article class="navigator-card">
+            <div class="navigator-meta">
+              <span class="navigator-stage">Prioritize and sequence</span>
+              <span class="navigator-badge">Flagship route</span>
+            </div>
+            <h3>Tradeoffs become discussable</h3>
+            <p>For leaders who need clearer scoring, capacity pressure, dependency visibility, sequencing choices, and executive review material.</p>
+            <div class="navigator-flow" aria-label="Lifecycle position">
+              <span class="navigator-step">1</span>
+              <span class="navigator-step active">2</span>
+              <span class="navigator-step">3</span>
+              <span class="navigator-step">4</span>
+              <span class="navigator-step">5</span>
+            </div>
+            <div class="repo-links">
+              <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Executive Review Pack</a>
+              <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Prioritization Scoring</a>
+              <a href="https://github.com/policani/portfolio-capacity-sequencing-planner">Capacity Sequencing</a>
+            </div>
+          </article>
+
+          <article class="navigator-card">
+            <div class="navigator-meta">
+              <span class="navigator-stage">AI governance</span>
+              <span class="navigator-badge">High visibility</span>
+            </div>
+            <h3>AI activity gets proof and boundaries</h3>
+            <p>For AI operations, governance, and portfolio teams that need value logic, reliance boundaries, artifact classification, and human review before adoption.</p>
+            <div class="navigator-flow" aria-label="Lifecycle position">
+              <span class="navigator-step active">1</span>
+              <span class="navigator-step active">2</span>
+              <span class="navigator-step">3</span>
+              <span class="navigator-step active">4</span>
+              <span class="navigator-step">5</span>
+            </div>
+            <div class="repo-links">
+              <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">AI Opportunity Review</a>
+              <a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">AI Artifact Lifecycle</a>
+              <a href="https://github.com/policani/operating-patterns">Governance Artifacts</a>
+            </div>
+          </article>
+
+          <article class="navigator-card">
+            <div class="navigator-meta">
+              <span class="navigator-stage">Authorize and initiate</span>
+              <span class="navigator-badge">Handoff path</span>
+            </div>
+            <h3>Intent becomes a funded starting point</h3>
+            <p>For sponsors and delivery leaders who need early ideas to become business cases, then approved intent to become scoped charters.</p>
+            <div class="navigator-flow" aria-label="Lifecycle position">
+              <span class="navigator-step">1</span>
+              <span class="navigator-step active">2</span>
+              <span class="navigator-step active">3</span>
+              <span class="navigator-step">4</span>
+              <span class="navigator-step">5</span>
+            </div>
+            <div class="repo-links">
+              <a href="https://github.com/policani/business-case-system">Business Case System</a>
+              <a href="https://github.com/policani/project-charter-initiation-agent">Project Charter Initiation</a>
+            </div>
+          </article>
+
+          <article class="navigator-card">
+            <div class="navigator-meta">
+              <span class="navigator-stage">Readiness and value</span>
+              <span class="navigator-badge">Evidence chain</span>
+            </div>
+            <h3>Execution risk becomes reviewable</h3>
+            <p>For delivery, controls, and portfolio teams that need launch evidence, blockers, exceptions, signoffs, value claims, and realization confidence.</p>
+            <div class="navigator-flow" aria-label="Lifecycle position">
+              <span class="navigator-step">1</span>
+              <span class="navigator-step">2</span>
+              <span class="navigator-step">3</span>
+              <span class="navigator-step active">4</span>
+              <span class="navigator-step active">5</span>
+            </div>
+            <div class="repo-links">
+              <a href="https://github.com/policani/pmo-governance-operations-log">Operations Log</a>
+              <a href="https://github.com/policani/release-readiness-uat-governance-pack">Release Readiness</a>
+              <a href="https://github.com/policani/controls-exposure-governance-toolkit">Controls Toolkit</a>
+              <a href="https://github.com/policani/value-realization-governance-ledger">Value Ledger</a>
+            </div>
+          </article>
+
+          <article class="navigator-card">
+            <div class="navigator-meta">
+              <span class="navigator-stage">Artifacts and patterns</span>
+              <span class="navigator-badge">Context layer</span>
+            </div>
+            <h3>Capability evidence stays public-safe</h3>
+            <p>For readers who want the governance frameworks, operating models, playbooks, templates, lessons learned, and partner ecosystem material behind the modules.</p>
+            <div class="navigator-flow" aria-label="Lifecycle position">
+              <span class="navigator-step active">1</span>
+              <span class="navigator-step active">2</span>
+              <span class="navigator-step active">3</span>
+              <span class="navigator-step active">4</span>
+              <span class="navigator-step active">5</span>
+            </div>
+            <div class="repo-links">
+              <a href="https://github.com/policani/Policani/tree/main/wiki">Portfolio Artifacts</a>
+              <a href="https://github.com/policani/operating-patterns">Artifact Source</a>
+              <a href="https://github.com/policani/operating-patterns/tree/main/wiki/Partner-and-Ecosystem-Governance.md">Partner Governance</a>
+            </div>
+          </article>
+
+          <article class="navigator-card">
+            <div class="navigator-meta">
+              <span class="navigator-stage">Career and writing tools</span>
+              <span class="navigator-badge">Separate utility lane</span>
+            </div>
+            <h3>Public utilities stay distinct</h3>
+            <p>For job seekers, writers, and reviewers who need career documentation, posting triage, or prose quality checks outside the PMO operating-module story.</p>
+            <div class="navigator-flow" aria-label="Lifecycle position">
+              <span class="navigator-step active">A</span>
+              <span class="navigator-step active">B</span>
+              <span class="navigator-step active">C</span>
+            </div>
+            <div class="repo-links">
+              <a href="https://github.com/policani/resume-evidence-engine">Resume Evidence Engine</a>
+              <a href="https://github.com/policani/jobs-scanner">Jobs Scanner</a>
+              <a href="https://github.com/policani/ai-prose-pattern-detector">AI Prose Detector</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="navigator-note">Lifecycle key: 1 intake and signal, 2 prioritization and tradeoffs, 3 authorization and initiation, 4 governance and readiness, 5 value and follow-through. The career and writing tools are intentionally separated so they do not blur the operating-module portfolio.</p>
       </div>
     </section>
 
