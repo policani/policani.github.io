@@ -36,7 +36,7 @@ like a direct sales pitch.
 
 - GitHub profile: https://github.com/policani
 - Portfolio index: https://github.com/policani
-- Portfolio artifacts wiki: https://github.com/policani/Policani/wiki
+- Portfolio artifacts source: https://github.com/policani/Policani/tree/main/wiki
 - Anonymized artifact source: https://github.com/policani/operating-patterns
 
 ## Privacy Standard
