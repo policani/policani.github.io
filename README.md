@@ -6,7 +6,7 @@ and operating-model portfolio.
 
 Live site target:
 
-https://policani.github.io
+https://policani.net
 
 ## Purpose
 

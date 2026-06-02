@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Messy Demand to Executive Review | Marco Policani Portfolio Journey</title>
+  <meta name="description" content="A public-safe journey showing how messy portfolio demand can move through intake, signal cleanup, triage, scoring, capacity sequencing, and executive review.">
+  <link rel="canonical" href="https://policani.net/journeys/messy-demand-to-executive-review.html">
+  <style>
+    :root {
+      --ink: #111827;
+      --ink-soft: #334155;
+      --muted: #64748b;
+      --paper: #f7f9fc;
+      --panel: #ffffff;
+      --line: #d8e2ee;
+      --blue-950: #122137;
+      --blue-800: #1e3f63;
+      --blue-650: #2d6090;
+      --blue-100: #edf5fb;
+      --blue-075: #f5f9fd;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--blue-800);
+      text-underline-offset: 0.18em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 960px;
+      margin-bottom: 18px;
+      color: #ffffff;
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 1.15rem;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--blue-800);
+      color: #ffffff;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .page-shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 62px 0 46px;
+      background:
+        linear-gradient(120deg, rgba(18, 33, 55, 0.97), rgba(30, 63, 99, 0.92)),
+        radial-gradient(circle at 82% 18%, rgba(79, 130, 173, 0.42), transparent 34%),
+        var(--blue-950);
+    }
+
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--blue-650);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero .eyebrow,
+    .hero .lead {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .lead {
+      max-width: 920px;
+      color: var(--ink-soft);
+      font-size: 1.12rem;
+    }
+
+    .meta-row,
+    .repo-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 22px;
+    }
+
+    .pill,
+    .repo-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+      font-weight: 760;
+      text-decoration: none;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .repo-links a {
+      color: var(--blue-800);
+      background: #ffffff;
+      border-color: #b8cde2;
+    }
+
+    .hero .pill {
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+
+    nav {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    nav .page-shell {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      min-height: 56px;
+    }
+
+    nav strong {
+      color: var(--ink);
+    }
+
+    nav a {
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 42px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-intro {
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .grid-2,
+    .grid-3,
+    .route {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .route {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .card,
+    .step,
+    .callout {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+    }
+
+    .card,
+    .callout {
+      padding: 18px;
+    }
+
+    .card p,
+    .callout p {
+      color: var(--muted);
+    }
+
+    .card p:last-child,
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .step {
+      padding: 16px;
+      border-top: 5px solid var(--blue-650);
+      background: var(--blue-075);
+    }
+
+    .step span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .step a {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--blue-800);
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
+
+    .callout {
+      border-left: 6px solid var(--blue-650);
+      background: var(--blue-100);
+    }
+
+    .footer-note {
+      padding: 28px 0 46px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 980px) {
+      .grid-2,
+      .grid-3,
+      .route {
+        grid-template-columns: 1fr;
+      }
+
+      nav .page-shell {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page-shell {
+        width: min(100% - 28px, 1180px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="page-shell">
+      <p class="eyebrow">Flagship journey</p>
+      <h1>Messy Demand to Executive Review</h1>
+      <p class="lead">A public-safe walkthrough showing how rough portfolio demand can become intake signal, triage evidence, tradeoff material, and an executive-ready review path.</p>
+      <div class="meta-row" aria-label="Journey scope">
+        <span class="pill">Synthetic example</span>
+        <span class="pill">PMO / portfolio governance</span>
+        <span class="pill">Intake to executive review</span>
+        <span class="pill">Human decisions remain outside the system</span>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Journey navigation">
+    <div class="page-shell">
+      <strong>Marco Policani</strong>
+      <div class="repo-links">
+        <a href="../index.html#journeys">Problem routes</a>
+        <a href="../index.html#navigator">Module navigator</a>
+        <a href="https://github.com/policani">GitHub profile</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Scenario</p>
+        <h2>The starting point</h2>
+        <p class="section-intro">This synthetic scenario represents a common portfolio problem: leaders can see activity, but the work is not yet clean enough for funding, sequencing, or executive review.</p>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Incoming demand</h3>
+            <p>A mixed list of requests arrives from finance operations, customer support, security, and a department AI sponsor. Some requests are mandates. Some are ideas. Some are fixes with unclear ownership.</p>
+          </article>
+          <article class="card">
+            <h3>Current risk</h3>
+            <p>The organization could push everything into a backlog, start business cases too early, or hold another status meeting that does not create a decision path.</p>
+          </article>
+          <article class="card">
+            <h3>Review goal</h3>
+            <p>Give executives a clean view of what needs clarification, what can move toward tradeoff review, what is blocked, and what decisions need named owners.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Module route</p>
+        <h2>How the work moves</h2>
+        <p class="section-intro">The journey uses six public portfolio modules. Each module owns one decision-support layer and hands cleaner evidence to the next step.</p>
+
+        <div class="route" aria-label="Journey module route">
+          <div class="step">
+            <strong>1. Form the lane</strong>
+            <span>PPMO Formation Kit defines intake ownership, decision rights, taxonomy, and governance cadence.</span>
+            <a href="https://github.com/policani/ppmo-formation-kit">Open PPMO Formation Kit</a>
+          </div>
+          <div class="step">
+            <strong>2. Audit signal</strong>
+            <span>Portfolio Signal Quality Auditor identifies weak status, duplicate demand, stale confidence, and missing evidence.</span>
+            <a href="https://github.com/policani/portfolio-signal-quality-auditor">Open Portfolio Signal Quality Auditor</a>
+          </div>
+          <div class="step">
+            <strong>3. Triage readiness</strong>
+            <span>Portfolio Intake Readiness Triage System classifies each request and recommends a next route.</span>
+            <a href="https://github.com/policani/portfolio-intake-readiness-triage-system">Open Intake Readiness Triage</a>
+          </div>
+          <div class="step">
+            <strong>4. Score tradeoffs</strong>
+            <span>Portfolio Prioritization Scoring Agent compares approved candidates against criteria, constraints, and risk.</span>
+            <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Open Prioritization Scoring</a>
+          </div>
+          <div class="step">
+            <strong>5. Sequence capacity</strong>
+            <span>Portfolio Capacity Sequencing Planner exposes sequencing conflicts, capacity pressure, and dependency choices.</span>
+            <a href="https://github.com/policani/portfolio-capacity-sequencing-planner">Open Capacity Sequencing Planner</a>
+          </div>
+          <div class="step">
+            <strong>6. Build review pack</strong>
+            <span>Executive Portfolio Review Pack Builder packages the decision agenda, portfolio view, risks, and follow-up register.</span>
+            <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Open Executive Review Pack Builder</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Synthetic input</p>
+        <h2>Starting demand list</h2>
+        <p class="section-intro">The point of the journey is not the specific items. The point is the operating pattern: rough demand becomes reviewable signal before leaders are asked to decide.</p>
+
+        <table aria-label="Synthetic demand examples">
+          <thead>
+            <tr>
+              <th>Request</th>
+              <th>Initial signal</th>
+              <th>Problem with the signal</th>
+              <th>Likely route</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Billing exception cleanup</td>
+              <td>Finance operations reports repeated manual corrections.</td>
+              <td>Impact is plausible, but no owner has confirmed baseline volume or control exposure.</td>
+              <td>Clarify, then business case</td>
+            </tr>
+            <tr>
+              <td>Customer notification workflow</td>
+              <td>Support leaders want fewer status calls and faster customer updates.</td>
+              <td>Benefit is clear, but dependency on platform release timing is unknown.</td>
+              <td>Readiness triage, then scoring</td>
+            </tr>
+            <tr>
+              <td>AI knowledge assistant</td>
+              <td>A sponsor wants a prototype for internal policy lookup.</td>
+              <td>The workflow, reliance boundary, and content ownership are not defined.</td>
+              <td>AI opportunity review</td>
+            </tr>
+            <tr>
+              <td>Security access review</td>
+              <td>Compliance deadline is approaching.</td>
+              <td>Mandate is real, but effort, decision owner, and delivery capacity are unclear.</td>
+              <td>Clarify mandate, then executive review</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Evidence produced</p>
+        <h2>What each step creates</h2>
+        <p class="section-intro">Each artifact is small on purpose. The journey is meant to show decision quality, not a heavyweight methodology.</p>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Formation output</h3>
+            <ul>
+              <li>Named intake owner and review forum.</li>
+              <li>Minimum fields for demand entry.</li>
+              <li>Decision-right boundary for intake, scoring, funding, and executive review.</li>
+              <li>Taxonomy for mandate, improvement, AI opportunity, platform, compliance, and operational fix.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Triage output</h3>
+            <ul>
+              <li>Request-by-request readiness classification.</li>
+              <li>Missing evidence and owner follow-up.</li>
+              <li>Recommended route: reject, hold, clarify, business case, charter, scoring, or AI review.</li>
+              <li>Confidence level and assumptions for human review.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Tradeoff output</h3>
+            <ul>
+              <li>Comparable priority view for approved candidates.</li>
+              <li>Capacity and dependency notes that may change sequence.</li>
+              <li>Risks that require sponsor or executive attention.</li>
+              <li>Decision options, with the tradeoff visible for human review.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Executive review output</h3>
+            <ul>
+              <li>Decision agenda with named asks.</li>
+              <li>Portfolio signal summary.</li>
+              <li>Risks, blockers, dependencies, and evidence gaps.</li>
+              <li>Follow-up register for owners, dates, and unresolved decisions.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Review pack</p>
+        <h2>Final executive view</h2>
+        <p class="section-intro">A sponsor should not have to decode the whole module library. This is the kind of final view the journey should support.</p>
+
+        <div class="callout">
+          <h3>Decision frame</h3>
+          <p>Two requests appear ready for further review after evidence cleanup. One AI request should move through AI opportunity review before any prototype commitment. One compliance-driven request needs executive attention because the deadline is real but delivery capacity and ownership are not yet clear.</p>
+        </div>
+
+        <table aria-label="Executive decision view">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Recommended review route</th>
+              <th>Executive question</th>
+              <th>Human decision needed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Billing exception cleanup</td>
+              <td>Business case after baseline confirmation</td>
+              <td>Who owns the value baseline and control-risk evidence?</td>
+              <td>Name accountable sponsor and due date for evidence.</td>
+            </tr>
+            <tr>
+              <td>Customer notification workflow</td>
+              <td>Portfolio scoring and capacity sequencing</td>
+              <td>Should this move ahead of current support and platform commitments?</td>
+              <td>Choose sequence option after capacity review.</td>
+            </tr>
+            <tr>
+              <td>AI knowledge assistant</td>
+              <td>AI opportunity intelligence review</td>
+              <td>What workflow will this change, and what reliance boundary is acceptable?</td>
+              <td>Approve, delay, or stop the proof plan after opportunity review.</td>
+            </tr>
+            <tr>
+              <td>Security access review</td>
+              <td>Executive review with blocker escalation</td>
+              <td>Which owner can commit capacity before the compliance deadline?</td>
+              <td>Name decision owner and escalation path.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Repository route</p>
+        <h2>Where to inspect the modules</h2>
+        <p class="section-intro">The journey summarizes the route. The repositories hold the operating details, examples, runtime files, and boundaries.</p>
+
+        <div class="repo-links">
+          <a href="https://github.com/policani/ppmo-formation-kit">PPMO Formation Kit</a>
+          <a href="https://github.com/policani/portfolio-signal-quality-auditor">Portfolio Signal Quality Auditor</a>
+          <a href="https://github.com/policani/portfolio-intake-readiness-triage-system">Portfolio Intake Readiness Triage System</a>
+          <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Portfolio Prioritization Scoring Agent</a>
+          <a href="https://github.com/policani/portfolio-capacity-sequencing-planner">Portfolio Capacity Sequencing Planner</a>
+          <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Executive Portfolio Review Pack Builder</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-shell footer-note">
+    <p>This journey is a synthetic public portfolio artifact. It does not include employer names, client names, confidential figures, proprietary terms, private systems, or actual operational records.</p>
+  </footer>
+</body>
+</html>
