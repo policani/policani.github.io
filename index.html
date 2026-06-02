@@ -12,30 +12,39 @@
   <meta property="og:description" content="A public-safe portfolio for portfolio governance, PMO operating models, executive operations, decision support, and AI-assisted operating discipline.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://policani.github.io/">
-  <meta property="og:image" content="https://policani.github.io/assets/portfolio-governance-hero.png">
+  <meta property="og:image" content="https://policani.github.io/assets/portfolio-operations-hero-v2.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://policani.github.io/">
-  <link rel="preload" as="image" href="assets/portfolio-governance-hero.png">
+  <link rel="preload" as="image" href="assets/portfolio-operations-hero-v2.png">
   <style>
     :root {
-      --ink: #121826;
-      --ink-soft: #273244;
-      --muted: #536273;
-      --quiet: #68778a;
-      --line: #d9e0e7;
-      --line-strong: #b8c4d0;
+      --ink: #111827;
+      --ink-soft: #253044;
+      --muted: #596474;
+      --quiet: #717987;
+      --line: #dde3ec;
+      --line-strong: #aab6c8;
       --paper: #f7f8fa;
       --panel: #ffffff;
-      --panel-blue: #edf4fb;
-      --panel-green: #eef7f1;
-      --panel-gold: #fff7e7;
-      --panel-rose: #fff1f1;
-      --teal: #0f766e;
-      --teal-dark: #115e59;
-      --blue: #245a92;
-      --blue-dark: #173f68;
-      --gold: #a76515;
-      --rose: #934852;
+      --blue-25: #f8fbff;
+      --blue-50: #f2f6fc;
+      --blue-75: #edf3fb;
+      --blue-100: #e6eef8;
+      --blue-150: #d9e4f3;
+      --blue-200: #c5d4e9;
+      --blue-300: #9fb4d1;
+      --blue-500: #3f659f;
+      --blue-700: #213f6c;
+      --panel-blue: var(--blue-75);
+      --panel-green: var(--blue-50);
+      --panel-gold: var(--blue-100);
+      --panel-rose: var(--blue-25);
+      --teal: #3c5f91;
+      --teal-dark: #253f66;
+      --blue: #2f5595;
+      --blue-dark: #1f3d6d;
+      --gold: #6f7f9c;
+      --rose: #586477;
       --shadow: 0 16px 42px rgba(18, 24, 38, 0.10);
       --radius: 8px;
     }
@@ -64,7 +73,7 @@
     }
 
     a:hover {
-      color: var(--teal-dark);
+      color: var(--blue-dark);
     }
 
     h1,
@@ -116,13 +125,14 @@
     }
 
     .hero {
+      position: relative;
       min-height: 74vh;
       display: grid;
       align-items: end;
       border-bottom: 1px solid var(--line);
       background:
-        linear-gradient(90deg, rgba(247, 248, 250, 0.99) 0%, rgba(247, 248, 250, 0.95) 44%, rgba(247, 248, 250, 0.58) 74%, rgba(247, 248, 250, 0.36) 100%),
-        url("assets/portfolio-governance-hero.png") center right / cover no-repeat;
+        linear-gradient(90deg, rgba(248, 251, 255, 0.96) 0%, rgba(248, 251, 255, 0.82) 34%, rgba(248, 251, 255, 0.24) 58%, rgba(17, 32, 54, 0.18) 100%),
+        url("assets/portfolio-operations-hero-v2.png") 58% center / cover no-repeat fixed;
     }
 
     .hero-inner,
@@ -170,10 +180,10 @@
       max-width: 100%;
       min-width: 0;
       min-height: 28px;
-      border: 1px solid rgba(15, 118, 110, 0.24);
+      border: 1px solid rgba(47, 85, 149, 0.24);
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.84);
-      color: #214552;
+      color: var(--blue-dark);
       font-size: 0.84rem;
       font-weight: 700;
       white-space: normal;
@@ -186,8 +196,8 @@
 
     .small-tag {
       padding: 4px 8px;
-      background: #eef3f7;
-      color: #39495b;
+      background: var(--blue-75);
+      color: var(--ink-soft);
       font-size: 0.78rem;
     }
 
@@ -272,13 +282,153 @@
     }
 
     .section-tint {
-      background: #f2f5f8;
+      background: var(--blue-50);
     }
 
     .lead {
       max-width: 900px;
       color: var(--muted);
       font-size: 1.08rem;
+    }
+
+    .operating-map,
+    .route-graphic,
+    .module-chain {
+      margin-top: 24px;
+    }
+
+    .operating-map {
+      display: grid;
+      gap: 11px;
+    }
+
+    .map-node {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 11px;
+      align-items: center;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      font-weight: 760;
+    }
+
+    .map-node::before {
+      content: "";
+      display: block;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--blue-300);
+      border-radius: 999px;
+      background:
+        linear-gradient(135deg, var(--blue-25), var(--blue-150));
+      box-shadow: inset 0 0 0 7px #ffffff;
+    }
+
+    .map-node + .map-node {
+      position: relative;
+    }
+
+    .map-node + .map-node::after {
+      content: "";
+      position: absolute;
+      top: -11px;
+      left: 16px;
+      width: 2px;
+      height: 11px;
+      background: var(--blue-200);
+    }
+
+    .route-graphic,
+    .module-chain {
+      counter-reset: route-step;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .route-step,
+    .chain-step {
+      position: relative;
+      min-width: 0;
+      min-height: 92px;
+      padding: 14px;
+      border: 1px solid var(--blue-150);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, #ffffff 0%, var(--blue-50) 100%);
+    }
+
+    .route-step::before,
+    .chain-step::before {
+      counter-increment: route-step;
+      content: counter(route-step);
+      display: grid;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 14px;
+      place-items: center;
+      border: 1px solid var(--blue-300);
+      border-radius: 999px;
+      background: var(--blue-500);
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .route-step::after,
+    .chain-step::after {
+      content: ">";
+      position: absolute;
+      top: 50%;
+      right: -17px;
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid var(--blue-150);
+      border-radius: 999px;
+      background: #ffffff;
+      background-image: none;
+      box-shadow: 0 6px 14px rgba(14, 43, 80, 0.12);
+      color: var(--ink);
+      font-size: 1.15rem;
+      font-weight: 950;
+      line-height: 1;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
+    .route-step::after {
+      background:
+        linear-gradient(135deg, #ffffff 0%, var(--blue-100) 100%);
+    }
+
+    .chain-step::after {
+      background:
+        linear-gradient(135deg, #ffffff 0%, var(--blue-50) 100%);
+    }
+
+    .route-step:last-child::after,
+    .chain-step:last-child::after {
+      display: none;
+    }
+
+    .route-step strong,
+    .chain-step strong {
+      display: block;
+      color: var(--ink);
+      font-size: 0.92rem;
+      line-height: 1.2;
+    }
+
+    .route-step span,
+    .chain-step span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.35;
     }
 
     .two-col {
@@ -308,7 +458,7 @@
       padding: 20px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: var(--panel);
+      background: linear-gradient(180deg, #ffffff 0%, var(--blue-25) 100%);
       box-shadow: 0 1px 0 rgba(18, 24, 38, 0.04);
     }
 
@@ -375,34 +525,14 @@
     .navigator-card {
       position: relative;
       overflow: hidden;
-      border-top: 5px solid var(--blue);
+      border-top: 5px solid var(--line-strong);
+      background: var(--panel);
     }
 
-    .navigator-card:nth-child(2) {
-      border-top-color: var(--teal);
+    .navigator-grid .navigator-card {
+      background: linear-gradient(180deg, #ffffff 0%, var(--blue-25) 100%);
     }
 
-    .navigator-card:nth-child(3) {
-      border-top-color: var(--gold);
-    }
-
-    .navigator-card:nth-child(4) {
-      border-top-color: var(--blue-dark);
-    }
-
-    .navigator-card:nth-child(5) {
-      border-top-color: var(--rose);
-    }
-
-    .navigator-card:nth-child(6) {
-      border-top-color: var(--teal-dark);
-    }
-
-    .navigator-card:nth-child(7) {
-      border-top-color: var(--gold);
-    }
-
-    .navigator-meta,
     .navigator-flow,
     .navigator-lifecycle {
       display: flex;
@@ -412,7 +542,9 @@
     }
 
     .navigator-meta {
-      margin-bottom: 13px;
+      display: grid;
+      gap: 3px;
+      margin-bottom: 12px;
     }
 
     .navigator-flow {
@@ -420,16 +552,16 @@
     }
 
     .navigator-lifecycle {
-      gap: 8px;
+      gap: 0;
       margin-top: 20px;
       padding: 14px 16px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.78);
+      background: var(--blue-50);
     }
 
     .navigator-lifecycle strong {
-      margin-right: 4px;
+      margin-right: 12px;
       color: var(--ink-soft);
       font-size: 0.88rem;
     }
@@ -437,24 +569,20 @@
     .navigator-lifecycle span {
       display: inline-flex;
       align-items: center;
-      min-height: 28px;
-      padding: 4px 8px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      background: #ffffff;
-      color: var(--muted);
+      color: var(--ink-soft);
       font-size: 0.8rem;
       font-weight: 800;
     }
 
     .navigator-lifecycle span + span::before {
       content: ">";
-      margin-right: 8px;
+      margin: 0 10px;
       color: var(--quiet);
+      font-weight: 760;
     }
 
     .navigator-flow::before {
-      content: "Covers";
+      content: "Phases";
       color: var(--quiet);
       font-size: 0.76rem;
       font-weight: 800;
@@ -467,11 +595,6 @@
       display: inline-flex;
       align-items: center;
       max-width: 100%;
-      min-height: 28px;
-      padding: 4px 8px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.80);
       color: var(--ink-soft);
       font-size: 0.78rem;
       font-weight: 800;
@@ -479,20 +602,13 @@
     }
 
     .navigator-badge {
-      border-color: rgba(36, 90, 146, 0.26);
-      color: var(--blue-dark);
-      background: rgba(237, 244, 251, 0.86);
+      color: var(--muted);
     }
 
     .navigator-step {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 30px;
-      padding: 5px 9px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.66);
       color: var(--ink-soft);
       font-size: 0.78rem;
       font-weight: 820;
@@ -501,10 +617,11 @@
       overflow-wrap: anywhere;
     }
 
-    .navigator-step.active {
-      color: #ffffff;
-      border-color: var(--ink);
-      background: var(--ink);
+    .navigator-step + .navigator-step::before {
+      content: "/";
+      margin: 0 7px;
+      color: var(--quiet);
+      font-weight: 720;
     }
 
     .navigator-note {
@@ -530,9 +647,9 @@
       max-width: 100%;
       min-height: 30px;
       padding: 5px 9px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(36, 90, 146, 0.30);
+      border-radius: 6px;
+      background: linear-gradient(180deg, #ffffff 0%, var(--blue-25) 100%);
       color: var(--blue-dark);
       font-size: 0.84rem;
       font-weight: 720;
@@ -540,10 +657,17 @@
       white-space: normal;
     }
 
+    .repo-links a::after {
+      content: ">";
+      margin-left: 7px;
+      color: var(--blue);
+      font-weight: 900;
+    }
+
     .tool-table-wrap {
       margin-top: 26px;
       overflow-x: auto;
-      border: 1px solid var(--line);
+      border: 1px solid var(--blue-150);
       border-radius: var(--radius);
       background: var(--panel);
     }
@@ -557,14 +681,14 @@
     .tool-table th,
     .tool-table td {
       padding: 15px 17px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--blue-150);
       text-align: left;
       vertical-align: top;
     }
 
     .tool-table th {
-      color: var(--ink-soft);
-      background: #eef3f7;
+      color: #ffffff;
+      background: var(--blue-dark);
       font-size: 0.82rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -574,11 +698,30 @@
       border-bottom: 0;
     }
 
+    .tool-table tbody tr:nth-child(even) {
+      background: var(--blue-50);
+    }
+
+    .tool-table tbody tr:nth-child(odd) {
+      background: #ffffff;
+    }
+
     .tool-table td {
       color: var(--muted);
     }
 
+    .tool-table td:first-child {
+      width: 250px;
+      border-right: 1px solid var(--blue-150);
+      background: var(--blue-100);
+    }
+
+    .tool-table tbody tr:nth-child(even) td:first-child {
+      background: var(--blue-150);
+    }
+
     .tool-table a {
+      display: inline-flex;
       color: var(--blue-dark);
       font-weight: 760;
     }
@@ -599,21 +742,6 @@
       margin-bottom: 6px;
       color: var(--ink-soft);
       font-size: 0.98rem;
-    }
-
-    .distinction {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 26px;
-    }
-
-    .distinction .proof-box:first-child {
-      border-top: 5px solid var(--teal);
-    }
-
-    .distinction .proof-box:last-child {
-      border-top: 5px solid var(--rose);
     }
 
     .compact-list {
@@ -646,8 +774,10 @@
       display: flex;
       justify-content: space-between;
       gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid var(--line);
+      padding: 12px;
+      border: 1px solid var(--blue-150);
+      border-radius: 6px;
+      background: var(--blue-25);
     }
 
     .link-list span {
@@ -660,7 +790,7 @@
       border-left: 4px solid var(--gold);
       border-radius: 0 var(--radius) var(--radius) 0;
       background: var(--panel-gold);
-      color: #403420;
+      color: var(--ink-soft);
     }
 
     footer {
@@ -685,8 +815,8 @@
       .hero {
         min-height: 70vh;
         background:
-          linear-gradient(180deg, rgba(247, 248, 250, 0.98) 0%, rgba(247, 248, 250, 0.94) 56%, rgba(247, 248, 250, 0.68) 100%),
-          url("assets/portfolio-governance-hero.png") center bottom / cover no-repeat;
+          linear-gradient(180deg, rgba(248, 251, 255, 0.98) 0%, rgba(248, 251, 255, 0.88) 46%, rgba(225, 234, 246, 0.78) 100%),
+          url("assets/portfolio-operations-hero-v2.png") 58% bottom / cover no-repeat;
       }
 
       .journey-grid,
@@ -694,9 +824,23 @@
       .navigator-grid,
       .theme-grid,
       .proof-strip,
-      .two-col,
-      .distinction {
+      .two-col {
         grid-template-columns: 1fr;
+      }
+
+      .route-graphic,
+      .module-chain {
+        grid-template-columns: 1fr;
+      }
+
+      .route-step,
+      .chain-step {
+        min-height: auto;
+      }
+
+      .route-step::after,
+      .chain-step::after {
+        display: none;
       }
     }
 
@@ -743,6 +887,12 @@
 
       .link-list li {
         flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce), (max-width: 980px) {
+      .hero {
+        background-attachment: scroll;
       }
     }
   </style>
@@ -802,7 +952,7 @@
       <div class="hero-copy">
         <p class="eyebrow">Principal / Director-level portfolio, PMO, and executive operations</p>
         <h1>Marco Policani</h1>
-        <p class="subhead">I help CIO, CFO, COO, CTO, and CMO-sponsored teams turn scattered demand into structured intake, sequencing, readiness gates, executive review, value realization, and follow-through.</p>
+        <p class="subhead">I turn scattered demand into structured intake, sequencing, readiness gates, executive review, value realization, and follow-through.</p>
         <div class="hero-tags" aria-label="Focus areas">
           <span class="hero-tag">Director PMO / EPMO</span>
           <span class="hero-tag">Principal portfolio leadership</span>
@@ -834,7 +984,7 @@
         <a href="#modules">Modules</a>
         <a href="#patterns">Artifacts</a>
         <a href="#boundaries">Boundaries</a>
-        <a href="#tools">Free tools</a>
+        <a href="#tools">Tools</a>
         <a href="#connect">Connect</a>
       </div>
     </div>
@@ -844,13 +994,19 @@
     <section class="section-white" aria-labelledby="intro-heading">
       <div class="section-inner two-col">
         <div>
-          <p class="section-kicker">What this is</p>
+          <p class="section-kicker">Portfolio position</p>
           <h2 id="intro-heading">A public-safe portfolio for Principal / Director-level operating work.</h2>
-          <p class="lead">The work here is not a software engineering showcase. It is a portfolio of governance frameworks, operating models, proof-of-concept modules, playbooks, templates, lessons learned, and anonymized workflow examples for PMO, portfolio governance, program operations, executive cadence, AI operating governance, decision support, and workflow design.</p>
+          <p class="lead">This portfolio collects governance frameworks, operating models, proof-of-concept modules, playbooks, templates, lessons learned, and anonymized workflow examples for PMO, portfolio governance, program operations, executive cadence, AI operating governance, decision support, and workflow design.</p>
         </div>
         <div class="proof-box">
           <h3>Hiring lanes</h3>
           <p>Strongest fit: Director or Principal roles in PMO, EPMO, PPMO, portfolio governance, program operations, executive operations, and Chief of Staff roles centered on cadence, portfolio visibility, and decision support.</p>
+          <div class="operating-map" aria-label="Operating focus flow">
+            <div class="map-node">Demand signal</div>
+            <div class="map-node">Decision cadence</div>
+            <div class="map-node">Readiness evidence</div>
+            <div class="map-node">Value follow-through</div>
+          </div>
           <div class="repo-links" aria-label="Primary links">
             <a href="https://github.com/policani">GitHub profile</a>
             <a href="https://github.com/policani?tab=repositories">All repositories</a>
@@ -862,8 +1018,8 @@
 
     <section id="navigator" aria-labelledby="navigator-heading">
       <div class="section-inner">
-        <p class="section-kicker">Module navigator</p>
-        <h2 id="navigator-heading">Start with the maturity route.</h2>
+        <p class="section-kicker">Start here</p>
+        <h2 id="navigator-heading">Start with the operating phase route.</h2>
         <p class="lead">Use this map when you want the shortest path through the collection. Each lane shows the operating phases it supports, who should start there, and which repositories are most ready for review.</p>
 
         <div class="navigator-lifecycle" aria-label="Operating lifecycle sequence">
@@ -986,39 +1142,44 @@
             </div>
           </article>
 
-          <article class="navigator-card">
-            <div class="navigator-meta">
-              <span class="navigator-stage">Lane: Career and writing tools</span>
-              <span class="navigator-badge">Route: Separate utility lane</span>
-            </div>
-            <h3>Public utilities stay distinct</h3>
-            <p>For job seekers, writers, and reviewers who need career documentation, posting triage, or prose quality checks outside the PMO operating-module story.</p>
-            <div class="navigator-flow" aria-label="Utility areas covered">
-              <span class="navigator-step active">Resume</span>
-              <span class="navigator-step active">Jobs</span>
-              <span class="navigator-step active">Writing QA</span>
-            </div>
-            <div class="repo-links">
-              <a href="https://github.com/policani/resume-evidence-engine">Resume Evidence Engine</a>
-              <a href="https://github.com/policani/job-boards-scanner">Job Boards Scanner</a>
-              <a href="https://github.com/policani/ai-prose-pattern-detector">AI Prose Detector</a>
-            </div>
-          </article>
         </div>
 
-        <p class="navigator-note">The top pills identify the lane and the recommended route. The dark "Covers" pills show which lifecycle phases that lane supports. Color accents are visual grouping only; the labels carry the meaning.</p>
+        <p class="navigator-note">Each card names the lane, the recommended route, the lifecycle phases it supports, and the review-ready repository links. Inside the cards, repository links are the only click targets.</p>
       </div>
     </section>
 
     <section id="journeys" aria-labelledby="journeys-heading">
       <div class="section-inner">
-        <p class="section-kicker">Start with the problem</p>
+        <p class="section-kicker">Problem routes</p>
         <h2 id="journeys-heading">Choose the operating problem.</h2>
-        <p class="lead">The repositories are easier to understand when they are read as routes through recurring leadership problems, not as a flat list of tools.</p>
+        <p class="lead">Read the repositories as routes through recurring leadership problems. Each route starts with a messy operating condition and ends with clearer evidence, ownership, and follow-through.</p>
+
+        <div class="route-graphic" aria-label="Problem to outcome route">
+          <div class="route-step">
+            <strong>Messy demand</strong>
+            <span>Requests, mandates, ideas, and ambiguous work.</span>
+          </div>
+          <div class="route-step">
+            <strong>Structured signal</strong>
+            <span>Ownership, readiness, fit, and duplicate demand.</span>
+          </div>
+          <div class="route-step">
+            <strong>Decision route</strong>
+            <span>Tradeoffs, capacity, sequencing, and evidence.</span>
+          </div>
+          <div class="route-step">
+            <strong>Governed handoff</strong>
+            <span>Funding, charter, controls, and launch gates.</span>
+          </div>
+          <div class="route-step">
+            <strong>Follow-through</strong>
+            <span>Value claims, realization confidence, and learning.</span>
+          </div>
+        </div>
 
         <div class="journey-grid">
           <article class="journey-card">
-            <h3>Demand is visible, but not governable</h3>
+            <h3>Visible demand needs governance</h3>
             <p>When requests, initiatives, mandates, and ideas exist before ownership, readiness, sponsors, route decisions, or portfolio fit are clear.</p>
             <div class="repo-links">
               <a href="https://github.com/policani/ppmo-formation-kit">PPMO formation</a>
@@ -1067,14 +1228,6 @@
           </article>
 
           <article class="journey-card">
-            <h3>Business writing needs quality control</h3>
-            <p>When executive updates, portfolio narratives, AI-assisted drafts, or stakeholder messages need sharper language, less generic phrasing, and human review.</p>
-            <div class="repo-links">
-              <a href="https://github.com/policani/ai-prose-pattern-detector">Prose QA</a>
-            </div>
-          </article>
-
-          <article class="journey-card">
             <h3>Innovation or partner ecosystems need boundaries</h3>
             <p>When emerging work, partner programs, provider networks, external delivery channels, or ambiguous strategic efforts need decision rights, readiness gates, evidence, and review cadence.</p>
             <div class="repo-links">
@@ -1089,37 +1242,42 @@
 
     <section id="proof" class="section-white" aria-labelledby="proof-heading">
       <div class="section-inner">
-        <p class="section-kicker">What the work proves</p>
+        <p class="section-kicker">Evidence gateway</p>
         <h2 id="proof-heading">Evidence before claims.</h2>
-        <p class="lead">The portfolio is built from a consistent management worldview: business value before AI consumption, governance as architecture, and human judgment as the owner of approvals, funding, risk acceptance, and final commitments.</p>
+        <p class="lead">This is the altitude layer: proof that the portfolio is aimed at CIO, CFO, COO, CTO, and CMO-sponsored environments where decisions need clearer evidence, cleaner routes, and visible follow-through. Each proof area points to modules or artifact sources that show the pattern in public-safe form.</p>
 
         <div class="proof-strip">
           <div class="proof-box">
             <strong>Portfolio signal</strong>
             <p>Systems that expose stale status, missing owners, duplicate demand, unclear readiness, capacity pressure, and decision gaps.</p>
+            <div class="repo-links">
+              <a href="https://github.com/policani/portfolio-signal-quality-auditor">Signal Quality Auditor</a>
+              <a href="https://github.com/policani/portfolio-intake-readiness-triage-system">Intake Readiness Triage</a>
+            </div>
           </div>
           <div class="proof-box">
             <strong>Decision cadence</strong>
             <p>Review packs, scorecards, tradeoff views, follow-up registers, and operating rhythms that help leaders decide what to do next.</p>
+            <div class="repo-links">
+              <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Executive Review Pack</a>
+              <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Prioritization Scoring</a>
+            </div>
           </div>
           <div class="proof-box">
             <strong>AI operating governance</strong>
             <p>Use AI for synthesis, classification, drafting, review, and analytical coverage while preserving human accountability.</p>
+            <div class="repo-links">
+              <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">AI Opportunity Review</a>
+              <a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">Artifact Lifecycle</a>
+            </div>
           </div>
           <div class="proof-box">
             <strong>Evidence discipline</strong>
             <p>Separate source truth, assumptions, proof gaps, public-safe examples, and generated outputs so claims remain inspectable.</p>
-          </div>
-        </div>
-
-        <div class="distinction">
-          <div class="proof-box">
-            <h3>Proof-of-concept operating modules</h3>
-            <p>The PMO, portfolio, AI governance, readiness, controls, and value modules are public-safe portfolio samples. They demonstrate operating design and decision-support patterns as adaptable starting points for real operating needs.</p>
-          </div>
-          <div class="proof-box">
-            <h3>Free career and writing tools</h3>
-            <p>The resume engine, job boards scanner, and prose detector are practical public utilities and proofs of concept. They sit beside the PMO portfolio module set as career and writing tools.</p>
+            <div class="repo-links">
+              <a href="https://github.com/policani/Policani/tree/main/wiki">Portfolio Artifacts</a>
+              <a href="https://github.com/policani/operating-patterns">Artifact Source</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1127,9 +1285,32 @@
 
     <section id="modules" aria-labelledby="modules-heading">
       <div class="section-inner">
-        <p class="section-kicker">Repository groupings</p>
-        <h2 id="modules-heading">Proof-of-Concept Operating Modules.</h2>
-        <p class="lead">Each module is designed to stand alone, but the stronger story is how they hand cleaner evidence into the next decision point. These are public-safe examples of PMO, portfolio, readiness, governance, and decision-support design: standalone starting points that can be adapted, extended, or combined for real operating needs.</p>
+        <p class="section-kicker">Module library</p>
+        <h2 id="modules-heading">Proof-of-concept operating modules.</h2>
+        <p class="lead">This section is the portfolio's operating-module library. Each module stands alone, but the stronger story is how the modules hand cleaner evidence into the next decision point. They are public-safe examples of PMO, portfolio, readiness, governance, and decision-support design.</p>
+
+        <div class="module-chain" aria-label="Module handoff chain">
+          <div class="chain-step">
+            <strong>Intake</strong>
+            <span>Name the work.</span>
+          </div>
+          <div class="chain-step">
+            <strong>Prioritize</strong>
+            <span>Compare tradeoffs.</span>
+          </div>
+          <div class="chain-step">
+            <strong>Authorize</strong>
+            <span>Clarify intent.</span>
+          </div>
+          <div class="chain-step">
+            <strong>Prepare</strong>
+            <span>Prove readiness.</span>
+          </div>
+          <div class="chain-step">
+            <strong>Realize</strong>
+            <span>Track value.</span>
+          </div>
+        </div>
 
         <div class="lane-grid">
           <article class="lane-card">
@@ -1188,8 +1369,8 @@
     <section id="patterns" class="section-white" aria-labelledby="patterns-heading">
       <div class="section-inner two-col">
         <div>
-          <p class="section-kicker">Portfolio artifacts</p>
-          <h2 id="patterns-heading">Anonymized artifacts, not generic theory.</h2>
+        <p class="section-kicker">Artifact library</p>
+          <h2 id="patterns-heading">Anonymized artifacts from operating practice.</h2>
           <p class="lead">The artifact library translates real operating experience into public-safe governance frameworks, operating models, playbooks, templates, lessons learned, and pattern pages. It keeps the useful part visible: the problem type, decision structure, intervention logic, and capability demonstrated.</p>
         </div>
         <div>
@@ -1212,20 +1393,31 @@
 
     <section id="boundaries" aria-labelledby="boundaries-heading">
       <div class="section-inner">
-        <p class="section-kicker">Boundaries</p>
-        <h2 id="boundaries-heading">What this portfolio does not claim.</h2>
+        <p class="section-kicker">Evaluation guardrails</p>
+        <h2 id="boundaries-heading">Boundaries for evaluating the portfolio.</h2>
         <div class="theme-grid">
           <article class="theme-card">
-            <h3>Not software engineering ownership</h3>
-            <p>The repositories show workflow architecture, operating design, local tooling, and structured artifacts, not a claim of production software engineering ownership.</p>
+            <h3>Software engineering scope</h3>
+            <p>The repositories show workflow architecture, operating design, local tooling, and structured artifacts. Production software engineering ownership is outside the claim.</p>
+            <div class="repo-links">
+              <a href="https://github.com/policani/policani.github.io">Website source</a>
+            </div>
           </article>
           <article class="theme-card">
-            <h3>Not autonomous AI decisioning</h3>
+            <h3>Human-owned AI governance</h3>
             <p>AI supports synthesis, review, drafting, classification, and repeatability. People own approvals, commitments, risk acceptance, funding, and final communication.</p>
+            <div class="repo-links">
+              <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">AI opportunity review</a>
+              <a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">Artifact lifecycle</a>
+            </div>
           </article>
           <article class="theme-card">
-            <h3>Not employer case studies</h3>
+            <h3>Public-safe examples</h3>
             <p>Examples are synthetic, generalized, or scrubbed so the public work can demonstrate judgment without exposing confidential or identifying detail.</p>
+            <div class="repo-links">
+              <a href="https://github.com/policani/Policani/tree/main/wiki">Portfolio artifacts</a>
+              <a href="https://github.com/policani/operating-patterns">Artifact source</a>
+            </div>
           </article>
         </div>
       </div>
@@ -1233,9 +1425,9 @@
 
     <section id="tools" class="section-white" aria-labelledby="tools-heading">
       <div class="section-inner">
-        <p class="section-kicker">Free tools</p>
-        <h2 id="tools-heading">Free Career and Writing Tools.</h2>
-        <p class="lead">These are small public utilities and proofs of concept for job-search workflow, career documentation, and writing review. They sit outside the PMO and portfolio operating-system examples.</p>
+        <p class="section-kicker">Standalone tools</p>
+        <h2 id="tools-heading">Career, job-search, and writing tools.</h2>
+        <p class="lead">This separate section holds standalone tools for job-search workflow, career documentation, and general writing review. The operating portfolio stays focused on PMO, governance, decision support, readiness, and follow-through.</p>
 
         <div class="tool-table-wrap">
           <table class="tool-table">
@@ -1256,7 +1448,7 @@
               </tr>
               <tr>
                 <td><a href="https://github.com/policani/ai-prose-pattern-detector">AI Prose Pattern Detector</a></td>
-                <td>A writing review tool for spotting AI-shaped phrasing, generic business language, and revision opportunities.</td>
+                <td>A general writing review tool for spotting AI-shaped phrasing, generic business language, and revision opportunities across portfolio copy, professional writing, summaries, drafts, resumes, and cover letters.</td>
               </tr>
             </tbody>
           </table>
