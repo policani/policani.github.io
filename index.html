@@ -16,6 +16,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://policani.net/">
   <link rel="preload" as="image" href="assets/portfolio-operations-hero-v9.png">
+  <link rel="alternate" type="application/json" href="assets/portfolio-module-catalog.json" title="Portfolio module catalog">
   <style>
     :root {
       --ink: #111827;
@@ -1034,7 +1035,210 @@
       {"@type": "CreativeWork", "name": "Artifact Source to Public-Safe Proof Review", "url": "https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html"},
       {"@type": "CreativeWork", "name": "Partner Ecosystem Governance Route", "url": "https://policani.net/journeys/partner-ecosystem-governance-route.html"},
       {"@type": "CreativeWork", "name": "Resume Evidence Engine", "url": "https://github.com/policani/resume-evidence-engine"}
-    ]
+    ],
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "Portfolio module catalog",
+      "url": "https://policani.net/assets/portfolio-module-catalog.json",
+      "description": "Source of truth for public portfolio module labels, repository URLs, site anchors, operating phases, audiences, proof types, and packaging decisions.",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "PPMO Formation Kit",
+            "url": "https://github.com/policani/ppmo-formation-kit",
+            "description": "Set up the PPMO intake lane.",
+            "audience": "PMO, EPMO, PPMO, and portfolio leaders",
+            "about": ["Intake", "PMO formation", "Portfolio governance"],
+            "isPartOf": "https://policani.net/#navigator"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Portfolio Signal Quality Auditor",
+            "url": "https://github.com/policani/portfolio-signal-quality-auditor",
+            "description": "Audit portfolio signal quality.",
+            "audience": "Portfolio governance and decision-support teams",
+            "about": ["Intake", "Portfolio signal", "Evidence gaps"],
+            "isPartOf": "https://policani.net/#proof"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Portfolio Intake Readiness Triage System",
+            "url": "https://github.com/policani/portfolio-intake-readiness-triage-system",
+            "description": "Triage intake readiness.",
+            "audience": "PMO and intake governance teams",
+            "about": ["Intake", "Readiness", "Ownership routing"],
+            "isPartOf": "https://policani.net/#navigator"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Portfolio Prioritization Scoring Agent",
+            "url": "https://github.com/policani/portfolio-prioritization-scoring-agent",
+            "description": "Score priority and tradeoffs.",
+            "audience": "Portfolio leaders comparing priority, value, risk, and decision readiness",
+            "about": ["Tradeoffs", "Prioritization", "Decision evidence"],
+            "isPartOf": "https://policani.net/journeys/tradeoffs-to-executive-decision-route.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Portfolio Capacity Sequencing Planner",
+            "url": "https://github.com/policani/portfolio-capacity-sequencing-planner",
+            "description": "Plan capacity and sequencing.",
+            "audience": "Portfolio and delivery leaders managing constrained capacity",
+            "about": ["Tradeoffs", "Capacity", "Sequencing"],
+            "isPartOf": "https://policani.net/journeys/tradeoffs-to-executive-decision-route.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Executive Portfolio Review Pack Builder",
+            "url": "https://github.com/policani/executive-portfolio-review-pack-builder",
+            "description": "Build executive review packs.",
+            "audience": "Executive operations, PMO, and portfolio governance teams",
+            "about": ["Tradeoffs", "Decision cadence", "Executive review"],
+            "isPartOf": "https://policani.net/#proof"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "AI Opportunity Intelligence Review System",
+            "url": "https://github.com/policani/ai-opportunity-intelligence-review-system",
+            "description": "Review AI opportunities.",
+            "audience": "AI operations, governance, and portfolio teams",
+            "about": ["Intake", "Tradeoffs", "AI governance"],
+            "isPartOf": "https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "AI Artifact Lifecycle Governance System",
+            "url": "https://github.com/policani/ai-artifact-lifecycle-governance-system",
+            "description": "Govern AI artifact lifecycle.",
+            "audience": "AI governance and operational-risk reviewers",
+            "about": ["Intake", "Tradeoffs", "Delivery readiness", "AI artifact governance"],
+            "isPartOf": "https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Business Case System",
+            "url": "https://github.com/policani/business-case-system",
+            "description": "Build business cases.",
+            "audience": "Sponsors, PMO teams, and portfolio leaders preparing investment decisions",
+            "about": ["Tradeoffs", "Funding", "Business case"],
+            "isPartOf": "https://policani.net/journeys/approved-intent-to-chartered-delivery-start.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Project Charter Initiation Agent",
+            "url": "https://github.com/policani/project-charter-initiation-agent",
+            "description": "Initiate project charters.",
+            "audience": "Delivery sponsors and PMO teams moving approved intent into chartered work",
+            "about": ["Funding", "Charter", "Planning handoff"],
+            "isPartOf": "https://policani.net/journeys/approved-intent-to-chartered-delivery-start.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "PMO Governance Operations Log",
+            "url": "https://github.com/policani/pmo-governance-operations-log",
+            "description": "Track governance operations.",
+            "audience": "PMO, delivery, and controls teams tracking blockers and decisions",
+            "about": ["Delivery readiness", "Governance operations", "Decision records"],
+            "isPartOf": "https://policani.net/journeys/delivery-readiness-to-value-realization.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Release Readiness UAT Governance Pack",
+            "url": "https://github.com/policani/release-readiness-uat-governance-pack",
+            "description": "Prove delivery readiness.",
+            "audience": "Delivery, UAT, release, and governance teams",
+            "about": ["Delivery readiness", "UAT", "Release governance"],
+            "isPartOf": "https://policani.net/journeys/delivery-readiness-to-value-realization.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Controls Exposure Governance Toolkit",
+            "url": "https://github.com/policani/controls-exposure-governance-toolkit",
+            "description": "Review controls and exposure.",
+            "audience": "Controls, risk, PMO, and delivery governance teams",
+            "about": ["Delivery readiness", "Value", "Controls exposure"],
+            "isPartOf": "https://policani.net/journeys/delivery-readiness-to-value-realization.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Value Realization Governance Ledger",
+            "url": "https://github.com/policani/value-realization-governance-ledger",
+            "description": "Track value realization.",
+            "audience": "Portfolio, finance, PMO, and sponsor teams tracking outcomes",
+            "about": ["Value", "Value realization", "Follow-through evidence"],
+            "isPartOf": "https://policani.net/journeys/delivery-readiness-to-value-realization.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Operating Patterns",
+            "url": "https://github.com/policani/operating-patterns",
+            "description": "Inspect governance patterns.",
+            "audience": "Reviewers inspecting generalized governance artifacts and operating patterns",
+            "about": ["Intake", "Tradeoffs", "Funding", "Delivery readiness", "Value", "Artifact source"],
+            "isPartOf": "https://policani.net/#patterns"
+          }
+        }
+      ]
+    }
   }
   </script>
 </head>
@@ -1297,6 +1501,7 @@
         <p class="section-kicker">Module library</p>
         <h2 id="modules-heading">Proof-of-concept operating modules.</h2>
         <p class="lead">This section is the portfolio's operating-module library. Each module stands alone, but the stronger story is how the modules hand cleaner evidence into the next decision point. They are public-safe examples of PMO, portfolio, readiness, governance, and decision-support design.</p>
+        <p class="navigator-note"><strong>Packaging rule:</strong> strengthen the existing proof path before adding another public module. AI governance register work belongs inside the AI lifecycle route for now, and partner ecosystem governance stays in the artifact/source layer unless a separate package would make evaluation clearer.</p>
 
         <div class="module-chain" aria-label="Module handoff chain">
           <div class="chain-step">
