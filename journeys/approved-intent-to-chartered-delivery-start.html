@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Approved Intent to Chartered Delivery Start | Marco Policani Portfolio Journey</title>
+  <meta name="description" content="A public-safe journey showing how approved but rough intent becomes a chartered delivery starting point with scope, owner, assumptions, risks, and governance rhythm.">
+  <link rel="canonical" href="https://policani.net/journeys/approved-intent-to-chartered-delivery-start.html">
+  <style>
+    :root {
+      --ink: #111827;
+      --ink-soft: #334155;
+      --muted: #64748b;
+      --paper: #f7f9fc;
+      --panel: #ffffff;
+      --line: #d8e2ee;
+      --blue-950: #122137;
+      --blue-800: #1e3f63;
+      --blue-650: #2d6090;
+      --blue-100: #edf5fb;
+      --blue-075: #f5f9fd;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--blue-800);
+      text-underline-offset: 0.18em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 960px;
+      margin-bottom: 18px;
+      color: #ffffff;
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 1.15rem;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+
+    th {
+      background: var(--blue-800);
+      color: #ffffff;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .page-shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 62px 0 46px;
+      background:
+        linear-gradient(120deg, rgba(18, 33, 55, 0.97), rgba(30, 63, 99, 0.92)),
+        radial-gradient(circle at 82% 18%, rgba(79, 130, 173, 0.42), transparent 34%),
+        var(--blue-950);
+    }
+
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--blue-650);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero .eyebrow,
+    .hero .lead {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .lead {
+      max-width: 920px;
+      color: var(--ink-soft);
+      font-size: 1.12rem;
+    }
+
+    .meta-row,
+    .repo-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 22px;
+    }
+
+    .pill,
+    .repo-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+      font-weight: 760;
+      text-decoration: none;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .repo-links a {
+      color: var(--blue-800);
+      background: #ffffff;
+      border-color: #b8cde2;
+    }
+
+    .hero .pill {
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+
+    nav {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    nav .page-shell {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      min-height: 56px;
+    }
+
+    nav strong {
+      color: var(--ink);
+    }
+
+    nav a {
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 42px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-intro {
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .grid-2,
+    .grid-3,
+    .route {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .route {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .card,
+    .step,
+    .callout {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+    }
+
+    .card,
+    .callout {
+      padding: 18px;
+    }
+
+    .card p,
+    .callout p {
+      color: var(--muted);
+    }
+
+    .card p:last-child,
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .step {
+      padding: 16px;
+      border-top: 5px solid var(--blue-650);
+      background: var(--blue-075);
+    }
+
+    .step span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .step a {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--blue-800);
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
+
+    .callout {
+      border-left: 6px solid var(--blue-650);
+      background: var(--blue-100);
+    }
+
+    .footer-note {
+      padding: 28px 0 46px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 980px) {
+      .grid-2,
+      .grid-3,
+      .route {
+        grid-template-columns: 1fr;
+      }
+
+      nav .page-shell {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page-shell {
+        width: min(100% - 28px, 1180px);
+      }
+
+      table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="page-shell">
+      <p class="eyebrow">Authorization journey</p>
+      <h1>Approved Intent to Chartered Delivery Start</h1>
+      <p class="lead">How does a rough approved idea become a chartered starting point with scope, owner, assumptions, risks, and governance rhythm?</p>
+      <div class="meta-row" aria-label="Journey scope">
+        <span class="pill">Synthetic example</span>
+        <span class="pill">Authorization and handoff</span>
+        <span class="pill">Business case to charter</span>
+        <span class="pill">Human approval remains explicit</span>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Journey navigation">
+    <div class="page-shell">
+      <strong>Marco Policani</strong>
+      <div class="repo-links">
+        <a href="../index.html#journeys">Problem routes</a>
+        <a href="../index.html#navigator">Module navigator</a>
+        <a href="https://github.com/policani">GitHub profile</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Scenario</p>
+        <h2>The starting point</h2>
+        <p class="section-intro">This synthetic scenario represents the point after leaders agree an idea deserves attention, but before the organization has enough structure to start delivery with confidence.</p>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Approved intent</h3>
+            <p>A sponsor has approved the direction of travel for an operational improvement, but scope, owner, assumptions, benefit logic, and dependency exposure are still uneven.</p>
+          </article>
+          <article class="card">
+            <h3>Current risk</h3>
+            <p>The work could move into delivery with a soft mandate, hidden assumptions, unclear decision rights, and no rhythm for governance follow-through.</p>
+          </article>
+          <article class="card">
+            <h3>Authorization goal</h3>
+            <p>Create a clear chartered start: what is authorized, what remains assumed, who must confirm ownership, and how unresolved risk moves into governance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Module route</p>
+        <h2>How the work moves</h2>
+        <p class="section-intro">The journey uses five public portfolio modules. Each module turns a rough approval signal into evidence that can survive sponsor review, chartering, and governance follow-through.</p>
+
+        <div class="route" aria-label="Journey module route">
+          <div class="step">
+            <strong>1. Build the case</strong>
+            <span>Business Case System frames the problem, value logic, options, assumptions, risks, and decision ask.</span>
+            <a href="https://github.com/policani/business-case-system">Open Business Case System</a>
+          </div>
+          <div class="step">
+            <strong>2. Shape the charter</strong>
+            <span>Project Charter Initiation Agent converts approved intent into scope, owner, objectives, exclusions, constraints, and start criteria.</span>
+            <a href="https://github.com/policani/project-charter-initiation-agent">Open Project Charter Initiation Agent</a>
+          </div>
+          <div class="step">
+            <strong>3. Test priority fit</strong>
+            <span>Portfolio Prioritization Scoring Agent compares the candidate against portfolio criteria, urgency, risk, dependencies, and value confidence.</span>
+            <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Open Prioritization Scoring Agent</a>
+          </div>
+          <div class="step">
+            <strong>4. Set governance rhythm</strong>
+            <span>PMO Governance Operations Log captures decisions, owner follow-ups, assumptions, risks, blockers, and review cadence.</span>
+            <a href="https://github.com/policani/pmo-governance-operations-log">Open PMO Governance Operations Log</a>
+          </div>
+          <div class="step">
+            <strong>5. Prepare review</strong>
+            <span>Executive Portfolio Review Pack Builder packages authorization evidence, unresolved assumptions, owner asks, and governance follow-through.</span>
+            <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Open Executive Review Pack Builder</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Synthetic input</p>
+        <h2>Approved but unfinished starts</h2>
+        <p class="section-intro">The examples are public-safe and synthetic. They show the kinds of approved intent that need structure before delivery starts.</p>
+
+        <table aria-label="Synthetic authorization examples">
+          <thead>
+            <tr>
+              <th>Input</th>
+              <th>Approved signal</th>
+              <th>Missing before start</th>
+              <th>Likely route</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Approved but underspecified operational improvement</td>
+              <td>Leaders agree the current workflow is too manual and error-prone.</td>
+              <td>Scope boundary, measurable baseline, implementation owner, and benefit confidence.</td>
+              <td>Business case, charter, then governance log.</td>
+            </tr>
+            <tr>
+              <td>Finance workflow change needing sponsor clarity</td>
+              <td>Finance wants better control over approvals, handoffs, and exceptions.</td>
+              <td>Named sponsor, decision rights, controls impact, and policy owner confirmation.</td>
+              <td>Business case and owner confirmation before charter start.</td>
+            </tr>
+            <tr>
+              <td>Platform change with unclear dependencies</td>
+              <td>A platform team can support the change if dependencies are sequenced.</td>
+              <td>Dependency map, launch constraint, capacity assumption, and escalation path.</td>
+              <td>Charter, priority scoring, and executive review pack.</td>
+            </tr>
+            <tr>
+              <td>Mandate that needs a delivery owner</td>
+              <td>The deadline and need are accepted by the leadership forum.</td>
+              <td>Accountable owner, delivery team, governance cadence, and risk treatment.</td>
+              <td>Charter start and governance follow-through.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Evidence produced</p>
+        <h2>What each step creates</h2>
+        <p class="section-intro">The route is designed to leave leaders with a compact authorization record, not a large methodology binder.</p>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Business case evidence</h3>
+            <ul>
+              <li>Problem statement and operating impact.</li>
+              <li>Options, recommendation, and decision ask.</li>
+              <li>Value logic, baseline assumption, and confidence level.</li>
+              <li>Risks, dependencies, constraints, and open sponsor questions.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Charter evidence</h3>
+            <ul>
+              <li>Named sponsor, delivery owner, and working team boundary.</li>
+              <li>Scope, exclusions, objectives, start criteria, and success measures.</li>
+              <li>Assumptions requiring confirmation before delivery commitments harden.</li>
+              <li>Decision rights for changes, blockers, and escalation.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Priority and review evidence</h3>
+            <ul>
+              <li>Comparable priority score and rationale.</li>
+              <li>Portfolio fit, timing pressure, dependency exposure, and risk notes.</li>
+              <li>Executive-ready authorization question.</li>
+              <li>Known tradeoffs for sequence, capacity, or scope.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Governance evidence</h3>
+            <ul>
+              <li>Decision log entry for approved start conditions.</li>
+              <li>Owner follow-ups with due dates and unresolved confirmations.</li>
+              <li>Risk and assumption register for the first governance rhythm.</li>
+              <li>Review cadence, escalation path, and handoff notes.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Review pack</p>
+        <h2>Final authorization view</h2>
+        <p class="section-intro">This is the sponsor-facing view the journey is meant to support: clear enough to authorize delivery start, honest enough to show what still needs confirmation.</p>
+
+        <div class="callout">
+          <h3>Decision frame</h3>
+          <p>The work can begin only where ownership, scope, start criteria, and governance rhythm are visible. Open assumptions stay in the record with owners and due dates, so delivery does not inherit hidden uncertainty.</p>
+        </div>
+
+        <table aria-label="Authorization review view">
+          <thead>
+            <tr>
+              <th>Input</th>
+              <th>Authorized</th>
+              <th>Still assumed</th>
+              <th>Owner confirmation needed</th>
+              <th>Governance follow-through</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Operational improvement</td>
+              <td>Proceed to chartered start for workflow cleanup and baseline validation.</td>
+              <td>Manual effort and exception volume reflect the current operating baseline.</td>
+              <td>Operations sponsor confirms accountable delivery owner and metric owner.</td>
+              <td>Track baseline confirmation, scope change requests, and first status gate.</td>
+            </tr>
+            <tr>
+              <td>Finance workflow change</td>
+              <td>Develop the business case and draft charter before delivery commitment.</td>
+              <td>Policy impact is limited to the named workflow and approval path.</td>
+              <td>Finance sponsor confirms decision rights and control review owner.</td>
+              <td>Log sponsor confirmation, control questions, and approval path dependencies.</td>
+            </tr>
+            <tr>
+              <td>Platform dependency change</td>
+              <td>Move into charter review with priority scoring and dependency exposure visible.</td>
+              <td>Platform capacity is available inside the proposed start window.</td>
+              <td>Platform lead confirms dependency sequence, capacity, and escalation path.</td>
+              <td>Review dependency dates, blocker escalation, and sequence tradeoffs.</td>
+            </tr>
+            <tr>
+              <td>Mandated delivery start</td>
+              <td>Authorize urgent charter start once accountable owner is named.</td>
+              <td>Mandate deadline is fixed and cannot be satisfied through existing work.</td>
+              <td>Executive sponsor names delivery owner and governance forum.</td>
+              <td>Track deadline risk, owner actions, escalation cadence, and unresolved scope decisions.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="page-shell">
+        <p class="eyebrow">Repository route</p>
+        <h2>Where to inspect the modules</h2>
+        <p class="section-intro">The journey summarizes the route. The repositories hold the operating details, examples, runtime files, and review boundaries.</p>
+
+        <div class="repo-links">
+          <a href="https://github.com/policani/business-case-system">Business Case System</a>
+          <a href="https://github.com/policani/project-charter-initiation-agent">Project Charter Initiation Agent</a>
+          <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Portfolio Prioritization Scoring Agent</a>
+          <a href="https://github.com/policani/pmo-governance-operations-log">PMO Governance Operations Log</a>
+          <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Executive Portfolio Review Pack Builder</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-shell footer-note">
+    <p>This journey is a synthetic public portfolio artifact. It does not include employer names, client names, confidential figures, proprietary terms, private systems, or actual operational records.</p>
+  </footer>
+</body>
+</html>
