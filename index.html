@@ -676,6 +676,7 @@
     .repo-links a {
       display: inline-flex;
       align-items: center;
+      gap: 7px;
       max-width: 100%;
       min-height: 30px;
       padding: 5px 9px;
@@ -689,9 +690,51 @@
       white-space: normal;
     }
 
+    .repo-links a::before {
+      content: "Link";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 18px;
+      padding: 1px 5px;
+      border: 1px solid rgba(76, 82, 98, 0.24);
+      border-radius: 4px;
+      background: #f7f8fa;
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 850;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      text-transform: uppercase;
+      flex: 0 0 auto;
+    }
+
+    .repo-links a[href^="journeys/"] {
+      border-color: rgba(36, 90, 146, 0.30);
+      background: linear-gradient(180deg, #ffffff 0%, var(--blue-25) 100%);
+      color: var(--blue-dark);
+    }
+
+    .repo-links a[href^="journeys/"]::before {
+      content: "Route";
+      border-color: rgba(36, 90, 146, 0.26);
+      background: var(--blue-50);
+      color: var(--blue-dark);
+    }
+
+    .repo-links a[href^="https://github.com/"]::before {
+      content: "GitHub";
+      border-color: rgba(36, 90, 146, 0.26);
+      background: var(--blue-50);
+      color: var(--blue-dark);
+    }
+
+    .repo-links a[href^="https://www.linkedin.com/"]::before {
+      content: "Profile";
+    }
+
     .repo-links a::after {
       content: ">";
-      margin-left: 7px;
       color: var(--blue);
       font-weight: 900;
     }
@@ -877,14 +920,14 @@
       .hero-inner,
       .section-inner,
       .nav-inner {
-        width: 100%;
+        width: calc(100% - 32px);
         max-width: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 0;
+        padding-right: 0;
       }
 
       h1 {
-        font-size: 3rem;
+        font-size: 2.6rem;
       }
 
       h2 {
@@ -892,11 +935,27 @@
       }
 
       .hero-copy {
+        width: min(100%, 358px);
+        max-width: 100%;
         padding-top: 52px;
         padding-bottom: 34px;
       }
 
+      .hero h1,
+      .hero .eyebrow,
+      .subhead,
+      .hero-tags,
+      .actions {
+        max-width: 358px;
+      }
+
+      .eyebrow {
+        font-size: 0.72rem;
+        line-height: 1.35;
+      }
+
       .subhead {
+        max-width: 100%;
         font-size: 1.1rem;
       }
 
@@ -1000,9 +1059,9 @@
           <span class="hero-tag">Value realization</span>
         </div>
         <div class="actions">
-          <a class="button primary" href="#navigator">Explore the module navigator</a>
-          <a class="button" href="https://github.com/policani">GitHub profile</a>
+          <a class="button primary" href="#navigator">Choose the operating problem</a>
           <a class="button" href="https://github.com/policani/Policani/tree/main/wiki">Portfolio artifacts</a>
+          <a class="button" href="https://github.com/policani">GitHub profile</a>
           <a class="button" href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a>
         </div>
       </div>
@@ -1013,8 +1072,7 @@
     <div class="nav-inner">
       <a class="nav-title" href="#main">Marco Policani</a>
       <div class="nav-links">
-        <a href="#navigator">Navigator</a>
-        <a href="#journeys">Problems</a>
+        <a href="#navigator">Start</a>
         <a href="#proof">Proof</a>
         <a href="#modules">Modules</a>
         <a href="#patterns">Artifacts</a>
@@ -1044,8 +1102,8 @@
           </div>
           <div class="repo-links" aria-label="Primary links">
             <a href="https://github.com/policani">GitHub profile</a>
-            <a href="https://github.com/policani?tab=repositories">All repositories</a>
             <a href="https://github.com/policani/Policani/tree/main/wiki">Portfolio artifacts</a>
+            <a href="https://github.com/policani?tab=repositories">All repositories</a>
           </div>
         </div>
       </div>
@@ -1054,8 +1112,8 @@
     <section id="navigator" aria-labelledby="navigator-heading">
       <div class="section-inner">
         <p class="section-kicker">Start here</p>
-        <h2 id="navigator-heading">Start with the operating phase route.</h2>
-        <p class="lead">Use this map when you want the shortest path through the collection. Each lane shows the operating phases it supports, who should start there, and which repositories are most ready for review.</p>
+        <h2 id="navigator-heading">Choose the operating problem.</h2>
+        <p class="lead">Use this map when you want the shortest path through the collection. Each route starts with a recurring leadership problem and points to the supporting repositories or artifact sources.</p>
 
         <div class="navigator-lifecycle" aria-label="Operating lifecycle sequence">
           <strong>Lifecycle:</strong>
@@ -1115,9 +1173,9 @@
               <span class="navigator-step active">Delivery readiness</span>
             </div>
             <div class="repo-links">
+              <a href="journeys/ai-idea-to-governed-artifact-lifecycle.html">Follow AI idea to governed artifact lifecycle</a>
               <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">Review AI opportunities</a>
               <a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">Govern AI artifact lifecycle</a>
-              <a href="journeys/ai-idea-to-governed-artifact-lifecycle.html">Follow AI idea to governed artifact lifecycle</a>
               <a href="https://github.com/policani/operating-patterns">Inspect governance patterns</a>
             </div>
           </article>
@@ -1134,9 +1192,9 @@
               <span class="navigator-step active">Funding</span>
             </div>
             <div class="repo-links">
+              <a href="journeys/approved-intent-to-chartered-delivery-start.html">Follow approved intent to chartered delivery start</a>
               <a href="https://github.com/policani/business-case-system">Build business cases</a>
               <a href="https://github.com/policani/project-charter-initiation-agent">Initiate project charters</a>
-              <a href="journeys/approved-intent-to-chartered-delivery-start.html">Follow approved intent to chartered delivery start</a>
             </div>
           </article>
 
@@ -1152,11 +1210,11 @@
               <span class="navigator-step active">Value</span>
             </div>
             <div class="repo-links">
+              <a href="journeys/delivery-readiness-to-value-realization.html">Follow delivery readiness to value realization</a>
               <a href="https://github.com/policani/pmo-governance-operations-log">Track governance operations</a>
               <a href="https://github.com/policani/release-readiness-uat-governance-pack">Prove delivery readiness</a>
               <a href="https://github.com/policani/controls-exposure-governance-toolkit">Review controls and exposure</a>
               <a href="https://github.com/policani/value-realization-governance-ledger">Track value realization</a>
-              <a href="journeys/delivery-readiness-to-value-realization.html">Follow delivery readiness to value realization</a>
             </div>
           </article>
 
@@ -1175,10 +1233,10 @@
               <span class="navigator-step active">Value</span>
             </div>
             <div class="repo-links">
-              <a href="https://github.com/policani/Policani/tree/main/wiki">Review portfolio artifacts</a>
-              <a href="https://github.com/policani/operating-patterns">Inspect artifact source</a>
               <a href="journeys/artifact-source-to-public-safe-proof-review.html">Follow artifact source to public-safe proof review</a>
               <a href="journeys/partner-ecosystem-governance-route.html">Follow partner ecosystem governance route</a>
+              <a href="https://github.com/policani/Policani/tree/main/wiki">Review portfolio artifacts</a>
+              <a href="https://github.com/policani/operating-patterns">Inspect artifact source</a>
               <a href="https://github.com/policani/operating-patterns/tree/main/wiki/Partner-and-Ecosystem-Governance.md">Govern partner ecosystems</a>
             </div>
           </article>
@@ -1189,114 +1247,16 @@
       </div>
     </section>
 
-    <section id="journeys" aria-labelledby="journeys-heading">
-      <div class="section-inner">
-        <p class="section-kicker">Problem routes</p>
-        <h2 id="journeys-heading">Choose the operating problem.</h2>
-        <p class="lead">Read the repositories as routes through recurring leadership problems. Each route starts with a messy operating condition and ends with clearer evidence, ownership, and follow-through.</p>
-
-        <div class="route-graphic" aria-label="Problem to outcome route">
-          <div class="route-step">
-            <strong>Messy demand</strong>
-            <span>Requests, mandates, ideas, and ambiguous work.</span>
-          </div>
-          <div class="route-step">
-            <strong>Structured signal</strong>
-            <span>Ownership, readiness, fit, and duplicate demand.</span>
-          </div>
-          <div class="route-step">
-            <strong>Decision route</strong>
-            <span>Tradeoffs, capacity, sequencing, and evidence.</span>
-          </div>
-          <div class="route-step">
-            <strong>Governed handoff</strong>
-            <span>Funding, charter, delivery gates, and launch evidence.</span>
-          </div>
-          <div class="route-step">
-            <strong>Follow-through</strong>
-            <span>Value claims, realization confidence, and learning.</span>
-          </div>
-        </div>
-
-        <div class="journey-grid">
-          <article class="journey-card">
-            <h3>Visible demand needs governance</h3>
-            <p>When requests, initiatives, mandates, and ideas exist before ownership, readiness, sponsors, route decisions, or portfolio fit are clear.</p>
-            <div class="repo-links">
-              <a href="journeys/messy-demand-to-executive-review.html">Follow messy demand to executive review</a>
-              <a href="https://github.com/policani/ppmo-formation-kit">Shape the PMO intake model</a>
-              <a href="https://github.com/policani/portfolio-signal-quality-auditor">Audit the portfolio signal</a>
-              <a href="https://github.com/policani/portfolio-intake-readiness-triage-system">Triage readiness and ownership</a>
-            </div>
-          </article>
-
-          <article class="journey-card">
-            <h3>Tradeoffs need to become discussable</h3>
-            <p>When leaders need a cleaner way to compare priority, sequencing, capacity, risk, dependencies, decision rights, and follow-through.</p>
-            <div class="repo-links">
-              <a href="journeys/tradeoffs-to-executive-decision-route.html">Follow tradeoffs to executive decision</a>
-              <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Prepare executive review material</a>
-              <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Compare priority and tradeoffs</a>
-              <a href="https://github.com/policani/portfolio-capacity-sequencing-planner">Sequence capacity-constrained work</a>
-            </div>
-          </article>
-
-          <article class="journey-card">
-            <h3>AI activity is outpacing governance</h3>
-            <p>When AI ideas, demos, vendor claims, scripts, agents, dashboards, or informal workflow artifacts need proof, routing, and reliance boundaries.</p>
-            <div class="repo-links">
-              <a href="journeys/ai-idea-to-governed-artifact-lifecycle.html">Follow AI idea to governed artifact lifecycle</a>
-              <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">Assess AI opportunity value</a>
-              <a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">Classify AI artifact risk</a>
-              <a href="https://github.com/policani/operating-patterns">Apply governance patterns</a>
-            </div>
-          </article>
-
-          <article class="journey-card">
-            <h3>Work needs authorization and handoff</h3>
-            <p>When rough ideas need investment logic, or approved intent needs scope, owners, assumptions, risks, dependencies, and planning handoff.</p>
-            <div class="repo-links">
-              <a href="journeys/approved-intent-to-chartered-delivery-start.html">Follow approved intent to chartered delivery start</a>
-              <a href="https://github.com/policani/business-case-system">Turn ideas into investment logic</a>
-              <a href="https://github.com/policani/project-charter-initiation-agent">Move approval into chartered work</a>
-            </div>
-          </article>
-
-          <article class="journey-card">
-            <h3>Delivery readiness, controls, and value need evidence</h3>
-            <p>When launch, validation, exposure, exceptions, signoffs, benefits, or realization confidence need a reviewable record.</p>
-            <div class="repo-links">
-              <a href="journeys/delivery-readiness-to-value-realization.html">Follow delivery readiness to value realization</a>
-              <a href="https://github.com/policani/release-readiness-uat-governance-pack">Validate delivery readiness</a>
-              <a href="https://github.com/policani/controls-exposure-governance-toolkit">Surface control exposure</a>
-              <a href="https://github.com/policani/value-realization-governance-ledger">Track value evidence</a>
-            </div>
-          </article>
-
-          <article class="journey-card">
-            <h3>Innovation or partner ecosystems need boundaries</h3>
-            <p>When emerging work, partner programs, provider networks, external delivery channels, or ambiguous strategic efforts need decision rights, readiness gates, evidence, and review cadence.</p>
-            <div class="repo-links">
-              <a href="journeys/partner-ecosystem-governance-route.html">Follow partner ecosystem governance route</a>
-              <a href="https://github.com/policani/operating-patterns">Use governance artifacts</a>
-              <a href="https://github.com/policani/operating-patterns/tree/main/wiki/Partner-and-Ecosystem-Governance.md">Structure partner governance</a>
-              <a href="https://github.com/policani/operating-patterns/tree/main/wiki/Making-Tradeoffs-Visible.md">Make tradeoffs visible</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section id="proof" class="section-white" aria-labelledby="proof-heading">
       <div class="section-inner">
-        <p class="section-kicker">Evidence gateway</p>
-        <h2 id="proof-heading">Evidence before claims.</h2>
-        <p class="lead">This is the altitude layer: proof that the portfolio is aimed at CIO, CFO, COO, CTO, and CMO-sponsored environments where decisions need clearer evidence, cleaner routes, and visible follow-through. Each proof area points to modules or artifact sources that show the pattern in public-safe form.</p>
+        <p class="section-kicker">Evaluation frame</p>
+        <h2 id="proof-heading">What the portfolio is meant to prove.</h2>
+        <p class="lead">Use this section as the proof lens before opening individual repositories. It names the operating capabilities the portfolio is designed to demonstrate, then points to the public-safe examples behind each claim.</p>
 
         <div class="proof-strip">
           <div class="proof-box">
             <strong>Portfolio signal</strong>
-            <p>Systems that expose stale status, missing owners, duplicate demand, unclear readiness, capacity pressure, and decision gaps.</p>
+            <p>Ability to find stale status, missing owners, duplicate demand, unclear readiness, capacity pressure, and decision gaps before they distort the portfolio.</p>
             <div class="repo-links">
               <a href="https://github.com/policani/portfolio-signal-quality-auditor">Expose weak portfolio signal</a>
               <a href="https://github.com/policani/portfolio-intake-readiness-triage-system">Route intake toward readiness</a>
@@ -1304,7 +1264,7 @@
           </div>
           <div class="proof-box">
             <strong>Decision cadence</strong>
-            <p>Review packs, scorecards, tradeoff views, follow-up registers, and operating rhythms that help leaders decide what to do next.</p>
+            <p>Ability to turn review packs, scorecards, tradeoff views, follow-up registers, and operating rhythms into clearer leadership decisions.</p>
             <div class="repo-links">
               <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Package executive decisions</a>
               <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Compare prioritization evidence</a>
@@ -1312,7 +1272,7 @@
           </div>
           <div class="proof-box">
             <strong>AI operating governance</strong>
-            <p>Use AI for synthesis, classification, drafting, review, and analytical coverage while preserving human accountability.</p>
+            <p>Ability to use AI for synthesis, classification, drafting, review, and analytical coverage while preserving human accountability.</p>
             <div class="repo-links">
               <a href="journeys/ai-idea-to-governed-artifact-lifecycle.html">Follow AI idea to governed artifact lifecycle</a>
               <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">Review AI opportunities with evidence</a>
@@ -1321,7 +1281,7 @@
           </div>
           <div class="proof-box">
             <strong>Evidence discipline</strong>
-            <p>Separate source truth, assumptions, proof gaps, public-safe examples, and generated outputs so claims remain inspectable.</p>
+            <p>Ability to separate source truth, assumptions, proof gaps, public-safe examples, and generated outputs so claims remain inspectable.</p>
             <div class="repo-links">
               <a href="journeys/artifact-source-to-public-safe-proof-review.html">Follow artifact source to public-safe proof review</a>
               <a href="https://github.com/policani/Policani/tree/main/wiki">Inspect portfolio artifacts</a>
