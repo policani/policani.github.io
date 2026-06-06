@@ -140,8 +140,8 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url("assets/portfolio-operations-hero-v9.png") left bottom / cover no-repeat;
-      transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.22);
+      background: url("assets/portfolio-operations-hero-v9.png") center center / cover no-repeat;
+      transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.12);
       transform-origin: left bottom;
       will-change: transform;
       z-index: 0;
@@ -890,6 +890,10 @@
 
       .hero {
         min-height: 66vh;
+      }
+
+      .hero::before {
+        background-position: 18% center;
       }
 
       .journey-grid,
