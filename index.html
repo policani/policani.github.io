@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Marco Policani | Principal / Director-Level Portfolio, PMO, and Executive Operations</title>
   <meta name="description" content="Marco Policani is a Principal / Director-level portfolio, PMO, and executive operations leader focused on governance, decision cadence, delivery readiness, portfolio signal, and AI-assisted operating discipline.">
-  <meta name="keywords" content="Marco Policani, Principal portfolio manager, Director PMO, Director portfolio governance, EPMO, PPMO, executive operations, Chief of Staff decision support, PMO leadership, portfolio governance, program operations, AI-assisted PMO, decision cadence, portfolio prioritization, value realization, release readiness, UAT governance, PMO operating model, partner ecosystem governance, evidence-bound workflows">
+  <meta name="keywords" content="Marco Policani, Principal portfolio manager, Director PMO, Director portfolio governance, EPMO, PPMO, executive operations, Chief of Staff, executive decision support, PMO leadership, portfolio governance, program operations, AI-assisted PMO, decision cadence, portfolio prioritization, value realization, release readiness, UAT governance, PMO operating model, partner ecosystem governance, evidence-bound workflows">
   <meta name="author" content="Marco Policani">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Marco Policani | Principal / Director-Level Portfolio and PMO Leadership">
@@ -36,15 +36,21 @@
       --blue-300: #9fb4d1;
       --blue-500: #3f659f;
       --blue-700: #213f6c;
+      --charcoal: #14161c;
+      --warm-gold: #b78936;
+      --warm-gold-soft: #f7efe0;
+      --notebook: #fff9ed;
+      --sage: #5e7668;
+      --sage-soft: #edf4ef;
       --panel-blue: var(--blue-75);
-      --panel-green: var(--blue-50);
-      --panel-gold: var(--blue-100);
+      --panel-green: var(--sage-soft);
+      --panel-gold: var(--warm-gold-soft);
       --panel-rose: var(--blue-25);
       --teal: #3c5f91;
       --teal-dark: #253f66;
       --blue: #2f5595;
       --blue-dark: #1f3d6d;
-      --gold: #6f7f9c;
+      --gold: var(--warm-gold);
       --rose: #586477;
       --shadow: 0 16px 42px rgba(18, 24, 38, 0.10);
       --radius: 8px;
@@ -253,6 +259,7 @@
       background: rgba(255, 255, 255, 0.9);
       font-weight: 760;
       text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
     }
 
     .button.primary {
@@ -264,6 +271,13 @@
     .button:hover {
       transform: translateY(-1px);
       box-shadow: 0 10px 25px rgba(18, 24, 38, 0.10);
+    }
+
+    .button:focus-visible,
+    .repo-links a:focus-visible,
+    .nav-links a:focus-visible {
+      outline: 3px solid rgba(183, 137, 54, 0.48);
+      outline-offset: 3px;
     }
 
     .local-nav {
@@ -493,6 +507,17 @@
       border-radius: var(--radius);
       background: linear-gradient(180deg, #ffffff 0%, var(--blue-25) 100%);
       box-shadow: 0 1px 0 rgba(18, 24, 38, 0.04);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .journey-card:hover,
+    .lane-card:hover,
+    .navigator-card:hover,
+    .theme-card:hover,
+    .proof-box:hover {
+      border-color: rgba(183, 137, 54, 0.46);
+      box-shadow: 0 18px 36px rgba(18, 24, 38, 0.11);
+      transform: translateY(-2px);
     }
 
     .journey-card:nth-child(1),
@@ -558,7 +583,7 @@
     .navigator-card {
       position: relative;
       overflow: hidden;
-      border-top: 5px solid var(--line-strong);
+      border-top: 5px solid var(--warm-gold);
       background: var(--panel);
     }
 
@@ -590,7 +615,7 @@
       padding: 14px 16px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: var(--blue-50);
+      background: var(--notebook);
     }
 
     .navigator-lifecycle strong {
@@ -689,25 +714,15 @@
       font-weight: 720;
       text-decoration: none;
       white-space: normal;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
     }
 
-    .repo-links a::before {
-      content: "Link";
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 18px;
-      padding: 1px 5px;
-      border: 1px solid rgba(76, 82, 98, 0.24);
-      border-radius: 4px;
-      background: #f7f8fa;
-      color: var(--muted);
-      font-size: 0.62rem;
-      font-weight: 850;
-      letter-spacing: 0.05em;
-      line-height: 1;
-      text-transform: uppercase;
-      flex: 0 0 auto;
+    .repo-links a:hover {
+      border-color: rgba(183, 137, 54, 0.58);
+      background: var(--notebook);
+      box-shadow: 0 8px 18px rgba(18, 24, 38, 0.08);
+      color: var(--ink);
+      transform: translateY(-1px);
     }
 
     .repo-links a[href^="journeys/"] {
@@ -716,28 +731,49 @@
       color: var(--blue-dark);
     }
 
-    .repo-links a[href^="journeys/"]::before {
-      content: "Route";
-      border-color: rgba(36, 90, 146, 0.26);
-      background: var(--blue-50);
-      color: var(--blue-dark);
+    .navigator-card .repo-links,
+    .lane-card .repo-links,
+    .proof-box .repo-links {
+      counter-reset: inspect-path;
+      display: grid;
+      gap: 8px;
     }
 
-    .repo-links a[href^="https://github.com/"]::before {
-      content: "GitHub";
-      border-color: rgba(36, 90, 146, 0.26);
-      background: var(--blue-50);
-      color: var(--blue-dark);
+    .navigator-card .repo-links a,
+    .lane-card .repo-links a,
+    .proof-box .repo-links a {
+      justify-content: flex-start;
+      min-height: 38px;
+      border-color: rgba(159, 180, 209, 0.64);
+      background: #ffffff;
     }
 
-    .repo-links a[href^="https://www.linkedin.com/"]::before {
-      content: "Profile";
-    }
-
-    .repo-links a::after {
-      content: ">";
-      color: var(--blue);
+    .navigator-card .repo-links a::before,
+    .lane-card .repo-links a::before,
+    .proof-box .repo-links a::before {
+      counter-increment: inspect-path;
+      content: counter(inspect-path);
+      display: inline-grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--blue-700);
+      color: #ffffff;
+      font-size: 0.76rem;
       font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    .navigator-card .repo-links::before,
+    .lane-card .repo-links::before,
+    .proof-box .repo-links::before {
+      content: "Inspection path";
+      color: var(--quiet);
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .tool-table-wrap {
@@ -780,6 +816,14 @@
 
     .tool-table tbody tr:nth-child(odd) {
       background: #ffffff;
+    }
+
+    .tool-table tbody tr {
+      transition: background 0.16s ease;
+    }
+
+    .tool-table tbody tr:hover {
+      background: var(--notebook);
     }
 
     .tool-table td {
@@ -854,6 +898,13 @@
       border: 1px solid var(--blue-150);
       border-radius: 6px;
       background: var(--blue-25);
+      transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease;
+    }
+
+    .link-list li:hover {
+      border-color: rgba(183, 137, 54, 0.5);
+      background: var(--notebook);
+      transform: translateY(-1px);
     }
 
     .link-list span {
@@ -1010,7 +1061,7 @@
         "Principal portfolio management",
         "PMO leadership",
         "Executive operations",
-        "Chief of Staff decision support",
+        "Chief of Staff",
         "Executive decision support",
         "AI-assisted workflow architecture",
         "AI governance",
@@ -1260,14 +1311,16 @@
           <span class="hero-tag">Principal portfolio leadership</span>
           <span class="hero-tag">Portfolio governance</span>
           <span class="hero-tag">Executive operations</span>
-          <span class="hero-tag">Chief of Staff decision support</span>
+          <span class="hero-tag">Chief of Staff</span>
+          <span class="hero-tag">Executive decision support</span>
           <span class="hero-tag">AI-assisted PMO</span>
           <span class="hero-tag">Partner ecosystem governance</span>
           <span class="hero-tag">Delivery readiness</span>
           <span class="hero-tag">Value realization</span>
         </div>
         <div class="actions">
-          <a class="button primary" href="#navigator">Choose the operating problem</a>
+          <a class="button primary" href="#proof-snapshot">See the proof snapshot</a>
+          <a class="button" href="#navigator">Choose the operating problem</a>
           <a class="button" href="https://github.com/policani/Policani/tree/main/wiki">Portfolio artifacts</a>
           <a class="button" href="https://github.com/policani">GitHub profile</a>
           <a class="button" href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a>
@@ -1280,8 +1333,9 @@
     <div class="nav-inner">
       <a class="nav-title" href="#main">Marco Policani</a>
       <div class="nav-links">
-        <a href="#navigator">Start</a>
-        <a href="#proof">Proof</a>
+        <a href="#proof-snapshot">Proof</a>
+        <a href="#career-bridge">Fit</a>
+        <a href="#navigator">Routes</a>
         <a href="#modules">Modules</a>
         <a href="#patterns">Artifacts</a>
         <a href="#boundaries">Boundaries</a>
@@ -1313,6 +1367,70 @@
             <a href="https://github.com/policani/Policani/tree/main/wiki">Portfolio artifacts</a>
             <a href="https://github.com/policani?tab=repositories">All repositories</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof-snapshot" aria-labelledby="proof-snapshot-heading">
+      <div class="section-inner">
+        <p class="section-kicker">Proof snapshot</p>
+        <h2 id="proof-snapshot-heading">Evidence-backed operating work, shown without exposing client internals.</h2>
+        <p class="lead">This portfolio is designed for a specific evaluation problem: show enough operating judgment, scale, and outcome discipline to evaluate the candidate, while protecting confidential client systems, proprietary procedures, and identifiable internal context.</p>
+
+        <div class="proof-strip" aria-label="Career proof snapshot">
+          <div class="proof-box">
+            <strong>Executive-sponsored governance</strong>
+            <p>Repeated work with CTO, CIO, CFO, COO, CMO, Senior Director, department-head, product, finance, partner, delivery, and compliance stakeholders where decisions needed clearer structure.</p>
+          </div>
+          <div class="proof-box">
+            <strong>Portfolio signal recovery</strong>
+            <p>Supported large initiative baselines, PPMO formation, operating cadence, lifecycle normalization, intake discipline, capacity sequencing, and sponsor-facing portfolio visibility.</p>
+          </div>
+          <div class="proof-box">
+            <strong>Readiness and control discipline</strong>
+            <p>Built governance around release readiness, UAT evidence, value realization, revenue-sensitive delivery, control exposure, supplier remediation, and decision records.</p>
+          </div>
+          <div class="proof-box">
+            <strong>Governed AI operating leverage</strong>
+            <p>Uses AI to improve synthesis, evidence review, artifact quality, analytical coverage, and workflow repeatability while keeping approvals, risk acceptance, and commitments human-owned.</p>
+          </div>
+        </div>
+
+        <p class="note">The public examples are generalized, synthetic, scrubbed, or pattern-based by design. That is part of the service promise: advertise capability without disclosing a client's operating model, security posture, proprietary workflow, internal artifacts, or confidential decision process.</p>
+      </div>
+    </section>
+
+    <section id="career-bridge" class="section-white" aria-labelledby="career-bridge-heading">
+      <div class="section-inner">
+        <p class="section-kicker">What this demonstrates in practice</p>
+        <h2 id="career-bridge-heading">The repositories are examples. The capability is operating judgment.</h2>
+        <p class="lead">The strongest evaluation path is not a repository-by-repository tour. It is the pattern behind them: how messy work becomes decision-ready, governed, reviewable, and tied to follow-through.</p>
+
+        <div class="lane-grid" aria-label="Career to portfolio bridge">
+          <article class="lane-card">
+            <h3>For PMO, EPMO, and portfolio leaders</h3>
+            <p>Evidence of intake models, portfolio baselines, status signal repair, prioritization logic, sequencing discipline, and governance cadence that make leadership review less dependent on anecdote.</p>
+          </article>
+          <article class="lane-card">
+            <h3>For executives and Chiefs of Staff</h3>
+            <p>Evidence of operating rhythm, decision agendas, owner follow-up, escalation framing, cross-functional coordination, and trusted translation between executive intent and delivery reality.</p>
+          </article>
+          <article class="lane-card">
+            <h3>For finance, revenue, and controls teams</h3>
+            <p>Evidence of readiness gates, validation discipline, exception visibility, revenue-sensitive sequencing, control exposure review, audit-aware follow-through, and value realization hygiene.</p>
+          </article>
+          <article class="lane-card">
+            <h3>For AI operations and governance teams</h3>
+            <p>Evidence of AI use-case review, reliance boundaries, artifact lifecycle controls, human review points, evidence standards, adoption discipline, and business-value allocation.</p>
+          </article>
+          <article class="lane-card">
+            <h3>For partner and external delivery teams</h3>
+            <p>Evidence of qualification paths, provider readiness, partner operating models, escalation routes, compliance controls, launch evidence, and ecosystem follow-through.</p>
+          </article>
+          <article class="lane-card">
+            <h3>For hiring teams evaluating fit</h3>
+            <p>Evidence that the portfolio is intentionally bounded: it demonstrates operating systems, decision support, governance structure, and workflow design without claiming software engineering or proprietary client ownership.</p>
+          </article>
         </div>
       </div>
     </section>

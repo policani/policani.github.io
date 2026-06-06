@@ -106,6 +106,14 @@
       border-bottom: 0;
     }
 
+    tbody tr {
+      transition: background 0.16s ease;
+    }
+
+    tbody tr:hover {
+      background: #fff8eb;
+    }
+
     .page-shell {
       width: min(1180px, calc(100% - 40px));
       margin: 0 auto;
@@ -181,8 +189,15 @@
       margin-top: 22px;
     }
 
-    .pill,
-    .repo-links a {
+    .inspection-path {
+      counter-reset: inspect-path;
+      display: grid;
+      gap: 9px;
+      margin-top: 22px;
+    }
+.pill,
+    .repo-links a,
+    .inspection-path a {
       display: inline-flex;
       align-items: center;
       min-height: 30px;
@@ -196,12 +211,47 @@
       text-decoration: none;
       white-space: normal;
       overflow-wrap: anywhere;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
     }
 
-    .repo-links a {
+    .repo-links a,
+    .inspection-path a {
       color: var(--blue-800);
       background: #ffffff;
       border-color: #b8cde2;
+    }
+
+    .repo-links a:hover,
+    .inspection-path a:hover,
+    .step a:hover {
+      border-color: rgba(138, 90, 22, 0.48);
+      background: #fff8eb;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+      color: var(--blue-950);
+      transform: translateY(-1px);
+    }
+
+    .inspection-path a {
+      justify-content: flex-start;
+      width: 100%;
+      min-height: 42px;
+      border-radius: var(--radius);
+    }
+
+    .inspection-path a::before {
+      counter-increment: inspect-path;
+      content: counter(inspect-path);
+      display: inline-grid;
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--blue-800);
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 900;
+      flex: 0 0 auto;
     }
 
     .hero .pill {
@@ -271,6 +321,15 @@
       border-radius: var(--radius);
       background: var(--panel);
       box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .card:hover,
+    .step:hover,
+    .callout:hover {
+      border-color: rgba(138, 90, 22, 0.44);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.10);
+      transform: translateY(-2px);
     }
 
     .card,
@@ -291,7 +350,7 @@
     .step {
       padding: 16px;
       border-top: 5px solid var(--blue-650);
-      background: var(--blue-075);
+      background: linear-gradient(180deg, #ffffff 0%, var(--blue-075) 100%);
     }
 
     .step strong,
@@ -382,6 +441,29 @@
   </nav>
 
   <main>
+    <section class="section-white">
+      <div class="page-shell">
+        <p class="eyebrow">Executive takeaway</p>
+        <h2>Making tradeoffs discussable before leaders decide</h2>
+        <p class="section-intro">This route demonstrates how competing work becomes comparable: priority logic, capacity pressure, dependencies, risk, and decision asks are made visible before an executive is asked to approve, pause, resequence, or send work back for evidence.</p>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Before</h3>
+            <p>Priority conversations depend on urgency, sponsor volume, stale status, or isolated business cases that do not show the portfolio consequence.</p>
+          </article>
+          <article class="card">
+            <h3>After</h3>
+            <p>Executives see the decision options, the tradeoffs behind each option, the capacity effect, and the follow-up owners needed to keep the decision moving.</p>
+          </article>
+          <article class="card">
+            <h3>Leadership judgment shown</h3>
+            <p>Good governance does not remove executive choice. It gives leaders cleaner evidence so the choice is explicit, comparable, and followable.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="page-shell">
         <p class="eyebrow">Scenario</p>
@@ -575,11 +657,11 @@
 
     <section>
       <div class="page-shell">
-        <p class="eyebrow">Repository route</p>
-        <h2>Where to inspect the modules</h2>
+        <p class="eyebrow">Inspection path</p>
+        <h2>Where to inspect the supporting work</h2>
         <p class="section-intro">The journey summarizes the route. The repositories hold the operating details, examples, runtime files, and review boundaries.</p>
 
-        <div class="repo-links">
+        <div class="inspection-path">
           <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Portfolio Prioritization Scoring Agent</a>
           <a href="https://github.com/policani/portfolio-capacity-sequencing-planner">Portfolio Capacity and Sequencing Planner</a>
           <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Executive Portfolio Review Pack Builder</a>

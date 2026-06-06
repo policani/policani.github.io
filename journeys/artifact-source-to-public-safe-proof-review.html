@@ -107,6 +107,14 @@
       border-bottom: 0;
     }
 
+    tbody tr {
+      transition: background 0.16s ease;
+    }
+
+    tbody tr:hover {
+      background: #fff8eb;
+    }
+
     .page-shell {
       width: min(1180px, calc(100% - 40px));
       margin: 0 auto;
@@ -182,8 +190,15 @@
       margin-top: 22px;
     }
 
-    .pill,
-    .repo-links a {
+    .inspection-path {
+      counter-reset: inspect-path;
+      display: grid;
+      gap: 9px;
+      margin-top: 22px;
+    }
+.pill,
+    .repo-links a,
+    .inspection-path a {
       display: inline-flex;
       align-items: center;
       min-height: 30px;
@@ -197,14 +212,49 @@
       text-decoration: none;
       white-space: normal;
       overflow-wrap: anywhere;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
     }
 
-    .repo-links a {
+    .repo-links a,
+    .inspection-path a {
       color: var(--blue-800);
       background: #ffffff;
       border-color: #b8cde2;
       text-decoration: underline;
       text-underline-offset: 0.18em;
+    }
+
+    .repo-links a:hover,
+    .inspection-path a:hover,
+    .step a:hover {
+      border-color: rgba(138, 90, 22, 0.48);
+      background: #fff8eb;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+      color: var(--blue-950);
+      transform: translateY(-1px);
+    }
+
+    .inspection-path a {
+      justify-content: flex-start;
+      width: 100%;
+      min-height: 42px;
+      border-radius: var(--radius);
+    }
+
+    .inspection-path a::before {
+      counter-increment: inspect-path;
+      content: counter(inspect-path);
+      display: inline-grid;
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--blue-800);
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 900;
+      flex: 0 0 auto;
     }
 
     .hero .pill {
@@ -275,6 +325,15 @@
       border-radius: var(--radius);
       background: var(--panel);
       box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .card:hover,
+    .step:hover,
+    .callout:hover {
+      border-color: rgba(138, 90, 22, 0.44);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.10);
+      transform: translateY(-2px);
     }
 
     .card,
@@ -295,7 +354,7 @@
     .step {
       padding: 16px;
       border-top: 5px solid var(--blue-650);
-      background: var(--blue-075);
+      background: linear-gradient(180deg, #ffffff 0%, var(--blue-075) 100%);
     }
 
     .step span {
@@ -410,6 +469,29 @@
   </nav>
 
   <main>
+    <section class="section-white">
+      <div class="page-shell">
+        <p class="eyebrow">Executive takeaway</p>
+        <h2>Showing capability without disclosing client operating procedures</h2>
+        <p class="section-intro">This route demonstrates the proof-without-disclosure model: source truth, sensitive context, generalized patterns, public examples, capability claims, and review boundaries are separated so a portfolio can be credible without exposing confidential client work.</p>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Before</h3>
+            <p>Career evidence may be real but too sensitive, employer-specific, proprietary, or internally identifying to publish as direct artifacts.</p>
+          </article>
+          <article class="card">
+            <h3>After</h3>
+            <p>Readers can inspect generalized patterns, public-safe examples, source categories, and capability maps while confidential systems and internal procedures remain protected.</p>
+          </article>
+          <article class="card">
+            <h3>Leadership judgment shown</h3>
+            <p>The same discipline used in governance work applies to the portfolio itself: separate evidence, assumptions, disclosure boundaries, and reviewable claims.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="page-shell">
         <p class="eyebrow">Scenario</p>
@@ -621,11 +703,11 @@
 
     <section>
       <div class="page-shell">
-        <p class="eyebrow">Repository and source route</p>
+        <p class="eyebrow">Inspection path</p>
         <h2>Public sources for inspection</h2>
         <p class="section-intro">These are the source links named in the journey. They are listed together so a reviewer can move from this draft into the public materials without hunting.</p>
 
-        <div class="repo-links">
+        <div class="inspection-path">
           <a href="https://github.com/policani/Policani/tree/main/wiki">Policani portfolio wiki pages</a>
           <a href="https://github.com/policani/Policani/blob/main/wiki/Portfolio-Artifact-Map.md">Portfolio Artifact Map</a>
           <a href="https://github.com/policani/operating-patterns">Operating Patterns repository</a>
