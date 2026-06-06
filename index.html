@@ -511,9 +511,13 @@
     }
 
     .journey-card:hover,
+    .journey-card:focus-within,
     .lane-card:hover,
+    .lane-card:focus-within,
     .navigator-card:hover,
+    .navigator-card:focus-within,
     .theme-card:hover,
+    .theme-card:focus-within,
     .proof-box:hover {
       border-color: rgba(183, 137, 54, 0.46);
       box-shadow: 0 18px 36px rgba(18, 24, 38, 0.11);
@@ -554,6 +558,69 @@
     .lane-card:nth-child(6),
     .navigator-card:nth-child(6) {
       background: #f4f7fb;
+    }
+
+    .journey-card:nth-child(7) {
+      background: linear-gradient(180deg, #ffffff 0%, #f7f2e8 100%);
+    }
+
+    .journey-card {
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      border-top: 5px solid var(--blue-700);
+    }
+
+    .journey-card.featured {
+      border-top-color: var(--warm-gold);
+      background: linear-gradient(180deg, var(--notebook) 0%, #ffffff 100%);
+    }
+
+    .journey-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      color: var(--quiet);
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .journey-link,
+    .route-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid rgba(36, 90, 146, 0.32);
+      border-radius: 6px;
+      background: #ffffff;
+      color: var(--blue-dark);
+      font-size: 0.84rem;
+      font-weight: 820;
+      text-decoration: none;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    }
+
+    .journey-link:hover,
+    .route-cta:hover {
+      border-color: rgba(183, 137, 54, 0.58);
+      background: var(--notebook);
+      box-shadow: 0 8px 18px rgba(18, 24, 38, 0.08);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .route-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
     }
 
     .journey-card p,
@@ -1083,6 +1150,7 @@
       {"@type": "CreativeWork", "name": "AI Artifact Lifecycle Governance System", "url": "https://github.com/policani/ai-artifact-lifecycle-governance-system"},
       {"@type": "CreativeWork", "name": "Business Case System", "url": "https://github.com/policani/business-case-system"},
       {"@type": "CreativeWork", "name": "Project Charter Initiation Agent", "url": "https://github.com/policani/project-charter-initiation-agent"},
+      {"@type": "CreativeWork", "name": "Messy Demand to Executive Review", "url": "https://policani.net/journeys/messy-demand-to-executive-review.html"},
       {"@type": "CreativeWork", "name": "AI Idea to Governed Artifact Lifecycle", "url": "https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html"},
       {"@type": "CreativeWork", "name": "Approved Intent to Chartered Delivery Start", "url": "https://policani.net/journeys/approved-intent-to-chartered-delivery-start.html"},
       {"@type": "CreativeWork", "name": "Tradeoffs to Executive Decision Route", "url": "https://policani.net/journeys/tradeoffs-to-executive-decision-route.html"},
@@ -1335,7 +1403,8 @@
       <div class="nav-links">
         <a href="#proof-snapshot">Proof</a>
         <a href="#career-bridge">Fit</a>
-        <a href="#navigator">Routes</a>
+        <a href="#navigator">Problems</a>
+        <a href="#journeys">Journeys</a>
         <a href="#modules">Modules</a>
         <a href="#patterns">Artifacts</a>
         <a href="#boundaries">Boundaries</a>
@@ -1439,7 +1508,7 @@
       <div class="section-inner">
         <p class="section-kicker">Start here</p>
         <h2 id="navigator-heading">Choose the operating problem.</h2>
-        <p class="lead">Use this map when you want the shortest path through the collection. Each route starts with a recurring leadership problem and points to the supporting repositories or artifact sources.</p>
+        <p class="lead">Use this map when you want the shortest path through the collection. Each card starts with a recurring leadership problem, then points to the journey route and supporting repositories or artifact sources.</p>
 
         <div class="navigator-lifecycle" aria-label="Operating lifecycle sequence">
           <strong>Lifecycle:</strong>
@@ -1461,6 +1530,9 @@
             <div class="navigator-flow" aria-label="Operating phases covered">
               <span class="navigator-step active">Intake</span>
             </div>
+            <div class="route-actions" aria-label="Journey route">
+              <a class="route-cta" href="journeys/messy-demand-to-executive-review.html">Open messy demand to executive review</a>
+            </div>
             <div class="repo-links">
               <a href="https://github.com/policani/ppmo-formation-kit">Set up the PPMO intake lane</a>
               <a href="https://github.com/policani/portfolio-signal-quality-auditor">Audit portfolio signal quality</a>
@@ -1478,8 +1550,10 @@
             <div class="navigator-flow" aria-label="Operating phases covered">
               <span class="navigator-step active">Tradeoffs</span>
             </div>
+            <div class="route-actions" aria-label="Journey route">
+              <a class="route-cta" href="journeys/tradeoffs-to-executive-decision-route.html">Open tradeoffs to executive decision</a>
+            </div>
             <div class="repo-links">
-              <a href="journeys/tradeoffs-to-executive-decision-route.html">Follow tradeoffs to executive decision</a>
               <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Build executive review packs</a>
               <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Score priority and tradeoffs</a>
               <a href="https://github.com/policani/portfolio-capacity-sequencing-planner">Plan capacity and sequencing</a>
@@ -1498,8 +1572,10 @@
               <span class="navigator-step active">Tradeoffs</span>
               <span class="navigator-step active">Delivery readiness</span>
             </div>
+            <div class="route-actions" aria-label="Journey route">
+              <a class="route-cta" href="journeys/ai-idea-to-governed-artifact-lifecycle.html">Open AI idea to governed artifact lifecycle</a>
+            </div>
             <div class="repo-links">
-              <a href="journeys/ai-idea-to-governed-artifact-lifecycle.html">Follow AI idea to governed artifact lifecycle</a>
               <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">Review AI opportunities</a>
               <a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">Govern AI artifact lifecycle</a>
               <a href="https://github.com/policani/operating-patterns">Inspect governance patterns</a>
@@ -1517,8 +1593,10 @@
               <span class="navigator-step active">Tradeoffs</span>
               <span class="navigator-step active">Funding</span>
             </div>
+            <div class="route-actions" aria-label="Journey route">
+              <a class="route-cta" href="journeys/approved-intent-to-chartered-delivery-start.html">Open approved intent to chartered delivery start</a>
+            </div>
             <div class="repo-links">
-              <a href="journeys/approved-intent-to-chartered-delivery-start.html">Follow approved intent to chartered delivery start</a>
               <a href="https://github.com/policani/business-case-system">Build business cases</a>
               <a href="https://github.com/policani/project-charter-initiation-agent">Initiate project charters</a>
             </div>
@@ -1535,8 +1613,10 @@
               <span class="navigator-step active">Delivery readiness</span>
               <span class="navigator-step active">Value</span>
             </div>
+            <div class="route-actions" aria-label="Journey route">
+              <a class="route-cta" href="journeys/delivery-readiness-to-value-realization.html">Open delivery readiness to value realization</a>
+            </div>
             <div class="repo-links">
-              <a href="journeys/delivery-readiness-to-value-realization.html">Follow delivery readiness to value realization</a>
               <a href="https://github.com/policani/pmo-governance-operations-log">Track governance operations</a>
               <a href="https://github.com/policani/release-readiness-uat-governance-pack">Prove delivery readiness</a>
               <a href="https://github.com/policani/controls-exposure-governance-toolkit">Review controls and exposure</a>
@@ -1558,9 +1638,11 @@
               <span class="navigator-step active">Delivery readiness</span>
               <span class="navigator-step active">Value</span>
             </div>
+            <div class="route-actions" aria-label="Journey routes">
+              <a class="route-cta" href="journeys/artifact-source-to-public-safe-proof-review.html">Open public-safe proof review</a>
+              <a class="route-cta" href="journeys/partner-ecosystem-governance-route.html">Open partner ecosystem governance</a>
+            </div>
             <div class="repo-links">
-              <a href="journeys/artifact-source-to-public-safe-proof-review.html">Follow artifact source to public-safe proof review</a>
-              <a href="journeys/partner-ecosystem-governance-route.html">Follow partner ecosystem governance route</a>
               <a href="https://github.com/policani/Policani/tree/main/wiki">Review portfolio artifacts</a>
               <a href="https://github.com/policani/operating-patterns">Inspect artifact source</a>
               <a href="https://github.com/policani/operating-patterns/tree/main/wiki/Partner-and-Ecosystem-Governance.md">Govern partner ecosystems</a>
@@ -1569,7 +1651,66 @@
 
         </div>
 
-        <p class="navigator-note">This is the governance route around delivery. Build and test happen inside the funded delivery stream; this portfolio focuses on the readiness evidence, controls, UAT, signoffs, and value follow-through that make delivery reviewable. Inside the cards, each activity link opens the supporting repository or artifact source.</p>
+        <p class="navigator-note">This is the governance route around delivery. Build and test happen inside the funded delivery stream; this portfolio focuses on the readiness evidence, controls, UAT, signoffs, and value follow-through that make delivery reviewable. Route buttons open the narrative journey pages; inspection paths open the supporting repository or artifact source.</p>
+      </div>
+    </section>
+
+    <section id="journeys" class="section-white" aria-labelledby="journeys-heading">
+      <div class="section-inner">
+        <p class="section-kicker">Journey routes</p>
+        <h2 id="journeys-heading">Read the portfolio as a leadership progression.</h2>
+        <p class="lead">These pages are the clearest way to evaluate the work in context. They show how operating problems move from signal, to tradeoff, to authorization, to readiness, to evidence-backed follow-through while keeping client details public-safe.</p>
+
+        <div class="journey-grid" aria-label="Portfolio journey routes">
+          <article class="journey-card featured">
+            <div class="journey-meta">Flagship start</div>
+            <h3>Messy demand to executive review</h3>
+            <p>Shows the full operating pattern: ambiguous demand becomes routed, named, governed, and ready for leadership review.</p>
+            <a class="journey-link" href="journeys/messy-demand-to-executive-review.html">Open journey</a>
+          </article>
+
+          <article class="journey-card">
+            <div class="journey-meta">Portfolio decisions</div>
+            <h3>Tradeoffs to executive decision</h3>
+            <p>Connects prioritization, capacity, sequencing, and executive review into a clearer decision-support path.</p>
+            <a class="journey-link" href="journeys/tradeoffs-to-executive-decision-route.html">Open journey</a>
+          </article>
+
+          <article class="journey-card">
+            <div class="journey-meta">AI governance</div>
+            <h3>AI idea to governed artifact lifecycle</h3>
+            <p>Frames AI opportunities, artifact reliance, value logic, and human review without implying autonomous decision ownership.</p>
+            <a class="journey-link" href="journeys/ai-idea-to-governed-artifact-lifecycle.html">Open journey</a>
+          </article>
+
+          <article class="journey-card">
+            <div class="journey-meta">Authorization</div>
+            <h3>Approved intent to chartered delivery start</h3>
+            <p>Shows how rough approval becomes investment rationale, charter discipline, ownership, and delivery handoff.</p>
+            <a class="journey-link" href="journeys/approved-intent-to-chartered-delivery-start.html">Open journey</a>
+          </article>
+
+          <article class="journey-card">
+            <div class="journey-meta">Readiness and outcomes</div>
+            <h3>Delivery readiness to value realization</h3>
+            <p>Links blockers, UAT evidence, controls, signoffs, benefits, and value confidence into a reviewable governance chain.</p>
+            <a class="journey-link" href="journeys/delivery-readiness-to-value-realization.html">Open journey</a>
+          </article>
+
+          <article class="journey-card">
+            <div class="journey-meta">Evidence integrity</div>
+            <h3>Artifact source to public-safe proof review</h3>
+            <p>Explains how generalized artifacts can show judgment while protecting client systems, procedures, and identifying context.</p>
+            <a class="journey-link" href="journeys/artifact-source-to-public-safe-proof-review.html">Open journey</a>
+          </article>
+
+          <article class="journey-card">
+            <div class="journey-meta">External delivery</div>
+            <h3>Partner ecosystem governance route</h3>
+            <p>Shows qualification, readiness, escalation, evidence, and follow-through for partner and external delivery environments.</p>
+            <a class="journey-link" href="journeys/partner-ecosystem-governance-route.html">Open journey</a>
+          </article>
+        </div>
       </div>
     </section>
 
