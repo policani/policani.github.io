@@ -24,7 +24,7 @@ a:hover { color: var(--blue-dark); }
 nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: .94rem; }
 nav a { color: var(--muted); text-decoration: none; font-weight: 650; }
 nav a:hover { color: var(--ink); }
-.hero { position: relative; overflow: hidden; margin: 0 0 54px; padding: 112px clamp(24px, 6vw, 72px) 104px; background: linear-gradient(90deg, rgba(23,32,51,.91) 0%, rgba(23,32,51,.74) 42%, rgba(23,32,51,.28) 72%, rgba(23,32,51,.05) 100%), url('/assets/portfolio-governance-hero.png') center center / cover no-repeat; color: white; box-shadow: var(--shadow); }
+.hero { position: relative; overflow: hidden; margin: 0 0 54px; padding: 112px clamp(24px, 6vw, 72px) 104px; background: linear-gradient(90deg, rgba(23,32,51,.91) 0%, rgba(23,32,51,.74) 42%, rgba(23,32,51,.28) 72%, rgba(23,32,51,.05) 100%), url('/assets/portfolio-operations-hero-v9.png') center center / cover no-repeat; color: white; box-shadow: var(--shadow); }
 .hero-content { max-width: 880px; }
 .eyebrow, .section-kicker { text-transform: uppercase; letter-spacing: .11em; font-size: .78rem; font-weight: 800; color: var(--gold); margin: 0 0 12px; }
 h1 { font-size: clamp(2.5rem, 7vw, 5.7rem); line-height: .94; letter-spacing: -.06em; margin: 0 0 24px; max-width: 960px; }
