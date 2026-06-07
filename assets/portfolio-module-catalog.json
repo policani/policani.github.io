@@ -2,9 +2,9 @@
   "schemaVersion": "2026-06-03",
   "updated": "2026-06-03",
   "site": "https://policani.net/",
-  "purpose": "Lightweight source of truth for public portfolio module labels, repository URLs, section anchors, operating phases, audiences, proof types, and packaging decisions.",
+  "purpose": "Lightweight source of truth for public portfolio module labels, repository URLs, section anchors, operating phases, audiences, proof types, standalone community resources, and packaging decisions.",
   "packagingPolicy": {
-    "currentDecision": "Do not add another public portfolio module unless the existing landing page, catalog, journey route, artifact library, or source repository cannot explain the capability clearly enough.",
+    "currentDecision": "Do not add another public portfolio module unless the existing landing page, catalog, journey route, strategy-to-execution examples, or source repository cannot explain the capability clearly enough.",
     "preferredPath": "Strengthen existing proof paths before creating new repositories or landing-page lanes.",
     "deferredModuleIdeas": [
       {
@@ -162,25 +162,25 @@
       "title": "Resume Evidence Engine",
       "activityLabel": "Ground career drafting in actual evidence",
       "repositoryUrl": "https://github.com/policani/resume-evidence-engine",
-      "siteSection": "https://policani.net/proof.html#standalone-tools",
+      "siteSection": "https://policani.net/resources.html#resources",
       "audience": "Career documentation and job-search workflow users",
-      "proofType": "Source-truth routing, fit scoring, proof narratives, and DOCX handoff"
+      "resourceValue": "Source-truth routing, fit scoring, proof narratives, and DOCX handoff"
     },
     {
       "title": "Job Boards Scanner",
       "activityLabel": "Collect and rank public job postings",
       "repositoryUrl": "https://github.com/policani/job-boards-scanner",
-      "siteSection": "https://policani.net/proof.html#standalone-tools",
+      "siteSection": "https://policani.net/resources.html#resources",
       "audience": "Local-first job-search workflow users",
-      "proofType": "Posting collection, filtering, ranking, and source-health checks"
+      "resourceValue": "Posting collection, filtering, ranking, and source-health checks"
     },
     {
       "title": "AI Prose Pattern Detector",
       "activityLabel": "Review prose for AI-shaped patterns",
       "repositoryUrl": "https://github.com/policani/ai-prose-pattern-detector",
-      "siteSection": "https://policani.net/proof.html#standalone-tools",
+      "siteSection": "https://policani.net/resources.html#resources",
       "audience": "Professional writing, portfolio, resume, and cover-letter reviewers",
-      "proofType": "AI prose pattern detection and revision guidance"
+      "resourceValue": "AI prose pattern detection and revision guidance"
     }
   ]
 }

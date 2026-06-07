@@ -38,9 +38,9 @@ engineering, ML/data-science, product-owner, or production SaaS ownership.
   support.
 - Keep PMO, portfolio, AI governance, readiness, controls, and value modules
   framed as proof-of-concept operating systems and public-safe examples.
-- Keep the career/evidence tools in a distinct lane as real workflow systems
-  whose transferable proof is source-truth design, evidence routing, fit
-  scoring, hard stops, prose QA, and document handoff.
+- Keep the career, job-search, and writing tools in a distinct "other public
+  resources" lane. They are community resources, not core executive-portfolio
+  proof, even though they can still show broader workflow craft.
 - Use SEO/search language in headings, metadata, and navigation, but keep product
   prose grounded and specific.
 
@@ -54,7 +54,9 @@ engineering, ML/data-science, product-owner, or production SaaS ownership.
 - `/modules.html` groups downloadable proof-of-concept modules by operating
   lifecycle.
 - `/proof.html` holds the proof taxonomy, public-safety boundaries, scope
-  guardrails, and adjacent tool proof.
+  guardrails, and a clearly separated community-resource lane.
+- `/resources.html` holds career, job-search, and writing resources for the
+  broader community; it is not part of the main executive proof path.
 
 ## Source Repositories
 
