@@ -385,6 +385,12 @@ main section {
   font-weight: 800;
 }
 
+.card-actions span {
+  color: var(--blue-700);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
 .repo-links {
   display: flex;
   flex-direction: column;

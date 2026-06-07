@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_qa/
 
 Sitemap: https://policani.net/sitemap.xml
