@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operating History | Marco Policani</title>
+  <meta name="description" content="Public-safe operating-history index for Marco Policani's PMO, portfolio governance, executive operations, AI governance, readiness, and value realization work.">
+  <meta name="author" content="Marco Policani">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://policani.net/operating-history.html">
+  <style>
+    :root {
+      --ink: #111827;
+      --ink-soft: #253044;
+      --muted: #596474;
+      --quiet: #717987;
+      --line: #dde3ec;
+      --paper: #f7f8fa;
+      --panel: #ffffff;
+      --blue-25: #f8fbff;
+      --blue-50: #f2f6fc;
+      --blue-100: #e6eef8;
+      --blue-150: #d9e4f3;
+      --blue-700: #213f6c;
+      --accent: #2f7f95;
+      --accent-soft: #e8f5f7;
+      --gold: #b78936;
+      --gold-soft: #f7efe0;
+      --green-soft: #edf4ef;
+      --red-soft: #fff1ef;
+      --shadow: 0 16px 42px rgba(18, 24, 38, 0.10);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.56;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: #2f5595;
+      text-underline-offset: 0.18em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      overflow-wrap: break-word;
+    }
+
+    h1 {
+      max-width: 940px;
+      margin: 0;
+      color: #ffffff;
+      font-size: clamp(3.2rem, 8vw, 5.2rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4.8vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 12px;
+      z-index: 30;
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      background: var(--ink);
+      color: #ffffff;
+    }
+
+    .skip-link:focus {
+      left: 12px;
+    }
+
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(11, 24, 42, 0.90), rgba(20, 42, 68, 0.74)),
+        url("assets/portfolio-operations-hero-v9.png") center center / cover no-repeat;
+      color: #ffffff;
+      padding: 96px 0 52px;
+    }
+
+    .page-shell,
+    .nav-inner {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow,
+    .section-kicker {
+      margin: 0 0 12px;
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero .eyebrow {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .lead {
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero .lead {
+      margin-top: 22px;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 1.24rem;
+    }
+
+    .meta-row,
+    .nav-links,
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .meta-row {
+      margin-top: 26px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.10);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 13px 0;
+    }
+
+    .nav-title {
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    main section {
+      padding: 52px 0;
+    }
+
+    .section-white {
+      background: #ffffff;
+      border-block: 1px solid var(--line);
+    }
+
+    .grid-3,
+    .grid-4,
+    .case-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .case-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card,
+    .note {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff 0%, var(--blue-25) 100%);
+      box-shadow: 0 1px 0 rgba(18, 24, 38, 0.04);
+    }
+
+    .card p,
+    .note p {
+      color: var(--muted);
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink-soft);
+    }
+
+    .proof-type {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #225c6c;
+      font-size: 0.75rem;
+      font-weight: 850;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .table-wrap {
+      margin-top: 26px;
+      overflow-x: auto;
+      border: 1px solid var(--blue-150);
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      min-width: 1020px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      vertical-align: top;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--blue-150);
+      text-align: left;
+    }
+
+    th {
+      color: #ffffff;
+      background: var(--blue-700);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    tbody tr:nth-child(even) {
+      background: var(--blue-50);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    td {
+      color: var(--muted);
+    }
+
+    td:first-child {
+      color: var(--ink-soft);
+      font-weight: 800;
+    }
+
+    .tag {
+      display: inline-flex;
+      margin: 0 4px 5px 0;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .tag-real {
+      color: #225c6c;
+      background: var(--accent-soft);
+    }
+
+    .tag-pattern {
+      color: #4d643f;
+      background: var(--green-soft);
+    }
+
+    .tag-range {
+      color: #213f6c;
+      background: var(--blue-100);
+    }
+
+    .tag-private {
+      color: #7b3f00;
+      background: var(--gold-soft);
+    }
+
+    .tag-never {
+      color: #9f1b12;
+      background: var(--red-soft);
+    }
+
+    .note {
+      margin-top: 24px;
+      border-left: 5px solid var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .actions {
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      background: #ffffff;
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    @media (max-width: 900px) {
+      .grid-3,
+      .grid-4,
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell,
+      .nav-inner {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .hero {
+        padding: 72px 0 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="hero">
+    <div class="page-shell">
+      <p class="eyebrow">Public-safe proof map</p>
+      <h1>Operating History</h1>
+      <p class="lead">A case index for skeptical hiring reviewers: real operating history summarized as safe categories, separate from synthetic examples and proof-of-concept modules.</p>
+      <div class="meta-row" aria-label="Disclosure posture">
+        <span class="pill">Employer/client names withheld by default</span>
+        <span class="pill">Exact sensitive metrics abstracted</span>
+        <span class="pill">Human-owned AI boundaries</span>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Page navigation">
+    <div class="nav-inner">
+      <a class="nav-title" href="index.html">Marco Policani</a>
+      <div class="nav-links">
+        <a href="index.html#proof-snapshot">Proof</a>
+        <a href="#summary">Summary table</a>
+        <a href="#entries">Case entries</a>
+        <a href="#taxonomy">Proof types</a>
+        <a href="index.html#journeys">Journeys</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="section-white" aria-labelledby="index-heading">
+      <div class="page-shell">
+        <p class="section-kicker">Why this page exists</p>
+        <h2 id="index-heading">The public portfolio is inspectable, but the operating history is intentionally abstracted.</h2>
+        <p class="lead">This page connects real operating contexts to the public modules without publishing employer names, client names, internal systems, customer or supplier identities, deployment sites, exact sensitive financials, or sensitive recovery details. The goal is to show scale, stakeholder altitude, and capability while protecting former sponsors.</p>
+
+        <div class="grid-4" aria-label="Disclosure categories">
+          <article class="card">
+            <span class="proof-type">Real operating history</span>
+            <p>Category-level summaries of actual work and outcomes, with sensitive identifiers removed.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">Generalized pattern</span>
+            <p>Reusable operating models translated from experience into public-safe frameworks.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">Synthetic example</span>
+            <p>Fictional but realistic scenarios used to show how the governance tools behave.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">POC module</span>
+            <p>Public repositories that demonstrate workflow design, not production SaaS or client deployment.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary" aria-labelledby="summary-heading">
+      <div class="page-shell">
+        <p class="section-kicker">Summary table</p>
+        <h2 id="summary-heading">Operating-history cases by disclosure posture.</h2>
+        <p class="lead">Scale signals use ranges, categories, and magnitude language. Exact figures stay private or interview-only unless separately cleared.</p>
+
+        <div class="table-wrap">
+          <table aria-label="Operating history summary">
+            <thead>
+              <tr>
+                <th>Engagement category</th>
+                <th>Role framing</th>
+                <th>Scale class</th>
+                <th>Stakeholder altitude</th>
+                <th>Capability demonstrated</th>
+                <th>Outcome category</th>
+                <th>Disclosure posture</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Global enterprise planning-services platform</td>
+                <td>Helped govern platform controls, partner qualification, delivery standards, and executive reporting.</td>
+                <td>Multibillion-dollar commercial context; global partner ecosystem.</td>
+                <td>Product, finance, partner, sales, and executive stakeholders.</td>
+                <td>Partner ecosystem governance and financial-control visibility.</td>
+                <td>Liability governance, renewal-risk visibility, delivery consistency.</td>
+                <td><span class="tag tag-range">Range/category</span><span class="tag tag-private">Sensitive details private</span></td>
+              </tr>
+              <tr>
+                <td>Revenue-technology portfolio reset</td>
+                <td>Led portfolio signal cleanup, lifecycle normalization, and readiness-gate discipline.</td>
+                <td>Hundreds of initiatives; delivery cycle moved from roughly year-long to months-long work.</td>
+                <td>Revenue technology, product, delivery, and executive reporting stakeholders.</td>
+                <td>Portfolio signal recovery, intake/execution separation, AI-assisted documentation support.</td>
+                <td>Cycle-time compression, clearer capacity, stronger executive confidence.</td>
+                <td><span class="tag tag-range">Range/category</span></td>
+              </tr>
+              <tr>
+                <td>Utility-scale energy delivery governance</td>
+                <td>Built integrated sequencing across deployment, product-readiness, and cybersecurity-planning work.</td>
+                <td>Nine-figure capital context; concurrent utility-scale delivery streams.</td>
+                <td>CTO, COO, operations, engineering, vendor, and delivery stakeholders.</td>
+                <td>Capital-coupled sequencing, risk surfacing, capacity visibility.</td>
+                <td>Earlier conflict detection and clearer commissioning-readiness discussion.</td>
+                <td><span class="tag tag-range">Range/category</span><span class="tag tag-never">No site/customer names</span></td>
+              </tr>
+              <tr>
+                <td>Hypergrowth SaaS PPMO formation</td>
+                <td>Helped form portfolio governance, intake discipline, and executive decision cadence.</td>
+                <td>Several hundred initiatives across acquisition-driven growth.</td>
+                <td>CIO/CFO sponsorship with engineering, product, finance, and IT stakeholders.</td>
+                <td>PPMO formation, capital sequencing, duplicate-work pruning, decision logs.</td>
+                <td>Clearer portfolio baseline and better capital-allocation visibility.</td>
+                <td><span class="tag tag-range">Range/category</span></td>
+              </tr>
+              <tr>
+                <td>SaaS billing and monetization governance</td>
+                <td>Structured cross-functional governance for usage-billing transformation across acquired platforms.</td>
+                <td>Acquisition-linked SaaS billing environment; revenue-sensitive transformation.</td>
+                <td>Finance, product, engineering, operations, support, and marketing stakeholders.</td>
+                <td>Revenue-integrity governance, validation discipline, phased delivery.</td>
+                <td>More consistent billing logic and reduced customer-friction risk.</td>
+                <td><span class="tag tag-range">Range/category</span><span class="tag tag-private">Defect details private</span></td>
+              </tr>
+              <tr>
+                <td>Acquisition-linked supplier remediation</td>
+                <td>Led remediation coordination for supplier governance exposure after acquisition activity.</td>
+                <td>Hundreds of acquired entities; thousands of suppliers.</td>
+                <td>Finance operations, regulatory, supplier, and acquired-entity stakeholders.</td>
+                <td>Supplier mapping, attestation workflow, compliant pathways, monitoring safeguards.</td>
+                <td>Material blind spot closed and repeatable M&amp;A control strengthened.</td>
+                <td><span class="tag tag-range">Range/category</span><span class="tag tag-private">Exact counts private</span></td>
+              </tr>
+              <tr>
+                <td>Finance-critical release readiness</td>
+                <td>Institutionalized pre-UAT readiness and reusable validation artifacts.</td>
+                <td>Concurrent delivery teams; multi-month validation compressed into weeks.</td>
+                <td>Senior finance, engineering, deployment-readiness, and release stakeholders.</td>
+                <td>UAT entry criteria, workback schedules, test evidence, readiness gates.</td>
+                <td>Faster validation, less late rework, stronger release predictability.</td>
+                <td><span class="tag tag-range">Range/category</span></td>
+              </tr>
+              <tr>
+                <td>Partner-led platform pilot governance</td>
+                <td>Established a lightweight operating office over partner-led pilots and release-maturity feedback.</td>
+                <td>Dozens of customer environments; multiple deployment iterations.</td>
+                <td>Product, field, marketing, partner, vendor-support, and customer-facing teams.</td>
+                <td>Pilot PMO, feedback flow, device/software/service coordination, leadership visibility.</td>
+                <td>More consistent execution control and stronger release-maturity signal.</td>
+                <td><span class="tag tag-range">Range/category</span><span class="tag tag-never">No customer/partner names</span></td>
+              </tr>
+              <tr>
+                <td>Launch evidence and partner readiness</td>
+                <td>Built an evidence-production layer over existing technical readiness programs.</td>
+                <td>Hundreds of partner participants; fixed pre-launch deadline.</td>
+                <td>Product, field, marketing, partner, and event-readiness stakeholders.</td>
+                <td>Evidence qualification, content workflow, communications, launch bill of materials.</td>
+                <td>Technical activity converted into reusable launch proof and field confidence.</td>
+                <td><span class="tag tag-range">Range/category</span></td>
+              </tr>
+              <tr>
+                <td>Technical R&amp;D portfolio architecture</td>
+                <td>Designed a multi-criteria intake and prioritization framework for ambiguous technical demand.</td>
+                <td>Cross-functional R&amp;D demand; engineering and executive stakeholder interviews.</td>
+                <td>R&amp;D management, engineers, analysts, and executive stakeholders.</td>
+                <td>Portfolio inventory, intake criteria, comparative evaluation, executive tradeoff view.</td>
+                <td>Demand became visible, comparable, and easier to sequence.</td>
+                <td><span class="tag tag-range">Range/category</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="note">Public figures are source-preserved from resume and case materials and are not independently audited. Public copy uses ranges and categories so the reader can evaluate scale without exposing sponsor-specific operating conditions.</p>
+      </div>
+    </section>
+
+    <section id="entries" class="section-white" aria-labelledby="entries-heading">
+      <div class="page-shell">
+        <p class="section-kicker">Compact entries</p>
+        <h2 id="entries-heading">What each case proves.</h2>
+        <div class="case-grid">
+          <article class="card">
+            <span class="proof-type">Real operating history</span>
+            <h3>Global platform governance</h3>
+            <p>Shows the ability to help govern a large partner-enabled operating platform where delivery standards, commercial exposure, executive reporting, and ecosystem behavior all had to be managed together.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">Real operating history</span>
+            <h3>Portfolio signal reset</h3>
+            <p>Shows the ability to identify false active work, separate readiness from execution, normalize lifecycle signal, and make portfolio conversations less reactive.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">Real operating history</span>
+            <h3>Capital-coupled sequencing</h3>
+            <p>Shows the ability to build integrated sequencing where software readiness, physical deployment, vendor dependencies, and constrained engineering capacity affect business risk.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">Real operating history</span>
+            <h3>PPMO formation</h3>
+            <p>Shows the ability to introduce governance without crushing speed: standardize qualification, surface duplicate work, and create executive visibility while preserving team-level delivery autonomy.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">Real operating history</span>
+            <h3>Revenue and billing governance</h3>
+            <p>Shows the ability to coordinate finance-impacting system change under continuity constraints, keeping validation and monetization integrity visible to cross-functional leaders.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">Real operating history</span>
+            <h3>Supplier remediation</h3>
+            <p>Shows the ability to turn fragmented supplier exposure into mapped workflows, formal evidence, compliant pathways, and forward-looking governance controls.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">Real operating history</span>
+            <h3>Release readiness</h3>
+            <p>Shows the ability to move validation from late-stage interpretation to earlier entry criteria, test-case clarity, workback timing, and reusable readiness artifacts.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">Real operating history</span>
+            <h3>Partner readiness and launch proof</h3>
+            <p>Shows the ability to create an operating layer over partner activity, turning scattered readiness signal into qualified evidence, communications, escalation paths, and launch-usable material.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">Real operating history</span>
+            <h3>R&amp;D portfolio architecture</h3>
+            <p>Shows the ability to structure ambiguous technical demand with consistent intake, multi-criteria evaluation, and executive tradeoff framing when pure financial ranking would miss the point.</p>
+          </article>
+          <article class="card">
+            <span class="proof-type">Public-safe POC modules</span>
+            <h3>Applied AI operating governance</h3>
+            <p>Shows how the same discipline appears in inspectable public modules: AI opportunity review, artifact lifecycle classification, human review, business-value tests, and value follow-through.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="taxonomy" aria-labelledby="taxonomy-heading">
+      <div class="page-shell">
+        <p class="section-kicker">Proof taxonomy</p>
+        <h2 id="taxonomy-heading">How to read the portfolio without mixing proof types.</h2>
+        <div class="grid-3">
+          <article class="card">
+            <strong>Real operating history</strong>
+            <p>Actual experience summarized as public-safe categories. These entries prove scale, stakeholder altitude, operating problem, and capability, not every private detail.</p>
+          </article>
+          <article class="card">
+            <strong>Generalized operating patterns</strong>
+            <p>Reusable frameworks and artifact pages derived from practice but scrubbed of employer names, internal systems, exact dates, and proprietary procedures.</p>
+          </article>
+          <article class="card">
+            <strong>Synthetic public examples</strong>
+            <p>Fictional scenarios and sample tables used to make the module behavior inspectable without implying those examples are client records.</p>
+          </article>
+          <article class="card">
+            <strong>Productized POC modules</strong>
+            <p>Public repositories that show workflow architecture, governance prompts, handoffs, and review boundaries. They do not claim production SaaS or software engineering ownership.</p>
+          </article>
+          <article class="card">
+            <strong>Private or interview-only evidence</strong>
+            <p>Exact figures, source caveats, sensitive mechanics, and deeper contribution context belong in live conversation or private job materials where they can be explained responsibly.</p>
+          </article>
+          <article class="card">
+            <strong>Do-not-use details</strong>
+            <p>Customer names, supplier names, partner names, deployment sites, internal systems, sensitive recovery details, and security-sensitive mechanics stay out of public copy.</p>
+          </article>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="index.html#journeys">Read the journey routes</a>
+          <a class="button" href="index.html#proof">Return to proof frame</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
