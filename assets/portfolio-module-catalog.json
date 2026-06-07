@@ -25,7 +25,7 @@
       "title": "PPMO Formation Kit",
       "activityLabel": "Set up the PPMO intake lane",
       "repositoryUrl": "https://github.com/policani/ppmo-formation-kit",
-      "siteSection": "https://policani.net/#navigator",
+      "siteSection": "https://policani.net/modules.html#intake-signal",
       "phaseCoverage": ["Intake"],
       "audience": "PMO, EPMO, PPMO, and portfolio leaders",
       "proofType": "Intake model and portfolio governance setup"
@@ -34,7 +34,7 @@
       "title": "Portfolio Signal Quality Auditor",
       "activityLabel": "Audit portfolio signal quality",
       "repositoryUrl": "https://github.com/policani/portfolio-signal-quality-auditor",
-      "siteSection": "https://policani.net/#proof",
+      "siteSection": "https://policani.net/proof.html#portfolio-signal",
       "phaseCoverage": ["Intake"],
       "audience": "Portfolio governance and decision-support teams",
       "proofType": "Portfolio signal review and evidence-gap detection"
@@ -43,7 +43,7 @@
       "title": "Portfolio Intake Readiness Triage System",
       "activityLabel": "Triage intake readiness",
       "repositoryUrl": "https://github.com/policani/portfolio-intake-readiness-triage-system",
-      "siteSection": "https://policani.net/#navigator",
+      "siteSection": "https://policani.net/modules.html#intake-signal",
       "phaseCoverage": ["Intake"],
       "audience": "PMO and intake governance teams",
       "proofType": "Readiness triage, ownership, and routing"
@@ -70,7 +70,7 @@
       "title": "Executive Portfolio Review Pack Builder",
       "activityLabel": "Build executive review packs",
       "repositoryUrl": "https://github.com/policani/executive-portfolio-review-pack-builder",
-      "siteSection": "https://policani.net/#proof",
+      "siteSection": "https://policani.net/proof.html#decision-cadence",
       "phaseCoverage": ["Tradeoffs"],
       "audience": "Executive operations, PMO, and portfolio governance teams",
       "proofType": "Decision cadence, review packs, and follow-up registers"
@@ -151,7 +151,7 @@
       "title": "Operating Patterns",
       "activityLabel": "Inspect governance patterns",
       "repositoryUrl": "https://github.com/policani/operating-patterns",
-      "siteSection": "https://policani.net/#patterns",
+      "siteSection": "https://policani.net/artifacts.html",
       "phaseCoverage": ["Intake", "Tradeoffs", "Funding", "Delivery readiness", "Value"],
       "audience": "Reviewers inspecting generalized governance artifacts and operating patterns",
       "proofType": "Public-safe governance patterns, artifact source, and capability evidence"
@@ -162,7 +162,7 @@
       "title": "Resume Evidence Engine",
       "activityLabel": "Ground career drafting in actual evidence",
       "repositoryUrl": "https://github.com/policani/resume-evidence-engine",
-      "siteSection": "https://policani.net/#tools",
+      "siteSection": "https://policani.net/proof.html#standalone-tools",
       "audience": "Career documentation and job-search workflow users",
       "proofType": "Source-truth routing, fit scoring, proof narratives, and DOCX handoff"
     },
@@ -170,7 +170,7 @@
       "title": "Job Boards Scanner",
       "activityLabel": "Collect and rank public job postings",
       "repositoryUrl": "https://github.com/policani/job-boards-scanner",
-      "siteSection": "https://policani.net/#tools",
+      "siteSection": "https://policani.net/proof.html#standalone-tools",
       "audience": "Local-first job-search workflow users",
       "proofType": "Posting collection, filtering, ranking, and source-health checks"
     },
@@ -178,7 +178,7 @@
       "title": "AI Prose Pattern Detector",
       "activityLabel": "Review prose for AI-shaped patterns",
       "repositoryUrl": "https://github.com/policani/ai-prose-pattern-detector",
-      "siteSection": "https://policani.net/#tools",
+      "siteSection": "https://policani.net/proof.html#standalone-tools",
       "audience": "Professional writing, portfolio, resume, and cover-letter reviewers",
       "proofType": "AI prose pattern detection and revision guidance"
     }

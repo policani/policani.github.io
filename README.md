@@ -27,6 +27,10 @@ engineering, ML/data-science, product-owner, or production SaaS ownership.
 ## Content Model
 
 - Lead with role fit and operating problems, not a flat repository list.
+- Keep the top-level website structure explicit:
+  `portfolio.html` for the executive-facing story, `artifacts.html` for
+  evidence-backed artifacts, `modules.html` for reusable operating modules, and
+  `proof.html` for public-safe proof and evaluation boundaries.
 - Anchor the public headline on Principal / Director-level portfolio, PMO, and
   executive operations.
 - Treat Chief of Staff as a target lane only when the role means executive
@@ -39,6 +43,18 @@ engineering, ML/data-science, product-owner, or production SaaS ownership.
   scoring, hard stops, prose QA, and document handoff.
 - Use SEO/search language in headings, metadata, and navigation, but keep product
   prose grounded and specific.
+
+## Web Structure
+
+- `/` is the simplified hiring-manager front door and four-section map.
+- `/portfolio.html` explains role fit, executive operating problems, and the
+  operating-history bridge.
+- `/artifacts.html` shows how strategy becomes execution through public-safe
+  artifact evidence and journey routes.
+- `/modules.html` groups downloadable proof-of-concept modules by operating
+  lifecycle.
+- `/proof.html` holds the proof taxonomy, public-safety boundaries, scope
+  guardrails, and adjacent tool proof.
 
 ## Source Repositories
 
