@@ -1,3 +1,11 @@
+User-agent: PerplexityBot
+Allow: /
+Disallow: /_qa/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /_qa/
+
 User-agent: *
 Allow: /
 Disallow: /_qa/

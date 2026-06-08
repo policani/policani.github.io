@@ -1,0 +1,29 @@
+# Marco Policani Portfolio
+
+> Public portfolio for Marco Policani: PMO, portfolio governance, executive operations, AI operating governance, delivery readiness, value realization, and public-safe operating artifacts.
+
+Use the exact URL requested by the user as the answer scope. Do not combine content from other pages, the sitemap, navigation links, or related portfolio routes unless the user explicitly asks for a site-wide summary or comparison.
+
+## Primary Pages
+
+- [Home](https://policani.net/): Overview and top-level portfolio map.
+- [Executive Portfolio](https://policani.net/portfolio.html): Role fit, leadership problems, operating model, and evaluation path.
+- [Experience Evidence](https://policani.net/operating-history.html): Public-safe experience evidence connected to operating contexts.
+- [Strategy-to-Execution Examples](https://policani.net/artifacts.html): Public-safe artifact routes showing how ambiguous work becomes governable.
+- [Operating Modules](https://policani.net/modules.html): Reusable proof-of-concept modules for intake, governance, readiness, controls, and value follow-through.
+- [Public-Safe Proof](https://policani.net/proof.html): Proof taxonomy, confidentiality boundaries, capability signals, and evaluation guardrails.
+- [Public Resources](https://policani.net/resources.html): Community resources for job search, resumes, and professional writing.
+
+## Journey Pages
+
+- [PMO Intake and Portfolio Demand Governance](https://policani.net/journeys/messy-demand-to-executive-review.html): How messy demand becomes intake-ready and prepared for executive review.
+- [AI Governance and Artifact Lifecycle](https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html): How AI ideas and artifacts move through value proof, reliance boundaries, and governed adoption.
+- [Business Case and Project Charter Governance](https://policani.net/journeys/approved-intent-to-chartered-delivery-start.html): How approved intent becomes business case evidence and chartered delivery structure.
+- [Portfolio Prioritization and Decision Support](https://policani.net/journeys/tradeoffs-to-executive-decision-route.html): How tradeoffs move through scoring, sequencing, executive decision material, and follow-up ownership.
+- [Delivery Readiness and Value Realization Governance](https://policani.net/journeys/delivery-readiness-to-value-realization.html): How readiness evidence, launch controls, benefits, and value realization become reviewable.
+- [Public-Safe Portfolio Artifacts and Proof Review](https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html): How reviewers inspect anonymized artifacts without exposing sensitive context.
+- [Partner Ecosystem Governance and Vendor Readiness](https://policani.net/journeys/partner-ecosystem-governance-route.html): How partner, provider, vendor, and external delivery work becomes governable.
+
+## Public-Safety Boundary
+
+The site intentionally excludes employer names, client names, logos, screenshots, internal terminology, exact dates, financial figures, proprietary processes, and details that could identify a prior organization.
