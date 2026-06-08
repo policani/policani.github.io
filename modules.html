@@ -90,13 +90,34 @@
       <div class="section-inner">
         <p class="section-kicker">Workflow chain</p>
         <h2 id="workflow-heading">The modules follow an operating lifecycle.</h2>
-        <div class="sequence" aria-label="Module workflow chain">
-          <span>Intake</span>
-          <span>Prioritize</span>
-          <span>Authorize</span>
-          <span>Validate</span>
-          <span>Realize</span>
+        <div class="lifecycle-map" aria-label="Module workflow chain from intake to realized value">
+          <a class="lifecycle-step" href="#intake-signal">
+            <span class="step-number">01</span>
+            <strong>Intake</strong>
+            <span>Capture demand, ownership, and signal quality.</span>
+          </a>
+          <a class="lifecycle-step" href="#portfolio-decisions">
+            <span class="step-number">02</span>
+            <strong>Prioritize</strong>
+            <span>Compare tradeoffs, capacity, sequence, and decisions.</span>
+          </a>
+          <a class="lifecycle-step" href="#authorization">
+            <span class="step-number">03</span>
+            <strong>Authorize</strong>
+            <span>Turn intent into investment logic and chartered work.</span>
+          </a>
+          <a class="lifecycle-step" href="#delivery-value">
+            <span class="step-number">04</span>
+            <strong>Validate</strong>
+            <span>Check readiness, signoffs, exposure, and evidence gaps.</span>
+          </a>
+          <a class="lifecycle-step" href="#delivery-value">
+            <span class="step-number">05</span>
+            <strong>Realize</strong>
+            <span>Track benefits, confidence, outcomes, and follow-through.</span>
+          </a>
         </div>
+        <p class="lifecycle-note"><a href="#ai-governance">AI governance modules</a> work as a review layer across the chain when an idea, artifact, or decision path depends on AI-assisted work.</p>
       </div>
     </section>
 
@@ -110,25 +131,31 @@
           <p class="lead">Make the work visible, named, owned, and routed before it becomes false work-in-progress.</p>
           <div class="grid-3">
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Foundation</span>
+                <a class="module-source" href="https://github.com/policani/ppmo-formation-kit" aria-label="View PPMO Formation Kit source on GitHub">GitHub source</a>
+              </div>
               <h3>PPMO Formation Kit</h3>
               <p>Set up the intake lane, governance rhythm, and portfolio operating model.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/ppmo-formation-kit">Open repository</a>
-              </div>
+              <p class="module-fit">Defines the operating frame the other portfolio modules can plug into.</p>
             </article>
             <article class="card module-card" id="portfolio-signal">
+              <div class="module-card-top">
+                <span class="module-role">Signal audit</span>
+                <a class="module-source" href="https://github.com/policani/portfolio-signal-quality-auditor" aria-label="View Portfolio Signal Quality Auditor source on GitHub">GitHub source</a>
+              </div>
               <h3>Portfolio Signal Quality Auditor</h3>
               <p>Find stale status, weak ownership, unclear readiness, and misleading portfolio signal.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/portfolio-signal-quality-auditor">Open repository</a>
-              </div>
+              <p class="module-fit">Improves the quality of the inputs before scoring or executive review.</p>
             </article>
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Demand triage</span>
+                <a class="module-source" href="https://github.com/policani/portfolio-intake-readiness-triage-system" aria-label="View Portfolio Intake Readiness Triage System source on GitHub">GitHub source</a>
+              </div>
               <h3>Portfolio Intake Readiness Triage System</h3>
               <p>Route demand toward readiness before it drifts into unmanaged execution.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/portfolio-intake-readiness-triage-system">Open repository</a>
-              </div>
+              <p class="module-fit">Separates ready work from ideas that still need ownership, facts, or scope.</p>
             </article>
           </div>
         </div>
@@ -138,25 +165,31 @@
           <p class="lead">Turn portfolio data into scoring, sequencing, capacity pressure, dependency views, tradeoff options, and leadership decision asks.</p>
           <div class="grid-3">
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Priority logic</span>
+                <a class="module-source" href="https://github.com/policani/portfolio-prioritization-scoring-agent" aria-label="View Portfolio Prioritization Scoring Agent source on GitHub">GitHub source</a>
+              </div>
               <h3>Portfolio Prioritization Scoring Agent</h3>
               <p>Compare priority, value, urgency, risk, and decision readiness.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/portfolio-prioritization-scoring-agent">Open repository</a>
-              </div>
+              <p class="module-fit">Turns intake signal into an explicit comparison model.</p>
             </article>
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Sequencing</span>
+                <a class="module-source" href="https://github.com/policani/portfolio-capacity-sequencing-planner" aria-label="View Portfolio Capacity Sequencing Planner source on GitHub">GitHub source</a>
+              </div>
               <h3>Portfolio Capacity Sequencing Planner</h3>
               <p>Sequence constrained capacity and make dependency pressure visible.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/portfolio-capacity-sequencing-planner">Open repository</a>
-              </div>
+              <p class="module-fit">Shows what can happen now, later, or only after dependencies clear.</p>
             </article>
             <article class="card module-card" id="decision-cadence">
+              <div class="module-card-top">
+                <span class="module-role">Decision forum</span>
+                <a class="module-source" href="https://github.com/policani/executive-portfolio-review-pack-builder" aria-label="View Executive Portfolio Review Pack Builder source on GitHub">GitHub source</a>
+              </div>
               <h3>Executive Portfolio Review Pack Builder</h3>
               <p>Assemble review packs, decision asks, tradeoff views, and follow-up registers.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/executive-portfolio-review-pack-builder">Open repository</a>
-              </div>
+              <p class="module-fit">Packages the comparison work into leadership-ready choices.</p>
             </article>
           </div>
         </div>
@@ -166,25 +199,31 @@
           <p class="lead">Separate AI ideas from claims, then route artifacts through proof, value, ownership, reliance risk, and human review.</p>
           <div class="grid-3">
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Opportunity review</span>
+                <a class="module-source" href="https://github.com/policani/ai-opportunity-intelligence-review-system" aria-label="View AI Opportunity Intelligence Review System source on GitHub">GitHub source</a>
+              </div>
               <h3>AI Opportunity Intelligence Review System</h3>
               <p>Review AI opportunities for business value, ownership, evidence, and unsupported claims.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">Open repository</a>
-              </div>
+              <p class="module-fit">Tests whether an AI idea has a real use case before artifact governance begins.</p>
             </article>
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Artifact control</span>
+                <a class="module-source" href="https://github.com/policani/ai-artifact-lifecycle-governance-system" aria-label="View AI Artifact Lifecycle Governance System source on GitHub">GitHub source</a>
+              </div>
               <h3>AI Artifact Lifecycle Governance System</h3>
               <p>Classify AI artifact reliance, review needs, approval boundaries, and lifecycle state.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">Open repository</a>
-              </div>
+              <p class="module-fit">Manages how an AI output is reviewed, trusted, changed, and retired.</p>
             </article>
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Pattern library</span>
+                <a class="module-source" href="https://github.com/policani/operating-patterns" aria-label="View Operating Patterns source on GitHub">GitHub source</a>
+              </div>
               <h3>Operating Patterns</h3>
               <p>Apply generalized governance patterns and source artifacts across operating scenarios.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/operating-patterns">Open repository</a>
-              </div>
+              <p class="module-fit">Provides reusable governance patterns that sit underneath several modules.</p>
             </article>
           </div>
         </div>
@@ -194,18 +233,22 @@
           <p class="lead">Move from rough idea to investment logic, then from approved intent to charter, ownership, governance, and delivery handoff.</p>
           <div class="grid-3">
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Investment case</span>
+                <a class="module-source" href="https://github.com/policani/business-case-system" aria-label="View Business Case System source on GitHub">GitHub source</a>
+              </div>
               <h3>Business Case System</h3>
               <p>Build investment rationale, assumptions, value logic, and decision evidence.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/business-case-system">Open repository</a>
-              </div>
+              <p class="module-fit">Converts a selected idea into evidence a sponsor can decide against.</p>
             </article>
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Initiation</span>
+                <a class="module-source" href="https://github.com/policani/project-charter-initiation-agent" aria-label="View Project Charter Initiation Agent source on GitHub">GitHub source</a>
+              </div>
               <h3>Project Charter Initiation Agent</h3>
               <p>Translate approved intent into chartered scope, ownership, risks, governance, and handoff.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/project-charter-initiation-agent">Open repository</a>
-              </div>
+              <p class="module-fit">Carries an approved case into delivery ownership and control rhythm.</p>
             </article>
           </div>
         </div>
@@ -215,32 +258,40 @@
           <p class="lead">Track build and test evidence, blockers, evidence gaps, controls, signoffs, benefits, confidence, and follow-through.</p>
           <div class="grid-3">
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Operating log</span>
+                <a class="module-source" href="https://github.com/policani/pmo-governance-operations-log" aria-label="View PMO Governance Operations Log source on GitHub">GitHub source</a>
+              </div>
               <h3>PMO Governance Operations Log</h3>
               <p>Track blockers, decisions, owners, escalations, and operating cadence.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/pmo-governance-operations-log">Open repository</a>
-              </div>
+              <p class="module-fit">Keeps active governance work visible between review forums.</p>
             </article>
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Readiness gate</span>
+                <a class="module-source" href="https://github.com/policani/release-readiness-uat-governance-pack" aria-label="View Release Readiness UAT Governance Pack source on GitHub">GitHub source</a>
+              </div>
               <h3>Release Readiness UAT Governance Pack</h3>
               <p>Prove delivery and UAT readiness with evidence, signoffs, launch criteria, and blockers.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/release-readiness-uat-governance-pack">Open repository</a>
-              </div>
+              <p class="module-fit">Focuses the delivery checkpoint on proof, ownership, and launch criteria.</p>
             </article>
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Control exposure</span>
+                <a class="module-source" href="https://github.com/policani/controls-exposure-governance-toolkit" aria-label="View Controls Exposure Governance Toolkit source on GitHub">GitHub source</a>
+              </div>
               <h3>Controls Exposure Governance Toolkit</h3>
               <p>Review control exposure, exceptions, evidence gaps, risk posture, and governance cadence.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/controls-exposure-governance-toolkit">Open repository</a>
-              </div>
+              <p class="module-fit">Looks at exception risk and evidence gaps after work is moving.</p>
             </article>
             <article class="card module-card">
+              <div class="module-card-top">
+                <span class="module-role">Benefits follow-up</span>
+                <a class="module-source" href="https://github.com/policani/value-realization-governance-ledger" aria-label="View Value Realization Governance Ledger source on GitHub">GitHub source</a>
+              </div>
               <h3>Value Realization Governance Ledger</h3>
               <p>Track value claims, realization confidence, benefits, evidence quality, and follow-through.</p>
-              <div class="repo-links">
-                <a href="https://github.com/policani/value-realization-governance-ledger">Open repository</a>
-              </div>
+              <p class="module-fit">Closes the loop on whether approved value actually became observable.</p>
             </article>
           </div>
         </div>
