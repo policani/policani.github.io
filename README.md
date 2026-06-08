@@ -71,3 +71,7 @@ The site uses public-safe, generalized language. Do not add employer names,
 client names, logos, screenshots, internal terminology, exact dates, financial
 figures, proprietary processes, or details that could identify a prior
 organization.
+
+## License
+
+Site code, styles, and scripts are licensed under MIT. Written content and other non-code portfolio materials are licensed under CC BY 4.0 with attribution to Marco Policani. See `LICENSE.md`.
