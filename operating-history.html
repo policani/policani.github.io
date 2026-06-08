@@ -104,11 +104,41 @@
     }
 
     .hero {
-      background:
-        linear-gradient(90deg, rgba(11, 24, 42, 0.90), rgba(20, 42, 68, 0.74)),
-        url("assets/portfolio-operations-hero-v9.png") center center / cover no-repeat;
+      position: relative;
+      min-height: clamp(560px, 62vh, 720px);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background: #122137;
       color: #ffffff;
-      padding: 96px 0 52px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url("assets/portfolio-operations-hero-v9.png") center center / cover no-repeat;
+      transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.12);
+      transform-origin: left bottom;
+      will-change: transform;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 20, 36, 0.62) 0%, rgba(8, 20, 36, 0.32) 46%, rgba(8, 20, 36, 0.08) 76%),
+        linear-gradient(180deg, rgba(6, 14, 25, 0.10) 0%, rgba(6, 14, 25, 0.28) 100%);
+    }
+
+    .hero .page-shell {
+      position: relative;
+      z-index: 1;
+      padding: 74px 0 44px;
     }
 
     .page-shell,
@@ -205,6 +235,14 @@
     .section-white {
       background: #ffffff;
       border-block: 1px solid var(--line);
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--quiet);
+      font-size: 0.9rem;
     }
 
     .grid-3,
@@ -394,7 +432,13 @@
       }
 
       .hero {
-        padding: 72px 0 42px;
+        min-height: 560px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce), (max-width: 980px) {
+      .hero::before {
+        transform: none;
       }
     }
   </style>
@@ -402,7 +446,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="hero">
+  <header class="hero" data-parallax-travel="200">
     <div class="page-shell">
       <p class="eyebrow">Public-safe experience proof</p>
       <h1>Experience Evidence</h1>
@@ -415,16 +459,16 @@
     </div>
   </header>
 
-  <nav aria-label="Page navigation">
+  <nav aria-label="Top-level portfolio sections">
     <div class="nav-inner">
-      <a class="nav-title" href="index.html">Marco Policani</a>
+      <a class="nav-title" href="./">Marco Policani</a>
       <div class="nav-links">
+        <a href="portfolio.html">Portfolio</a>
+        <a href="artifacts.html">Examples</a>
+        <a href="modules.html">Modules</a>
         <a href="proof.html">Proof</a>
-        <a href="#proof-snapshot">Proof snapshot</a>
-        <a href="#summary">Experience signals</a>
-        <a href="#entries">What it proves</a>
-        <a href="#taxonomy">Proof types</a>
-        <a href="artifacts.html">Artifacts</a>
+        <a href="resources.html">Resources</a>
+        <a href="#connect">Connect</a>
       </div>
     </div>
   </nav>
@@ -697,6 +741,26 @@
         </div>
       </div>
     </section>
+
+    <section id="connect" class="section-white" aria-labelledby="connect-heading">
+      <div class="page-shell">
+        <p class="section-kicker">Connect</p>
+        <h2 id="connect-heading">Use this as supporting context, not the front door.</h2>
+        <p class="lead">For executive review, the cleaner path is the portfolio, examples, modules, and proof pages. This page exists to add experience context after the proof frame is clear.</p>
+        <div class="actions">
+          <a class="button primary" href="portfolio.html">Return to the executive portfolio</a>
+          <a class="button" href="proof.html">Review public-safe proof</a>
+          <a class="button" href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="page-shell">
+      <p>Marco Policani | <a href="./">Portfolio overview</a> | <a href="https://github.com/policani">GitHub</a> | <a href="https://www.linkedin.com/in/marcpolicani">LinkedIn</a></p>
+    </div>
+  </footer>
+  <script src="assets/hero-parallax.js" defer></script>
 </body>
 </html>
