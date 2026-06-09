@@ -1,16 +1,16 @@
 {
   "schemaVersion": "2026-06-03",
-  "updated": "2026-06-03",
+  "updated": "2026-06-09",
   "site": "https://policani.net/",
-  "purpose": "Lightweight source of truth for public portfolio module labels, repository URLs, section anchors, operating phases, audiences, proof types, standalone community resources, and packaging decisions.",
+  "purpose": "Lightweight source of truth for public portfolio module labels, repository URLs, section anchors, operating phases, audiences, proof types, operating routes, standalone community resources, and packaging decisions.",
   "packagingPolicy": {
-    "currentDecision": "Do not add another public portfolio module unless the existing landing page, catalog, journey route, strategy-to-execution examples, or source repository cannot explain the capability clearly enough.",
+    "currentDecision": "Do not add another public portfolio module unless the existing landing page, catalog, operating route, or source repository cannot explain the capability clearly enough.",
     "preferredPath": "Strengthen existing proof paths before creating new repositories or landing-page lanes.",
     "deferredModuleIdeas": [
       {
-        "title": "AI Governance Portfolio Register",
+        "title": "AI Workflow Governance Portfolio Register",
         "currentHome": "AI idea to governed artifact lifecycle route plus AI opportunity and artifact governance repositories",
-        "decision": "Defer as a standalone module until it fills a proof gap that the current AI governance route cannot cover."
+        "decision": "Defer as a standalone module until it fills a proof gap that the current AI workflow governance route cannot cover."
       },
       {
         "title": "Partner Ecosystem Governance Kit",
@@ -81,8 +81,8 @@
       "repositoryUrl": "https://github.com/policani/ai-opportunity-intelligence-review-system",
       "siteSection": "https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html",
       "phaseCoverage": ["Intake", "Tradeoffs"],
-      "audience": "AI operations, governance, and portfolio teams",
-      "proofType": "AI opportunity value logic, ownership, and review boundaries"
+      "audience": "AI workflow, governance, and portfolio teams",
+      "proofType": "AI workflow opportunity value logic, ownership, and review boundaries"
     },
     {
       "title": "AI Artifact Lifecycle Governance System",
@@ -90,8 +90,8 @@
       "repositoryUrl": "https://github.com/policani/ai-artifact-lifecycle-governance-system",
       "siteSection": "https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html",
       "phaseCoverage": ["Intake", "Tradeoffs", "Delivery readiness"],
-      "audience": "AI governance and operational-risk reviewers",
-      "proofType": "AI artifact classification, reliance gates, and human review"
+      "audience": "AI workflow governance and operational-risk reviewers",
+      "proofType": "AI workflow artifact classification, reliance gates, and human review"
     },
     {
       "title": "Business Case System",
