@@ -1,6 +1,6 @@
-# Marco Policani Portfolio
+# Marc Policani Portfolio
 
-> Public portfolio for Marco Policani: PMO, portfolio governance, executive operations, AI operating governance, delivery readiness, value realization, and public-safe operating artifacts.
+> Public portfolio for Marc Policani: PMO, portfolio governance, executive operations, AI operating governance, delivery readiness, value realization, and public-safe operating artifacts.
 
 Use the exact URL requested by the user as the answer scope. Do not combine content from other pages, the sitemap, navigation links, or related portfolio routes unless the user explicitly asks for a site-wide summary or comparison.
 
@@ -8,7 +8,7 @@ Use the exact URL requested by the user as the answer scope. Do not combine cont
 
 - [Home](https://policani.net/): Overview and top-level portfolio map.
 - [Executive Portfolio](https://policani.net/portfolio.html): Role fit, leadership problems, operating model, and evaluation path.
-- [Experience Evidence](https://policani.net/operating-history.html): Public-safe experience evidence connected to operating contexts.
+- [Experience & Engagement Narratives](https://policani.net/operating-history.html): Ten anonymized engagement narratives (operating problem, structure put in place, what changed) plus public-safe experience evidence connected to operating contexts.
 - [Strategy-to-Execution Examples](https://policani.net/artifacts.html): Public-safe artifact routes showing how ambiguous work becomes governable.
 - [Operating Modules](https://policani.net/modules.html): Reusable proof-of-concept modules for intake, governance, readiness, controls, and value follow-through.
 - [Public-Safe Proof](https://policani.net/proof.html): Proof taxonomy, confidentiality boundaries, capability signals, and evaluation guardrails.
