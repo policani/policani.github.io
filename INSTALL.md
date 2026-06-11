@@ -1,14 +1,11 @@
 # Install these files in `policani.github.io`
 
-Replace these files in the root of the `policani.github.io` repository:
+Replace these files to update the site (source: `policani-site-v2`):
 
-- `index.html`
-- `styles.css`
-- `robots.txt`
-- `sitemap.xml`
+- `index.html`, `portfolio.html`, `artifacts.html`, `modules.html`, `operating-history.html`, `proof.html`, `resources.html`
+- `assets/portfolio-site.css`
+- `assets/hero-parallax.js`
+- `assets/portfolio-module-catalog.json`
+- `journeys/*.html`
 
-Do not list `policani.github.io` as a module. This website is the public front door and portfolio index.
-
-The hero image expects this existing file to remain available:
-
-- `assets/portfolio-governance-hero.png`
+Do not list `policani.github.io` as

@@ -1,766 +1,254 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Public-Safe Portfolio Artifacts and Proof Review | Marco Policani</title>
-  <meta name="description" content="How reviewers inspect anonymized PMO artifacts, operating patterns, source repositories, and proof routes without exposing client details.">
-  <meta name="author" content="Marco Policani">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Public-Safe Portfolio Artifacts and Proof Review | Marco Policani">
-  <meta property="og:description" content="How reviewers inspect anonymized PMO artifacts, operating patterns, source repositories, and proof routes without exposing client details.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html">
-  <meta property="og:image" content="https://policani.net/assets/portfolio-operations-hero-v9.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html">
-  <style>
-    :root {
-      --ink: #111827;
-      --ink-soft: #334155;
-      --muted: #64748b;
-      --paper: #f7f9fc;
-      --panel: #ffffff;
-      --line: #d8e2ee;
-      --blue-950: #122137;
-      --blue-800: #1e3f63;
-      --blue-650: #2d6090;
-      --blue-100: #edf5fb;
-      --blue-075: #f5f9fd;
-      --radius: 8px;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.55;
-    }
-
-    a {
-      color: var(--blue-800);
-      text-underline-offset: 0.18em;
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
-    h1 {
-      max-width: 980px;
-      margin-bottom: 18px;
-      color: #ffffff;
-      font-size: clamp(2.3rem, 5vw, 4.35rem);
-      line-height: 1;
-      letter-spacing: 0;
-    }
-
-    h2 {
-      margin-bottom: 12px;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      line-height: 1.12;
-      letter-spacing: 0;
-    }
-
-    h3 {
-      margin-bottom: 8px;
-      font-size: 1.05rem;
-      line-height: 1.25;
-      letter-spacing: 0;
-    }
-
-    ul {
-      margin: 10px 0 0;
-      padding-left: 1.15rem;
-    }
-
-    li {
-      margin: 7px 0;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: #ffffff;
-      table-layout: fixed;
-    }
-
-    th,
-    td {
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-      vertical-align: top;
-      overflow-wrap: anywhere;
-    }
-
-    th {
-      background: var(--blue-800);
-      color: #ffffff;
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    tr:last-child td {
-      border-bottom: 0;
-    }
-
-    tbody tr {
-      transition: background 0.16s ease;
-    }
-
-    tbody tr:hover {
-      background: #e8f5f7;
-    }
-
-    .page-shell {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .hero {
-      position: relative;
-      display: grid;
-      align-items: end;
-      min-height: clamp(360px, 44vh, 500px);
-      padding: 92px 0 56px;
-      overflow: hidden;
-      background: var(--blue-950);
-      isolation: isolate;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: -10%;
-      background: url("../assets/portfolio-operations-hero-v9.png") center center / cover no-repeat;
-      transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.14);
-      transform-origin: left bottom;
-      will-change: transform;
-      z-index: -2;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(8, 20, 36, 0.66) 0%, rgba(8, 20, 36, 0.44) 44%, rgba(8, 20, 36, 0.12) 74%),
-        linear-gradient(180deg, rgba(6, 14, 25, 0.1) 0%, rgba(6, 14, 25, 0.38) 100%);
-      z-index: -1;
-    }
-
-    .hero .page-shell {
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      margin-bottom: 12px;
-      color: var(--blue-650);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .hero .eyebrow,
-    .hero .lead {
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .hero .lead {
-      max-width: 760px;
-    }
-
-    .lead {
-      max-width: 920px;
-      color: var(--ink-soft);
-      font-size: 1.12rem;
-    }
-
-    .meta-row,
-    .repo-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      margin-top: 22px;
-    }
-
-    .inspection-path {
-      counter-reset: inspect-path;
-      display: grid;
-      gap: 9px;
-      margin-top: 22px;
-    }
-.pill,
-    .repo-links a,
-    .inspection-path a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 30px;
-      padding: 5px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--ink-soft);
-      font-size: 0.82rem;
-      font-weight: 760;
-      text-decoration: none;
-      white-space: normal;
-      overflow-wrap: anywhere;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
-    }
-
-    .repo-links a,
-    .inspection-path a {
-      color: var(--blue-800);
-      background: #ffffff;
-      border-color: #b8cde2;
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
-    }
-
-    .repo-links a:hover,
-    .inspection-path a:hover,
-    .step a:hover {
-      border-color: rgba(47, 127, 149, 0.48);
-      background: #e8f5f7;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
-      color: var(--blue-950);
-      transform: translateY(-1px);
-    }
-
-    .inspection-path a {
-      justify-content: flex-start;
-      width: 100%;
-      min-height: 42px;
-      border-radius: var(--radius);
-    }
-
-    .inspection-path a::before {
-      counter-increment: inspect-path;
-      content: counter(inspect-path);
-      display: inline-grid;
-      width: 24px;
-      height: 24px;
-      margin-right: 8px;
-      place-items: center;
-      border-radius: 999px;
-      background: var(--blue-800);
-      color: #ffffff;
-      font-size: 0.76rem;
-      font-weight: 900;
-      flex: 0 0 auto;
-    }
-
-    .hero .pill {
-      border-color: rgba(255, 255, 255, 0.28);
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-    }
-
-    nav {
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.92);
-    }
-
-    nav .page-shell {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      min-height: 56px;
-    }
-
-    nav .repo-links {
-      margin-top: 0;
-      justify-content: flex-end;
-    }
-
-    nav strong {
-      color: var(--ink);
-    }
-
-    nav a {
-      font-weight: 760;
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
-    }
-
-    section {
-      padding: 42px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-intro {
-      max-width: 900px;
-      color: var(--muted);
-      font-size: 1.03rem;
-    }
-
-    .grid-2,
-    .grid-3,
-    .route {
-      display: grid;
-      gap: 14px;
-      margin-top: 22px;
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .route {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-
-    .card,
-    .step,
-    .callout {
-      min-width: 0;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-    }
-
-    .card:hover,
-    .step:hover,
-    .callout:hover {
-      border-color: rgba(47, 127, 149, 0.44);
-      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.10);
-      transform: translateY(-2px);
-    }
-
-    .card,
-    .callout {
-      padding: 18px;
-    }
-
-    .card p,
-    .callout p {
-      color: var(--muted);
-    }
-
-    .card p:last-child,
-    .callout p:last-child {
-      margin-bottom: 0;
-    }
-
-    .step {
-      padding: 16px;
-      border-top: 5px solid var(--blue-650);
-      background: linear-gradient(180deg, #ffffff 0%, var(--blue-075) 100%);
-    }
-
-    .step span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .source-link {
-      display: inline-block;
-      margin-top: 10px;
-      color: var(--blue-800);
-      font-size: 0.86rem;
-      font-weight: 800;
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
-      overflow-wrap: anywhere;
-    }
-
-    .label {
-      display: inline-flex;
-      margin-bottom: 8px;
-      padding: 3px 8px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--ink-soft);
-      background: #ffffff;
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .callout {
-      border-left: 6px solid var(--blue-650);
-      background: var(--blue-100);
-    }
-
-    .footer-note {
-      padding: 28px 0 46px;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    @media (max-width: 1100px) {
-      .route {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 980px) {
-      .hero::before {
-        background-position: 18% center;
-      }
-
-      .grid-2,
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-
-      nav .page-shell {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 14px 0;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .route {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .page-shell {
-        width: min(100% - 28px, 1180px);
-      }
-
-      th,
-      td {
-        padding: 11px 10px;
-      }
-    }
-  </style>
-  <script type="application/ld+json">
-  {
-      "@context":  "https://schema.org",
-      "@type":  "WebPage",
-      "@id":  "https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html#webpage",
-      "name":  "Public-Safe Portfolio Artifacts and Proof Review | Marco Policani",
-      "url":  "https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html",
-      "description":  "How reviewers inspect anonymized PMO artifacts, operating patterns, source repositories, and proof routes without exposing client details.",
-      "inLanguage":  "en-US",
-      "isPartOf":  {
-                       "@type":  "WebSite",
-                       "name":  "Marco Policani Portfolio",
-                       "url":  "https://policani.net/"
-                   },
-      "author":  {
-                     "@type":  "Person",
-                     "name":  "Marco Policani",
-                     "url":  "https://policani.net/"
-                 }
-  }
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Public-Safe Portfolio Artifacts and Proof Review | Marc Policani</title>
+<meta name="description" content="How reviewers inspect anonymized PMO artifacts, operating patterns, source repositories, and proof routes without exposing client details.">
+<meta name="author" content="Marc Policani">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Public-Safe Portfolio Artifacts and Proof Review | Marc Policani">
+<meta property="og:description" content="How reviewers inspect anonymized PMO artifacts, operating patterns, source repositories, and proof routes without exposing client details.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html">
+<meta property="og:image" content="https://policani.net/assets/portfolio-operations-hero-v9.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html">
+<style>
+:root { --ink: #111827; --ink-soft: #334155; --muted: #64748b; --paper: #f7f9fc; --panel: #ffffff; --line: #d8e2ee; --blue-950: #122137; --blue-800: #1e3f63; --blue-650: #2d6090; --blue-100: #edf5fb; --blue-075: #f5f9fd; --radius: 8px; }
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+a { color: var(--blue-800); text-underline-offset: 0.18em; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { max-width: 980px; margin-bottom: 18px; color: #ffffff; font-size: clamp(2.3rem, 5vw, 4.35rem); line-height: 1; letter-spacing: 0; }
+h2 { margin-bottom: 12px; font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.12; letter-spacing: 0; }
+h3 { margin-bottom: 8px; font-size: 1.05rem; line-height: 1.25; letter-spacing: 0; }
+ul { margin: 10px 0 0; padding-left: 1.15rem; }
+li { margin: 7px 0; }
+table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #ffffff; table-layout: fixed; }
+th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+th { background: var(--blue-800); color: #ffffff; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+tr:last-child td { border-bottom: 0; }
+tbody tr { transition: background .16s ease; }
+tbody tr:hover { background: #e8f5f7; }
+.page-shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+.hero { position: relative; display: grid; align-items: end; min-height: clamp(360px, 44vh, 500px); padding: 92px 0 56px; overflow: hidden; background: var(--blue-950); isolation: isolate; }
+.hero::before { content: ""; position: absolute; inset: -10%; background: url("../assets/portfolio-operations-hero-v9.png") center center / cover no-repeat; transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.14); transform-origin: left bottom; will-change: transform; z-index: -2; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,20,36,.66) 0%, rgba(8,20,36,.44) 44%, rgba(8,20,36,.12) 74%), linear-gradient(180deg, rgba(6,14,25,.1) 0%, rgba(6,14,25,.38) 100%); z-index: -1; }
+.hero .page-shell { position: relative; z-index: 1; }
+.eyebrow { margin-bottom: 12px; color: var(--blue-650); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.hero .eyebrow, .hero .lead { color: rgba(255,255,255,0.8); }
+.hero .lead { max-width: 760px; }
+.lead { max-width: 920px; color: var(--ink-soft); font-size: 1.12rem; }
+.meta-row, .repo-links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 22px; }
+.inspection-path { counter-reset: inspect-path; display: grid; gap: 9px; margin-top: 22px; }
+.pill, .repo-links a, .inspection-path a { display: inline-flex; align-items: center; min-height: 30px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.9); color: var(--ink-soft); font-size: 0.82rem; font-weight: 760; text-decoration: none; white-space: normal; overflow-wrap: anywhere; transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease; }
+.repo-links a, .inspection-path a { color: var(--blue-800); background: #ffffff; border-color: #b8cde2; text-decoration: underline; text-underline-offset: 0.18em; }
+.repo-links a:hover, .inspection-path a:hover, .step a:hover, .source-link:hover { border-color: rgba(47,127,149,.48); background: #e8f5f7; box-shadow: 0 8px 18px rgba(15,23,42,.08); color: var(--blue-950); transform: translateY(-1px); }
+.inspection-path a { justify-content: flex-start; width: 100%; min-height: 42px; border-radius: var(--radius); }
+.inspection-path a::before { counter-increment: inspect-path; content: counter(inspect-path); display: inline-grid; width: 24px; height: 24px; margin-right: 8px; place-items: center; border-radius: 999px; background: var(--blue-800); color: #ffffff; font-size: 0.76rem; font-weight: 900; flex: 0 0 auto; }
+.hero .pill { border-color: rgba(255,255,255,.28); background: rgba(255,255,255,.1); color: #ffffff; }
+nav { border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.92); }
+nav .page-shell { display: flex; justify-content: space-between; align-items: center; gap: 18px; min-height: 56px; }
+nav .repo-links { margin-top: 0; justify-content: flex-end; }
+nav strong { color: var(--ink); }
+nav a { font-weight: 760; text-decoration: underline; text-underline-offset: 0.18em; }
+section { padding: 42px 0; border-bottom: 1px solid var(--line); }
+.section-intro { max-width: 900px; color: var(--muted); font-size: 1.03rem; }
+.grid-2, .grid-3, .route { display: grid; gap: 14px; margin-top: 22px; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.route { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.card, .step, .callout { min-width: 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); box-shadow: 0 1px 0 rgba(15,23,42,.04); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease; }
+.card:hover, .step:hover, .callout:hover { border-color: rgba(47,127,149,.44); box-shadow: 0 16px 32px rgba(15,23,42,.10); transform: translateY(-2px); }
+.card, .callout { padding: 18px; }
+.card p, .callout p { color: var(--muted); }
+.card p:last-child, .callout p:last-child { margin-bottom: 0; }
+.step { padding: 16px; border-top: 5px solid var(--blue-650); background: linear-gradient(180deg, #ffffff 0%, var(--blue-075) 100%); }
+.step span { display: block; color: var(--muted); font-size: 0.92rem; }
+.source-link { display: inline-block; margin-top: 10px; color: var(--blue-800); font-size: 0.86rem; font-weight: 800; text-decoration: underline; text-underline-offset: 0.18em; overflow-wrap: anywhere; }
+.label { display: inline-flex; margin-bottom: 8px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-soft); background: #ffffff; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+.callout { border-left: 6px solid var(--blue-650); background: var(--blue-100); }
+.footer-note { padding: 28px 0 46px; color: var(--muted); font-size: 0.94rem; }
+@media (max-width: 1100px) { .route { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 980px) { .hero::before { background-position: 18% center; } .grid-2, .grid-3 { grid-template-columns: 1fr; } nav .page-shell { align-items: flex-start; flex-direction: column; padding: 14px 0; } }
+@media (max-width: 640px) { .route { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .page-shell { width: min(100% - 28px, 1180px); } th, td { padding: 11px 10px; } }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html#webpage","name":"Public-Safe Portfolio Artifacts and Proof Review | Marc Policani","url":"https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html","description":"How reviewers inspect anonymized PMO artifacts, operating patterns, source repositories, and proof routes without exposing client details.","inLanguage":"en-US","isPartOf":{"@type":"WebSite","name":"Marc Policani Portfolio","url":"https://policani.net/"},"author":{"@type":"Person","name":"Marc Policani","url":"https://policani.net/"}}
+</script>
 </head>
 <body>
-  <header class="hero" data-parallax-travel="210">
-    <div class="page-shell">
-      <p class="eyebrow">Portfolio journey</p>
-      <h1>Artifact Source to Public-Safe Proof Review</h1>
-      <p class="lead">A reviewer path for inspecting the artifact library without losing the difference between source repositories, pattern pages, capability indexes, and module examples.</p>
-      <div class="meta-row" aria-label="Journey scope">
-        <span class="pill">Synthetic review path</span>
-        <span class="pill">Public-safe evidence</span>
-        <span class="pill">Artifact library navigation</span>
-        <span class="pill">Reviewer questions first</span>
-      </div>
-    </div>
-  </header>
+<header class="hero" data-parallax-travel="210">
+<div class="page-shell">
+<p class="eyebrow">Portfolio journey</p>
+<h1>Artifact Source to Public-Safe Proof Review</h1>
+<p class="lead">A reviewer path for inspecting the artifact library without losing the difference between source repositories, pattern pages, capability indexes, and module examples.</p>
+<div class="meta-row" aria-label="Journey scope">
+<span class="pill">Synthetic review path</span>
+<span class="pill">Public-safe evidence</span>
+<span class="pill">Artifact library navigation</span>
+<span class="pill">Reviewer questions first</span>
+</div>
+</div>
+</header>
 
-  <nav aria-label="Journey navigation">
-    <div class="page-shell">
-      <strong>Marco Policani</strong>
-      <div class="repo-links">
-        <a href="../index.html">Portfolio home</a>
-        <a href="../artifacts.html">Operating Routes</a>
-        <a href="../proof.html">Proof</a>
-        <a href="https://github.com/policani/Policani/tree/main/wiki">Portfolio wiki</a>
-        <a href="https://github.com/policani/operating-patterns">Operating Patterns</a>
-      </div>
-    </div>
-  </nav>
+<nav aria-label="Journey navigation">
+<div class="page-shell">
+<strong>Marc Policani</strong>
+<div class="repo-links">
+<a href="../index.html">Portfolio home</a>
+<a href="../artifacts.html">Operating Routes</a>
+<a href="../proof.html">Proof &amp; Boundaries</a>
+<a href="https://github.com/policani/Policani/tree/main/wiki" target="_blank" rel="noopener noreferrer">Portfolio wiki</a>
+<a href="https://github.com/policani/operating-patterns" target="_blank" rel="noopener noreferrer">Operating Patterns</a>
+</div>
+</div>
+</nav>
 
-  <main>
-    <section class="section-white">
-      <div class="page-shell">
-        <p class="eyebrow">Executive takeaway</p>
-        <h2>Showing capability without disclosing client operating procedures</h2>
-        <p class="section-intro">This route demonstrates the proof-without-disclosure model: source truth, sensitive context, generalized patterns, public examples, capability claims, and review boundaries are separated so a portfolio can be credible without exposing confidential client work.</p>
+<main>
+<section class="section-white">
+<div class="page-shell">
+<p class="eyebrow">Executive takeaway</p>
+<h2>Showing capability without disclosing client operating procedures</h2>
+<p class="section-intro">This route demonstrates the proof-without-disclosure model: source truth, sensitive context, generalized patterns, public examples, capability claims, and review boundaries are separated so a portfolio can be credible without exposing confidential client work.</p>
+<div class="callout">
+<h3>Operating context</h3>
+<p>Most of my strongest proof cannot be published as raw artifacts because the useful details sit inside employer systems, sponsor decisions, customer contexts, supplier workflows, or sensitive operating conditions. The public portfolio solves a different problem: show the decision structure while withholding the identifiers. That means translating real operating history into generalized patterns, synthetic examples, disclosure posture, and interview-only proof. This journey shows how a reader can inspect capability without asking former sponsors to carry disclosure risk.</p>
+</div>
+<div class="grid-3">
+<article class="card"><h3>Before</h3><p>Career evidence may be real but too sensitive, employer-specific, proprietary, or internally identifying to publish as direct artifacts.</p></article>
+<article class="card"><h3>After</h3><p>Readers can inspect generalized patterns, public-safe examples, source categories, and capability maps while confidential systems and internal procedures remain protected.</p></article>
+<article class="card"><h3>Leadership judgment shown</h3><p>The same discipline used in governance work applies to the portfolio itself: separate evidence, assumptions, disclosure boundaries, and reviewable claims.</p></article>
+</div>
+</div>
+</section>
 
-        <div class="callout">
-          <h3>Operating context</h3>
-          <p>Most of my strongest proof cannot be published as raw artifacts because the useful details sit inside employer systems, sponsor decisions, customer contexts, supplier workflows, or sensitive operating conditions. The public portfolio solves a different problem: show the decision structure while withholding the identifiers. That means translating real operating history into generalized patterns, synthetic examples, disclosure posture, and interview-only proof. This journey shows how a reader can inspect capability without asking former sponsors to carry disclosure risk.</p>
-        </div>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Scenario</p>
+<h2>The reviewer problem</h2>
+<p class="section-intro">The artifact library has several useful entry points. A reviewer needs a fast way to know which source answers the question in front of them and which link should come first.</p>
+<div class="grid-3">
+<article class="card"><h3>Proof path needed</h3><p>A reviewer wants credible public evidence quickly. They need the map, the live examples, and the source route without reading every repository.</p></article>
+<article class="card"><h3>Source roles can blur</h3><p>Repository READMEs, wiki pages, operating patterns, and capability indexes can all look like the same kind of proof unless the route names their role.</p></article>
+<article class="card"><h3>Review goal</h3><p>Show where to click first for each reviewer need, what each source proves, and how the portfolio stays public-safe and synthetic.</p></article>
+</div>
+</div>
+</section>
 
-        <div class="grid-3">
-          <article class="card">
-            <h3>Before</h3>
-            <p>Career evidence may be real but too sensitive, employer-specific, proprietary, or internally identifying to publish as direct artifacts.</p>
-          </article>
-          <article class="card">
-            <h3>After</h3>
-            <p>Readers can inspect generalized patterns, public-safe examples, source categories, and capability maps while confidential systems and internal procedures remain protected.</p>
-          </article>
-          <article class="card">
-            <h3>Leadership judgment shown</h3>
-            <p>The same discipline used in governance work applies to the portfolio itself: separate evidence, assumptions, disclosure boundaries, and reviewable claims.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Source route</p>
+<h2>Where the inspection starts</h2>
+<p class="section-intro">Each route card names one source family, its review purpose, and the visible link a reviewer should use.</p>
+<div class="route" aria-label="Artifact source route">
+<article class="step">
+<span class="label">Map</span>
+<strong>Portfolio Artifact Map</strong>
+<span>Use this first when the reviewer needs the shortest path from question to proof source.</span>
+<a class="source-link" href="https://github.com/policani/Policani/blob/main/wiki/Portfolio-Artifact-Map.md" target="_blank" rel="noopener noreferrer">Open Portfolio Artifact Map</a>
+</article>
+<article class="step">
+<span class="label">Capability</span>
+<strong>Capability Index</strong>
+<span>Use this when the reviewer wants to connect modules to operating capabilities and governance themes.</span>
+<a class="source-link" href="https://github.com/policani/operating-patterns/tree/main/wiki/Capability-Index.md" target="_blank" rel="noopener noreferrer">Open Capability Index</a>
+</article>
+<article class="step">
+<span class="label">Repository</span>
+<strong>Operating Patterns Repository</strong>
+<span>Use this when the reviewer wants source pages, generalized patterns, and public-safe operating examples.</span>
+<a class="source-link" href="https://github.com/policani/operating-patterns" target="_blank" rel="noopener noreferrer">Open Operating Patterns Repository</a>
+</article>
+<article class="step">
+<span class="label">Wiki</span>
+<strong>Portfolio Wiki Pages</strong>
+<span>Use this when the reviewer wants curated portfolio context across modules and proof artifacts.</span>
+<a class="source-link" href="https://github.com/policani/Policani/tree/main/wiki" target="_blank" rel="noopener noreferrer">Open Portfolio Wiki Pages</a>
+</article>
+<article class="step">
+<span class="label">Examples</span>
+<strong>Module Repositories</strong>
+<span>Use this when the reviewer wants runtime files, README evidence, examples, and implementation boundaries.</span>
+<a class="source-link" href="https://github.com/policani?tab=repositories" target="_blank" rel="noopener noreferrer">Open Module Repositories</a>
+</article>
+</div>
+</div>
+</section>
 
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Scenario</p>
-        <h2>The reviewer problem</h2>
-        <p class="section-intro">The artifact library has several useful entry points. A reviewer needs a fast way to know which source answers the question in front of them and which link should come first.</p>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Synthetic reader input</p>
+<h2>What different reviewers ask</h2>
+<p class="section-intro">These inputs are synthetic. They represent common review needs without using employer names, client details, private records, or confidential operating data.</p>
+<table aria-label="Synthetic reviewer input table">
+<thead><tr><th>Reader</th><th>Primary question</th><th>First source to inspect</th><th>Useful proof signal</th></tr></thead>
+<tbody>
+<tr><td>Recruiter</td><td>Where is the quickest credible proof path?</td><td><a href="https://github.com/policani/Policani/blob/main/wiki/Portfolio-Artifact-Map.md" target="_blank" rel="noopener noreferrer">Portfolio Artifact Map</a></td><td>A guided route from portfolio question to public artifact.</td></tr>
+<tr><td>PMO leader</td><td>Where are the governance frameworks and repeatable patterns?</td><td><a href="https://github.com/policani/operating-patterns" target="_blank" rel="noopener noreferrer">Operating Patterns repository</a></td><td>Generalized operating patterns for portfolio review, intake, decision quality, and follow-through.</td></tr>
+<tr><td>AI operations reader</td><td>Where are reliance boundaries and safe use expectations visible?</td><td><a href="https://github.com/policani/operating-patterns/tree/main/wiki/Capability-Index.md" target="_blank" rel="noopener noreferrer">Capability Index</a></td><td>Capability-level framing that separates automation support from human accountability.</td></tr>
+<tr><td>Hiring manager</td><td>Where is evidence without confidential details?</td><td><a href="https://github.com/policani/Policani/tree/main/wiki" target="_blank" rel="noopener noreferrer">Portfolio wiki pages</a></td><td>Curated, public-safe context that connects examples to operating judgment.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
 
-        <div class="grid-3">
-          <article class="card">
-            <h3>Proof path needed</h3>
-            <p>A reviewer wants credible public evidence quickly. They need the map, the live examples, and the source route without reading every repository.</p>
-          </article>
-          <article class="card">
-            <h3>Source roles can blur</h3>
-            <p>Repository READMEs, wiki pages, operating patterns, and capability indexes can all look like the same kind of proof unless the route names their role.</p>
-          </article>
-          <article class="card">
-            <h3>Review goal</h3>
-            <p>Show where to click first for each reviewer need, what each source proves, and how the portfolio stays public-safe and synthetic.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Evidence produced</p>
+<h2>What the source review creates</h2>
+<p class="section-intro">The review output should make the library easier to inspect. It gives each source a purpose and keeps the evidence path short.</p>
+<div class="grid-2">
+<article class="card"><h3>Reviewer route</h3><ul><li>One click-first source for each common reader question.</li><li>Clear difference between repository source, wiki context, capability index, and module example.</li><li>Direct links to the public sources named in the route.</li></ul></article>
+<article class="card"><h3>Proof inventory</h3><ul><li>Artifact map for discovery.</li><li>Capability index for thematic inspection.</li><li>Operating patterns for governance and review logic.</li><li>Module repositories for runnable or inspectable examples.</li></ul></article>
+<article class="card"><h3>Public-safety check</h3><ul><li>Synthetic reader inputs.</li><li>No employer, client, system, financial, or private operational records.</li><li>Generalized operating patterns instead of confidential case studies.</li></ul></article>
+<article class="card"><h3>Handoff material</h3><ul><li>Exact link targets for the landing page, profile repository, and wiki references.</li><li>Review-first language that can be approved before publication.</li><li>A route that can be linked later without changing shared files today.</li></ul></article>
+</div>
+</div>
+</section>
 
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Source route</p>
-        <h2>Where the inspection starts</h2>
-        <p class="section-intro">Each route card names one source family, its review purpose, and the visible link a reviewer should use. Links are shown as underlined blue text so they read differently from labels and tags.</p>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Final review</p>
+<h2>Which source answers which question</h2>
+<p class="section-intro">This table is the review decision aid. It tells a reviewer what each source is for and where to click first.</p>
+<div class="callout">
+<h3>Review frame</h3>
+<p>Start with the artifact map when the reviewer needs orientation. Move to the capability index for themes, the operating patterns repository for governance logic, and module repositories when the reviewer wants concrete examples or implementation boundaries.</p>
+</div>
+<table aria-label="Final source review table">
+<thead><tr><th>Reviewer question</th><th>Source that answers it</th><th>Where to click first</th><th>What the reviewer should expect</th></tr></thead>
+<tbody>
+<tr><td>How do I navigate the artifact library quickly?</td><td>Portfolio Artifact Map</td><td><a href="https://github.com/policani/Policani/blob/main/wiki/Portfolio-Artifact-Map.md" target="_blank" rel="noopener noreferrer">Open the artifact map</a></td><td>A curated source guide that points from review intent to proof artifact.</td></tr>
+<tr><td>Which capabilities does the portfolio demonstrate?</td><td>Capability Index</td><td><a href="https://github.com/policani/operating-patterns/tree/main/wiki/Capability-Index.md" target="_blank" rel="noopener noreferrer">Open the capability index</a></td><td>A capability-level view across governance, portfolio operations, AI operations, and decision support.</td></tr>
+<tr><td>Where are the reusable governance patterns?</td><td>Operating Patterns repository</td><td><a href="https://github.com/policani/operating-patterns" target="_blank" rel="noopener noreferrer">Open the operating patterns repository</a></td><td>Public-safe pattern pages and source material for inspecting operating approach.</td></tr>
+<tr><td>Where can I see concrete modules and examples?</td><td>Module repositories</td><td><a href="https://github.com/policani?tab=repositories" target="_blank" rel="noopener noreferrer">Open Marc's repositories</a></td><td>README files, examples, runtime folders, and boundaries for individual portfolio modules.</td></tr>
+<tr><td>Where is the curated portfolio context?</td><td>Portfolio wiki pages</td><td><a href="https://github.com/policani/Policani/tree/main/wiki" target="_blank" rel="noopener noreferrer">Open the portfolio wiki</a></td><td>A public-facing explanation layer that connects source artifacts to reviewer needs.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
 
-        <div class="route" aria-label="Artifact source route">
-          <article class="step">
-            <span class="label">Map</span>
-            <strong>Portfolio Artifact Map</strong>
-            <span>Use this first when the reviewer needs the shortest path from question to proof source.</span>
-            <a class="source-link" href="https://github.com/policani/Policani/blob/main/wiki/Portfolio-Artifact-Map.md">Open Portfolio Artifact Map</a>
-          </article>
-          <article class="step">
-            <span class="label">Capability</span>
-            <strong>Capability Index</strong>
-            <span>Use this when the reviewer wants to connect modules to operating capabilities and governance themes.</span>
-            <a class="source-link" href="https://github.com/policani/operating-patterns/tree/main/wiki/Capability-Index.md">Open Capability Index</a>
-          </article>
-          <article class="step">
-            <span class="label">Repository</span>
-            <strong>Operating Patterns Repository</strong>
-            <span>Use this when the reviewer wants source pages, generalized patterns, and public-safe operating examples.</span>
-            <a class="source-link" href="https://github.com/policani/operating-patterns">Open Operating Patterns Repository</a>
-          </article>
-          <article class="step">
-            <span class="label">Wiki</span>
-            <strong>Portfolio Wiki Pages</strong>
-            <span>Use this when the reviewer wants curated portfolio context across modules and proof artifacts.</span>
-            <a class="source-link" href="https://github.com/policani/Policani/tree/main/wiki">Open Portfolio Wiki Pages</a>
-          </article>
-          <article class="step">
-            <span class="label">Examples</span>
-            <strong>Module Repositories</strong>
-            <span>Use this when the reviewer wants runtime files, README evidence, examples, and implementation boundaries.</span>
-            <a class="source-link" href="https://github.com/policani?tab=repositories">Open Module Repositories</a>
-          </article>
-        </div>
-      </div>
-    </section>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Inspection path</p>
+<h2>Public sources for inspection</h2>
+<p class="section-intro">These are the source links named in the journey. They are listed together so a reviewer can move from this draft into the public materials without hunting.</p>
+<div class="inspection-path">
+<a href="https://github.com/policani/Policani/tree/main/wiki" target="_blank" rel="noopener noreferrer">Policani portfolio wiki pages</a>
+<a href="https://github.com/policani/Policani/blob/main/wiki/Portfolio-Artifact-Map.md" target="_blank" rel="noopener noreferrer">Portfolio Artifact Map</a>
+<a href="https://github.com/policani/operating-patterns" target="_blank" rel="noopener noreferrer">Operating Patterns repository</a>
+<a href="https://github.com/policani/operating-patterns/tree/main/wiki" target="_blank" rel="noopener noreferrer">Operating Patterns wiki/source pages</a>
+<a href="https://github.com/policani/operating-patterns/tree/main/wiki/Capability-Index.md" target="_blank" rel="noopener noreferrer">Capability Index</a>
+<a href="https://github.com/policani?tab=repositories" target="_blank" rel="noopener noreferrer">Module repositories</a>
+</div>
+</div>
+</section>
+</main>
 
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Synthetic reader input</p>
-        <h2>What different reviewers ask</h2>
-        <p class="section-intro">These inputs are synthetic. They represent common review needs without using employer names, client details, private records, or confidential operating data.</p>
-
-        <table aria-label="Synthetic reviewer input table">
-          <thead>
-            <tr>
-              <th>Reader</th>
-              <th>Primary question</th>
-              <th>First source to inspect</th>
-              <th>Useful proof signal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Recruiter</td>
-              <td>Where is the quickest credible proof path?</td>
-              <td><a href="https://github.com/policani/Policani/blob/main/wiki/Portfolio-Artifact-Map.md">Portfolio Artifact Map</a></td>
-              <td>A guided route from portfolio question to public artifact.</td>
-            </tr>
-            <tr>
-              <td>PMO leader</td>
-              <td>Where are the governance frameworks and repeatable patterns?</td>
-              <td><a href="https://github.com/policani/operating-patterns">Operating Patterns repository</a></td>
-              <td>Generalized operating patterns for portfolio review, intake, decision quality, and follow-through.</td>
-            </tr>
-            <tr>
-              <td>AI operations reader</td>
-              <td>Where are reliance boundaries and safe use expectations visible?</td>
-              <td><a href="https://github.com/policani/operating-patterns/tree/main/wiki/Capability-Index.md">Capability Index</a></td>
-              <td>Capability-level framing that separates automation support from human accountability.</td>
-            </tr>
-            <tr>
-              <td>Hiring manager</td>
-              <td>Where is evidence without confidential details?</td>
-              <td><a href="https://github.com/policani/Policani/tree/main/wiki">Portfolio wiki pages</a></td>
-              <td>Curated, public-safe context that connects examples to operating judgment.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Evidence produced</p>
-        <h2>What the source review creates</h2>
-        <p class="section-intro">The review output should make the library easier to inspect. It gives each source a purpose and keeps the evidence path short.</p>
-
-        <div class="grid-2">
-          <article class="card">
-            <h3>Reviewer route</h3>
-            <ul>
-              <li>One click-first source for each common reader question.</li>
-              <li>Clear difference between repository source, wiki context, capability index, and module example.</li>
-              <li>Direct links to the public sources named in the route.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Proof inventory</h3>
-            <ul>
-              <li>Artifact map for discovery.</li>
-              <li>Capability index for thematic inspection.</li>
-              <li>Operating patterns for governance and review logic.</li>
-              <li>Module repositories for runnable or inspectable examples.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Public-safety check</h3>
-            <ul>
-              <li>Synthetic reader inputs.</li>
-              <li>No employer, client, system, financial, or private operational records.</li>
-              <li>Generalized operating patterns instead of confidential case studies.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Handoff material</h3>
-            <ul>
-              <li>Exact link targets for the landing page, profile repository, and wiki references.</li>
-              <li>Review-first language that can be approved before publication.</li>
-              <li>A route that can be linked later without changing shared files today.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Final review</p>
-        <h2>Which source answers which question</h2>
-        <p class="section-intro">This table is the review decision aid. It tells a reviewer what each source is for and where to click first.</p>
-
-        <div class="callout">
-          <h3>Review frame</h3>
-          <p>Start with the artifact map when the reviewer needs orientation. Move to the capability index for themes, the operating patterns repository for governance logic, and module repositories when the reviewer wants concrete examples or implementation boundaries.</p>
-        </div>
-
-        <table aria-label="Final source review table">
-          <thead>
-            <tr>
-              <th>Reviewer question</th>
-              <th>Source that answers it</th>
-              <th>Where to click first</th>
-              <th>What the reviewer should expect</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>How do I navigate the artifact library quickly?</td>
-              <td>Portfolio Artifact Map</td>
-              <td><a href="https://github.com/policani/Policani/blob/main/wiki/Portfolio-Artifact-Map.md">Open the artifact map</a></td>
-              <td>A curated source guide that points from review intent to proof artifact.</td>
-            </tr>
-            <tr>
-              <td>Which capabilities does the portfolio demonstrate?</td>
-              <td>Capability Index</td>
-              <td><a href="https://github.com/policani/operating-patterns/tree/main/wiki/Capability-Index.md">Open the capability index</a></td>
-              <td>A capability-level view across governance, portfolio operations, AI operations, and decision support.</td>
-            </tr>
-            <tr>
-              <td>Where are the reusable governance patterns?</td>
-              <td>Operating Patterns repository</td>
-              <td><a href="https://github.com/policani/operating-patterns">Open the operating patterns repository</a></td>
-              <td>Public-safe pattern pages and source material for inspecting operating approach.</td>
-            </tr>
-            <tr>
-              <td>Where can I see concrete modules and examples?</td>
-              <td>Module repositories</td>
-              <td><a href="https://github.com/policani?tab=repositories">Open Marco's repositories</a></td>
-              <td>README files, examples, runtime folders, and boundaries for individual portfolio modules.</td>
-            </tr>
-            <tr>
-              <td>Where is the curated portfolio context?</td>
-              <td>Portfolio wiki pages</td>
-              <td><a href="https://github.com/policani/Policani/tree/main/wiki">Open the portfolio wiki</a></td>
-              <td>A public-facing explanation layer that connects source artifacts to reviewer needs.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Inspection path</p>
-        <h2>Public sources for inspection</h2>
-        <p class="section-intro">These are the source links named in the journey. They are listed together so a reviewer can move from this draft into the public materials without hunting.</p>
-
-        <div class="inspection-path">
-          <a href="https://github.com/policani/Policani/tree/main/wiki">Policani portfolio wiki pages</a>
-          <a href="https://github.com/policani/Policani/blob/main/wiki/Portfolio-Artifact-Map.md">Portfolio Artifact Map</a>
-          <a href="https://github.com/policani/operating-patterns">Operating Patterns repository</a>
-          <a href="https://github.com/policani/operating-patterns/tree/main/wiki">Operating Patterns wiki/source pages</a>
-          <a href="https://github.com/policani/operating-patterns/tree/main/wiki/Capability-Index.md">Capability Index</a>
-          <a href="https://github.com/policani?tab=repositories">Module repositories</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="page-shell footer-note">
-    <p>This journey is a synthetic public portfolio draft. It does not include employer names, client names, confidential figures, proprietary terms, private systems, internal screenshots, or actual operational records. The review path points to public source material only.</p>
-  </footer>
-  <script src="../assets/hero-parallax.js" defer></script>
-</body>
-</html>
+<footer class="page-shell footer-note">
+<p>This journey is a synthetic public portfolio draft. It does not include employer names, client names, confidential figures, proprietary terms, private systems, internal screenshots, or actual operational records. The review path points to public source material only.</p>
+</footer>
+<script src="../assets/hero-parallax.js" defer></script>

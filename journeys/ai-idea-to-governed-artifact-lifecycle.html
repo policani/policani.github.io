@@ -1,766 +1,227 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI Workflow and Artifact Lifecycle | Marco Policani</title>
-  <meta name="description" content="How AI-assisted workflow ideas, agents, dashboards, and vendor claims move through value proof, reliance boundaries, human review, and governed adoption.">
-  <meta name="author" content="Marco Policani">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="AI Workflow and Artifact Lifecycle | Marco Policani">
-  <meta property="og:description" content="How AI-assisted workflow ideas, agents, dashboards, and vendor claims move through value proof, reliance boundaries, human review, and governed adoption.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html">
-  <meta property="og:image" content="https://policani.net/assets/portfolio-operations-hero-v9.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html">
-  <style>
-    :root {
-      --ink: #111827;
-      --ink-soft: #334155;
-      --muted: #64748b;
-      --paper: #f7f9fc;
-      --panel: #ffffff;
-      --line: #d8e2ee;
-      --blue-950: #122137;
-      --blue-800: #1e3f63;
-      --blue-650: #2d6090;
-      --blue-100: #edf5fb;
-      --blue-075: #f5f9fd;
-      --radius: 8px;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.55;
-    }
-
-    a {
-      color: var(--blue-800);
-      text-underline-offset: 0.18em;
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
-    h1 {
-      max-width: 980px;
-      margin-bottom: 18px;
-      color: #ffffff;
-      font-size: clamp(2.25rem, 5vw, 4.35rem);
-      line-height: 1;
-      letter-spacing: 0;
-    }
-
-    h2 {
-      margin-bottom: 12px;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      line-height: 1.12;
-      letter-spacing: 0;
-    }
-
-    h3 {
-      margin-bottom: 8px;
-      font-size: 1.05rem;
-      line-height: 1.25;
-      letter-spacing: 0;
-    }
-
-    ul {
-      margin: 10px 0 0;
-      padding-left: 1.15rem;
-    }
-
-    li {
-      margin: 7px 0;
-    }
-
-    table {
-      width: 100%;
-      table-layout: fixed;
-      border-collapse: collapse;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: #ffffff;
-    }
-
-    th,
-    td {
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-      vertical-align: top;
-      overflow-wrap: anywhere;
-    }
-
-    th {
-      background: var(--blue-800);
-      color: #ffffff;
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    tr:last-child td {
-      border-bottom: 0;
-    }
-
-    tbody tr {
-      transition: background 0.16s ease;
-    }
-
-    tbody tr:hover {
-      background: #e8f5f7;
-    }
-
-    .page-shell {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .hero {
-      position: relative;
-      display: grid;
-      align-items: end;
-      min-height: clamp(360px, 44vh, 500px);
-      padding: 92px 0 56px;
-      overflow: hidden;
-      background: var(--blue-950);
-      isolation: isolate;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: -10%;
-      background: url("../assets/portfolio-operations-hero-v9.png") center center / cover no-repeat;
-      transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.14);
-      transform-origin: left bottom;
-      will-change: transform;
-      z-index: -2;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(8, 20, 36, 0.66) 0%, rgba(8, 20, 36, 0.44) 44%, rgba(8, 20, 36, 0.12) 74%),
-        linear-gradient(180deg, rgba(6, 14, 25, 0.1) 0%, rgba(6, 14, 25, 0.38) 100%);
-      z-index: -1;
-    }
-
-    .hero .page-shell {
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      margin-bottom: 12px;
-      color: var(--blue-650);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .hero .eyebrow,
-    .hero .lead {
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .hero .lead {
-      max-width: 760px;
-    }
-
-    .lead {
-      max-width: 920px;
-      color: var(--ink-soft);
-      font-size: 1.12rem;
-    }
-
-    .meta-row,
-    .repo-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      margin-top: 22px;
-    }
-
-    .inspection-path {
-      counter-reset: inspect-path;
-      display: grid;
-      gap: 9px;
-      margin-top: 22px;
-    }
-.pill,
-    .repo-links a,
-    .inspection-path a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 30px;
-      padding: 5px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--ink-soft);
-      font-size: 0.82rem;
-      font-weight: 760;
-      text-decoration: none;
-      white-space: normal;
-      overflow-wrap: anywhere;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
-    }
-
-    .repo-links a,
-    .inspection-path a {
-      color: var(--blue-800);
-      background: #ffffff;
-      border-color: #b8cde2;
-    }
-
-    .repo-links a:hover,
-    .inspection-path a:hover,
-    .step a:hover {
-      border-color: rgba(47, 127, 149, 0.48);
-      background: #e8f5f7;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
-      color: var(--blue-950);
-      transform: translateY(-1px);
-    }
-
-    .inspection-path a {
-      justify-content: flex-start;
-      width: 100%;
-      min-height: 42px;
-      border-radius: var(--radius);
-    }
-
-    .inspection-path a::before {
-      counter-increment: inspect-path;
-      content: counter(inspect-path);
-      display: inline-grid;
-      width: 24px;
-      height: 24px;
-      margin-right: 8px;
-      place-items: center;
-      border-radius: 999px;
-      background: var(--blue-800);
-      color: #ffffff;
-      font-size: 0.76rem;
-      font-weight: 900;
-      flex: 0 0 auto;
-    }
-
-    .hero .pill {
-      border-color: rgba(255, 255, 255, 0.28);
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-    }
-
-    nav {
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.92);
-    }
-
-    nav .page-shell {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      min-height: 56px;
-    }
-
-    nav .repo-links {
-      margin-top: 0;
-      justify-content: flex-end;
-    }
-
-    nav strong {
-      color: var(--ink);
-    }
-
-    nav a {
-      font-weight: 760;
-      text-decoration: none;
-    }
-
-    section {
-      padding: 42px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-intro {
-      max-width: 900px;
-      color: var(--muted);
-      font-size: 1.03rem;
-    }
-
-    .grid-2,
-    .grid-3,
-    .route {
-      display: grid;
-      gap: 14px;
-      margin-top: 22px;
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .route {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-
-    .card,
-    .step,
-    .callout {
-      min-width: 0;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-    }
-
-    .card:hover,
-    .step:hover,
-    .callout:hover {
-      border-color: rgba(47, 127, 149, 0.44);
-      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.10);
-      transform: translateY(-2px);
-    }
-
-    .card,
-    .callout {
-      padding: 18px;
-    }
-
-    .card p,
-    .callout p {
-      color: var(--muted);
-    }
-
-    .card p:last-child,
-    .callout p:last-child {
-      margin-bottom: 0;
-    }
-
-    .step {
-      padding: 16px;
-      border-top: 5px solid var(--blue-650);
-      background: linear-gradient(180deg, #ffffff 0%, var(--blue-075) 100%);
-    }
-
-    .step span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .step a {
-      display: inline-block;
-      margin-top: 10px;
-      color: var(--blue-800);
-      font-size: 0.86rem;
-      font-weight: 800;
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
-      overflow-wrap: anywhere;
-    }
-
-    .callout {
-      border-left: 6px solid var(--blue-650);
-      background: var(--blue-100);
-    }
-
-    .footer-note {
-      padding: 28px 0 46px;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    @media (max-width: 1080px) {
-      .route {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 980px) {
-      .hero::before {
-        background-position: 18% center;
-      }
-
-      .grid-2,
-      .grid-3,
-      .route {
-        grid-template-columns: 1fr;
-      }
-
-      nav .page-shell {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 14px 0;
-      }
-
-      table,
-      thead,
-      tbody,
-      tr,
-      th,
-      td {
-        display: block;
-      }
-
-      thead {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-      }
-
-      tr {
-        border-bottom: 1px solid var(--line);
-      }
-
-      td {
-        border-bottom: 1px solid #eef3f8;
-      }
-
-      td::before {
-        display: block;
-        margin-bottom: 4px;
-        color: var(--blue-800);
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        content: attr(data-label);
-      }
-    }
-
-    @media (max-width: 560px) {
-      .page-shell {
-        width: min(100% - 28px, 1180px);
-      }
-    }
-  </style>
-  <script type="application/ld+json">
-  {
-      "@context":  "https://schema.org",
-      "@type":  "WebPage",
-      "@id":  "https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html#webpage",
-      "name":  "AI Workflow and Artifact Lifecycle | Marco Policani",
-      "url":  "https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html",
-      "description":  "How AI-assisted workflow ideas, agents, dashboards, and vendor claims move through value proof, reliance boundaries, human review, and governed adoption.",
-      "inLanguage":  "en-US",
-      "isPartOf":  {
-                       "@type":  "WebSite",
-                       "name":  "Marco Policani Portfolio",
-                       "url":  "https://policani.net/"
-                   },
-      "author":  {
-                     "@type":  "Person",
-                     "name":  "Marco Policani",
-                     "url":  "https://policani.net/"
-                 }
-  }
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Workflow and Artifact Lifecycle | Marc Policani</title>
+<meta name="description" content="How AI-assisted workflow ideas, agents, dashboards, and vendor claims move through value proof, reliance boundaries, human review, and governed adoption.">
+<meta name="author" content="Marc Policani">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="AI Workflow and Artifact Lifecycle | Marc Policani">
+<meta property="og:description" content="How AI-assisted workflow ideas, agents, dashboards, and vendor claims move through value proof, reliance boundaries, human review, and governed adoption.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html">
+<meta property="og:image" content="https://policani.net/assets/portfolio-operations-hero-v9.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html">
+<style>
+:root { --ink: #111827; --ink-soft: #334155; --muted: #64748b; --paper: #f7f9fc; --panel: #ffffff; --line: #d8e2ee; --blue-950: #122137; --blue-800: #1e3f63; --blue-650: #2d6090; --blue-100: #edf5fb; --blue-075: #f5f9fd; --radius: 8px; }
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+a { color: var(--blue-800); text-underline-offset: 0.18em; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { max-width: 980px; margin-bottom: 18px; color: #ffffff; font-size: clamp(2.25rem, 5vw, 4.35rem); line-height: 1; letter-spacing: 0; }
+h2 { margin-bottom: 12px; font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.12; letter-spacing: 0; }
+h3 { margin-bottom: 8px; font-size: 1.05rem; line-height: 1.25; letter-spacing: 0; }
+ul { margin: 10px 0 0; padding-left: 1.15rem; }
+li { margin: 7px 0; }
+table { width: 100%; table-layout: fixed; border-collapse: collapse; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #ffffff; }
+th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+th { background: var(--blue-800); color: #ffffff; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+tr:last-child td { border-bottom: 0; }
+tbody tr { transition: background .16s ease; }
+tbody tr:hover { background: #e8f5f7; }
+.page-shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+.hero { position: relative; display: grid; align-items: end; min-height: clamp(360px, 44vh, 500px); padding: 92px 0 56px; overflow: hidden; background: var(--blue-950); isolation: isolate; }
+.hero::before { content: ""; position: absolute; inset: -10%; background: url("../assets/portfolio-operations-hero-v9.png") center center / cover no-repeat; transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.14); transform-origin: left bottom; will-change: transform; z-index: -2; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,20,36,.66) 0%, rgba(8,20,36,.44) 44%, rgba(8,20,36,.12) 74%), linear-gradient(180deg, rgba(6,14,25,.1) 0%, rgba(6,14,25,.38) 100%); z-index: -1; }
+.hero .page-shell { position: relative; z-index: 1; }
+.eyebrow { margin-bottom: 12px; color: var(--blue-650); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.hero .eyebrow, .hero .lead { color: rgba(255,255,255,0.8); }
+.hero .lead { max-width: 760px; }
+.lead { max-width: 920px; color: var(--ink-soft); font-size: 1.12rem; }
+.meta-row, .repo-links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 22px; }
+.inspection-path { counter-reset: inspect-path; display: grid; gap: 9px; margin-top: 22px; }
+.pill, .repo-links a, .inspection-path a { display: inline-flex; align-items: center; min-height: 30px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.9); color: var(--ink-soft); font-size: 0.82rem; font-weight: 760; text-decoration: none; white-space: normal; overflow-wrap: anywhere; transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease; }
+.repo-links a, .inspection-path a { color: var(--blue-800); background: #ffffff; border-color: #b8cde2; }
+.repo-links a:hover, .inspection-path a:hover, .step a:hover { border-color: rgba(47,127,149,.48); background: #e8f5f7; box-shadow: 0 8px 18px rgba(15,23,42,.08); color: var(--blue-950); transform: translateY(-1px); }
+.inspection-path a { justify-content: flex-start; width: 100%; min-height: 42px; border-radius: var(--radius); }
+.inspection-path a::before { counter-increment: inspect-path; content: counter(inspect-path); display: inline-grid; width: 24px; height: 24px; margin-right: 8px; place-items: center; border-radius: 999px; background: var(--blue-800); color: #ffffff; font-size: 0.76rem; font-weight: 900; flex: 0 0 auto; }
+.hero .pill { border-color: rgba(255,255,255,.28); background: rgba(255,255,255,.1); color: #ffffff; }
+nav { border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.92); }
+nav .page-shell { display: flex; justify-content: space-between; align-items: center; gap: 18px; min-height: 56px; }
+nav .repo-links { margin-top: 0; justify-content: flex-end; }
+nav strong { color: var(--ink); }
+nav a { font-weight: 760; text-decoration: none; }
+section { padding: 42px 0; border-bottom: 1px solid var(--line); }
+.section-intro { max-width: 900px; color: var(--muted); font-size: 1.03rem; }
+.grid-2, .grid-3, .route { display: grid; gap: 14px; margin-top: 22px; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.route { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.card, .step, .callout { min-width: 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); box-shadow: 0 1px 0 rgba(15,23,42,.04); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease; }
+.card:hover, .step:hover, .callout:hover { border-color: rgba(47,127,149,.44); box-shadow: 0 16px 32px rgba(15,23,42,.10); transform: translateY(-2px); }
+.card, .callout { padding: 18px; }
+.card p, .callout p { color: var(--muted); }
+.card p:last-child, .callout p:last-child { margin-bottom: 0; }
+.step { padding: 16px; border-top: 5px solid var(--blue-650); background: linear-gradient(180deg, #ffffff 0%, var(--blue-075) 100%); }
+.step span { display: block; color: var(--muted); font-size: 0.92rem; }
+.step a { display: inline-block; margin-top: 10px; color: var(--blue-800); font-size: 0.86rem; font-weight: 800; text-decoration: underline; text-underline-offset: 0.18em; overflow-wrap: anywhere; }
+.callout { border-left: 6px solid var(--blue-650); background: var(--blue-100); }
+.footer-note { padding: 28px 0 46px; color: var(--muted); font-size: 0.94rem; }
+@media (max-width: 1080px) { .route { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 980px) { .hero::before { background-position: 18% center; } .grid-2, .grid-3, .route { grid-template-columns: 1fr; } nav .page-shell { align-items: flex-start; flex-direction: column; padding: 14px 0; } table, thead, tbody, tr, th, td { display: block; } thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } tr { border-bottom: 1px solid var(--line); } td { border-bottom: 1px solid #eef3f8; } td::before { display: block; margin-bottom: 4px; color: var(--blue-800); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; content: attr(data-label); } }
+@media (max-width: 560px) { .page-shell { width: min(100% - 28px, 1180px); } }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html#webpage","name":"AI Workflow and Artifact Lifecycle | Marc Policani","url":"https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html","description":"How AI-assisted workflow ideas, agents, dashboards, and vendor claims move through value proof, reliance boundaries, human review, and governed adoption.","inLanguage":"en-US","isPartOf":{"@type":"WebSite","name":"Marc Policani Portfolio","url":"https://policani.net/"},"author":{"@type":"Person","name":"Marc Policani","url":"https://policani.net/"}}
+</script>
 </head>
 <body>
-  <header class="hero" data-parallax-travel="210">
-    <div class="page-shell">
-      <p class="eyebrow">AI workflow route</p>
-      <h1>AI Idea to Governed Artifact Lifecycle</h1>
-      <p class="lead">A public-safe walkthrough showing how an AI-assisted workflow idea, script, dashboard, agent, or vendor claim becomes reviewable before the business relies on it.</p>
-      <div class="meta-row" aria-label="Journey scope">
-        <span class="pill">Synthetic example</span>
-        <span class="pill">AI workflow governance</span>
-        <span class="pill">Idea to reviewable artifact</span>
-        <span class="pill">Human approval remains the control point</span>
-      </div>
-    </div>
-  </header>
+<header class="hero" data-parallax-travel="210">
+<div class="page-shell">
+<p class="eyebrow">AI workflow route</p>
+<h1>AI Idea to Governed Artifact Lifecycle</h1>
+<p class="lead">A public-safe walkthrough showing how an AI-assisted workflow idea, script, dashboard, agent, or vendor claim becomes reviewable before the business relies on it.</p>
+<div class="meta-row" aria-label="Journey scope">
+<span class="pill">Synthetic example</span>
+<span class="pill">AI workflow governance</span>
+<span class="pill">Idea to reviewable artifact</span>
+<span class="pill">Human approval remains the control point</span>
+</div>
+</div>
+</header>
 
-  <nav aria-label="Journey navigation">
-    <div class="page-shell">
-      <strong>Marco Policani</strong>
-      <div class="repo-links">
-        <a href="../index.html">Portfolio home</a>
-        <a href="../portfolio.html">Portfolio</a>
-        <a href="../operating-history.html">Experience</a>
-        <a href="../proof.html">Proof &amp; Boundaries</a>
-        <a href="https://github.com/policani">GitHub profile</a>
-      </div>
-    </div>
-  </nav>
+<nav aria-label="Journey navigation">
+<div class="page-shell">
+<strong>Marc Policani</strong>
+<div class="repo-links">
+<a href="../index.html">Portfolio home</a>
+<a href="../portfolio.html">Portfolio</a>
+<a href="../operating-history.html">Experience</a>
+<a href="../proof.html">Proof &amp; Boundaries</a>
+<a href="https://github.com/policani" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+</div>
+</div>
+</nav>
 
-  <main>
-    <section class="section-white">
-      <div class="page-shell">
-        <p class="eyebrow">Executive takeaway</p>
-        <h2>Keeping AI useful, bounded, and reviewable</h2>
-        <p class="section-intro">This route demonstrates AI workflow governance: ideas, summaries, prototypes, dashboards, and workflow artifacts are evaluated for purpose, value, source evidence, reliance risk, human review, and ownership before teams depend on them.</p>
+<main>
+<section class="section-white">
+<div class="page-shell">
+<p class="eyebrow">Executive takeaway</p>
+<h2>Keeping AI useful, bounded, and reviewable</h2>
+<p class="section-intro">This route demonstrates AI workflow governance: ideas, summaries, prototypes, dashboards, and workflow artifacts are evaluated for purpose, value, source evidence, reliance risk, human review, and ownership before teams depend on them.</p>
+<div class="callout">
+<h3>Operating context</h3>
+<p>I have used AI in delivery and portfolio environments where the risk was not lack of enthusiasm. It was ungoverned confidence: summaries without source truth, scripts without owners, dashboards without reliance boundaries, and adoption happening outside approved paths. The useful operating move is to classify what the artifact is, what decision it might affect, what evidence supports it, and where human review is required. This route makes that lifecycle inspectable without implying autonomous approval, ML ownership, or production platform ownership.</p>
+</div>
+<div class="grid-3">
+<article class="card"><h3>Before</h3><p>AI activity can spread through experiments, vendor claims, personal workflows, and informal summaries before ownership, reliance boundaries, or approval points are clear.</p></article>
+<article class="card"><h3>After</h3><p>Leaders can see what the artifact is, what decision it may influence, what evidence exists, where human review occurs, and whether the next step is approve, clarify, pause, or stop.</p></article>
+<article class="card"><h3>Leadership judgment shown</h3><p>AI is treated as an operating resource, not a novelty metric. The value test is work reduction, analytical coverage, decision quality, cycle-time support, or risk control.</p></article>
+</div>
+</div>
+</section>
 
-        <div class="callout">
-          <h3>Operating context</h3>
-          <p>I have used AI in delivery and portfolio environments where the risk was not lack of enthusiasm. It was ungoverned confidence: summaries without source truth, scripts without owners, dashboards without reliance boundaries, and adoption happening outside approved paths. The useful operating move is to classify what the artifact is, what decision it might affect, what evidence supports it, and where human review is required. This route makes that lifecycle inspectable without implying autonomous approval, ML ownership, or production platform ownership.</p>
-        </div>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Primary question</p>
+<h2>What needs to become reviewable?</h2>
+<p class="section-intro">The organization has several AI-shaped requests moving through conversation, experimentation, and vendor messaging. The goal is to turn each one into a clear artifact with a purpose, owner, reliance boundary, evidence standard, and review route.</p>
+<div class="grid-3">
+<article class="card"><h3>Incoming ideas</h3><p>Teams bring AI suggestions from policy support, vendor features, spreadsheets, status reporting, and internal automation. Some are rough ideas. Some already look like working artifacts.</p></article>
+<article class="card"><h3>Operating risk</h3><p>A business team could rely on a summary, macro, dashboard, or prototype agent before the use case, evidence, human review point, and ownership model are clear.</p></article>
+<article class="card"><h3>Review goal</h3><p>Give sponsors a practical view of what can be explored, what needs controls, what requires investment logic, and what should wait for clearer intent.</p></article>
+</div>
+</div>
+</section>
 
-        <div class="grid-3">
-          <article class="card">
-            <h3>Before</h3>
-            <p>AI activity can spread through experiments, vendor claims, personal workflows, and informal summaries before ownership, reliance boundaries, or approval points are clear.</p>
-          </article>
-          <article class="card">
-            <h3>After</h3>
-            <p>Leaders can see what the artifact is, what decision it may influence, what evidence exists, where human review occurs, and whether the next step is approve, clarify, pause, or stop.</p>
-          </article>
-          <article class="card">
-            <h3>Leadership judgment shown</h3>
-            <p>AI is treated as an operating resource, not a novelty metric. The value test is work reduction, analytical coverage, decision quality, cycle-time support, or risk control.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Module route</p>
+<h2>How the work moves</h2>
+<p class="section-intro">The route keeps early AI demand lightweight while making reliance, approval, and evidence visible. Each card includes the public module or source that carries the operating detail.</p>
+<div class="route" aria-label="Journey module route">
+<div class="step"><strong>1. Review the opportunity</strong><span>AI Opportunity Intelligence Review System tests the idea, workflow fit, expected value, risk signal, and decision path before a team treats the idea as approved work.</span><a href="https://github.com/policani/ai-opportunity-intelligence-review-system" target="_blank" rel="noopener noreferrer">Open AI Opportunity Intelligence Review System</a></div>
+<div class="step"><strong>2. Govern the artifact</strong><span>AI Artifact Lifecycle Governance System classifies the output, names its owner, defines the reliance boundary, and creates a lifecycle review path.</span><a href="https://github.com/policani/ai-artifact-lifecycle-governance-system" target="_blank" rel="noopener noreferrer">Open AI Artifact Lifecycle Governance System</a></div>
+<div class="step"><strong>3. Add investment logic</strong><span>Business Case System is used when the proposed AI artifact needs funding, capacity, risk acceptance, or benefits that must be compared with other work.</span><a href="https://github.com/policani/business-case-system" target="_blank" rel="noopener noreferrer">Open Business Case System</a></div>
+<div class="step"><strong>4. Charter approved intent</strong><span>Project Charter Initiation Agent turns approved intent into a scoped delivery frame with sponsor, outcomes, constraints, assumptions, and handoff detail.</span><a href="https://github.com/policani/project-charter-initiation-agent" target="_blank" rel="noopener noreferrer">Open Project Charter Initiation Agent</a></div>
+<div class="step"><strong>5. Anchor operating patterns</strong><span>Operating Patterns provides the public-safe governance language for decision rights, evidence, escalation, cadence, and human accountability.</span><a href="https://github.com/policani/operating-patterns" target="_blank" rel="noopener noreferrer">Open Operating Patterns</a></div>
+</div>
+</div>
+</section>
 
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Primary question</p>
-        <h2>What needs to become reviewable?</h2>
-        <p class="section-intro">The organization has several AI-shaped requests moving through conversation, experimentation, and vendor messaging. The goal is to turn each one into a clear artifact with a purpose, owner, reliance boundary, evidence standard, and review route.</p>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Synthetic input</p>
+<h2>Starting AI demand list</h2>
+<p class="section-intro">These examples are synthetic. They show how different AI-assisted workflow inputs need different evidence before a business team relies on them.</p>
+<table aria-label="Synthetic AI input examples">
+<thead><tr><th>Input</th><th>Initial claim</th><th>Review concern</th><th>Likely route</th></tr></thead>
+<tbody>
+<tr><td data-label="Input">Internal policy assistant</td><td data-label="Initial claim">Employees could ask policy questions and receive faster guidance.</td><td data-label="Review concern">Policy ownership, content freshness, escalation triggers, and acceptable reliance are undefined.</td><td data-label="Likely route">Opportunity review, then artifact lifecycle governance.</td></tr>
+<tr><td data-label="Input">Vendor AI summary feature</td><td data-label="Initial claim">A platform can summarize meetings, tickets, or customer interactions automatically.</td><td data-label="Review concern">The vendor claim needs a use-case boundary, evidence of accuracy, data handling review, and a human confirmation point.</td><td data-label="Likely route">Opportunity review with vendor-claim evidence, then governance classification.</td></tr>
+<tr><td data-label="Input">Spreadsheet macro with AI-generated logic</td><td data-label="Initial claim">A team can speed recurring analysis with generated spreadsheet logic.</td><td data-label="Review concern">The logic may influence operational decisions without testing, version control, ownership, or fallback instructions.</td><td data-label="Likely route">Artifact lifecycle governance, then business case only if broader adoption is requested.</td></tr>
+<tr><td data-label="Input">Prototype agent for status synthesis</td><td data-label="Initial claim">A prototype can summarize project updates and highlight blockers for leadership cadence.</td><td data-label="Review concern">Source trust, exception handling, approval authority, and decision-use limits need to be visible before review packs use the output.</td><td data-label="Likely route">Opportunity review, lifecycle governance, then charter if approved for pilot.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
 
-        <div class="grid-3">
-          <article class="card">
-            <h3>Incoming ideas</h3>
-            <p>Teams bring AI suggestions from policy support, vendor features, spreadsheets, status reporting, and internal automation. Some are rough ideas. Some already look like working artifacts.</p>
-          </article>
-          <article class="card">
-            <h3>Operating risk</h3>
-            <p>A business team could rely on a summary, macro, dashboard, or prototype agent before the use case, evidence, human review point, and ownership model are clear.</p>
-          </article>
-          <article class="card">
-            <h3>Review goal</h3>
-            <p>Give sponsors a practical view of what can be explored, what needs controls, what requires investment logic, and what should wait for clearer intent.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Evidence produced</p>
+<h2>What the journey creates</h2>
+<p class="section-intro">The artifacts stay compact so a sponsor can inspect the decision logic without reading a full methodology.</p>
+<div class="grid-2">
+<article class="card"><h3>Opportunity review output</h3><ul><li>Use case, sponsor, affected workflow, and expected business value.</li><li>Known assumptions, vendor claims, source limitations, and testing needs.</li><li>Reliance risk, control exposure, and recommended decision route.</li><li>Approve, clarify, pause, or stop recommendation for human review.</li></ul></article>
+<article class="card"><h3>Lifecycle governance output</h3><ul><li>Artifact classification for idea, prototype, script, dashboard, agent, or vendor-enabled feature.</li><li>Named owner, reviewer, data source, update cadence, and retirement trigger.</li><li>Human confirmation point before decisions depend on the artifact.</li><li>Audit trail for version, evidence, known limits, and approval status.</li></ul></article>
+<article class="card"><h3>Investment output</h3><ul><li>Business case summary when the artifact requires funding or capacity.</li><li>Benefit logic, cost assumptions, risk acceptance, and adoption constraints.</li><li>Comparable decision material for portfolio or executive review.</li><li>Open evidence gaps that must be closed before commitment.</li></ul></article>
+<article class="card"><h3>Charter output</h3><ul><li>Approved intent translated into scope, outcomes, milestones, and ownership.</li><li>Operating assumptions, dependencies, delivery boundaries, and review cadence.</li><li>Approval record for pilot, implementation, or controlled expansion.</li><li>Handoff notes for governance, portfolio, and business stakeholders.</li></ul></article>
+</div>
+</div>
+</section>
 
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Module route</p>
-        <h2>How the work moves</h2>
-        <p class="section-intro">The route keeps early AI demand lightweight while making reliance, approval, and evidence visible. Each card includes the public module or source that carries the operating detail.</p>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Final review</p>
+<h2>Decision-ready view</h2>
+<p class="section-intro">The final view gives leaders a simple route for each AI-shaped input: what it is, what evidence exists, and what human decision is needed next.</p>
+<div class="callout">
+<h3>Review frame</h3>
+<p>The policy assistant and status synthesis agent can move forward only after reliance boundaries and source ownership are explicit. The vendor summary feature needs evidence against the specific workflow it will affect. The spreadsheet macro should be governed as an operational artifact before any team depends on it for recurring decisions.</p>
+</div>
+<table aria-label="AI workflow governance final review view">
+<thead><tr><th>Item</th><th>Recommended review route</th><th>Reviewer question</th><th>Human decision needed</th></tr></thead>
+<tbody>
+<tr><td data-label="Item">Internal policy assistant</td><td data-label="Recommended review route">Opportunity review followed by lifecycle governance.</td><td data-label="Reviewer question">Which policies can it answer, who owns content updates, and when must a user escalate?</td><td data-label="Human decision needed">Approve limited exploration or pause until policy ownership is named.</td></tr>
+<tr><td data-label="Item">Vendor AI summary feature</td><td data-label="Recommended review route">Vendor-claim review, workflow test, then artifact classification.</td><td data-label="Reviewer question">What evidence shows the summary is accurate enough for the intended use?</td><td data-label="Human decision needed">Approve a controlled test with defined acceptance criteria.</td></tr>
+<tr><td data-label="Item">Spreadsheet macro with AI-generated logic</td><td data-label="Recommended review route">Artifact governance before reuse or expansion.</td><td data-label="Reviewer question">What decisions could the macro influence, and who validates the logic?</td><td data-label="Human decision needed">Name owner, reviewer, version standard, and allowed-use boundary.</td></tr>
+<tr><td data-label="Item">Prototype agent for status synthesis</td><td data-label="Recommended review route">Opportunity review, governance classification, then charter if approved for pilot.</td><td data-label="Reviewer question">Which sources are trusted, what exceptions require human review, and where can the output appear?</td><td data-label="Human decision needed">Approve, delay, or stop the pilot path after evidence review.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
 
-        <div class="route" aria-label="Journey module route">
-          <div class="step">
-            <strong>1. Review the opportunity</strong>
-            <span>AI Opportunity Intelligence Review System tests the idea, workflow fit, expected value, risk signal, and decision path before a team treats the idea as approved work.</span>
-            <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">Open AI Opportunity Intelligence Review System</a>
-          </div>
-          <div class="step">
-            <strong>2. Govern the artifact</strong>
-            <span>AI Artifact Lifecycle Governance System classifies the output, names its owner, defines the reliance boundary, and creates a lifecycle review path.</span>
-            <a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">Open AI Artifact Lifecycle Governance System</a>
-          </div>
-          <div class="step">
-            <strong>3. Add investment logic</strong>
-            <span>Business Case System is used when the proposed AI artifact needs funding, capacity, risk acceptance, or benefits that must be compared with other work.</span>
-            <a href="https://github.com/policani/business-case-system">Open Business Case System</a>
-          </div>
-          <div class="step">
-            <strong>4. Charter approved intent</strong>
-            <span>Project Charter Initiation Agent turns approved intent into a scoped delivery frame with sponsor, outcomes, constraints, assumptions, and handoff detail.</span>
-            <a href="https://github.com/policani/project-charter-initiation-agent">Open Project Charter Initiation Agent</a>
-          </div>
-          <div class="step">
-            <strong>5. Anchor operating patterns</strong>
-            <span>Operating Patterns provides the public-safe governance language for decision rights, evidence, escalation, cadence, and human accountability.</span>
-            <a href="https://github.com/policani/operating-patterns">Open Operating Patterns</a>
-          </div>
-        </div>
-      </div>
-    </section>
+<section>
+<div class="page-shell">
+<p class="eyebrow">Inspection path</p>
+<h2>Where to inspect the supporting work</h2>
+<p class="section-intro">The journey summarizes the route. The repositories and operating-pattern source hold the public-safe module detail, examples, and boundaries.</p>
+<div class="inspection-path">
+<a href="https://github.com/policani/ai-opportunity-intelligence-review-system" target="_blank" rel="noopener noreferrer">AI Opportunity Intelligence Review System</a>
+<a href="https://github.com/policani/ai-artifact-lifecycle-governance-system" target="_blank" rel="noopener noreferrer">AI Artifact Lifecycle Governance System</a>
+<a href="https://github.com/policani/business-case-system" target="_blank" rel="noopener noreferrer">Business Case System</a>
+<a href="https://github.com/policani/project-charter-initiation-agent" target="_blank" rel="noopener noreferrer">Project Charter Initiation Agent</a>
+<a href="https://github.com/policani/operating-patterns" target="_blank" rel="noopener noreferrer">Operating Patterns</a>
+</div>
+</div>
+</section>
+</main>
 
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Synthetic input</p>
-        <h2>Starting AI demand list</h2>
-        <p class="section-intro">These examples are synthetic. They show how different AI-assisted workflow inputs need different evidence before a business team relies on them.</p>
-
-        <table aria-label="Synthetic AI input examples">
-          <thead>
-            <tr>
-              <th>Input</th>
-              <th>Initial claim</th>
-              <th>Review concern</th>
-              <th>Likely route</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="Input">Internal policy assistant</td>
-              <td data-label="Initial claim">Employees could ask policy questions and receive faster guidance.</td>
-              <td data-label="Review concern">Policy ownership, content freshness, escalation triggers, and acceptable reliance are undefined.</td>
-              <td data-label="Likely route">Opportunity review, then artifact lifecycle governance.</td>
-            </tr>
-            <tr>
-              <td data-label="Input">Vendor AI summary feature</td>
-              <td data-label="Initial claim">A platform can summarize meetings, tickets, or customer interactions automatically.</td>
-              <td data-label="Review concern">The vendor claim needs a use-case boundary, evidence of accuracy, data handling review, and a human confirmation point.</td>
-              <td data-label="Likely route">Opportunity review with vendor-claim evidence, then governance classification.</td>
-            </tr>
-            <tr>
-              <td data-label="Input">Spreadsheet macro with AI-generated logic</td>
-              <td data-label="Initial claim">A team can speed recurring analysis with generated spreadsheet logic.</td>
-              <td data-label="Review concern">The logic may influence operational decisions without testing, version control, ownership, or fallback instructions.</td>
-              <td data-label="Likely route">Artifact lifecycle governance, then business case only if broader adoption is requested.</td>
-            </tr>
-            <tr>
-              <td data-label="Input">Prototype agent for status synthesis</td>
-              <td data-label="Initial claim">A prototype can summarize project updates and highlight blockers for leadership cadence.</td>
-              <td data-label="Review concern">Source trust, exception handling, approval authority, and decision-use limits need to be visible before review packs use the output.</td>
-              <td data-label="Likely route">Opportunity review, lifecycle governance, then charter if approved for pilot.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Evidence produced</p>
-        <h2>What the journey creates</h2>
-        <p class="section-intro">The artifacts stay compact so a sponsor can inspect the decision logic without reading a full methodology.</p>
-
-        <div class="grid-2">
-          <article class="card">
-            <h3>Opportunity review output</h3>
-            <ul>
-              <li>Use case, sponsor, affected workflow, and expected business value.</li>
-              <li>Known assumptions, vendor claims, source limitations, and testing needs.</li>
-              <li>Reliance risk, control exposure, and recommended decision route.</li>
-              <li>Approve, clarify, pause, or stop recommendation for human review.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Lifecycle governance output</h3>
-            <ul>
-              <li>Artifact classification for idea, prototype, script, dashboard, agent, or vendor-enabled feature.</li>
-              <li>Named owner, reviewer, data source, update cadence, and retirement trigger.</li>
-              <li>Human confirmation point before decisions depend on the artifact.</li>
-              <li>Audit trail for version, evidence, known limits, and approval status.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Investment output</h3>
-            <ul>
-              <li>Business case summary when the artifact requires funding or capacity.</li>
-              <li>Benefit logic, cost assumptions, risk acceptance, and adoption constraints.</li>
-              <li>Comparable decision material for portfolio or executive review.</li>
-              <li>Open evidence gaps that must be closed before commitment.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Charter output</h3>
-            <ul>
-              <li>Approved intent translated into scope, outcomes, milestones, and ownership.</li>
-              <li>Operating assumptions, dependencies, delivery boundaries, and review cadence.</li>
-              <li>Approval record for pilot, implementation, or controlled expansion.</li>
-              <li>Handoff notes for governance, portfolio, and business stakeholders.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Final review</p>
-        <h2>Decision-ready view</h2>
-        <p class="section-intro">The final view gives leaders a simple route for each AI-shaped input: what it is, what evidence exists, and what human decision is needed next.</p>
-
-        <div class="callout">
-          <h3>Review frame</h3>
-          <p>The policy assistant and status synthesis agent can move forward only after reliance boundaries and source ownership are explicit. The vendor summary feature needs evidence against the specific workflow it will affect. The spreadsheet macro should be governed as an operational artifact before any team depends on it for recurring decisions.</p>
-        </div>
-
-        <table aria-label="AI workflow governance final review view">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Recommended review route</th>
-              <th>Reviewer question</th>
-              <th>Human decision needed</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="Item">Internal policy assistant</td>
-              <td data-label="Recommended review route">Opportunity review followed by lifecycle governance.</td>
-              <td data-label="Reviewer question">Which policies can it answer, who owns content updates, and when must a user escalate?</td>
-              <td data-label="Human decision needed">Approve limited exploration or pause until policy ownership is named.</td>
-            </tr>
-            <tr>
-              <td data-label="Item">Vendor AI summary feature</td>
-              <td data-label="Recommended review route">Vendor-claim review, workflow test, then artifact classification.</td>
-              <td data-label="Reviewer question">What evidence shows the summary is accurate enough for the intended use?</td>
-              <td data-label="Human decision needed">Approve a controlled test with defined acceptance criteria.</td>
-            </tr>
-            <tr>
-              <td data-label="Item">Spreadsheet macro with AI-generated logic</td>
-              <td data-label="Recommended review route">Artifact governance before reuse or expansion.</td>
-              <td data-label="Reviewer question">What decisions could the macro influence, and who validates the logic?</td>
-              <td data-label="Human decision needed">Name owner, reviewer, version standard, and allowed-use boundary.</td>
-            </tr>
-            <tr>
-              <td data-label="Item">Prototype agent for status synthesis</td>
-              <td data-label="Recommended review route">Opportunity review, governance classification, then charter if approved for pilot.</td>
-              <td data-label="Reviewer question">Which sources are trusted, what exceptions require human review, and where can the output appear?</td>
-              <td data-label="Human decision needed">Approve, delay, or stop the pilot path after evidence review.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section>
-      <div class="page-shell">
-        <p class="eyebrow">Inspection path</p>
-        <h2>Where to inspect the supporting work</h2>
-        <p class="section-intro">The journey summarizes the route. The repositories and operating-pattern source hold the public-safe module detail, examples, and boundaries.</p>
-
-        <div class="inspection-path">
-          <a href="https://github.com/policani/ai-opportunity-intelligence-review-system">AI Opportunity Intelligence Review System</a>
-          <a href="https://github.com/policani/ai-artifact-lifecycle-governance-system">AI Artifact Lifecycle Governance System</a>
-          <a href="https://github.com/policani/business-case-system">Business Case System</a>
-          <a href="https://github.com/policani/project-charter-initiation-agent">Project Charter Initiation Agent</a>
-          <a href="https://github.com/policani/operating-patterns">Operating Patterns</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="page-shell footer-note">
-    <p>This journey is a synthetic public portfolio artifact. It does not include employer names, client names, confidential figures, proprietary terms, private systems, actual vendor evaluation records, real policy content, or operational data.</p>
-  </footer>
-  <script src="../assets/hero-parallax.js" defer></script>
+<footer class="page-shell footer-note">
+<p>This journey is a synthetic public portfolio artifact. It does not include employer names, client names, confidential figures, proprietary terms, private systems, actual vendor evaluation records, real policy content, or operational data.</p>
+</footer>
+<script src="../assets/hero-parallax.js" defer></script>
 </body>
 </html>
