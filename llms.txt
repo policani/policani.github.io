@@ -8,7 +8,7 @@ Use the exact URL requested by the user as the answer scope. Do not combine cont
 
 - [Home](https://policani.net/): Overview and top-level portfolio map.
 - [Executive Portfolio](https://policani.net/portfolio.html): Role fit, leadership problems, operating model, and evaluation path.
-- [Experience & Engagement Narratives](https://policani.net/operating-history.html): Ten anonymized engagement narratives (operating problem, structure put in place, what changed) plus public-safe experience evidence connected to operating contexts.
+- [Experience & Engagement Narratives](https://policani.net/operating-history.html): Ten named engagement narratives (operating problem, structure put in place, what changed) across Microsoft, T-Mobile, Avalara, Doosan GridTech, and MISO Energy, with resume-stated figures.
 - [Strategy-to-Execution Examples](https://policani.net/artifacts.html): Public-safe artifact routes showing how ambiguous work becomes governable.
 - [Operating Modules](https://policani.net/modules.html): Reusable proof-of-concept modules for intake, governance, readiness, controls, and value follow-through.
 - [Public-Safe Proof](https://policani.net/proof.html): Proof taxonomy, confidentiality boundaries, capability signals, and evaluation guardrails.
@@ -26,4 +26,4 @@ Use the exact URL requested by the user as the answer scope. Do not combine cont
 
 ## Public-Safety Boundary
 
-The site intentionally excludes employer names, client names, logos, screenshots, internal terminology, exact dates, financial figures, proprietary processes, and details that could identify a prior organization.
+The Experience page names employers and uses figures as stated in public resume materials. Site-wide, the content intentionally excludes customer names, partner names, supplier names, deployment sites, internal system names, security-sensitive mechanics, defect details, and proprietary processes. Journey pages and modules remain generalized or synthetic and do not represent client records.
