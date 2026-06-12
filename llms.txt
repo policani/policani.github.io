@@ -9,12 +9,12 @@ Use the exact URL requested by the user as the answer scope. Do not combine cont
 - [Home](https://policani.net/): Overview and top-level portfolio map.
 - [Executive Portfolio](https://policani.net/portfolio.html): Role fit, leadership problems, operating model, and evaluation path.
 - [Experience & Engagement Narratives](https://policani.net/operating-history.html): Ten named engagement narratives (operating problem, structure put in place, what changed) across Microsoft, T-Mobile, Avalara, Doosan GridTech, and MISO Energy, with resume-stated figures.
-- [Strategy-to-Execution Examples](https://policani.net/artifacts.html): Public-safe artifact routes showing how ambiguous work becomes governable.
+- [Operating Routes](https://policani.net/artifacts.html): Documented end-to-end operating routes showing how ambiguous work becomes governable.
 - [Operating Modules](https://policani.net/modules.html): Reusable proof-of-concept modules for intake, governance, readiness, controls, and value follow-through.
 - [Public-Safe Proof](https://policani.net/proof.html): Proof taxonomy, confidentiality boundaries, capability signals, and evaluation guardrails.
 - [Public Resources](https://policani.net/resources.html): Community resources for job search, resumes, and professional writing.
 
-## Journey Pages
+## Operating Route Pages
 
 - [PMO Intake and Portfolio Demand Governance](https://policani.net/journeys/messy-demand-to-executive-review.html): How messy demand becomes intake-ready and prepared for executive review.
 - [AI Governance and Artifact Lifecycle](https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html): How AI ideas and artifacts move through value proof, reliance boundaries, and governed adoption.
