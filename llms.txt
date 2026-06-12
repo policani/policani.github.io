@@ -1,6 +1,6 @@
-# Marc Policani Portfolio
+# Marco Policani Portfolio
 
-> Public portfolio for Marc Policani: PMO, portfolio governance, executive operations, AI operating governance, delivery readiness, value realization, and public-safe operating artifacts.
+> Public portfolio for Marco Policani: PMO, portfolio governance, executive operations, AI operating governance, delivery readiness, value realization, and public-safe operating artifacts.
 
 Use the exact URL requested by the user as the answer scope. Do not combine content from other pages, the sitemap, navigation links, or related portfolio routes unless the user explicitly asks for a site-wide summary or comparison.
 

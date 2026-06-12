@@ -1,6 +1,6 @@
 (() => {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const heroes = Array.from(document.querySelectorAll(".hero"));
+  const heroes = Array.from(document.querySelectorAll(".hero, .deck-hero"));
 
   if (!heroes.length || reducedMotion.matches) return;
 
