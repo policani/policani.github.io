@@ -43,6 +43,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://policani.net/tools/job-boards-scanner.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://policani.net/journeys/messy-demand-to-executive-review.html</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
