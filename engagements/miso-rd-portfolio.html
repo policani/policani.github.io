@@ -26,7 +26,11 @@ nav{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);backgro
 .nav-title{color:var(--ink);font-weight:850;text-decoration:none}
 .nav-links{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .nav-links a{color:var(--muted);font-size:.88rem;font-weight:760;text-decoration:none}
-.deck-hero{background:#122137;color:#fff;border-bottom:1px solid var(--line);padding:70px 0 46px}
+.deck-hero{position:relative;min-height:clamp(380px,46vh,520px);display:grid;align-items:end;overflow:hidden;background:#122137;color:#fff;border-bottom:1px solid var(--line)}
+.deck-hero::before{content:"";position:absolute;inset:0;z-index:0;background:url("../assets/portfolio-operations-hero-v9.png") center center / cover no-repeat;transform:translate3d(0,var(--hero-shift,0px),0) scale(1.12);transform-origin:left bottom;will-change:transform}
+.deck-hero::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(8,20,36,.62) 0%,rgba(8,20,36,.32) 46%,rgba(8,20,36,.08) 76%),linear-gradient(180deg,rgba(6,14,25,.10) 0%,rgba(6,14,25,.28) 100%)}
+.deck-hero .page-shell{position:relative;z-index:1;padding:70px 0 46px}
+@media (prefers-reduced-motion: reduce),(max-width:980px){.deck-hero::before{transform:none}}
 .deck-hero .kicker{margin:0;color:rgba(255,255,255,.82);font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .deck-hero .lead{margin-top:18px;max-width:860px;color:rgba(255,255,255,.84);font-size:1.16rem}
 .chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
@@ -87,7 +91,7 @@ footer{padding:28px 0;border-top:1px solid var(--line);background:#fff;color:var
 </div>
 </nav>
 
-<header class="deck-hero">
+<header class="deck-hero" data-parallax-travel="200">
 <div class="page-shell">
 <p class="kicker">Engagement narrative &mdash; MISO Energy &middot; Consulting engagement</p>
 <h1>Structuring R&amp;D demand for executive comparison</h1>
@@ -112,7 +116,7 @@ footer{padding:28px 0;border-top:1px solid var(--line);background:#fff;color:var
 <main id="main">
 <section class="section-white" aria-labelledby="problem-heading">
 <div class="page-shell">
-<p class="sec-kicker">01 &mdash; The operating problem</p>
+<p class="sec-kicker">The operating problem</p>
 <h2 id="problem-heading">What leadership was facing.</h2>
 <p class="body-copy">MISO Energy's R&amp;D function supported technical initiatives spanning engineering modernization, operational reliability, and strategic innovation. Ideas emerged organically from engineers and departmental sponsors, but there was no consolidated inventory of proposed work and no structured method for comparing initiatives. Without structure, allocation risked being shaped by advocacy and urgency rather than comparative evaluation.</p>
 </div>
@@ -120,7 +124,7 @@ footer{padding:28px 0;border-top:1px solid var(--line);background:#fff;color:var
 
 <section aria-labelledby="options-heading">
 <div class="page-shell">
-<p class="sec-kicker">02 &mdash; Options on the table</p>
+<p class="sec-kicker">Options on the table</p>
 <h2 id="options-heading">The decision, framed honestly.</h2>
 <div class="opt-grid">
 <article class="opt"><span class="opt-tag">Considered</span><h3>Maintain informal prioritization</h3><p>Sponsors advocate directly; executive forums stay debate-driven and tradeoffs implicit.</p></article>
@@ -132,7 +136,7 @@ footer{padding:28px 0;border-top:1px solid var(--line);background:#fff;color:var
 
 <section class="section-white" aria-labelledby="moves-heading">
 <div class="page-shell">
-<p class="sec-kicker">03 &mdash; What I put in place</p>
+<p class="sec-kicker">What I put in place</p>
 <h2 id="moves-heading">The structure behind the outcome.</h2>
 <ul class="move-list">
 <li>Interviewed roughly thirty engineers and analysts to surface proposed initiatives, plus five executive stakeholders for strategic priorities</li>
@@ -145,7 +149,7 @@ footer{padding:28px 0;border-top:1px solid var(--line);background:#fff;color:var
 
 <section aria-labelledby="changed-heading">
 <div class="page-shell">
-<p class="sec-kicker">04 &mdash; What changed</p>
+<p class="sec-kicker">What changed</p>
 <h2 id="changed-heading">The operating difference.</h2>
 <p class="body-copy">R&amp;D demand became visible and comparable for the first time. Executive discussion shifted from advocacy to structured comparison, previously implicit tradeoffs became explicit, and the organization kept a repeatable model for future prioritization cycles.</p>
 </div>
@@ -153,7 +157,7 @@ footer{padding:28px 0;border-top:1px solid var(--line);background:#fff;color:var
 
 <section class="section-white" aria-labelledby="mattered-heading">
 <div class="page-shell">
-<p class="sec-kicker">05 &mdash; Why it mattered</p>
+<p class="sec-kicker">Why it mattered</p>
 <h2 id="mattered-heading">The executive read.</h2>
 <p class="body-copy">In technical organizations, unstructured demand accumulates until funding decisions become reactive. A defensible portfolio architecture gave leadership a common decision lens — foundational governance, not an operational performance program.</p>
 <div class="support-links">
@@ -183,5 +187,6 @@ footer{padding:28px 0;border-top:1px solid var(--line);background:#fff;color:var
 <p style="margin-top:8px">Figures are source-preserved from resume and case materials and are not independently audited. Customer, partner, supplier, site, and internal-system details are withheld by design.</p>
 </div>
 </footer>
+<script src="../assets/hero-parallax.js" defer></script>
 </body>
 </html>
