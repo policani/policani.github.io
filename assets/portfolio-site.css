@@ -698,4 +698,84 @@ position: static;
 .grid-4,
 .sequence,
 .lifecycle-map {
-grid-template-columns: re
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.lifecycle-map::before,
+.lifecycle-step::after {
+display: none;
+}
+
+.hero {
+min-height: 560px;
+}
+
+.nav-inner {
+flex-direction: column;
+}
+}
+
+@media (max-width: 640px) {
+.hero-inner,
+.section-inner,
+.nav-inner {
+width: min(calc(100% - 28px), 1180px);
+}
+
+.hero {
+min-height: 560px;
+}
+
+.hero-copy {
+max-width: 100%;
+padding-bottom: 34px;
+}
+
+h1 {
+max-width: 100%;
+font-size: clamp(2.45rem, 10vw, 2.9rem);
+line-height: 1.03;
+}
+
+.subhead,
+.lead {
+font-size: 1rem;
+}
+
+.grid-2,
+.grid-3,
+.grid-4,
+.two-col,
+.sequence,
+.lifecycle-map {
+grid-template-columns: 1fr;
+}
+
+main section {
+padding: 42px 0;
+}
+
+.lifecycle-step {
+min-height: auto;
+}
+
+.module-card-top {
+flex-direction: column;
+align-items: flex-start;
+}
+}
+
+@media (prefers-reduced-motion: reduce), (max-width: 980px) {
+.hero::before {
+transform: none;
+}
+
+*,
+*::before,
+*::after {
+scroll-behavior: auto !important;
+transition-duration: 0.01ms !important;
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+}
+}

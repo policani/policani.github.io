@@ -8,7 +8,7 @@ Use the exact URL requested by the user as the answer scope. Do not combine cont
 
 - [Home](https://policani.net/): Overview and top-level portfolio map.
 - [Executive Portfolio](https://policani.net/portfolio.html): Role fit, leadership problems, operating model, and evaluation path.
-- [Experience & Engagement Narratives](https://policani.net/operating-history.html): Ten named engagement narratives (operating problem, structure put in place, what changed) across Microsoft, T-Mobile, Avalara, Doosan GridTech, and MISO Energy, with resume-stated figures.
+- [Experience Case Studies](https://policani.net/operating-history.html): Ten named case studies (operating problem, structure put in place, what changed) across Microsoft, T-Mobile, Avalara, Doosan GridTech, and MISO Energy, with resume-stated figures.
 - [Operating Routes](https://policani.net/artifacts.html): Documented end-to-end operating routes showing how ambiguous work becomes governable.
 - [Operating Modules](https://policani.net/modules.html): Reusable proof-of-concept modules for intake, governance, readiness, controls, and value follow-through.
 - [Public-Safe Proof](https://policani.net/proof.html): Proof taxonomy, confidentiality boundaries, capability signals, and evaluation guardrails.
@@ -25,7 +25,7 @@ Use the exact URL requested by the user as the answer scope. Do not combine cont
 - [Public-Safe Portfolio Artifacts and Proof Review](https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html): How reviewers inspect anonymized artifacts without exposing sensitive context.
 - [Partner Ecosystem Governance and Vendor Readiness](https://policani.net/journeys/partner-ecosystem-governance-route.html): How partner, provider, vendor, and external delivery work becomes governable.
 
-## Engagement Pages
+## Case Study Pages
 
 - [Doosan GridTech: Sequencing software, construction, and security under capital constraint](https://policani.net/engagements/doosan-gridtech.html): Three concurrent utility-scale battery storage deployments, next-generation platform development, and cybersecurity planning — one constrained engineering organization, one integrated sequencing model.
 - [T-Mobile: Resetting portfolio signal across Revenue Technology](https://policani.net/engagements/tmobile-revenue-technology.html): A revenue-critical portfolio of ~500 initiatives with distorted work-in-progress and year-long delivery cycles, reset to readiness-gated flow — without re-platforming anything.
