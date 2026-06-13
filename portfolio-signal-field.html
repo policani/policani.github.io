@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Signal Field | Marco Policani</title>
+  <meta name="description" content="Portfolio Signal Field is a configurable animated PMO portfolio signal background for landing-page hero banners and dashboard-style visual prototypes.">
+  <meta name="author" content="Marco Policani">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Portfolio Signal Field | Marco Policani">
+  <meta property="og:description" content="A configurable animated PMO portfolio signal background for landing-page hero banners and dashboard-style visual prototypes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://policani.net/portfolio-signal-field.html">
+  <meta property="og:image" content="https://policani.net/assets/social-card-1200x630.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://policani.net/portfolio-signal-field.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap">
+  <link rel="stylesheet" href="assets/portfolio-signal-field-demo.css?v=20260613-signalfield">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <strong>Portfolio Signal Field</strong>
+          <span>Configurable PMO hero animation</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="button" id="resetConfig" type="button">Reset</button>
+          <button class="button" id="copyConfig" type="button">Copy JSON</button>
+          <button class="button" id="saveConfig" type="button">Save JSON</button>
+          <button class="button primary" id="applyConfig" type="button">Apply</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="preview-hero" id="previewHero">
+        <div class="signal-field-host" id="signalField"></div>
+        <div class="preview-copy">
+          <p class="eyebrow">Portfolio Operating Signal</p>
+          <h1>Initiatives moving toward decision-ready value</h1>
+          <p>Animated portfolio cards, dependency filaments, and connection events for enterprise landing pages and visual prototypes.</p>
+          <div class="preview-tags" aria-label="Preview tags">
+            <span>Scoring</span>
+            <span>Ownership</span>
+            <span>Funding</span>
+            <span>Readiness</span>
+            <span>Benefits</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Animation customization">
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Animation Settings</h2>
+            <p>Adjust the visual system and card model, then export the resulting configuration.</p>
+          </div>
+          <div class="controls-grid">
+            <div class="field">
+              <label for="gradientTopLeft">Gradient top left</label>
+              <input id="gradientTopLeft" type="color">
+            </div>
+            <div class="field">
+              <label for="gradientTopRight">Gradient top right</label>
+              <input id="gradientTopRight" type="color">
+            </div>
+            <div class="field">
+              <label for="gradientBottomLeft">Gradient bottom left</label>
+              <input id="gradientBottomLeft" type="color">
+            </div>
+            <div class="field">
+              <label for="gradientBottomRight">Gradient bottom right</label>
+              <input id="gradientBottomRight" type="color">
+            </div>
+            <div class="field">
+              <label for="gradientOpacity">Gradient transparency</label>
+              <div class="range-row">
+                <input id="gradientOpacity" type="range" min="0" max="100" step="1">
+                <span class="range-value" id="gradientOpacityValue"></span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="backgroundImage">Background image URL</label>
+              <input id="backgroundImage" type="text" placeholder="https://example.com/background.webp">
+            </div>
+            <div class="field">
+              <label for="cardCount">Cards</label>
+              <input id="cardCount" type="number" min="8" max="72" step="1">
+            </div>
+            <div class="field">
+              <label for="cardMin">Minimum cards</label>
+              <input id="cardMin" type="number" min="1" max="144" step="1">
+            </div>
+            <div class="field">
+              <label for="cardMax">Maximum cards</label>
+              <input id="cardMax" type="number" min="1" max="160" step="1">
+            </div>
+            <div class="field">
+              <label for="cardScale">Card scale</label>
+              <div class="range-row">
+                <input id="cardScale" type="range" min="0.75" max="1.35" step="0.05">
+                <span class="range-value" id="cardScaleValue"></span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="cardDepth">Card layer depth</label>
+              <div class="range-row">
+                <input id="cardDepth" type="range" min="0" max="1.75" step="0.05">
+                <span class="range-value" id="cardDepthValue"></span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="speed">Speed</label>
+              <div class="range-row">
+                <input id="speed" type="range" min="0.35" max="1.85" step="0.05">
+                <span class="range-value" id="speedValue"></span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="brightness">Brightness</label>
+              <div class="range-row">
+                <input id="brightness" type="range" min="0.65" max="1.55" step="0.05">
+                <span class="range-value" id="brightnessValue"></span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="filamentDensity">Filament density</label>
+              <div class="range-row">
+                <input id="filamentDensity" type="range" min="0.25" max="1.6" step="0.05">
+                <span class="range-value" id="filamentDensityValue"></span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="looseFilaments">Connection events</label>
+              <div class="range-row">
+                <input id="looseFilaments" type="range" min="0" max="1.8" step="0.05">
+                <span class="range-value" id="looseFilamentsValue"></span>
+              </div>
+            </div>
+            <div class="field full">
+              <label for="cardsJson">Card parameters</label>
+              <textarea id="cardsJson" spellcheck="false"></textarea>
+            </div>
+            <div class="field full">
+              <label for="metricRowsJson">Metric row labels</label>
+              <textarea id="metricRowsJson" spellcheck="false"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Export</h2>
+            <p>Use this JSON with `PortfolioSignalField.create()` in another page.</p>
+          </div>
+          <div class="preview-config">
+            <textarea class="output-box" id="configOutput" readonly spellcheck="false"></textarea>
+            <div class="status-line" id="statusLine" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <p class="repo-note">Sample initiatives are synthetic. Attribution belongs to Marco Policani as creator; card content should stay organization-neutral until a site owner replaces it with their own public-safe values.</p>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        Created by Marco Policani. Source code MIT; documentation and examples CC BY 4.0.
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/portfolio-signal-field.js?v=20260613-signalfield"></script>
+  <script src="assets/portfolio-signal-field-app.js?v=20260613-signalfield"></script>
+</body>
+</html>

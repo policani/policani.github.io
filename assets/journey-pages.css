@@ -42,7 +42,7 @@ tbody tr:hover { background: #e8f5f7; }
 
 .page-shell, .nav-inner { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
 
-.hero { position: relative; display: grid; align-items: end; min-height: clamp(360px, 44vh, 500px); padding: 92px 0 56px; overflow: hidden; background: var(--blue-950); isolation: isolate; }
+.hero { position: relative; display: grid; align-items: end; min-height: clamp(360px, 44vh, 500px); padding: 92px 0 56px; overflow: hidden; background: radial-gradient(circle at top left, #1a1a1a 0%, rgba(26, 26, 26, 0) 58%), radial-gradient(circle at top right, #000061 0%, rgba(0, 0, 97, 0) 58%), radial-gradient(circle at bottom left, #003b8f 0%, rgba(0, 59, 143, 0) 62%), radial-gradient(circle at bottom right, #000026 0%, rgba(0, 0, 38, 0) 62%), linear-gradient(135deg, #1a1a1a 0%, #000026 100%); isolation: isolate; }
 
 .hero::before {
 content: "";
@@ -51,15 +51,41 @@ inset: 0;
 z-index: 0;
 background-image: url("portfolio-operations-hero-1920.jpg");
 background-image: image-set(url("portfolio-operations-hero-1920.webp") type("image/webp"), url("portfolio-operations-hero-1920.jpg") type("image/jpeg"));
-background-position: center center;
-background-size: cover;
-background-repeat: no-repeat;
+background:
+radial-gradient(circle at top left, #1a1a1a 0%, rgba(26, 26, 26, 0) 58%),
+radial-gradient(circle at top right, #000061 0%, rgba(0, 0, 97, 0) 58%),
+radial-gradient(circle at bottom left, #003b8f 0%, rgba(0, 59, 143, 0) 62%),
+radial-gradient(circle at bottom right, #000026 0%, rgba(0, 0, 38, 0) 62%),
+linear-gradient(135deg, #1a1a1a 0%, #000026 100%);
 transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.12);
 transform-origin: left bottom;
 will-change: transform;
 }
 
-.hero .page-shell { position: relative; z-index: 1; }
+.portfolio-hero-filament-bg {
+position: absolute;
+inset: -9% -4% -13%;
+z-index: 0;
+overflow: hidden;
+opacity: 1;
+transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.08);
+transform-origin: center bottom;
+will-change: transform;
+}
+
+.portfolio-hero-filament-bg canvas,
+.signal-field-canvas {
+display: block;
+width: 100%;
+height: 100%;
+}
+
+.hero::after {
+z-index: 1 !important;
+pointer-events: none;
+}
+
+.hero .page-shell { position: relative; z-index: 2; }
 
 .eyebrow { margin-bottom: 12px; color: var(--blue-650); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 
@@ -111,4 +137,30 @@ section { padding: 42px 0; border-bottom: 1px solid var(--line); }
 :root { --nav-overlay-height: 156px; }
 
 .nav-inner { align-items: flex-start; flex-direction: column; }
+
+.portfolio-hero-filament-bg {
+inset: -5% -18% -10%;
+opacity: 0.82;
+transform: translate3d(0, 0, 0) scale(1.02);
+}
+}
+
+@media (max-width: 640px) {
+.portfolio-hero-filament-bg {
+inset: -3% -52% -8% -22%;
+opacity: 0.72;
+}
+
+table {
+display: block;
+max-width: 100%;
+overflow-x: auto;
+}
+}
+
+@media (prefers-reduced-motion: reduce), (max-width: 980px) {
+.hero::before,
+.portfolio-hero-filament-bg {
+transform: none;
+}
 }

@@ -38,9 +38,15 @@
   </url>
   <url>
     <loc>https://policani.net/resources.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/portfolio-signal-field.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://policani.net/tools/job-boards-scanner.html</loc>
