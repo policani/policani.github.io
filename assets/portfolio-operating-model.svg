@@ -1,108 +1,53 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 432" role="img" aria-label="The operating layer end to end: noisy demand becomes governed, evidenced value through intake and signal, visible tradeoffs, authorization, delivery readiness, and value realization, with AI workflow governance and partner governance as cross-cutting bands, proof kept inspectable, and human judgment owning decisions.">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#071630"/><stop offset="1" stop-color="#0a2350"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#061429"/><stop offset="1" stop-color="#0c2e63"/>
     </linearGradient>
-    <radialGradient id="bgGlow" cx="0.5" cy="0.05" r="0.85">
-      <stop offset="0" stop-color="#2c5aa8" stop-opacity="0.42"/><stop offset="1" stop-color="#2c5aa8" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="node" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#27508f"/><stop offset="1" stop-color="#15315f"/>
-    </linearGradient>
-    <linearGradient id="nodeA" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#3050a8"/><stop offset="1" stop-color="#1b2f6e"/>
-    </linearGradient>
-    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#4f86f7"/><stop offset="1" stop-color="#5fd0ff"/>
-    </linearGradient>
-    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#16345f"/><stop offset="1" stop-color="#122a55"/>
-    </linearGradient>
-    <linearGradient id="badge" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#7fb0ff"/><stop offset="1" stop-color="#3f6fe0"/>
-    </linearGradient>
-    <linearGradient id="badgeA" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#b3a9ff"/><stop offset="1" stop-color="#7a6fe6"/>
-    </linearGradient>
-    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="soft" x="-40%" y="-40%" width="180%" height="200%">
-      <feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#020a1c" flood-opacity="0.55"/>
-    </filter>
-    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.3" fill="#6f9ae0" fill-opacity="0.10"/>
-    </pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6f8fe0"/>
+    </marker>
   </defs>
-
   <rect width="1200" height="432" fill="url(#bg)"/>
-  <rect width="1200" height="432" fill="url(#dots)"/>
-  <rect width="1200" height="320" fill="url(#bgGlow)"/>
-  <!-- signal-field filaments -->
-  <g fill="none" stroke="url(#flow)" stroke-width="1.1" opacity="0.30">
-    <path d="M-20 86 C 220 30, 430 150, 690 70 S 1090 140, 1230 60"/>
-    <path d="M-20 392 C 250 432, 520 320, 770 392 S 1070 336, 1230 410"/>
-  </g>
-  <g fill="#7fe0ff" filter="url(#glow)" opacity="0.8">
-    <circle cx="690" cy="70" r="2.6"/><circle cx="300" cy="64" r="2.2"/><circle cx="770" cy="392" r="2.6"/><circle cx="170" cy="404" r="2"/>
-  </g>
+  <text x="44" y="50" fill="#a9c6ff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="800" letter-spacing="1.6">THE OPERATING LAYER, END TO END</text>
+  <text x="44" y="78" fill="#6f8fc4" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600">Noisy demand becomes governed, evidenced value — the same spine the cards below detail.</text>
 
-  <!-- title -->
-  <text x="40" y="50" fill="#cfe1ff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="800" letter-spacing="1.8">THE OPERATING LAYER, END TO END</text>
-  <rect x="42" y="60" width="54" height="3" rx="1.5" fill="url(#flow)" filter="url(#glow)"/>
-  <text x="40" y="84" fill="#7f9fce" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600">Noisy demand becomes governed, evidenced value — the same spine the cards below detail.</text>
+  <rect x="40" y="100" width="1120" height="38" rx="10" fill="#13284f" stroke="#4a6cb0" stroke-width="1.3"/>
+  <text x="600" y="124" fill="#bcd0ff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">AI workflow governance — reliance class · human review gates · accountability</text>
 
-  <!-- AI governance band -->
-  <g filter="url(#soft)"><rect x="40" y="104" width="1120" height="40" rx="11" fill="url(#band)" stroke="#3f7bd0" stroke-opacity="0.55" stroke-width="1.1"/></g>
-  <rect x="40" y="104" width="5" height="40" rx="2.5" fill="url(#flow)" filter="url(#glow)"/>
-  <circle cx="70" cy="124" r="6" fill="none" stroke="#6fd0ff" stroke-width="2"/><circle cx="70" cy="124" r="1.8" fill="#6fd0ff" filter="url(#glow)"/>
-  <text x="600" y="129" fill="#cfe0ff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">AI workflow governance — reliance class · human review gates · accountability</text>
-
-  <!-- connectors (under nodes) -->
-  <g fill="none" stroke="url(#flow)" stroke-width="2.6" stroke-linecap="round" filter="url(#glow)">
-    <path d="M236 214 H271"/><path d="M467 214 H502"/><path d="M698 214 H733"/><path d="M929 214 H962"/>
-  </g>
-  <g fill="#7fd0ff" filter="url(#glow)"><circle cx="253" cy="214" r="2.4"/><circle cx="484" cy="214" r="2.4"/><circle cx="715" cy="214" r="2.4"/><circle cx="945" cy="214" r="2.4"/></g>
-
-  <!-- spine nodes -->
   <g font-family="Inter,Segoe UI,Arial,sans-serif">
-    <g filter="url(#soft)"><rect x="40" y="172" width="196" height="84" rx="14" fill="url(#node)" stroke="#5d8ad6" stroke-opacity="0.6" stroke-width="1.1"/></g>
-    <rect x="52" y="173" width="172" height="2" rx="1" fill="#7fb6ff" opacity="0.5"/>
-    <circle cx="138" cy="172" r="17" fill="url(#badge)" filter="url(#glow)"/><circle cx="138" cy="172" r="17" fill="none" stroke="#bcd6ff" stroke-opacity="0.6" stroke-width="1.2"/><text x="138" y="178" fill="#06122b" font-size="15" font-weight="800" text-anchor="middle">1</text>
-    <text x="138" y="223" fill="#f0f6ff" font-size="15.5" font-weight="800" text-anchor="middle">Noisy demand</text>
-    <text x="138" y="244" fill="#9fbdec" font-size="11.5" font-weight="600" text-anchor="middle">intake · signal · readiness</text>
+    <rect x="40" y="172" width="196" height="84" rx="12" fill="#1a356f" stroke="#6f8fe0" stroke-width="1.6"/>
+    <circle cx="138" cy="172" r="16" fill="#6f8fe0" stroke="#0c2e63" stroke-width="3"/><text x="138" y="178" fill="#08152e" font-size="15" font-weight="800" text-anchor="middle">1</text>
+    <text x="138" y="222" fill="#eaf2ff" font-size="15.5" font-weight="800" text-anchor="middle">Noisy demand</text>
+    <text x="138" y="243" fill="#9bb8ea" font-size="11.5" font-weight="600" text-anchor="middle">intake · signal · readiness</text>
+    <line x1="236" y1="214" x2="269" y2="214" stroke="#6f8fe0" stroke-width="2.2" marker-end="url(#arr)"/>
 
-    <g filter="url(#soft)"><rect x="271" y="172" width="196" height="84" rx="14" fill="url(#node)" stroke="#5d8ad6" stroke-opacity="0.6" stroke-width="1.1"/></g>
-    <rect x="283" y="173" width="172" height="2" rx="1" fill="#7fb6ff" opacity="0.5"/>
-    <circle cx="369" cy="172" r="17" fill="url(#badge)" filter="url(#glow)"/><circle cx="369" cy="172" r="17" fill="none" stroke="#bcd6ff" stroke-opacity="0.6" stroke-width="1.2"/><text x="369" y="178" fill="#06122b" font-size="15" font-weight="800" text-anchor="middle">2</text>
-    <text x="369" y="223" fill="#f0f6ff" font-size="15.5" font-weight="800" text-anchor="middle">Tradeoffs visible</text>
-    <text x="369" y="244" fill="#9fbdec" font-size="11.5" font-weight="600" text-anchor="middle">capacity · risk · value</text>
+    <rect x="271" y="172" width="196" height="84" rx="12" fill="#1a356f" stroke="#6f8fe0" stroke-width="1.6"/>
+    <circle cx="369" cy="172" r="16" fill="#6f8fe0" stroke="#0c2e63" stroke-width="3"/><text x="369" y="178" fill="#08152e" font-size="15" font-weight="800" text-anchor="middle">2</text>
+    <text x="369" y="222" fill="#eaf2ff" font-size="15.5" font-weight="800" text-anchor="middle">Tradeoffs visible</text>
+    <text x="369" y="243" fill="#9bb8ea" font-size="11.5" font-weight="600" text-anchor="middle">capacity · risk · value</text>
+    <line x1="467" y1="214" x2="500" y2="214" stroke="#6f8fe0" stroke-width="2.2" marker-end="url(#arr)"/>
 
-    <g filter="url(#soft)"><rect x="502" y="172" width="196" height="84" rx="14" fill="url(#node)" stroke="#5d8ad6" stroke-opacity="0.6" stroke-width="1.1"/></g>
-    <rect x="514" y="173" width="172" height="2" rx="1" fill="#7fb6ff" opacity="0.5"/>
-    <circle cx="600" cy="172" r="17" fill="url(#badge)" filter="url(#glow)"/><circle cx="600" cy="172" r="17" fill="none" stroke="#bcd6ff" stroke-opacity="0.6" stroke-width="1.2"/><text x="600" y="178" fill="#06122b" font-size="15" font-weight="800" text-anchor="middle">3</text>
-    <text x="600" y="223" fill="#f0f6ff" font-size="15.5" font-weight="800" text-anchor="middle">Authorized</text>
-    <text x="600" y="244" fill="#9fbdec" font-size="11.5" font-weight="600" text-anchor="middle">business case · charter</text>
+    <rect x="502" y="172" width="196" height="84" rx="12" fill="#1a356f" stroke="#6f8fe0" stroke-width="1.6"/>
+    <circle cx="600" cy="172" r="16" fill="#6f8fe0" stroke="#0c2e63" stroke-width="3"/><text x="600" y="178" fill="#08152e" font-size="15" font-weight="800" text-anchor="middle">3</text>
+    <text x="600" y="222" fill="#eaf2ff" font-size="15.5" font-weight="800" text-anchor="middle">Authorized</text>
+    <text x="600" y="243" fill="#9bb8ea" font-size="11.5" font-weight="600" text-anchor="middle">business case · charter</text>
+    <line x1="698" y1="214" x2="731" y2="214" stroke="#6f8fe0" stroke-width="2.2" marker-end="url(#arr)"/>
 
-    <g filter="url(#soft)"><rect x="733" y="172" width="196" height="84" rx="14" fill="url(#node)" stroke="#5d8ad6" stroke-opacity="0.6" stroke-width="1.1"/></g>
-    <rect x="745" y="173" width="172" height="2" rx="1" fill="#7fb6ff" opacity="0.5"/>
-    <circle cx="831" cy="172" r="17" fill="url(#badge)" filter="url(#glow)"/><circle cx="831" cy="172" r="17" fill="none" stroke="#bcd6ff" stroke-opacity="0.6" stroke-width="1.2"/><text x="831" y="178" fill="#06122b" font-size="15" font-weight="800" text-anchor="middle">4</text>
-    <text x="831" y="223" fill="#f0f6ff" font-size="15.5" font-weight="800" text-anchor="middle">Delivery readiness</text>
-    <text x="831" y="244" fill="#9fbdec" font-size="11.5" font-weight="600" text-anchor="middle">UAT · controls · signoff</text>
+    <rect x="733" y="172" width="196" height="84" rx="12" fill="#1a356f" stroke="#6f8fe0" stroke-width="1.6"/>
+    <circle cx="831" cy="172" r="16" fill="#6f8fe0" stroke="#0c2e63" stroke-width="3"/><text x="831" y="178" fill="#08152e" font-size="15" font-weight="800" text-anchor="middle">4</text>
+    <text x="831" y="222" fill="#eaf2ff" font-size="15.5" font-weight="800" text-anchor="middle">Delivery readiness</text>
+    <text x="831" y="243" fill="#9bb8ea" font-size="11.5" font-weight="600" text-anchor="middle">UAT · controls · signoff</text>
+    <line x1="929" y1="214" x2="962" y2="214" stroke="#6f8fe0" stroke-width="2.2" marker-end="url(#arr)"/>
 
-    <g filter="url(#soft)"><rect x="964" y="172" width="196" height="84" rx="14" fill="url(#nodeA)" stroke="#8f86ff" stroke-opacity="0.7" stroke-width="1.2"/></g>
-    <rect x="976" y="173" width="172" height="2" rx="1" fill="#b3a9ff" opacity="0.6"/>
-    <circle cx="1062" cy="172" r="17" fill="url(#badgeA)" filter="url(#glow)"/><circle cx="1062" cy="172" r="17" fill="none" stroke="#d8d0ff" stroke-opacity="0.7" stroke-width="1.2"/><text x="1062" y="178" fill="#0d0a2b" font-size="15" font-weight="800" text-anchor="middle">5</text>
-    <text x="1062" y="223" fill="#f4f1ff" font-size="15.5" font-weight="800" text-anchor="middle">Value realization</text>
-    <text x="1062" y="244" fill="#c7bfff" font-size="11.5" font-weight="600" text-anchor="middle">benefits · confidence</text>
+    <rect x="964" y="172" width="196" height="84" rx="12" fill="#13386f" stroke="#7b8cff" stroke-width="1.9"/>
+    <circle cx="1062" cy="172" r="16" fill="#7b8cff" stroke="#0c2e63" stroke-width="3"/><text x="1062" y="178" fill="#08152e" font-size="15" font-weight="800" text-anchor="middle">5</text>
+    <text x="1062" y="222" fill="#eaf2ff" font-size="15.5" font-weight="800" text-anchor="middle">Value realization</text>
+    <text x="1062" y="243" fill="#bcd0ff" font-size="11.5" font-weight="600" text-anchor="middle">benefits · confidence</text>
   </g>
 
-  <!-- partner band -->
-  <g filter="url(#soft)"><rect x="40" y="292" width="1120" height="40" rx="11" fill="url(#band)" stroke="#3f7bd0" stroke-opacity="0.55" stroke-width="1.1"/></g>
-  <rect x="40" y="292" width="5" height="40" rx="2.5" fill="url(#flow)" filter="url(#glow)"/>
-  <circle cx="70" cy="312" r="6" fill="none" stroke="#6fd0ff" stroke-width="2"/><circle cx="70" cy="312" r="1.8" fill="#6fd0ff" filter="url(#glow)"/>
-  <text x="600" y="317" fill="#cfe0ff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">Partner &amp; external delivery governance — qualification · controls · escalation</text>
+  <rect x="40" y="292" width="1120" height="38" rx="10" fill="#13284f" stroke="#4a6cb0" stroke-width="1.3"/>
+  <text x="600" y="316" fill="#bcd0ff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">Partner &amp; external delivery governance — qualification · controls · escalation</text>
 
-  <text x="600" y="366" fill="#9bbcf0" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">Proof stays inspectable: source artifacts kept separate from public-safe examples</text>
-  <text x="600" y="392" fill="#6f8fd0" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12.5" font-weight="600" text-anchor="middle">Human judgment owns decisions, approvals, risk acceptance, and funding</text>
+  <text x="600" y="364" fill="#9bbcf0" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">Proof stays inspectable: source artifacts kept separate from public-safe examples</text>
+  <text x="600" y="390" fill="#6f8fd0" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12.5" font-weight="600" text-anchor="middle">Human judgment owns decisions, approvals, risk acceptance, and funding</text>
 </svg>
