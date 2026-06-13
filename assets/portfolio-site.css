@@ -107,9 +107,7 @@ align-items: end;
 overflow: hidden;
 border-bottom: 1px solid var(--line);
 background:
-radial-gradient(circle at 20% 28%, rgba(42, 206, 231, 0.21), transparent 28%),
-radial-gradient(circle at 76% 36%, rgba(80, 126, 244, 0.24), transparent 34%),
-linear-gradient(135deg, #030914 0%, #061633 46%, #071d44 100%);
+linear-gradient(90deg, rgb(0, 97, 210) 0%, rgb(0, 0, 38) 100%);
 color: #ffffff;
 isolation: isolate;
 }
@@ -120,9 +118,7 @@ position: absolute;
 inset: 0;
 z-index: 0;
 background:
-radial-gradient(circle at 18% 28%, rgba(45, 215, 240, 0.16), transparent 30%),
-radial-gradient(circle at 78% 42%, rgba(76, 122, 232, 0.18), transparent 36%),
-linear-gradient(135deg, #030914 0%, #061633 48%, #071d44 100%);
+linear-gradient(90deg, rgb(0, 97, 210) 0%, rgb(0, 0, 38) 100%);
 transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.12);
 transform-origin: left bottom;
 will-change: transform;
@@ -135,8 +131,8 @@ position: absolute;
 inset: 0;
 z-index: 1;
 background:
-linear-gradient(90deg, rgba(2, 7, 16, 0.95) 0%, rgba(2, 7, 16, 0.86) 36%, rgba(2, 7, 16, 0.40) 66%, rgba(2, 7, 16, 0.10) 100%),
-linear-gradient(180deg, rgba(2, 8, 18, 0.12) 0%, rgba(2, 8, 18, 0.52) 100%);
+linear-gradient(90deg, rgba(0, 0, 38, 0.68) 0%, rgba(0, 0, 38, 0.44) 36%, rgba(0, 0, 38, 0.12) 66%, rgba(0, 0, 38, 0.02) 100%),
+linear-gradient(180deg, rgba(0, 0, 38, 0.06) 0%, rgba(0, 0, 38, 0.32) 100%);
 pointer-events: none;
 }
 
@@ -725,14 +721,14 @@ font-size: 0.92rem;
 
 .portfolio-hero-filament-bg {
 inset: -5% -18% -10%;
-opacity: 0.64;
+opacity: 0.82;
 transform: translate3d(0, 0, 0) scale(1.02);
 }
 
 .hero::after {
 background:
-linear-gradient(90deg, rgba(2, 7, 16, 0.97) 0%, rgba(2, 7, 16, 0.90) 58%, rgba(2, 7, 16, 0.48) 100%),
-linear-gradient(180deg, rgba(2, 8, 18, 0.18) 0%, rgba(2, 8, 18, 0.60) 100%);
+linear-gradient(90deg, rgba(0, 0, 38, 0.72) 0%, rgba(0, 0, 38, 0.56) 58%, rgba(0, 0, 38, 0.20) 100%),
+linear-gradient(180deg, rgba(0, 0, 38, 0.08) 0%, rgba(0, 0, 38, 0.36) 100%);
 }
 
 .two-col,
@@ -776,7 +772,7 @@ padding-bottom: 34px;
 
 .portfolio-hero-filament-bg {
 inset: -3% -52% -8% -22%;
-opacity: 0.48;
+opacity: 0.72;
 }
 
 h1 {

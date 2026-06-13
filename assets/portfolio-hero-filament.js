@@ -39,57 +39,62 @@ if (canvas && hero) {
   };
 
   const buildModules = () => {
-    const count = compact() ? 16 : 32;
+    const count = compact() ? 18 : 36;
     const clusters = [
-      { code: "APP", name: "App Delivery", y: 0.18, tone: 0.78 },
-      { code: "API", name: "API Platform", y: 0.30, tone: 0.58 },
-      { code: "DAT", name: "Data Platform", y: 0.43, tone: 0.42 },
-      { code: "SEC", name: "Security", y: 0.56, tone: 0.68 },
-      { code: "OPS", name: "DevOps", y: 0.68, tone: 0.18 },
-      { code: "QAT", name: "Quality", y: 0.78, tone: 0.50 }
+      { code: "GRO", name: "Growth", y: 0.18, tone: 0.78 },
+      { code: "EFF", name: "Efficiency", y: 0.30, tone: 0.58 },
+      { code: "RSK", name: "Risk", y: 0.43, tone: 0.42 },
+      { code: "EXP", name: "Experience", y: 0.56, tone: 0.68 },
+      { code: "CAP", name: "Capacity", y: 0.68, tone: 0.18 },
+      { code: "VAL", name: "Value", y: 0.78, tone: 0.50 }
     ];
     const initiatives = [
-      "Checkout Rewrite",
-      "API Gateway",
-      "Event Pipeline",
-      "Identity Upgrade",
-      "CI/CD Hardening",
-      "Test Automation",
-      "Mobile Release",
-      "Service Mesh",
-      "Data Lakehouse",
-      "Secrets Rotation",
-      "Deploy Pipeline",
-      "Regression Suite",
-      "Feature Flags",
-      "Partner APIs",
-      "Analytics Mart",
-      "Vuln Remediation",
-      "Observability",
-      "Load Testing",
-      "Billing Engine",
-      "Integration Hub",
-      "CDC Migration",
-      "Access Reviews",
-      "Release Train",
-      "Synthetic Tests",
-      "Search Service",
-      "Webhook Platform",
-      "ML Ops Runtime",
-      "Zero Trust",
-      "Cloud Cost Guard",
-      "Contract Tests",
-      "Entitlement API",
-      "Data Quality"
+      "Growth Portfolio",
+      "Margin Program",
+      "Customer Trust",
+      "Experience Uplift",
+      "Capacity Plan",
+      "Benefits Office",
+      "Market Entry",
+      "Cost Transformation",
+      "Regulatory Readiness",
+      "Service Redesign",
+      "Partner Strategy",
+      "Value Realization",
+      "Revenue Assurance",
+      "Operating Model",
+      "Audit Readiness",
+      "Journey Simplify",
+      "Resource Planning",
+      "Outcome Dashboard",
+      "Lifecycle Renewal",
+      "Executive Cadence",
+      "Policy Remediation",
+      "Board Reporting",
+      "Vendor Strategy",
+      "Benefit Recovery",
+      "Pricing Strategy",
+      "Demand Governance",
+      "Control Framework",
+      "Service Deflection",
+      "Portfolio Intake",
+      "KPI Standardization",
+      "Decision Backlog",
+      "Adoption Program",
+      "Investment Review",
+      "Funding Reset",
+      "Scenario Plan",
+      "Value Roadmap"
     ];
-    const phases = ["DISC", "DESIGN", "BUILD", "TEST", "UAT", "PROD"];
+    const stages = ["INTAKE", "SCORED", "FUNDED", "ACTIVE", "GATE", "BENEFITS"];
     const health = ["GREEN", "GREEN", "AMBER", "AMBER", "RED"];
-    const owners = ["APP", "API", "DATA", "SRE", "SEC", "QA"];
+    const owners = ["PMO", "OPS", "FIN", "CX", "RISK", "DATA"];
+    const strategy = ["GROWTH", "MARGIN", "RISK", "CX", "SCALE", "VALUE"];
     const rows = [
-      ["PHASE", "RAG", "BUD", "DEP", "DEC", "READY"],
-      ["OWNER", "PRIOR", "STORY", "FORE", "DEFECT", "MILE"],
-      ["PHASE", "RAG", "CYCLE", "DEP", "READY", "COVER"],
-      ["OWNER", "BUD", "VALUE", "ENV", "FORE", "MILE"]
+      ["SCORE", "OWNER", "BV", "FUND", "DEC", "READY"],
+      ["STAGE", "RAG", "ALIGN", "CAP", "DEP", "BEN"],
+      ["SCORE", "PRIOR", "ROI", "RISK", "GATE", "MILE"],
+      ["STAGE", "BV", "FUND", "DEC", "FORE", "OUT"]
     ];
     state.modules = Array.from({ length: count }, (_, index) => {
       const depth = 0.58 + seeded(index + 4) * 0.72;
@@ -98,12 +103,13 @@ if (canvas && hero) {
       const height = (82 + seeded(index + 11) * 34) * depth;
       const budget = (0.8 + seeded(index + 13) * 7.8).toFixed(1);
       const value = (1.2 + seeded(index + 14) * 12.5).toFixed(1);
-      const deps = Math.max(1, Math.round(seeded(index + 15) * 9));
+      const deps = Math.max(1, Math.round(seeded(index + 15) * 8));
       const decisions = Math.max(0, Math.round(seeded(index + 16) * 4));
-      const blockers = Math.max(0, Math.round(seeded(index + 17) * 3));
       const ready = Math.round(48 + seeded(index + 18) * 42);
       const forecast = Math.round(55 + seeded(index + 19) * 34);
-      const cycleDays = Math.round(12 + seeded(index + 20) * 46);
+      const score = Math.round(58 + seeded(index + 20) * 36);
+      const roi = (1.1 + seeded(index + 30) * 3.6).toFixed(1);
+      const capacity = Math.round(6 + seeded(index + 31) * 34);
       return {
         id: index,
         code: `${cluster.code}-${String(120 + index * 7).padStart(3, "0")}`,
@@ -120,7 +126,7 @@ if (canvas && hero) {
         tone: seeded(index + 6),
         rows: rows[index % rows.length],
         metrics: {
-          phase: phases[Math.floor(seeded(index + 21) * phases.length)],
+          stage: stages[Math.floor(seeded(index + 21) * stages.length)],
           rag: health[Math.floor(seeded(index + 22) * health.length)],
           owner: owners[Math.floor(seeded(index + 23) * owners.length)],
           priority: `P${Math.max(1, Math.min(4, Math.ceil(seeded(index + 24) * 4)))}`,
@@ -128,15 +134,15 @@ if (canvas && hero) {
           value,
           deps,
           decisions,
-          blockers,
           ready,
           forecast,
-          cycleDays,
           milestone: `D+${Math.round(8 + seeded(index + 25) * 52)}`,
           benefit: `${Math.round(44 + seeded(index + 26) * 44)}%`,
-          story: Math.round(18 + seeded(index + 27) * 130),
-          coverage: `${Math.round(54 + seeded(index + 28) * 38)}%`,
-          environment: ["DEV", "QA", "STAGE", "PROD"][Math.floor(seeded(index + 29) * 4)]
+          score,
+          roi,
+          capacity,
+          risk: ["LOW", "MED", "MED", "HIGH"][Math.floor(seeded(index + 27) * 4)],
+          alignment: strategy[Math.floor(seeded(index + 28) * strategy.length)]
         }
       };
     });
@@ -171,8 +177,8 @@ if (canvas && hero) {
     const glowX = state.width * (0.62 + state.pointerX * 0.18);
     const glowY = state.height * (0.42 + state.pointerY * 0.14);
     const glow = ctx.createRadialGradient(glowX, glowY, 0, glowX, glowY, Math.max(260, state.width * 0.34));
-    glow.addColorStop(0, "rgba(46, 213, 238, 0.16)");
-    glow.addColorStop(0.38, "rgba(39, 124, 236, 0.075)");
+    glow.addColorStop(0, "rgba(64, 225, 248, 0.26)");
+    glow.addColorStop(0.38, "rgba(55, 142, 246, 0.13)");
     glow.addColorStop(1, "rgba(39, 124, 236, 0)");
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, state.width, state.height);
@@ -184,7 +190,7 @@ if (canvas && hero) {
       ctx.beginPath();
       ctx.moveTo(-40, y);
       ctx.lineTo(state.width + 40, y + Math.sin(i * 1.4) * 28);
-      ctx.strokeStyle = "rgba(123, 220, 245, 0.058)";
+      ctx.strokeStyle = "rgba(145, 232, 255, 0.09)";
       ctx.lineWidth = 1;
       ctx.stroke();
     }
@@ -207,8 +213,8 @@ if (canvas && hero) {
         const distance = Math.hypot(ax - bx, ay - by);
         const gate = Math.sin(time * 0.7 + a.module.id * 1.7 + b.module.id * 0.9);
         if (distance > maxDistance || gate < (sameCluster ? -0.28 : -0.04)) continue;
-        const baseOpacity = sameCluster ? 0.24 : 0.34;
-        const opacity = Math.min(baseOpacity + 0.04, (1 - distance / maxDistance) * (baseOpacity + 0.10)) * (0.68 + gate * 0.32);
+        const baseOpacity = sameCluster ? 0.34 : 0.46;
+        const opacity = Math.min(baseOpacity + 0.08, (1 - distance / maxDistance) * (baseOpacity + 0.16)) * (0.76 + gate * 0.28);
         const midX = (ax + bx) / 2 + Math.sin(time * 0.34 + i) * 18;
         const midY = (ay + by) / 2 + Math.cos(time * 0.31 + j) * 12;
         ctx.beginPath();
@@ -223,24 +229,91 @@ if (canvas && hero) {
     }
   };
 
+  const drawLooseFilaments = (visible, time) => {
+    if (visible.length < 2) return;
+    for (const entry of visible) {
+      const module = entry.module;
+      if (module.id % 3 !== 0) continue;
+      const target = visible.find((candidate) =>
+        candidate.module.cluster.code === module.dependencyCluster &&
+        Math.abs(candidate.module.id - module.id) > 2
+      );
+      if (!target) continue;
+
+      const progress = cycle(time * 0.12 + module.phase);
+      if (progress > 0.96) continue;
+
+      const startX = entry.x + module.width * 0.88;
+      const startY = entry.y + module.height * 0.50;
+      const targetX = target.x + target.module.width * 0.12;
+      const targetY = target.y + target.module.height * 0.52;
+      const connectStart = 0.68;
+      const connectEnd = 0.90;
+      const early = Math.min(1, progress / connectStart);
+      const attach = Math.max(0, Math.min(1, (progress - connectStart) / (connectEnd - connectStart)));
+      const reach = progress < connectStart
+        ? 0.22 + early * 0.42
+        : 0.64 + attach * 0.36;
+      const dotX = mix(startX, targetX, reach) + Math.sin(time * 1.7 + module.id) * (1 - attach) * 18;
+      const dotY = mix(startY, targetY, reach) + Math.cos(time * 1.3 + module.id) * (1 - attach) * 12;
+      const glow = progress < connectStart ? 0.34 + early * 0.18 : 0.52 + attach * 0.38;
+      const fade = progress > connectEnd ? 1 - (progress - connectEnd) / (0.96 - connectEnd) : 1;
+
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, fade);
+      ctx.beginPath();
+      ctx.moveTo(startX, startY);
+      const midX = (startX + dotX) / 2 + Math.sin(time + module.id) * 18;
+      const midY = (startY + dotY) / 2 + Math.cos(time * 0.8 + module.id) * 10;
+      ctx.quadraticCurveTo(midX, midY, dotX, dotY);
+      ctx.strokeStyle = `rgba(168, 242, 255, ${0.32 + glow * 0.30})`;
+      ctx.lineWidth = 1.2 + attach * 1.1;
+      ctx.stroke();
+
+      const radius = 2.8 + attach * 4.2;
+      const gradient = ctx.createRadialGradient(dotX, dotY, 0, dotX, dotY, radius * 5.5);
+      gradient.addColorStop(0, `rgba(235, 254, 255, ${0.98 * glow})`);
+      gradient.addColorStop(0.35, `rgba(93, 232, 255, ${0.58 * glow})`);
+      gradient.addColorStop(1, "rgba(79, 224, 248, 0)");
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(dotX, dotY, radius * 5.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = `rgba(240, 254, 255, ${0.88 * glow})`;
+      ctx.beginPath();
+      ctx.arc(dotX, dotY, radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      if (attach > 0.78) {
+        ctx.beginPath();
+        ctx.moveTo(dotX, dotY);
+        ctx.lineTo(targetX, targetY);
+        ctx.strokeStyle = `rgba(248, 204, 108, ${0.56 * attach})`;
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+  };
+
   const drawText = (module, x, y, time) => {
-    const alpha = 0.42 + module.depth * 0.28;
+    const alpha = 0.52 + module.depth * 0.32;
     const lineH = Math.max(9, (module.height - 22 * module.depth) / (module.rows.length + 1));
     const fontSize = Math.max(7, Math.round(8 * module.depth));
     ctx.font = `${fontSize}px ui-monospace, SFMono-Regular, Consolas, monospace`;
     ctx.textBaseline = "middle";
-    ctx.fillStyle = `rgba(230, 251, 255, ${Math.min(0.88, alpha + 0.18)})`;
+    ctx.fillStyle = `rgba(237, 253, 255, ${Math.min(0.96, alpha + 0.18)})`;
     ctx.fillText(module.code, x + 10 * module.depth, y + 12 * module.depth);
-    ctx.fillStyle = `rgba(169, 226, 239, ${Math.min(0.74, alpha + 0.04)})`;
+    ctx.fillStyle = `rgba(188, 237, 248, ${Math.min(0.86, alpha + 0.06)})`;
     ctx.fillText(module.title.toUpperCase().slice(0, 18), x + 10 * module.depth, y + 23 * module.depth);
     for (let i = 0; i < module.rows.length; i += 1) {
       const label = module.rows[i];
       const value = metricValue(label, module, i, time);
       const text = `${label}:${value}`.slice(0, 18);
-      ctx.fillStyle = `rgba(196, 249, 255, ${alpha})`;
+      ctx.fillStyle = `rgba(214, 252, 255, ${Math.min(0.92, alpha)})`;
       ctx.fillText(text, x + 10 * module.depth, y + 24 * module.depth + lineH * (i + 1));
       const barW = (module.width - 22 * module.depth) * (0.22 + seeded(module.id + i * 10) * 0.55);
-      ctx.fillStyle = `rgba(45, 215, 240, ${0.12 + alpha * 0.24})`;
+      ctx.fillStyle = `rgba(68, 226, 248, ${0.18 + alpha * 0.28})`;
       ctx.fillRect(x + 10 * module.depth, y + 24 * module.depth + lineH * (i + 1) + 5, barW, Math.max(1, 1.2 * module.depth));
     }
   };
@@ -248,23 +321,25 @@ if (canvas && hero) {
   const metricValue = (label, module, rowIndex, time) => {
     const metrics = module.metrics;
     const drift = cycle(time * 0.055 + module.phase + rowIndex * 0.08);
-    if (label === "PHASE") return metrics.phase;
+    if (label === "STAGE") return metrics.stage;
     if (label === "RAG") return metrics.rag;
     if (label === "OWNER") return metrics.owner;
     if (label === "PRIOR") return metrics.priority;
-    if (label === "BUD") return `$${metrics.budget}M`;
-    if (label === "VALUE") return `$${metrics.value}M`;
+    if (label === "SCORE") return `${Math.round(metrics.score + drift * 2)}/100`;
+    if (label === "BUD" || label === "COST" || label === "FUND") return `$${metrics.budget}M`;
+    if (label === "VALUE" || label === "BV") return `$${metrics.value}M`;
     if (label === "DEP") return `${String(metrics.deps).padStart(2, "0")} ${module.dependencyCluster}`;
     if (label === "DEC") return `${metrics.decisions} DUE`;
-    if (label === "BLOCK" || label === "DEFECT") return String(metrics.blockers).padStart(2, "0");
     if (label === "READY") return `${Math.round(metrics.ready + drift * 5)}%`;
     if (label === "FORE") return `${Math.round(metrics.forecast + drift * 4)}%`;
     if (label === "MILE") return metrics.milestone;
-    if (label === "CYCLE") return `${Math.round(metrics.cycleDays + drift * 4)}D`;
-    if (label === "BENEFIT") return metrics.benefit;
-    if (label === "STORY") return `${metrics.story} PT`;
-    if (label === "COVER") return metrics.coverage;
-    if (label === "ENV") return metrics.environment;
+    if (label === "BEN") return metrics.benefit;
+    if (label === "OUT") return `${Math.round(metrics.forecast + drift * 4)}%`;
+    if (label === "ROI") return `${metrics.roi}X`;
+    if (label === "CAP") return `${metrics.capacity} FTE`;
+    if (label === "RISK") return metrics.risk;
+    if (label === "ALIGN") return metrics.alignment;
+    if (label === "GATE") return metrics.stage === "GATE" ? "OPEN" : "NEXT";
     return "";
   };
 
@@ -274,24 +349,24 @@ if (canvas && hero) {
     const gold = module.tone < 0.24;
     const edgeColor = gold ? "rgba(238, 188, 91," : cyan ? "rgba(67, 226, 249," : "rgba(118, 168, 255,";
     const fill = gold
-      ? `rgba(47, 38, 20, ${0.22 + module.depth * 0.14})`
-      : `rgba(11, 55, 88, ${0.20 + module.depth * 0.15})`;
+      ? `rgba(62, 50, 24, ${0.30 + module.depth * 0.18})`
+      : `rgba(12, 76, 119, ${0.30 + module.depth * 0.20})`;
 
     ctx.save();
-    ctx.globalAlpha = Math.min(0.98, 0.58 + module.depth * 0.31);
-    ctx.shadowBlur = 21 * module.depth;
-    ctx.shadowColor = gold ? "rgba(234, 176, 72, 0.40)" : "rgba(41, 214, 240, 0.48)";
+    ctx.globalAlpha = Math.min(1, 0.68 + module.depth * 0.32);
+    ctx.shadowBlur = 26 * module.depth;
+    ctx.shadowColor = gold ? "rgba(248, 196, 90, 0.56)" : "rgba(54, 225, 248, 0.64)";
     roundRect(x, y, module.width, module.height, 10 * module.depth);
     ctx.fillStyle = fill;
     ctx.fill();
-    ctx.strokeStyle = `${edgeColor} ${0.26 + module.depth * 0.16})`;
+    ctx.strokeStyle = `${edgeColor} ${0.38 + module.depth * 0.22})`;
     ctx.lineWidth = 1;
     ctx.stroke();
     ctx.fillStyle = module.metrics.rag === "RED"
-      ? "rgba(240, 112, 112, 0.62)"
+      ? "rgba(246, 124, 124, 0.72)"
       : module.metrics.rag === "AMBER"
-        ? "rgba(238, 188, 91, 0.64)"
-        : "rgba(102, 218, 172, 0.56)";
+        ? "rgba(248, 204, 108, 0.76)"
+        : "rgba(118, 230, 184, 0.68)";
     ctx.fillRect(x, y, Math.max(3, 4 * module.depth), module.height);
     ctx.shadowBlur = 0;
     drawText(module, x, y, time);
@@ -300,7 +375,7 @@ if (canvas && hero) {
     const pulse = 0.45 + Math.sin(time * 1.3 + module.phase * 6.28) * 0.25;
     ctx.beginPath();
     ctx.arc(x + module.width * 0.88, y + module.height * 0.20, 2.5 * module.depth, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(124, 239, 255, ${pulse * 0.84})`;
+    ctx.fillStyle = `rgba(154, 246, 255, ${pulse * 0.94})`;
     ctx.fill();
   };
 
@@ -319,6 +394,7 @@ if (canvas && hero) {
       .filter((entry) => entry.x > -entry.module.width - 80 && entry.x < state.width + 100)
       .sort((a, b) => a.module.depth - b.module.depth);
 
+    drawLooseFilaments(visible, time);
     drawFilaments(visible, time);
     for (const entry of visible) drawModule(entry, time);
 
