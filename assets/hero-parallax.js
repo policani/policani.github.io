@@ -1,14 +1,33 @@
 (() => {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const heroes = Array.from(document.querySelectorAll(".hero, .deck-hero"));
+  const nav = document.querySelector(".local-nav");
 
-  if (!heroes.length || reducedMotion.matches) return;
+  const syncNavOverlay = () => {
+    if (!nav) return;
+    document.documentElement.style.setProperty("--nav-overlay-height", `${nav.offsetHeight}px`);
+  };
+
+  if (nav && "ResizeObserver" in window) {
+    new ResizeObserver(syncNavOverlay).observe(nav);
+  }
+
+  syncNavOverlay();
+  window.requestAnimationFrame(syncNavOverlay);
+  window.addEventListener("load", syncNavOverlay);
+
+  if (!heroes.length || reducedMotion.matches) {
+    window.addEventListener("resize", syncNavOverlay);
+    return;
+  }
 
   let ticking = false;
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
   const update = () => {
+    syncNavOverlay();
+
     for (const hero of heroes) {
       const rect = hero.getBoundingClientRect();
       const travel = Number.parseFloat(hero.dataset.parallaxTravel || "220");
