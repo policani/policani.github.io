@@ -395,6 +395,24 @@ box-shadow: var(--shadow);
 color: var(--muted);
 }
 
+.resource-preview-link {
+display: block;
+margin: 12px 0 14px;
+border: 1px solid #d5dde5;
+border-radius: 8px;
+overflow: hidden;
+background: #061326;
+}
+
+.resource-preview-image {
+display: block;
+width: 100%;
+aspect-ratio: 16 / 9;
+height: auto;
+object-fit: cover;
+object-position: center top;
+}
+
 .lane-label {
 display: inline-flex;
 margin-bottom: 14px;
