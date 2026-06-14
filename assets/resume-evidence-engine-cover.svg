@@ -1,20 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Resume Evidence Engine: Evidence-grounded drafting with review gates.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Resume Evidence Engine: evidence records and fit notes pass through review before resume and DOCX output.">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#f8fbfc"/>
-      <stop offset="1" stop-color="#edf3f5"/>
+      <stop offset="1" stop-color="#eef4f6"/>
     </linearGradient>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0 0 L10 5 L0 10 z" fill="#2f7f95"/>
     </marker>
     <style>
-      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a;letter-spacing:.2px}
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
       .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
-      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:800;fill:#172234}
+      .label{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:800;fill:#172234}
+      .note{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:12px;font-weight:750;fill:#536476}
       .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
-      .flow{fill:none;stroke:#2f7f95;stroke-width:2.2;stroke-linecap:round}
-      .rail{fill:none;stroke:#d2dde3;stroke-width:2}
-      .tick{stroke:#cad7df;stroke-width:1.5}
+      .flow{fill:none;stroke:#2f7f95;stroke-width:2.4;stroke-linecap:round}
     </style>
   </defs>
   <rect width="800" height="450" fill="url(#bg)"/>
@@ -22,43 +21,41 @@
   <text x="50" y="70" class="title">Resume Evidence Engine</text>
   <text x="50" y="98" class="sub">Evidence-grounded drafting with review gates</text>
   <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
-  <path d="M92 322 H708" class="rail"/>
-  <circle cx="180.0" cy="322" r="5" fill="#2f7f95"/><line x1="180.0" y1="332" x2="180.0" y2="352" class="tick"/>
-<circle cx="326.7" cy="322" r="5" fill="#c9922e"/><line x1="326.7" y1="332" x2="326.7" y2="352" class="tick"/>
-<circle cx="473.3" cy="322" r="5" fill="#2f7f95"/><line x1="473.3" y1="332" x2="473.3" y2="352" class="tick"/>
-<circle cx="620.0" cy="322" r="5" fill="#c9922e"/><line x1="620.0" y1="332" x2="620.0" y2="352" class="tick"/>
-  <path d="M255.5 218 H277.5" class="flow" marker-end="url(#arrow)"/>
-  <path d="M402.5 218 H424.5" class="flow" marker-end="url(#arrow)"/>
-  <path d="M534.5 218 H556.5" class="flow" marker-end="url(#arrow)"/>
-      <g>
-        <rect x="137.5" y="174" width="116" height="88" rx="8" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
-        <circle cx="161.5" cy="201" r="8" fill="#2f7f95"/>
-        <path d="M157.5 201 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <text x="195.5" y="232" text-anchor="middle" class="step">Evidence</text>
-      </g>
-      <g>
-        <rect x="279.5" y="174" width="121" height="88" rx="8" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
-        <circle cx="303.5" cy="201" r="8" fill="#2f7f95"/>
-        <path d="M299.5 201 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <text x="340.0" y="232" text-anchor="middle" class="step">Fit notes</text>
-      </g>
-      <g>
-        <rect x="426.5" y="174" width="106" height="88" rx="8" fill="#fff8e8" stroke="#c9922e" stroke-width="1.5"/>
-        <circle cx="450.5" cy="201" r="8" fill="#c9922e"/>
-        <path d="M446.5 201 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <text x="479.5" y="232" text-anchor="middle" class="step">Review</text>
-      </g>
-      <g>
-        <rect x="558.5" y="174" width="104" height="88" rx="8" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
-        <circle cx="582.5" cy="201" r="8" fill="#2f7f95"/>
-        <path d="M578.5 201 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <text x="610.5" y="232" text-anchor="middle" class="step">DOCX</text>
-      </g>
-  <rect x="86" y="360" width="628" height="40" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
-  <text x="400" y="385" text-anchor="middle" class="footer">Claims move forward only when source evidence is traceable.</text>
-  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
-  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+
+  <g>
+    <rect x="72" y="168" width="168" height="138" rx="10" fill="#f6f9fa" stroke="#cad7df"/>
+    <text x="156" y="194" text-anchor="middle" class="label">Evidence Stack</text>
+    <rect x="96" y="214" width="120" height="14" rx="3" fill="#dfe9ed"/>
+    <rect x="96" y="240" width="98" height="14" rx="3" fill="#dfe9ed"/>
+    <rect x="96" y="266" width="132" height="14" rx="3" fill="#dfe9ed"/>
+    <circle cx="84" cy="221" r="5" fill="#2f7f95"/>
+    <circle cx="84" cy="247" r="5" fill="#c9922e"/>
+    <circle cx="84" cy="273" r="5" fill="#2f7f95"/>
+  </g>
+
+  <path d="M246 237 H314" class="flow" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect x="320" y="156" width="160" height="162" rx="12" fill="#fff8e8" stroke="#c9922e" stroke-width="1.6"/>
+    <text x="400" y="188" text-anchor="middle" class="label">Review Gate</text>
+    <circle cx="400" cy="235" r="30" fill="#c9922e"/>
+    <path d="M386 235 l10 10 l20 -24" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="400" y="286" text-anchor="middle" class="note">claim checked</text>
+  </g>
+
+  <path d="M486 237 H554" class="flow" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect x="560" y="154" width="154" height="188" rx="10" fill="#ffffff" stroke="#cad7df"/>
+    <text x="637" y="184" text-anchor="middle" class="label">Resume Output</text>
+    <rect x="588" y="208" width="98" height="12" rx="3" fill="#cfdbe2"/>
+    <rect x="588" y="234" width="76" height="10" rx="3" fill="#d9e3e8"/>
+    <rect x="588" y="256" width="100" height="10" rx="3" fill="#d9e3e8"/>
+    <rect x="588" y="278" width="86" height="10" rx="3" fill="#d9e3e8"/>
+    <rect x="622" y="306" width="64" height="24" rx="5" fill="#2f7f95"/>
+    <text x="654" y="323" text-anchor="middle" class="note" fill="#fff">DOCX</text>
+  </g>
+
+  <rect x="86" y="366" width="628" height="34" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="388" text-anchor="middle" class="footer">Claims move forward only when source evidence is traceable.</text>
 </svg>
-
-
-
