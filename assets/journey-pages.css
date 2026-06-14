@@ -119,6 +119,28 @@ nav strong { color: var(--ink); }
 
 section { padding: 42px 0; border-bottom: 1px solid var(--line); }
 
+/* Alternating section palette — overrides base border-bottom via higher specificity (0,0,1,2) */
+main > section:nth-of-type(3n+1) {
+background-color: #ffffff;
+background: #ffffff;
+border-top: 1px solid var(--line);
+border-bottom: 1px solid var(--line);
+}
+
+main > section:nth-of-type(3n+2) {
+background-color: #f5f6f7;
+background: #f5f6f7;
+border-top: 1px solid #e2e5ea;
+border-bottom: 1px solid #e2e5ea;
+}
+
+main > section:nth-of-type(3n) {
+background-color: #edf3fa;
+background: #edf3fa;
+border-top: 1px solid #d5e3f0;
+border-bottom: 1px solid #d5e3f0;
+}
+
 .grid-2, .grid-3, .route { display: grid; gap: 14px; margin-top: 22px; }
 
 .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
