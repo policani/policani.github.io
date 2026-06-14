@@ -1,59 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="A weighted portfolio scoring matrix: initiatives scored on value, risk, and effort, with a composite score, mandatory work flagged, and the top-ranked initiative highlighted — the artifact produced by the Portfolio Prioritization Scoring Agent.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Tradeoffs Are Hidden: Decision support and sequencing evidence.">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#061429"/><stop offset="1" stop-color="#0c2e63"/>
+      <stop offset="0" stop-color="#f8fbfc"/>
+      <stop offset="1" stop-color="#edf3f5"/>
     </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#3b6f8f"/>
+    </marker>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a;letter-spacing:.2px}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:800;fill:#172234}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .flow{fill:none;stroke:#3b6f8f;stroke-width:2.2;stroke-linecap:round}
+      .rail{fill:none;stroke:#d2dde3;stroke-width:2}
+      .tick{stroke:#cad7df;stroke-width:1.5}
+    </style>
   </defs>
   <rect width="800" height="450" fill="url(#bg)"/>
-  <text x="44" y="56" fill="#a9c6ff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="20" font-weight="800" letter-spacing="1.4">MAKING TRADEOFFS VISIBLE</text>
-  <text x="44" y="83" fill="#6f8fc4" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14.5" font-weight="600">Transparent weighted scoring — mandatory vs discretionary, auditable.</text>
-
-  <!-- header -->
-  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#7f9fce">
-    <text x="64" y="132">Initiative</text>
-    <text x="470" y="132" text-anchor="middle">Value</text>
-    <text x="552" y="132" text-anchor="middle">Risk</text>
-    <text x="634" y="132" text-anchor="middle">Effort</text>
-    <text x="722" y="132" text-anchor="middle">Score</text>
-  </g>
-  <line x1="44" y1="144" x2="756" y2="144" stroke="#2b4a82" stroke-width="1"/>
-
-  <!-- rows -->
-  <g font-family="Inter,Segoe UI,Arial,sans-serif">
-    <!-- row 1 (top ranked, accent) -->
-    <rect x="44" y="156" width="712" height="56" rx="9" fill="#16356b" stroke="#7b8cff" stroke-width="1.6"/>
-    <rect x="44" y="156" width="5" height="56" rx="2.5" fill="#7b8cff"/>
-    <text x="64" y="183" fill="#f0f6ff" font-size="15" font-weight="700">Compliance remediation</text>
-    <rect x="64" y="190" width="74" height="18" rx="9" fill="#3a2f6e"/><text x="101" y="203" fill="#cdc4ff" font-size="10.5" font-weight="800" text-anchor="middle">MANDATORY</text>
-    <text x="470" y="190" fill="#dfe9ff" font-size="15" font-weight="700" text-anchor="middle">9</text>
-    <text x="552" y="190" fill="#dfe9ff" font-size="15" font-weight="700" text-anchor="middle">8</text>
-    <text x="634" y="190" fill="#dfe9ff" font-size="15" font-weight="700" text-anchor="middle">5</text>
-    <rect x="694" y="172" width="48" height="30" rx="15" fill="#7b8cff"/><text x="718" y="192" fill="#0b1330" font-size="15" font-weight="800" text-anchor="middle">87</text>
-
-    <!-- row 2 -->
-    <rect x="44" y="220" width="712" height="50" rx="9" fill="#0e2c57"/>
-    <text x="64" y="251" fill="#e3ecff" font-size="15" font-weight="600">Revenue platform</text>
-    <text x="470" y="251" fill="#b9cbec" font-size="15" font-weight="600" text-anchor="middle">8</text>
-    <text x="552" y="251" fill="#b9cbec" font-size="15" font-weight="600" text-anchor="middle">6</text>
-    <text x="634" y="251" fill="#b9cbec" font-size="15" font-weight="600" text-anchor="middle">7</text>
-    <rect x="696" y="236" width="44" height="28" rx="14" fill="#234a86"/><text x="718" y="255" fill="#dfe9ff" font-size="14" font-weight="800" text-anchor="middle">74</text>
-
-    <!-- row 3 -->
-    <rect x="44" y="278" width="712" height="50" rx="9" fill="#0e2c57"/>
-    <text x="64" y="309" fill="#e3ecff" font-size="15" font-weight="600">Data consolidation</text>
-    <text x="470" y="309" fill="#b9cbec" font-size="15" font-weight="600" text-anchor="middle">6</text>
-    <text x="552" y="309" fill="#b9cbec" font-size="15" font-weight="600" text-anchor="middle">5</text>
-    <text x="634" y="309" fill="#b9cbec" font-size="15" font-weight="600" text-anchor="middle">6</text>
-    <rect x="696" y="294" width="44" height="28" rx="14" fill="#234a86"/><text x="718" y="313" fill="#dfe9ff" font-size="14" font-weight="800" text-anchor="middle">61</text>
-
-    <!-- row 4 -->
-    <rect x="44" y="336" width="712" height="50" rx="9" fill="#0e2c57"/>
-    <text x="64" y="367" fill="#e3ecff" font-size="15" font-weight="600">Tooling upgrade</text>
-    <text x="470" y="367" fill="#b9cbec" font-size="15" font-weight="600" text-anchor="middle">4</text>
-    <text x="552" y="367" fill="#b9cbec" font-size="15" font-weight="600" text-anchor="middle">3</text>
-    <text x="634" y="367" fill="#b9cbec" font-size="15" font-weight="600" text-anchor="middle">8</text>
-    <rect x="696" y="352" width="44" height="28" rx="14" fill="#1d3a6a"/><text x="718" y="371" fill="#9fbbe6" font-size="14" font-weight="800" text-anchor="middle">48</text>
-  </g>
-
-  <text x="44" y="424" fill="#5d7fc4" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12.5" font-weight="600">Artifact: weighted scoring matrix · Portfolio Prioritization Scoring Agent</text>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Tradeoffs Are Hidden</text>
+  <text x="50" y="98" class="sub">Decision support and sequencing evidence</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+  <path d="M92 322 H708" class="rail"/>
+  <circle cx="180.0" cy="322" r="5" fill="#3b6f8f"/><line x1="180.0" y1="332" x2="180.0" y2="352" class="tick"/>
+<circle cx="326.7" cy="322" r="5" fill="#c9922e"/><line x1="326.7" y1="332" x2="326.7" y2="352" class="tick"/>
+<circle cx="473.3" cy="322" r="5" fill="#3b6f8f"/><line x1="473.3" y1="332" x2="473.3" y2="352" class="tick"/>
+<circle cx="620.0" cy="322" r="5" fill="#c9922e"/><line x1="620.0" y1="332" x2="620.0" y2="352" class="tick"/>
+  <path d="M259.0 218 H281.0" class="flow" marker-end="url(#arrow)"/>
+  <path d="M389.0 218 H411.0" class="flow" marker-end="url(#arrow)"/>
+  <path d="M519.0 218 H541.0" class="flow" marker-end="url(#arrow)"/>
+      <g>
+        <rect x="141.0" y="174" width="116" height="88" rx="8" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+        <circle cx="165.0" cy="201" r="8" fill="#3b6f8f"/>
+        <path d="M161.0 201 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="199.0" y="232" text-anchor="middle" class="step">Capacity</text>
+      </g>
+      <g>
+        <rect x="283.0" y="174" width="104" height="88" rx="8" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+        <circle cx="307.0" cy="201" r="8" fill="#3b6f8f"/>
+        <path d="M303.0 201 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="335.0" y="232" text-anchor="middle" class="step">Risk</text>
+      </g>
+      <g>
+        <rect x="413.0" y="174" width="104" height="88" rx="8" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+        <circle cx="437.0" cy="201" r="8" fill="#3b6f8f"/>
+        <path d="M433.0 201 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="465.0" y="232" text-anchor="middle" class="step">Value</text>
+      </g>
+      <g>
+        <rect x="543.0" y="174" width="116" height="88" rx="8" fill="#fff8e8" stroke="#c9922e" stroke-width="1.5"/>
+        <circle cx="567.0" cy="201" r="8" fill="#c9922e"/>
+        <path d="M563.0 201 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="601.0" y="232" text-anchor="middle" class="step">Decision</text>
+      </g>
+  <rect x="86" y="360" width="628" height="40" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="385" text-anchor="middle" class="footer">Pressure, dependencies, and value logic become inspectable choice.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#3b6f8f"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
 </svg>
+
+
+
