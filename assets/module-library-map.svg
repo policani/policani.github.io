@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-label="Reusable operating modules organized into intake, decision, delivery, proof, AI governance, and partner governance lanes.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#061429"/>
+      <stop offset="1" stop-color="#0c2e63"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7efe0"/>
+      <stop offset="1" stop-color="#b78936"/>
+    </linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6f8fe0"/>
+    </marker>
+  </defs>
+  <rect width="900" height="520" fill="url(#bg)"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="48" y="62" fill="#a9c6ff" font-size="22" font-weight="800" letter-spacing="1.4">REUSABLE OPERATING MODULES</text>
+    <text x="48" y="92" fill="#7f9fce" font-size="15" font-weight="600">Tools, templates, and governance patterns assembled into deployable operating lanes.</text>
+    <rect x="48" y="124" width="804" height="54" rx="12" fill="#13284f" stroke="#4a6cb0" stroke-width="1.4"/>
+    <text x="450" y="157" fill="#c9d9ff" font-size="14" font-weight="800" text-anchor="middle">Portfolio operating spine: intake -> decision -> delivery -> value proof</text>
+    <g font-size="13.5" font-weight="800" text-anchor="middle">
+      <rect x="54" y="224" width="120" height="66" rx="12" fill="#17346b" stroke="#6f8fe0" stroke-width="1.5"/>
+      <text x="114" y="252" fill="#eaf2ff">Intake</text>
+      <text x="114" y="274" fill="#9bb8ea" font-size="11.5" font-weight="600">readiness &#183; routing</text>
+      <line x1="174" y1="257" x2="211" y2="257" stroke="#6f8fe0" stroke-width="2.2" marker-end="url(#arr)"/>
+      <rect x="214" y="224" width="120" height="66" rx="12" fill="#17346b" stroke="#6f8fe0" stroke-width="1.5"/>
+      <text x="274" y="252" fill="#eaf2ff">Decision</text>
+      <text x="274" y="274" fill="#9bb8ea" font-size="11.5" font-weight="600">tradeoffs &#183; value</text>
+      <line x1="334" y1="257" x2="371" y2="257" stroke="#6f8fe0" stroke-width="2.2" marker-end="url(#arr)"/>
+      <rect x="374" y="224" width="120" height="66" rx="12" fill="#17346b" stroke="#6f8fe0" stroke-width="1.5"/>
+      <text x="434" y="252" fill="#eaf2ff">Charter</text>
+      <text x="434" y="274" fill="#9bb8ea" font-size="11.5" font-weight="600">scope &#183; owners</text>
+      <line x1="494" y1="257" x2="531" y2="257" stroke="#6f8fe0" stroke-width="2.2" marker-end="url(#arr)"/>
+      <rect x="534" y="224" width="120" height="66" rx="12" fill="#17346b" stroke="#6f8fe0" stroke-width="1.5"/>
+      <text x="594" y="252" fill="#eaf2ff">Readiness</text>
+      <text x="594" y="274" fill="#9bb8ea" font-size="11.5" font-weight="600">UAT &#183; controls</text>
+      <line x1="654" y1="257" x2="691" y2="257" stroke="#6f8fe0" stroke-width="2.2" marker-end="url(#arr)"/>
+      <rect x="694" y="224" width="150" height="66" rx="12" fill="#15386e" stroke="#7b8cff" stroke-width="1.8"/>
+      <text x="769" y="252" fill="#eaf2ff">Value proof</text>
+      <text x="769" y="274" fill="#bcd0ff" font-size="11.5" font-weight="600">evidence &#183; outcomes</text>
+    </g>
+    <rect x="80" y="334" width="326" height="46" rx="11" fill="#102d57" stroke="#3f63a8" stroke-width="1.2"/>
+    <circle cx="110" cy="357" r="9" fill="#2f7f95"/>
+    <text x="130" y="362" fill="#cfe0ff" font-size="13" font-weight="750">AI workflow governance overlays the spine.</text>
+    <rect x="494" y="334" width="326" height="46" rx="11" fill="#102d57" stroke="#3f63a8" stroke-width="1.2"/>
+    <circle cx="524" cy="357" r="9" fill="#b78936"/>
+    <text x="544" y="362" fill="#cfe0ff" font-size="13" font-weight="750">Partner governance plugs into delivery lanes.</text>
+    <rect x="264" y="418" width="372" height="46" rx="11" fill="url(#gold)" opacity="0.96"/>
+    <text x="450" y="447" fill="#08152e" font-size="14" font-weight="850" text-anchor="middle">Reusable because the ownership model stays explicit</text>
+  </g>
+</svg>
