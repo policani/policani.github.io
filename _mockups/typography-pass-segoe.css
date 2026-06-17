@@ -1,0 +1,192 @@
+:root {
+  --mock-display: "Segoe UI Variable Display", "Segoe UI", Inter, ui-sans-serif, system-ui, sans-serif;
+  --mock-text: Inter, "Segoe UI Variable Text", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --mock-ui: "Segoe UI Variable Text", "Segoe UI", Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--mock-text);
+  line-height: 1.64;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2 {
+  font-family: var(--mock-display);
+  font-weight: 780;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 980px;
+  font-size: clamp(3.45rem, 8.8vw, 6.25rem);
+  line-height: 0.92;
+}
+
+h2 {
+  max-width: 860px;
+  margin-bottom: 18px;
+  font-size: clamp(2.15rem, 4.9vw, 3.28rem);
+  line-height: 1.04;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-family: var(--mock-text);
+  font-size: clamp(1.08rem, 1.7vw, 1.24rem);
+  font-weight: 850;
+  line-height: 1.22;
+}
+
+.nav-title,
+.nav-links a,
+.button,
+.hero-tag,
+.pill,
+.lane-label,
+.section-kicker,
+.eyebrow,
+.audience-path span,
+.card-actions a {
+  font-family: var(--mock-ui);
+}
+
+.eyebrow,
+.section-kicker {
+  margin-bottom: 14px;
+  letter-spacing: 0.075em;
+}
+
+.subhead,
+.lead {
+  max-width: 72ch;
+  font-size: clamp(1.06rem, 1.35vw, 1.16rem);
+  line-height: 1.66;
+}
+
+.subhead {
+  max-width: 820px;
+  margin-top: 26px;
+  font-size: clamp(1.16rem, 2.2vw, 1.42rem);
+  line-height: 1.42;
+}
+
+.hero-copy {
+  max-width: 980px;
+  padding-bottom: 50px;
+}
+
+.hero-tags {
+  gap: 11px;
+  margin-top: 26px;
+}
+
+.hero-tag,
+.pill {
+  min-height: 30px;
+  padding: 6px 11px;
+  font-size: 0.8125rem;
+  line-height: 1.22;
+}
+
+.actions {
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.button {
+  min-height: 48px;
+  padding: 12px 17px;
+  font-size: 0.9375rem;
+  line-height: 1.22;
+}
+
+main section {
+  padding: 62px 0;
+}
+
+.grid-3,
+.grid-2,
+.grid-4,
+.audience-paths,
+.proof-strip {
+  gap: 18px;
+}
+
+.card,
+.proof-box {
+  padding: 22px;
+}
+
+.card p,
+.proof-box p,
+.route-card p {
+  font-size: 0.975rem;
+  line-height: 1.58;
+}
+
+.lane-label {
+  margin-bottom: 15px;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  letter-spacing: 0.045em;
+}
+
+.audience-path {
+  gap: 9px;
+  padding: 19px;
+}
+
+.audience-path strong {
+  font-size: 1.08rem;
+  line-height: 1.24;
+}
+
+.audience-path small {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.module-showcase-grid {
+  gap: 38px;
+}
+
+footer p {
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: clamp(2.75rem, 14.5vw, 3.7rem);
+    line-height: 0.96;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 9.2vw, 2.72rem);
+    line-height: 1.05;
+  }
+
+  h3 {
+    font-size: 1.12rem;
+  }
+
+  .subhead,
+  .lead {
+    font-size: 1.02rem;
+    line-height: 1.62;
+  }
+
+  .hero-copy {
+    padding-bottom: 38px;
+  }
+
+  main section {
+    padding: 46px 0;
+  }
+
+  .card,
+  .proof-box,
+  .audience-path {
+    padding: 18px;
+  }
+}
