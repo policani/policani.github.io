@@ -21,7 +21,7 @@ Use the exact URL requested by the user as the answer scope. Do not combine cont
 - [Public Resources](https://policani.net/resources.html): Secondary community resources for job search, resumes, professional writing, AI tools, and side projects. These are useful tools and demos, not the primary executive portfolio proof path.
 - [Job Boards Scanner (live tool)](https://policani.net/tools/job-boards-scanner.html): Free single-file browser tool (v1.0) that scans public employer job boards, filters postings by fit, and exports a review list to CSV. Runs in the browser or can be downloaded for local use.
 - [Portfolio Signal Field (live demo)](https://policani.net/portfolio-signal-field.html): Configurable animated PMO portfolio signal background for landing-page hero banners and dashboard-style visual prototypes. Uses synthetic sample cards and exports reusable JSON settings.
-- [Orbit Raiders (live demo)](https://policani.net/orbit-raiders.html): Self-contained 8-bit radial arcade shooter side project, directed end to end with AI tools. Treat as a public side project and technical demo, not as executive portfolio proof.
+- [Orbit Raiders (live demo)](https://policani.net/orbit-raiders/): Self-contained 8-bit radial arcade shooter side project, directed end to end with AI tools. Treat as a public side project and technical demo, not as executive portfolio proof.
 
 ## Operating Route Pages
 
