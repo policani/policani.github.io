@@ -401,7 +401,7 @@ function reset(){
 }
 function buildWave(n){
   spawnQueue=[];
-  const count=5+Math.min(n*2,11), formR=140+(n%3)*16;
+  const count=7+Math.min(n*2,13), formR=140+(n%3)*16;
   const pool = n===1?['grunt'] : n<3?['grunt','shooter','weaver'] : ['grunt','shooter','weaver','tank'];
   for(let i=0;i<count;i++){ const type=pool[i%pool.length];
     spawnQueue.push({delay:i*16,angle:(i/count)*TAU,orbitR:formR,type,hp:TYPE[type].hp}); }
@@ -490,6 +490,14 @@ function collectPowerup(pu){
   else weaponType=pu.kind;            // switch type, keep current +level
   flash=Math.max(flash,0.4); score+=50; Audio.powerup();
 }
+// on death, scatter current upgrades as drifting power-ups; reclaim them to recover
+function dislodgeWeapons(){
+  if(weaponType==='standard') return;
+  const n=Math.min(weaponLevel,4), base=player.angle;
+  for(let i=0;i<n;i++){ const ang=base+(i-(n-1)/2)*0.16;
+    powerups.push({angle:ang, r:R_PLAYER, vr:1.1+Math.random()*0.4, kind:weaponType, t:0}); }
+  weaponType='standard'; weaponLevel=1;
+}
 
 // ===========================================================================
 // UPDATE
@@ -513,6 +521,7 @@ function update(){
   bullets=bullets.filter(b=>b.life>0 && Math.hypot(b.x-CX,b.y-CY)>PLANET_R*0.6);
   for(const b of ebullets){ b.x+=b.dx; b.y+=b.dy; b.life--; }
   ebullets=ebullets.filter(b=>b.life>0 && b.x>-20&&b.x<W+20&&b.y>-20&&b.y<H+20);
+  if(ebullets.length>200) ebullets.splice(0, ebullets.length-200);
 
   for(const e of enemies){
     e.t++; e.wobble+=0.05; const T=TYPE[e.type];
@@ -523,10 +532,10 @@ function update(){
       e.r=e.orbitR+Math.sin(e.wobble)*9;
       if(e.type!=='captor' && Math.random()<(0.0022+wave*0.0004)*T.dive){ e.state='dive'; e.diveT=0; }
       if(e.type==='captor' && !capturedShip && !player.captured && Math.abs(angDiff(e.angle,player.angle))<0.25 && e.beam<=0 && Math.random()<0.05){ e.beam=160; Audio.capture(); }
-      if(T.fire){ e.fireCd--; if(e.fireCd<=0){ enemyShoot(e); e.fireCd=100+Math.random()*110; } }
+      if(T.fire){ e.fireCd--; if(e.fireCd<=0){ enemyShoot(e); e.fireCd=140+Math.random()*120; } }
     } else if(e.state==='dive'){
       e.diveT++; e.angle+=angDiff(player.angle,e.angle)*0.02; e.r+=1.1+e.diveT*0.03;
-      if(e.diveT%34===0 && T.fire) enemyShoot(e);
+      if(e.diveT%48===0 && T.fire) enemyShoot(e);
       if(e.r>R_PLAYER+60){ e.r=PLANET_R+4; e.state='enter'; }
     }
     if(e.beam>0){ e.beam--; if(!player.captured && !capturedShip && e.beam<92 && Math.abs(angDiff(e.angle,player.angle))<0.22 && player.invuln<=0) captureShip(e); }
@@ -668,18 +677,18 @@ function killEnemy(e,x,y){ e.hp=0; const T=TYPE[e.type];
   if(Math.random()<dropChance) dropPowerup(x,y);
   if(e.type==='captor'){ if(e.holding && capturedShip) freeShip(); captor=null; } }
 function captureShip(e){ player.captured=true; player.alive=false; e.holding=true;
-  capturedShip={angle:e.angle,r:e.r+28}; Audio.capture(); flash=0.6;
+  capturedShip={angle:e.angle,r:e.r+28}; Audio.capture(); flash=0.6; dislodgeWeapons();
   lives--; if(lives<=0){ lives=0; gameOver(); } else capRespawn=70; }
 function freeShip(){ Audio.rescue(); player.dual=true; flash=0.5; score+=1000; capturedShip=null; }
 function hitPlayer(){ if(player.invuln>0||!player.alive) return;
   const [px,py]=posAt(player.angle,R_PLAYER); explode(px,py,'#16f6ff',26); Audio.death(); shake=18; flash=0.7;
   if(player.dual){ player.dual=false; player.invuln=90; return; }
-  lives--; player.alive=false; if(lives<=0) gameOver(); else capRespawn=70; }
+  dislodgeWeapons(); lives--; player.alive=false; if(lives<=0) gameOver(); else capRespawn=70; }
 // Warden boss captures the player with its tractor cone (costs a life, like a captor)
 function bossCapture(){ if(player.invuln>0||!player.alive||player.captured) return;
   const [px,py]=posAt(player.angle,R_PLAYER); explode(px,py,'#ff2e88',24); Audio.capture(); shake=14; flash=0.6;
   if(player.dual){ player.dual=false; player.invuln=100; return; }
-  lives--; player.alive=false; if(lives<=0) gameOver(); else capRespawn=80; }
+  dislodgeWeapons(); lives--; player.alive=false; if(lives<=0) gameOver(); else capRespawn=80; }
 function respawn(){ player.alive=true; player.captured=false; player.invuln=110; player.cool=0; }
 function gameOver(){ state=STATE.OVER; if(score>hi){ hi=score; newBest=true; } else newBest=false;
   try{ localStorage.setItem('orbitRaidersHi', hi); }catch(e){}
@@ -696,13 +705,13 @@ function startWarp(){ state=STATE.WARP; warpT=0; planetScale=1; Audio.warp(); Au
 // BOSSES — one guards each world you warp to. Larger, unique, big score.
 // ===========================================================================
 const BOSS_KINDS=['hive','pulsar','warden','serpent','dreadnought'];
-const BOSS_HP={hive:60,pulsar:70,warden:80,serpent:90,dreadnought:110};
+const BOSS_HP={hive:50,pulsar:55,warden:65,serpent:70,dreadnought:85};
 const BOSS_COL={hive:'#39ff7a',pulsar:'#a05bff',warden:'#ff2e88',serpent:'#16f6ff',dreadnought:'#ff4d4d'};
 const BOSS_NAME={hive:'THE HIVE',pulsar:'PULSAR CORE',warden:'THE WARDEN',serpent:'SERPENT QUEEN',dreadnought:'DREADNOUGHT'};
 function bossForWave(n){ return BOSS_KINDS[(n-1)%BOSS_KINDS.length]; }
 function bossColor(){ return boss?BOSS_COL[boss.kind]:'#fff'; }
 function bossPos(){ if(!boss) return [CX,CY]; if(boss.kind==='serpent') return [boss.segs[0].x,boss.segs[0].y]; return posAt(boss.angle,boss.r); }
-function spawnEBullet(x,y,ang,sp){ ebullets.push({x,y,dx:Math.cos(ang)*sp,dy:Math.sin(ang)*sp,life:280}); }
+function spawnEBullet(x,y,ang,sp){ ebullets.push({x,y,dx:Math.cos(ang)*sp,dy:Math.sin(ang)*sp,life:240}); }
 function playerXY(){ return posAt(player.angle,R_PLAYER); }
 function spawnBoss(){
   const kind=bossForWave(wave), hp=BOSS_HP[kind]+wave*6;
@@ -716,19 +725,21 @@ function damageBoss(n,x,y){ if(!boss||boss.enter>0) return; boss.hp-=n; explode(
 function killBoss(){ const [bx,by]=bossPos(); explode(bx,by,bossColor(),64); Audio.explode(); Audio.death();
   shake=22; flash=0.9; score+=2000+wave*500; dropPowerup(bx,by); Audio.setDanger(false); boss=null; bossBanner=0; }
 function updateBoss(){ if(!boss) return; boss.t++; if(boss.enter>0) boss.enter--;
-  const [bx,by]=bossPos(), [px,py]=playerXY();
+  const [bx,by]=bossPos(), [px,py]=playerXY(), aim=Math.atan2(py-by,px-bx);
   if(boss.kind==='hive'){
     boss.angle+=0.006; boss.r=150+Math.sin(boss.t*0.02)*22;
-    if(--boss.fireCd<=0){ const pa=Math.atan2(py-by,px-bx); for(let k=-1;k<=1;k++) spawnEBullet(bx,by,pa+k*0.2,3.0); boss.fireCd=72; }
-    if(boss.t%150===0 && enemies.length<7){ for(let k=0;k<2;k++) enemies.push({type:'grunt',hp:1,maxhp:1,angle:boss.angle+(k?0.6:-0.6),orbitR:120,r:boss.r,state:'orbit',t:0,diveT:0,fireCd:120,wobble:Math.random()*TAU,beam:0,holding:false}); }
+    if(--boss.fireCd<=0){ boss.phase^=1;
+      if(boss.phase){ for(let k=-1;k<=1;k++) spawnEBullet(bx,by,aim+k*0.22,2.8); boss.fireCd=95; }
+      else { for(let k=0;k<6;k++) spawnEBullet(bx,by,k*TAU/6+boss.t*0.05,2.3); boss.fireCd=120; } }
+    if(boss.t%340===0 && enemies.length<5){ enemies.push({type:'grunt',hp:1,maxhp:1,angle:boss.angle+0.5,orbitR:120,r:boss.r,state:'orbit',t:0,diveT:0,fireCd:140,wobble:Math.random()*TAU,beam:0,holding:false}); }
   } else if(boss.kind==='pulsar'){
-    boss.r=118; boss.angle+=0.01;
-    if(--boss.fireCd<=0){ const arms=4; for(let a=0;a<arms;a++) spawnEBullet(bx,by,boss.t*0.13+a*TAU/arms,2.6); boss.fireCd=6; }
+    boss.r=120; boss.angle+=0.01;
+    if(boss.t%150<70){ if(--boss.fireCd<=0){ for(let a=0;a<3;a++) spawnEBullet(bx,by,boss.t*0.10+a*TAU/3,2.6); boss.fireCd=12; } } else boss.fireCd=12;
   } else if(boss.kind==='warden'){
     boss.angle+=Math.sin(boss.t*0.01)*0.012; boss.r=150;
-    if(boss.beam<=0 && boss.t%210<2){ boss.beam=120; boss.beamAng=boss.angle; }
-    if(boss.beam>0){ boss.beam--; boss.beamAng=boss.angle+Math.sin(boss.t*0.05)*0.55; }
-    if(--boss.fireCd<=0){ spawnEBullet(bx,by,Math.atan2(py-by,px-bx),3.0); boss.fireCd=46; }
+    if(boss.beam<=0 && boss.t%260<2){ boss.beam=110; boss.beamAng=boss.angle; }
+    if(boss.beam>0){ boss.beam--; boss.beamAng=boss.angle+Math.sin(boss.t*0.05)*0.5; }
+    if(--boss.fireCd<=0){ spawnEBullet(bx,by,aim,2.8); boss.fireCd=80; }
   } else if(boss.kind==='serpent'){
     const head=boss.segs[0]; let a=Math.atan2(boss.vy,boss.vx);
     const radA=Math.atan2(head.y-CY,head.x-CX), hr=Math.hypot(head.x-CX,head.y-CY);
@@ -736,14 +747,16 @@ function updateBoss(){ if(!boss) return; boss.t++; if(boss.enter>0) boss.enter--
     desired+=Math.sin(boss.t*0.04)*0.7; a+=angDiff(desired,a)*0.06;
     boss.vx=Math.cos(a)*boss.speed; boss.vy=Math.sin(a)*boss.speed; head.x+=boss.vx; head.y+=boss.vy;
     for(let i=1;i<boss.segs.length;i++){ const s=boss.segs[i],l=boss.segs[i-1]; let dx=l.x-s.x,dy=l.y-s.y,d=Math.hypot(dx,dy)||1; s.x=l.x-dx/d*13; s.y=l.y-dy/d*13; }
-    if(--boss.fireCd<=0){ spawnEBullet(head.x,head.y,Math.atan2(py-head.y,px-head.x),3.4); boss.fireCd=52; }
+    if(--boss.fireCd<=0){ const ah=Math.atan2(py-head.y,px-head.x); boss.phase^=1;
+      if(boss.phase) spawnEBullet(head.x,head.y,ah,3.0); else for(let k=-1;k<=1;k++) spawnEBullet(head.x,head.y,ah+k*0.2,2.9); boss.fireCd=85; }
   } else if(boss.kind==='dreadnought'){
     boss.angle+=0.004; boss.r=145+Math.sin(boss.t*0.015)*15;
     if(--boss.fireCd<=0){ boss.phase^=1;
-      if(boss.phase){ const n=12; for(let k=0;k<n;k++) spawnEBullet(bx,by,k*TAU/n+boss.t*0.02,2.4); boss.fireCd=92; }
-      else { const pa=Math.atan2(py-by,px-bx); for(let k=-2;k<=2;k++) spawnEBullet(bx,by,pa+k*0.14,3.2); boss.fireCd=70; } }
+      if(boss.phase){ for(let k=0;k<8;k++) spawnEBullet(bx,by,k*TAU/8+boss.t*0.03,2.3); boss.fireCd=125; }
+      else { for(let k=-1;k<=1;k++) spawnEBullet(bx,by,aim+k*0.16,2.9); boss.fireCd=85; } }
   }
 }
+
 
 // ===========================================================================
 // RENDER
@@ -753,7 +766,21 @@ function drawPlayer(){
   if(player.dual){ const p=player.angle+Math.PI/2;
     drawSprite(SHIP_P,PAL_P,x+Math.cos(p)*16,y+Math.sin(p)*16,3.1,ang,1);
     drawSprite(SHIP_P,PAL_P,x-Math.cos(p)*16,y-Math.sin(p)*16,3.1,ang,1);
-  } else drawSprite(SHIP_P,PAL_P,x,y,3.3,ang,1);
+  drawAttachments(x+Math.cos(p)*16,y+Math.sin(p)*16,ang); drawAttachments(x-Math.cos(p)*16,y-Math.sin(p)*16,ang);
+  } else { drawSprite(SHIP_P,PAL_P,x,y,3.3,ang,1); drawAttachments(x,y,ang); }
+}
+function drawAttachments(x,y,ang){
+  if(weaponType==='standard' && weaponLevel<=1) return;
+  const col=weaponType==='missile'?'#ffcf2e':weaponType==='laser'?'#16f6ff':weaponType==='spray'?'#39ff7a':'#bdfcff';
+  const n=Math.min(weaponLevel,4);
+  ctx.save(); ctx.translate(x,y); ctx.rotate(ang); ctx.shadowColor=col; ctx.shadowBlur=6; ctx.fillStyle=col;
+  for(const sgn of [-1,1]) for(let i=0;i<n;i++){ const ax=sgn*13, ay=-7+i*6;
+    if(weaponType==='missile') ctx.fillRect(ax-2,ay-3,4,6);
+    else if(weaponType==='laser') ctx.fillRect(ax-2,ay-2,4,5);
+    else if(weaponType==='spray'){ ctx.beginPath(); ctx.arc(ax,ay,2.6,0,TAU); ctx.fill(); }
+    else ctx.fillRect(ax-1,ay-2,3,4);
+  }
+  ctx.shadowBlur=0; ctx.restore();
 }
 function drawEnemy(e){ const [x,y]=posAt(e.angle,e.r); const sc=Math.min(1,e.r/(PLANET_R+30)); const T=TYPE[e.type];
   if(e.beam>0) drawCone(x,y,e.angle,e.t,0.34,R_PLAYER+34);   // capture tractor cone
@@ -857,7 +884,7 @@ function render(){
   else if(state===STATE.OVER) drawOver();
   else if(state===STATE.WARP) drawWarpText();
 }
-function drawBossHUD(){ const w=Math.min(560,W*0.5), x=CX-w/2, y=58, frac=Math.max(0,boss.hp/boss.maxhp);
+function drawBossHUD(){ const w=Math.min(560,W*0.5), x=CX-w/2, y=92, frac=Math.max(0,boss.hp/boss.maxhp);
   ctx.fillStyle='rgba(10,4,30,0.7)'; ctx.fillRect(x-2,y-2,w+4,12);
   ctx.fillStyle=bossColor(); ctx.fillRect(x,y,w*frac,8);
   ctx.strokeStyle='#fff'; ctx.lineWidth=1; ctx.strokeRect(x,y,w,8);
@@ -894,6 +921,7 @@ function drawWarpText(){ const half=warpT<warpDur*0.5; neon(half?'WARP':'APPROAC
 // MAIN LOOP
 // ===========================================================================
 function loop(){
+  try{
   if(state===STATE.TITLE){ if(pressed('Space')||pressed('Enter')||touchFire){ Audio.resume(); Audio.startMusic(); reset(); state=STATE.PLAY; } }
   else if(state===STATE.PLAY){ if(pressed('KeyP')) state=STATE.PAUSE; else { update(); tickRespawn(); } }
   else if(state===STATE.PAUSE){ if(pressed('KeyP')) state=STATE.PLAY; }
@@ -904,7 +932,9 @@ function loop(){
     if(warpT>=warpDur){ wave++; planetScale=1; buildWave(wave); player.invuln=70; state=STATE.PLAY; } }
   else if(state===STATE.OVER){ if(pressed('Space')||pressed('Enter')||touchFire){ Audio.startMusic(); reset(); state=STATE.PLAY; }
     for(const s of stars){ s.r+=s.sp; if(s.r>maxStar) resetStar(s); } }
-  render(); requestAnimationFrame(loop);
+  render();
+  }catch(err){ if(window.console) console.error('Orbit Raiders frame error:',err); }
+  requestAnimationFrame(loop);
 }
 loop();
 
