@@ -1,41 +1,58 @@
 :root {
-  --mock-display: "Segoe UI Variable Display", "Segoe UI", Inter, ui-sans-serif, system-ui, sans-serif;
-  --mock-text: Inter, "Segoe UI Variable Text", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
-  --mock-ui: "Segoe UI Variable Text", "Segoe UI", Inter, ui-sans-serif, system-ui, sans-serif;
+  --mock-display: "Segoe UI Variable Display", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --mock-text: "Segoe UI Variable Text", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --mock-ui: "Segoe UI Variable Small", "Segoe UI Variable Text", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
   font-family: var(--mock-text);
-  line-height: 1.64;
+  line-height: 1.68;
   text-rendering: optimizeLegibility;
+}
+
+.nav-inner {
+  align-items: center;
+}
+
+.nav-title {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  line-height: 1.2;
+}
+
+.nav-links {
+  align-items: center;
 }
 
 h1,
 h2 {
   font-family: var(--mock-display);
-  font-weight: 780;
+  font-weight: 840;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 h1 {
-  max-width: 980px;
-  font-size: clamp(3.45rem, 8.8vw, 6.25rem);
-  line-height: 0.92;
+  max-width: 1040px;
+  font-size: clamp(3.75rem, 9.6vw, 7.1rem);
+  line-height: 0.88;
 }
 
 h2 {
   max-width: 860px;
-  margin-bottom: 18px;
-  font-size: clamp(2.15rem, 4.9vw, 3.28rem);
-  line-height: 1.04;
+  margin-bottom: 20px;
+  font-size: clamp(2.28rem, 5.35vw, 3.65rem);
+  line-height: 0.98;
 }
 
 h3 {
   margin-bottom: 10px;
   font-family: var(--mock-text);
-  font-size: clamp(1.08rem, 1.7vw, 1.24rem);
-  font-weight: 850;
-  line-height: 1.22;
+  font-size: clamp(1.12rem, 1.72vw, 1.3rem);
+  font-weight: 780;
+  line-height: 1.18;
+  text-wrap: balance;
 }
 
 .nav-title,
@@ -59,21 +76,22 @@ h3 {
 
 .subhead,
 .lead {
-  max-width: 72ch;
-  font-size: clamp(1.06rem, 1.35vw, 1.16rem);
-  line-height: 1.66;
+  max-width: 68ch;
+  font-size: clamp(1.06rem, 1.35vw, 1.17rem);
+  line-height: 1.72;
+  text-wrap: pretty;
 }
 
 .subhead {
-  max-width: 820px;
-  margin-top: 26px;
-  font-size: clamp(1.16rem, 2.2vw, 1.42rem);
-  line-height: 1.42;
+  max-width: 790px;
+  margin-top: 30px;
+  font-size: clamp(1.18rem, 2.35vw, 1.52rem);
+  line-height: 1.38;
 }
 
 .hero-copy {
-  max-width: 980px;
-  padding-bottom: 50px;
+  max-width: 1040px;
+  padding-bottom: 52px;
 }
 
 .hero-tags {
@@ -122,7 +140,8 @@ main section {
 .proof-box p,
 .route-card p {
   font-size: 0.975rem;
-  line-height: 1.58;
+  line-height: 1.64;
+  text-wrap: pretty;
 }
 
 .lane-label {
@@ -157,17 +176,17 @@ footer p {
 
 @media (max-width: 640px) {
   h1 {
-    font-size: clamp(2.75rem, 14.5vw, 3.7rem);
-    line-height: 0.96;
+    font-size: clamp(2.95rem, 15vw, 4.1rem);
+    line-height: 0.92;
   }
 
   h2 {
-    font-size: clamp(2rem, 9.2vw, 2.72rem);
-    line-height: 1.05;
+    font-size: clamp(2.1rem, 9.6vw, 2.95rem);
+    line-height: 1;
   }
 
   h3 {
-    font-size: 1.12rem;
+    font-size: 1.16rem;
   }
 
   .subhead,

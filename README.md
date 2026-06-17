@@ -31,10 +31,10 @@ ownership.
 - Treat experience evidence as the primary support layer for public claims about
   scale, stakeholder altitude, and operating context.
 - Keep the top-level website structure explicit:
-  `portfolio.html` for the executive-facing story, `operating-history.html` for
-  public-safe experience evidence, `artifacts.html` for operating routes,
-  `modules.html` for reusable proof-of-concept modules, and `proof.html` for
-  proof taxonomy and evaluation boundaries.
+  `portfolio.html` for Role Fit, `operating-history.html` for Case Studies,
+  `artifacts.html` for How I Work, `modules.html` for Workflow Systems,
+  `proof.html` for Evidence, `resources.html` for Resources, and the home
+  contact section for Contact.
 - Anchor the public headline on Principal / Director-level portfolio, PMO, and
   executive operations.
 - Treat Chief of Staff as a target lane only when the role means executive
@@ -44,8 +44,8 @@ ownership.
   modules framed as proof-of-concept workflow assets and public-safe examples.
   They support the portfolio but do not carry the executive credibility claim by
   themselves.
-- Keep the career, job-search, and writing tools in a distinct "other public
-  resources" lane. They are community resources, not core executive-portfolio
+- Keep the career, job-search, and writing tools in a distinct Resources lane.
+  They are community resources, not core executive-portfolio
   proof, even though they can still show broader workflow craft.
 - Use SEO/search language in headings, metadata, and navigation, but keep product
   prose grounded and specific.
@@ -53,17 +53,17 @@ ownership.
 ## Web Structure
 
 - `/` is the simplified hiring-manager front door and evaluator path.
-- `/portfolio.html` explains role fit, executive operating problems, and the
+- `/portfolio.html` is Role Fit: it explains role fit, executive operating problems, and the
   operating-history bridge.
-- `/operating-history.html` provides public-safe experience evidence and links
+- `/operating-history.html` is Case Studies: it provides public-safe experience evidence and links
   specific experience claims to the portfolio routes or modules they support.
-- `/artifacts.html` is the operating-route index: public-safe routes from unclear
+- `/artifacts.html` is How I Work: public-safe routes from unclear
   signal to accountable review.
-- `/modules.html` groups downloadable proof-of-concept modules by operating
+- `/modules.html` is Workflow Systems: downloadable proof-of-concept modules grouped by operating
   lifecycle.
-- `/proof.html` holds the proof taxonomy, public-safety boundaries, scope
+- `/proof.html` is Evidence: proof taxonomy, public-safety boundaries, scope
   guardrails, and AI workflow governance boundaries.
-- `/resources.html` holds career, job-search, and writing resources for the
+- `/resources.html` is Resources: career, job-search, and writing resources for the
   broader community; it is not part of the main executive proof path.
 
 ## Source Repositories
