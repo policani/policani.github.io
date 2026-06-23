@@ -93,7 +93,45 @@ pointer-events: none;
 
 .hero .lead { max-width: 68ch; font-size: clamp(1.06rem, 1.35vw, 1.17rem); line-height: 1.72; text-wrap: pretty; }
 
-.meta-row, .repo-links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 22px; }
+.meta-row, .repo-links, .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 22px; }
+
+.actions { gap: 10px; margin-top: 28px; }
+
+.button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+max-width: 100%;
+min-height: 46px;
+padding: 11px 16px;
+border: 1px solid var(--ink);
+border-radius: var(--radius);
+background: #ffffff;
+color: var(--ink);
+font-family: var(--font-ui);
+font-size: 0.92rem;
+font-weight: 800;
+line-height: 1.2;
+text-align: center;
+text-decoration: none;
+transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.button.primary {
+border-color: #b78936;
+background: #b78936;
+color: #14161c;
+}
+
+.button:hover {
+transform: translateY(-1px);
+box-shadow: 0 10px 28px rgba(15, 23, 42, 0.16);
+}
+
+.button:focus-visible {
+outline: 3px solid rgba(47, 127, 149, 0.38);
+outline-offset: 3px;
+}
 
 .inspection-path { counter-reset: inspect-path; display: grid; gap: 9px; margin-top: 22px; }
 
@@ -159,6 +197,10 @@ border-bottom: 1px solid #d5e3f0;
 
 @media (max-width: 980px) {
 :root { --nav-overlay-height: 156px; }
+
+.hero {
+padding-top: calc(var(--nav-overlay-height, 156px) + 18px);
+}
 
 .nav-inner { align-items: flex-start; flex-direction: column; }
 

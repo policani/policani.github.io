@@ -123,6 +123,10 @@ line-height: 1.58;
 text-wrap: pretty;
 }
 
+.deck-hero .actions {
+margin-top: 28px;
+}
+
 .chip-row {
 display: flex;
 flex-wrap: wrap;
@@ -307,6 +311,10 @@ margin-top: 18px;
 inset: -5% -18% -10%;
 opacity: 0.82;
 transform: translate3d(0, 0, 0) scale(1.02);
+}
+
+.deck-hero .page-shell {
+padding-top: calc(var(--nav-overlay-height, 156px) + 18px);
 }
 
 .kpi-grid {
