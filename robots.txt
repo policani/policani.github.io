@@ -9,5 +9,6 @@ Disallow: /_qa/
 User-agent: *
 Allow: /
 Disallow: /_qa/
+Disallow: /clear-skies-cleaning-reimagined-preview/
 
 Sitemap: https://policani.net/sitemap.xml
