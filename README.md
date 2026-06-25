@@ -80,6 +80,20 @@ client names, logos, screenshots, internal terminology, exact dates, financial
 figures, proprietary processes, or details that could identify a prior
 organization.
 
+## Site Concierge
+
+The main portfolio pages include a no-cost static concierge from
+`assets/site-concierge.js`. It is a browser-only guided routing layer for
+recruiters, hiring managers, AI reviewers, and other evaluators. It does not use
+an LLM, paid API, server endpoint, tracking pixel, analytics event, or stored
+visitor transcript.
+
+The concierge may route visitors to LinkedIn or open a visitor-initiated
+prefilled email draft. The role-inquiry path can collect role title, company,
+work model/location, posting URL, and hiring need in the browser, then use those
+fields to compose a `mailto:` draft. Do not replace it with automatic email
+notifications unless Marco explicitly approves a third-party form service,
+backend endpoint, or other infrastructure that changes the privacy/cost model.
 ## License
 
 Site code, styles, and scripts are licensed under MIT. Written content and other non-code portfolio materials are licensed under CC BY 4.0 with attribution to Marco Policani. See `LICENSE.md`.
