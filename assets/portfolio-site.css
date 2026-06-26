@@ -1217,6 +1217,13 @@ line-height: 1.18;
 background: var(--blue-75);
 }
 
+.concierge-prompts button:first-child {
+grid-column: 1 / -1;
+border-color: var(--gold);
+background: var(--gold);
+color: #14161c;
+}
+
 .concierge-actions {
 display: flex;
 flex-wrap: wrap;
@@ -1241,6 +1248,12 @@ text-decoration: none;
 
 .concierge-actions button {
 appearance: none;
+}
+
+.concierge-actions .primary-action {
+border-color: var(--gold);
+background: var(--gold);
+color: #14161c;
 }
 
 .concierge-list {
@@ -1275,7 +1288,7 @@ line-height: 1.15;
 .concierge-inquiry {
 display: grid;
 gap: 9px;
-width: min(100%, 330px);
+width: min(100%, 342px);
 }
 
 .concierge-inquiry strong,

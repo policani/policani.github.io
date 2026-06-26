@@ -32,21 +32,21 @@
   };
 
   const actions = {
-    role: [["Evaluate role fit", "pmo-portfolio-governance-leader.html"], ["Open case studies", "operating-history.html"]],
-    proof: [["Case studies", "operating-history.html#entries"], ["Evidence boundaries", "proof.html"]],
-    ai: [["AI proof boundaries", "proof.html"], ["Workflow systems", "modules.html"]],
-    contact: [["Send role inquiry", "#role-inquiry"], ["Connect on LinkedIn", linkedinUrl], ["Open email draft", "#email"]],
-    resume: [["Open LinkedIn", linkedinUrl], ["Role fit", "pmo-portfolio-governance-leader.html"]],
-    systems: [["Workflow systems", "modules.html"], ["How I work", "artifacts.html"]],
-    resources: [["Resources", "resources.html"], ["Portfolio map", "portfolio.html"]]
+    role: [["Send role inquiry", "#role-inquiry"], ["Check role fit", "pmo-portfolio-governance-leader.html"]],
+    proof: [["Send role inquiry", "#role-inquiry"], ["Proof points", "operating-history.html#entries"]],
+    ai: [["Send role inquiry", "#role-inquiry"], ["AI proof", "proof.html"]],
+    contact: [["Send role inquiry", "#role-inquiry"], ["LinkedIn", linkedinUrl]],
+    resume: [["Send role inquiry", "#role-inquiry"], ["LinkedIn", linkedinUrl]],
+    systems: [["Send role inquiry", "#role-inquiry"], ["Workflow systems", "modules.html"]],
+    resources: [["Send role inquiry", "#role-inquiry"], ["Resources", "resources.html"]]
   };
 
   const quickPrompts = [
+    "Send role inquiry",
     "Would Marco fit this role?",
     "Give me the recruiter screen",
     "Show proof points",
-    "Explain the AI angle",
-    "Send role inquiry"
+    "Explain the AI angle"
   ];
 
   const examples = [
@@ -198,43 +198,43 @@
 
     if (signals.asksContact && signals.asksRole) {
       return {
-        title: "Yes. For a role-specific conversation, use LinkedIn or the email draft.",
+        title: "Yes. Send the role details.",
         paragraphs: [
-          "This looks like a recruiting or hiring-manager contact question tied to role fit, so the best path is: check the Role Fit page, skim the strongest case studies, then contact Marco with the role scope.",
-          "The site keeps direct contact details off the rendered page for privacy; the email button opens a prefilled draft from your own mail client."
+          "This sounds like a real recruiting or hiring-manager question. The fastest useful next step is an email with the role title, company, work model, posting URL, and the operating problem the role needs to solve.",
+          "The form here does not send or store anything. It opens a prefilled email draft so the recruiter can send the role directly to Marco."
         ],
         bullets: [
-          "Best fit: Director / Principal PMO, portfolio governance, program operations, executive operations, and AI workflow governance.",
-          "Include the role title, reporting line, operating problem, and whether the need is portfolio signal, governance cadence, readiness, or decision support."
+          "Strong fit: Director / Principal PMO, portfolio governance, program operations, executive operations, and AI workflow governance.",
+          "Useful context: reporting line, portfolio size, governance maturity, delivery-readiness problem, and decision-support need."
         ],
-        actions: [["Send role inquiry", "#role-inquiry"], ["Role fit", "pmo-portfolio-governance-leader.html"], ["LinkedIn", linkedinUrl]],
+        actions: [["Send role inquiry", "#role-inquiry"], ["LinkedIn", linkedinUrl]],
         followups: ["Give me the recruiter screen", "Show proof points"]
       };
     }
 
     const answers = {
       contact: {
-        title: "Best contact path",
+        title: "Send Marco the role",
         paragraphs: [
-          "LinkedIn is the preferred first channel because it gives recruiters and hiring teams the full work-history context without publishing private contact details on this page.",
-          "If email is better, use the role-inquiry path. It builds a cleaner draft with the role details a recruiter or hiring manager would normally send."
+          "For a possible role, email is useful if it includes enough context to evaluate fit quickly.",
+          "Use the role-inquiry form to open a clean draft. LinkedIn is still available, but the email draft is the most direct path for a live opportunity."
         ],
-        bullets: ["Mention the role, company, scope, location/remote expectations, and the main operating problem."],
+        bullets: ["Include title, company, remote/hybrid/location, posting URL, and the main operating problem."],
         actions: actions.contact,
         followups: ["Would Marco fit this role?", "Give me the recruiter screen"]
       },
       recruiter: {
-        title: "Recruiter screen",
+        title: "Recruiter screen, then send the role",
         paragraphs: [
           "Screen Marco for Director / Principal operating-leadership roles where the work is PMO, portfolio governance, program operations, executive cadence, readiness, and decision support.",
-          "The clean recruiter summary is: senior operator who makes complex portfolios legible, governable, and actionable. If there is a live role, use the role-inquiry button so the first message carries the useful details."
+          "If that sounds close to the role, send it. The role-inquiry draft is designed to get the useful details into Marco's inbox without making the recruiter hunt through the site."
         ],
         bullets: [
           "Strong signals: PMO / EPMO / PPMO, portfolio governance, delivery readiness, executive reporting, value realization, AI workflow governance.",
           "Use LinkedIn for the full resume; use this site for proof, case studies, and public-safe work samples.",
           "Avoid routing him as software engineering, ML/data science, or product-owner talent."
         ],
-        actions: [["Send role inquiry", "#role-inquiry"], ["Open LinkedIn", linkedinUrl], ["Role fit", "pmo-portfolio-governance-leader.html"]],
+        actions: [["Send role inquiry", "#role-inquiry"], ["LinkedIn", linkedinUrl]],
         followups: ["Show proof points", "Is this the wrong lane?"]
       },
       hiringManager: {
@@ -244,7 +244,7 @@
           "He is less a feature owner and more the operating layer that turns executive intent into inspectable decisions, cadence, and delivery discipline."
         ],
         bullets: profile.targetLanes.slice(0, 4),
-        actions: actions.role,
+        actions: [["Send role inquiry", "#role-inquiry"], ["Proof points", "operating-history.html#entries"]],
         followups: ["Show proof points", "Explain the AI angle"]
       },
       nonTarget: {
@@ -254,7 +254,7 @@
           "The stronger lane is operating leadership: PMO, portfolio governance, program operations, executive cadence, readiness, decision support, and AI workflow governance."
         ],
         bullets: profile.nonTargets,
-        actions: actions.role,
+        actions: [["Send role inquiry", "#role-inquiry"], ["Check role fit", "pmo-portfolio-governance-leader.html"]],
         followups: ["What roles are best?", "Give me the recruiter screen"]
       },
       roleFit: {
@@ -264,7 +264,7 @@
           "Look for language around portfolio visibility, PMO maturity, governance cadence, executive reporting, delivery readiness, cross-functional ownership, and decision support."
         ],
         bullets: profile.targetLanes,
-        actions: actions.role,
+        actions: [["Send role inquiry", "#role-inquiry"], ["Proof points", "operating-history.html#entries"]],
         followups: ["Show proof points", "Is this the wrong lane?"]
       },
       proof: {
@@ -274,7 +274,7 @@
           "For a hiring conversation, use the cases for credibility and the modules to inspect how Marco thinks."
         ],
         bullets: profile.proofPoints,
-        actions: actions.proof,
+        actions: [["Send role inquiry", "#role-inquiry"], ["Case studies", "operating-history.html#entries"]],
         followups: ["Give me the recruiter screen", "Explain proof boundaries"]
       },
       ai: {
@@ -287,7 +287,7 @@
           "Best fit: AI workflow governance, artifact lifecycle, review gates, reliance boundaries, and value logic.",
           "Not claimed: autonomous approvals, ML/data-science ownership, or measured enterprise AI savings unless separately evidenced."
         ],
-        actions: actions.ai,
+        actions: [["Send role inquiry", "#role-inquiry"], ["AI proof", "proof.html"]],
         followups: ["Show workflow systems", "Show proof points"]
       },
       systems: {
@@ -297,7 +297,7 @@
           "They are useful when someone wants to inspect work style instead of only reading claims."
         ],
         bullets: ["Start with Workflow Systems for the library.", "Use How I Work for end-to-end operating routes."],
-        actions: actions.systems,
+        actions: [["Send role inquiry", "#role-inquiry"], ["Workflow systems", "modules.html"]],
         followups: ["Explain the AI angle", "Show proof points"]
       },
       compensation: {
@@ -307,7 +307,7 @@
           "A senior individual-contributor title can still fit if the mandate is enterprise operating leverage rather than narrow task execution."
         ],
         bullets: profile.targetLanes.slice(0, 3),
-        actions: actions.role,
+        actions: [["Send role inquiry", "#role-inquiry"], ["Check role fit", "pmo-portfolio-governance-leader.html"]],
         followups: ["Give me the recruiter screen", "How do I contact Marco?"]
       },
       resources: {
@@ -317,17 +317,17 @@
           "For hiring evaluation, use Role Fit, Case Studies, Evidence, and Workflow Systems first."
         ],
         bullets: ["Resources are useful supporting context.", "They are not the primary executive-portfolio proof path."],
-        actions: actions.resources,
+        actions: [["Send role inquiry", "#role-inquiry"], ["Resources", "resources.html"]],
         followups: ["Would Marco fit this role?", "Show proof points"]
       },
       summary: {
-        title: "Short answer",
+        title: "Have a role? Send it first.",
         paragraphs: [
           "Marco builds the operating layer between executive intent and delivery reality: portfolio signal, governance cadence, readiness discipline, decision support, and accountable execution.",
-          state.visitorType ? `Since you look like a ${state.visitorType}, the fastest path is Role Fit, then Case Studies, then LinkedIn.` : "The fastest path is Role Fit, then Case Studies, then LinkedIn."
+          state.visitorType ? `Since you look like a ${state.visitorType}, the fastest path is to send the role inquiry, then use proof links only if you need backup.` : "If you have a possible role, the fastest path is to send the role inquiry. Use the other answers only to check fit."
         ],
         bullets: ["Best lanes: PMO, portfolio governance, program operations, executive operations, and AI workflow governance."],
-        actions: [["Evaluate role fit", "pmo-portfolio-governance-leader.html"], ["Send role inquiry", "#role-inquiry"]],
+        actions: [["Send role inquiry", "#role-inquiry"], ["Check role fit", "pmo-portfolio-governance-leader.html"]],
         followups: ["Give me the recruiter screen", "Show proof points"]
       }
     };
@@ -354,15 +354,15 @@
   function buildInquiryForm() {
     const form = createElement("form", "concierge-inquiry");
     form.append(
-      createElement("strong", "", "Role inquiry draft"),
-      createElement("span", "", "Add what you know. Nothing is sent or stored here; submitting opens your email client with a draft."),
+      createElement("strong", "", "Send Marco a role inquiry"),
+      createElement("span", "", "Add what you know. Nothing is sent or stored here; this opens a prefilled email draft."),
       buildField("Role title", "role", "Director PMO, Portfolio Governance Lead, etc."),
       buildField("Company", "company", "Company or recruiting firm"),
       buildField("Remote / hybrid / location", "location", "Remote, Seattle hybrid, etc."),
       buildField("Posting URL", "posting", "https://..."),
       buildField("Hiring need", "note", "What operating problem does the role need to solve?", true)
     );
-    const submit = createElement("button", "", "Open email draft");
+    const submit = createElement("button", "", "Open email to Marco");
     submit.type = "submit";
     form.append(submit);
     form.addEventListener("submit", (event) => {
@@ -410,7 +410,7 @@
     const actionWrap = createElement("div", "concierge-actions");
     answer.actions.forEach(([label, href]) => {
       if (href === "#role-inquiry") {
-        const button = createElement("button", "", label);
+        const button = createElement("button", "primary-action", label);
         button.type = "button";
         button.addEventListener("click", startInquiry);
         actionWrap.append(button);
@@ -454,7 +454,7 @@
     const headingWrap = createElement("div", "");
     headingWrap.append(
       createElement("strong", "", "Site concierge"),
-      createElement("span", "", "Static answer guide. No API, tracking, or transcript.")
+      createElement("span", "", "Send a role inquiry. No API, tracking, or transcript.")
     );
     const closeButton = createElement("button", "concierge-close", "Close");
     closeButton.type = "button";
@@ -463,7 +463,7 @@
 
     const messages = createElement("div", "concierge-messages");
     messages.setAttribute("aria-live", "polite");
-    addMessage(messages, "bot", "Ask me like a recruiter or hiring manager. I can screen role fit, proof, AI governance, work style, contact path, and wrong-lane questions.");
+    addMessage(messages, "bot", "Have a role that may fit Marco? Send the details here. You can also ask a quick fit question first.");
 
     const promptWrap = createElement("div", "concierge-prompts");
     const input = createElement("input", "");
@@ -476,8 +476,17 @@
     }
 
     function startInquiry() {
+      const existingForm = messages.querySelector(".concierge-inquiry");
+      if (existingForm) {
+        existingForm.scrollIntoView({ block: "nearest" });
+        const firstField = existingForm.querySelector("input, textarea");
+        if (firstField) firstField.focus();
+        return;
+      }
       addMessage(messages, "bot", buildInquiryForm());
     }
+
+    startInquiry();
 
     quickPrompts.forEach((prompt) => {
       const button = createElement("button", "", prompt);
@@ -517,13 +526,13 @@
     const teaser = createElement("button", "concierge-teaser", "");
     teaser.type = "button";
     teaser.setAttribute("aria-controls", "site-concierge-panel");
-    teaser.innerHTML = "<strong>Need the fastest path?</strong><span>Ask role fit, proof, AI, or contact.</span>";
+    teaser.innerHTML = "<strong>Have a role for Marco?</strong><span>Open a role-inquiry email draft.</span>";
 
     const toggle = createElement("button", "concierge-toggle", "");
     toggle.type = "button";
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-controls", "site-concierge-panel");
-    toggle.innerHTML = '<span class="concierge-icon" aria-hidden="true"></span><span>Ask Marco</span>';
+    toggle.innerHTML = '<span class="concierge-icon" aria-hidden="true"></span><span>Send Role</span>';
 
     panel.id = "site-concierge-panel";
     widget.append(panel, teaser, toggle);
@@ -534,7 +543,15 @@
       toggle.setAttribute("aria-expanded", String(isOpen));
       if (isOpen) {
         teaser.classList.add("hidden");
-        window.setTimeout(() => input.focus(), 50);
+        window.setTimeout(() => {
+          const inquiryField = panel.querySelector(".concierge-inquiry input");
+          if (inquiryField) {
+            inquiryField.focus();
+            inquiryField.scrollIntoView({ block: "nearest" });
+            return;
+          }
+          input.focus();
+        }, 50);
       }
     }
 
