@@ -101,12 +101,12 @@ recruiters, hiring managers, AI reviewers, and other evaluators. It does not use
 an LLM, paid API, server endpoint, tracking pixel, analytics event, or stored
 visitor transcript.
 
-The concierge may route visitors to LinkedIn or open a visitor-initiated
-prefilled email draft. The role-inquiry path can collect role title, company,
-work model/location, posting URL, and hiring need in the browser, then use those
-fields to compose a `mailto:` draft. Do not replace it with automatic email
-notifications unless Marco explicitly approves a third-party form service,
-backend endpoint, or other infrastructure that changes the privacy/cost model.
+The concierge may route visitors to LinkedIn or open a visitor-initiated email
+draft. It should not ask visitors to complete a multi-field role form; recruiters
+and hiring leaders should write their own email in their own mail app. Do not
+replace it with automatic email notifications unless Marco explicitly approves a
+third-party form service, backend endpoint, or other infrastructure that changes
+the privacy/cost model.
 
 ## License
 

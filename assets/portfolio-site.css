@@ -310,17 +310,9 @@ box-shadow: 0 10px 28px rgba(18, 24, 38, 0.12);
 .repo-links a:focus-visible,
 .route-tile:focus-visible,
 .concierge-toggle:focus-visible,
-.concierge-teaser:focus-visible,
 .concierge-close:focus-visible,
-.concierge-prompts button:focus-visible,
-.concierge-form button:focus-visible,
-.concierge-form input:focus-visible,
 .concierge-actions a:focus-visible,
-.concierge-actions button:focus-visible,
-.concierge-followups button:focus-visible,
-.inquiry-field input:focus-visible,
-.inquiry-field textarea:focus-visible,
-.concierge-inquiry button:focus-visible {
+.concierge-link-list a:focus-visible {
 outline: 3px solid rgba(47, 127, 149, 0.38);
 outline-offset: 3px;
 }
@@ -1001,35 +993,20 @@ font-family: var(--font-text);
 }
 
 .concierge-panel,
-.concierge-toggle,
-.concierge-teaser {
+.concierge-toggle {
 box-shadow: 0 18px 46px rgba(18, 24, 38, 0.22);
 }
 
 .concierge-toggle,
-.concierge-teaser,
 .concierge-close,
-.concierge-prompts button,
-.concierge-form button,
 .concierge-actions a,
-.concierge-actions button,
-.concierge-followups button,
-.concierge-inquiry button {
+.concierge-link-list a {
 font-family: var(--font-ui);
 font-weight: 850;
 }
 
 .concierge-toggle,
-.concierge-teaser,
-.concierge-close,
-.concierge-prompts button,
-.concierge-form button {
-cursor: pointer;
-}
-
-.concierge-actions button,
-.concierge-followups button,
-.concierge-inquiry button {
+.concierge-close {
 cursor: pointer;
 }
 
@@ -1047,8 +1024,11 @@ font-size: 0.92rem;
 transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
-.concierge-toggle:hover,
-.concierge-teaser:hover {
+.concierge-toggle.hidden {
+display: none;
+}
+
+.concierge-toggle:hover {
 transform: translateY(-1px);
 }
 
@@ -1074,37 +1054,8 @@ background: #ffffff;
 transform: rotate(45deg);
 }
 
-.concierge-teaser {
-max-width: 252px;
-padding: 13px 15px;
-border: 1px solid var(--blue-150);
-border-left: 4px solid var(--gold);
-border-radius: var(--radius);
-background: #ffffff;
-color: var(--ink);
-text-align: left;
-transition: opacity 160ms ease, transform 160ms ease, box-shadow 160ms ease;
-}
-
-.concierge-teaser strong,
-.concierge-teaser span {
-display: block;
-line-height: 1.22;
-}
-
-.concierge-teaser span {
-margin-top: 4px;
-color: var(--muted);
-font-size: 0.86rem;
-font-weight: 760;
-}
-
-.concierge-teaser.hidden {
-display: none;
-}
-
 .concierge-panel {
-width: min(390px, calc(100vw - 28px));
+width: min(360px, calc(100vw - 28px));
 overflow: hidden;
 border: 1px solid var(--line);
 border-radius: var(--radius);
@@ -1151,103 +1102,45 @@ color: var(--blue-700);
 font-size: 0.78rem;
 }
 
-.concierge-messages {
+.concierge-body {
 display: grid;
-gap: 9px;
-max-height: 310px;
+gap: 12px;
 padding: 15px;
-overflow-y: auto;
-background: var(--paper);
-}
-
-.concierge-message {
-display: grid;
-gap: 7px;
-max-width: 92%;
-padding: 10px 12px;
-border-radius: var(--radius);
-font-size: 0.9rem;
-line-height: 1.48;
-}
-
-.concierge-message strong {
-line-height: 1.24;
-}
-
-.concierge-message span {
-color: inherit;
-}
-
-.concierge-message.bot {
-justify-self: start;
-border: 1px solid var(--line);
 background: #ffffff;
+}
+
+.concierge-body p {
+margin: 0;
 color: var(--ink-soft);
-}
-
-.concierge-message.user {
-justify-self: end;
-background: var(--blue-700);
-color: #ffffff;
-}
-
-.concierge-prompts {
-display: grid;
-grid-template-columns: repeat(2, minmax(0, 1fr));
-gap: 8px;
-padding: 12px 15px 0;
-background: #ffffff;
-}
-
-.concierge-prompts button {
-min-height: 38px;
-padding: 8px 9px;
-border: 1px solid var(--blue-150);
-border-radius: var(--radius);
-background: var(--blue-25);
-color: var(--blue-700);
-font-size: 0.8rem;
-line-height: 1.18;
-}
-
-.concierge-prompts button:hover,
-.concierge-actions a:hover,
-.concierge-actions button:hover,
-.concierge-followups button:hover {
-background: var(--blue-75);
-}
-
-.concierge-prompts button:first-child {
-grid-column: 1 / -1;
-border-color: var(--gold);
-background: var(--gold);
-color: #14161c;
+font-size: 0.9rem;
+line-height: 1.5;
 }
 
 .concierge-actions {
-display: flex;
-flex-wrap: wrap;
-gap: 7px;
-margin-top: 3px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 8px;
 }
 
-.concierge-actions a,
-.concierge-actions button {
+.concierge-actions a {
 display: inline-flex;
 align-items: center;
-min-height: 33px;
-padding: 7px 9px;
+justify-content: center;
+min-height: 42px;
+padding: 9px 10px;
 border: 1px solid var(--blue-150);
 border-radius: var(--radius);
 background: var(--blue-25);
 color: var(--blue-700);
-font-size: 0.8rem;
+font-size: 0.84rem;
 line-height: 1.15;
+text-align: center;
 text-decoration: none;
 }
 
-.concierge-actions button {
-appearance: none;
+.concierge-actions a:hover,
+.concierge-link-list a:hover {
+background: var(--blue-75);
 }
 
 .concierge-actions .primary-action {
@@ -1256,113 +1149,26 @@ background: var(--gold);
 color: #14161c;
 }
 
-.concierge-list {
+.concierge-link-list {
 display: grid;
-gap: 5px;
-margin: 0;
-padding-left: 18px;
-}
-
-.concierge-list li {
-margin: 0;
-}
-
-.concierge-followups {
-display: flex;
-flex-wrap: wrap;
-gap: 6px;
+gap: 2px;
 padding-top: 2px;
 }
 
-.concierge-followups button {
-min-height: 31px;
-padding: 6px 8px;
-border: 1px solid var(--line);
-border-radius: var(--radius);
-background: #ffffff;
-color: var(--ink-soft);
-font-size: 0.76rem;
-line-height: 1.15;
-}
-
-.concierge-inquiry {
-display: grid;
-gap: 9px;
-width: min(100%, 342px);
-}
-
-.concierge-inquiry strong,
-.concierge-inquiry span {
-display: block;
-}
-
-.inquiry-field {
-display: grid;
-gap: 4px;
-font-size: 0.78rem;
-font-weight: 800;
-color: var(--ink-soft);
-}
-
-.inquiry-field input,
-.inquiry-field textarea {
-width: 100%;
-min-height: 36px;
-padding: 8px 9px;
-border: 1px solid var(--line);
-border-radius: var(--radius);
-font: inherit;
-font-size: 0.84rem;
-font-weight: 500;
-color: var(--ink);
-background: #ffffff;
-}
-
-.inquiry-field textarea {
-min-height: 72px;
-resize: vertical;
-}
-
-.concierge-inquiry button {
-min-height: 38px;
-padding: 8px 10px;
-border: 1px solid var(--gold);
-border-radius: var(--radius);
-background: var(--gold);
-color: #14161c;
-font-size: 0.84rem;
-}
-
-.concierge-form {
-display: grid;
-grid-template-columns: minmax(0, 1fr) auto;
-gap: 8px;
-padding: 12px 15px;
-background: #ffffff;
-}
-
-.concierge-form input {
-min-height: 42px;
-min-width: 0;
-padding: 9px 10px;
-border: 1px solid var(--line);
-border-radius: var(--radius);
-color: var(--ink);
-font: inherit;
-font-size: 0.9rem;
-}
-
-.concierge-form button {
-min-height: 42px;
-padding: 9px 12px;
-border: 1px solid var(--gold);
-border-radius: var(--radius);
-background: var(--gold);
-color: #14161c;
-font-size: 0.86rem;
+.concierge-link-list a {
+display: inline-flex;
+align-items: center;
+min-height: 34px;
+padding: 7px 0;
+color: var(--blue-700);
+font-size: 0.82rem;
+line-height: 1.2;
+text-decoration: underline;
+text-underline-offset: 3px;
 }
 
 .concierge-note {
+margin: 0;
 padding: 0 15px 14px;
 color: var(--quiet);
 font-size: 0.76rem;
@@ -1488,21 +1294,8 @@ justify-items: stretch;
 justify-self: end;
 }
 
-.concierge-teaser {
-justify-self: end;
-max-width: min(252px, 100%);
-}
-
 .concierge-panel {
 width: 100%;
-}
-
-.concierge-messages {
-max-height: 260px;
-}
-
-.concierge-prompts {
-grid-template-columns: 1fr;
 }
 }
 
