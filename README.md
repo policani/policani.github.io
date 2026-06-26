@@ -31,10 +31,11 @@ ownership.
 - Treat experience evidence as the primary support layer for public claims about
   scale, stakeholder altitude, and operating context.
 - Keep the top-level website structure explicit:
-  `portfolio.html` for Role Fit, `operating-history.html` for Case Studies,
-  `artifacts.html` for How I Work, `modules.html` for Workflow Systems,
-  `proof.html` for Evidence, `resources.html` for Resources, and the home
-  contact section for Contact.
+  `pmo-portfolio-governance-leader.html` for Role Fit,
+  `portfolio.html` for the deeper portfolio map, `operating-history.html` for
+  Case Studies, `artifacts.html` for How I Work, `modules.html` for Workflow
+  Systems, `proof.html` for Evidence, `resources.html` for Resources, and the
+  home contact section for Contact.
 - Anchor the public headline on Principal / Director-level portfolio, PMO, and
   executive operations.
 - Treat Chief of Staff as a target lane only when the role means executive
@@ -53,8 +54,11 @@ ownership.
 ## Web Structure
 
 - `/` is the simplified hiring-manager front door and evaluator path.
-- `/portfolio.html` is Role Fit: it explains role fit, executive operating problems, and the
-  operating-history bridge.
+- `/pmo-portfolio-governance-leader.html` is Role Fit: it gives hiring leaders
+  the fastest read on Marco's strongest roles, operating problems, and proof
+  signals.
+- `/portfolio.html` is the deeper portfolio map: it explains role fit,
+  executive operating problems, and the operating-history bridge.
 - `/operating-history.html` is Case Studies: it provides public-safe experience evidence and links
   specific experience claims to the portfolio routes or modules they support.
 - `/artifacts.html` is How I Work: public-safe routes from unclear
@@ -65,6 +69,15 @@ ownership.
   guardrails, and AI workflow governance boundaries.
 - `/resources.html` is Resources: career, job-search, and writing resources for the
   broader community; it is not part of the main executive proof path.
+
+## Search Console Notes
+
+- The canonical public domain is `https://policani.net/`, not the `www`
+  subdomain.
+- Google Search Console may report `https://www.policani.net/` as "Page with
+  redirect" because it redirects to `https://policani.net/`. That is expected
+  canonical behavior, not an indexing defect, as long as the apex domain returns
+  `200` and sitemap/canonical URLs stay on `https://policani.net/`.
 
 ## Source Repositories
 
@@ -94,6 +107,7 @@ work model/location, posting URL, and hiring need in the browser, then use those
 fields to compose a `mailto:` draft. Do not replace it with automatic email
 notifications unless Marco explicitly approves a third-party form service,
 backend endpoint, or other infrastructure that changes the privacy/cost model.
+
 ## License
 
 Site code, styles, and scripts are licensed under MIT. Written content and other non-code portfolio materials are licensed under CC BY 4.0 with attribution to Marco Policani. See `LICENSE.md`.
