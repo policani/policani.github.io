@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Proportionate controls: readiness and qualification gates sized to the risk in front of them.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2f7f95"/>
+    </marker>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:12px;font-weight:800;fill:#172234}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .flow{fill:none;stroke:#2f7f95;stroke-width:2.2;stroke-linecap:round}
+      .chk{fill:none;stroke:#ffffff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Proportionate Controls</text>
+  <text x="50" y="98" class="sub">Gates matched to the risk in front of them</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <!-- flow line -->
+  <path d="M70 264 H214" class="flow"/>
+  <path d="M298 264 H418" class="flow"/>
+  <path d="M530 264 H700" class="flow" marker-end="url(#arrow)"/>
+
+  <!-- gate 1: low risk, small light gate -->
+  <rect x="214" y="240" width="84" height="48" rx="9" fill="#eef6f7" stroke="#2f7f95" stroke-width="1.6"/>
+  <circle cx="256" cy="264" r="11" fill="#2f7f95"/><path d="M250 264 l4 5 l8 -10" class="chk"/>
+  <text x="256" y="306" text-anchor="middle" class="small">Low risk</text>
+  <text x="256" y="322" text-anchor="middle" class="small">light gate</text>
+
+  <!-- gate 2: high risk, larger gate, two checks -->
+  <rect x="418" y="214" width="112" height="100" rx="11" fill="#eef6f7" stroke="#2f7f95" stroke-width="2.2"/>
+  <circle cx="474" cy="248" r="12" fill="#2f7f95"/><path d="M467 248 l5 5 l9 -11" class="chk"/>
+  <circle cx="474" cy="282" r="12" fill="#c9922e"/><path d="M467 282 l5 5 l9 -11" class="chk"/>
+  <text x="474" y="332" text-anchor="middle" class="small">High risk · deeper gate</text>
+
+  <!-- risk gauge -->
+  <text x="120" y="208" class="small">Risk sizing</text>
+  <path d="M78 256 a44 44 0 0 1 84 0" fill="none" stroke="#dbe4ea" stroke-width="8" stroke-linecap="round"/>
+  <path d="M78 256 a44 44 0 0 1 58 -38" fill="none" stroke="#c9922e" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="120" cy="256" r="5" fill="#2f7f95"/>
+
+  <rect x="86" y="362" width="628" height="38" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="385" text-anchor="middle" class="footer">Readiness and qualification gates, sized to the risk.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>

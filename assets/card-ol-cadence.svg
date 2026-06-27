@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Operating cadence: a steady, predictable review rhythm replacing ad hoc fire drills.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:12px;font-weight:800;fill:#172234}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .axis{stroke:#d2dde3;stroke-width:2}
+      .beat{fill:none;stroke:#2f7f95;stroke-width:2.2;stroke-linecap:round}
+      .noise{fill:none;stroke:#b3c0c9;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Operating Cadence</text>
+  <text x="50" y="98" class="sub">A steady, predictable decision rhythm</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <!-- before: erratic fire drills -->
+  <text x="80" y="170" class="small">Before · ad hoc fire drills</text>
+  <polyline class="noise" points="80,210 120,182 150,224 196,190 230,228 286,196 330,216"/>
+
+  <!-- after: regular review beats -->
+  <text x="80" y="262" class="small">After · regular review beats</text>
+  <line x1="80" y1="320" x2="724" y2="320" class="axis"/>
+  <!-- evenly spaced rhythm arcs -->
+  <path d="M118 320 q42 -44 84 0" class="beat"/>
+  <path d="M244 320 q42 -44 84 0" class="beat"/>
+  <path d="M370 320 q42 -44 84 0" class="beat"/>
+  <path d="M496 320 q42 -44 84 0" class="beat"/>
+  <path d="M622 320 q42 -44 84 0" class="beat"/>
+  <!-- beat nodes -->
+  <circle cx="118" cy="320" r="9" fill="#2f7f95"/>
+  <circle cx="244" cy="320" r="9" fill="#c9922e"/>
+  <circle cx="370" cy="320" r="9" fill="#2f7f95"/>
+  <circle cx="496" cy="320" r="9" fill="#c9922e"/>
+  <circle cx="622" cy="320" r="9" fill="#2f7f95"/>
+  <text x="181" y="345" text-anchor="middle" class="small">wk 1</text>
+  <text x="307" y="345" text-anchor="middle" class="small">wk 2</text>
+  <text x="433" y="345" text-anchor="middle" class="small">wk 3</text>
+  <text x="559" y="345" text-anchor="middle" class="small">wk 4</text>
+
+  <rect x="86" y="362" width="628" height="38" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="385" text-anchor="middle" class="footer">A predictable review tempo replaces ad hoc fire drills.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Accountable follow-through: decisions stay owned and tracked from commitment to realized value.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#c9922e"/>
+    </marker>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:800;fill:#172234}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .chk{fill:none;stroke:#2f7f95;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      .loop{fill:none;stroke:#c9922e;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:5 4}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Accountable Follow-through</text>
+  <text x="50" y="98" class="sub">From decision to realized value</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <!-- decision register -->
+  <rect x="64" y="166" width="672" height="150" rx="10" fill="#ffffff" stroke="#2f7f95" stroke-width="1.8"/>
+  <!-- header -->
+  <text x="96" y="192" class="step">Decision</text>
+  <text x="372" y="192" text-anchor="middle" class="step">Owner</text>
+  <text x="500" y="192" text-anchor="middle" class="step">Status</text>
+  <text x="648" y="192" text-anchor="middle" class="step">Value</text>
+  <line x1="84" y1="204" x2="716" y2="204" stroke="#e4ebef"/>
+  <!-- rows -->
+  <g>
+    <rect x="92" y="221" width="220" height="12" rx="6" fill="#eef3f5" stroke="#d9e3e8"/>
+    <circle cx="372" cy="227" r="8" fill="#2f7f95"/>
+    <circle cx="500" cy="227" r="9" fill="#fff" stroke="#2f7f95" stroke-width="1.6"/><path d="M495 227 l4 4 l6 -8" class="chk"/>
+    <rect x="608" y="221" width="80" height="12" rx="6" fill="#cfe6d8" stroke="#9cc7ad"/>
+  </g>
+  <g>
+    <rect x="92" y="251" width="220" height="12" rx="6" fill="#eef3f5" stroke="#d9e3e8"/>
+    <circle cx="372" cy="257" r="8" fill="#c9922e"/>
+    <circle cx="500" cy="257" r="9" fill="#fff" stroke="#2f7f95" stroke-width="1.6"/><path d="M495 257 l4 4 l6 -8" class="chk"/>
+    <rect x="608" y="251" width="56" height="12" rx="6" fill="#f0e2bf" stroke="#d8c084"/>
+  </g>
+  <g>
+    <rect x="92" y="281" width="220" height="12" rx="6" fill="#eef3f5" stroke="#d9e3e8"/>
+    <circle cx="372" cy="287" r="8" fill="#2f7f95"/>
+    <circle cx="500" cy="287" r="9" fill="#fff" stroke="#2f7f95" stroke-width="1.6"/><path d="M495 287 l4 4 l6 -8" class="chk"/>
+    <rect x="608" y="281" width="80" height="12" rx="6" fill="#cfe6d8" stroke="#9cc7ad"/>
+  </g>
+
+  <!-- closing-the-loop arrow -->
+  <path d="M688 334 H120 V322" class="loop" marker-end="url(#arrowg)"/>
+  <text x="400" y="350" text-anchor="middle" class="small">Tracked until value is confirmed</text>
+
+  <rect x="86" y="362" width="628" height="38" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="385" text-anchor="middle" class="footer">Decisions stay owned, tracked, and inspectable later.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>
