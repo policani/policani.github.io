@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Govern AI-enabled work: AI use plotted by business value and reliance, with human review owning the decision.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .axlbl{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:800;fill:#7a8893}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .axis{stroke:#c4ced6;stroke-width:2}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Govern AI-Enabled Work</text>
+  <text x="50" y="98" class="sub">Value and reliance decide where AI is used</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <!-- quadrant -->
+  <rect x="120" y="160" width="300" height="180" rx="8" fill="#fbfdfe" stroke="#dce6eb"/>
+  <line x1="270" y1="160" x2="270" y2="340" class="axis"/>
+  <line x1="120" y1="250" x2="420" y2="250" class="axis"/>
+  <text x="270" y="356" text-anchor="middle" class="axlbl">Reliance &#8594;</text>
+  <text x="108" y="252" text-anchor="end" class="axlbl" transform="rotate(-90 108 252)">Business value &#8594;</text>
+  <circle cx="180" cy="300" r="7" fill="#b3c0c9"/>
+  <circle cx="210" cy="285" r="6" fill="#b3c0c9"/>
+  <circle cx="320" cy="300" r="6" fill="#c9922e"/>
+  <circle cx="345" cy="210" r="9" fill="#2f7f95"/>
+  <circle cx="345" cy="210" r="14" fill="none" stroke="#2f7f95" stroke-width="1.6"/>
+  <text x="356" y="190" text-anchor="middle" class="small">Govern here</text>
+
+  <!-- human review gate -->
+  <rect x="470" y="186" width="240" height="128" rx="10" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+  <text x="490" y="214" class="small" font-size="13" font-weight="800" fill="#172234">Human review owns it</text>
+  <g>
+    <circle cx="498" cy="240" r="7" fill="#2f7f95"/><path d="M494 240 l3 3 l5.5 -6.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="514" y="244" class="small">Reliance boundary set</text>
+  </g>
+  <g>
+    <circle cx="498" cy="266" r="7" fill="#2f7f95"/><path d="M494 266 l3 3 l5.5 -6.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="514" y="270" class="small">Owner accountable</text>
+  </g>
+  <g>
+    <circle cx="498" cy="292" r="7" fill="#c9922e"/><path d="M494 292 l3 3 l5.5 -6.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="514" y="296" class="small">Evidence standard met</text>
+  </g>
+
+  <rect x="86" y="360" width="628" height="40" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="385" text-anchor="middle" class="footer">AI effort goes where it creates value; people own the decisions.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>

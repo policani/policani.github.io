@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Build the PMO operating layer: intake, cadence, controls, and follow-through as connected layers.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .layer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:800;fill:#172234}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .spine{stroke:#cbd6dd;stroke-width:2.4}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Build the PMO Operating Layer</text>
+  <text x="50" y="98" class="sub">Decision rights, cadence, controls, follow-through</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <line x1="120" y1="168" x2="120" y2="312" class="spine"/>
+
+  <g>
+    <circle cx="120" cy="184" r="6" fill="#2f7f95"/>
+    <rect x="150" y="166" width="560" height="36" rx="8" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+    <rect x="150" y="166" width="6" height="36" rx="3" fill="#2f7f95"/>
+    <text x="170" y="189" class="layer">Intake &amp; signal</text>
+    <text x="694" y="189" text-anchor="end" class="small">demand standards, lifecycle state</text>
+  </g>
+  <g>
+    <circle cx="120" cy="232" r="6" fill="#c9922e"/>
+    <rect x="150" y="214" width="560" height="36" rx="8" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+    <rect x="150" y="214" width="6" height="36" rx="3" fill="#c9922e"/>
+    <text x="170" y="237" class="layer">Operating cadence</text>
+    <text x="694" y="237" text-anchor="end" class="small">forums, decision rights</text>
+  </g>
+  <g>
+    <circle cx="120" cy="280" r="6" fill="#2f7f95"/>
+    <rect x="150" y="262" width="560" height="36" rx="8" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+    <rect x="150" y="262" width="6" height="36" rx="3" fill="#2f7f95"/>
+    <text x="170" y="285" class="layer">Lightweight controls</text>
+    <text x="694" y="285" text-anchor="end" class="small">gates, exceptions</text>
+  </g>
+  <g>
+    <circle cx="120" cy="328" r="6" fill="#c9922e"/>
+    <rect x="150" y="310" width="560" height="36" rx="8" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+    <rect x="150" y="310" width="6" height="36" rx="3" fill="#c9922e"/>
+    <text x="170" y="333" class="layer">Accountable follow-through</text>
+    <text x="694" y="333" text-anchor="end" class="small">owners, decision records</text>
+  </g>
+
+  <rect x="86" y="372" width="628" height="36" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="395" text-anchor="middle" class="footer">One operating system from demand to accountable follow-through.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>

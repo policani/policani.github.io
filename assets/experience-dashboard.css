@@ -143,6 +143,11 @@ text-transform: uppercase;
 grid-column: span 2;
 }
 
+/* Three equal tiles (e.g. featured case studies) */
+.metro-grid.cols-3 {
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .t-blue .tile-num { color: var(--blue-700); }
 .t-blue .tile-kicker { color: var(--blue-700); background: var(--blue-100); }
 .t-teal .tile-num { color: #226476; }
@@ -155,7 +160,8 @@ grid-column: span 2;
 .t-green .tile-kicker { color: #4d643f; background: var(--sage-soft); }
 
 @media (max-width: 900px) {
-.metro-grid {
+.metro-grid,
+.metro-grid.cols-3 {
 grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 }
@@ -169,7 +175,8 @@ width: min(100% - 28px, 1180px);
 padding-top: calc(var(--nav-overlay-height, 156px) + 18px);
 }
 
-.metro-grid {
+.metro-grid,
+.metro-grid.cols-3 {
 grid-template-columns: 1fr;
 }
 

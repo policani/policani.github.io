@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Make delivery readiness visible: charter, UAT, controls, and launch gates shown with inspectable status.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2f7f95"/>
+    </marker>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:800;fill:#172234}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .rail{fill:none;stroke:#2f7f95;stroke-width:2.2;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Make Delivery Readiness Visible</text>
+  <text x="50" y="98" class="sub">Readiness gates anyone can inspect</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <path d="M96 232 H704" class="rail" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect x="96" y="190" width="120" height="84" rx="9" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+    <circle cx="120" cy="216" r="9" fill="#2f7f95"/><path d="M115 216 l3.5 3.5 l6.5 -7.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="156" y="246" text-anchor="middle" class="step">Charter</text>
+  </g>
+  <g>
+    <rect x="244" y="190" width="120" height="84" rx="9" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+    <circle cx="268" cy="216" r="9" fill="#2f7f95"/><path d="M263 216 l3.5 3.5 l6.5 -7.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="304" y="246" text-anchor="middle" class="step">UAT</text>
+  </g>
+  <g>
+    <rect x="392" y="190" width="120" height="84" rx="9" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+    <circle cx="416" cy="216" r="9" fill="#c9922e"/><path d="M411.5 216 l3.5 3.5 l6.5 -7.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="452" y="246" text-anchor="middle" class="step">Controls</text>
+  </g>
+  <g>
+    <rect x="540" y="190" width="120" height="84" rx="9" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+    <circle cx="564" cy="216" r="9" fill="#ffffff" stroke="#c4ced6" stroke-width="2"/>
+    <text x="600" y="246" text-anchor="middle" class="step">Launch</text>
+  </g>
+
+  <text x="156" y="300" text-anchor="middle" class="small">signed</text>
+  <text x="304" y="300" text-anchor="middle" class="small">evidenced</text>
+  <text x="452" y="300" text-anchor="middle" class="small">exceptions logged</text>
+  <text x="600" y="300" text-anchor="middle" class="small">criteria pending</text>
+
+  <rect x="86" y="360" width="628" height="40" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="385" text-anchor="middle" class="footer">Delivery claims can be inspected before they are accepted.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>

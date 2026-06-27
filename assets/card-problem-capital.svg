@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Capital and funding decisions lack structure: a capital pool passes a qualification gate into sequenced funding under a constraint ceiling.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2f7f95"/>
+    </marker>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:800;fill:#172234}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .cap{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:18px;font-weight:850;fill:#2f7f95}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .flow{fill:none;stroke:#2f7f95;stroke-width:2.2;stroke-linecap:round}
+      .limit{fill:none;stroke:#c9922e;stroke-width:2;stroke-dasharray:6 5}
+      .axis{stroke:#d2dde3;stroke-width:2}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Capital Lacks Structure</text>
+  <text x="50" y="98" class="sub">Funding should follow priority under constraint</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <rect x="66" y="196" width="118" height="84" rx="10" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+  <text x="125" y="232" text-anchor="middle" class="cap">$ $ $</text>
+  <text x="125" y="258" text-anchor="middle" class="small">Capital pool</text>
+
+  <path d="M190 238 H232" class="flow" marker-end="url(#arrow)"/>
+
+  <rect x="238" y="196" width="116" height="84" rx="10" fill="#ffffff" stroke="#2f7f95" stroke-width="1.8"/>
+  <text x="296" y="232" text-anchor="middle" class="step">Qualification</text>
+  <text x="296" y="252" text-anchor="middle" class="small">gates &amp; options</text>
+
+  <path d="M360 238 H402" class="flow" marker-end="url(#arrow)"/>
+
+  <rect x="420" y="166" width="304" height="150" rx="10" fill="#fbfdfe" stroke="#dce6eb"/>
+  <line x1="440" y1="296" x2="708" y2="296" class="axis"/>
+  <line x1="440" y1="196" x2="708" y2="196" class="limit"/>
+  <text x="704" y="190" text-anchor="end" class="small" fill="#8a6526">capacity ceiling</text>
+  <rect x="456" y="244" width="42" height="52" rx="3" fill="#2f7f95"/>
+  <rect x="518" y="222" width="42" height="74" rx="3" fill="#2f7f95"/>
+  <rect x="580" y="232" width="42" height="64" rx="3" fill="#c9922e"/>
+  <rect x="642" y="258" width="42" height="38" rx="3" fill="#9fb4bd"/>
+  <text x="574" y="312" text-anchor="middle" class="small">Sequenced funding</text>
+
+  <rect x="86" y="362" width="628" height="38" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="385" text-anchor="middle" class="footer">Investment sequencing and funding logic leaders can decide from.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>

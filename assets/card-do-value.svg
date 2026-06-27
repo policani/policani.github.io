@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Keep proof tied to value: artifact to evidence to realized value, linked and inspectable.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2f7f95"/>
+    </marker>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:800;fill:#172234}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .flow{fill:none;stroke:#2f7f95;stroke-width:2.4;stroke-linecap:round}
+      .rise{fill:none;stroke:#c9922e;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Keep Proof Tied to Value</text>
+  <text x="50" y="98" class="sub">Artifact to evidence to realized value</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <g>
+    <rect x="70" y="218" width="150" height="92" rx="10" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+    <text x="145" y="252" text-anchor="middle" class="step">Artifact</text>
+    <rect x="96" y="266" width="98" height="6" rx="3" fill="#d7e0e6"/>
+    <rect x="96" y="280" width="78" height="6" rx="3" fill="#d7e0e6"/>
+  </g>
+  <path d="M222 264 H300" class="flow" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="304" y="218" width="160" height="92" rx="10" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+    <text x="384" y="252" text-anchor="middle" class="step">Evidence</text>
+    <circle cx="340" cy="280" r="8" fill="#2f7f95"/><path d="M335.5 280 l3 3 l5.5 -6.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="396" y="284" text-anchor="middle" class="small">assumptions, review</text>
+  </g>
+  <path d="M466 264 H544" class="flow" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="548" y="218" width="182" height="92" rx="10" fill="#fffaf0" stroke="#e3c98a" stroke-width="1.6"/>
+    <text x="574" y="252" class="step">Realized value</text>
+    <polyline class="rise" points="572,294 600,282 628,272 656,256 684,240"/>
+    <circle cx="684" cy="240" r="5" fill="#c9922e"/>
+  </g>
+
+  <rect x="86" y="360" width="628" height="40" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="385" text-anchor="middle" class="footer">Outcomes, assumptions, and review paths leave credible evidence.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>
