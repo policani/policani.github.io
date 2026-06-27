@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Executive cadence is too expensive: many status meetings collapse into one decision forum.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2f7f95"/>
+    </marker>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:800;fill:#172234}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .flow{fill:none;stroke:#2f7f95;stroke-width:2.2;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Cadence Is Too Expensive</text>
+  <text x="50" y="98" class="sub">Many status meetings, few real decisions</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <text x="66" y="172" class="small">Repeated status reviews</text>
+  <rect x="66" y="182" width="210" height="20" rx="5" fill="#fff" stroke="#c4ced6"/><circle cx="84" cy="192" r="5" fill="#9fb4bd"/>
+  <rect x="66" y="208" width="210" height="20" rx="5" fill="#fff" stroke="#c4ced6"/><circle cx="84" cy="218" r="5" fill="#9fb4bd"/>
+  <rect x="66" y="234" width="210" height="20" rx="5" fill="#fff" stroke="#c4ced6"/><circle cx="84" cy="244" r="5" fill="#9fb4bd"/>
+  <rect x="66" y="260" width="210" height="20" rx="5" fill="#fff" stroke="#c4ced6"/><circle cx="84" cy="270" r="5" fill="#9fb4bd"/>
+  <rect x="66" y="286" width="210" height="20" rx="5" fill="#fff" stroke="#c4ced6"/><circle cx="84" cy="296" r="5" fill="#9fb4bd"/>
+
+  <path d="M292 244 H352" class="flow" marker-end="url(#arrow)"/>
+
+  <rect x="362" y="186" width="362" height="120" rx="10" fill="#ffffff" stroke="#2f7f95" stroke-width="1.8"/>
+  <rect x="362" y="186" width="362" height="30" rx="10" fill="#eef4f6"/><rect x="362" y="206" width="362" height="10" fill="#eef4f6"/>
+  <text x="382" y="206" class="step">Decision forum</text>
+  <g>
+    <circle cx="394" cy="240" r="7" fill="#2f7f95"/><path d="M390 240 l3 3 l5.5 -6.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="410" y="244" class="small">Choices framed, decisions logged</text>
+  </g>
+  <g>
+    <circle cx="394" cy="268" r="7" fill="#2f7f95"/><path d="M390 268 l3 3 l5.5 -6.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="410" y="272" class="small">Owners and next actions assigned</text>
+  </g>
+  <rect x="382" y="286" width="80" height="12" rx="6" fill="#c9922e"/>
+
+  <rect x="86" y="360" width="628" height="40" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="385" text-anchor="middle" class="footer">Reviews clarify choices instead of multiplying meetings.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>

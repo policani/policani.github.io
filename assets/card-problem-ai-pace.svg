@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="AI work outpaces governance: fast AI output meets a human review gate before becoming a trusted artifact.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2f7f95"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#c9922e"/>
+    </marker>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:800;fill:#172234}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .fast{fill:none;stroke:#2f7f95;stroke-width:2.6;stroke-linecap:round}
+      .gate{fill:none;stroke:#c9922e;stroke-width:2.4;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">AI Outpaces Governance</text>
+  <text x="50" y="98" class="sub">Fast output meets a human review gate</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <text x="66" y="178" class="small">AI output (fast)</text>
+  <rect x="66" y="190" width="40" height="32" rx="5" fill="#eaf3f5" stroke="#9fc2cc"/>
+  <rect x="116" y="190" width="40" height="32" rx="5" fill="#eaf3f5" stroke="#9fc2cc"/>
+  <rect x="166" y="190" width="40" height="32" rx="5" fill="#eaf3f5" stroke="#9fc2cc"/>
+  <rect x="216" y="190" width="40" height="32" rx="5" fill="#eaf3f5" stroke="#9fc2cc"/>
+  <path d="M264 206 H398" class="fast" marker-end="url(#arrow)"/>
+
+  <rect x="408" y="170" width="120" height="118" rx="10" fill="#ffffff" stroke="#c9922e" stroke-width="2"/>
+  <text x="468" y="200" text-anchor="middle" class="step">Review gate</text>
+  <text x="468" y="220" text-anchor="middle" class="small">value · reliance</text>
+  <text x="468" y="236" text-anchor="middle" class="small">owner · approval</text>
+  <line x1="468" y1="250" x2="468" y2="276" stroke="#e4d7bd" stroke-width="2"/>
+  <circle cx="448" cy="266" r="6" fill="#c9922e"/><circle cx="488" cy="266" r="6" fill="#c9922e"/>
+
+  <path d="M528 230 H588" class="gate" marker-end="url(#arrowg)"/>
+
+  <rect x="596" y="194" width="128" height="74" rx="10" fill="#f6f9fa" stroke="#cad7df" stroke-width="1.5"/>
+  <circle cx="620" cy="222" r="9" fill="#2f7f95"/><path d="M615 222 l3.5 3.5 l6.5 -7.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="660" y="227" text-anchor="middle" class="step">Trusted</text>
+  <text x="660" y="245" text-anchor="middle" class="small">artifact</text>
+
+  <rect x="86" y="360" width="628" height="40" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="385" text-anchor="middle" class="footer">AI moves fast; governance keeps it accountable.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>

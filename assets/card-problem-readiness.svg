@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Readiness is overclaimed: claimed status sits above evidenced status, closing the gap with checks.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:800;fill:#172234}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .num{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:850;fill:#172234}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Readiness Is Overclaimed</text>
+  <text x="50" y="98" class="sub">Claimed status vs evidenced status</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <text x="66" y="186" class="small">Claimed ready</text>
+  <rect x="66" y="194" width="430" height="26" rx="6" fill="#e4ebef"/>
+  <rect x="66" y="194" width="430" height="26" rx="6" fill="#2f7f95"/>
+  <text x="508" y="212" class="num">100%</text>
+
+  <text x="66" y="250" class="small">Evidenced ready</text>
+  <rect x="66" y="258" width="430" height="26" rx="6" fill="#e4ebef"/>
+  <rect x="66" y="258" width="245" height="26" rx="6" fill="#c9922e"/>
+  <text x="508" y="276" class="num">57%</text>
+
+  <rect x="558" y="166" width="180" height="124" rx="10" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+  <text x="578" y="190" class="step">Evidence gates</text>
+  <g>
+    <circle cx="586" cy="214" r="7" fill="#2f7f95"/><path d="M582 214 l3 3 l5.5 -6.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="602" y="218" class="small">Charter signed</text>
+  </g>
+  <g>
+    <circle cx="586" cy="238" r="7" fill="#2f7f95"/><path d="M582 238 l3 3 l5.5 -6.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="602" y="242" class="small">UAT evidence</text>
+  </g>
+  <g>
+    <circle cx="586" cy="262" r="7" fill="#ffffff" stroke="#c4ced6" stroke-width="1.8"/>
+    <text x="602" y="266" class="small">Launch criteria</text>
+  </g>
+
+  <rect x="86" y="360" width="628" height="40" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="385" text-anchor="middle" class="footer">Delivery confidence is tied to evidence, not assertion.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>

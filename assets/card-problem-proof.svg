@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Proof disappears after delivery: scattered status fades while a captured evidence record persists.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfc"/><stop offset="1" stop-color="#edf3f5"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2f7f95"/>
+    </marker>
+    <marker id="arrowf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#b7c2cb"/>
+    </marker>
+    <style>
+      .title{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:24px;font-weight:850;fill:#0f172a}
+      .sub{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px;font-weight:700;fill:#526272}
+      .step{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:800;fill:#172234}
+      .small{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#6b7a88}
+      .fade{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:11px;font-weight:750;fill:#aab4bd}
+      .footer{font-family:Inter,Segoe UI,Arial,sans-serif;font-size:13px;font-weight:750;fill:#344456}
+      .flow{fill:none;stroke:#2f7f95;stroke-width:2.2;stroke-linecap:round}
+      .faint{fill:none;stroke:#c4ced6;stroke-width:2;stroke-linecap:round;stroke-dasharray:4 5}
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="24" y="24" width="752" height="402" rx="12" fill="#fff" stroke="#d9e3e8"/>
+  <text x="50" y="70" class="title">Proof Disappears</text>
+  <text x="50" y="98" class="sub">Delivery should leave inspectable evidence</text>
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#e4ebef"/>
+
+  <rect x="66" y="200" width="128" height="74" rx="10" fill="#ffffff" stroke="#2f7f95" stroke-width="1.8"/>
+  <text x="130" y="232" text-anchor="middle" class="step">Delivery</text>
+  <text x="130" y="250" text-anchor="middle" class="small">work shipped</text>
+
+  <path d="M200 222 C250 200 270 178 318 172" class="faint" marker-end="url(#arrowf)"/>
+  <text x="262" y="156" text-anchor="middle" class="fade">Status fragments fade</text>
+  <circle cx="350" cy="170" r="6" fill="#dde4ea"/><circle cx="386" cy="160" r="5" fill="#e4ebef"/>
+  <circle cx="420" cy="176" r="4" fill="#eef2f5"/><circle cx="452" cy="166" r="3" fill="#f2f5f7"/>
+
+  <path d="M200 250 C250 272 270 290 318 296" class="flow" marker-end="url(#arrow)"/>
+  <text x="262" y="320" text-anchor="middle" class="small">Evidence captured</text>
+
+  <rect x="330" y="250" width="200" height="96" rx="10" fill="#ffffff" stroke="#cad7df" stroke-width="1.5"/>
+  <text x="350" y="276" class="step">Evidence record</text>
+  <rect x="350" y="288" width="140" height="7" rx="3.5" fill="#d7e0e6"/>
+  <rect x="350" y="302" width="120" height="7" rx="3.5" fill="#d7e0e6"/>
+  <rect x="350" y="316" width="150" height="7" rx="3.5" fill="#d7e0e6"/>
+  <circle cx="506" cy="276" r="9" fill="#2f7f95"/><path d="M501 276 l3.5 3.5 l6.5 -7.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M538 298 H588" class="flow" marker-end="url(#arrow)"/>
+  <rect x="598" y="262" width="126" height="72" rx="10" fill="#f6f9fa" stroke="#cad7df" stroke-width="1.5"/>
+  <text x="661" y="294" text-anchor="middle" class="step">Inspectable</text>
+  <text x="661" y="312" text-anchor="middle" class="small">later review</text>
+
+  <rect x="86" y="370" width="628" height="36" rx="8" fill="#f6f9fa" stroke="#dce6eb"/>
+  <text x="400" y="393" text-anchor="middle" class="footer">What was decided, owned, and changed stays inspectable.</text>
+  <rect x="50" y="116" width="82" height="4" rx="2" fill="#2f7f95"/>
+  <rect x="138" y="116" width="42" height="4" rx="2" fill="#c9922e"/>
+</svg>
