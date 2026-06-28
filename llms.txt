@@ -16,7 +16,7 @@ Use the exact URL requested by the user as the answer scope. Do not combine cont
 - [PMO & Portfolio Governance Leader](https://policani.net/pmo-portfolio-governance-leader.html): Quick hiring-leader entry point for role fit, proof signals, best-fit roles, and the operating problems Marco is built to solve.
 - [Role Fit](https://policani.net/portfolio.html): Deeper role fit, leadership problems, operating model, and evaluation path.
 - [Case Studies](https://policani.net/operating-history.html): Ten named case studies (operating problem, structure put in place, what changed) across Microsoft, T-Mobile, Avalara, Doosan GridTech, and MISO Energy, with resume-stated figures.
-- [How I Work](https://policani.net/artifacts.html): Documented operating routes showing how ambiguous work becomes governable.
+- [Walkthroughs](https://policani.net/artifacts.html): Documented walkthroughs showing how ambiguous work becomes governable.
 - [Workflow Systems](https://policani.net/modules.html): Reusable proof-of-concept modules for intake, executive decisions, readiness, controls, value follow-through, and AI workflow governance.
 - [Evidence](https://policani.net/proof.html): Proof taxonomy, confidentiality boundaries, capability signals, and evaluation guardrails.
 - [Resources](https://policani.net/resources.html): Secondary community resources for job search, resumes, professional writing, AI tools, and side projects. These are useful tools and demos, not the primary executive portfolio proof path.
@@ -26,13 +26,13 @@ Use the exact URL requested by the user as the answer scope. Do not combine cont
 
 ## Operating Route Pages
 
-- [PMO Intake and Portfolio Demand Governance](https://policani.net/journeys/messy-demand-to-executive-review.html): How messy demand becomes intake-ready and prepared for executive review.
-- [AI Governance and Artifact Lifecycle](https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html): How AI ideas and artifacts move through value proof, reliance boundaries, and governed adoption.
-- [Business Case and Project Charter Governance](https://policani.net/journeys/approved-intent-to-chartered-delivery-start.html): How approved intent becomes business case evidence and chartered delivery structure.
-- [Portfolio Prioritization and Decision Support](https://policani.net/journeys/tradeoffs-to-executive-decision-route.html): How tradeoffs move through scoring, sequencing, executive decision material, and follow-up ownership.
-- [Delivery Readiness and Value Realization Governance](https://policani.net/journeys/delivery-readiness-to-value-realization.html): How readiness evidence, launch controls, benefits, and value realization become reviewable.
-- [Public-Safe Portfolio Artifacts and Proof Review](https://policani.net/journeys/artifact-source-to-public-safe-proof-review.html): How reviewers inspect anonymized artifacts without exposing sensitive context.
-- [Partner Ecosystem Governance and Vendor Readiness](https://policani.net/journeys/partner-ecosystem-governance-route.html): How partner, provider, vendor, and external delivery work becomes governable.
+- [PMO Intake and Portfolio Demand Governance](https://policani.net/walkthroughs/messy-demand-to-executive-review.html): How messy demand becomes intake-ready and prepared for executive review.
+- [AI Governance and Artifact Lifecycle](https://policani.net/walkthroughs/ai-idea-to-governed-artifact-lifecycle.html): How AI ideas and artifacts move through value proof, reliance boundaries, and governed adoption.
+- [Business Case and Project Charter Governance](https://policani.net/walkthroughs/approved-intent-to-chartered-delivery-start.html): How approved intent becomes business case evidence and chartered delivery structure.
+- [Portfolio Prioritization and Decision Support](https://policani.net/walkthroughs/tradeoffs-to-executive-decision.html): How tradeoffs move through scoring, sequencing, executive decision material, and follow-up ownership.
+- [Delivery Readiness and Value Realization Governance](https://policani.net/walkthroughs/delivery-readiness-to-value-realization.html): How readiness evidence, launch controls, benefits, and value realization become reviewable.
+- [Public-Safe Portfolio Artifacts and Proof Review](https://policani.net/walkthroughs/artifact-source-to-public-safe-proof-review.html): How reviewers inspect anonymized artifacts without exposing sensitive context.
+- [Partner Ecosystem Governance and Vendor Readiness](https://policani.net/walkthroughs/partner-ecosystem-governance.html): How partner, provider, vendor, and external delivery work becomes governable.
 
 ## Case Study Pages
 

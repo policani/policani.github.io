@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delivery Readiness and Value Realization Governance | Marco Policani</title>
+<meta name="description" content="How launch evidence, UAT readiness, blockers, controls, signoffs, benefits, and value realization become reviewable.">
+<meta name="author" content="Marco Policani">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Delivery Readiness and Value Realization Governance | Marco Policani">
+<meta property="og:description" content="How launch evidence, UAT readiness, blockers, controls, signoffs, benefits, and value realization become reviewable.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://policani.net/walkthroughs/delivery-readiness-to-value-realization.html">
+<meta property="og:image" content="https://policani.net/assets/social-card-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://policani.net/walkthroughs/delivery-readiness-to-value-realization.html">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preload" as="image" href="../assets/portfolio-operations-hero-1920.webp" type="image/webp">
+<link rel="stylesheet" href="../assets/journey-pages.css?v=20260623-hero-buttons">
+<style>
+h1 { max-width: 980px; margin-bottom: 18px; color: #ffffff; font-size: clamp(2.3rem, 5vw, 4.4rem); line-height: 1; letter-spacing: 0; }
+
+table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #ffffff; }
+
+th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+
+tbody tr { transition: background .16s ease; }
+
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,20,36,.66) 0%, rgba(8,20,36,.44) 44%, rgba(8,20,36,.12) 74%), linear-gradient(180deg, rgba(6,14,25,.1) 0%, rgba(6,14,25,.38) 100%); z-index: -1; }
+
+.hero .eyebrow, .hero .lead { color: rgba(255,255,255,0.8); }
+
+.lead { max-width: 940px; color: var(--ink-soft); font-size: 1.12rem; }
+
+.pill, .repo-links a, .inspection-path a { display: inline-flex; align-items: center; min-height: 30px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.9); color: var(--ink-soft); font-size: 0.82rem; font-weight: 760; text-decoration: none; white-space: normal; overflow-wrap: anywhere; transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease; }
+
+.repo-links a, .inspection-path a { color: var(--blue-800); background: #ffffff; border-color: #b8cde2; }
+
+.repo-links a:hover, .inspection-path a:hover, .step a:hover { border-color: rgba(47,127,149,.48); background: #e8f5f7; box-shadow: 0 8px 18px rgba(15,23,42,.08); color: var(--blue-950); transform: translateY(-1px); }
+
+.hero .pill { border-color: rgba(255,255,255,.28); background: rgba(255,255,255,.1); color: #ffffff; }
+
+nav { border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.92); }
+
+nav a { font-weight: 760; text-decoration: none; }
+
+.section-intro { max-width: 920px; color: var(--muted); font-size: 1.03rem; }
+
+.route { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+.card, .step, .callout { min-width: 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); box-shadow: 0 1px 0 rgba(15,23,42,.04); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease; }
+
+.card:hover, .step:hover, .callout:hover { border-color: rgba(47,127,149,.44); box-shadow: 0 16px 32px rgba(15,23,42,.10); transform: translateY(-2px); }
+
+.step span { display: block; color: var(--muted); font-size: 0.92rem; }
+
+.step a { display: inline-block; margin-top: 10px; color: var(--blue-800); font-size: 0.86rem; font-weight: 800; text-decoration: underline; text-underline-offset: 0.18em; }
+
+.callout { border-left: 6px solid var(--blue-650); background: var(--blue-100); }
+
+.table-wrap { width: 100%; margin-top: 22px; overflow-x: auto; }
+
+.footer-note { padding: 28px 0 46px; color: var(--muted); font-size: 0.94rem; }
+
+@media (max-width: 1100px) { .route { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+@media (max-width: 980px) { .hero::before { background-position: 18% center; } .grid-2, .grid-3, .route { grid-template-columns: 1fr; } nav .page-shell { align-items: flex-start; flex-direction: column; padding: 14px 0; } }
+
+@media (max-width: 560px) { .page-shell { width: min(100% - 28px, 1180px); } }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://policani.net/walkthroughs/delivery-readiness-to-value-realization.html#webpage","name":"Delivery Readiness and Value Realization Governance | Marco Policani","url":"https://policani.net/walkthroughs/delivery-readiness-to-value-realization.html","description":"How launch evidence, UAT readiness, blockers, controls, signoffs, benefits, and value realization become reviewable.","inLanguage":"en-US","isPartOf":{"@type":"WebSite","name":"Marco Policani Portfolio","url":"https://policani.net/"},"author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"}}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="local-nav" aria-label="Top-level portfolio sections">
+<div class="nav-inner">
+<a class="nav-title" href="../index.html">Marco Policani</a>
+<div class="nav-links">
+<a href="../pmo-portfolio-governance-leader.html">Role Fit</a>
+<a href="../operating-history.html">Case Studies</a>
+<a href="../artifacts.html" aria-current="page">Walkthroughs</a>
+<a href="../modules.html">Workflow Systems</a>
+<a href="../proof.html">Evidence</a>
+<a href="../resources.html">Resources</a>
+<a href="../index.html#contact">Contact</a>
+</div>
+</div>
+</nav>
+<header class="hero" data-parallax-travel="210">
+<div class="portfolio-hero-filament-bg" aria-hidden="true"></div>
+<div class="page-shell">
+<p class="eyebrow">Portfolio walkthrough</p>
+<h1>Delivery Readiness to Value Realization</h1>
+<p class="lead">How delivery moves from launch evidence to benefits review without treating green status as proof.</p>
+<div class="actions">
+<a class="button primary" href="#main">Follow the walkthrough</a>
+<a class="button" href="../artifacts.html#journey-routes">Back to walkthroughs</a>
+</div>
+<div class="meta-row" aria-label="Journey scope">
+<span class="pill">Synthetic example</span>
+<span class="pill">Delivery readiness</span>
+<span class="pill">Launch evidence to benefits review</span>
+<span class="pill">Human approval remains explicit</span>
+</div>
+</div>
+</header>
+
+<main id="main">
+<section class="section-white">
+<div class="page-shell">
+<p class="eyebrow">Executive takeaway</p>
+<h2>Replacing green status with readiness evidence</h2>
+<p class="section-intro">This walkthrough demonstrates the discipline between delivery and value: UAT evidence, blockers, control exposure, signoffs, launch assumptions, benefit baselines, and post-launch proof are surfaced before leaders accept readiness or value claims.</p>
+<div class="callout">
+<h3>Operating context</h3>
+<p>I have supported finance-critical releases, revenue-sensitive delivery, supplier remediation, and infrastructure-tied execution where a green status was not enough. Leaders needed to know whether test evidence existed, blockers had owners, control exposure was understood, and benefit claims had a baseline or review path. The real work was turning readiness from a color into a decision record. This walkthrough shows that evidence chain in a public-safe example, from delivery risk through value follow-through.</p>
+</div>
+<div class="grid-3">
+<article class="card"><h3>Before</h3><p>Delivery appears on track, but evidence quality, blocker ownership, exception decisions, launch criteria, and value assumptions are uneven or buried.</p></article>
+<article class="card"><h3>After</h3><p>Leaders can approve, delay, escalate, or request more evidence with a clearer view of readiness confidence, control risk, and value follow-through.</p></article>
+<article class="card"><h3>Leadership judgment shown</h3><p>Readiness is not a color. It is a reviewable evidence chain that protects launch decisions and keeps value claims honest after delivery.</p></article>
+</div>
+</div>
+</section>
+
+<section>
+<div class="page-shell">
+<p class="eyebrow">Scenario</p>
+<h2>The starting point</h2>
+<p class="section-intro">A delivery effort is approaching launch with status marked green, but the evidence behind readiness is uneven. The goal is to turn the launch conversation into a traceable review of blockers, control exposure, signoff gaps, and benefit assumptions.</p>
+<div class="grid-3">
+<article class="card"><h3>Launch evidence is thin</h3><p>UAT is close, but test coverage, defect aging, release criteria, and owner signoff are not clean enough for approval-ready review.</p></article>
+<article class="card"><h3>Blockers need ownership</h3><p>A launch blocker is visible, but accountability is spread across delivery, operations, security, and sponsor teams.</p></article>
+<article class="card"><h3>Value needs a baseline</h3><p>A benefit claim is plausible, but baseline measures, assumptions, and post-launch evidence are not yet strong enough for value realization review.</p></article>
+</div>
+</div>
+</section>
+
+<section>
+<div class="page-shell">
+<p class="eyebrow">Module sequence</p>
+<h2>How the work moves</h2>
+<p class="section-intro">The walkthrough uses five public modules. Each module names the evidence it needs, the evidence it produces, and the decisions that stay with accountable humans.</p>
+<div class="route" aria-label="Journey module route">
+<div class="step"><strong>1. Confirm launch readiness</strong><span>Release Readiness and UAT Governance Pack checks UAT scope, acceptance evidence, defects, launch criteria, and signoff posture.</span><a href="https://github.com/policani/release-readiness-uat-governance-pack" target="_blank" rel="noopener noreferrer">Open Release Readiness and UAT Governance Pack</a></div>
+<div class="step"><strong>2. Surface control exposure</strong><span>Controls and Exposure Governance Toolkit frames the control issue, exposure path, decision owner, and acceptable response options.</span><a href="https://github.com/policani/controls-exposure-governance-toolkit" target="_blank" rel="noopener noreferrer">Open Controls and Exposure Governance Toolkit</a></div>
+<div class="step"><strong>3. Keep governance trace</strong><span>PMO Governance Operations Log records blockers, decisions, approvals, escalations, and unresolved follow-up items.</span><a href="https://github.com/policani/pmo-governance-operations-log" target="_blank" rel="noopener noreferrer">Open PMO Governance Operations Log</a></div>
+<div class="step"><strong>4. Test the value claim</strong><span>Value Realization Governance Ledger links claimed benefits to baselines, assumptions, measures, review dates, and confidence.</span><a href="https://github.com/policani/value-realization-governance-ledger" target="_blank" rel="noopener noreferrer">Open Value Realization Governance Ledger</a></div>
+<div class="step"><strong>5. Package final review</strong><span>Executive Portfolio Review Pack Builder turns readiness evidence, blockers, value assumptions, and human decisions into an executive-ready view.</span><a href="https://github.com/policani/executive-portfolio-review-pack-builder" target="_blank" rel="noopener noreferrer">Open Executive Portfolio Review Pack Builder</a></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="page-shell">
+<p class="eyebrow">Synthetic input</p>
+<h2>Delivery readiness inputs</h2>
+<p class="section-intro">These fictional inputs show how delivery readiness can be reviewed without relying on optimistic status language.</p>
+<div class="table-wrap">
+<table aria-label="Synthetic delivery readiness inputs">
+<thead><tr><th>Input</th><th>Initial signal</th><th>Evidence gap</th><th>Governance walkthrough</th></tr></thead>
+<tbody>
+<tr><td>Release approaching UAT with weak evidence</td><td>Delivery status is green and UAT start is scheduled.</td><td>Test scope, acceptance criteria, defect threshold, and signoff owners are incomplete.</td><td>Release readiness review before UAT gate.</td></tr>
+<tr><td>Launch blocker with unclear owner</td><td>A dependency issue could delay launch.</td><td>No accountable owner has accepted the blocker, decision path, or escalation route.</td><td>Governance log entry with owner assignment and executive escalation if needed.</td></tr>
+<tr><td>Control exposure needing human decision</td><td>A control exception may be acceptable for launch with mitigation.</td><td>Exposure level, compensating control, approval threshold, and risk owner are not confirmed.</td><td>Controls exposure review and documented decision options.</td></tr>
+<tr><td>Benefit claim with missing baseline</td><td>Sponsor expects cycle-time improvement after launch.</td><td>Current cycle time, measurement method, review date, and assumption owner are missing.</td><td>Value realization ledger before benefits claim is accepted.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section>
+<div class="page-shell">
+<p class="eyebrow">Evidence produced</p>
+<h2>What the walkthrough creates</h2>
+<p class="section-intro">The evidence is meant to support better approval conversations. It gives leaders a clean view of readiness, confidence, gaps, and decisions.</p>
+<div class="grid-2">
+<article class="card"><h3>Readiness evidence</h3><ul><li>UAT scope, acceptance criteria, defect status, and launch criteria.</li><li>Named signoff owners for business, delivery, operations, security, and support.</li><li>Readiness confidence based on evidence quality, not status color.</li><li>Gate recommendation with assumptions and unresolved gaps.</li></ul></article>
+<article class="card"><h3>Blocker and exposure evidence</h3><ul><li>Launch blocker owner, impact, age, decision path, and escalation date.</li><li>Control exposure summary with response options and approval threshold.</li><li>Human decision required, with named accountable role.</li><li>Open follow-up register for items that cannot be closed during the review.</li></ul></article>
+<article class="card"><h3>Value evidence</h3><ul><li>Benefit claim, baseline measure, measurement method, and review date.</li><li>Assumption owner and confidence level for each claimed outcome.</li><li>Post-launch evidence needed before benefit realization is accepted.</li><li>Clear separation between launch approval and value confirmation.</li></ul></article>
+<article class="card"><h3>Executive review evidence</h3><ul><li>Readiness state, blockers, signoff gaps, and value assumptions.</li><li>Evidence confidence for launch, control, and benefit dimensions.</li><li>Decision agenda with owner, due date, and approval forum.</li><li>Client-safe narrative that keeps synthetic examples separate from real operations.</li></ul></article>
+</div>
+</div>
+</section>
+
+<section>
+<div class="page-shell">
+<p class="eyebrow">Final review</p>
+<h2>Delivery readiness review view</h2>
+<p class="section-intro">The final view lets leaders approve, delay, escalate, or ask for more evidence without having to infer readiness from a green dashboard cell.</p>
+<div class="callout">
+<h3>Decision frame</h3>
+<p>The launch can move toward UAT only after readiness evidence is strengthened, blocker ownership is accepted, control exposure receives a human decision, and the benefit claim is tied to a measurable baseline.</p>
+</div>
+<div class="table-wrap">
+<table aria-label="Final delivery readiness and value realization review">
+<thead><tr><th>Readiness state</th><th>Blockers</th><th>Signoff gaps</th><th>Value assumptions</th><th>Evidence confidence</th><th>Human decisions required</th></tr></thead>
+<tbody>
+<tr><td>UAT start is conditionally ready.</td><td>One launch dependency could affect test environment availability.</td><td>Business owner and operations support signoff are not complete.</td><td>Launch approval assumes representative UAT coverage and stable support staffing.</td><td>Moderate after UAT evidence is updated; low before acceptance criteria are confirmed.</td><td>Approve UAT start conditions and name signoff owners.</td></tr>
+<tr><td>Launch readiness is not yet approved.</td><td>Blocker owner is unclear and escalation path is incomplete.</td><td>Security approval depends on exposure decision.</td><td>Benefit timing assumes the blocker is resolved before launch window closes.</td><td>Low until ownership, mitigation, and decision timing are documented.</td><td>Assign blocker owner, escalation forum, and launch decision date.</td></tr>
+<tr><td>Control exposure requires review.</td><td>Potential exception may require mitigation during launch window.</td><td>Risk owner and approval threshold are not named.</td><td>Value claim assumes no material rework from the exposure response.</td><td>Moderate for exposure description; low for approval posture.</td><td>Accept, mitigate, delay, or escalate the control exposure.</td></tr>
+<tr><td>Benefits review is not ready.</td><td>No delivery blocker, but measurement ownership is missing.</td><td>Sponsor has not approved baseline, measure, or review cadence.</td><td>Cycle-time improvement depends on adoption, process compliance, and clean baseline data.</td><td>Low until baseline and post-launch review plan are approved.</td><td>Name value owner and approve baseline before claiming benefit realization.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section>
+<div class="page-shell">
+<p class="eyebrow">Inspection path</p>
+<h2>Where to inspect the supporting work</h2>
+<p class="section-intro">The walkthrough summarizes the flow. The repositories hold the operating details, examples, public-safe boundaries, and review patterns.</p>
+<div class="inspection-path">
+<a href="https://github.com/policani/release-readiness-uat-governance-pack" target="_blank" rel="noopener noreferrer">Release Readiness and UAT Governance Pack</a>
+<a href="https://github.com/policani/controls-exposure-governance-toolkit" target="_blank" rel="noopener noreferrer">Controls and Exposure Governance Toolkit</a>
+<a href="https://github.com/policani/pmo-governance-operations-log" target="_blank" rel="noopener noreferrer">PMO Governance Operations Log</a>
+<a href="https://github.com/policani/value-realization-governance-ledger" target="_blank" rel="noopener noreferrer">Value Realization Governance Ledger</a>
+<a href="https://github.com/policani/executive-portfolio-review-pack-builder" target="_blank" rel="noopener noreferrer">Executive Portfolio Review Pack Builder</a>
+</div>
+</div>
+</section>
+<section class="section-white" aria-labelledby="proven-heading">
+<div class="page-shell">
+<p class="section-kicker">Proven in practice</p>
+<h2 id="proven-heading">Where this walkthrough ran for real.</h2>
+<p class="lead">This walkthrough is a generalized pattern. These named case studies show the same discipline operating in real environments.</p>
+<p><a href="../engagements/microsoft-commerce-finance.html">Microsoft: UAT cycles compressed from 6–9 months to 30–45 days</a></p>
+<p><a href="../engagements/avalara-billing.html">Avalara: billing integrity under continuity constraints</a></p>
+<p><a href="../engagements/microsoft-gdpr-remediation.html">Microsoft: 3,424 suppliers brought to validated compliance</a></p>
+</div>
+</section>
+</main>
+
+<footer class="page-shell footer-note">
+<p>Example data is fictional and used to demonstrate delivery readiness, control exposure, and value follow-through.</p>
+</footer>
+<script src="../assets/hero-parallax.js" defer></script>
+<script src="../assets/portfolio-signal-field.js?v=20260613-signalfield" defer></script>
+<script src="../assets/portfolio-hero-filament.js?v=20260613-signalfield" defer></script>
+</body>
+</html>
