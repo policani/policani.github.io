@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Kytherion Drift</title>
+<title>Kytherion Drift Arcade Shooter | Marco Policani</title>
 <meta name="description" content="Play Kytherion Drift, a self-contained browser arcade shooter with exotic weapon pickups, boss waves, touch controls, and keyboard movement.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://policani.net/kytherion-drift/">
-<meta property="og:title" content="Kytherion Drift">
+<meta property="og:title" content="Kytherion Drift Arcade Shooter">
 <meta property="og:description" content="A self-contained browser arcade shooter with exotic weapon pickups, boss waves, touch controls, and keyboard movement.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://policani.net/kytherion-drift/">
@@ -26,6 +26,7 @@
     font-family: 'Arial', sans-serif;
     touch-action: none;
   }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   #gameCanvas {
     display: block;
     background: #06040d;
@@ -34,6 +35,7 @@
 </style>
 </head>
 <body>
+<h1 class="sr-only">Kytherion Drift arcade shooter</h1>
 <canvas id="gameCanvas" role="img" aria-label="Kytherion Drift arcade shooter game canvas"></canvas>
 <noscript>Kytherion Drift needs JavaScript enabled to run in your browser.</noscript>
 <script>

@@ -17,6 +17,7 @@
 <meta name="twitter:image" content="https://policani.net/assets/orbit-raiders-preview.jpg">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
   html,body{height:100%;background:#03010c;overflow:hidden;font-family:"Courier New",monospace;}
   #wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
     background:radial-gradient(ellipse at center,#0a0220 0%,#03010c 75%);}
@@ -33,6 +34,7 @@
 </style>
 </head>
 <body>
+<h1 class="sr-only">Orbit Raiders 8-bit radial shooter</h1>
 <button id="fs">⛶ Fullscreen</button>
 <div id="wrap"><canvas id="game" width="1280" height="720"></canvas></div>
 <div id="hint">◀ ▶ rotate · SPACE fire · grab M/L/S power-ups · F fullscreen · P pause · M mute</div>

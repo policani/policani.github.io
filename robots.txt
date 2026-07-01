@@ -1,10 +1,42 @@
+User-agent: Googlebot
+Allow: /
+Disallow: /_qa/
+Disallow: /clear-skies-cleaning-reimagined-preview/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /_qa/
+Disallow: /clear-skies-cleaning-reimagined-preview/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /_qa/
+Disallow: /clear-skies-cleaning-reimagined-preview/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /_qa/
+Disallow: /clear-skies-cleaning-reimagined-preview/
+
 User-agent: PerplexityBot
 Allow: /
 Disallow: /_qa/
+Disallow: /clear-skies-cleaning-reimagined-preview/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /_qa/
+Disallow: /clear-skies-cleaning-reimagined-preview/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /_qa/
+Disallow: /clear-skies-cleaning-reimagined-preview/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /_qa/
+Disallow: /clear-skies-cleaning-reimagined-preview/
 
 User-agent: *
 Allow: /
