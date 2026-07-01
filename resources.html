@@ -19,7 +19,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" as="image" href="assets/portfolio-operations-hero-1920.webp" type="image/webp">
-<link rel="stylesheet" href="assets/portfolio-site.css?v=20260617-type">
+<link rel="stylesheet" href="assets/portfolio-site.css?v=20260701-hero-lab">
 <script type="application/ld+json">
 {
 "@context": "https://schema.org",
@@ -223,19 +223,29 @@
 <h2 id="side-projects-heading">Just for fun.</h2>
 <div class="grid-3">
 <article class="card resource-product-card">
-<h3>Portfolio Signal Field</h3>
-<a class="resource-preview-link" href="portfolio-signal-field.html" aria-label="Open the Portfolio Signal Field live demo">
-<img class="resource-preview-image" src="assets/portfolio-signal-field-preview.jpg" alt="Portfolio Signal Field live demo showing animated initiative cards, dependency filaments, and configuration controls" width="1919" height="949" loading="lazy">
+<h3>Hero Banner Lab</h3>
+<div class="resource-preview-carousel" data-resource-carousel aria-label="Hero Banner Lab preview carousel">
+<a class="is-active" href="hero-banner-lab.html?banner=signal" data-carousel-slide aria-label="Open the Portfolio Signal hero banner sample">
+<img src="assets/hero-banner-lab-signal-preview.webp" alt="Full-screen Portfolio Signal hero banner sample with animated initiative cards and dependency filaments" width="1600" height="900" loading="lazy">
 </a>
-<p>A configurable animated background of synthetic initiative cards that drift, connect with glowing filaments, and react to the cursor — with a no-code config tool and one-click JSON export. A weekend build, directed end to end with AI tools.</p>
+<a href="hero-banner-lab.html?banner=decision-gates" data-carousel-slide aria-label="Open the Decision Gates hero banner sample">
+<img src="assets/hero-banner-lab-decision-gates-preview.webp" alt="Full-screen Decision Gates hero banner sample with vertical AI decision columns and glowing filaments" width="1600" height="900" loading="lazy">
+</a>
+<a href="hero-banner-lab.html?banner=filament-network" data-carousel-slide aria-label="Open the Filament Network hero banner sample">
+<img src="assets/hero-banner-lab-filament-network-preview.webp" alt="Full-screen Filament Network hero banner sample with blue nodes, numeric labels, and connecting lines" width="1600" height="900" loading="lazy">
+</a>
+<div class="resource-carousel-controls" data-carousel-controls aria-label="Choose preview"></div>
+</div>
+<p>A configurable collection of full-screen animated hero banners: portfolio signal cards, AI decision gates, and filament-network fields. Each sample has parallax scroll behavior, pointer response, and its own settings panel for exportable configuration.</p>
 <div class="resource-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px">
 <span class="lane-label" style="margin:0">Live demo</span>
 <span class="lane-label" style="margin:0">Open source</span>
-<span class="lane-label" style="margin:0">Synthetic data</span>
+<span class="lane-label" style="margin:0">Full-screen capture</span>
 </div>
 <div class="repo-links">
-<a href="portfolio-signal-field.html">Open live demo</a>
-<a href="https://github.com/policani/portfolio-signal-field" target="_blank" rel="noopener noreferrer">Open repository</a>
+<a href="hero-banner-lab.html">Open hero banner lab</a>
+<a href="portfolio-signal-field.html">Open original Portfolio Signal Field demo</a>
+<a href="https://github.com/policani/hero-banner-lab" target="_blank" rel="noopener noreferrer">Open repository</a>
 </div>
 </article>
 <article class="card resource-product-card">
@@ -323,6 +333,7 @@
 <script src="assets/hero-parallax.js" defer></script>
 <script src="assets/portfolio-signal-field.js?v=20260613-signalfield" defer></script>
 <script src="assets/portfolio-hero-filament.js?v=20260613-signalfield" defer></script>
+<script src="assets/resource-carousel.js?v=20260701" defer></script>
 <script src="assets/site-concierge.js?v=20260626" defer></script>
 </body>
 </html>

@@ -651,6 +651,57 @@ object-fit: cover;
 object-position: center top;
 }
 
+.resource-preview-carousel {
+position: relative;
+margin: 12px 0 14px;
+border: 1px solid #d5dde5;
+border-radius: 8px;
+overflow: hidden;
+background: #061326;
+}
+
+.resource-preview-carousel a {
+display: none;
+color: inherit;
+text-decoration: none;
+}
+
+.resource-preview-carousel a.is-active {
+display: block;
+}
+
+.resource-preview-carousel img {
+display: block;
+width: 100%;
+aspect-ratio: 16 / 9;
+height: auto;
+object-fit: cover;
+object-position: center;
+}
+
+.resource-carousel-controls {
+position: absolute;
+right: 9px;
+bottom: 9px;
+z-index: 2;
+display: flex;
+gap: 5px;
+}
+
+.resource-carousel-controls button {
+width: 10px;
+height: 10px;
+padding: 0;
+border: 1px solid rgba(255, 255, 255, 0.72);
+border-radius: 999px;
+background: rgba(255, 255, 255, 0.28);
+cursor: pointer;
+}
+
+.resource-carousel-controls button[aria-pressed="true"] {
+background: #ffffff;
+}
+
 .lane-label {
 display: inline-flex;
 margin-bottom: 14px;
