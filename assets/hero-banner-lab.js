@@ -50,9 +50,9 @@
       tags: ["Gate columns", "Attraction field", "Sticky parallax"],
       settings: {
         gateCount: 9,
-        filamentDensity: 1.26,
+        filamentDensity: 1.35,
         speed: 1,
-        glow: 1.28,
+        glow: 1.55,
         attraction: 1,
         labelDensity: 0.86,
         accent: "#9bdfff",
@@ -62,7 +62,7 @@
         { key: "gateCount", label: "Gate columns", type: "range", min: 6, max: 11, step: 1 },
         { key: "filamentDensity", label: "Filament density", type: "range", min: 0.45, max: 1.65, step: 0.05 },
         { key: "speed", label: "Speed", type: "range", min: 0.35, max: 1.75, step: 0.05 },
-        { key: "glow", label: "Glow", type: "range", min: 0.35, max: 1.55, step: 0.05 },
+        { key: "glow", label: "Glow", type: "range", min: 0.35, max: 2.1, step: 0.05 },
         { key: "attraction", label: "Mouse attraction", type: "range", min: 0, max: 1.45, step: 0.05 },
         { key: "labelDensity", label: "Label density", type: "range", min: 0, max: 1, step: 0.05 },
         { key: "accent", label: "Cool accent", type: "color" },
@@ -241,55 +241,244 @@
 
   class DecisionRenderer extends CanvasRenderer {
     rebuild() {
-      const gateCount = Math.round(this.settings.gateCount || 9);
-      const spread = this.w / Math.max(1, gateCount - 1);
-      this.gates = Array.from({ length: gateCount }, (_, index) => ({
-        x: index * spread + (index === 0 ? -spread * 0.22 : index === gateCount - 1 ? spread * 0.22 : 0),
-        top: this.h * (0.03 + seeded(index + 20) * 0.16),
-        bottom: this.h * (0.82 + seeded(index + 30) * 0.16),
-        rows: Math.round(26 + seeded(index + 40) * 34),
-        width: 2.6 + seeded(index + 50) * 3.8,
-        lean: -1.2 + seeded(index + 60) * 2.4,
-        phase: seeded(index + 70) * Math.PI * 2
-      }));
+      this.seed = 981233;
+      this.gates = [];
+      this.fibers = [];
+      this.residuals = [];
+      this.dust = [];
+      this.labels = [];
 
-      const count = Math.round((this.w < 760 ? 86 : 210) * (this.settings.filamentDensity || 1));
-      this.fibers = Array.from({ length: count }, (_, index) => {
-        const from = Math.floor(seeded(index + 80) * Math.max(1, gateCount - 1));
-        return {
-          from,
-          to: Math.min(gateCount - 1, from + 1 + (seeded(index + 81) > 0.88 ? 1 : 0)),
-          a: seeded(index + 82),
-          b: seeded(index + 83),
-          phase: seeded(index + 84) * 90,
-          speed: (0.035 + seeded(index + 85) * 0.09) * (this.settings.speed || 1),
-          bend: -0.5 + seeded(index + 86),
-          width: 0.22 + seeded(index + 87) * 0.7,
-          hot: seeded(index + 88) > 0.965
-        };
-      });
+      const rand = () => {
+        this.seed = (this.seed * 1664525 + 1013904223) >>> 0;
+        return this.seed / 4294967296;
+      };
+      const xs = [-0.040, 0.055, 0.151, 0.270, 0.399, 0.538, 0.677, 0.816, 0.970].map((value) => this.w * value);
+      const specs = [
+        { top: 0.145, bottom: 0.875, w: 3.0, rows: 28, name: "TOK", lean: -1.1 },
+        { top: 0.010, bottom: 0.972, w: 4.5, rows: 57, name: "EMB", lean: 0.7 },
+        { top: 0.062, bottom: 0.998, w: 5.6, rows: 60, name: "ATTN", lean: -1.0 },
+        { top: 0.000, bottom: 0.925, w: 3.8, rows: 52, name: "MIX", lean: 1.0 },
+        { top: 0.180, bottom: 0.820, w: 6.2, rows: 34, name: "MLP", lean: -0.4 },
+        { top: 0.025, bottom: 0.982, w: 3.5, rows: 52, name: "NORM", lean: 0.9 },
+        { top: 0.105, bottom: 0.905, w: 4.8, rows: 42, name: "DEC", lean: -0.8 },
+        { top: 0.000, bottom: 1.000, w: 2.8, rows: 60, name: "RES", lean: 0.4 },
+        { top: 0.250, bottom: 0.760, w: 4.2, rows: 26, name: "LOG", lean: 0 }
+      ];
 
-      this.dust = Array.from({ length: this.w < 760 ? 60 : 130 }, (_, index) => ({
-        x: seeded(index + 100) * this.w,
-        y: seeded(index + 101) * this.h,
-        r: 0.35 + seeded(index + 102) * 0.9,
-        phase: seeded(index + 103) * 40
-      }));
+      for (let index = 0; index < specs.length; index += 1) {
+        const spec = specs[index];
+        this.gates.push({
+          id: index,
+          x: xs[index],
+          top: this.h * spec.top,
+          bottom: this.h * spec.bottom,
+          width: spec.w,
+          rows: spec.rows,
+          name: spec.name,
+          lean: spec.lean,
+          phase: rand() * Math.PI * 2,
+          sway: lerp(0.35, 1.45, rand())
+        });
+      }
+
+      this.gateField = this.gates.map(() => ({ strength: 0, t: 0.5 }));
+      const mobile = this.w < 760;
+      const tablet = this.w >= 760 && this.w < 1080;
+      const density = this.settings.filamentDensity || 1;
+      const base = mobile ? 70 : tablet ? 122 : 190;
+      const pairDensity = [base * 1.24, base * 2.05, base * 1.92, base * 1.48, base * 1.62, base * 1.36, base * 1.44, base * 1.00];
+      let fiberId = 0;
+
+      for (let gateIndex = 0; gateIndex < this.gates.length - 1; gateIndex += 1) {
+        const count = Math.floor(pairDensity[gateIndex] * density);
+        const heads = gateIndex === 1 || gateIndex === 2 ? 12 : gateIndex === 3 || gateIndex === 4 ? 8 : 6;
+        for (let i = 0; i < count; i += 1) {
+          const head = i % heads;
+          const headCenter = (head + 0.5) / heads;
+          const ordered = i / Math.max(1, count - 1);
+          const bandNoise = (rand() - 0.5) * (gateIndex === 1 || gateIndex === 2 ? 0.26 : 0.20);
+          const fixedLeft = clamp(
+            gateIndex === 0 ? ordered + (rand() - 0.5) * 0.020 : headCenter + (ordered - 0.5) * 0.20 + bandNoise,
+            0.004,
+            0.996
+          );
+          const rightBase = clamp(headCenter + Math.sin(ordered * Math.PI * 2.4 + gateIndex * 0.73) * 0.105 + (rand() - 0.5) * 0.25, 0.004, 0.996);
+          const power = rand() > (mobile ? 0.925 : 0.890);
+          this.fibers.push({
+            id: fiberId,
+            from: gateIndex,
+            to: gateIndex + 1,
+            leftT: fixedLeft,
+            rightBaseT: rightBase,
+            seekAmp: lerp(0.018, 0.105, rand()) * (mobile ? 0.56 : 1),
+            microAmp: lerp(0.006, 0.034, rand()) * (mobile ? 0.58 : 1),
+            phase: rand() * 240,
+            cycleSpeed: lerp(0.038, 0.112, rand()) * (power ? 1.18 : 1) * (this.settings.speed || 1),
+            wiggleSpeed: lerp(0.22, 0.82, rand()) * (power ? 1.16 : 1) * (this.settings.speed || 1),
+            bend: lerp(-0.48, 0.48, rand()),
+            tension: lerp(0.26, 0.68, rand()),
+            opacity: lerp(0.010, 0.070, rand()) * (power ? 1.32 : 1),
+            width: lerp(0.16, 0.52, rand()) * (power ? lerp(1.25, 1.78, rand()) : 1),
+            power,
+            hot: rand() > 0.982,
+            hair: rand() > 0.62
+          });
+          fiberId += 1;
+        }
+      }
+
+      const skipCount = mobile ? 34 : tablet ? 54 : 76;
+      const skipPairs = [[1, 3], [2, 4], [3, 5], [4, 6], [5, 7], [6, 8], [1, 5], [3, 7]];
+      for (const pair of skipPairs) {
+        for (let i = 0; i < skipCount / skipPairs.length; i += 1) {
+          this.residuals.push({
+            from: pair[0],
+            to: pair[1],
+            leftT: clamp(rand(), 0.02, 0.98),
+            rightBaseT: clamp(rand(), 0.02, 0.98),
+            amp: lerp(0.010, 0.045, rand()) * (mobile ? 0.55 : 1),
+            phase: rand() * 120,
+            speed: lerp(0.030, 0.095, rand()) * (this.settings.speed || 1),
+            bend: lerp(-0.30, 0.30, rand()),
+            opacity: lerp(0.008, 0.030, rand())
+          });
+        }
+      }
+
+      const dustCount = mobile ? 74 : tablet ? 112 : 152;
+      for (let i = 0; i < dustCount; i += 1) {
+        this.dust.push({
+          x: rand() * this.w,
+          y: rand() * this.h,
+          r: lerp(0.26, 0.94, rand()),
+          phase: rand() * 100,
+          speed: lerp(0.012, 0.045, rand()),
+          a: lerp(0.018, 0.094, rand())
+        });
+      }
+
+      this.labels = [
+        { gate: 0, lines: ["tokens", "x0..xn"], dx: 10, dy: 11, phase: rand() * 20 },
+        { gate: 1, lines: ["embedding", "vector map"], dx: 10, dy: -23, phase: rand() * 20 },
+        { gate: 2, lines: ["attention", "heads / scores"], dx: -4, dy: 11, phase: rand() * 20 },
+        { gate: 4, lines: ["ffn / mlp", "expand / gate"], dx: -4, dy: 11, phase: rand() * 20 },
+        { gate: 7, lines: ["residual", "norm stream"], dx: -4, dy: -23, phase: rand() * 20 },
+        { gate: 8, lines: ["logits", "next token"], dx: -4, dy: 11, phase: rand() * 20 }
+      ];
+    }
+
+    hash2(a, b) {
+      const value = Math.sin(a * 269.5 + b * 183.3 + 17.1) * 43758.5453123;
+      return value - Math.floor(value);
     }
 
     gatePoint(gate, t, time) {
-      const wobble = Math.sin(time * 0.13 + gate.phase) * 1.2;
+      const wobble = Math.sin(time * 0.14 + gate.phase) * gate.sway;
       const xTop = gate.x + wobble - gate.lean;
       const xBot = gate.x + wobble + gate.lean;
+      return { x: lerp(xTop, xBot, clamp(t, 0, 1)), y: lerp(gate.top, gate.bottom, clamp(t, 0, 1)) };
+    }
+
+    staticGatePoint(gate, t) {
+      return { x: gate.x, y: lerp(gate.top, gate.bottom, clamp(t, 0, 1)) };
+    }
+
+    pointerPixels() {
       return {
-        x: lerp(xTop, xBot, clamp(t, 0, 1)),
-        y: lerp(gate.top, gate.bottom, clamp(t, 0, 1))
+        x: this.w * (0.5 + this.pointer.x * 0.5),
+        y: this.h * (0.5 + this.pointer.y * 0.5)
       };
+    }
+
+    updateGateField() {
+      const p = this.pointerPixels();
+      const radiusX = this.w < 760 ? 220 : Math.min(430, Math.max(285, this.w * 0.245));
+      const radiusY = Math.min(285, Math.max(175, this.h * 0.235));
+      for (const gate of this.gates) {
+        const current = this.gateField[gate.id];
+        let targetStrength = 0;
+        let targetT = current.t;
+        if (this.pointer.active) {
+          targetT = clamp((p.y - gate.top) / Math.max(1, gate.bottom - gate.top), 0, 1);
+          const gp = this.staticGatePoint(gate, targetT);
+          const nx = Math.abs(p.x - gp.x) / radiusX;
+          const ny = Math.abs(p.y - gp.y) / radiusY;
+          const distance = Math.sqrt(nx * nx + ny * ny * 0.72);
+          targetStrength = ease(clamp(1 - distance, 0, 1)) * (this.settings.attraction || 1);
+        }
+        const smoothing = targetStrength > current.strength ? 0.085 + targetStrength * 0.055 : 0.060;
+        current.strength = lerp(current.strength, targetStrength, smoothing);
+        current.t = lerp(current.t, targetT, this.pointer.active ? 0.090 + targetStrength * 0.055 : 0.045);
+      }
+    }
+
+    gateHover(id) {
+      return this.gateField?.[id]?.strength || 0;
+    }
+
+    gateHoverT(id) {
+      return this.gateField?.[id]?.t || 0.5;
+    }
+
+    filamentState(fiber, time) {
+      const raw = time * fiber.cycleSpeed + fiber.phase;
+      const index = Math.floor(raw);
+      const p = raw - index;
+      const seek = clamp(p / 0.66, 0, 1);
+      const fade = clamp((p - 0.78) / 0.22, 0, 1);
+      const h1 = this.hash2(fiber.id, index);
+      const h2 = this.hash2(fiber.id, index + 1);
+      const targetA = clamp(fiber.rightBaseT + (h1 - 0.5) * fiber.seekAmp * 2, 0.004, 0.996);
+      const targetB = clamp(fiber.rightBaseT + (h2 - 0.5) * fiber.seekAmp * 2, 0.004, 0.996);
+      const searching = Math.sin(time * fiber.wiggleSpeed + fiber.phase) * fiber.seekAmp + Math.sin(time * fiber.wiggleSpeed * 2.1 + fiber.id) * fiber.microAmp;
+      if (p < 0.66) return { rightT: clamp(lerp(targetA, targetB, ease(seek)) + searching * (1 - seek * 0.50), 0.004, 0.996), prominence: 0.18 + ease(seek) * 0.72 };
+      if (p < 0.78) return { rightT: clamp(targetB + Math.sin(time * fiber.wiggleSpeed * 0.42 + fiber.phase) * fiber.microAmp * 0.16, 0.004, 0.996), prominence: 0.95 };
+      return { rightT: clamp(targetB + Math.sin(time * fiber.wiggleSpeed * 0.32 + fiber.phase) * fiber.microAmp * 0.24, 0.004, 0.996), prominence: lerp(0.86, 0.14, ease(fade)) };
+    }
+
+    fiberCurve(fiber, time) {
+      const state = this.filamentState(fiber, time);
+      const a = this.gates[fiber.from];
+      const b = this.gates[fiber.to];
+      const from = this.gateHover(fiber.from);
+      const to = this.gateHover(fiber.to);
+      const glow = Math.max(to, from * 0.78, this.gateHover(fiber.from - 1) * 0.10, this.gateHover(fiber.to + 1) * 0.10);
+      const leftT = clamp(lerp(fiber.leftT, this.gateHoverT(fiber.from), from * 0.050), 0.004, 0.996);
+      const rightT = clamp(lerp(state.rightT, this.gateHoverT(fiber.to), to * 0.500), 0.004, 0.996);
+      const left = this.gatePoint(a, leftT, time);
+      const right = this.gatePoint(b, rightT, time);
+      const dx = right.x - left.x;
+      const dy = right.y - left.y;
+      const seekFlex = (1.05 - Math.min(1, state.prominence)) * 0.10;
+      const powerFlex = fiber.power ? 1.10 : 1;
+      const hoverFlex = 1 + glow * 0.145;
+      const wave = Math.sin(time * fiber.wiggleSpeed * 0.58 + fiber.phase) * this.h * (0.010 + seekFlex) * powerFlex * hoverFlex;
+      const cross = Math.cos(time * fiber.wiggleSpeed * 0.90 + fiber.phase * 0.23) * this.h * (0.006 + seekFlex * 0.30) * powerFlex * hoverFlex;
+      const bend = fiber.bend * this.h * 0.082;
+      return {
+        left,
+        right,
+        c1: { x: left.x + dx * fiber.tension, y: left.y + dy * 0.045 + bend + wave },
+        c2: { x: right.x - dx * fiber.tension, y: right.y - dy * 0.045 - bend * 0.58 - wave * 0.52 + cross },
+        state,
+        influence: glow
+      };
+    }
+
+    drawBezier(curve, color, width) {
+      const ctx = this.ctx;
+      ctx.beginPath();
+      ctx.moveTo(curve.left.x, curve.left.y);
+      ctx.bezierCurveTo(curve.c1.x, curve.c1.y, curve.c2.x, curve.c2.y, curve.right.x, curve.right.y);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.stroke();
     }
 
     draw(time) {
       const ctx = this.ctx;
-      const glow = this.settings.glow || 1;
+      const glow = (this.settings.glow || 1) * 1.22;
+      this.updateGateField();
       ctx.clearRect(0, 0, this.w, this.h);
       const bg = ctx.createLinearGradient(0, 0, this.w, this.h);
       bg.addColorStop(0, "#050815");
@@ -298,63 +487,156 @@
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, this.w, this.h);
 
+      const zoom = reducedMotion ? 1 : 1 + Math.sin(time * 0.035) * 0.009 + Math.sin(time * 0.019) * 0.006;
       ctx.save();
+      ctx.translate(this.w / 2 + Math.sin(time * 0.018) * this.w * 0.007, this.h / 2 + Math.cos(time * 0.021) * this.h * 0.006);
+      ctx.scale(zoom, zoom);
+      ctx.translate(-this.w / 2, -this.h / 2);
       ctx.globalCompositeOperation = "lighter";
+
       for (const p of this.dust) {
-        const x = p.x + Math.sin(time * 0.23 + p.phase) * 8 + this.pointer.x * 18;
-        const y = p.y + Math.cos(time * 0.19 + p.phase) * 6 + this.pointer.y * 12;
-        ctx.fillStyle = `rgba(215,238,255,${0.035 * glow + seeded(p.phase) * 0.062})`;
+        const x = p.x + Math.sin(time * p.speed + p.phase) * 5;
+        const y = p.y + Math.cos(time * p.speed * 1.6 + p.phase) * 3;
+        const alpha = p.a * (0.50 + 0.50 * Math.sin(time * 0.38 + p.phase)) * glow;
+        ctx.fillStyle = `rgba(215,238,255,${alpha})`;
         ctx.beginPath();
         ctx.arc(x, y, p.r, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      for (const fiber of this.fibers) {
-        const a = this.gates[fiber.from];
-        const b = this.gates[fiber.to];
-        if (!a || !b) continue;
-        const flow = cycle(time * fiber.speed + fiber.phase);
-        const attract = (this.settings.attraction || 0) * 0.12;
-        const p1 = this.gatePoint(a, fiber.a, time);
-        const targetT = clamp(fiber.b + Math.sin(time * 0.52 + fiber.phase) * 0.09 + this.pointer.y * attract, 0.01, 0.99);
-        const p2 = this.gatePoint(b, targetT, time);
-        const dx = p2.x - p1.x;
-        const lift = fiber.bend * this.h * 0.08 + Math.sin(time * 0.7 + fiber.phase) * this.h * 0.014;
-        const prominence = 0.28 + ease(flow) * 0.65 + Math.abs(this.pointer.x) * attract * 3;
-        ctx.beginPath();
-        ctx.moveTo(p1.x, p1.y);
-        ctx.bezierCurveTo(p1.x + dx * 0.35, p1.y + lift, p2.x - dx * 0.38, p2.y - lift * 0.5, p2.x, p2.y);
-        ctx.strokeStyle = fiber.hot
-          ? rgba(this.settings.hotAccent, clamp(0.045 + prominence * 0.18 * glow, 0, 0.46))
-          : rgba(this.settings.accent, clamp(0.030 + prominence * 0.17 * glow, 0, 0.40));
-        ctx.lineWidth = fiber.width * (1 + prominence * 0.42);
-        ctx.stroke();
+      for (let i = 0; i < this.fibers.length; i += 1) {
+        const fiber = this.fibers[i];
+        if (!fiber.power && i % 7 !== 0) continue;
+        const curve = this.fiberCurve(fiber, time);
+        const prominence = curve.state.prominence + curve.influence * 1.05;
+        if (prominence < 0.38 && !fiber.power) continue;
+        const alpha = fiber.opacity * (0.18 + prominence * 0.52) * glow;
+        const width = fiber.width * (fiber.power ? 1.70 : 1.18) * (1 + curve.influence * 0.74);
+        this.drawBezier(curve, fiber.hot ? `rgba(255,108,94,${alpha * 0.42})` : `rgba(195,232,255,${alpha * 0.56})`, width);
       }
 
-      for (let index = 0; index < this.gates.length; index += 1) {
-        const gate = this.gates[index];
-        const hoverT = clamp(0.5 + this.pointer.y * 0.38, 0, 1);
-        const hoverDistance = Math.abs((gate.x / this.w - 0.5) * 2 - this.pointer.x);
-        const hover = clamp(1 - hoverDistance * 1.65, 0, 1) * (this.settings.attraction || 1);
+      for (const fiber of this.fibers) {
+        const curve = this.fiberCurve(fiber, time);
+        const shimmer = 0.80 + 0.20 * Math.sin(time * (0.76 + fiber.cycleSpeed) + fiber.phase);
+        const prominence = curve.state.prominence * shimmer + curve.influence;
+        const alphaCap = fiber.power ? 0.34 : 0.25;
+        const alpha = clamp(fiber.opacity * (0.24 + prominence * (fiber.power ? 2.12 : 1.74)) * glow, 0.006, alphaCap);
+        const width = fiber.width * (1 + prominence * (fiber.power ? 0.30 : 0.12) + curve.influence * 0.62);
+        const color = fiber.hot
+          ? `rgba(255,112,101,${alpha * 0.78})`
+          : fiber.power
+            ? `rgba(236,248,255,${alpha * 1.16})`
+            : `rgba(224,242,255,${alpha})`;
+        this.drawBezier(curve, color, width);
+      }
+
+      for (let i = 0; i < this.fibers.length; i += 2) {
+        const fiber = this.fibers[i];
+        if (!fiber.hair) continue;
+        const curve = this.fiberCurve(fiber, time + 0.25);
+        const alpha = fiber.opacity * (0.30 + curve.influence * 0.46) * curve.state.prominence * glow;
+        this.drawBezier(curve, `rgba(220,240,255,${alpha})`, 0.26 + curve.influence * 0.18);
+      }
+
+      for (const residual of this.residuals) {
+        const a = this.gates[residual.from];
+        const b = this.gates[residual.to];
+        const left = this.gatePoint(a, residual.leftT, time);
+        const rightT = clamp(residual.rightBaseT + Math.sin(time * residual.speed + residual.phase) * residual.amp, 0.004, 0.996);
+        const right = this.gatePoint(b, rightT, time);
+        const dx = right.x - left.x;
+        const rise = residual.bend * this.h * 0.19 + Math.sin(time * residual.speed + residual.phase) * this.h * 0.012;
+        this.drawBezier({
+          left,
+          right,
+          c1: { x: left.x + dx * 0.46, y: left.y + rise },
+          c2: { x: right.x - dx * 0.46, y: right.y - rise * 0.56 }
+        }, `rgba(178,226,255,${residual.opacity * glow * 1.45})`, 0.52);
+      }
+
+      for (const gate of this.gates) {
+        const hover = this.gateHover(gate.id);
+        const hoverT = this.gateHoverT(gate.id);
         const top = this.gatePoint(gate, 0, time);
         const bottom = this.gatePoint(gate, 1, time);
-        ctx.lineWidth = 0.8 + hover * 0.5;
-        ctx.strokeStyle = rgba(this.settings.accent, 0.18 + hover * 0.24 * glow);
+        const xTop = top.x;
+        const xBot = bottom.x;
+        const leftTop = xTop - gate.width / 2;
+        const leftBot = xBot - gate.width / 2;
         ctx.beginPath();
-        ctx.moveTo(top.x, top.y);
-        ctx.lineTo(bottom.x, bottom.y);
+        ctx.moveTo(leftTop, gate.top);
+        ctx.lineTo(leftTop + gate.width, gate.top);
+        ctx.lineTo(leftBot + gate.width, gate.bottom);
+        ctx.lineTo(leftBot, gate.bottom);
+        ctx.closePath();
+        ctx.fillStyle = `rgba(124,198,255,${0.014 + hover * 0.018})`;
+        ctx.fill();
+        ctx.strokeStyle = `rgba(151,208,255,${0.120 + hover * 0.140})`;
+        ctx.lineWidth = 0.62 + hover * 0.36;
         ctx.stroke();
-        for (let row = 0; row < gate.rows; row += 1) {
-          const t = row / Math.max(1, gate.rows - 1);
-          const point = this.gatePoint(gate, t, time);
-          const active = Math.max(0, 1 - Math.abs(t - hoverT) * 8) * hover;
-          ctx.fillStyle = rgba(this.settings.accent, 0.14 + active * 0.36);
-          ctx.fillRect(point.x - 0.8, point.y - 0.55, 1.6, 1.1);
+        ctx.strokeStyle = `rgba(220,240,255,${0.086 + hover * 0.128})`;
+        ctx.lineWidth = 0.48 + hover * 0.44;
+        ctx.beginPath();
+        ctx.moveTo(xTop, gate.top);
+        ctx.lineTo(xBot, gate.bottom);
+        ctx.stroke();
+        for (let i = 0; i < gate.rows; i += 1) {
+          const p = i / Math.max(1, gate.rows - 1);
+          const x = lerp(xTop, xBot, p);
+          const y = lerp(gate.top + 7, gate.bottom - 7, p);
+          const activity = 0.46 + 0.54 * Math.sin(time * 0.78 + gate.phase + i * 0.54);
+          const nearMouse = hover * Math.max(0, 1 - Math.abs(p - hoverT) * 9);
+          ctx.fillStyle = `rgba(232,246,255,${(0.095 + activity * 0.170 + nearMouse * 0.24) * glow})`;
+          ctx.fillRect(x - 0.68, y - 0.48, 1.36, 0.96);
         }
-        if (this.settings.labelDensity > seeded(index + 140)) {
-          ctx.font = "10px ui-monospace, SFMono-Regular, Consolas, monospace";
-          ctx.fillStyle = rgba(this.settings.accent, 0.38);
-          ctx.fillText(["TOK", "EMB", "ATTN", "MIX", "MLP", "NORM", "DEC", "RES", "LOG", "OUT", "REV"][index] || `L${index}`, clamp(gate.x + 8, 8, this.w - 60), clamp(gate.top + 8, 10, this.h - 30));
+      }
+
+      for (let i = 0; i < this.fibers.length; i += this.w < 760 ? 26 : 18) {
+        const fiber = this.fibers[i];
+        const curve = this.fiberCurve(fiber, time);
+        const u = (time * (0.035 + fiber.cycleSpeed * 0.035) + fiber.phase * 0.011) % 1;
+        const v = 1 - ease(u);
+        const e = ease(u);
+        const point = {
+          x: v * v * v * curve.left.x + 3 * v * v * e * curve.c1.x + 3 * v * e * e * curve.c2.x + e * e * e * curve.right.x,
+          y: v * v * v * curve.left.y + 3 * v * v * e * curve.c1.y + 3 * v * e * e * curve.c2.y + e * e * e * curve.right.y
+        };
+        const alpha = (0.070 + 0.260 * Math.sin(Math.PI * u)) * (curve.state.prominence + curve.influence * 0.72) * glow;
+        ctx.fillStyle = fiber.hot ? `rgba(255,110,98,${alpha * 0.70})` : `rgba(226,246,255,${alpha})`;
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, fiber.power ? 1.08 : 0.78, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      for (const gate of this.gates) {
+        const strength = this.gateHover(gate.id);
+        if (strength < 0.018) continue;
+        const point = this.gatePoint(gate, this.gateHoverT(gate.id), time);
+        const radius = 26 + strength * 92;
+        const halo = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, radius);
+        halo.addColorStop(0, `rgba(236,250,255,${0.110 * strength})`);
+        halo.addColorStop(0.28, `rgba(145,222,255,${0.055 * strength})`);
+        halo.addColorStop(1, "rgba(145,222,255,0)");
+        ctx.fillStyle = halo;
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      if (this.w >= 500) {
+        ctx.font = this.w < 760 ? "8px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" : "9px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+        ctx.textBaseline = "top";
+        for (const label of this.labels) {
+          if ((this.settings.labelDensity || 1) <= 0) continue;
+          const gate = this.gates[label.gate];
+          const hover = this.gateHover(gate.id);
+          const flicker = 0.68 + 0.32 * Math.sin(time * 1.05 + label.phase);
+          const x = clamp(gate.x + label.dx, 8, this.w - 124);
+          const y = clamp(gate.top + label.dy, 8, this.h - 42);
+          ctx.fillStyle = `rgba(158,224,255,${0.38 * flicker + hover * 0.12})`;
+          ctx.fillText(label.lines[0], x, y);
+          ctx.fillStyle = label.gate === 8 ? `rgba(255,112,101,${0.36 * flicker + hover * 0.08})` : `rgba(229,242,255,${0.28 * flicker + hover * 0.08})`;
+          ctx.fillText(label.lines[1], x, y + 11);
         }
       }
       ctx.restore();
