@@ -459,12 +459,30 @@ body.capture-mode .stage-actions {
     grid-template-columns: 1fr;
   }
 
+  .banner-renderer {
+    inset: -2vh -2vw;
+    width: 104vw;
+    height: 104svh;
+    min-height: 680px;
+    transform: translate3d(var(--pointer-x), calc(var(--lab-shift) * 0.28 + var(--pointer-y)), 0) scale(1.01);
+  }
+
   .stage-copy h2 {
     font-size: clamp(3rem, 14vw, 5.5rem);
   }
 
   .controls-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (pointer: coarse) {
+  .banner-renderer {
+    inset: -2vh -2vw;
+    width: 104vw;
+    height: 104svh;
+    min-height: 680px;
+    transform: translate3d(var(--pointer-x), calc(var(--lab-shift) * 0.28 + var(--pointer-y)), 0) scale(1.01);
   }
 }
 

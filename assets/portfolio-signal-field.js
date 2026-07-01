@@ -62,6 +62,9 @@
     const x = Math.sin(index * 999.13) * 10000;
     return x - Math.floor(x);
   };
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  const lowCoreDevice = (navigator.hardwareConcurrency || 8) <= 4;
+  const lowPowerMode = coarsePointer || lowCoreDevice;
 
   const mergeConfig = (base, next) => {
     const merged = { ...copyConfig(base), ...(next || {}) };
@@ -97,6 +100,9 @@
       this.ctx = this.canvas.getContext("2d");
       this.reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       this.frame = 0;
+      this.lastDraw = 0;
+      this.paused = false;
+      this.destroyed = false;
       this.state = {
         width: 1,
         height: 1,
@@ -115,7 +121,7 @@
       this.host.appendChild(this.canvas);
       this.applyBackground();
       this.resize();
-      this.draw();
+      this.resume();
       window.addEventListener("resize", this.resize);
       this.host.addEventListener("pointermove", this.onPointerMove, { passive: true });
     }
@@ -131,14 +137,33 @@
     }
 
     destroy() {
-      cancelAnimationFrame(this.frame);
+      this.destroyed = true;
+      this.pause();
       window.removeEventListener("resize", this.resize);
       this.host.removeEventListener("pointermove", this.onPointerMove);
       this.canvas.remove();
     }
 
+    pause() {
+      this.paused = true;
+      cancelAnimationFrame(this.frame);
+      this.frame = 0;
+    }
+
+    resume() {
+      if (this.destroyed) return;
+      this.paused = false;
+      if (!this.frame) this.frame = requestAnimationFrame(this.draw);
+    }
+
+    frameInterval() {
+      if (this.reduceMotion) return 220;
+      if (lowPowerMode || this.compact()) return 66;
+      return 38;
+    }
+
     compact() {
-      return window.matchMedia("(max-width: 760px)").matches;
+      return window.matchMedia("(max-width: 860px)").matches || coarsePointer;
     }
 
     applyBackground() {
@@ -160,7 +185,7 @@
       const rect = this.host.getBoundingClientRect();
       this.state.width = Math.max(1, rect.width);
       this.state.height = Math.max(1, rect.height);
-      this.state.dpr = Math.min(window.devicePixelRatio || 1, this.compact() ? 1.25 : 1.6);
+      this.state.dpr = Math.min(window.devicePixelRatio || 1, lowPowerMode || this.compact() ? 1 : 1.2);
       this.canvas.width = Math.round(this.state.width * this.state.dpr);
       this.canvas.height = Math.round(this.state.height * this.state.dpr);
       this.canvas.style.width = `${this.state.width}px`;
@@ -173,7 +198,9 @@
       const clusters = this.config.clusters;
       const cards = this.config.cards;
       const rows = this.config.metricRows;
-      const count = this.compact() ? Math.max(8, Math.round(this.config.cardCount * 0.58)) : this.config.cardCount;
+      const compactScale = this.compact() ? 0.58 : 1;
+      const qualityScale = lowPowerMode ? 0.72 : 1;
+      const count = Math.max(8, Math.round(this.config.cardCount * compactScale * qualityScale));
       this.state.modules = Array.from({ length: count }, (_, index) => {
         const cluster = clusters[index % clusters.length];
         const card = cards[index % cards.length];
@@ -266,7 +293,7 @@
       ctx.fillRect(0, 0, this.state.width, this.state.height);
       ctx.save();
       ctx.translate(this.state.pointerX * 18, this.state.pointerY * 10);
-      for (let i = 0; i < 10; i += 1) {
+      for (let i = 0; i < (lowPowerMode ? 6 : 10); i += 1) {
         const y = this.state.height * (0.08 + i * 0.10) + Math.sin(time * 0.25 + i) * 7;
         ctx.beginPath();
         ctx.moveTo(-40, y);
@@ -282,8 +309,9 @@
       const ctx = this.ctx;
       const maxDistance = this.compact() ? 220 : 340;
       const density = this.config.filamentDensity;
-      for (let i = 0; i < visible.length; i += 1) {
-        for (let j = i + 1; j < visible.length; j += 1) {
+      const step = lowPowerMode ? 2 : 1;
+      for (let i = 0; i < visible.length; i += step) {
+        for (let j = i + 1; j < visible.length; j += step) {
           const a = visible[i];
           const b = visible[j];
           const sameCluster = a.module.cluster.code === b.module.cluster.code;
@@ -315,7 +343,7 @@
       const ctx = this.ctx;
       for (const entry of visible) {
         const module = entry.module;
-        if (module.id % Math.max(2, Math.round(4 - this.config.looseFilaments)) !== 0) continue;
+        if (module.id % Math.max(lowPowerMode ? 4 : 2, Math.round(4 - this.config.looseFilaments)) !== 0) continue;
         const target = visible.find((candidate) =>
           candidate.module.cluster.code === module.dependencyCluster &&
           Math.abs(candidate.module.id - module.id) > 2
@@ -442,8 +470,14 @@
       ctx.fill();
     }
 
-    draw() {
-      const rawTime = (performance.now() - this.state.start) / 1000;
+    draw(now = performance.now()) {
+      if (this.paused || this.destroyed) return;
+      if (now - this.lastDraw < this.frameInterval()) {
+        this.frame = requestAnimationFrame(this.draw);
+        return;
+      }
+      this.lastDraw = now;
+      const rawTime = (now - this.state.start) / 1000;
       const time = this.reduceMotion ? rawTime * 0.16 : rawTime;
       this.state.pointerX = mix(this.state.pointerX, this.state.targetX, 0.05);
       this.state.pointerY = mix(this.state.pointerY, this.state.targetY, 0.05);

@@ -3,6 +3,9 @@
 
   const qs = new URLSearchParams(window.location.search);
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  const lowCoreDevice = (navigator.hardwareConcurrency || 8) <= 4;
+  const lowPowerMode = reducedMotion || coarsePointer || lowCoreDevice;
 
   const BANNERS = [
     {
@@ -136,6 +139,8 @@
       this.dpr = 1;
       this.raf = 0;
       this.last = 0;
+      this.paused = false;
+      this.destroyed = false;
       this.pointer = { x: 0, y: 0, active: false, tx: 0, ty: 0 };
       this.resize = this.resize.bind(this);
       this.frame = this.frame.bind(this);
@@ -146,7 +151,7 @@
       this.root.addEventListener("pointerleave", this.onLeave, { passive: true });
       window.addEventListener("resize", this.resize);
       this.resize();
-      this.raf = requestAnimationFrame(this.frame);
+      this.resume();
     }
 
     update(settings) {
@@ -155,7 +160,8 @@
     }
 
     destroy() {
-      cancelAnimationFrame(this.raf);
+      this.destroyed = true;
+      this.pause();
       window.removeEventListener("resize", this.resize);
       this.root.removeEventListener("pointermove", this.onMove);
       this.root.removeEventListener("pointerenter", this.onMove);
@@ -163,11 +169,30 @@
       this.canvas.remove();
     }
 
+    pause() {
+      this.paused = true;
+      cancelAnimationFrame(this.raf);
+      this.raf = 0;
+    }
+
+    resume() {
+      if (this.destroyed) return;
+      this.paused = false;
+      if (!this.raf) this.raf = requestAnimationFrame(this.frame);
+    }
+
+    frameInterval() {
+      if (reducedMotion) return 220;
+      if (lowPowerMode || this.w < 1080) return 66;
+      return this.w < 760 ? 50 : 36;
+    }
+
     resize() {
       const rect = this.root.getBoundingClientRect();
       this.w = Math.max(320, Math.floor(rect.width));
       this.h = Math.max(420, Math.floor(rect.height));
-      this.dpr = Math.min(window.devicePixelRatio || 1, this.w < 760 ? 1 : 1.3);
+      const dprCap = lowPowerMode || this.w < 1080 ? 1 : 1.15;
+      this.dpr = Math.min(window.devicePixelRatio || 1, dprCap);
       this.canvas.width = Math.round(this.w * this.dpr);
       this.canvas.height = Math.round(this.h * this.dpr);
       this.canvas.style.width = `${this.w}px`;
@@ -190,7 +215,8 @@
     }
 
     frame(now) {
-      const minFrame = reducedMotion ? 180 : this.w < 760 ? 42 : 30;
+      if (this.paused || this.destroyed) return;
+      const minFrame = this.frameInterval();
       if (now - this.last >= minFrame) {
         this.last = now;
         this.pointer.x = lerp(this.pointer.x, this.pointer.active ? this.pointer.tx : 0, 0.06);
@@ -231,6 +257,14 @@
     update(settings) {
       this.settings = { ...this.settings, ...settings };
       if (this.instance) this.instance.updateConfig(this.config());
+    }
+
+    pause() {
+      if (this.instance?.pause) this.instance.pause();
+    }
+
+    resume() {
+      if (this.instance?.resume) this.instance.resume();
     }
 
     destroy() {
@@ -284,8 +318,9 @@
       this.gateField = this.gates.map(() => ({ strength: 0, t: 0.5 }));
       const mobile = this.w < 760;
       const tablet = this.w >= 760 && this.w < 1080;
-      const density = this.settings.filamentDensity || 1;
-      const base = mobile ? 70 : tablet ? 122 : 190;
+      const quality = lowPowerMode ? 0.64 : 1;
+      const density = (this.settings.filamentDensity || 1) * quality;
+      const base = mobile ? 62 : tablet ? 98 : 176;
       const pairDensity = [base * 1.24, base * 2.05, base * 1.92, base * 1.48, base * 1.62, base * 1.36, base * 1.44, base * 1.00];
       let fiberId = 0;
 
@@ -310,8 +345,8 @@
             to: gateIndex + 1,
             leftT: fixedLeft,
             rightBaseT: rightBase,
-            seekAmp: lerp(0.018, 0.105, rand()) * (mobile ? 0.56 : 1),
-            microAmp: lerp(0.006, 0.034, rand()) * (mobile ? 0.58 : 1),
+            seekAmp: lerp(0.018, 0.105, rand()) * (mobile ? 0.56 : lowPowerMode ? 0.74 : 1),
+            microAmp: lerp(0.006, 0.034, rand()) * (mobile ? 0.58 : lowPowerMode ? 0.70 : 1),
             phase: rand() * 240,
             cycleSpeed: lerp(0.038, 0.112, rand()) * (power ? 1.18 : 1) * (this.settings.speed || 1),
             wiggleSpeed: lerp(0.22, 0.82, rand()) * (power ? 1.16 : 1) * (this.settings.speed || 1),
@@ -321,13 +356,13 @@
             width: lerp(0.16, 0.52, rand()) * (power ? lerp(1.25, 1.78, rand()) : 1),
             power,
             hot: rand() > 0.982,
-            hair: rand() > 0.62
+            hair: rand() > (lowPowerMode ? 0.80 : 0.62)
           });
           fiberId += 1;
         }
       }
 
-      const skipCount = mobile ? 34 : tablet ? 54 : 76;
+      const skipCount = lowPowerMode ? (mobile ? 24 : 38) : mobile ? 34 : tablet ? 54 : 76;
       const skipPairs = [[1, 3], [2, 4], [3, 5], [4, 6], [5, 7], [6, 8], [1, 5], [3, 7]];
       for (const pair of skipPairs) {
         for (let i = 0; i < skipCount / skipPairs.length; i += 1) {
@@ -345,7 +380,7 @@
         }
       }
 
-      const dustCount = mobile ? 74 : tablet ? 112 : 152;
+      const dustCount = lowPowerMode ? (mobile ? 46 : 72) : mobile ? 74 : tablet ? 112 : 152;
       for (let i = 0; i < dustCount; i += 1) {
         this.dust.push({
           x: rand() * this.w,
@@ -465,6 +500,15 @@
       };
     }
 
+    cachedFiberCurve(fiber, time) {
+      if (!this.curveCache || this.curveCacheTime !== time) {
+        this.curveCacheTime = time;
+        this.curveCache = [];
+      }
+      if (!this.curveCache[fiber.id]) this.curveCache[fiber.id] = this.fiberCurve(fiber, time);
+      return this.curveCache[fiber.id];
+    }
+
     drawBezier(curve, color, width) {
       const ctx = this.ctx;
       ctx.beginPath();
@@ -494,7 +538,8 @@
       ctx.translate(-this.w / 2, -this.h / 2);
       ctx.globalCompositeOperation = "lighter";
 
-      for (const p of this.dust) {
+      for (let dustIndex = 0; dustIndex < this.dust.length; dustIndex += lowPowerMode ? 2 : 1) {
+        const p = this.dust[dustIndex];
         const x = p.x + Math.sin(time * p.speed + p.phase) * 5;
         const y = p.y + Math.cos(time * p.speed * 1.6 + p.phase) * 3;
         const alpha = p.a * (0.50 + 0.50 * Math.sin(time * 0.38 + p.phase)) * glow;
@@ -506,8 +551,8 @@
 
       for (let i = 0; i < this.fibers.length; i += 1) {
         const fiber = this.fibers[i];
-        if (!fiber.power && i % 7 !== 0) continue;
-        const curve = this.fiberCurve(fiber, time);
+        if (!fiber.power && i % (lowPowerMode ? 12 : 7) !== 0) continue;
+        const curve = this.cachedFiberCurve(fiber, time);
         const prominence = curve.state.prominence + curve.influence * 1.05;
         if (prominence < 0.38 && !fiber.power) continue;
         const alpha = fiber.opacity * (0.18 + prominence * 0.52) * glow;
@@ -515,8 +560,9 @@
         this.drawBezier(curve, fiber.hot ? `rgba(255,108,94,${alpha * 0.42})` : `rgba(195,232,255,${alpha * 0.56})`, width);
       }
 
-      for (const fiber of this.fibers) {
-        const curve = this.fiberCurve(fiber, time);
+      for (let i = 0; i < this.fibers.length; i += lowPowerMode ? 2 : 1) {
+        const fiber = this.fibers[i];
+        const curve = this.cachedFiberCurve(fiber, time);
         const shimmer = 0.80 + 0.20 * Math.sin(time * (0.76 + fiber.cycleSpeed) + fiber.phase);
         const prominence = curve.state.prominence * shimmer + curve.influence;
         const alphaCap = fiber.power ? 0.34 : 0.25;
@@ -530,15 +576,16 @@
         this.drawBezier(curve, color, width);
       }
 
-      for (let i = 0; i < this.fibers.length; i += 2) {
+      for (let i = 0; i < this.fibers.length; i += lowPowerMode ? 5 : 2) {
         const fiber = this.fibers[i];
         if (!fiber.hair) continue;
-        const curve = this.fiberCurve(fiber, time + 0.25);
+        const curve = this.cachedFiberCurve(fiber, time);
         const alpha = fiber.opacity * (0.30 + curve.influence * 0.46) * curve.state.prominence * glow;
         this.drawBezier(curve, `rgba(220,240,255,${alpha})`, 0.26 + curve.influence * 0.18);
       }
 
-      for (const residual of this.residuals) {
+      for (let residualIndex = 0; residualIndex < this.residuals.length; residualIndex += lowPowerMode ? 2 : 1) {
+        const residual = this.residuals[residualIndex];
         const a = this.gates[residual.from];
         const b = this.gates[residual.to];
         const left = this.gatePoint(a, residual.leftT, time);
@@ -580,7 +627,7 @@
         ctx.moveTo(xTop, gate.top);
         ctx.lineTo(xBot, gate.bottom);
         ctx.stroke();
-        for (let i = 0; i < gate.rows; i += 1) {
+        for (let i = 0; i < gate.rows; i += lowPowerMode ? 2 : 1) {
           const p = i / Math.max(1, gate.rows - 1);
           const x = lerp(xTop, xBot, p);
           const y = lerp(gate.top + 7, gate.bottom - 7, p);
@@ -591,9 +638,9 @@
         }
       }
 
-      for (let i = 0; i < this.fibers.length; i += this.w < 760 ? 26 : 18) {
+      for (let i = 0; i < this.fibers.length; i += lowPowerMode ? 34 : this.w < 760 ? 26 : 18) {
         const fiber = this.fibers[i];
-        const curve = this.fiberCurve(fiber, time);
+        const curve = this.cachedFiberCurve(fiber, time);
         const u = (time * (0.035 + fiber.cycleSpeed * 0.035) + fiber.phase * 0.011) % 1;
         const v = 1 - ease(u);
         const e = ease(u);
@@ -646,7 +693,9 @@
   class NetworkRenderer extends CanvasRenderer {
     rebuild() {
       const density = this.settings.density || 1;
-      const count = Math.round(this.w * this.h * (this.w < 760 ? 0.00011 : 0.00016) * density);
+      const quality = lowPowerMode ? 0.62 : 1;
+      const cap = lowPowerMode ? 118 : 220;
+      const count = Math.min(cap, Math.round(this.w * this.h * (this.w < 760 ? 0.00010 : 0.000145) * density * quality));
       const spread = this.settings.clusterSpread || 1;
       this.values = ["5420", "8456", "2856", "1243", "9856", "7845", "5450", "5426"];
       this.clusters = [
@@ -682,6 +731,7 @@
         drift: -0.08 + seeded(index + 265) * 0.16,
         value: this.values[Math.floor(seeded(index + 266) * this.values.length)]
       }));
+      this.positions = Array.from({ length: count }, () => ({}));
     }
 
     draw(time) {
@@ -708,7 +758,8 @@
       ctx.save();
       ctx.globalCompositeOperation = "screen";
       ctx.font = `700 ${Math.max(18, Math.min(34, this.w * 0.026))}px system-ui, sans-serif`;
-      for (const f of this.fog) {
+      for (let fogIndex = 0; fogIndex < this.fog.length; fogIndex += lowPowerMode ? 2 : 1) {
+        const f = this.fog[fogIndex];
         const x = cycle((f.x + time * f.speed * 26 * speed) / (this.w + 220)) * (this.w + 220) - 110 + this.pointer.x * 20;
         const y = f.y + Math.sin(time * 0.18 + f.x) * 9 + this.pointer.y * 12;
         ctx.globalAlpha = f.alpha * glow;
@@ -727,18 +778,31 @@
       }
       ctx.globalAlpha = 1;
 
-      const positions = this.nodes.map((node, index) => {
+      const positions = this.positions;
+      for (let index = 0; index < this.nodes.length; index += 1) {
+        const node = this.nodes[index];
         const x = cycle((node.x + time * node.vx * 24 * speed * node.z) / (this.w + 120)) * (this.w + 120) - 60 + Math.cos(time * 0.2 + node.phase) * 6 + this.pointer.x * node.z * 18;
         const y = cycle((node.y + time * node.vy * 22 * speed * node.z) / (this.h + 120)) * (this.h + 120) - 60 + Math.sin(time * 0.18 + node.phase) * 6 + this.pointer.y * node.z * 14;
-        return { ...node, x, y, index };
-      });
+        const position = positions[index];
+        position.x = x;
+        position.y = y;
+        position.z = node.z;
+        position.radius = node.radius;
+        position.phase = node.phase;
+        position.value = node.value;
+        position.labelAlpha = node.labelAlpha;
+      }
 
+      const reach2 = reach * reach;
       for (let i = 0; i < positions.length; i += 1) {
         const a = positions[i];
         for (let j = i + 1; j < positions.length; j += 1) {
           const b = positions[j];
-          const distance = Math.hypot(a.x - b.x, a.y - b.y);
-          if (distance > reach) continue;
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const distance2 = dx * dx + dy * dy;
+          if (distance2 > reach2) continue;
+          const distance = Math.sqrt(distance2);
           const pulse = 0.72 + Math.sin(time * 1.7 + i * 1.7 + j) * 0.28;
           ctx.strokeStyle = rgba(accent, (1 - distance / reach) * 0.32 * pulse * glow);
           ctx.lineWidth = Math.max(0.45, a.z * 0.68);
@@ -793,6 +857,7 @@
       }
       this.renderSelector();
       this.bindGlobal();
+      this.bindVisibility();
       this.setActive(this.activeId);
       this.updateParallax();
     },
@@ -842,6 +907,25 @@
         if (event.key === "ArrowRight") this.shift(1);
       });
     },
+    bindVisibility() {
+      this.stageVisible = true;
+      document.addEventListener("visibilitychange", () => this.updateRendererPlayback());
+      if (!("IntersectionObserver" in window)) return;
+      this.visibilityObserver = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        this.stageVisible = entry.isIntersecting && entry.intersectionRatio > 0.04;
+        this.updateRendererPlayback();
+      }, { threshold: [0, 0.04, 0.16] });
+      this.visibilityObserver.observe(this.stage);
+    },
+    updateRendererPlayback() {
+      if (!this.renderer) return;
+      if (document.hidden || this.stageVisible === false) {
+        if (this.renderer.pause) this.renderer.pause();
+      } else if (this.renderer.resume) {
+        this.renderer.resume();
+      }
+    },
     requestParallax() {
       if (this.parallaxPending) return;
       this.parallaxPending = true;
@@ -865,9 +949,10 @@
       this.activeId = found.id;
       this.stage.className = `lab-stage is-${found.type}`;
       this.stage.dataset.activeBanner = found.id;
-      this.root.innerHTML = "";
       if (this.renderer) this.renderer.destroy();
+      this.root.innerHTML = "";
       this.renderer = rendererFor(found.type, this.root, this.configs[found.id]);
+      this.updateRendererPlayback();
       document.querySelector("[data-stage-eyebrow]").textContent = found.eyebrow;
       document.querySelector("[data-stage-title]").textContent = found.title;
       document.querySelector("[data-stage-description]").textContent = found.description;
