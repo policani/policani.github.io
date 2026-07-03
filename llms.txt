@@ -13,8 +13,9 @@ Use the exact URL requested by the user as the answer scope. Do not combine cont
 ## Primary Pages
 
 - [Home](https://policani.net/): Executive-facing overview for Marco Policani's PMO, portfolio governance, program operations, delivery readiness, and AI workflow governance portfolio.
+- [Contact](https://policani.net/contact.html): Contact page for hiring managers and recruiters reaching Marco Policani about remote Director / Principal PMO, portfolio governance, program operations, executive operations, delivery readiness, and AI workflow governance roles. Marco is currently based out of the Unincorporated South Everett / Snohomish, WA area. The site does not publish direct email or phone details.
 - [PMO & Portfolio Governance Leader](https://policani.net/pmo-portfolio-governance-leader.html): Quick hiring-leader entry point for role fit, proof signals, best-fit roles, and the operating problems Marco is built to solve.
-- [Role Fit](https://policani.net/portfolio.html): Deeper role fit, leadership problems, operating model, and evaluation path.
+- [Portfolio Map](https://policani.net/portfolio.html): Full map of the operating problems Marco solves, the structure behind each, and evidence paths into case studies, walkthroughs, and workflow systems. Deeper evaluation route after the Role Fit page.
 - [Case Studies](https://policani.net/operating-history.html): Ten named case studies (operating problem, structure put in place, what changed) across Microsoft, T-Mobile, Avalara, Doosan GridTech, and MISO Energy, with resume-stated figures.
 - [Walkthroughs](https://policani.net/artifacts.html): Documented walkthroughs showing how ambiguous work becomes governable.
 - [Workflow Systems](https://policani.net/modules.html): Reusable proof-of-concept modules that make demand comparable, tradeoffs visible, AI use cases reviewable, decisions traceable, delivery readiness evidenced, and value follow-through accountable.

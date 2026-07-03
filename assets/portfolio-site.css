@@ -1539,6 +1539,7 @@ margin-bottom: 6px;
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
+.contact-form input[type="url"],
 .contact-form textarea {
 width: 100%;
 box-sizing: border-box;
@@ -1560,4 +1561,66 @@ outline-offset: 1px;
 color: var(--quiet);
 font-size: 0.86rem;
 margin: 0;
+}
+
+.contact-hero .subhead {
+max-width: 850px;
+}
+
+.contact-intro-grid,
+.contact-form-grid {
+align-items: start;
+}
+
+.contact-lead {
+max-width: 62ch;
+}
+
+.contact-intro-grid h2,
+.contact-form-grid h2 {
+font-size: clamp(2rem, 4.2vw, 3.18rem);
+line-height: 1.02;
+}
+
+.contact-fit-box .compact-list {
+margin-top: 0;
+}
+
+.contact-fit-box .compact-list li {
+color: var(--muted);
+}
+
+.contact-safety-note {
+margin-top: 24px;
+}
+
+.contact-safety-note p + p {
+margin-top: 10px;
+}
+
+.contact-form-panel {
+max-width: none;
+margin-top: 0;
+padding: 22px;
+border: 1px solid var(--line);
+border-radius: var(--radius);
+background: #ffffff;
+box-shadow: 0 10px 26px rgba(18, 24, 38, 0.06);
+gap: 16px;
+}
+
+.contact-form-panel label {
+font-family: var(--font-ui);
+}
+
+.contact-form-panel input[type="text"],
+.contact-form-panel input[type="email"],
+.contact-form-panel input[type="url"],
+.contact-form-panel textarea {
+line-height: 1.5;
+}
+
+.optional-field {
+color: var(--quiet);
+font-weight: 600;
 }
