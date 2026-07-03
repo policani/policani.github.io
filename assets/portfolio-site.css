@@ -1368,3 +1368,96 @@ animation-duration: 0.01ms !important;
 animation-iteration-count: 1 !important;
 }
 }
+
+/* Testimonials */
+.testimonial-grid {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 18px;
+margin-top: 26px;
+}
+
+.testimonial {
+background: var(--panel);
+border: 1px solid var(--line);
+border-radius: 8px;
+padding: 22px 24px;
+margin: 0;
+display: flex;
+flex-direction: column;
+gap: 14px;
+}
+
+.testimonial p {
+color: var(--ink-soft);
+font-size: 1.02rem;
+line-height: 1.65;
+margin: 0;
+}
+
+.testimonial p::before {
+content: "\201C";
+color: var(--accent);
+font-weight: 700;
+margin-right: 2px;
+}
+
+.testimonial p::after {
+content: "\201D";
+color: var(--accent);
+font-weight: 700;
+margin-left: 2px;
+}
+
+.testimonial footer {
+color: var(--muted);
+font-size: 0.9rem;
+letter-spacing: 0.02em;
+}
+
+@media (max-width: 760px) {
+.testimonial-grid {
+grid-template-columns: 1fr;
+}
+}
+
+/* Contact form */
+.contact-form {
+max-width: 620px;
+margin-top: 26px;
+display: grid;
+gap: 14px;
+}
+
+.contact-form label {
+display: block;
+color: var(--ink-soft);
+font-size: 0.92rem;
+font-weight: 600;
+margin-bottom: 6px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+width: 100%;
+box-sizing: border-box;
+background: var(--panel);
+border: 1px solid var(--line);
+border-radius: 6px;
+padding: 11px 13px;
+font: inherit;
+color: var(--ink);
+}
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+outline: 2px solid var(--accent);
+outline-offset: 1px;
+}
+
+.contact-form .form-note {
+color: var(--quiet);
+font-size: 0.86rem;
+margin: 0;
+}

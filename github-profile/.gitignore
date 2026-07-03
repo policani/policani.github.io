@@ -1,0 +1,12 @@
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Office temp files
+~$*
+
+# Local notes and drafts
+drafts/
+private/
+*.tmp
+

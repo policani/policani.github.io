@@ -21,7 +21,7 @@
 <link rel="canonical" href="https://policani.net/" />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/portfolio-site.css?v=20260617-type" />
+<link rel="stylesheet" href="assets/portfolio-site.css?v=20260702-social" />
 <link rel="stylesheet" href="assets/experience-dashboard.css?v=20260627-kpi-tiles" />
 <script type="application/ld+json">
 {
@@ -197,6 +197,35 @@
     </div>
   </section>
 
+  <section class="section-white">
+    <div class="section-inner">
+      <p class="section-kicker">What sponsors say</p>
+      <h2>The executives who sponsored the work, in their own words.</h2>
+      <p class="lead">Excerpts from LinkedIn recommendations. Attribution is by role; the full recommendations are public on LinkedIn.</p>
+      <div class="testimonial-grid">
+        <blockquote class="testimonial">
+          <p>An essential partner in managing multiple cross-functional complex projects concurrently &hellip; always able to quickly help me morph complex plans into forms more easily digestible by executives and corporate audiences.</p>
+          <footer>Chief Technology Officer &middot; Doosan GridTech</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>Marco&rsquo;s measured approach contributed to much improved outcomes and provided certainty where there had previously been none. His strategic direction made us better and will make any team he joins better, too.</p>
+          <footer>Chief Operating Officer &middot; Doosan GridTech</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>He navigated a complex portfolio of initiatives with ease and became a central resource for my whole team to go to with questions.</p>
+          <footer>Senior Manager, Product &amp; Engineering &middot; T-Mobile</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>Substantially raised the bar for our team at Microsoft during an 18-month engagement &hellip; delivered multiple complex projects while concurrently strengthening our overall launch compliance program.</p>
+          <footer>Director, Commerce Finance &middot; Microsoft</footer>
+        </blockquote>
+      </div>
+      <div class="actions" style="margin-top: 24px;">
+        <a class="button" href="https://www.linkedin.com/in/marcpolicani/details/recommendations/" target="_blank" rel="noopener noreferrer">Read the full recommendations on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
   <section class="section-routes">
     <div class="section-inner">
       <p class="section-kicker">Walkthroughs</p>
@@ -278,6 +307,27 @@
         <a class="button primary" href="https://www.linkedin.com/in/marcpolicani" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
         <a class="button" href="https://github.com/policani" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="Inquiry from policani.net">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none;" aria-hidden="true">
+        <div>
+          <label for="cf-name">Name</label>
+          <input id="cf-name" type="text" name="name" required autocomplete="name">
+        </div>
+        <div>
+          <label for="cf-email">Email</label>
+          <input id="cf-email" type="email" name="email" required autocomplete="email">
+        </div>
+        <div>
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="5" required></textarea>
+        </div>
+        <div class="actions">
+          <button class="button primary" type="submit">Send message</button>
+        </div>
+        <p class="form-note">Messages are relayed to my inbox; no contact details are published on this site.</p>
+      </form>
     </div>
   </section>
 </main>
@@ -291,5 +341,6 @@
 <script src="assets/portfolio-signal-field.js?v=20260613-signalfield" defer></script>
 <script src="assets/portfolio-hero-filament.js?v=20260613-signalfield" defer></script>
 <script src="assets/site-concierge.js?v=20260626" defer></script>
+<script data-goatcounter="https://policani.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
