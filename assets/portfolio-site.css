@@ -1447,6 +1447,11 @@ width: 22px;
 height: 22px;
 }
 
+.brand-logo-avalara {
+width: 24px;
+height: 24px;
+}
+
 .testimonial:hover .testimonial-brand,
 .testimonial:focus-within .testimonial-brand {
 opacity: 1;
