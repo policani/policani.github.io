@@ -312,7 +312,8 @@ box-shadow: 0 10px 28px rgba(18, 24, 38, 0.12);
 .concierge-toggle:focus-visible,
 .concierge-close:focus-visible,
 .concierge-actions a:focus-visible,
-.concierge-link-list a:focus-visible {
+.concierge-link-list a:focus-visible,
+.reference-pill:focus-visible {
 outline: 3px solid rgba(47, 127, 149, 0.38);
 outline-offset: 3px;
 }
@@ -1424,14 +1425,30 @@ font-size: 1rem;
 font-weight: 850;
 letter-spacing: 0.005em;
 line-height: 1;
-filter: grayscale(1);
-opacity: 0.6;
-transition: filter 200ms ease, opacity 200ms ease;
+filter: none;
+opacity: 0.92;
+transition: opacity 200ms ease;
+}
+
+.testimonial-logo {
+display: block;
+flex: 0 0 auto;
+max-width: 96px;
+object-fit: contain;
+}
+
+.brand-logo-doosan {
+width: 86px;
+height: 46px;
+}
+
+.brand-logo-tmobile {
+width: 22px;
+height: 22px;
 }
 
 .testimonial:hover .testimonial-brand,
 .testimonial:focus-within .testimonial-brand {
-filter: none;
 opacity: 1;
 }
 
@@ -1473,6 +1490,37 @@ font-family: var(--font-ui);
 font-size: 0.88rem;
 font-weight: 700;
 letter-spacing: 0.02em;
+}
+
+.testimonial-links {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin-top: 2px;
+padding-top: 12px;
+border-top: 1px solid var(--line);
+}
+
+.reference-pill {
+display: inline-flex;
+align-items: center;
+min-height: 30px;
+padding: 6px 10px;
+border: 1px solid var(--blue-150);
+border-radius: 999px;
+background: var(--blue-25);
+color: var(--blue-700);
+font-family: var(--font-ui);
+font-size: 0.78rem;
+font-weight: 850;
+line-height: 1.2;
+text-decoration: none;
+}
+
+.reference-pill:hover,
+.reference-pill:focus-visible {
+background: var(--blue-75);
+text-decoration: underline;
 }
 
 .testimonial-verify {
@@ -1518,6 +1566,22 @@ box-shadow: none !important;
 @media (max-width: 760px) {
 .testimonial {
 flex-basis: calc(100% - 8px);
+}
+
+.testimonial-carousel + .actions {
+padding-bottom: 76px;
+align-items: flex-start !important;
+flex-direction: column;
+}
+
+.testimonial-carousel + .actions > .button {
+width: 100%;
+}
+
+.carousel-controls {
+margin-left: 0 !important;
+width: 100%;
+justify-content: flex-start;
 }
 }
 
