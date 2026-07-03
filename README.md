@@ -33,9 +33,10 @@ ownership.
 - Keep the top-level website structure explicit:
   `pmo-portfolio-governance-leader.html` for Role Fit,
   `portfolio.html` for the deeper portfolio map, `operating-history.html` for
-  Case Studies, `artifacts.html` for How I Work, `modules.html` for Workflow
-  Systems, `proof.html` for Evidence, `resources.html` for Resources, and the
-  home contact section for Contact.
+  Case Studies, `artifacts.html` for How I Work, `governance/` for the
+  canonical reader-facing portfolio and AI governance library, `modules.html`
+  for Workflow Systems, `proof.html` for Evidence, `resources.html` for
+  Resources, and the home contact section for Contact.
 - Anchor the public headline on Principal / Director-level portfolio, PMO, and
   executive operations.
 - Treat Chief of Staff as a target lane only when the role means executive
@@ -63,6 +64,14 @@ ownership.
   specific experience claims to the portfolio routes or modules they support.
 - `/artifacts.html` is How I Work: public-safe routes from unclear
   signal to accountable review.
+- `/governance/` is Portfolio and AI Governance: the canonical reader-facing
+  destination for public-safe governance material and routes into workflow
+  examples, with GitHub repository and wiki pages treated as source or mirror
+  surfaces.
+- `/governance/guides/` is finished content only. Drafts, staging notes,
+  outlines, and unresolved article ideas belong in `E:\Codex\planning` until
+  audience fit, proof support, destination role, and publication quality are
+  clear.
 - `/modules.html` is Workflow Systems: downloadable proof-of-concept modules grouped by operating
   lifecycle.
 - `/proof.html` is Evidence: proof taxonomy, public-safety boundaries, scope
