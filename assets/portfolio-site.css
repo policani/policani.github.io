@@ -1414,6 +1414,32 @@ box-shadow: 0 14px 30px rgba(18, 24, 38, 0.12);
 border-color: var(--blue-150);
 }
 
+.testimonial-brand {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+align-self: flex-start;
+font-family: var(--font-ui);
+font-size: 1rem;
+font-weight: 850;
+letter-spacing: 0.005em;
+line-height: 1;
+filter: grayscale(1);
+opacity: 0.6;
+transition: filter 200ms ease, opacity 200ms ease;
+}
+
+.testimonial:hover .testimonial-brand,
+.testimonial:focus-within .testimonial-brand {
+filter: none;
+opacity: 1;
+}
+
+.brand-microsoft { color: #737373; }
+.brand-tmobile { color: #e20074; }
+.brand-doosan { color: #0017a8; }
+.brand-avalara { color: #ff6600; }
+
 .testimonial p {
 color: var(--ink-soft);
 font-size: 1rem;
