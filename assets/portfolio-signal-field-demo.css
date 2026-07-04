@@ -11,9 +11,9 @@
   --gold: #c89335;
   --radius: 8px;
   --shadow: 0 18px 46px rgba(17, 24, 39, 0.12);
-  --font-display: "Segoe UI Variable Display", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
-  --font-text: "Segoe UI Variable Text", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
-  --font-ui: "Segoe UI Variable Small", "Segoe UI Variable Text", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-text: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-ui: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif; --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
 * {
@@ -29,7 +29,7 @@ body {
   color: var(--ink);
   background: var(--paper);
   font-family: var(--font-text);
-  line-height: 1.68;
+  line-height: 1.5;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
 }
@@ -80,7 +80,7 @@ select {
   color: var(--muted);
   font-family: var(--font-ui);
   font-size: 0.82rem;
-  font-weight: 720;
+  font-weight: 500;
 }
 
 .topbar-actions {
@@ -100,7 +100,7 @@ select {
   cursor: pointer;
   font-family: var(--font-ui);
   font-size: 0.88rem;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .button.primary {
@@ -161,10 +161,10 @@ select {
 .eyebrow {
   margin: 0 0 12px;
   color: rgba(255, 255, 255, 0.82);
-  font-family: var(--font-ui);
+  font-family: var(--font-mono);
   font-size: 0.78rem;
-  font-weight: 850;
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -173,9 +173,9 @@ h1 {
   color: #ffffff;
   font-family: var(--font-display);
   font-size: clamp(3.55rem, 8.4vw, 6.45rem);
-  font-weight: 840;
+  font-weight: 300;
   line-height: 0.9;
-  letter-spacing: 0;
+  letter-spacing: -0.05em;
   text-wrap: balance;
 }
 
@@ -206,7 +206,7 @@ h1 {
   color: #ffffff;
   font-family: var(--font-ui);
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .workspace {
@@ -235,7 +235,7 @@ h1 {
   margin: 0;
   font-family: var(--font-display);
   font-size: 1.28rem;
-  font-weight: 820;
+  font-weight: 500;
   line-height: 1.12;
   letter-spacing: 0;
   text-wrap: balance;
@@ -269,7 +269,7 @@ label {
   color: var(--ink-soft);
   font-family: var(--font-ui);
   font-size: 0.82rem;
-  font-weight: 850;
+  font-weight: 500;
 }
 
 input,
@@ -317,7 +317,7 @@ textarea {
   color: var(--muted);
   font-family: var(--font-ui);
   font-size: 0.82rem;
-  font-weight: 850;
+  font-weight: 500;
   text-align: right;
 }
 
@@ -335,7 +335,7 @@ textarea {
   color: var(--teal);
   font-family: var(--font-ui);
   font-size: 0.86rem;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .repo-note {

@@ -20,9 +20,9 @@
 --sage-soft: #edf4ef;
 --shadow: 0 16px 42px rgba(18, 24, 38, 0.10);
 --radius: 8px;
---font-display: "Segoe UI Variable Display", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
---font-text: "Segoe UI Variable Text", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
---font-ui: "Segoe UI Variable Small", "Segoe UI Variable Text", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+--font-display: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+--font-text: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+--font-ui: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif; --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
 * {
@@ -38,7 +38,7 @@ margin: 0;
 color: var(--ink);
 background: var(--paper);
 font-family: var(--font-text);
-line-height: 1.68;
+line-height: 1.5;
 overflow-x: hidden;
 text-rendering: optimizeLegibility;
 }
@@ -67,9 +67,9 @@ margin: 0;
 color: #ffffff;
 font-family: var(--font-display);
 font-size: clamp(3.75rem, 9.6vw, 7.1rem);
-font-weight: 840;
-line-height: 0.88;
-letter-spacing: 0;
+font-weight: 300;
+line-height: 1.08;
+letter-spacing: -0.05em;
 text-wrap: balance;
 }
 
@@ -77,9 +77,9 @@ h2 {
 margin: 0 0 20px;
 font-family: var(--font-display);
 font-size: clamp(2.28rem, 5.35vw, 3.65rem);
-font-weight: 840;
-line-height: 0.98;
-letter-spacing: 0;
+font-weight: 500;
+line-height: 1.15;
+letter-spacing: -0.04em;
 text-wrap: balance;
 }
 
@@ -87,9 +87,9 @@ h3 {
 margin: 0 0 10px;
 font-family: var(--font-text);
 font-size: clamp(1.12rem, 1.72vw, 1.3rem);
-font-weight: 780;
-line-height: 1.18;
-letter-spacing: 0;
+font-weight: 500;
+line-height: 1.3;
+letter-spacing: -0.01em;
 text-wrap: balance;
 }
 
@@ -283,7 +283,7 @@ background: rgba(255, 255, 255, 0.10);
 color: rgba(255, 255, 255, 0.88);
 font-family: var(--font-ui);
 font-size: 0.83rem;
-font-weight: 760;
+font-weight: 500;
 }
 
 .guide-evaluation-panel {
@@ -301,7 +301,7 @@ color: #ffffff;
 
 .guide-evaluation-panel p {
 color: rgba(255, 255, 255, 0.82);
-line-height: 1.62;
+line-height: 1.5;
 }
 
 .guide-signal-list {
@@ -315,7 +315,7 @@ display: block;
 border-top: 1px solid rgba(255, 255, 255, 0.18);
 padding-top: 10px;
 color: rgba(255, 255, 255, 0.84);
-font-weight: 720;
+font-weight: 500;
 line-height: 1.35;
 }
 .eyebrow,
@@ -323,10 +323,10 @@ line-height: 1.35;
 margin: 0 0 14px;
 color: var(--accent);
 font-size: 0.8rem;
-font-weight: 800;
-letter-spacing: 0.08em;
+font-weight: 400;
+letter-spacing: 0.1em;
 text-transform: uppercase;
-font-family: var(--font-ui);
+font-family: var(--font-mono);
 }
 
 .hero .eyebrow {
@@ -338,7 +338,7 @@ color: rgba(255, 255, 255, 0.82);
 max-width: 68ch;
 color: var(--muted);
 font-size: clamp(1.06rem, 1.35vw, 1.17rem);
-line-height: 1.72;
+line-height: 1.5;
 text-wrap: pretty;
 }
 
@@ -378,7 +378,7 @@ background: rgba(255, 255, 255, 0.86);
 color: var(--blue-700);
 font-family: var(--font-ui);
 font-size: 0.8rem;
-font-weight: 800;
+font-weight: 500;
 }
 
 .actions {
@@ -398,7 +398,7 @@ color: var(--ink);
 background: #ffffff;
 font-family: var(--font-ui);
 font-size: 0.92rem;
-font-weight: 800;
+font-weight: 500;
 text-align: center;
 text-decoration: none;
 transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
@@ -456,7 +456,7 @@ align-items: center;
 min-height: 34px;
 color: var(--ink);
 font-family: var(--font-ui);
-font-weight: 850;
+font-weight: 500;
 line-height: 1.2;
 text-decoration: none;
 }
@@ -467,7 +467,7 @@ min-height: 34px;
 color: var(--muted);
 font-family: var(--font-ui);
 font-size: 0.88rem;
-font-weight: 760;
+font-weight: 500;
 line-height: 1.2;
 text-decoration: none;
 padding: 6px 9px;
@@ -604,7 +604,7 @@ padding-top: 16px;
 color: var(--blue-700);
 font-family: var(--font-ui);
 font-size: 0.86rem;
-font-weight: 850;
+font-weight: 500;
 line-height: 1.2;
 }
 
@@ -629,7 +629,7 @@ box-shadow: var(--shadow);
 .proof-box p,
 .route-card p {
 color: var(--muted);
-line-height: 1.64;
+line-height: 1.5;
 text-wrap: pretty;
 }
 
@@ -679,7 +679,7 @@ box-shadow: var(--shadow);
 color: var(--accent);
 font-family: var(--font-ui);
 font-size: 0.78rem;
-font-weight: 850;
+font-weight: 500;
 text-transform: uppercase;
 }
 
@@ -716,7 +716,10 @@ background: #ffffff;
 display: block;
 margin-bottom: 4px;
 color: var(--blue-700);
+font-family: var(--font-display);
 font-size: 1.45rem;
+font-weight: 300;
+letter-spacing: -0.025em;
 line-height: 1.05;
 }
 
@@ -746,7 +749,7 @@ border-radius: 999px;
 background: var(--blue-25);
 color: var(--blue-700);
 font-size: 0.88rem;
-font-weight: 780;
+font-weight: 500;
 text-decoration: none;
 }
 
@@ -834,7 +837,7 @@ background: var(--blue-75);
 color: var(--ink-soft);
 font-family: var(--font-ui);
 font-size: 0.76rem;
-font-weight: 850;
+font-weight: 500;
 }
 
 .card-link {
@@ -853,13 +856,13 @@ margin-top: 16px;
 }
 
 .card-actions a {
-font-weight: 800;
+font-weight: 500;
 }
 
 .card-actions span {
 color: var(--blue-700);
 font-size: 0.92rem;
-font-weight: 800;
+font-weight: 500;
 }
 
 .repo-links {
@@ -878,7 +881,7 @@ border-radius: var(--radius);
 background: var(--blue-25);
 color: var(--blue-700);
 font-size: 0.9rem;
-font-weight: 780;
+font-weight: 500;
 text-decoration: none;
 }
 
@@ -900,7 +903,7 @@ border: 1px solid var(--line);
 border-radius: var(--radius);
 background: #ffffff;
 color: var(--ink-soft);
-font-weight: 850;
+font-weight: 500;
 }
 
 .lifecycle-map {
@@ -984,7 +987,7 @@ border-radius: 999px;
 background: var(--blue-75);
 color: var(--blue-700);
 font-size: 0.75rem;
-font-weight: 900;
+font-weight: 600;
 }
 
 .lifecycle-step strong {
@@ -1003,7 +1006,7 @@ padding-top: 8px;
 border-top: 1px dashed var(--line);
 color: var(--quiet);
 font-size: 0.76rem;
-font-weight: 700;
+font-weight: 500;
 line-height: 1.4;
 }
 
@@ -1035,14 +1038,14 @@ outline-offset: 3px;
 }
 
 .governance-span-label {
-font-weight: 850;
+font-weight: 500;
 font-size: 0.95rem;
 }
 
 .governance-span-modules {
 color: var(--muted);
 font-size: 0.82rem;
-font-weight: 700;
+font-weight: 500;
 }
 
 .lifecycle-note {
@@ -1091,7 +1094,7 @@ margin-top: 34px;
 .module-group h3 {
 font-size: 1.25rem;
 font-family: var(--font-display);
-font-weight: 820;
+font-weight: 500;
 }
 
 .module-card {
@@ -1125,14 +1128,14 @@ border-radius: 999px;
 background: var(--gold-soft);
 color: #6f4b16;
 font-size: 0.76rem;
-font-weight: 850;
+font-weight: 500;
 }
 
 .module-source {
 flex: 0 0 auto;
 color: var(--blue-700);
 font-size: 0.82rem;
-font-weight: 800;
+font-weight: 500;
 text-decoration-thickness: 1px;
 }
 
@@ -1176,7 +1179,7 @@ box-shadow: 0 18px 46px rgba(18, 24, 38, 0.22);
 .concierge-actions a,
 .concierge-link-list a {
 font-family: var(--font-ui);
-font-weight: 850;
+font-weight: 500;
 }
 
 .concierge-toggle,
@@ -1439,7 +1442,7 @@ line-height: 0.92;
 .subhead,
 .lead {
 font-size: 1.02rem;
-line-height: 1.62;
+line-height: 1.5;
 }
 
 .grid-2,
@@ -1555,7 +1558,7 @@ gap: 8px;
 align-self: flex-start;
 font-family: var(--font-ui);
 font-size: 1rem;
-font-weight: 850;
+font-weight: 500;
 letter-spacing: 0.005em;
 line-height: 1;
 filter: none;
@@ -1606,14 +1609,14 @@ flex-grow: 1;
 .testimonial p::before {
 content: "\201C";
 color: var(--accent);
-font-weight: 700;
+font-weight: 500;
 margin-right: 2px;
 }
 
 .testimonial p::after {
 content: "\201D";
 color: var(--accent);
-font-weight: 700;
+font-weight: 500;
 margin-left: 2px;
 }
 
@@ -1626,7 +1629,7 @@ flex-wrap: wrap;
 color: var(--muted);
 font-family: var(--font-ui);
 font-size: 0.88rem;
-font-weight: 700;
+font-weight: 500;
 letter-spacing: 0.02em;
 }
 
@@ -1650,7 +1653,7 @@ background: var(--blue-25);
 color: var(--blue-700);
 font-family: var(--font-ui);
 font-size: 0.78rem;
-font-weight: 850;
+font-weight: 500;
 line-height: 1.2;
 text-decoration: none;
 }
@@ -1664,7 +1667,7 @@ text-decoration: underline;
 .testimonial-verify {
 font-family: var(--font-ui);
 font-size: 0.82rem;
-font-weight: 700;
+font-weight: 500;
 color: var(--accent);
 text-decoration: none;
 white-space: nowrap;

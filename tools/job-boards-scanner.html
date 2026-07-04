@@ -42,9 +42,9 @@
     --red:#a33a2f;
     --amber:#9a650f;
     --shadow:0 1px 2px rgba(15, 35, 55, .06);
-    --font-display:"Segoe UI Variable Display","Segoe UI",ui-sans-serif,system-ui,sans-serif;
-    --font-text:"Segoe UI Variable Text","Segoe UI",ui-sans-serif,system-ui,sans-serif;
-    --font-ui:"Segoe UI Variable Small","Segoe UI Variable Text","Segoe UI",ui-sans-serif,system-ui,sans-serif;
+    --font-display:"Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+    --font-text:"Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+    --font-ui:"Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif; --font-mono:"Geist Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
   }
   * { box-sizing:border-box; }
   body {
@@ -55,7 +55,7 @@
     font:14px/1.58 var(--font-text);
     text-rendering:optimizeLegibility;
   }
-  h1 { font-family:var(--font-display); font-size:24px; font-weight:840; line-height:1.05; margin:0; letter-spacing:0; text-wrap:balance; }
+  h1 { font-family:var(--font-display); font-size:24px; font-weight:500; line-height:1.05; margin:0; letter-spacing:0; text-wrap:balance; }
   h2 {
     font-family:var(--font-ui);
     font-size:12px;
@@ -72,8 +72,8 @@
     text-wrap:balance;
   }
   p { margin:0 0 10px; color:var(--muted); line-height:1.58; text-wrap:pretty; }
-  a { color:var(--blue2); font-weight:700; }
-  label { display:block; font-family:var(--font-ui); font-size:12px; font-weight:760; color:var(--blue2); margin:10px 0 4px; }
+  a { color:var(--blue2); font-weight:500; }
+  label { display:block; font-family:var(--font-ui); font-size:12px; font-weight:500; color:var(--blue2); margin:10px 0 4px; }
   select, input, textarea {
     width:100%;
     border:1px solid var(--line);
@@ -96,7 +96,7 @@
     color:white;
     border-radius:7px;
     padding:9px 12px;
-    font-weight:700;
+    font-weight:500;
     cursor:pointer;
   }
   button.secondary { background:white; color:var(--blue); }
@@ -152,7 +152,7 @@
     padding:8px 9px;
     background:var(--soft);
     font-size:13px;
-    font-weight:700;
+    font-weight:500;
     color:var(--ink);
   }
   .check-option input { width:auto; margin:0; }
@@ -176,7 +176,7 @@
   summary {
     cursor:pointer;
     font-size:13px;
-    font-weight:800;
+    font-weight:500;
     color:var(--blue2);
     list-style:none;
   }
@@ -259,7 +259,7 @@
   }
   th { background:#f0f6fa; color:var(--blue2); font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
   tr:last-child td { border-bottom:0; }
-  .score { color:var(--green); font-weight:900; }
+  .score { color:var(--green); font-weight:600; }
   .confidence { font-size:12px; color:var(--muted); }
   .tag {
     display:inline-block;
@@ -270,11 +270,11 @@
     background:#eef7ff;
     color:var(--blue2);
     font-size:11px;
-    font-weight:700;
+    font-weight:500;
   }
   .risk { border-color:#efc98d; background:#fff6e6; color:var(--amber); }
   .bad { color:var(--red); }
-  .section-title { margin:16px 0 8px; font-weight:900; color:var(--blue2); }
+  .section-title { margin:16px 0 8px; font-weight:600; color:var(--blue2); }
   .empty { padding:22px; text-align:center; color:var(--muted); background:white; border:1px solid var(--line); border-radius:8px; }
   .links a { display:inline-block; margin:0 8px 8px 0; }
   .diag-grid { display:grid; grid-template-columns:repeat(3,minmax(120px,1fr)); gap:8px; }
@@ -317,6 +317,9 @@
     .check-grid, .location-grid { grid-template-columns:1fr; }
   }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="top">

@@ -25,7 +25,7 @@
   color: var(--blue-700);
   font-family: var(--font-ui);
   font-size: 0.86rem;
-  font-weight: 850;
+  font-weight: 500;
   cursor: pointer;
   transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, border-color 160ms ease;
 }
@@ -181,8 +181,8 @@
   margin: 0;
   color: #ffffff;
   font-size: clamp(3.1rem, 8.8vw, 7rem);
-  line-height: 0.89;
-  letter-spacing: 0;
+  line-height: 1.08;
+  letter-spacing: -0.05em;
 }
 
 .stage-copy p {
@@ -212,7 +212,7 @@
   color: rgba(255, 255, 255, 0.86);
   font-family: var(--font-ui);
   font-size: 0.78rem;
-  font-weight: 850;
+  font-weight: 500;
 }
 
 .stage-actions {
@@ -306,7 +306,7 @@
   color: var(--ink-soft);
   font-family: var(--font-ui);
   font-size: 0.82rem;
-  font-weight: 850;
+  font-weight: 500;
 }
 
 .range-row {
