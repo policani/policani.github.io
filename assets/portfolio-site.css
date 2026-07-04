@@ -97,12 +97,25 @@ p {
 margin: 0;
 }
 
-/* Restore vertical rhythm between stacked body paragraphs.
-   The reset above zeroes all p margins; without this, consecutive
-   paragraphs (hero lead copy, guide/walkthrough/field-note prose,
-   card bodies) render with no separation. */
-p + p {
+/* Restore flow spacing around paragraphs. The reset above zeroes all p
+   margins; without this, a paragraph collides with whatever sits next to
+   it - another paragraph, a pill/tag row, or a card grid above it.
+   Space each paragraph from any adjacent sibling. Headings keep their own
+   spacing (excluded from the sibling rule), and gap-based flex/grid
+   components (testimonials, module cards, concierge) manage their own
+   spacing and are opted out below. */
+p:not(:last-child):not(.section-kicker):not(.eyebrow) {
+margin-bottom: 0.9em;
+}
+
+:is(p, div, ul, ol, figure, section, article) + p {
 margin-top: 0.9em;
+}
+
+.testimonial p,
+.concierge-body p,
+.module-card > p:not(.module-fit) {
+margin: 0 !important;
 }
 
 .section-inner :where(p:not(.section-kicker):not(.eyebrow), ul, ol) + :where(h2, h3, h4),
