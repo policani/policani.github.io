@@ -97,6 +97,25 @@ p {
 margin: 0;
 }
 
+/* Restore vertical rhythm between stacked body paragraphs.
+   The reset above zeroes all p margins; without this, consecutive
+   paragraphs (hero lead copy, guide/walkthrough/field-note prose,
+   card bodies) render with no separation. */
+p + p {
+margin-top: 0.9em;
+}
+
+.section-inner :where(p:not(.section-kicker):not(.eyebrow), ul, ol) + :where(h2, h3, h4),
+.page-shell :where(p:not(.section-kicker):not(.eyebrow), ul, ol) + :where(h2, h3, h4) {
+margin-top: clamp(18px, 1.8vw, 28px);
+}
+
+.card :where(p, ul, ol) + :where(h3, h4),
+.proof-box :where(p, ul, ol) + :where(h3, h4),
+.route-card :where(p, ul, ol) + :where(h3, h4) {
+margin-top: 16px;
+}
+
 .skip-link {
 position: absolute;
 left: -999px;
