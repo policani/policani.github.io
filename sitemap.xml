@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://policani.net/governance/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -103,6 +103,12 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://policani.net/governance/field-notes/business-imagination-is-the-scarce-asset-now.html</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://policani.net/governance/whitepapers/marco-policani-governing-ai-as-operational-change.pdf</loc>
     <lastmod>2026-07-04</lastmod>
     <changefreq>yearly</changefreq>
@@ -111,6 +117,12 @@
   <url>
     <loc>https://policani.net/governance/whitepapers/marco-policani-ai-as-a-thinking-partner.pdf</loc>
     <lastmod>2026-07-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/whitepapers/marco-policani-business-imagination-is-the-scarce-asset-now.pdf</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
