@@ -674,6 +674,16 @@ line-height: 1.5;
 text-wrap: pretty;
 }
 
+.field-note-feature-image {
+display: block;
+width: 100%;
+height: auto;
+margin: 0 0 16px;
+border: 1px solid var(--line);
+border-radius: 8px;
+background: var(--blue-25);
+}
+
 main table {
 width: 100%;
 max-width: 100%;
