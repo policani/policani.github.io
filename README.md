@@ -51,6 +51,10 @@ ownership.
   proof, even though they can still show broader workflow craft.
 - Use SEO/search language in headings, metadata, and navigation, but keep product
   prose grounded and specific.
+- Production pages must never expose process notes about how the page was made,
+  where shorter versions may circulate, whether copy is complete, or what channel
+  strategy is planned. Keep those notes in planning files, not reader-facing web
+  copy.
 
 ## Web Structure
 
@@ -117,7 +121,7 @@ replace it with automatic email notifications unless Marco explicitly approves a
 third-party form service, backend endpoint, or other infrastructure that changes
 the privacy/cost model.
 
-## Layout Guardrails
+## Production Guardrails
 
 - Tables must fit the width of their content column on every viewport. Do not
   add table `min-width` rules or rely on horizontal scrolling for article,
@@ -127,6 +131,12 @@ the privacy/cost model.
   stay inside the visible page band.
 - If a specialized tool genuinely needs a horizontally scrollable data grid,
   keep that behavior local to the tool page and document why it is an exception.
+- Field notes and guides should end with substance, sources, related reading, or
+  a useful download. Do not add meta-footnotes about LinkedIn versions, draft
+  state, completeness, publication workflow, or intended reuse.
+- Headings should wrap like edited prose. Avoid relying on balanced wrapping
+  when it strands short final words; protect inseparable phrases with a
+  nonbreaking space when the wording itself should stay together.
 
 ## License
 

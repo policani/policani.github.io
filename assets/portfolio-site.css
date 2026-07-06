@@ -90,7 +90,7 @@ font-size: clamp(1.12rem, 1.72vw, 1.3rem);
 font-weight: 500;
 line-height: 1.3;
 letter-spacing: -0.01em;
-text-wrap: balance;
+text-wrap: pretty;
 }
 
 p {
