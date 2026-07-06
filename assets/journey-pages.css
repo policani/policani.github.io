@@ -228,9 +228,16 @@ opacity: 0.72;
 }
 
 table {
-display: block;
+display: table;
 max-width: 100%;
-overflow-x: auto;
+min-width: 0 !important;
+table-layout: fixed;
+}
+
+th,
+td {
+overflow-wrap: anywhere;
+word-break: normal;
 }
 }
 

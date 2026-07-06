@@ -600,6 +600,15 @@ grid-template-columns: repeat(4, minmax(0, 1fr));
 margin-top: 26px;
 }
 
+.two-col > *,
+.grid-2 > *,
+.grid-3 > *,
+.grid-4 > *,
+.guide-hero-grid > *,
+.module-showcase-grid > * {
+min-width: 0;
+}
+
 .card,
 .proof-box,
 .route-card {
@@ -663,6 +672,25 @@ box-shadow: var(--shadow);
 color: var(--muted);
 line-height: 1.5;
 text-wrap: pretty;
+}
+
+main table {
+width: 100%;
+max-width: 100%;
+min-width: 0 !important;
+table-layout: fixed;
+border-collapse: collapse;
+}
+
+main th,
+main td {
+overflow-wrap: anywhere;
+word-break: normal;
+}
+
+main :where(.field-table, .table-wrap) {
+max-width: 100%;
+overflow-x: visible;
 }
 
 .answer-summary {

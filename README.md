@@ -117,6 +117,17 @@ replace it with automatic email notifications unless Marco explicitly approves a
 third-party form service, backend endpoint, or other infrastructure that changes
 the privacy/cost model.
 
+## Layout Guardrails
+
+- Tables must fit the width of their content column on every viewport. Do not
+  add table `min-width` rules or rely on horizontal scrolling for article,
+  guide, governance, or walkthrough pages.
+- New shared-page tables should use `width: 100%`, `max-width: 100%`,
+  `table-layout: fixed`, and wrapping cells so long labels, URLs, and notes
+  stay inside the visible page band.
+- If a specialized tool genuinely needs a horizontally scrollable data grid,
+  keep that behavior local to the tool page and document why it is an exception.
+
 ## License
 
 Site code, styles, and scripts are licensed under MIT. Written content and other non-code portfolio materials are licensed under CC BY 4.0 with attribution to Marco Policani. See `LICENSE.md`.
