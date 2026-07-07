@@ -45,6 +45,21 @@ channel strategy, and staging state in planning notes or handoff notes.
   production AI platform, software engineering, VP/GM, or formal Chief of Staff
   ownership beyond the evidence.
 
+## Client Work and Article Citations
+
+- Field notes and articles must not describe client-site work by employer or
+  client name in the reader-facing body. Present the operating pattern in
+  anonymized terms (workflow type, constraint, evidence path). Support it with
+  related case-study links in the aside, never with named client claims inside
+  the argument. This caused a correction on 2026-07-07 when a field note
+  narrated Doosan GridTech and T-Mobile work in its body.
+- Every field note that carries external statistics must render its sources as
+  clickable links (`<a href … target="_blank" rel="noopener noreferrer">`), not
+  raw pasted URLs and not a thin prose note. The field-note citation set must
+  cover the claims on the page and match the validated sources in the companion
+  white paper; if the white paper cites six primary sources, the field note
+  should not silently drop to two.
+
 ## Governance Article Placement
 
 - Published field-note pages live in `governance/field-notes/`.
