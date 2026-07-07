@@ -139,6 +139,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://policani.net/governance/whitepapers/marco-policani-ai-adoption-starts-with-the-constraint.pdf</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/whitepapers/marco-policani-ai-value-test-automate-build-buy-hire-wait.pdf</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://policani.net/modules.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>

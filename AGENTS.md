@@ -61,6 +61,11 @@ channel strategy, and staging state in planning notes or handoff notes.
   priority order, update the Governance landing page `lastmod` in
   `sitemap.xml`, add the field-note URL to `sitemap.xml`, and update `llms.txt`
   when the page should be discoverable by answer engines.
+- If a field note is part of a white-paper campaign, the PDF must exist in
+  `governance/whitepapers/`, be linked from both the field-note aside and the
+  `governance/index.html` card, and be listed in `sitemap.xml` before publish.
+  Do not ship a field-note-only version unless Marco explicitly approves
+  publishing without the PDF.
 - Before publishing, render `governance/` locally and confirm the new Field
   Notes card is visible, ordered correctly, and links to the expected page.
 
