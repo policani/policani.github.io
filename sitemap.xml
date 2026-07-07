@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://policani.net/governance/</loc>
-    <lastmod>2026-07-06</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -87,6 +87,18 @@
   <url>
     <loc>https://policani.net/governance/guides/partner-ecosystem-governance.html</loc>
     <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/field-notes/ai-adoption-starts-with-the-constraint.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/field-notes/ai-value-test-automate-build-buy-hire-wait.html</loc>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>

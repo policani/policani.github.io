@@ -45,6 +45,25 @@ channel strategy, and staging state in planning notes or handoff notes.
   production AI platform, software engineering, VP/GM, or formal Chief of Staff
   ownership beyond the evidence.
 
+## Governance Article Placement
+
+- Published field-note pages live in `governance/field-notes/`.
+- Published white-paper PDFs live in `governance/whitepapers/`.
+- Article preview and social images live in `assets/`.
+- Planning article folders may keep working website field-note source files,
+  but Policani.net is served from this repo. Do not treat planning-only HTML as
+  published web content.
+- Wire new governance article pages into `governance/index.html`,
+  `sitemap.xml`, and page metadata only after public-site PDFs/assets exist or
+  links are intentionally omitted.
+- A field-note page is not publication-ready if it is orphaned. Add every new
+  field note to the `governance/index.html` Field Notes grid in the intended
+  priority order, update the Governance landing page `lastmod` in
+  `sitemap.xml`, add the field-note URL to `sitemap.xml`, and update `llms.txt`
+  when the page should be discoverable by answer engines.
+- Before publishing, render `governance/` locally and confirm the new Field
+  Notes card is visible, ordered correctly, and links to the expected page.
+
 ## Publishing Checks
 
 - New public pages must be added to `sitemap.xml`.
