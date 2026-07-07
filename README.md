@@ -55,6 +55,12 @@ ownership.
   where shorter versions may circulate, whether copy is complete, or what channel
   strategy is planned. Keep those notes in planning files, not reader-facing web
   copy.
+- Production pages must show finished page content, not page-construction
+  instructions. Do not publish visible copy that refers to drafts, approval
+  routing, future navigation/profile/wiki links, "handoff material," source
+  links being collected for later, placeholders, filler, or instructions to a
+  reviewer/agent. Rewrite those notes as the actual inspection path, proof,
+  example, source, or decision support the page offers the reader.
 
 ## Web Structure
 
@@ -134,6 +140,11 @@ the privacy/cost model.
 - Field notes and guides should end with substance, sources, related reading, or
   a useful download. Do not add meta-footnotes about LinkedIn versions, draft
   state, completeness, publication workflow, or intended reuse.
+- Before publishing changed HTML, scan visible copy for leaked planning terms:
+  `this draft`, `should be reviewed`, `before any navigation`, `profile link`,
+  `wiki link`, `handoff material`, `linked later`, `changing shared files`,
+  `placeholder`, `filler`, `TODO`, and `TBD`. Legitimate form placeholders and
+  content about AI drafts are allowed; page-production notes are not.
 - Headings should wrap like edited prose. Avoid relying on balanced wrapping
   when it strands short final words; protect inseparable phrases with a
   nonbreaking space when the wording itself should stay together.
