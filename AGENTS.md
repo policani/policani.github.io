@@ -65,6 +65,12 @@ channel strategy, and staging state in planning notes or handoff notes.
 - Published field-note pages live in `governance/field-notes/`.
 - Published white-paper PDFs live in `governance/whitepapers/`.
 - Article preview and social images live in `assets/`.
+- Only three asset types from an article campaign are published to this repo:
+  the field-note HTML (`governance/field-notes/`), the white-paper PDF
+  (`governance/whitepapers/`), and the 1200x627 social preview (`assets/`).
+  LinkedIn-native assets — the native reach post, the document carousel PDF, the
+  native LinkedIn Article copy, and the 1920x1080 Article cover — are LinkedIn
+  deliverables that stay in the planning packet. Do not copy them into this repo.
 - Planning article folders may keep working website field-note source files,
   but Policani.net is served from this repo. Do not treat planning-only HTML as
   published web content.
