@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Second Brain — Management Console | Marco Policani</title>
-<meta name="description" content="A portable, plain-markdown AI second brain with a new web-based Management Console: see your whole vault as a live constellation, a role-by-role type breakdown, a size treemap, and a filterable table — all in the browser, no server.">
+<meta name="description" content="A portable, plain-markdown AI second brain with a web-based Management Console: see your whole vault as a live constellation, a role-by-role type breakdown, a size treemap, and a filterable table — all locally in your browser.">
 <meta name="author" content="Marco Policani">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Second Brain — Management Console | Marco Policani">
@@ -12,8 +12,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://policani.net/resources/">
 <meta property="og:image" content="https://policani.net/assets/second-brain-console-constellation.png">
-<meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="900">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1032">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://policani.net/resources/">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
@@ -25,7 +25,7 @@
 <style>
 /* page-local visual emphasis; falls back gracefully on the shared design system */
 .sbc-shot{width:100%;height:auto;display:block;border-radius:14px;border:1px solid rgba(140,150,175,.22);
-  box-shadow:0 24px 60px rgba(0,0,0,.30)}
+  box-shadow:0 24px 60px rgba(0,0,0,.30);aspect-ratio:1920 / 1032;object-fit:contain;background:#061326}
 .sbc-hero-carousel{max-width:1120px;margin:26px auto 0}
 .sbc-hero-carousel .resource-preview-carousel{border-radius:16px;overflow:hidden}
 .sbc-feature{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;margin:34px 0}
@@ -63,7 +63,7 @@
 <div class="hero-copy">
 <p class="eyebrow">Second Brain · Management Console</p>
 <h1>Your whole second brain, in one screen.</h1>
-<p class="subhead">A portable, plain-markdown AI memory — now with a web-based Management Console. Open one page and see every note as a live constellation, a role-by-role type breakdown, a size treemap, and a filterable table. No server. No account. It runs in your browser against your own files.</p>
+<p class="subhead">A portable, plain-markdown AI memory — now with a web-based Management Console. Open one page and see every note as a live constellation, a role-by-role type breakdown, a size treemap, and a filterable table. A local-only helper keeps the index fresh; no account is required and your files stay on your machine.</p>
 <div class="actions">
 <a class="button primary" href="#views">See the views</a>
 <a class="button" href="https://github.com/policani/portable-cross-agent-second-brain" target="_blank" rel="noopener noreferrer">Get it on GitHub</a>
@@ -81,13 +81,13 @@
 <div class="sbc-hero-carousel">
 <div class="resource-preview-carousel" data-resource-carousel aria-label="Management Console screenshots">
 <a class="is-active" href="#views" data-carousel-slide aria-label="Constellation view">
-<img class="sbc-shot" src="../assets/second-brain-console-constellation.png" alt="Constellation view: the whole vault as a living map that builds in real time on load, files clustered by folder inside rings of skills, agents, routines, and applications" width="1600" height="900" loading="eager">
+<img class="sbc-shot" src="../assets/second-brain-console-constellation.png" alt="Constellation view: the whole vault as a living map that builds in real time on load, files clustered by folder inside rings of skills, agents, routines, and applications" width="1920" height="1032" loading="eager">
 </a>
 <a href="#views" data-carousel-slide aria-label="Types view">
-<img class="sbc-shot" src="../assets/second-brain-console-types.png" alt="Types view: every file classified by role — AI logic, reference, output, template, office, media, software, backup — with counts and sizes" width="1600" height="900" loading="lazy">
+<img class="sbc-shot" src="../assets/second-brain-console-types.png" alt="Types view: every file classified by role — AI logic, reference, output, template, office, media, software, backup — with counts and sizes" width="1920" height="1032" loading="lazy">
 </a>
 <a href="#views" data-carousel-slide aria-label="Sizes treemap">
-<img class="sbc-shot" src="../assets/second-brain-console-sizes.png" alt="Sizes view: a treemap where each file is sized by bytes and colored by role, so the biggest files and folders pop" width="1600" height="900" loading="lazy">
+<img class="sbc-shot" src="../assets/second-brain-console-sizes.png" alt="Sizes view: a treemap where each file is sized by bytes and colored by role, so the biggest files and folders pop" width="1920" height="1032" loading="lazy">
 </a>
 <div class="resource-carousel-controls" data-carousel-controls aria-label="Choose screenshot"></div>
 </div>
@@ -105,7 +105,7 @@
 <h3>Constellation</h3>
 <p>The signature overview — your whole vault as a living map, files clustered by folder inside rings of skills, agents, routines, and connected apps. It now builds in real time on load, so you watch the vault take shape instead of waiting on a blank screen.</p>
 </div>
-<div><img class="sbc-shot" src="../assets/second-brain-console-constellation.png" alt="Constellation view of the Management Console" width="1600" height="900" loading="lazy"></div>
+<div><img class="sbc-shot" src="../assets/second-brain-console-constellation.png" alt="Constellation view of the Management Console" width="1920" height="1032" loading="lazy"></div>
 </div>
 
 <div class="sbc-feature reverse">
@@ -113,7 +113,7 @@
 <h3>Types</h3>
 <p>Every file classified by what it <em>is</em> — AI logic, reference, output, template, office document, media, software, or backup — with counts and total size per type. Toggle to raw file format when you need the by-extension cut. Color-coding carries across every view.</p>
 </div>
-<div><img class="sbc-shot" src="../assets/second-brain-console-types.png" alt="Types view of the Management Console" width="1600" height="900" loading="lazy"></div>
+<div><img class="sbc-shot" src="../assets/second-brain-console-types.png" alt="Types view of the Management Console" width="1920" height="1032" loading="lazy"></div>
 </div>
 
 <div class="sbc-feature">
@@ -121,7 +121,7 @@
 <h3>Sizes</h3>
 <p>A treemap where every file is sized by bytes and colored by role. The heavy files and folders pop immediately, so the cleanup targets choose themselves. Hover for exact size; click to inspect.</p>
 </div>
-<div><img class="sbc-shot" src="../assets/second-brain-console-sizes.png" alt="Sizes treemap of the Management Console" width="1600" height="900" loading="lazy"></div>
+<div><img class="sbc-shot" src="../assets/second-brain-console-sizes.png" alt="Sizes treemap of the Management Console" width="1920" height="1032" loading="lazy"></div>
 </div>
 
 <div class="sbc-feature reverse">
@@ -130,11 +130,11 @@
 <p>A sortable, <strong>Excel-style filterable</strong> list of every file. Click a column header for sort plus a searchable checkbox filter — narrow to just AI-logic files, or just outputs, in two clicks. Select any file for a detail inspector with its role, size, sections, and references. Search, a folder tree, and per-type filters are always at hand.</p>
 <div class="sbc-pills">
 <span class="lane-label" style="margin:0">Runs in your browser</span>
-<span class="lane-label" style="margin:0">No server · no account</span>
+<span class="lane-label" style="margin:0">Local-only refresh · no account</span>
 <span class="lane-label" style="margin:0">Your files stay local</span>
 </div>
 </div>
-<div><img class="sbc-shot" src="../assets/second-brain-console-table.png" alt="Table view: a sortable, filterable list of every file with role, format, size and reference columns, and a detail inspector open on the right" width="1600" height="900" loading="lazy"></div>
+<div><img class="sbc-shot" src="../assets/second-brain-console-table.png" alt="Table view: a sortable, filterable list of every file with role, format, size and reference columns, and a detail inspector open on the right" width="1920" height="1032" loading="lazy"></div>
 </div>
 </div>
 </section>
@@ -162,7 +162,7 @@
 <div>
 <p class="section-kicker">Get started</p>
 <h2 id="cta-heading">Clone it, point an agent at it, open the console.</h2>
-<p class="lead">Claude, Codex, and Cursor read the same plain-markdown notes through two instruction files kept in parity. Open <code>index.html</code> to manage the vault; open <code>vault-map.html</code> for the constellation on its own.</p>
+<p class="lead">Claude, Codex, and Cursor read the same plain-markdown notes through two instruction files kept in parity. Use the included console launcher for live Refresh; open <code>vault-map.html</code> for the constellation on its own.</p>
 </div>
 <div class="proof-box">
 <h3>Useful next links</h3>
