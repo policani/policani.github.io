@@ -48,8 +48,8 @@ This GitHub profile is a public project shelf: practical governance tools, opera
 
 **Agent operating systems and AI memory**
 
-* [Portable Cross-Agent Second Brain](https://github.com/policani/portable-cross-agent-second-brain)
-* [Portable Cross-Agent Second Brain - Personal](https://github.com/policani/portable-cross-agent-second-brain-personal)
+* [KnoVault - Team](https://github.com/policani/portable-cross-agent-second-brain)
+* [KnoVault - Personal](https://github.com/policani/portable-cross-agent-second-brain-personal)
 * [Subagent Operating Model](https://github.com/policani/subagent-operating-model)
 
 **Career, writing, and interview utilities**
