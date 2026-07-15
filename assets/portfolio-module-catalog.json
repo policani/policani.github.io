@@ -34,7 +34,7 @@
 "title": "Portfolio Signal Quality Auditor",
 "activityLabel": "Audit portfolio signal quality",
 "repositoryUrl": "https://github.com/policani/portfolio-signal-quality-auditor",
-"siteSection": "https://policani.net/proof.html#portfolio-signal",
+"siteSection": "https://policani.net/operating-history.html#evidence",
 "phaseCoverage": ["Intake"],
 "audience": "Portfolio governance and decision-support teams",
 "proofType": "Portfolio signal review and evidence-gap detection"
@@ -52,7 +52,7 @@
 "title": "Portfolio Prioritization Scoring Agent",
 "activityLabel": "Score priority and tradeoffs",
 "repositoryUrl": "https://github.com/policani/portfolio-prioritization-scoring-agent",
-"siteSection": "https://policani.net/journeys/tradeoffs-to-executive-decision-route.html",
+"siteSection": "https://policani.net/walkthroughs/tradeoffs-to-executive-decision.html",
 "phaseCoverage": ["Tradeoffs"],
 "audience": "Portfolio leaders comparing priority, value, risk, and decision readiness",
 "proofType": "Prioritization scoring and tradeoff evidence"
@@ -61,7 +61,7 @@
 "title": "Portfolio Capacity Sequencing Planner",
 "activityLabel": "Plan capacity and sequencing",
 "repositoryUrl": "https://github.com/policani/portfolio-capacity-sequencing-planner",
-"siteSection": "https://policani.net/journeys/tradeoffs-to-executive-decision-route.html",
+"siteSection": "https://policani.net/walkthroughs/tradeoffs-to-executive-decision.html",
 "phaseCoverage": ["Tradeoffs"],
 "audience": "Portfolio and delivery leaders managing constrained capacity",
 "proofType": "Capacity pressure, dependency, and sequencing analysis"
@@ -70,7 +70,7 @@
 "title": "Executive Portfolio Review Pack Builder",
 "activityLabel": "Build executive review packs",
 "repositoryUrl": "https://github.com/policani/executive-portfolio-review-pack-builder",
-"siteSection": "https://policani.net/proof.html#decision-cadence",
+"siteSection": "https://policani.net/operating-history.html#evidence",
 "phaseCoverage": ["Tradeoffs"],
 "audience": "Executive operations, PMO, and portfolio governance teams",
 "proofType": "Decision cadence, review packs, and follow-up registers"
@@ -79,7 +79,7 @@
 "title": "AI Opportunity Intelligence Review System",
 "activityLabel": "Review AI opportunities",
 "repositoryUrl": "https://github.com/policani/ai-opportunity-intelligence-review-system",
-"siteSection": "https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html",
+"siteSection": "https://policani.net/walkthroughs/ai-idea-to-governed-artifact-lifecycle.html",
 "phaseCoverage": ["Intake", "Tradeoffs"],
 "audience": "AI workflow, governance, and portfolio teams",
 "proofType": "AI workflow opportunity value logic, ownership, and review boundaries"
@@ -88,7 +88,7 @@
 "title": "AI Artifact Lifecycle Governance System",
 "activityLabel": "Govern AI artifact lifecycle",
 "repositoryUrl": "https://github.com/policani/ai-artifact-lifecycle-governance-system",
-"siteSection": "https://policani.net/journeys/ai-idea-to-governed-artifact-lifecycle.html",
+"siteSection": "https://policani.net/walkthroughs/ai-idea-to-governed-artifact-lifecycle.html",
 "phaseCoverage": ["Intake", "Tradeoffs", "Delivery readiness"],
 "audience": "AI workflow governance and operational-risk reviewers",
 "proofType": "AI workflow artifact classification, reliance gates, and human review"
@@ -97,7 +97,7 @@
 "title": "Business Case System",
 "activityLabel": "Build business cases",
 "repositoryUrl": "https://github.com/policani/business-case-system",
-"siteSection": "https://policani.net/journeys/approved-intent-to-chartered-delivery-start.html",
+"siteSection": "https://policani.net/walkthroughs/approved-intent-to-chartered-delivery-start.html",
 "phaseCoverage": ["Tradeoffs", "Funding"],
 "audience": "Sponsors, PMO teams, and portfolio leaders preparing investment decisions",
 "proofType": "Business case structure, assumptions, value logic, and decision evidence"
@@ -106,7 +106,7 @@
 "title": "Project Charter Initiation Agent",
 "activityLabel": "Initiate project charters",
 "repositoryUrl": "https://github.com/policani/project-charter-initiation-agent",
-"siteSection": "https://policani.net/journeys/approved-intent-to-chartered-delivery-start.html",
+"siteSection": "https://policani.net/walkthroughs/approved-intent-to-chartered-delivery-start.html",
 "phaseCoverage": ["Funding"],
 "audience": "Delivery sponsors and PMO teams moving approved intent into chartered work",
 "proofType": "Charter initiation, assumptions, ownership, risks, and handoff"
@@ -115,7 +115,7 @@
 "title": "PMO Governance Operations Log",
 "activityLabel": "Track governance operations",
 "repositoryUrl": "https://github.com/policani/pmo-governance-operations-log",
-"siteSection": "https://policani.net/journeys/delivery-readiness-to-value-realization.html",
+"siteSection": "https://policani.net/walkthroughs/delivery-readiness-to-value-realization.html",
 "phaseCoverage": ["Delivery readiness"],
 "audience": "PMO, delivery, and controls teams tracking blockers and decisions",
 "proofType": "Governance operations log, blocker tracking, and decision records"
@@ -124,7 +124,7 @@
 "title": "Release Readiness UAT Governance Pack",
 "activityLabel": "Prove delivery readiness",
 "repositoryUrl": "https://github.com/policani/release-readiness-uat-governance-pack",
-"siteSection": "https://policani.net/journeys/delivery-readiness-to-value-realization.html",
+"siteSection": "https://policani.net/walkthroughs/delivery-readiness-to-value-realization.html",
 "phaseCoverage": ["Delivery readiness"],
 "audience": "Delivery, UAT, release, and governance teams",
 "proofType": "Release readiness, UAT evidence, signoffs, and launch blockers"
@@ -133,7 +133,7 @@
 "title": "Controls Exposure Governance Toolkit",
 "activityLabel": "Review controls and exposure",
 "repositoryUrl": "https://github.com/policani/controls-exposure-governance-toolkit",
-"siteSection": "https://policani.net/journeys/delivery-readiness-to-value-realization.html",
+"siteSection": "https://policani.net/walkthroughs/delivery-readiness-to-value-realization.html",
 "phaseCoverage": ["Delivery readiness", "Value"],
 "audience": "Controls, risk, PMO, and delivery governance teams",
 "proofType": "Control exposure, exceptions, evidence gaps, and review cadence"
@@ -142,7 +142,7 @@
 "title": "Value Realization Governance Ledger",
 "activityLabel": "Track value realization",
 "repositoryUrl": "https://github.com/policani/value-realization-governance-ledger",
-"siteSection": "https://policani.net/journeys/delivery-readiness-to-value-realization.html",
+"siteSection": "https://policani.net/walkthroughs/delivery-readiness-to-value-realization.html",
 "phaseCoverage": ["Value"],
 "audience": "Portfolio, finance, PMO, and sponsor teams tracking outcomes",
 "proofType": "Value claims, realization confidence, and follow-through evidence"

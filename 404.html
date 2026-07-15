@@ -54,7 +54,7 @@
 <a href="/modules.html">Modules and PoCs</a>
 <a href="/governance/">Insights</a>
 <a href="/resources.html">Labs</a>
-<a href="/proof.html">Evidence and boundaries</a>
+<a href="/operating-history.html#evidence">Evidence and boundaries</a>
 <a href="/contact.html">Contact</a>
 </div>
 </div>
@@ -67,6 +67,25 @@
 <p>Marco Policani | <a href="/index.html">Portfolio overview</a> | <a href="https://github.com/policani" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://www.linkedin.com/in/marcpolicani" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
 </div>
 </footer>
+<script>
+(() => {
+  const path = window.location.pathname;
+  const routes = {
+    "/proof.html": "/operating-history.html#evidence",
+    "/portfolio.html": "/pmo-portfolio-governance-leader.html",
+    "/pmo-operating-model.html": "/pmo-portfolio-governance-leader.html",
+    "/hero-banner-lab.html": "/resources.html",
+    "/portfolio-signal-field.html": "/resources.html",
+    "/kytherion-drift.html": "/resources.html",
+    "/orbit-raiders.html": "/resources.html",
+    "/kytherion-drift/": "/resources.html",
+    "/orbit-raiders/": "/resources.html",
+    "/tools/job-boards-scanner.html": "https://github.com/policani/job-boards-scanner"
+  };
+  const destination = routes[path] || (path.startsWith("/journeys/") ? "/artifacts.html" : path.startsWith("/governance/guides/") ? "/governance/#frameworks" : null);
+  if (destination) window.location.replace(destination);
+})();
+</script>
 <script src="assets/hero-parallax.js?v=20260715-ia" defer></script>
 <script data-goatcounter="https://policani.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
