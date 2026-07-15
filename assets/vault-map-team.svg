@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="KnoVault constellation, team edition">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Memventory constellation, team edition">
 <rect width="1600" height="900" fill="#07090d"/>
 <rect x="0" y="0" width="1.4" height="1.4" fill="#ffffff" opacity="0.04"/>
 <rect x="26" y="52" width="1.4" height="1.4" fill="#ffffff" opacity="0.04"/>
@@ -894,6 +894,6 @@
 <rect x="347" y="686" width="96" height="40" rx="8" fill="#161b26" stroke="#5fdba8"/>
 <text x="395" y="710" fill="#e8ecf4" font-family="Segoe UI,Arial,sans-serif" font-size="13" text-anchor="middle">vault</text>
 <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f0a12e"/></marker></defs>
-<text x="40" y="60" fill="#e8ecf4" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="600" letter-spacing="4">◆ KNOVAULT</text>
+<text x="40" y="60" fill="#e8ecf4" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="600" letter-spacing="4">◆ MEMVENTORY</text>
 <text x="40" y="86" fill="#8b94a7" font-family="Segoe UI,Arial,sans-serif" font-size="14">team edition — approval-gated shared memory · agent parity across tools</text>
 </svg>
