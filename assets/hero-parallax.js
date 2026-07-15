@@ -21,7 +21,7 @@
 
   const addSearchLink = () => {
     const navLinks = document.querySelector(".nav-links");
-    if (!navLinks || navLinks.querySelector('a[href="/search.html"], a[href="search.html"]')) return;
+    if (!navLinks || navLinks.querySelector(".nav-search-link")) return;
 
     const link = document.createElement("a");
     link.href = "/search.html";
