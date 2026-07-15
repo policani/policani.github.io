@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero Banner Lab</title>
+<meta name="description" content="Configurable full-screen animated hero banner samples with parallax, pointer response, and exportable JSON settings.">
+<link rel="stylesheet" href="assets/portfolio-site.css">
+<link rel="stylesheet" href="assets/hero-banner-lab.css">
+</head>
+<body>
+<main id="main">
+<section class="lab-demo" aria-label="Full-screen hero banner preview">
+<div class="lab-stage" data-hero-stage>
+<div class="banner-renderer" data-banner-renderer aria-hidden="true"></div>
+<div class="stage-copy">
+<div class="stage-copy-inner">
+<p class="eyebrow" data-stage-eyebrow></p>
+<h2 data-stage-title></h2>
+<p data-stage-description></p>
+<div class="stage-tags" data-stage-tags aria-label="Banner attributes"></div>
+</div>
+</div>
+<div class="stage-actions" aria-label="Preview controls">
+<button class="lab-icon-button" type="button" data-prev-banner aria-label="Previous banner">&lt;</button>
+<button class="lab-icon-button" type="button" data-next-banner aria-label="Next banner">&gt;</button>
+</div>
+</div>
+</section>
+
+<section class="lab-intro-section section-white" aria-labelledby="lab-heading">
+<div class="section-inner hero-lab-intro">
+<div>
+<p class="section-kicker">Hero banner samples</p>
+<h1 id="lab-heading" style="color:var(--ink);font-size:clamp(2.5rem,6.4vw,5.2rem);line-height:.94">Hero Banner Lab</h1>
+<p class="lead">A small collection of full-screen animated hero concepts with consistent capture dimensions, parallax scroll behavior, pointer response, and exportable settings.</p>
+<div class="lab-selector" data-lab-selector aria-label="Choose a banner sample"></div>
+</div>
+<div class="capture-note">
+<strong>Consistent screen captures</strong>
+<p>Open <code>?banner=signal&amp;capture=1</code>, <code>?banner=decision-gates&amp;capture=1</code>, or <code>?banner=filament-network&amp;capture=1</code> at the same browser viewport size for repeatable captures.</p>
+</div>
+</div>
+</section>
+
+<section id="controls" class="lab-controls-section" aria-labelledby="controls-heading">
+<div class="section-inner">
+<div class="control-shell">
+<div class="control-summary" data-lab-summary></div>
+<div class="controls-card">
+<p class="section-kicker">Customize</p>
+<h2 id="controls-heading">Adjust this banner.</h2>
+<div class="controls-grid" data-lab-controls></div>
+</div>
+<div class="export-card">
+<div class="export-head">
+<div>
+<p class="section-kicker">Export</p>
+<h3>Reusable configuration</h3>
+</div>
+<div class="export-actions">
+<button class="lab-icon-button" type="button" data-copy-config>Copy JSON</button>
+<button class="lab-icon-button" type="button" data-download-config>Save JSON</button>
+</div>
+</div>
+<textarea data-config-output readonly spellcheck="false" aria-label="Current banner configuration JSON"></textarea>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="section-inner">
+<p>Created by Marco Policani. Source code MIT; documentation and examples CC BY 4.0.</p>
+</div>
+</footer>
+<script src="assets/portfolio-signal-field.js"></script>
+<script src="assets/hero-banner-lab.js"></script>
+</body>
+</html>
