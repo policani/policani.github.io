@@ -576,64 +576,161 @@ function drawParticles() {
 // ─── POWER-UPS ─────────────────────────────────────────────────
 let powerUps = [];
 const PU_TYPES = ['laser', 'lightning', 'missiles', 'bomb', 'shield', 'health'];
+const MODULE_TYPES = ['laser', 'lightning', 'missiles'];
+const MODULE_SLOTS = [
+  { x: -22, y: 4, rot: -0.34 }, { x: 22, y: 4, rot: 0.34 },
+  { x: -28, y: 15, rot: -0.52 }, { x: 28, y: 15, rot: 0.52 },
+  { x: -13, y: 18, rot: -0.18 }, { x: 13, y: 18, rot: 0.18 },
+  { x: -20, y: -13, rot: -0.22 }, { x: 20, y: -13, rot: 0.22 },
+  { x: -9, y: -23, rot: -0.08 }, { x: 9, y: -23, rot: 0.08 }
+];
+let dockingModules = [];
 
 function spawnPowerUp(x, y) {
   if (Math.random() > 0.5) return;
   const type = PU_TYPES[Math.floor(Math.random() * PU_TYPES.length)];
-  powerUps.push({ x, y, type, vx: (Math.random() - 0.5) * 1.6, vy: 1.35, r: 15, phase: Math.random() * Math.PI * 2 });
+  powerUps.push({ x, y, type, vx: (Math.random() - 0.5) * 1.6, vy: 1.35, r: 18, phase: Math.random() * Math.PI * 2 });
+}
+
+function drawModuleHardware(type, scale = 1) {
+  const color = WEAPONS[type].color;
+  ctx.save();
+  ctx.scale(scale, scale);
+  ctx.shadowBlur = 11;
+  ctx.shadowColor = color;
+  ctx.fillStyle = '#121a27';
+  ctx.strokeStyle = '#8294a8';
+  ctx.lineWidth = 1.3;
+
+  if (type === 'laser') {
+    // A wing cannon: armored mounting plate, heat sink, and forward emitter.
+    ctx.fillRect(-10, -4, 20, 12);
+    ctx.strokeRect(-10, -4, 20, 12);
+    ctx.fillStyle = '#526779';
+    [-6, 0, 6].forEach(x => ctx.fillRect(x - 1, 6, 2, 5));
+    ctx.fillStyle = color;
+    ctx.fillRect(-3, -17, 6, 15);
+    ctx.fillStyle = '#f7ffff';
+    ctx.fillRect(-1, -16, 2, 12);
+  } else if (type === 'lightning') {
+    // A contained arc capacitor: coil housing rather than a floating bolt.
+    ctx.fillRect(-9, -7, 18, 15);
+    ctx.strokeRect(-9, -7, 18, 15);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.2;
+    ctx.beginPath();
+    ctx.ellipse(0, -2, 6, 9, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.fillStyle = color;
+    ctx.fillRect(-2, -6, 4, 9);
+    ctx.fillStyle = '#f7ffff';
+    ctx.fillRect(-1, -4, 2, 5);
+  } else {
+    // A compact missile pod with two recessed launch tubes.
+    ctx.fillRect(-11, -8, 22, 16);
+    ctx.strokeRect(-11, -8, 22, 16);
+    ctx.fillStyle = '#c88d2b';
+    [-5, 5].forEach(x => {
+      ctx.fillRect(x - 3, -12, 6, 13);
+      ctx.fillStyle = '#fff3b0';
+      ctx.fillRect(x - 1, -11, 2, 4);
+      ctx.fillStyle = '#c88d2b';
+    });
+  }
+  ctx.restore();
+}
+
+function drawSupplyPod(type) {
+  const colors = { bomb: '#ff44aa', shield: '#00aaff', health: '#00ff88' };
+  ctx.shadowBlur = 12;
+  ctx.shadowColor = colors[type];
+  ctx.fillStyle = '#111a25';
+  ctx.strokeStyle = colors[type];
+  ctx.lineWidth = 1.8;
+  ctx.fillRect(-9, -11, 18, 22);
+  ctx.strokeRect(-9, -11, 18, 22);
+  ctx.fillStyle = colors[type];
+  if (type === 'bomb') {
+    ctx.beginPath(); ctx.arc(0, 2, 6, 0, Math.PI * 2); ctx.fill();
+    ctx.fillRect(-1, -10, 2, 5);
+  } else if (type === 'shield') {
+    ctx.beginPath(); ctx.moveTo(0, -9); ctx.lineTo(7, -4); ctx.lineTo(5, 8); ctx.lineTo(0, 11); ctx.lineTo(-5, 8); ctx.lineTo(-7, -4); ctx.closePath(); ctx.fill();
+  } else {
+    ctx.fillRect(-3, -7, 6, 14);
+    ctx.fillStyle = '#eafff4';
+    ctx.fillRect(-7, -3, 14, 6);
+  }
 }
 
 function drawPowerUp(p) {
   p.phase += 0.05;
   p.y += p.vy;
   ctx.save();
-  ctx.shadowBlur = 16;
-  const colors = {
-    laser: WEAPONS.laser.color,
-    lightning: WEAPONS.lightning.color,
-    missiles: WEAPONS.missiles.color,
-    bomb: '#ff44aa',
-    shield: '#00aaff',
-    health: '#00ff88'
-  };
-  const labels = {
-    laser: WEAPONS.laser.pickup,
-    lightning: WEAPONS.lightning.pickup,
-    missiles: WEAPONS.missiles.pickup,
-    bomb: 'B',
-    shield: 'S',
-    health: '+'
-  };
-  ctx.shadowColor = colors[p.type];
-  ctx.strokeStyle = colors[p.type];
-  ctx.lineWidth = 1.8;
   const pull = player.x - p.x;
   if (Math.abs(pull) < 300) p.vx += Math.sign(pull) * 0.018;
   p.vx *= 0.985;
   p.x += p.vx + Math.sin(p.phase * 1.5) * 0.35;
   p.x = clamp(p.x, 24, BASE_W - 24);
-  // Physical upgrade modules drift down the fight instead of reading as UI blips.
   ctx.translate(p.x, p.y);
   ctx.rotate(Math.sin(p.phase) * 0.18);
-  ctx.fillStyle = '#101521';
-  ctx.fillRect(-10, -13, 20, 26);
-  ctx.strokeRect(-10, -13, 20, 26);
-  ctx.fillStyle = colors[p.type];
-  if (p.type === 'missiles') {
-    [-5, 5].forEach(px => { ctx.beginPath(); ctx.moveTo(px, -11); ctx.lineTo(px - 3, 7); ctx.lineTo(px + 3, 7); ctx.closePath(); ctx.fill(); });
-  } else if (p.type === 'lightning') {
-    ctx.beginPath(); ctx.moveTo(1, -11); ctx.lineTo(-6, 0); ctx.lineTo(0, 0); ctx.lineTo(-2, 11); ctx.lineTo(7, -3); ctx.lineTo(2, -3); ctx.closePath(); ctx.fill();
-  } else if (p.type === 'laser') {
-    ctx.fillRect(-3, -11, 6, 22);
-  } else {
-    ctx.beginPath(); ctx.arc(0, 0, 7, 0, Math.PI * 2); ctx.fill();
-  }
-  ctx.fillStyle = '#ffffff';
-  ctx.font = 'bold 14px Arial';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(labels[p.type], 0, 0);
+  if (MODULE_TYPES.includes(p.type)) drawModuleHardware(p.type);
+  else drawSupplyPod(p.type);
   ctx.restore();
+}
+
+function drawInstalledModule(type, slotIndex) {
+  const slot = MODULE_SLOTS[slotIndex];
+  if (!slot) return;
+  ctx.save();
+  ctx.translate(slot.x, slot.y);
+  ctx.rotate(slot.rot);
+  ctx.strokeStyle = '#71869b';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(0, 10);
+  ctx.lineTo(0, 18);
+  ctx.stroke();
+  drawModuleHardware(type, 0.72);
+  ctx.restore();
+}
+
+function startModuleDocking(p) {
+  dockingModules.push({
+    type: p.type,
+    x: p.x,
+    y: p.y,
+    spin: p.phase,
+    progress: 0,
+    slotIndex: Math.min(player.componentOrder.length + dockingModules.length, MODULE_SLOTS.length - 1)
+  });
+}
+
+function updateDockingModules() {
+  for (let i = dockingModules.length - 1; i >= 0; i--) {
+    const module = dockingModules[i];
+    module.progress += 0.055;
+    if (module.progress >= 1) {
+      collectPowerUp(module.type);
+      spawnExplosion(player.x, player.y, 10, WEAPONS[module.type].color, '#ffffff', false);
+      dockingModules.splice(i, 1);
+    }
+  }
+}
+
+function drawDockingModules() {
+  for (const module of dockingModules) {
+    const slot = MODULE_SLOTS[module.slotIndex];
+    const ease = 1 - Math.pow(1 - Math.min(module.progress, 1), 3);
+    const targetX = player.x + slot.x;
+    const targetY = player.y + slot.y;
+    const x = module.x + (targetX - module.x) * ease;
+    const y = module.y + (targetY - module.y) * ease;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(module.spin + ease * slot.rot);
+    drawModuleHardware(module.type, 1 - ease * 0.28);
+    ctx.restore();
+  }
 }
 
 function collectPowerUp(type) {
@@ -1232,47 +1329,9 @@ function drawPlayer() {
   ctx.ellipse(0, -h * 0.2, w * 0.14, h * 0.27, 0, 0, Math.PI * 2);
   ctx.fill();
 
-  // Attached modules visibly build the craft into a weapon platform.
-  const laserLevel = player.weaponLevels.laser;
-  const lightningLevel = player.weaponLevels.lightning;
-  const missileLevel = player.weaponLevels.missiles;
-  ctx.shadowBlur = 12;
-  if (laserLevel > 0) {
-    ctx.strokeStyle = WEAPONS.laser.color;
-    ctx.shadowColor = WEAPONS.laser.color;
-    ctx.lineWidth = 1.5 + Math.min(laserLevel, 5) * 0.28;
-    [-1, 1].forEach(side => {
-      ctx.beginPath();
-      ctx.moveTo(side * w * 0.25, h * 0.18);
-      ctx.lineTo(side * (w * 0.68 + Math.min(laserLevel, 4) * 2), -h * 0.08);
-      ctx.stroke();
-    });
-  }
-  if (lightningLevel > 0) {
-    ctx.strokeStyle = WEAPONS.lightning.color;
-    ctx.shadowColor = WEAPONS.lightning.color;
-    ctx.lineWidth = 1.8;
-    for (let i = 0; i < Math.min(lightningLevel, 4); i++) {
-      const side = i % 2 ? -1 : 1;
-      ctx.beginPath();
-      ctx.moveTo(side * (7 + i * 3), -h * 0.05);
-      ctx.lineTo(side * (13 + i * 5), -h * 0.27);
-      ctx.lineTo(side * (8 + i * 4), -h * 0.46);
-      ctx.stroke();
-    }
-  }
-  if (missileLevel > 0) {
-    ctx.fillStyle = '#c78b24';
-    ctx.shadowColor = WEAPONS.missiles.color;
-    for (let i = 0; i < Math.min(missileLevel, 6); i++) {
-      const side = i % 2 ? -1 : 1;
-      const row = Math.floor(i / 2);
-      const px = side * (w * 0.5 + row * 3);
-      const py = -h * 0.05 + row * 11;
-      ctx.beginPath();
-      ctx.moveTo(px, py - 9); ctx.lineTo(px - 3, py + 6); ctx.lineTo(px + 3, py + 6); ctx.closePath(); ctx.fill();
-    }
-  }
+  // Every collected weapon remains a distinct physical part on the ship.
+  // Their order determines the visible mounting position, not just a number.
+  player.componentOrder.forEach((type, index) => drawInstalledModule(type, index));
 
   // Hull panel lines
   ctx.strokeStyle = '#b8f6ff';
@@ -1289,18 +1348,11 @@ function drawPlayer() {
   ctx.lineTo(w * 0.24, h * 0.42);
   ctx.stroke();
 
-  // Central and wing-mounted barrels reflect the installed laser hardware.
+  // The ship starts with one integrated photon emitter; further upgrades are
+  // the externally mounted modules drawn above.
   ctx.fillStyle = '#d7e4f2';
   ctx.shadowBlur = 0;
-  if (laserLevel >= 2) {
-    ctx.fillRect(-w * 0.42, -h * 0.4, 5, 19);
-    ctx.fillRect(w * 0.42 - 5, -h * 0.4, 5, 19);
-  }
-  if (laserLevel >= 3) {
-    ctx.fillRect(-4, -h * 0.63 - 6, 8, 24);
-  } else {
-    ctx.fillRect(-3, -h * 0.58 - 4, 6, 17);
-  }
+  ctx.fillRect(-3, -h * 0.58 - 4, 6, 17);
 
   ctx.fillStyle = 'rgba(255,255,255,0.75)';
   ctx.fillRect(-1, -h * 0.58, 2, h * 0.9);
@@ -1439,8 +1491,12 @@ function checkCollisions() {
   for (let pi = powerUps.length - 1; pi >= 0; pi--) {
     const p = powerUps[pi];
     if (circleCircle(p.x, p.y, p.r, player.x, player.y, 20)) {
-      collectPowerUp(p.type);
-      spawnExplosion(p.x, p.y, 8, '#ffff88', '#ffffff', false);
+      if (MODULE_TYPES.includes(p.type)) {
+        startModuleDocking(p);
+      } else {
+        collectPowerUp(p.type);
+        spawnExplosion(p.x, p.y, 8, '#ffff88', '#ffffff', false);
+      }
       powerUps.splice(pi, 1);
     } else if (p.y > BASE_H + 20) {
       powerUps.splice(pi, 1);
@@ -1669,6 +1725,7 @@ function startGame() {
   playerBullets = [];
   enemyBullets = [];
   powerUps = [];
+  dockingModules = [];
   particles = [];
   damageNumbers = [];
   boss = null;
@@ -1819,6 +1876,7 @@ function updateBoss() {
     if (b.x < -20 || b.x > BASE_W + 20 || b.y < -20 || b.y > BASE_H + 20) enemyBullets.splice(i, 1);
   }
   if (boss && !boss.dead) bossFire();
+  updateDockingModules();
   checkCollisions();
 }
 
@@ -1864,6 +1922,7 @@ function gameLoop() {
   // Update
   if (gameState === STATE.PLAYING) updatePlaying();
   if (gameState === STATE.BOSS) updateBoss();
+  if (gameState === STATE.PLAYING) updateDockingModules();
   updateParticles();
 
   // Draw order: bullets, enemies, boss, player, particles, HUD, bomb flash
@@ -1876,6 +1935,9 @@ function gameLoop() {
 
   // Power-ups
   for (const p of powerUps) drawPowerUp(p);
+
+  // Weapon modules visibly travel into their mounting points before activating.
+  drawDockingModules();
 
   // Enemies
   for (const e of enemies) drawEnemy(e);
