@@ -161,9 +161,9 @@ const player = {
   shield: 0,
   fireRate: 9,
   fireTick: 0,
-  weapon: 'laser',
   unlockedWeapons: { laser: true, lightning: false, missiles: false },
   weaponLevels: { laser: 1, lightning: 0, missiles: 0 },
+  componentOrder: ['laser'],
   bombs: 0,
   lives: 3,
   invincible: 0,    // frames of invincibility after hit
@@ -220,9 +220,10 @@ let playerBullets = [];
 let enemyBullets = [];
 
 function spawnPlayerBullet() {
-  if (player.weapon === 'lightning') spawnLightningShot();
-  else if (player.weapon === 'missiles') spawnMissileShot();
-  else spawnLaserSpray();
+  // Components cooperate instead of replacing one another.
+  if (player.weaponLevels.laser > 0) spawnLaserSpray();
+  if (player.weaponLevels.lightning > 0) spawnLightningShot();
+  if (player.weaponLevels.missiles > 0) spawnMissileShot();
 }
 
 function spawnLaserSpray() {
@@ -250,19 +251,52 @@ function spawnLaserSpray() {
 
 function spawnLightningShot() {
   const level = player.weaponLevels.lightning;
-  const count = level === 1 ? 1 : level === 2 ? 2 : 3;
-  const offsets = count === 1 ? [0] : count === 2 ? [-14, 14] : [-28, 0, 28];
+  const count = Math.min(5, 1 + Math.floor((level - 1) / 2));
+  const cone = 0.16 + level * 0.08;
+  const offsets = Array.from({ length: count }, (_, i) => (i - (count - 1) / 2) * 16);
   for (const ox of offsets) {
+    const i = offsets.indexOf(ox);
+    const spread = count === 1 ? 0 : (i / (count - 1) - 0.5) * cone * 2;
+    const length = 94 + level * 24;
+    const segments = 8 + Math.min(level, 5);
+    const points = [{ x: 0, y: 0 }];
+    let jitter = 0;
+    for (let step = 1; step <= segments; step++) {
+      jitter = clamp(jitter + (Math.random() - 0.5) * (18 + level * 2), -(18 + level * 3), 18 + level * 3);
+      points.push({
+        x: Math.sin(spread) * length * (step / segments) + jitter,
+        y: -Math.cos(spread) * length * (step / segments)
+      });
+    }
+    const forks = [];
+    for (let fork = 0; fork < Math.floor(level / 3); fork++) {
+      const root = points[3 + Math.floor(Math.random() * Math.max(1, points.length - 5))];
+      const forkPoints = [{ x: root.x, y: root.y }];
+      let fx = root.x, fy = root.y;
+      let angle = -Math.PI / 2 + spread + (Math.random() - 0.5) * 1.05;
+      for (let step = 0; step < 3; step++) {
+        angle += (Math.random() - 0.5) * 0.5;
+        const segment = 16 + Math.random() * 16;
+        fx += Math.cos(angle) * segment;
+        fy += Math.sin(angle) * segment;
+        forkPoints.push({ x: fx, y: fy });
+      }
+      forks.push(forkPoints);
+    }
     playerBullets.push({
       x: player.x + ox,
       y: player.y - 34,
-      vx: ox * 0.03,
-      vy: -19,
+      vx: Math.sin(spread) * 8,
+      vy: -Math.cos(spread) * 18,
       type: 'lightning',
-      damage: 28 + level * 14,
-      w: 10 + level * 5,
-      h: 36 + level * 10,
-      pierce: 1 + level,
+      damage: 22 + level * 11,
+      w: 8 + Math.min(level, 5) * 2,
+      h: length,
+      points,
+      forks,
+      ttl: 13,
+      age: 0,
+      pierce: 1 + Math.ceil(level / 2),
       color: WEAPONS.lightning.color,
       core: WEAPONS.lightning.core,
       damageType: WEAPONS.lightning.damageType
@@ -272,8 +306,8 @@ function spawnLightningShot() {
 
 function spawnMissileShot() {
   const level = player.weaponLevels.missiles;
-  const count = level === 1 ? 1 : level === 2 ? 2 : 3;
-  const offsets = count === 1 ? [0] : count === 2 ? [-20, 20] : [-36, 0, 36];
+  const count = Math.min(4, 1 + Math.floor((level - 1) / 3));
+  const offsets = Array.from({ length: count }, (_, i) => (i - (count - 1) / 2) * 18);
   for (const ox of offsets) {
     playerBullets.push({
       x: player.x + ox,
@@ -281,10 +315,10 @@ function spawnMissileShot() {
       vx: ox * 0.03,
       vy: -10,
       type: 'missile',
-      damage: 38 + level * 18,
-      w: 8 + level * 3,
-      h: 18 + level * 4,
-      r: 6 + level * 3,
+      damage: 28 + level * 12,
+      w: 4.5,
+      h: 13,
+      r: 4,
       color: WEAPONS.missiles.color,
       core: WEAPONS.missiles.core,
       damageType: WEAPONS.missiles.damageType,
@@ -299,14 +333,15 @@ function drawPlayerBullet(b) {
   ctx.shadowColor = b.color;
   if (b.type === 'missile') {
     ctx.translate(b.x, b.y);
-    const flame = ctx.createRadialGradient(0, b.h * 0.55, 0, 0, b.h * 0.55, b.r * 2.4);
+    ctx.rotate(Math.atan2(b.vy, b.vx) + Math.PI / 2);
+    const flame = ctx.createRadialGradient(0, b.h * 0.45, 0, 0, b.h * 0.45, b.r * 1.8);
     flame.addColorStop(0, '#ffffff');
     flame.addColorStop(0.2, '#ffd36a');
     flame.addColorStop(0.55, '#ff5b18');
     flame.addColorStop(1, 'rgba(255,40,0,0)');
     ctx.fillStyle = flame;
     ctx.beginPath();
-    ctx.ellipse(0, b.h * 0.55, b.r * 1.1, b.r * 2.4, 0, 0, Math.PI * 2);
+    ctx.ellipse(0, b.h * 0.48, b.r * 0.7, b.r * 1.8, 0, 0, Math.PI * 2);
     ctx.fill();
 
     const body = ctx.createLinearGradient(0, -b.h, 0, b.h * 0.35);
@@ -316,13 +351,11 @@ function drawPlayerBullet(b) {
     ctx.fillStyle = body;
     ctx.beginPath();
     ctx.moveTo(0, -b.h);
-    ctx.lineTo(-b.w * 0.95, b.h * 0.25);
-    ctx.lineTo(-b.w * 0.35, b.h * 0.05);
-    ctx.lineTo(-b.w * 0.9, b.h * 0.55);
-    ctx.lineTo(0, b.h * 0.32);
-    ctx.lineTo(b.w * 0.9, b.h * 0.55);
-    ctx.lineTo(b.w * 0.35, b.h * 0.05);
-    ctx.lineTo(b.w * 0.95, b.h * 0.25);
+    ctx.lineTo(-b.w * 0.72, b.h * 0.12);
+    ctx.lineTo(-b.w * 0.34, b.h * 0.3);
+    ctx.lineTo(0, b.h * 0.42);
+    ctx.lineTo(b.w * 0.34, b.h * 0.3);
+    ctx.lineTo(b.w * 0.72, b.h * 0.12);
     ctx.closePath();
     ctx.fill();
     ctx.strokeStyle = '#fff0a0';
@@ -331,16 +364,21 @@ function drawPlayerBullet(b) {
   } else if (b.type === 'lightning') {
     ctx.lineCap = 'round';
     for (let pass = 0; pass < 3; pass++) {
-      ctx.globalAlpha = pass === 0 ? 0.32 : pass === 1 ? 0.7 : 1;
-      ctx.strokeStyle = pass === 2 ? b.core : b.color;
-      ctx.lineWidth = pass === 0 ? b.w : pass === 1 ? b.w * 0.55 : Math.max(2, b.w * 0.18);
+      ctx.globalAlpha = pass === 0 ? 0.22 : pass === 1 ? 0.78 : 1;
+      ctx.strokeStyle = pass === 0 ? '#4f2ec5' : pass === 1 ? '#9178ff' : '#d4c8ff';
+      ctx.lineWidth = pass === 0 ? b.w * 1.15 : pass === 1 ? b.w * 0.44 : Math.max(1.2, b.w * 0.1);
       ctx.beginPath();
-      ctx.moveTo(b.x, b.y);
-      for (let i = 1; i <= 7; i++) {
-        const sway = Math.sin(frameCount * 0.45 + i * 1.7 + b.x * 0.02) * b.w * 0.75;
-        const randomEdge = (Math.random() - 0.5) * b.w * 1.4;
-        ctx.lineTo(b.x + sway + randomEdge, b.y - i * (b.h / 7));
-      }
+      ctx.moveTo(b.x + b.points[0].x, b.y + b.points[0].y);
+      for (let i = 1; i < b.points.length; i++) ctx.lineTo(b.x + b.points[i].x, b.y + b.points[i].y);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 0.75;
+    ctx.strokeStyle = '#9d86ff';
+    ctx.lineWidth = Math.max(1.1, b.w * 0.12);
+    for (const fork of b.forks) {
+      ctx.beginPath();
+      ctx.moveTo(b.x + fork[0].x, b.y + fork[0].y);
+      for (let i = 1; i < fork.length; i++) ctx.lineTo(b.x + fork[i].x, b.y + fork[i].y);
       ctx.stroke();
     }
   } else {
@@ -542,7 +580,7 @@ const PU_TYPES = ['laser', 'lightning', 'missiles', 'bomb', 'shield', 'health'];
 function spawnPowerUp(x, y) {
   if (Math.random() > 0.5) return;
   const type = PU_TYPES[Math.floor(Math.random() * PU_TYPES.length)];
-  powerUps.push({ x, y, type, vy: 2, r: 14, phase: 0 });
+  powerUps.push({ x, y, type, vx: (Math.random() - 0.5) * 1.6, vy: 1.35, r: 15, phase: Math.random() * Math.PI * 2 });
 }
 
 function drawPowerUp(p) {
@@ -568,29 +606,48 @@ function drawPowerUp(p) {
   };
   ctx.shadowColor = colors[p.type];
   ctx.strokeStyle = colors[p.type];
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.arc(p.x, p.y, p.r + Math.sin(p.phase) * 2, 0, Math.PI * 2);
-  ctx.stroke();
-  const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 1.8);
-  g.addColorStop(0, `${colors[p.type]}aa`);
-  g.addColorStop(0.55, `${colors[p.type]}44`);
-  g.addColorStop(1, `${colors[p.type]}00`);
-  ctx.fillStyle = g;
-  ctx.fill();
+  ctx.lineWidth = 1.8;
+  const pull = player.x - p.x;
+  if (Math.abs(pull) < 300) p.vx += Math.sign(pull) * 0.018;
+  p.vx *= 0.985;
+  p.x += p.vx + Math.sin(p.phase * 1.5) * 0.35;
+  p.x = clamp(p.x, 24, BASE_W - 24);
+  // Physical upgrade modules drift down the fight instead of reading as UI blips.
+  ctx.translate(p.x, p.y);
+  ctx.rotate(Math.sin(p.phase) * 0.18);
+  ctx.fillStyle = '#101521';
+  ctx.fillRect(-10, -13, 20, 26);
+  ctx.strokeRect(-10, -13, 20, 26);
+  ctx.fillStyle = colors[p.type];
+  if (p.type === 'missiles') {
+    [-5, 5].forEach(px => { ctx.beginPath(); ctx.moveTo(px, -11); ctx.lineTo(px - 3, 7); ctx.lineTo(px + 3, 7); ctx.closePath(); ctx.fill(); });
+  } else if (p.type === 'lightning') {
+    ctx.beginPath(); ctx.moveTo(1, -11); ctx.lineTo(-6, 0); ctx.lineTo(0, 0); ctx.lineTo(-2, 11); ctx.lineTo(7, -3); ctx.lineTo(2, -3); ctx.closePath(); ctx.fill();
+  } else if (p.type === 'laser') {
+    ctx.fillRect(-3, -11, 6, 22);
+  } else {
+    ctx.beginPath(); ctx.arc(0, 0, 7, 0, Math.PI * 2); ctx.fill();
+  }
   ctx.fillStyle = '#ffffff';
   ctx.font = 'bold 14px Arial';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(labels[p.type], p.x, p.y);
+  ctx.fillText(labels[p.type], 0, 0);
   ctx.restore();
 }
 
 function collectPowerUp(type) {
   if (type === 'laser' || type === 'lightning' || type === 'missiles') {
+    // The ship holds ten physical weapon components. New modules eject the
+    // oldest removable component so every pickup has a meaningful tradeoff.
+    while (player.componentOrder.length >= 10) {
+      const removeAt = player.componentOrder.findIndex(component => component !== 'laser' || player.weaponLevels.laser > 1);
+      const removed = player.componentOrder.splice(removeAt < 0 ? 0 : removeAt, 1)[0];
+      player.weaponLevels[removed] = Math.max(removed === 'laser' ? 1 : 0, player.weaponLevels[removed] - 1);
+    }
     player.unlockedWeapons[type] = true;
-    player.weapon = type;
-    player.weaponLevels[type] = Math.min(3, player.weaponLevels[type] + 1);
+    player.componentOrder.push(type);
+    player.weaponLevels[type]++;
   } else if (type === 'bomb') {
     player.bombs = Math.min(9, player.bombs + 1);
   } else if (type === 'shield') {
@@ -606,40 +663,45 @@ let enemyWaveTimer = 0;
 let waveEnemyCount = 0;
 
 const ENEMY_TYPES = {
-  grunt: { hp: 30, speed: 1.5, color: '#888', accentColor: '#aaa', score: 100, fireRate: 90, size: 22 },
-  fighter: { hp: 80, speed: 2, color: '#cc4400', accentColor: '#ff8800', score: 250, fireRate: 60, size: 26 },
-  heavy: { hp: 200, speed: 1, color: '#4466cc', accentColor: '#88aaff', score: 500, fireRate: 45, size: 34 },
+  grunt:       { hp: 35,  color: '#788394', accentColor: '#bdcbdd', score: 100, fireRate: 118, size: 20, behavior: 'drift', variant: 'dart' },
+  fighter:     { hp: 80,  color: '#c54120', accentColor: '#ff9a4b', score: 250, fireRate: 98, size: 25, behavior: 'weave', variant: 'wing' },
+  heavy:       { hp: 210, color: '#405dae', accentColor: '#8fc1ff', score: 500, fireRate: 132, size: 33, behavior: 'anchor', variant: 'heavy' },
+  interceptor: { hp: 65,  color: '#8b3ba5', accentColor: '#ef8cff', score: 300, fireRate: 108, size: 21, behavior: 'dive', variant: 'needle' },
+  weaver:      { hp: 110, color: '#168c80', accentColor: '#6dffe7', score: 400, fireRate: 112, size: 27, behavior: 'orbit', variant: 'crescent' },
+  drone:       { hp: 145, color: '#80611d', accentColor: '#ffe071', score: 450, fireRate: 126, size: 29, behavior: 'anchor', variant: 'drone' },
 };
 
 function spawnWave() {
-  const types = ['grunt', 'grunt', 'grunt', 'fighter', 'fighter', 'heavy'];
-  const type = types[Math.min(Math.floor((wave - 1) / 2), types.length - 1)];
+  const rosters = [
+    ['grunt', 'grunt', 'fighter'],
+    ['fighter', 'interceptor', 'weaver'],
+    ['heavy', 'interceptor', 'weaver', 'drone'],
+  ];
+  const roster = rosters[Math.min(2, Math.floor((wave - 1) / 3))];
+  const type = roster[Math.floor(Math.random() * roster.length)];
+  const clusterX = BASE_W * (0.24 + Math.random() * 0.52);
+  const count = 5 + Math.min(4, Math.floor(wave / 2));
   const formations = [
-    // V formation
+    // Stacked wedge: depth comes from rows, not a wall across the screen.
     () => {
-      const cx = BASE_W / 2;
-      const count = 7 + Math.min(wave, 6);
       for (let i = 0; i < count; i++) {
-        const col = i - Math.floor(count / 2);
-        enemies.push(makeEnemy(type, cx + col * 80, -50 - Math.abs(col) * 26, col * 0.35, 1.2));
+        const row = Math.floor(i / 3), col = (i % 3) - 1;
+        enemies.push(makeEnemy(type, clusterX + col * 62 + row * 10, 95 + row * 58, { entry: i % 2 ? 'loop-right' : 'loop-left' }));
       }
     },
-    // Horizontal line
+    // Corkscrew column.
     () => {
-      const count = 8 + Math.min(wave, 6);
       for (let i = 0; i < count; i++) {
-        enemies.push(makeEnemy(type, 80 + i * ((BASE_W - 160) / (count - 1)), -50, 0, 1.5));
+        const angle = i * 0.9;
+        enemies.push(makeEnemy(type, clusterX + Math.cos(angle) * 76, 95 + i * 42, { entry: 'spiral', phase: angle }));
       }
     },
-    // Diagonal sweep
+    // Two compact flanking cells that loop inward from different angles.
     () => {
-      const count = 6 + Math.min(wave, 4);
       for (let i = 0; i < count; i++) {
-        setTimeout(() => {
-          if (gameState === STATE.PLAYING) {
-            enemies.push(makeEnemy(type, i % 2 === 0 ? -40 : BASE_W + 40, 90 + i * 44, i % 2 === 0 ? 4 : -4, 2));
-          }
-        }, i * 300);
+        const side = i % 2 === 0 ? -1 : 1;
+        const row = Math.floor(i / 2);
+        enemies.push(makeEnemy(type, clusterX + side * (48 + row * 18), 100 + row * 66, { entry: side < 0 ? 'loop-left' : 'loop-right' }));
       }
     },
   ];
@@ -647,10 +709,17 @@ function spawnWave() {
   waveEnemyCount = enemies.length;
 }
 
-function makeEnemy(type, x, y, vx, vy) {
+function makeEnemy(type, x, y, options = {}) {
   const t = ENEMY_TYPES[type];
+  const entry = options.entry || 'loop-left';
+  const fromLeft = entry === 'loop-left';
   return {
-    x, y, vx, vy,
+    x: fromLeft ? -70 : entry === 'loop-right' ? BASE_W + 70 : x,
+    y: entry === 'spiral' ? -70 : -45,
+    targetX: x, targetY: y,
+    startX: fromLeft ? -70 : entry === 'loop-right' ? BASE_W + 70 : x,
+    startY: entry === 'spiral' ? -70 : -45,
+    vx: 0, vy: 0,
     type,
     hp: t.hp * (1 + (wave - 1) * 0.15),
     maxHp: t.hp * (1 + (wave - 1) * 0.15),
@@ -659,9 +728,15 @@ function makeEnemy(type, x, y, vx, vy) {
     fireRate: t.fireRate,
     fireTick: Math.floor(Math.random() * t.fireRate),
     size: t.size,
-    phase: Math.random() * Math.PI * 2,
-    wobble: Math.random() < 0.5,
-    wobbleAmp: Math.random() * 1.5 + 0.5,
+    phase: options.phase || Math.random() * Math.PI * 2,
+    behavior: t.behavior,
+    variant: t.variant,
+    entry,
+    entryTick: Math.floor(Math.random() * 22),
+    entryDuration: 92 + Math.floor(Math.random() * 35),
+    entryDone: false,
+    age: 0,
+    baseX: x,
     dead: false,
     hitFlash: 0,
   };
@@ -669,7 +744,6 @@ function makeEnemy(type, x, y, vx, vy) {
 
 function drawEnemy(e) {
   e.phase += 0.04;
-  if (e.wobble) e.x += Math.sin(e.phase) * e.wobbleAmp;
 
   ctx.save();
   ctx.translate(e.x, e.y);
@@ -706,6 +780,20 @@ function drawEnemy(e) {
   ctx.strokeStyle = 'rgba(255,255,255,0.42)';
   ctx.lineWidth = 1;
   ctx.stroke();
+
+  // Silhouettes make each enemy behavior legible before it starts firing.
+  ctx.strokeStyle = e.accentColor;
+  ctx.fillStyle = e.accentColor;
+  ctx.lineWidth = 1.5;
+  if (e.variant === 'needle') {
+    ctx.beginPath(); ctx.moveTo(-s * 0.22, s * 0.55); ctx.lineTo(0, -s * 1.28); ctx.lineTo(s * 0.22, s * 0.55); ctx.stroke();
+  } else if (e.variant === 'crescent') {
+    ctx.beginPath(); ctx.arc(0, -s * 0.06, s * 0.72, Math.PI * 0.18, Math.PI * 0.82); ctx.stroke();
+  } else if (e.variant === 'drone') {
+    [-1, 1].forEach(side => { ctx.fillRect(side * s * 0.7 - 3, -3, 6, 6); });
+  } else if (e.variant === 'heavy') {
+    ctx.fillRect(-s * 0.48, s * 0.1, s * 0.96, s * 0.2);
+  }
 
   const canopy = ctx.createLinearGradient(0, -s * 0.62, 0, s * 0.12);
   canopy.addColorStop(0, '#ffffff');
@@ -750,27 +838,20 @@ function drawEnemy(e) {
 }
 
 function enemyFireBullet(e) {
-  const dx = player.x - e.x;
-  const dy = player.y - e.y;
-  const dist = Math.sqrt(dx * dx + dy * dy);
-  const speed = 3.5 + wave * 0.15;
-  const nx = dx / dist * speed;
-  const ny = dy / dist * speed;
-
-  // Spread shot for heavy
-  if (e.type === 'heavy') {
-    for (let ang = -0.3; ang <= 0.3; ang += 0.3) {
-      const cos = Math.cos(ang), sin = Math.sin(ang);
-      enemyBullets.push({
-        x: e.x, y: e.y,
-        vx: nx * cos - ny * sin,
-        vy: nx * sin + ny * cos,
-        r: 5, life: 1,
-        color: '#00ddff',
-      });
-    }
-  } else {
-    enemyBullets.push({ x: e.x, y: e.y, vx: nx, vy: ny, r: 4, life: 1, color: '#00aacc' });
+  if (enemyBullets.length > 72) return;
+  const speed = 2.65 + Math.min(wave, 9) * 0.1;
+  const shots = e.type === 'heavy' || e.type === 'drone' ? [-0.13, 0.13] : [0];
+  const tilt = Math.sin(e.phase * 0.7) * 0.18;
+  for (const offset of shots) {
+    const angle = Math.PI / 2 + tilt + offset;
+    enemyBullets.push({
+      x: e.x, y: e.y + e.size * 0.45,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      r: e.type === 'heavy' ? 4.5 : 3.6,
+      life: 1,
+      color: e.accentColor,
+    });
   }
 }
 
@@ -1151,11 +1232,52 @@ function drawPlayer() {
   ctx.ellipse(0, -h * 0.2, w * 0.14, h * 0.27, 0, 0, Math.PI * 2);
   ctx.fill();
 
-  // Hull panel lines and active weapon rails
-  const railColor = WEAPONS[player.weapon].color;
-  ctx.strokeStyle = railColor;
+  // Attached modules visibly build the craft into a weapon platform.
+  const laserLevel = player.weaponLevels.laser;
+  const lightningLevel = player.weaponLevels.lightning;
+  const missileLevel = player.weaponLevels.missiles;
+  ctx.shadowBlur = 12;
+  if (laserLevel > 0) {
+    ctx.strokeStyle = WEAPONS.laser.color;
+    ctx.shadowColor = WEAPONS.laser.color;
+    ctx.lineWidth = 1.5 + Math.min(laserLevel, 5) * 0.28;
+    [-1, 1].forEach(side => {
+      ctx.beginPath();
+      ctx.moveTo(side * w * 0.25, h * 0.18);
+      ctx.lineTo(side * (w * 0.68 + Math.min(laserLevel, 4) * 2), -h * 0.08);
+      ctx.stroke();
+    });
+  }
+  if (lightningLevel > 0) {
+    ctx.strokeStyle = WEAPONS.lightning.color;
+    ctx.shadowColor = WEAPONS.lightning.color;
+    ctx.lineWidth = 1.8;
+    for (let i = 0; i < Math.min(lightningLevel, 4); i++) {
+      const side = i % 2 ? -1 : 1;
+      ctx.beginPath();
+      ctx.moveTo(side * (7 + i * 3), -h * 0.05);
+      ctx.lineTo(side * (13 + i * 5), -h * 0.27);
+      ctx.lineTo(side * (8 + i * 4), -h * 0.46);
+      ctx.stroke();
+    }
+  }
+  if (missileLevel > 0) {
+    ctx.fillStyle = '#c78b24';
+    ctx.shadowColor = WEAPONS.missiles.color;
+    for (let i = 0; i < Math.min(missileLevel, 6); i++) {
+      const side = i % 2 ? -1 : 1;
+      const row = Math.floor(i / 2);
+      const px = side * (w * 0.5 + row * 3);
+      const py = -h * 0.05 + row * 11;
+      ctx.beginPath();
+      ctx.moveTo(px, py - 9); ctx.lineTo(px - 3, py + 6); ctx.lineTo(px + 3, py + 6); ctx.closePath(); ctx.fill();
+    }
+  }
+
+  // Hull panel lines
+  ctx.strokeStyle = '#b8f6ff';
   ctx.lineWidth = 2.2;
-  ctx.shadowColor = railColor;
+  ctx.shadowColor = '#b8f6ff';
   ctx.shadowBlur = 12;
   ctx.beginPath();
   ctx.moveTo(-w * 0.56, h * 0.17);
@@ -1167,15 +1289,14 @@ function drawPlayer() {
   ctx.lineTo(w * 0.24, h * 0.42);
   ctx.stroke();
 
-  // Gun barrels
+  // Central and wing-mounted barrels reflect the installed laser hardware.
   ctx.fillStyle = '#d7e4f2';
   ctx.shadowBlur = 0;
-  const activeLevel = player.weaponLevels[player.weapon] || 1;
-  if (activeLevel >= 2) {
+  if (laserLevel >= 2) {
     ctx.fillRect(-w * 0.42, -h * 0.4, 5, 19);
     ctx.fillRect(w * 0.42 - 5, -h * 0.4, 5, 19);
   }
-  if (activeLevel >= 3) {
+  if (laserLevel >= 3) {
     ctx.fillRect(-4, -h * 0.63 - 6, 8, 24);
   } else {
     ctx.fillRect(-3, -h * 0.58 - 4, 6, 17);
@@ -1204,6 +1325,7 @@ function checkCollisions() {
   // Player bullets vs enemies
   for (let bi = playerBullets.length - 1; bi >= 0; bi--) {
     const b = playerBullets[bi];
+    if (b.expired) { playerBullets.splice(bi, 1); continue; }
     let hit = false;
 
     // vs enemies
@@ -1387,42 +1509,24 @@ function drawHUD() {
     }
   }
 
-  // Weapon status
-  const weaponNames = {
-    laser: WEAPONS.laser.name,
-    lightning: WEAPONS.lightning.name,
-    missiles: WEAPONS.missiles.name
-  };
-  const weaponColors = {
-    laser: WEAPONS.laser.color,
-    lightning: WEAPONS.lightning.color,
-    missiles: WEAPONS.missiles.color
-  };
+  // Compact armament readout—useful without competing with the playfield.
   ctx.textAlign = 'center';
-  ctx.shadowColor = weaponColors[player.weapon];
-  ctx.shadowBlur = 10;
-  ctx.fillStyle = weaponColors[player.weapon];
-  ctx.font = 'bold 14px Arial';
-  ctx.fillText(`${weaponNames[player.weapon]} LV ${player.weaponLevels[player.weapon]}`, BASE_W / 2, 42);
-
   ctx.shadowBlur = 0;
-  ctx.font = '11px Arial';
+  ctx.font = 'bold 11px Arial';
   ctx.fillStyle = '#aaaacc';
-  ctx.fillText(WEAPONS[player.weapon].damageType.toUpperCase(), BASE_W / 2, 58);
-  ctx.font = '10px Arial';
   const levels = [
     `${WEAPONS.laser.short}${player.weaponLevels.laser}`,
     `${WEAPONS.lightning.short}${player.weaponLevels.lightning}`,
     `${WEAPONS.missiles.short}${player.weaponLevels.missiles}`
-  ].join('  ');
-  ctx.fillText(levels, BASE_W / 2, 72);
+  ].join('   ');
+  ctx.fillText(levels, BASE_W / 2, 42);
 
   ctx.textAlign = 'right';
   ctx.fillStyle = player.bombs > 0 ? '#ff88cc' : '#775566';
   ctx.shadowColor = '#ff44aa';
   ctx.shadowBlur = player.bombs > 0 ? 10 : 0;
   ctx.font = 'bold 14px Arial';
-  ctx.fillText(`NOVA ${player.bombs}  [B]`, BASE_W - pad, BASE_H - 68);
+  ctx.fillText(`NOVA BOMBS ×${player.bombs}`, BASE_W - pad, BASE_H - 68);
 
   ctx.shadowBlur = 0;
 }
@@ -1554,9 +1658,9 @@ function startGame() {
   player.x = BASE_W / 2; player.y = BASE_H - 100;
   player.hp = player.maxHp;
   player.lives = 3;
-  player.weapon = 'laser';
   player.unlockedWeapons = { laser: true, lightning: false, missiles: false };
   player.weaponLevels = { laser: 1, lightning: 0, missiles: 0 };
+  player.componentOrder = ['laser'];
   player.bombs = 0;
   player.shield = 0;
   player.invincible = 0;
@@ -1576,6 +1680,10 @@ function startGame() {
 
 function updatePlayerBullets() {
   for (const b of playerBullets) {
+    if (b.type === 'lightning') {
+      b.age++;
+      if (b.age > b.ttl) { b.expired = true; continue; }
+    }
     if (b.type === 'missile') {
       const target = findNearestTarget(b.x, b.y);
       if (target) {
@@ -1623,20 +1731,48 @@ function updatePlaying() {
     if (b.x < -20 || b.x > BASE_W + 20 || b.y < -20 || b.y > BASE_H + 20) enemyBullets.splice(i, 1);
   }
 
-  // Move enemies
+  // Move enemies: each squad is vulnerable while it loops into position, then
+  // settles into a compact attack band near the top of the screen.
   for (let i = enemies.length - 1; i >= 0; i--) {
     const e = enemies[i];
-    e.x += e.vx;
-    e.y += e.vy;
-    // Slow down once on screen
-    if (e.y > 60) {
-      e.vy = Math.max(0.6, e.vy - 0.02);
-      e.vx *= 0.99;
+    if (!e.entryDone) {
+      e.entryTick++;
+      const p = Math.min(1, e.entryTick / e.entryDuration);
+      const loop = p * Math.PI * 2.45 + e.phase;
+      const fade = 1 - p;
+      const radiusX = e.entry === 'spiral' ? 82 : 118;
+      const radiusY = e.entry === 'spiral' ? 58 : 72;
+      e.x = e.startX + (e.targetX - e.startX) * p + Math.sin(loop) * radiusX * fade;
+      e.y = e.startY + (e.targetY - e.startY) * p - Math.cos(loop) * radiusY * fade;
+      if (p >= 1) {
+        e.entryDone = true;
+        e.x = e.targetX;
+        e.y = e.targetY;
+        e.baseX = e.x;
+      }
+    } else {
+      e.age++;
+      if (e.behavior === 'weave') {
+        e.x = e.baseX + Math.sin(e.age * 0.035 + e.phase) * 72;
+        e.y = e.targetY + Math.sin(e.age * 0.055 + e.phase) * 22;
+      } else if (e.behavior === 'orbit') {
+        e.x = e.baseX + Math.cos(e.age * 0.032 + e.phase) * 52;
+        e.y = e.targetY + Math.sin(e.age * 0.064 + e.phase) * 20;
+      } else if (e.behavior === 'dive') {
+        e.x = e.baseX + Math.sin(e.age * 0.045 + e.phase) * 85;
+        e.y = e.targetY + Math.max(0, Math.sin(e.age * 0.022 + e.phase)) * 130;
+      } else if (e.behavior === 'drift') {
+        e.x = e.baseX + Math.sin(e.age * 0.025 + e.phase) * 34;
+        e.y = e.targetY + Math.sin(e.age * 0.04 + e.phase) * 14;
+      } else {
+        e.x = e.baseX + Math.sin(e.age * 0.02 + e.phase) * 24;
+        e.y = e.targetY + Math.sin(e.age * 0.035 + e.phase) * 10;
+      }
     }
     // Auto-fire
     e.fireTick++;
     if (e.fireTick >= e.fireRate) {
-      if (e.y > -20) enemyFireBullet(e);
+      if (e.entryDone) enemyFireBullet(e);
       e.fireTick = 0;
     }
     // Remove if off screen
@@ -1775,3 +1911,4 @@ gameLoop();
 </script>
 </body>
 </html>
+
