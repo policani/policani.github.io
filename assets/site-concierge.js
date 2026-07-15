@@ -5,8 +5,8 @@
 
   const links = [
     ["Role fit", "pmo-portfolio-governance-leader.html"],
-    ["Proof points", "operating-history.html#entries"],
-    ["Portfolio map", "portfolio.html"]
+    ["Case studies", "operating-history.html#entries"],
+    ["Methods", "artifacts.html"]
   ];
 
   function createElement(tag, className, text) {
