@@ -1,4 +1,38 @@
 (() => {
+  const simplifyNavigation = () => {
+    const labels = new Map([
+      ["pmo-portfolio-governance-leader.html", "Profile"],
+      ["operating-history.html", "Work"],
+      ["artifacts.html", "Guides"],
+      ["governance/", "Governance"],
+      ["modules.html", "Systems"],
+      ["proof.html", "Proof"],
+      ["resources.html", "Resources"],
+      ["contact.html", "Contact"],
+      ["search.html", "Search"]
+    ]);
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      const href = (link.getAttribute("href") || "").replace(/^\.?(?:\/)/, "");
+      const label = labels.get(href);
+      if (label) link.textContent = label;
+    });
+  };
+
+  const addSearchLink = () => {
+    const navLinks = document.querySelector(".nav-links");
+    if (!navLinks || navLinks.querySelector('a[href="/search.html"], a[href="search.html"]')) return;
+
+    const link = document.createElement("a");
+    link.href = "/search.html";
+    link.className = "nav-search-link";
+    link.textContent = "Search";
+    navLinks.append(link);
+  };
+
+  simplifyNavigation();
+  addSearchLink();
+
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const heroes = Array.from(document.querySelectorAll(".hero, .deck-hero"));
   const nav = document.querySelector(".local-nav");

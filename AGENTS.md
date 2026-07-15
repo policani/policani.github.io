@@ -98,3 +98,34 @@ channel strategy, and staging state in planning notes or handoff notes.
   `cd E:\Codex\policani.github.io; .\publish.ps1 -DryRun`
 - After deployment, verify the live `https://policani.net` URL for changed
   pages when practical.
+
+## Search Console Review Procedure
+
+Use Google Search Console whenever the task involves SEO, search visibility,
+indexing, title/metadata changes, or a material content release. Open the
+verified apex-domain property:
+
+`https://search.google.com/search-console?resource_id=sc-domain%3Apolicani.net`
+
+1. In **Performance**, keep the search type at **Web** and start with the
+   **last 3 months**. Record clicks, impressions, CTR, and average position.
+   Review both **Queries** and **Pages**.
+2. Separate branded, self-test, and known internal queries from non-branded
+   discovery. Do not treat searches for `policani` or the owner's own test
+   visits as evidence of recruiting demand.
+3. Compare the non-branded queries and visible pages against the intended
+   reader and role language. For this site, inspect whether Program Manager,
+   Project Manager, PMO Manager, Portfolio Manager, portfolio governance,
+   delivery readiness, and related evidence terms are earning impressions.
+   Use gaps to improve a relevant existing page before creating thin
+   keyword-targeted pages.
+4. In **Indexing > Pages**, review indexed and not-indexed counts and the
+   reason categories for pages that should be public. Treat the `www` URL's
+   redirect status as expected when the canonical apex URL returns `200`.
+5. Check **Enhancements > Profile page** for valid and invalid items. Note
+   that Core Web Vitals can show no field data until the site has enough real
+   traffic; that is not, by itself, a defect.
+6. After an approved, deployed change to an important page, use **URL
+   inspection** to confirm Google's canonical/indexing view and request
+   indexing when appropriate. Recheck the performance window after enough
+   time has passed to distinguish a trend from a small sample.
