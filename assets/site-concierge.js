@@ -5,7 +5,7 @@
 
   const links = [
     ["Role fit", "pmo-portfolio-governance-leader.html"],
-    ["Case studies", "operating-history.html#entries"],
+    ["Cases", "operating-history.html#entries"],
     ["Methods", "artifacts.html"]
   ];
 
