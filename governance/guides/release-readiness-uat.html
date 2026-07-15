@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://policani.net/governance/guides/release-readiness-uat.html">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
-<link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260706-productioncopy">
+<link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260715-ia">
 <link rel="stylesheet" href="../../assets/experience-dashboard.css?v=20260617-type">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,9 +23,20 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<nav class="local-nav" aria-label="Top-level portfolio sections"><div class="nav-inner"><a class="nav-title" href="../../index.html">Marco Policani</a><div class="nav-links"><a href="../../pmo-portfolio-governance-leader.html">Profile</a><a href="../../operating-history.html">Work</a><a href="../../artifacts.html">Guides</a>
-<a href="../" aria-current="page">Governance</a><a href="../../modules.html">Systems</a><a href="../../proof.html">Proof</a><a href="../../contact.html">Contact</a>
-<a class="nav-search-link" href="/search.html">Search</a></div></div></nav>
+<nav class="local-nav" aria-label="Top-level portfolio sections">
+  <div class="nav-inner">
+    <a class="nav-title" href="../../index.html">Marco Policani</a>
+    <div class="nav-links">
+      <a href="../../pmo-portfolio-governance-leader.html">Profile</a>
+      <a href="../../operating-history.html">Cases</a>
+      <a href="../../artifacts.html">Methods</a>
+      <a href="../index.html" aria-current="page">Insights</a>
+      <a href="../../resources.html">Labs</a>
+      <a href="../../contact.html">Contact</a>
+      <a class="nav-search-link" href="/search.html" aria-label="Search" title="Search"><span aria-hidden="true">⌕</span></a>
+    </div>
+  </div>
+</nav>
 <main id="main">
 <header class="hero guide-hero" data-parallax-travel="180"><div class="portfolio-hero-filament-bg" aria-hidden="true"><canvas class="portfolio-hero-filament-canvas"></canvas></div><div class="section-inner guide-hero-grid"><div><p class="section-kicker">Delivery governance guide</p><h1>Release Readiness and UAT</h1><p class="lead">Readiness is more than task completion. The harder question is whether the business, users, systems, data, controls, support model, and decision owners are actually ready for change.</p><div class="guide-marker-row" aria-label="Guide themes"><span class="guide-marker">Go/no-go discipline</span><span class="guide-marker">Business acceptance</span><span class="guide-marker">Risk ownership</span></div></div><aside class="guide-evaluation-panel"><h3>Best for evaluating</h3><p>Release readiness, UAT governance, deployment coordination, business acceptance, and risk translation.</p><div class="guide-signal-list"><span>Separates test execution from acceptance.</span><span>Surfaces unresolved operational risk before launch.</span><span>Makes residual risk owner-assigned and reviewable.</span></div></aside></div></header>
 <section><div class="section-inner"><div class="grid-3"><article class="card"><h3>The operating problem</h3><p>Release readiness can become a checklist exercise when teams focus only on whether tasks are complete, rather than whether the business, support model, and data can actually absorb the change.</p></article><article class="card"><h3>The useful move</h3><p>Treat readiness as an operating signal, not a percentage. UAT, deployment governance, and release decisions should expose unresolved risk before it becomes disruption, not after.</p></article><article class="card"><h3>What good looks like</h3><p>Cleaner release decisions, stronger business acceptance, earlier production-risk detection, better support readiness, and less last-minute escalation into executive calendars.</p></article></div></div></section>
@@ -35,10 +46,10 @@
 <section><div class="section-inner"><p class="section-kicker">Where this breaks</p><h2>How releases get in trouble.</h2><div class="grid-3"><article class="card"><h3>Green checklist, red reality</h3><p>Tasks are marked complete, but no one with business or finance authority has actually accepted the outcome.</p></article><article class="card"><h3>Late discovery</h3><p>Finance, support, or compliance stakeholders are pulled in during the final week, when the cost of a gap is highest.</p></article><article class="card"><h3>No named risk owner</h3><p>Residual risk rides along inside a green status because no one was asked to explicitly accept it.</p></article><article class="card"><h3>Execution mistaken for acceptance</h3><p>Passing test scripts gets treated as proof of readiness, even though acceptance is a separate business judgment.</p></article><article class="card"><h3>No conditional-go option</h3><p>A binary go/no-go forces a premature yes when a time-bound, owner-assigned conditional go would be the honest answer.</p></article></div></div></section>
 <section class="section-white"><div class="section-inner"><p class="section-kicker">Decision test</p><h2>A release is ready when the organization can own the residual risk.</h2><div class="grid-3"><article class="card"><h3>Go</h3><p>Acceptance evidence is credible, support is ready, known risks have owners, and the business can absorb the change.</p></article><article class="card"><h3>Conditional go</h3><p>Remaining risk is understood, time-bound, owner-assigned, and accepted by the right decision forum.</p></article><article class="card"><h3>No-go</h3><p>The release would push unresolved ownership, data, control, support, or business acceptance risk into production.</p></article></div></div></section>
 <section><div class="section-inner"><p class="section-kicker">Questions this raises</p><h2>What sponsors ask before agreeing to this.</h2><div class="grid-3"><article class="card"><h3>Doesn't front-loading readiness slow delivery?</h3><p>It prevents the far more expensive alternative: discovering a gap during the final week, when the fix is rushed and the audience is executive.</p></article><article class="card"><h3>What if finance or business SMEs aren't available early?</h3><p>That availability constraint is the actual problem to solve. Naming it and building the calendar around it beats discovering it at go/no-go.</p></article><article class="card"><h3>What does a conditional go actually require?</h3><p>A named owner, a time-bound remediation date, and explicit acceptance by the right forum &mdash; not a verbal comfort level in the room.</p></article></div></div></section>
-<section><div class="section-inner two-col"><div><p class="section-kicker">Continue</p><h2>Related governance pages.</h2></div><div class="proof-box"><div class="repo-links"><a href="value-realization.html">Value Realization</a><a href="executive-decision-support.html">Executive Decision Support</a><a href="../../engagements/microsoft-commerce-finance.html">Related case study</a><a href="../">Back to Governance Library</a></div></div></div></section>
+<section><div class="section-inner two-col"><div><p class="section-kicker">Continue</p><h2>Related governance pages.</h2></div><div class="proof-box"><div class="repo-links"><a href="value-realization.html">Value Realization</a><a href="executive-decision-support.html">Executive Decision Support</a><a href="../../engagements/microsoft-commerce-finance.html">Related case study</a><a href="../">Back to Insights</a></div></div></div></section>
 </main>
-<footer><div class="section-inner"><p>Marco Policani | <a href="../">Governance Library</a> | <a href="../../index.html">Portfolio overview</a></p></div></footer>
-<script src="../../assets/hero-parallax.js?v=20260715-navfix" defer></script>
+<footer><div class="section-inner"><p>Marco Policani | <a href="../">Insights</a> | <a href="../../index.html">Portfolio overview</a></p></div></footer>
+<script src="../../assets/hero-parallax.js?v=20260715-ia" defer></script>
 <script src="../../assets/portfolio-signal-field.js?v=20260613-signalfield" defer></script>
 <script src="../../assets/portfolio-hero-filament.js?v=20260613-signalfield" defer></script>
 <script src="../../assets/site-concierge.js?v=20260703-contact" defer></script>

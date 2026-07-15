@@ -4,10 +4,11 @@
     { title: "Case Studies", url: "/operating-history.html", type: "Case studies", summary: "Ten public-safe case studies across enterprise software, telecom, SaaS, energy, and infrastructure.", keywords: "experience outcomes microsoft t-mobile avalara doosan gridtech miso delivery program project portfolio" },
     { title: "Portfolio Map", url: "/portfolio.html", type: "Portfolio", summary: "Operating problems, the structure behind them, and links to the supporting evidence.", keywords: "portfolio map operating problems governance proof" },
     { title: "PMO Operating Model Design", url: "/pmo-operating-model.html", type: "Portfolio", summary: "Decision rights, cadence, governance forums, controls, and accountable follow-through.", keywords: "pmo manager operating model governance cadence decision rights" },
-    { title: "Walkthroughs", url: "/artifacts.html", type: "Walkthroughs", summary: "Public-safe walkthroughs showing how ambiguous work becomes governable.", keywords: "workflow intake prioritization readiness delivery proof" },
-    { title: "Workflow Systems", url: "/modules.html", type: "Workflow systems", summary: "Reusable structures for intake, scoring, charters, readiness, value, and AI workflow governance.", keywords: "modules workflow systems portfolio prioritization charter value realization" },
+    { title: "Methods: Walkthroughs", url: "/artifacts.html", type: "Methods", summary: "Client-safe walkthroughs showing how ambiguous work becomes governable.", keywords: "methods walkthroughs workflow intake prioritization readiness delivery proof" },
+    { title: "Methods: Modules and PoCs", url: "/modules.html", type: "Methods", summary: "Reusable modules and proof-of-concept structures for intake, scoring, charters, readiness, value, and AI workflow governance.", keywords: "methods modules pocs workflow systems portfolio prioritization charter value realization" },
     { title: "Evidence and Boundaries", url: "/proof.html", type: "Portfolio", summary: "How to read the evidence, public-safety boundaries, and capability signals.", keywords: "proof evidence confidentiality public safe" },
-    { title: "Portfolio and AI Governance", url: "/governance/", type: "Governance", summary: "Guides and field notes on portfolio, delivery, executive decision support, and AI operating governance.", keywords: "governance pmo ai operations executive decision support" },
+    { title: "Insights: Portfolio, Delivery, and AI Operations", url: "/governance/", type: "Insights", summary: "Guides, field notes, and white papers on portfolio leadership, delivery, executive decision support, and AI operations.", keywords: "insights governance pmo ai operations executive decision support" },
+    { title: "Labs: Applied AI Systems and Tools", url: "/resources.html", type: "Labs", summary: "Applied AI systems, career tools, and experiments from Marco Policani.", keywords: "labs ai systems tools knowledge career experiments memventory subagent" },
     { title: "Contact Marco Policani", url: "/contact.html", type: "Contact", summary: "Contact Marco about remote program, project, PMO, portfolio, and governance roles.", keywords: "contact recruiter hiring remote program project pmo portfolio manager" },
     { title: "T-Mobile: Revenue Technology Portfolio", url: "/engagements/tmobile-revenue-technology.html", type: "Case study", summary: "Resetting portfolio signal and readiness-gated flow across a large revenue technology portfolio.", keywords: "t-mobile program manager portfolio delivery readiness cycle time" },
     { title: "Doosan GridTech: Delivery Sequencing", url: "/engagements/doosan-gridtech.html", type: "Case study", summary: "Sequencing software, construction, and security under capital and engineering constraints.", keywords: "doosan gridtech project manager program delivery capital cybersecurity" },
@@ -102,7 +103,7 @@
     const trimmed = query.trim();
 
     if (!trimmed) {
-      status.textContent = "Search by role, operating problem, case study, or governance topic.";
+      status.textContent = "Search by role, operating problem, case study, method, or insight.";
       entries.slice(0, 8).forEach(addResult);
       return;
     }
