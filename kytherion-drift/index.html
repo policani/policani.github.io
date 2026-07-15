@@ -93,6 +93,8 @@ window.addEventListener('resize', resize);
 // ─── GAME STATE ────────────────────────────────────────────────
 const STATE = { TITLE: 0, PLAYING: 1, BOSS: 2, LEVEL_UP: 3, GAME_OVER: 4, WIN: 5 };
 let gameState = STATE.TITLE;
+let mousePaused = false;
+let pauseOverlayDrawn = false;
 let score = 0;
 let hiScore = 0;
 let wave = 1;
@@ -212,6 +214,20 @@ window.addEventListener('keyup', e => { keys[e.key] = false; });
 canvas.addEventListener('click', () => {
   if (gameState === STATE.TITLE || gameState === STATE.GAME_OVER || gameState === STATE.WIN) startGame();
 });
+canvas.addEventListener('mousedown', e => {
+  if (e.button !== 0) return;
+  if (gameState === STATE.TITLE || gameState === STATE.GAME_OVER || gameState === STATE.WIN) {
+    startGame();
+    return;
+  }
+  if (gameState === STATE.PLAYING || gameState === STATE.BOSS) {
+    mousePaused = true;
+    pauseOverlayDrawn = false;
+    e.preventDefault();
+  }
+});
+window.addEventListener('mouseup', () => { mousePaused = false; });
+window.addEventListener('blur', () => { mousePaused = false; });
 
 function clamp(v, mn, mx) { return Math.max(mn, Math.min(mx, v)); }
 
@@ -251,57 +267,51 @@ function spawnLaserSpray() {
 
 function spawnLightningShot() {
   const level = player.weaponLevels.lightning;
-  const count = Math.min(5, 1 + Math.floor((level - 1) / 2));
-  const cone = 0.16 + level * 0.08;
-  const offsets = Array.from({ length: count }, (_, i) => (i - (count - 1) / 2) * 16);
-  for (const ox of offsets) {
-    const i = offsets.indexOf(ox);
-    const spread = count === 1 ? 0 : (i / (count - 1) - 0.5) * cone * 2;
-    const length = 94 + level * 24;
-    const segments = 8 + Math.min(level, 5);
-    const points = [{ x: 0, y: 0 }];
-    let jitter = 0;
-    for (let step = 1; step <= segments; step++) {
-      jitter = clamp(jitter + (Math.random() - 0.5) * (18 + level * 2), -(18 + level * 3), 18 + level * 3);
-      points.push({
-        x: Math.sin(spread) * length * (step / segments) + jitter,
-        y: -Math.cos(spread) * length * (step / segments)
-      });
-    }
-    const forks = [];
-    for (let fork = 0; fork < Math.floor(level / 3); fork++) {
-      const root = points[3 + Math.floor(Math.random() * Math.max(1, points.length - 5))];
-      const forkPoints = [{ x: root.x, y: root.y }];
-      let fx = root.x, fy = root.y;
-      let angle = -Math.PI / 2 + spread + (Math.random() - 0.5) * 1.05;
-      for (let step = 0; step < 3; step++) {
-        angle += (Math.random() - 0.5) * 0.5;
-        const segment = 16 + Math.random() * 16;
-        fx += Math.cos(angle) * segment;
-        fy += Math.sin(angle) * segment;
-        forkPoints.push({ x: fx, y: fy });
-      }
-      forks.push(forkPoints);
-    }
-    playerBullets.push({
-      x: player.x + ox,
-      y: player.y - 34,
-      vx: Math.sin(spread) * 8,
-      vy: -Math.cos(spread) * 18,
-      type: 'lightning',
-      damage: 22 + level * 11,
-      w: 8 + Math.min(level, 5) * 2,
-      h: length,
-      points,
-      forks,
-      ttl: 13,
-      age: 0,
-      pierce: 1 + Math.ceil(level / 2),
-      color: WEAPONS.lightning.color,
-      core: WEAPONS.lightning.core,
-      damageType: WEAPONS.lightning.damageType
-    });
+  const length = 142 + level * 26;
+  const segments = 10 + Math.min(level, 5);
+  const points = [{ x: 0, y: 0 }];
+  let x = 0;
+  for (let step = 1; step <= segments; step++) {
+    // One trunk always grows forward from the ship. It never fans out.
+    x = clamp(x + (Math.random() - 0.5) * (14 + level * 2), -28, 28);
+    points.push({ x, y: -length * (step / segments) });
   }
+
+  // Branches sprout at irregular positions along the forward trunk, like a tree.
+  const forks = [];
+  const branchCount = Math.min(7, 1 + level * 2);
+  for (let branch = 0; branch < branchCount; branch++) {
+    const rootIndex = 2 + Math.floor(Math.random() * Math.max(1, points.length - 4));
+    const root = points[rootIndex];
+    const forkPoints = [{ x: root.x, y: root.y }];
+    let fx = root.x, fy = root.y;
+    const side = Math.random() < 0.5 ? -1 : 1;
+    for (let step = 0; step < 3 + Math.floor(Math.random() * 2); step++) {
+      const distance = 12 + Math.random() * 12;
+      fx += side * distance * (0.35 + Math.random() * 0.35);
+      fy -= distance * (0.7 + Math.random() * 0.35);
+      forkPoints.push({ x: fx, y: Math.max(-length, fy) });
+    }
+    forks.push(forkPoints);
+  }
+  playerBullets.push({
+    x: player.x,
+    y: player.y - 34,
+    vx: 0,
+    vy: -16,
+    type: 'lightning',
+    damage: 30 + level * 14,
+    w: 8 + Math.min(level, 5) * 1.5,
+    h: length,
+    points,
+    forks,
+    ttl: 11,
+    age: 0,
+    pierce: 2 + Math.ceil(level / 2),
+    color: WEAPONS.lightning.color,
+    core: WEAPONS.lightning.core,
+    damageType: WEAPONS.lightning.damageType
+  });
 }
 
 function spawnMissileShot() {
@@ -358,6 +368,14 @@ function drawPlayerBullet(b) {
     ctx.lineTo(b.w * 0.72, b.h * 0.12);
     ctx.closePath();
     ctx.fill();
+    // Guidance fins and a dark engine band give each projectile a missile silhouette.
+    ctx.fillStyle = '#5b2b12';
+    ctx.beginPath(); ctx.moveTo(-b.w * 0.45, b.h * 0.05); ctx.lineTo(-b.w * 1.45, b.h * 0.46); ctx.lineTo(-b.w * 0.35, b.h * 0.36); ctx.closePath(); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(b.w * 0.45, b.h * 0.05); ctx.lineTo(b.w * 1.45, b.h * 0.46); ctx.lineTo(b.w * 0.35, b.h * 0.36); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#202a34';
+    ctx.fillRect(-b.w * 0.5, b.h * 0.14, b.w, b.h * 0.12);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(-b.w * 0.18, -b.h * 0.66, b.w * 0.36, b.h * 0.32);
     ctx.strokeStyle = '#fff0a0';
     ctx.lineWidth = 1.5;
     ctx.stroke();
@@ -684,13 +702,43 @@ function drawInstalledModule(type, slotIndex) {
   ctx.save();
   ctx.translate(slot.x, slot.y);
   ctx.rotate(slot.rot);
-  ctx.strokeStyle = '#71869b';
-  ctx.lineWidth = 3;
-  ctx.beginPath();
-  ctx.moveTo(0, 10);
-  ctx.lineTo(0, 18);
-  ctx.stroke();
-  drawModuleHardware(type, 0.72);
+  // Installed upgrades are faired into the hull rather than floating objects.
+  if (type === 'laser') {
+    ctx.fillStyle = '#34475a';
+    ctx.strokeStyle = '#a9c8de';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(-8, 12); ctx.lineTo(-11, 2); ctx.lineTo(-6, -13); ctx.lineTo(6, -13); ctx.lineTo(11, 2); ctx.lineTo(8, 12); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.fillStyle = WEAPONS.laser.color;
+    ctx.fillRect(-3, -21, 6, 16);
+    ctx.fillStyle = '#f7ffff';
+    ctx.fillRect(-1, -20, 2, 12);
+    ctx.fillStyle = '#71889d';
+    [-5, 0, 5].forEach(x => ctx.fillRect(x - 1, 4, 2, 5));
+  } else if (type === 'lightning') {
+    ctx.fillStyle = '#273142';
+    ctx.strokeStyle = '#9a7cff';
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.roundRect(-9, -9, 18, 21, 4); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = WEAPONS.lightning.color;
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.ellipse(0, -1, 5, 8, 0, 0, Math.PI * 2); ctx.stroke();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(-1, -5, 2, 9);
+  } else {
+    ctx.fillStyle = '#35414c';
+    ctx.strokeStyle = '#d5b263';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(-12, 10); ctx.lineTo(-12, -8); ctx.lineTo(-7, -14); ctx.lineTo(7, -14); ctx.lineTo(12, -8); ctx.lineTo(12, 10); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#171d27';
+    [-5, 5].forEach(x => { ctx.fillRect(x - 3, -10, 6, 12); });
+    ctx.fillStyle = WEAPONS.missiles.color;
+    [-5, 5].forEach(x => { ctx.fillRect(x - 1, -9, 2, 5); });
+  }
   ctx.restore();
 }
 
@@ -766,13 +814,16 @@ const ENEMY_TYPES = {
   interceptor: { hp: 65,  color: '#8b3ba5', accentColor: '#ef8cff', score: 300, fireRate: 108, size: 21, behavior: 'dive', variant: 'needle' },
   weaver:      { hp: 110, color: '#168c80', accentColor: '#6dffe7', score: 400, fireRate: 112, size: 27, behavior: 'orbit', variant: 'crescent' },
   drone:       { hp: 145, color: '#80611d', accentColor: '#ffe071', score: 450, fireRate: 126, size: 29, behavior: 'anchor', variant: 'drone' },
+  raider:      { hp: 95,  color: '#49658a', accentColor: '#a4dcff', score: 360, fireRate: 102, size: 26, behavior: 'weave', variant: 'saucer' },
+  beetle:      { hp: 180, color: '#783c30', accentColor: '#ff9c68', score: 520, fireRate: 128, size: 31, behavior: 'anchor', variant: 'beetle' },
+  sentinel:    { hp: 135, color: '#416a5a', accentColor: '#8dffbd', score: 460, fireRate: 116, size: 28, behavior: 'orbit', variant: 'trident' },
 };
 
 function spawnWave() {
   const rosters = [
-    ['grunt', 'grunt', 'fighter'],
-    ['fighter', 'interceptor', 'weaver'],
-    ['heavy', 'interceptor', 'weaver', 'drone'],
+    ['grunt', 'grunt', 'fighter', 'raider'],
+    ['fighter', 'interceptor', 'weaver', 'sentinel'],
+    ['heavy', 'interceptor', 'weaver', 'drone', 'beetle', 'sentinel'],
   ];
   const roster = rosters[Math.min(2, Math.floor((wave - 1) / 3))];
   const type = roster[Math.floor(Math.random() * roster.length)];
@@ -862,16 +913,28 @@ function drawEnemy(e) {
 
   ctx.fillStyle = hull;
   ctx.beginPath();
-  ctx.moveTo(0, -s * 1.05);
-  ctx.lineTo(-s * 0.22, -s * 0.35);
-  ctx.lineTo(-s * 0.95, s * 0.18);
-  ctx.lineTo(-s * 0.52, s * 0.36);
-  ctx.lineTo(-s * 0.28, s * 0.74);
-  ctx.lineTo(0, s * 0.5);
-  ctx.lineTo(s * 0.28, s * 0.74);
-  ctx.lineTo(s * 0.52, s * 0.36);
-  ctx.lineTo(s * 0.95, s * 0.18);
-  ctx.lineTo(s * 0.22, -s * 0.35);
+  if (e.variant === 'saucer') {
+    ctx.ellipse(0, s * 0.02, s * 1.12, s * 0.42, 0, 0, Math.PI * 2);
+  } else if (e.variant === 'beetle') {
+    ctx.moveTo(0, -s * 1.02); ctx.lineTo(-s * 0.62, -s * 0.48); ctx.lineTo(-s * 0.82, s * 0.26);
+    ctx.lineTo(-s * 0.34, s * 0.82); ctx.lineTo(0, s * 0.55); ctx.lineTo(s * 0.34, s * 0.82);
+    ctx.lineTo(s * 0.82, s * 0.26); ctx.lineTo(s * 0.62, -s * 0.48);
+  } else if (e.variant === 'trident') {
+    ctx.moveTo(0, -s * 1.1); ctx.lineTo(-s * 0.2, -s * 0.18); ctx.lineTo(-s * 0.9, -s * 0.62);
+    ctx.lineTo(-s * 0.58, s * 0.15); ctx.lineTo(-s * 0.42, s * 0.72); ctx.lineTo(0, s * 0.38);
+    ctx.lineTo(s * 0.42, s * 0.72); ctx.lineTo(s * 0.58, s * 0.15); ctx.lineTo(s * 0.9, -s * 0.62); ctx.lineTo(s * 0.2, -s * 0.18);
+  } else {
+    ctx.moveTo(0, -s * 1.05);
+    ctx.lineTo(-s * 0.22, -s * 0.35);
+    ctx.lineTo(-s * 0.95, s * 0.18);
+    ctx.lineTo(-s * 0.52, s * 0.36);
+    ctx.lineTo(-s * 0.28, s * 0.74);
+    ctx.lineTo(0, s * 0.5);
+    ctx.lineTo(s * 0.28, s * 0.74);
+    ctx.lineTo(s * 0.52, s * 0.36);
+    ctx.lineTo(s * 0.95, s * 0.18);
+    ctx.lineTo(s * 0.22, -s * 0.35);
+  }
   ctx.closePath();
   ctx.fill();
   ctx.strokeStyle = 'rgba(255,255,255,0.42)';
@@ -890,6 +953,13 @@ function drawEnemy(e) {
     [-1, 1].forEach(side => { ctx.fillRect(side * s * 0.7 - 3, -3, 6, 6); });
   } else if (e.variant === 'heavy') {
     ctx.fillRect(-s * 0.48, s * 0.1, s * 0.96, s * 0.2);
+  } else if (e.variant === 'saucer') {
+    ctx.beginPath(); ctx.ellipse(0, -s * 0.08, s * 0.44, s * 0.23, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillRect(-s * 0.9, s * 0.03, s * 1.8, 2);
+  } else if (e.variant === 'beetle') {
+    [-1, 1].forEach(side => { ctx.fillRect(side * s * 0.45 - 2, -s * 0.2, 4, s * 0.78); });
+  } else if (e.variant === 'trident') {
+    [-1, 0, 1].forEach(side => { ctx.beginPath(); ctx.moveTo(side * s * 0.45, s * 0.45); ctx.lineTo(side * s * 0.75, -s * 0.62); ctx.stroke(); });
   }
 
   const canopy = ctx.createLinearGradient(0, -s * 0.62, 0, s * 0.12);
@@ -1254,11 +1324,15 @@ function drawPlayer() {
 
   player.thrusterPhase += 0.2;
   const { x, y, w, h } = player;
+  const laserLevel = player.weaponLevels.laser;
+  const lightningLevel = player.weaponLevels.lightning;
+  const missileLevel = player.weaponLevels.missiles;
+  const wingReach = w * (0.72 + Math.min(0.24, (laserLevel + missileLevel - 1) * 0.055));
 
   ctx.save();
   ctx.translate(x, y);
 
-  // Thruster fire
+  // Rocket exhaust: conical plumes emerge from visible engine bells.
   ctx.shadowBlur = 28;
   ctx.shadowColor = '#3ff8ff';
   const thrustLen = 38 + Math.sin(player.thrusterPhase) * 12;
@@ -1275,7 +1349,10 @@ function drawPlayer() {
     thrustGrad.addColorStop(1, 'rgba(255,40,0,0)');
     ctx.fillStyle = thrustGrad;
     ctx.beginPath();
-    ctx.ellipse(fx, fy + fh * 0.35, fw * 1.4, fh * 0.58, 0, 0, Math.PI * 2);
+    ctx.moveTo(fx - fw, fy);
+    ctx.quadraticCurveTo(fx - fw * 1.25, fy + fh * 0.34, fx, fy + fh);
+    ctx.quadraticCurveTo(fx + fw * 1.25, fy + fh * 0.34, fx + fw, fy);
+    ctx.closePath();
     ctx.fill();
   });
 
@@ -1302,19 +1379,64 @@ function drawPlayer() {
   ctx.beginPath();
   ctx.moveTo(0, -h * 0.68);
   ctx.lineTo(-w * 0.16, -h * 0.24);
-  ctx.lineTo(-w * 0.72, h * 0.2);
+  ctx.lineTo(-wingReach, h * 0.2);
   ctx.lineTo(-w * 0.34, h * 0.3);
   ctx.lineTo(-w * 0.2, h * 0.58);
   ctx.lineTo(0, h * 0.43);
   ctx.lineTo(w * 0.2, h * 0.58);
   ctx.lineTo(w * 0.34, h * 0.3);
-  ctx.lineTo(w * 0.72, h * 0.2);
+  ctx.lineTo(wingReach, h * 0.2);
   ctx.lineTo(w * 0.16, -h * 0.24);
   ctx.closePath();
   ctx.fill();
   ctx.strokeStyle = 'rgba(255,255,255,0.55)';
   ctx.lineWidth = 1.2;
   ctx.stroke();
+
+  // Weapon upgrades alter the silhouette: wider fairings, dorsal conduit,
+  // and armored wing roots grow with the installed systems.
+  if (missileLevel > 0) {
+    ctx.fillStyle = '#283541';
+    ctx.strokeStyle = '#d6b366';
+    ctx.lineWidth = 1.1;
+    [-1, 1].forEach(side => {
+      ctx.beginPath();
+      ctx.moveTo(side * w * 0.42, h * 0.08);
+      ctx.lineTo(side * (wingReach + 7), h * 0.16);
+      ctx.lineTo(side * (wingReach + 3), h * 0.36);
+      ctx.lineTo(side * w * 0.36, h * 0.3);
+      ctx.closePath();
+      ctx.fill(); ctx.stroke();
+    });
+  }
+  if (lightningLevel > 0) {
+    ctx.strokeStyle = WEAPONS.lightning.color;
+    ctx.shadowColor = WEAPONS.lightning.color;
+    ctx.shadowBlur = 10;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, h * 0.38);
+    ctx.lineTo(-4, h * 0.08);
+    ctx.lineTo(4, -h * 0.18);
+    ctx.lineTo(0, -h * 0.5);
+    ctx.stroke();
+  }
+
+  // Engine bells sit on the rear of the hull, making the exhaust read as rockets.
+  ctx.shadowBlur = 6;
+  [[0, 18, 7], [-17, 22, 5], [17, 22, 5]].forEach(([ex, ey, radius]) => {
+    const nozzle = ctx.createLinearGradient(ex - radius, ey - 5, ex + radius, ey + 8);
+    nozzle.addColorStop(0, '#d5e5f3');
+    nozzle.addColorStop(0.45, '#536577');
+    nozzle.addColorStop(1, '#101722');
+    ctx.fillStyle = nozzle;
+    ctx.beginPath();
+    ctx.moveTo(ex - radius, ey - 5); ctx.lineTo(ex + radius, ey - 5);
+    ctx.lineTo(ex + radius * 0.7, ey + 8); ctx.lineTo(ex - radius * 0.7, ey + 8); ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = '#76f5ff';
+    ctx.beginPath(); ctx.ellipse(ex, ey + 6, radius * 0.52, 2.4, 0, 0, Math.PI * 2); ctx.fill();
+  });
 
   // Cockpit glass
   const glass = ctx.createLinearGradient(0, -h * 0.45, 0, h * 0.06);
@@ -1708,6 +1830,8 @@ function drawLevelUp() {
 
 // ─── GAME LOGIC ────────────────────────────────────────────────
 function startGame() {
+  mousePaused = false;
+  pauseOverlayDrawn = false;
   score = 0;
   wave = 1;
   level = 1;
@@ -1880,9 +2004,33 @@ function updateBoss() {
   checkCollisions();
 }
 
+function drawPauseOverlay() {
+  ctx.fillStyle = 'rgba(4, 7, 16, 0.42)';
+  ctx.fillRect(0, 0, BASE_W, BASE_H);
+  ctx.save();
+  ctx.textAlign = 'center';
+  ctx.shadowBlur = 16;
+  ctx.shadowColor = '#3ff8ff';
+  ctx.fillStyle = '#d7ffff';
+  ctx.font = 'bold 26px Arial';
+  ctx.fillText('PAUSED', BASE_W / 2, BASE_H / 2 - 8);
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = '#99c9d8';
+  ctx.font = '13px Arial';
+  ctx.fillText('Release the mouse to resume', BASE_W / 2, BASE_H / 2 + 20);
+  ctx.restore();
+}
+
 // ─── MAIN LOOP ─────────────────────────────────────────────────
 function gameLoop() {
   requestAnimationFrame(gameLoop);
+  if (mousePaused && (gameState === STATE.PLAYING || gameState === STATE.BOSS)) {
+    if (!pauseOverlayDrawn) {
+      drawPauseOverlay();
+      pauseOverlayDrawn = true;
+    }
+    return;
+  }
   frameCount++;
 
   // Background
