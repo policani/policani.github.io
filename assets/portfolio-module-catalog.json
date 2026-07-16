@@ -162,7 +162,7 @@
 "title": "Resume Evidence Engine",
 "activityLabel": "Ground career drafting in actual evidence",
 "repositoryUrl": "https://github.com/policani/resume-evidence-engine",
-"siteSection": "https://policani.net/resources.html#resources",
+"siteSection": "https://policani.net/resources/#resources",
 "audience": "Career documentation and job-search workflow users",
 "resourceValue": "Source-truth routing, fit scoring, proof narratives, and DOCX handoff"
 },
@@ -170,7 +170,7 @@
 "title": "Job Boards Scanner",
 "activityLabel": "Collect and rank public job postings",
 "repositoryUrl": "https://github.com/policani/job-boards-scanner",
-"siteSection": "https://policani.net/resources.html#resources",
+"siteSection": "https://policani.net/resources/#resources",
 "audience": "Local-first job-search workflow users",
 "resourceValue": "Posting collection, filtering, ranking, and source-health checks"
 },
@@ -178,7 +178,7 @@
 "title": "AI Prose Pattern Detector",
 "activityLabel": "Review prose for AI-shaped patterns",
 "repositoryUrl": "https://github.com/policani/ai-prose-pattern-detector",
-"siteSection": "https://policani.net/resources.html#resources",
+"siteSection": "https://policani.net/resources/#resources",
 "audience": "Professional writing, portfolio, resume, and cover-letter reviewers",
 "resourceValue": "AI prose pattern detection and revision guidance"
 }

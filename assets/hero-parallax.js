@@ -6,7 +6,7 @@
       ["artifacts.html", "Methods"],
       ["governance/", "Insights"],
       ["governance/index.html", "Insights"],
-      ["resources.html", "Labs"],
+      ["resources/", "Labs"],
       ["contact.html", "Contact"],
       ["search.html", "Search"]
     ]);

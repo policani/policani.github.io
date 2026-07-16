@@ -3,33 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Memventory — Visual Second Brain | Marco Policani</title>
-<meta name="description" content="Memventory is a structured, visual second brain: a portable plain-markdown wiki with an interactive constellation map and a local browser console for exploring, filtering, and maintaining your knowledge.">
+<title>Applied AI Labs &amp; Tools | Marco Policani</title>
+<meta name="description" content="Applied AI systems, career tools, and experiments from Marco Policani, including AI workflow governance models, knowledge systems, and public utilities.">
 <meta name="author" content="Marco Policani">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Memventory — Visual Second Brain | Marco Policani">
-<meta property="og:description" content="Memventory is a portable visual second brain: a plain-markdown wiki, interactive constellation map, and local browser console.">
+<meta property="og:title" content="Career &amp; AI Resources | Marco Policani">
+<meta property="og:description" content="Community tools for job-search signal, career evidence, realistic interview prep, prose-risk review, portable AI memory, and agent operating models.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://policani.net/resources/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://policani.net/assets/social-card-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://policani.net/resources/">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preload" as="image" href="../assets/portfolio-operations-hero-1920.webp" type="image/webp">
 <link rel="stylesheet" href="../assets/portfolio-site.css?v=20260715-ia">
+<style>
+</style>
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "WebPage",
+"@id": "https://policani.net/resources/#webpage",
+"name": "Career & AI Resources | Marco Policani",
+"url": "https://policani.net/resources/",
+"description": "Community tools and demos from Marco Policani for job-search signal, career evidence, interview prep, prose review, AI memory, and agent models.",
+"inLanguage": "en-US",
+"isPartOf": {
+"@type": "WebSite",
+"name": "Marco Policani Portfolio",
+"url": "https://policani.net/"
+},
+"author": {
+"@type": "Person",
+"name": "Marco Policani","alternateName": "Marc Policani",
+"url": "https://policani.net/"
+}
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* page-local visual emphasis; falls back gracefully on the shared design system */
-.sbc-shot{width:100%;height:auto;display:block;border-radius:14px;border:1px solid rgba(140,150,175,.22);
-  box-shadow:0 24px 60px rgba(0,0,0,.30);aspect-ratio:16 / 9;object-fit:contain;background:#061326}
-.sbc-hero-carousel{max-width:1120px;margin:26px auto 0}
-.sbc-hero-carousel .resource-preview-carousel{border-radius:16px;overflow:hidden}
-.sbc-feature{margin:34px 0;max-width:760px}
-.sbc-feature .sbc-copy h3{margin:0 0 8px}
-.sbc-feature .sbc-copy p{margin:0;color:var(--muted,#5a6473)}
-.sbc-pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
-</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -42,118 +58,257 @@
       <a href="../operating-history.html">Cases</a>
       <a href="../artifacts.html">Methods</a>
       <a href="../governance/index.html">Insights</a>
-      <a href="../resources.html" aria-current="page">Labs</a>
+      <a href="../resources/" aria-current="page">Labs</a>
       <a href="../contact.html">Contact</a>
       <a class="nav-search-link" href="/search.html" aria-label="Search" title="Search"><span aria-hidden="true">⌕</span></a>
     </div>
   </div>
 </nav>
 
-<header class="hero" data-parallax-travel="140">
+<header class="hero" data-parallax-travel="180">
 <div class="portfolio-hero-filament-bg" aria-hidden="true">
 <canvas class="portfolio-hero-filament-canvas"></canvas>
 </div>
 <div class="hero-inner">
 <div class="hero-copy">
-<p class="eyebrow">Memventory · Visual Second Brain</p>
-<h1>A second brain with structure you can see.</h1>
-<p class="subhead">Memventory is a portable, plain-markdown wiki for your personal knowledge, projects, decisions, and code context. Its interactive constellation and local browser console make that structure visible, searchable, and easy to maintain—without an account, database, or platform lock-in.</p>
+<p class="eyebrow">Labs</p>
+<h1>Applied AI systems, tools, and experiments.</h1>
+<p class="subhead">Public builds for AI workflow governance, knowledge systems, career evidence, and experiments. The applied AI systems are part of the portfolio; the rest remain here for anyone who finds them useful.</p>
 <div class="actions">
-<a class="button primary" href="#views">See the views</a>
-<a class="button" href="https://github.com/policani/portable-cross-agent-second-brain" target="_blank" rel="noopener noreferrer">Get it on GitHub</a>
+<a class="button primary" href="#ai-tools">Browse AI systems</a>
+<a class="button" href="#projects">Browse projects</a>
+<a class="button" href="../index.html">Back to portfolio</a>
 </div>
 </div>
 </div>
 </header>
 
 <main id="main">
-
-<section class="section-white" aria-labelledby="hero-shots-heading">
+<section id="ai-tools" class="section-white" aria-labelledby="ai-tools-heading">
 <div class="section-inner">
-<p class="section-kicker">The visual layer</p>
-<h2 id="hero-shots-heading">One second brain, several clear ways to explore it.</h2>
-<div class="sbc-hero-carousel">
-<div class="resource-preview-carousel" aria-label="Memventory Team Management Console preview">
-<a class="is-active" href="#views" aria-label="Memventory Team Management Console">
-<img class="sbc-shot" src="../assets/memventory-team-console.png?v=20260714-console" alt="Memventory Team Management Console showing vault metrics, a searchable folder rail, the live constellation map, and an inspection panel" width="1280" height="720" loading="eager">
+<p class="section-kicker">Applied AI systems</p>
+<h2 id="ai-tools-heading">AI systems I built — and open-sourced.</h2>
+<div class="grid-3">
+<article class="card resource-product-card">
+<h3>Subagent Operating Model</h3>
+<a class="resource-preview-link" href="https://github.com/policani/subagent-operating-model" target="_blank" rel="noopener noreferrer" aria-label="Open the Subagent Operating Model repository">
+<img class="resource-preview-image" src="../assets/subagent-operating-model-cover.png?v=20260617-ai-workflow" alt="AI workflow design diagram: one router turns agent sprawl into governed work by routing requests through a minimum plan, quality gate, and clean result" width="2803" height="1492" loading="lazy">
+</a>
+<p>A context-safe delegation model for AI subagents, built for Codex and Claude. One router prevents agent sprawl, routes work to the fewest useful capabilities, passes compact state packets, preserves ownership boundaries, and quality-gates handoffs so supervision, trigger tuning, and least-privilege delegation stay visible.</p>
+<div class="resource-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px">
+<span class="lane-label" style="margin:0">Open source</span>
+<span class="lane-label" style="margin:0">Codex + Claude</span>
+<span class="lane-label" style="margin:0">State packets</span>
+</div>
+<div class="repo-links">
+<a href="https://github.com/policani/subagent-operating-model" target="_blank" rel="noopener noreferrer">Open the model on GitHub</a>
+</div>
+</article>
+<article class="card resource-product-card">
+<h3>Memventory — Personal</h3>
+<div class="resource-preview-carousel" aria-label="Memventory Personal edition preview">
+<a class="is-active" href="memventory.html" aria-label="Memventory Personal Management Console">
+<img src="../assets/memventory-personal-console.png?v=20260714-console" alt="Memventory Personal Management Console showing vault metrics, a searchable folder rail, the live constellation map, and an inspection panel" width="1280" height="720" loading="lazy">
 </a>
 </div>
-</div>
-</div>
-</section>
-
-<section id="views" aria-labelledby="views-heading">
-<div class="section-inner">
-<p class="section-kicker">The views</p>
-<h2 id="views-heading">Built to keep a growing second brain understandable.</h2>
-
-<div class="sbc-feature">
-<div class="sbc-copy">
-<h3>Constellation</h3>
-<p>The signature overview — your whole vault as a living map, files clustered by folder inside rings of skills, agents, routines, and connected apps. It builds progressively on load, so you watch your own vault take shape instead of waiting on a blank screen.</p>
-</div>
-</div>
-
-<div class="sbc-feature reverse">
-<div class="sbc-copy">
-<h3>Types</h3>
-<p>Every file classified by what it <em>is</em> — AI logic, reference, output, template, office document, media, software, or backup — with counts and total size per type. Toggle to raw file format when you need the by-extension cut. Color-coding carries across every view.</p>
-</div>
-</div>
-
-<div class="sbc-feature">
-<div class="sbc-copy">
-<h3>Sizes</h3>
-<p>A treemap where every file is sized by bytes and colored by role. The heavy files and folders pop immediately, so the cleanup targets choose themselves. Hover for exact size; click to inspect.</p>
-</div>
-</div>
-
-<div class="sbc-feature reverse">
-<div class="sbc-copy">
-<h3>Table</h3>
-<p>A sortable, <strong>Excel-style filterable</strong> list of every file. Click a column header for sort plus a searchable checkbox filter — narrow to just AI-logic files, or just outputs, in two clicks. Select any file for a detail inspector with its role, size, sections, and references. Search, a folder tree, and per-type filters are always at hand.</p>
-<div class="sbc-pills">
+<p>A private cross-tool AI memory for one person, now with a <strong>web-based Management Console</strong>: Claude, Codex, and Cursor read the same plain-markdown notes, each opening only what the task needs — and one browser page shows your whole workspace as a live map, a type breakdown, a size treemap, and a filterable table. A bundled retrieval engine answers &ldquo;where is X?&rdquo; before any model tokens are spent.</p>
+<div class="resource-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px">
+<span class="lane-label" style="margin:0">Management Console</span>
+<span class="lane-label" style="margin:0">Claude · Codex · Cursor</span>
+<span class="lane-label" style="margin:0">Saves tokens</span>
 <span class="lane-label" style="margin:0">Runs in your browser</span>
-<span class="lane-label" style="margin:0">Local-only refresh · no account</span>
-<span class="lane-label" style="margin:0">Your files stay local</span>
 </div>
+<div class="repo-links">
+<a href="memventory.html">Explore the Management Console</a>
+<a href="https://github.com/policani/portable-cross-agent-second-brain-personal" target="_blank" rel="noopener noreferrer">Open repository</a>
 </div>
+</article>
+<article class="card resource-product-card">
+<h3>Memventory — Team</h3>
+<div class="resource-preview-carousel" aria-label="Memventory Team edition preview">
+<a class="is-active" href="memventory.html" aria-label="Memventory Team Management Console">
+<img src="../assets/memventory-team-console.png?v=20260714-console" alt="Memventory Team Management Console showing vault metrics, a searchable folder rail, the live constellation map, and an inspection panel" width="1280" height="720" loading="lazy">
+</a>
+</div>
+<p>A team-safe second brain with a new <strong>web-based Management Console</strong>: open one page and see your whole vault as a live constellation, a role-by-role type breakdown, a size treemap, and a filterable table. Underneath, nothing becomes trusted until a human approves it, every fact keeps its source, and a bundled retrieval engine answers &ldquo;where is X?&rdquo; before any model tokens are spent.</p>
+<div class="resource-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px">
+<span class="lane-label" style="margin:0">Management Console</span>
+<span class="lane-label" style="margin:0">Approval gate</span>
+<span class="lane-label" style="margin:0">Saves tokens</span>
+<span class="lane-label" style="margin:0">Runs in your browser</span>
+</div>
+<div class="repo-links">
+<a href="memventory.html">Explore the Management Console</a>
+<a href="https://github.com/policani/portable-cross-agent-second-brain" target="_blank" rel="noopener noreferrer">Open repository</a>
+</div>
+</article>
+<article class="card resource-product-card">
+<h3>AI Prose Pattern Detector</h3>
+<a class="resource-preview-link" href="https://github.com/policani/ai-prose-pattern-detector" target="_blank" rel="noopener noreferrer" aria-label="Open the AI Prose Pattern Detector repository">
+<img class="resource-preview-image" src="../assets/ai-prose-pattern-detector-cover.svg" alt="Workflow diagram: a draft is detected, flagged, and revised before publishing" width="800" height="450" loading="lazy">
+</a>
+<p>A prose-risk review tool, not an AI verdict machine. It highlights generic, over-processed, or AI-shaped patterns, warns against false certainty, and helps preserve voice across portfolio copy, professional writing, summaries, drafts, resumes, and cover letters.</p>
+<div class="resource-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px">
+<span class="lane-label" style="margin:0">Open source</span>
+<span class="lane-label" style="margin:0">Writing review</span>
+</div>
+<div class="repo-links">
+<a href="https://github.com/policani/ai-prose-pattern-detector" target="_blank" rel="noopener noreferrer">Open repository</a>
+</div>
+</article>
 </div>
 </div>
 </section>
 
-<section class="section-white" aria-labelledby="how-heading">
+<section id="resources" aria-labelledby="resource-list-heading">
+<div class="section-inner">
+<p class="section-kicker">Career tools</p>
+<h2 id="resource-list-heading">Run a sharper job search.</h2>
+<div class="grid-3">
+<article class="card resource-product-card">
+<h3>Job Boards Scanner</h3>
+<a class="resource-preview-link" href="../job-boards-scanner.html" aria-label="Run the Job Boards Scanner in your browser">
+<img class="resource-preview-image" src="../assets/job-boards-scanner-screenshot.webp" alt="Job Boards Scanner mid-scan: run profile filters on the left, live run log and progress at top, and a ranked review queue of matched roles with salary ranges below" width="880" height="436" loading="lazy">
+</a>
+<p>Collect and rank public employer postings so you can spend less time on stale, duplicated, closed, or low-signal roles. It filters by fit, salary, location, posting age, and source health, then exports a review list. Runs entirely in your browser.</p>
+<div class="resource-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px">
+<span class="lane-label" style="margin:0">Runs in your browser</span>
+<span class="lane-label" style="margin:0">No account</span>
+<span class="lane-label" style="margin:0">v1.0</span>
+</div>
+<div class="repo-links">
+<a href="../job-boards-scanner.html">Run it in your browser</a>
+<a href="../job-boards-scanner.html" download="job-boards-scanner.html">Download for local use</a>
+<a href="https://github.com/policani/job-boards-scanner" target="_blank" rel="noopener noreferrer">Open repository</a>
+</div>
+</article>
+<article class="card resource-product-card">
+<h3>Resume Evidence Engine</h3>
+<a class="resource-preview-link" href="https://github.com/policani/resume-evidence-engine" target="_blank" rel="noopener noreferrer" aria-label="Open the Resume Evidence Engine repository">
+<img class="resource-preview-image" src="../assets/resume-evidence-engine-cover.svg?v=20260613-workflow2" alt="Workflow diagram: evidence and fit notes pass through review before DOCX output" width="800" height="450" loading="lazy">
+</a>
+<p>Ground every resume and cover-letter claim in real evidence, fit notes, and proof narratives, then hand off to DOCX. It doubles as an applied <a href="../modules.html#ai-governance">AI workflow-governance</a> build — evidence-grounded generation with human review gates.</p>
+<div class="resource-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px">
+<span class="lane-label" style="margin:0">Evidence-grounded</span>
+<span class="lane-label" style="margin:0">Human review gates</span>
+<span class="lane-label" style="margin:0">DOCX export</span>
+</div>
+<div class="repo-links">
+<a href="https://github.com/policani/resume-evidence-engine" target="_blank" rel="noopener noreferrer">Open repository</a>
+</div>
+</article>
+<article class="card resource-product-card">
+<h3>Interview Helper</h3>
+<a class="resource-preview-link" href="https://github.com/policani/interview-helper" target="_blank" rel="noopener noreferrer" aria-label="Open the Interview Helper repository">
+<img class="resource-preview-image" src="../assets/interview-helper-screenshot.webp" alt="Interview Helper overlay during a video call: a live transcript rail on the left and a prepared talking-points rail on the right, with the call visible in the center" width="800" height="450" loading="lazy">
+</a>
+<p>Practice and interview from your own evidence, not canned answers. It turns prepared background notes into a Story Log, keeps relevant talking points handy during the conversation, and never speaks, types, or invents answers for you. Windows desktop app; bring your own OpenAI key.</p>
+<div class="resource-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px">
+<span class="lane-label" style="margin:0">Windows desktop app</span>
+<span class="lane-label" style="margin:0">Bring your own OpenAI key</span>
+<span class="lane-label" style="margin:0">Free download</span>
+</div>
+<div class="repo-links">
+<a href="https://github.com/policani/interview-helper/releases/latest" target="_blank" rel="noopener noreferrer">Download for Windows</a>
+<a href="https://github.com/policani/interview-helper" target="_blank" rel="noopener noreferrer">Open repository</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section id="projects" class="section-white" aria-labelledby="projects-heading">
+<div class="section-inner">
+<p class="section-kicker">Projects</p>
+<h2 id="projects-heading">Visual systems and browser games.</h2>
+<p class="lead">Public experiments in interaction design, generative visuals, and playable browser experiences.</p>
+<div class="grid-3">
+<article class="card resource-product-card">
+<h3>Hero Banner Lab</h3>
+<a class="resource-preview-link" href="../hero-banner-lab.html" aria-label="Run the Hero Banner Lab in your browser">
+<img class="resource-preview-image" src="../assets/hero-banner-lab-signal-preview.webp" alt="Portfolio Signal hero-banner sample with animated initiative cards and dependency filaments" width="1600" height="900" loading="lazy">
+</a>
+<p>A collection of full-screen animated hero banners: portfolio signal cards, AI decision gates, and filament-network fields, each with parallax and pointer response.</p>
+<div class="resource-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px">
+<span class="lane-label" style="margin:0">Generative visual system</span>
+<span class="lane-label" style="margin:0">Open source</span>
+</div>
+<div class="repo-links">
+<a href="../hero-banner-lab.html">Run it in your browser</a>
+<a href="https://github.com/policani/hero-banner-lab" target="_blank" rel="noopener noreferrer">Open repository</a>
+</div>
+</article>
+<article class="card resource-product-card">
+<h3>Kytherion Drift</h3>
+<a class="resource-preview-link" href="../kytherion-drift/" aria-label="Play Kytherion Drift in your browser">
+<img class="resource-preview-image" src="../assets/kytherion-drift-preview.jpg?v=20260715-combat" alt="Kytherion Drift arcade shooter gameplay with a player ship, glowing enemies, and a dark starfield" width="1919" height="949" loading="lazy">
+</a>
+<p>A high-velocity browser arcade shooter with weapon pickups, boss waves, touch controls, keyboard movement, and a particle-heavy starfield.</p>
+<div class="resource-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px">
+<span class="lane-label" style="margin:0">Canvas game</span>
+<span class="lane-label" style="margin:0">Open source</span>
+</div>
+<div class="repo-links">
+<a href="../kytherion-drift/">Run it in your browser</a>
+<a href="https://github.com/policani/kytherion-drift" target="_blank" rel="noopener noreferrer">Open source</a>
+</div>
+</article>
+<article class="card resource-product-card">
+<h3>Orbit Raiders</h3>
+<a class="resource-preview-link" href="../orbit-raiders.html" aria-label="Play Orbit Raiders in your browser">
+<img class="resource-preview-image" src="../assets/orbit-raiders-preview.jpg" alt="Orbit Raiders radial arcade shooter with a player ship orbiting a planet in a starfield" width="1902" height="943" loading="lazy">
+</a>
+<p>An 8-bit radial arcade shooter with ship capture, a solar-system tour, drifting asteroids, and a synthesized techno soundtrack.</p>
+<div class="resource-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px">
+<span class="lane-label" style="margin:0">Web Audio</span>
+<span class="lane-label" style="margin:0">Open source</span>
+</div>
+<div class="repo-links">
+<a href="../orbit-raiders.html">Run it in your browser</a>
+<a href="https://github.com/policani/orbit-raiders" target="_blank" rel="noopener noreferrer">Open source</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+
+
+<section class="section-white" aria-labelledby="portfolio-return-heading">
 <div class="section-inner two-col">
 <div>
-<p class="section-kicker">How it works</p>
-<h2 id="how-heading">Plain markdown in. A visual second brain out.</h2>
-<p class="lead">A bundled, dependency-free indexer reads your wiki and writes one small local index file. The constellation and console both read that index—so the moment you have notes, you have a map and a usable way to maintain it. The public preview is schematic; your own files stay on your machine.</p>
+<p class="section-kicker">Portfolio return path</p>
+<h2 id="portfolio-return-heading">For executive evaluation, go back to the portfolio.</h2>
+<p class="lead">The main portfolio remains focused on PMO, portfolio governance, executive operations, AI workflow governance, evidence discipline, and delivery follow-through.</p>
 </div>
 <div class="proof-box">
-<h3>What you get</h3>
+<h3>Main portfolio paths</h3>
 <div class="repo-links">
-<a href="https://github.com/policani/portable-cross-agent-second-brain" target="_blank" rel="noopener noreferrer">Memventory Team — GitHub</a>
-<a href="https://github.com/policani/portable-cross-agent-second-brain-personal" target="_blank" rel="noopener noreferrer">Memventory Personal — GitHub</a>
-<a href="../resources.html">Back to all resources</a>
+<a href="../pmo-portfolio-governance-leader.html">Executive portfolio</a>
+<a href="../operating-history.html">Experience evidence</a>
+<a href="../artifacts.html">Walkthroughs</a>
+<a href="../modules.html">Operating modules</a>
+<a href="../operating-history.html#evidence">Proof and boundaries</a>
 </div>
 </div>
 </div>
 </section>
 
-<section id="next" aria-labelledby="cta-heading">
+<section id="next" aria-labelledby="contact-heading">
 <div class="section-inner two-col">
 <div>
-<p class="section-kicker">Get started</p>
-<h2 id="cta-heading">Start with your notes. Keep the shape visible.</h2>
-<p class="lead">Claude, Codex, and Cursor read the same plain-markdown wiki through two instruction files kept in parity. Use the included console launcher to maintain the second brain, or open <code>vault-map.html</code> for the constellation on its own.</p>
+<p class="section-kicker">Connect</p>
+<h2 id="contact-heading">Return to the main portfolio path.</h2>
+<p class="lead">For PMO, portfolio governance, AI workflow governance, and executive operations evaluation, start with the portfolio, experience, and proof pages.</p>
 </div>
 <div class="proof-box">
 <h3>Useful next links</h3>
 <div class="repo-links">
-<a href="https://github.com/policani/portable-cross-agent-second-brain" target="_blank" rel="noopener noreferrer">Memventory Team</a>
-<a href="https://github.com/policani/portable-cross-agent-second-brain-personal" target="_blank" rel="noopener noreferrer">Memventory Personal</a>
-<a href="../resources.html">Labs</a>
-<a href="../contact.html">Contact</a>
+<a href="../pmo-portfolio-governance-leader.html">Executive portfolio</a>
+<a href="../operating-history.html">Experience evidence</a>
+<a href="../operating-history.html#evidence">Proof and boundaries</a>
+<a href="https://github.com/policani" target="_blank" rel="noopener noreferrer">GitHub</a>
+<a href="https://www.linkedin.com/in/marcpolicani" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 </div>
 </div>
 </div>
@@ -162,12 +317,14 @@
 
 <footer>
 <div class="section-inner">
-<p>Marco Policani | <a href="../index.html">Portfolio overview</a> | <a href="../resources.html">Labs</a> | <a href="https://github.com/policani" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://www.linkedin.com/in/marcpolicani" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+<p>Marco Policani | <a href="../index.html">Portfolio overview</a> | <a href="../resources/">Labs</a> | <a href="https://github.com/policani" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://www.linkedin.com/in/marcpolicani" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
 </div>
 </footer>
 <script src="../assets/hero-parallax.js?v=20260715-ia" defer></script>
+<script src="../assets/portfolio-signal-field.js?v=20260613-signalfield" defer></script>
 <script src="../assets/portfolio-hero-filament.js?v=20260613-signalfield" defer></script>
 <script src="../assets/resource-carousel.js?v=20260701" defer></script>
+<script src="../assets/site-concierge.js?v=20260703-contact" defer></script>
 <script data-goatcounter="https://policani.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memventory — Visual Second Brain | Marco Policani</title>
+<meta name="description" content="Memventory is a structured, visual second brain: a portable plain-markdown wiki with an interactive constellation map and a local browser console for exploring, filtering, and maintaining your knowledge.">
+<meta name="author" content="Marco Policani">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Memventory — Visual Second Brain | Marco Policani">
+<meta property="og:description" content="Memventory is a portable visual second brain: a plain-markdown wiki, interactive constellation map, and local browser console.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://policani.net/resources/memventory.html">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://policani.net/resources/memventory.html">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/portfolio-site.css?v=20260715-ia">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* page-local visual emphasis; falls back gracefully on the shared design system */
+.sbc-shot{width:100%;height:auto;display:block;border-radius:14px;border:1px solid rgba(140,150,175,.22);
+  box-shadow:0 24px 60px rgba(0,0,0,.30);aspect-ratio:16 / 9;object-fit:contain;background:#061326}
+.sbc-hero-carousel{max-width:1120px;margin:26px auto 0}
+.sbc-hero-carousel .resource-preview-carousel{border-radius:16px;overflow:hidden}
+.sbc-feature{margin:34px 0;max-width:760px}
+.sbc-feature .sbc-copy h3{margin:0 0 8px}
+.sbc-feature .sbc-copy p{margin:0;color:var(--muted,#5a6473)}
+.sbc-pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="local-nav" aria-label="Top-level portfolio sections">
+  <div class="nav-inner">
+    <a class="nav-title" href="../index.html">Marco Policani</a>
+    <div class="nav-links">
+      <a href="../pmo-portfolio-governance-leader.html">Profile</a>
+      <a href="../operating-history.html">Cases</a>
+      <a href="../artifacts.html">Methods</a>
+      <a href="../governance/index.html">Insights</a>
+      <a href="../resources/">Labs</a>
+      <a href="../contact.html">Contact</a>
+      <a class="nav-search-link" href="/search.html" aria-label="Search" title="Search"><span aria-hidden="true">⌕</span></a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" data-parallax-travel="140">
+<div class="portfolio-hero-filament-bg" aria-hidden="true">
+<canvas class="portfolio-hero-filament-canvas"></canvas>
+</div>
+<div class="hero-inner">
+<div class="hero-copy">
+<p class="eyebrow">Memventory · Visual Second Brain</p>
+<h1>A second brain with structure you can see.</h1>
+<p class="subhead">Memventory is a portable, plain-markdown wiki for your personal knowledge, projects, decisions, and code context. Its interactive constellation and local browser console make that structure visible, searchable, and easy to maintain—without an account, database, or platform lock-in.</p>
+<div class="actions">
+<a class="button primary" href="#views">See the views</a>
+<a class="button" href="https://github.com/policani/portable-cross-agent-second-brain" target="_blank" rel="noopener noreferrer">Get it on GitHub</a>
+</div>
+</div>
+</div>
+</header>
+
+<main id="main">
+
+<section class="section-white" aria-labelledby="hero-shots-heading">
+<div class="section-inner">
+<p class="section-kicker">The visual layer</p>
+<h2 id="hero-shots-heading">One second brain, several clear ways to explore it.</h2>
+<div class="sbc-hero-carousel">
+<div class="resource-preview-carousel" aria-label="Memventory Team Management Console preview">
+<a class="is-active" href="#views" aria-label="Memventory Team Management Console">
+<img class="sbc-shot" src="../assets/memventory-team-console.png?v=20260714-console" alt="Memventory Team Management Console showing vault metrics, a searchable folder rail, the live constellation map, and an inspection panel" width="1280" height="720" loading="eager">
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="views" aria-labelledby="views-heading">
+<div class="section-inner">
+<p class="section-kicker">The views</p>
+<h2 id="views-heading">Built to keep a growing second brain understandable.</h2>
+
+<div class="sbc-feature">
+<div class="sbc-copy">
+<h3>Constellation</h3>
+<p>The signature overview — your whole vault as a living map, files clustered by folder inside rings of skills, agents, routines, and connected apps. It builds progressively on load, so you watch your own vault take shape instead of waiting on a blank screen.</p>
+</div>
+</div>
+
+<div class="sbc-feature reverse">
+<div class="sbc-copy">
+<h3>Types</h3>
+<p>Every file classified by what it <em>is</em> — AI logic, reference, output, template, office document, media, software, or backup — with counts and total size per type. Toggle to raw file format when you need the by-extension cut. Color-coding carries across every view.</p>
+</div>
+</div>
+
+<div class="sbc-feature">
+<div class="sbc-copy">
+<h3>Sizes</h3>
+<p>A treemap where every file is sized by bytes and colored by role. The heavy files and folders pop immediately, so the cleanup targets choose themselves. Hover for exact size; click to inspect.</p>
+</div>
+</div>
+
+<div class="sbc-feature reverse">
+<div class="sbc-copy">
+<h3>Table</h3>
+<p>A sortable, <strong>Excel-style filterable</strong> list of every file. Click a column header for sort plus a searchable checkbox filter — narrow to just AI-logic files, or just outputs, in two clicks. Select any file for a detail inspector with its role, size, sections, and references. Search, a folder tree, and per-type filters are always at hand.</p>
+<div class="sbc-pills">
+<span class="lane-label" style="margin:0">Runs in your browser</span>
+<span class="lane-label" style="margin:0">Local-only refresh · no account</span>
+<span class="lane-label" style="margin:0">Your files stay local</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-white" aria-labelledby="how-heading">
+<div class="section-inner two-col">
+<div>
+<p class="section-kicker">How it works</p>
+<h2 id="how-heading">Plain markdown in. A visual second brain out.</h2>
+<p class="lead">A bundled, dependency-free indexer reads your wiki and writes one small local index file. The constellation and console both read that index—so the moment you have notes, you have a map and a usable way to maintain it. The public preview is schematic; your own files stay on your machine.</p>
+</div>
+<div class="proof-box">
+<h3>What you get</h3>
+<div class="repo-links">
+<a href="https://github.com/policani/portable-cross-agent-second-brain" target="_blank" rel="noopener noreferrer">Memventory Team — GitHub</a>
+<a href="https://github.com/policani/portable-cross-agent-second-brain-personal" target="_blank" rel="noopener noreferrer">Memventory Personal — GitHub</a>
+<a href="../resources/">Back to all resources</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="next" aria-labelledby="cta-heading">
+<div class="section-inner two-col">
+<div>
+<p class="section-kicker">Get started</p>
+<h2 id="cta-heading">Start with your notes. Keep the shape visible.</h2>
+<p class="lead">Claude, Codex, and Cursor read the same plain-markdown wiki through two instruction files kept in parity. Use the included console launcher to maintain the second brain, or open <code>vault-map.html</code> for the constellation on its own.</p>
+</div>
+<div class="proof-box">
+<h3>Useful next links</h3>
+<div class="repo-links">
+<a href="https://github.com/policani/portable-cross-agent-second-brain" target="_blank" rel="noopener noreferrer">Memventory Team</a>
+<a href="https://github.com/policani/portable-cross-agent-second-brain-personal" target="_blank" rel="noopener noreferrer">Memventory Personal</a>
+<a href="../resources/">Labs</a>
+<a href="../contact.html">Contact</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="section-inner">
+<p>Marco Policani | <a href="../index.html">Portfolio overview</a> | <a href="../resources/">Labs</a> | <a href="https://github.com/policani" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://www.linkedin.com/in/marcpolicani" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+</div>
+</footer>
+<script src="../assets/hero-parallax.js?v=20260715-ia" defer></script>
+<script src="../assets/portfolio-hero-filament.js?v=20260613-signalfield" defer></script>
+<script src="../assets/resource-carousel.js?v=20260701" defer></script>
+<script data-goatcounter="https://policani.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
