@@ -966,34 +966,168 @@ font-size: 0.9rem;
 line-height: 1.4;
 }
 
-.review-sequence {
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-margin-top: 18px;
+.latest-reading {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 16px;
+margin-top: 28px;
 grid-column: 1 / -1;
 }
 
-.review-sequence a,
-.review-sequence span {
-display: inline-flex;
-align-items: center;
-min-height: 36px;
-padding: 7px 11px;
+.latest-reading-heading {
+grid-column: 1 / -1;
+}
+
+.latest-reading-heading h3 {
+margin-top: 8px;
+}
+
+.section-heading-row {
+display: flex;
+align-items: end;
+justify-content: space-between;
+gap: 24px;
+}
+
+.text-link {
+color: var(--blue-700);
+font-weight: 600;
+text-decoration: none;
+white-space: nowrap;
+}
+
+.text-link:hover {
+text-decoration: underline;
+}
+
+.library-collections {
+background: #f3f6fa;
+}
+
+.collection-shelves {
+display: grid;
+gap: 18px;
+margin-top: 30px;
+}
+
+.collection-shelf {
+position: relative;
+display: grid;
+grid-template-columns: minmax(84px, 12%) minmax(0, 1fr);
+gap: clamp(20px, 4vw, 56px);
+padding: clamp(26px, 4vw, 44px);
+border: 1px solid var(--line);
+border-left-width: 6px;
+border-radius: var(--radius);
+background: var(--panel);
+box-shadow: 0 10px 26px rgba(18, 24, 38, 0.05);
+}
+
+.collection-shelf-portfolio { border-left-color: var(--gold); }
+.collection-shelf-ai { border-left-color: var(--blue-700); }
+.collection-shelf-work { border-left-color: #536171; }
+
+.collection-number {
+color: var(--line-strong);
+font-family: var(--font-mono);
+font-size: clamp(2.5rem, 5vw, 4.8rem);
+font-weight: 500;
+letter-spacing: -0.08em;
+line-height: 0.85;
+}
+
+.collection-shelf-body {
+display: grid;
+grid-template-columns: minmax(0, 1fr) minmax(220px, 0.56fr) auto;
+gap: 20px 28px;
+align-items: end;
+}
+
+.collection-shelf-body h3,
+.collection-shelf-body > p:not(.section-kicker) {
+grid-column: 1 / 2;
+}
+
+.collection-shelf-body h3 { margin: 0; }
+
+.collection-topics {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+.collection-topics li {
+padding: 6px 10px;
 border: 1px solid var(--blue-150);
 border-radius: 999px;
 background: var(--blue-25);
 color: var(--blue-700);
-font-size: 0.88rem;
+font-size: 0.82rem;
 font-weight: 500;
+}
+
+.collection-shelf .button {
+align-self: end;
+justify-self: end;
+}
+
+.collection-page-header {
+padding: clamp(46px, 7vw, 86px) 0 42px;
+background: #f3f6fa;
+border-bottom: 1px solid var(--line);
+}
+
+.collection-page-header .section-inner { max-width: 940px; }
+
+.collection-page-header .eyebrow { color: var(--blue-700); }
+
+.collection-page-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+margin-top: 28px;
+}
+
+.article-index {
+display: grid;
+gap: 12px;
+margin-top: 30px;
+}
+
+.article-index-item {
+display: grid;
+grid-template-columns: minmax(0, 1fr) auto;
+gap: 20px;
+align-items: center;
+padding: 20px 0;
+border-top: 1px solid var(--line);
+}
+
+.article-index-item:last-child { border-bottom: 1px solid var(--line); }
+
+.article-index-item h2 {
+margin: 6px 0 0;
+font-size: clamp(1.18rem, 2vw, 1.5rem);
+}
+
+.article-index-links {
+display: flex;
+flex-wrap: wrap;
+justify-content: end;
+gap: 12px;
+}
+
+.article-index-links a {
+color: var(--blue-700);
+font-size: 0.92rem;
+font-weight: 600;
 text-decoration: none;
 }
 
-.review-sequence .current {
-border-color: rgba(183, 137, 54, 0.58);
-background: var(--gold-soft);
-color: var(--ink);
-}
+.article-index-links a:hover { text-decoration: underline; }
 
 .resource-preview-link {
 display: block;
@@ -1609,6 +1743,7 @@ linear-gradient(180deg, rgba(0, 0, 38, 0.08) 0%, rgba(0, 0, 38, 0.36) 100%);
 .two-col,
 .grid-3,
 .grid-4,
+.collection-shelf-body,
 .module-showcase-grid,
 .audience-paths,
 .proof-strip,
@@ -1684,6 +1819,9 @@ line-height: 1.5;
 .grid-2,
 .grid-3,
 .grid-4,
+.latest-reading,
+.collection-shelf,
+.collection-shelf-body,
 .guide-hero-grid,
 .module-showcase-grid,
 .audience-paths,
@@ -1700,6 +1838,21 @@ padding: 42px 0;
 
 .lifecycle-step {
 min-height: auto;
+}
+
+.section-heading-row {
+align-items: flex-start;
+flex-direction: column;
+}
+
+.collection-shelf .button,
+.article-index-links {
+justify-self: start;
+justify-content: start;
+}
+
+.article-index-item {
+grid-template-columns: 1fr;
 }
 
 .module-card-top {

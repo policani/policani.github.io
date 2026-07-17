@@ -37,6 +37,24 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://policani.net/governance/portfolio-delivery/</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/ai-operating-governance/</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/work-adoption-judgment/</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://policani.net/governance/field-notes/documentation-cross-functional-leverage.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
