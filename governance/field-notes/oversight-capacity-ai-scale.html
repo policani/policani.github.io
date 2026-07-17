@@ -3,27 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Oversight Capacity, Not Model Capability, Is the Ceiling on AI Scale | Marco Policani</title>
-<meta name="description" content="The binding constraint on scaling AI is not model capability but human oversight capacity — the finite attention and judgment available to review, correct, and answer for what the AI does. Design for the span of supervision.">
+<title>Oversight capacity, not model capability, is the ceiling on AI scale | Marco Policani</title>
+<meta name="description" content="Human attention available to review, correct, and answer for AI output is the real scaling constraint.">
 <meta name="author" content="Marco Policani">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Oversight Capacity, Not Model Capability, Is the Ceiling on AI Scale | Marco Policani">
-<meta property="og:description" content="Capability is abundant; oversight is the ceiling. Safe AI scale follows the humans who can answer for it.">
+<meta property="og:title" content="Oversight capacity, not model capability, is the ceiling on AI scale | Marco Policani">
+<meta property="og:description" content="Human attention available to review, correct, and answer for AI output is the real scaling constraint.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://policani.net/governance/field-notes/oversight-capacity-ai-scale.html">
-<meta property="og:image" content="https://policani.net/assets/field-note-oversight-capacity-1200x627.png">
+<meta property="og:image" content="https://policani.net/assets/social-card-1200x630.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://policani.net/governance/field-notes/oversight-capacity-ai-scale.html">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
-<link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260715-ia">
-<link rel="stylesheet" href="../../assets/experience-dashboard.css?v=20260617-type">
-<style>.field-note-body h3 { margin-top: 28px; } .source-notes li { margin-bottom: 12px; color: #253044; } .field-note-footer p { display:flex; flex-wrap:wrap; gap:8px; align-items:center; } .field-note-footer .sep { color:#6b7280; }</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Oversight Capacity, Not Model Capability, Is the Ceiling on AI Scale","description":"The binding constraint on scaling AI is human oversight capacity, not model capability.","datePublished":"2026-07-10","dateModified":"2026-07-10","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"publisher":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"https://policani.net/governance/field-notes/oversight-capacity-ai-scale.html"}</script>
+<link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260717-fieldnotes">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Oversight capacity, not model capability, is the ceiling on AI scale","description":"Human attention available to review, correct, and answer for AI output is the real scaling constraint.","dateModified":"2026-07-17","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"https://policani.net/governance/field-notes/oversight-capacity-ai-scale.html"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="field-note-page note-ai">
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="local-nav" aria-label="Top-level portfolio sections">
   <div class="nav-inner">
@@ -39,28 +37,55 @@
     </div>
   </div>
 </nav>
+<header class="field-note-hero">
+  <div class="section-inner field-note-hero-grid">
+    <div>
+      <p class="section-kicker"><a href="../index.html#ai-governance">AI operating governance</a> &middot; Field note</p>
+      <h1>Oversight capacity, not model capability, is the ceiling on AI scale</h1>
+      <p class="lead">Human attention available to review, correct, and answer for AI output is the real scaling constraint.</p>
+    </div>
+    <aside class="field-note-format" aria-label="Reading format">
+      <strong>Two-minute briefing</strong>
+      <span>A concise companion to the full white paper.</span>
+    </aside>
+  </div>
+</header>
 <main id="main">
-<header class="hero guide-hero" data-parallax-travel="180"><div class="portfolio-hero-filament-bg" aria-hidden="true"><canvas class="portfolio-hero-filament-canvas"></canvas></div><div class="section-inner guide-hero-grid"><div><p class="section-kicker">Field note &middot; July 10, 2026</p><h1>Oversight Capacity, Not Model Capability, Is the Ceiling on AI Scale</h1><p class="lead">Why the binding constraint on scaling AI is how much humans can supervise &mdash; and how to design for it</p></div><aside class="guide-evaluation-panel"><h3>The argument in one line</h3><p>Model capability is abundant; what caps safe AI scale is oversight capacity &mdash; the finite human attention and judgment available to review, correct, and answer for AI output &mdash; so design for the span of supervision and let live AI follow the humans who can answer for it.</p></aside></div></header>
-<section><div class="section-inner two-col"><div class="field-note-body">
-<h3>The constraint moved from the model to the human</h3>
-<p>There is a widely held assumption that the limit on how far an organization can scale AI is the capability of the models: get better models, deploy more of them, and output rises accordingly. That assumption is increasingly wrong. Model capability is abundant and cheapening. What is scarce, and what actually caps safe scale, is oversight capacity: the finite human attention and judgment available to review, correct, and answer for what the AI does.</p>
-<p>This is now the mainstream view. McKinsey's analysis of the agentic organization states it directly: the scale of agentic adoption will be capped by how much oversight capacity humans can provide, making governance itself a potential bottleneck to productivity. Its early-adopter ratio &mdash; a team of two to five people supervising 50 to 100 specialized agents &mdash; is impressive and, read carefully, is also a statement about a ceiling. The asymmetry is the point: generating output scales at near-zero marginal cost, while supervising it still runs through a human whose attention is fixed and whose judgment does not parallelize.</p>
-<h3>The operating move</h3>
-<p>Treat oversight capacity as a first-class resource. Estimate the span of supervision per workflow &mdash; how many agents or decisions one accountable human can genuinely own &mdash; driven by stakes, ambiguity, and how detectable errors are. Budget oversight as a finite, shared pool, and charge every new AI deployment against it. Proportion oversight to risk: sample low-stakes output, concentrate judgment where errors are costly or hidden, escalate the uncertain. And raise the ceiling with layered oversight &mdash; critic, guardrail, and compliance agents (what Deloitte calls agents guarding other agents that are then guarded by humans), supported by the monitoring, red-teaming, and incident response the NIST Generative AI Profile calls for &mdash; without pretending the ceiling is gone.</p>
-<p>Two cautions. Effective oversight is not reviewing everything, which would cap AI output at human throughput; humans move above the loop and proportion review to risk. And oversight is made of people: experienced staff whose judgment supervises the AI. Cutting them for AI savings lowers the ceiling at the exact moment the AI is scaled against it. Capability builds the output; oversight decides how much of it the organization can safely own. The specific ratios are early-adopter observations, not benchmarks &mdash; measure your own span of supervision rather than importing a headline number.</p>
-<h3>Notes and sources</h3>
-<ol class="source-notes">
+  <section class="field-note-briefing">
+    <div class="section-inner">
+      <div class="field-note-layout">
+        <article class="field-note-tldr">
+          <p class="section-kicker">TL;DR</p>
+          <p class="field-note-thesis">Human attention available to review, correct, and answer for AI output is the real scaling constraint.</p>
+          <div class="field-note-move">
+            <h2>The operating move</h2>
+            <p>Scale AI no faster than the organization can review, correct, and answer for its output. Budget oversight capacity as part of the operating model, not as invisible work added after deployment.</p>
+            <div class="field-note-lens" aria-label="Decision lens"><span>WORKFLOW</span><span>CONTROL EVIDENCE</span><span>HUMAN OWNER</span></div>
+          </div>
+          <details class="field-note-sources-wrap">
+            <summary>Sources and notes (4)</summary>
+            <ol class="field-note-sources">
 <li>Alexander Sukharevsky, Alexis Krivkovich, Arne Gast, Arsen Storozhev, Dana Maor, Deepak Mahadevan, Lari H&auml;m&auml;l&auml;inen, and Sandra Durth, &quot;The agentic organization: Contours of the next paradigm for the AI era,&quot; McKinsey &amp; Company, September 26, 2025. Verified July 10, 2026. <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era" target="_blank" rel="noopener noreferrer">mckinsey.com</a></li>
 <li>David Mallon, Brad Kreit, and Natasha Buckley, &quot;Rethinking operating models for humans with agents,&quot; Deloitte Insights, April 2, 2026. Verified July 10, 2026. <a href="https://www.deloitte.com/us/en/insights/topics/talent/operating-models-for-humans-ai-agents.html" target="_blank" rel="noopener noreferrer">deloitte.com</a></li>
 <li>National Institute of Standards and Technology, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 2024. Verified July 9, 2026. <a href="https://doi.org/10.6028/NIST.AI.600-1" target="_blank" rel="noopener noreferrer">doi.org</a></li>
 <li>National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener noreferrer">airc.nist.gov</a></li>
-</ol>
-</div><aside><div class="proof-box"><h3>Take it with you</h3><img class="field-note-feature-image" src="../../assets/field-note-oversight-capacity-1200x627.png" alt="Capability is abundant. Oversight is the ceiling."><p>For the full argument &mdash; the reading table, the design discipline, and the counterintuitive economics of oversight &mdash; download the white paper. Direct download, no email address, no form.</p><div class="repo-links"><a href="../whitepapers/marco-policani-oversight-capacity-ai-scale.pdf">Download the white paper (PDF, 12 pages)</a></div></div><div class="proof-box" style="margin-top:16px"><h3>Related</h3><div class="repo-links"><a href="every-agent-needs-a-human-operating-model.html">Every Agent Needs a Human Operating Model</a><a href="ai-replacement-boomerang-governance-failure.html">The AI Replacement Boomerang Is a Governance Failure</a><a href="../">Back to Insights</a></div></div><div class="proof-box" style="margin-top:16px"><h3>Sources cited</h3><p>McKinsey, Deloitte, and NIST. Claims about Marco's operating work stay within published portfolio evidence and are framed as governance patterns.</p></div></aside></div></section>
+            </ol>
+          </details>
+        </article>
+        <aside class="field-note-download">
+          <p class="section-kicker">Go deeper</p>
+          <h2>Read the full argument.</h2>
+          <p>The white paper expands the briefing into a practical governance model, with context, evidence, and the complete reasoning.</p>
+          <a class="button" href="../whitepapers/marco-policani-oversight-capacity-ai-scale.pdf">Download the white paper (12 pages)</a>
+          <a class="text-link" href="../index.html#ai-governance">Back to AI operating governance</a>
+        </aside>
+      </div>
+    </div>
+  </section>
 </main>
-<footer class="field-note-footer"><div class="section-inner"><p><span>Marco Policani</span><span class="sep">|</span><a href="../">Library</a><span class="sep">|</span><a href="../../index.html">Portfolio overview</a></p></div></footer>
-<script src="../../assets/hero-parallax.js?v=20260715-ia" defer></script>
-<script src="../../assets/portfolio-signal-field.js?v=20260613-signalfield" defer></script>
-<script src="../../assets/portfolio-hero-filament.js?v=20260613-signalfield" defer></script>
+<footer>
+  <div class="section-inner"><p class="field-note-footer-links"><span>Marco Policani</span><a href="../index.html">Governance library</a><a href="../../artifacts.html">Methods</a><a href="../../contact.html">Contact</a></p></div>
+</footer>
 <script src="../../assets/site-concierge.js?v=20260703-contact" defer></script>
 <script data-goatcounter="https://policani.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

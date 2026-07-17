@@ -3,26 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Governing AI as Operational Change, Not Software Activity | Marco Policani</title>
-<meta name="description" content="Field note: why usage telemetry is not business value, and the three-layer evidence model that keeps enterprise AI accountable to the work it was funded to change.">
+<title>Governing AI as operational change, not software activity | Marco Policani</title>
+<meta name="description" content="Measure the recurring work AI changes, not only tool activity.">
 <meta name="author" content="Marco Policani">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Governing AI as Operational Change, Not Software Activity | Marco Policani">
-<meta property="og:description" content="Usage dashboards measure software activity. Leadership funds AI to change recurring work. A field note on closing that gap.">
+<meta property="og:title" content="Governing AI as operational change, not software activity | Marco Policani">
+<meta property="og:description" content="Measure the recurring work AI changes, not only tool activity.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://policani.net/governance/field-notes/governing-ai-as-operational-change.html">
-<meta property="og:image" content="https://policani.net/assets/field-note-governing-ai-operational-change-1200x627.png">
+<meta property="og:image" content="https://policani.net/assets/social-card-1200x630.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://policani.net/governance/field-notes/governing-ai-as-operational-change.html">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
-<link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260715-ia">
-<link rel="stylesheet" href="../../assets/experience-dashboard.css?v=20260617-type">
-<style>.source-notes li { margin-bottom: 12px; color: #253044; } .source-notes { padding-left: 18px; }</style>
+<link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260717-fieldnotes">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Governing AI as operational change, not software activity","description":"Measure the recurring work AI changes, not only tool activity.","dateModified":"2026-07-17","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"https://policani.net/governance/field-notes/governing-ai-as-operational-change.html"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="field-note-page note-ai">
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="local-nav" aria-label="Top-level portfolio sections">
   <div class="nav-inner">
@@ -38,38 +37,58 @@
     </div>
   </div>
 </nav>
+<header class="field-note-hero">
+  <div class="section-inner field-note-hero-grid">
+    <div>
+      <p class="section-kicker"><a href="../index.html#ai-governance">AI operating governance</a> &middot; Field note</p>
+      <h1>Governing AI as operational change, not software activity</h1>
+      <p class="lead">Measure the recurring work AI changes, not only tool activity.</p>
+    </div>
+    <aside class="field-note-format" aria-label="Reading format">
+      <strong>Two-minute briefing</strong>
+      <span>A concise companion to the full white paper.</span>
+    </aside>
+  </div>
+</header>
 <main id="main">
-<header class="hero guide-hero" data-parallax-travel="180"><div class="portfolio-hero-filament-bg" aria-hidden="true"><canvas class="portfolio-hero-filament-canvas"></canvas></div><div class="section-inner guide-hero-grid"><div><p class="section-kicker">Field note &middot; July 3, 2026</p><h1>Governing AI as operational change, not software activity</h1><p class="lead">Most enterprise AI reporting answers a question nobody funded: are people using the tool? The question leadership actually paid for is whether recurring work got better. Those are different questions, and the gap between them is where AI programs fail.</p></div><aside class="guide-evaluation-panel"><h3>The argument in one line</h3><p>AI utilization is a workflow-performance question, not a software-activity question &mdash; and it should be governed by the same evidence discipline as any other portfolio investment.</p></aside></div></header>
-<section><div class="section-inner two-col"><div>
-<p class="lead">Microsoft Copilot, OpenAI Enterprise, and comparable platforms expose seat-level telemetry by default: active users, session frequency, feature engagement, adoption curves. Most organizations can produce these reports within days of deployment, and many treat them as evidence of progress. They are evidence of software activity. Leadership funds AI to change recurring work &mdash; faster cycle times, more throughput, less rework, better decisions at the point of action &mdash; and none of those outcomes appear in an active-user dashboard.</p>
-<p>The cost of that gap is now documented at scale. <a href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/" target="_blank" rel="noopener noreferrer">MIT's NANDA initiative found</a> that 95 percent of enterprise generative-AI pilots deliver no measurable P&amp;L impact, against an estimated $30&ndash;40 billion in annual spending. <a href="https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025" target="_blank" rel="noopener noreferrer">Gartner predicted in 2024</a> that at least 30 percent of generative-AI projects would be abandoned after proof of concept by the end of 2025, citing cost and unclear business value as primary reasons. Whatever the exact numbers turn out to be in hindsight, the direction is consistent: activity everywhere, decision-grade evidence almost nowhere.</p>
-<h3>Why the usual reporting fails</h3>
-<p>Activity metrics break down for reasons any portfolio operator will recognize. There is no denominator &mdash; a user who opened the tool twice looks identical to one whose weekly workflow depends on it. Power users distort averages, making a narrow footprint look like broad deployment. Baselines rarely exist, so post-launch claims are retrospective and anecdotal. And usage data lives in one system while business outcomes live in Jira, ServiceNow, Salesforce, or a BI layer, with no deliberate bridge between them. The result is visible reporting without decision-grade signal.</p>
-<h3>A standard worth governing against</h3>
-<p>Meaningful adoption is a condition, not a rate: AI is in the critical path of recurring work, at sufficient scale and consistency, to produce measurable change in workflow outcomes or decision inputs &mdash; across more than a small concentration of power users. Meeting that standard takes three layers working together. Platform telemetry confirms breadth: who is active, how often, whether adoption is concentrated. Workflow performance metrics carry the value question: did cycle time improve, did throughput rise, did quality hold, did rework fall &mdash; answers that already exist in the systems organizations use to run operations. And explanatory validation supplies interpretation: pre/post comparison on the same workflow, matched cohorts, manager pulse checks, quality sampling. Perfect attribution is not the goal. Decision-grade evidence is. The programs that last tend to build this discipline early &mdash; in <a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-30-gartner-survey-finds-forty-five-percent-of-organizations-with-high-artificial-intelligence-maturity-keep-artificial-intelligence-projects-operational-for-at-least-three-years" target="_blank" rel="noopener noreferrer">Gartner's maturity research</a>, high-maturity organizations were far more likely to keep AI in production for years and to report that business units actually trust the tools: 57 percent, against 14 percent at low maturity.</p>
-<h3>What the model measures in practice</h3>
-<p>The measurement is deliberately ordinary, because the data usually already exists. In service and case work, the signals are case cycle time, throughput, reopen rate within a set window, and escalation rate &mdash; pulled from the systems that already run the operation, with a check that usage is not concentrated in a handful of agents before any team-level claim is made. In document and proposal work, they are time to a usable first draft, revision cycles, and approval cycle time, paired with a manager's read on whether recovered time became volume, quality, or speed. In requirements and internal analysis, they are draft turnaround and revision count paired with at least one downstream-quality measure, so a speed gain is not booked while rework quietly rises. None of this needs new instrumentation. It needs the operating data reviewed alongside the telemetry rather than separately from it, an integration <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-control-system/measurement-reporting" target="_blank" rel="noopener noreferrer">the major platforms now support directly</a> by letting organizations bring their own operational metrics into the analytics layer.</p>
-<p>What makes the reading defensible is a bar set before measurement starts: a baseline window and a matched post-enablement window (four to eight weeks each, adjusted to the workflow's cycle), at least two operating metrics, at least one comparison method &mdash; pre/post, matched cohort, or quality sampling &mdash; and sign-off from the person who owns the workflow and the person who owns the source data. The <a href="https://doi.org/10.6028/NIST.AI.100-1" target="_blank" rel="noopener noreferrer">NIST AI Risk Management Framework</a> makes the same move in its MEASURE function: use quantitative or qualitative methods to benchmark and monitor, and document what cannot yet be measured reliably. Programs that define the threshold after the fact almost always define it to fit the answer they already have.</p>
-<h3>Why heavier measurement backfires</h3>
-<p>The instinct to prove value with more surveillance &mdash; keystroke logs, screen capture, per-task attribution &mdash; works against the adoption it is meant to track. In controlled studies from <a href="https://doi.org/10.1038/s44271-024-00102-8" target="_blank" rel="noopener noreferrer">Cornell's ILR School</a>, employees under algorithmic monitoring reported a greater loss of autonomy than those overseen by human managers and were more likely to resist, complain, and consider leaving; the effect held across four experiments and reversed only when monitoring was framed as developmental rather than evaluative. Microsoft learned the public version of this in 2020, stripping individual-level metrics from its Productivity Score feature within days of criticism. Heavy measurement architecture does not just create exposure. It damages the thing it is supposed to measure.</p>
-<p>The through-line is a claim about accountability, not tooling. If an AI program reports monthly and cannot name the workflow that improved, the baseline it improved against, and the person accountable for that claim, it is reporting software activity. More telemetry will not fix that. Treat AI like every other investment the portfolio governs: funded against an outcome, measured against a baseline, and owned by someone who has to defend the number.</p>
-<h3>Notes and sources</h3>
-<ol class="source-notes">
+  <section class="field-note-briefing">
+    <div class="section-inner">
+      <div class="field-note-layout">
+        <article class="field-note-tldr">
+          <p class="section-kicker">TL;DR</p>
+          <p class="field-note-thesis">Measure the recurring work AI changes, not only tool activity.</p>
+          <div class="field-note-move">
+            <h2>The operating move</h2>
+            <p>Measure the recurring work AI changes: cycle time, quality, rework, exceptions, judgment, and outcomes. Tool adoption is an input, not evidence that the operation improved.</p>
+            <div class="field-note-lens" aria-label="Decision lens"><span>WORKFLOW</span><span>CONTROL EVIDENCE</span><span>HUMAN OWNER</span></div>
+          </div>
+          <details class="field-note-sources-wrap">
+            <summary>Sources and notes (6)</summary>
+            <ol class="field-note-sources">
 <li>Aditya Challapally et al., &quot;The GenAI Divide: State of AI in Business 2025,&quot; MIT NANDA, July 2025 &mdash; the 95 percent no-measurable-P&amp;L finding, reported <a href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/" target="_blank" rel="noopener noreferrer">via Fortune</a>. Verified July 7, 2026.</li>
 <li>Gartner, &quot;Gartner Predicts 30% of Generative AI Projects Will Be Abandoned After Proof of Concept by End of 2025,&quot; July 29, 2024. Verified July 7, 2026. <a href="https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025" target="_blank" rel="noopener noreferrer">gartner.com</a></li>
 <li>Gartner, &quot;Gartner Survey Finds 45% of Organizations With High AI Maturity Keep AI Projects Operational for at Least Three Years,&quot; June 30, 2025 &mdash; source of the 57% vs. 14% trust comparison. Verified July 7, 2026. <a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-30-gartner-survey-finds-forty-five-percent-of-organizations-with-high-artificial-intelligence-maturity-keep-artificial-intelligence-projects-operational-for-at-least-three-years" target="_blank" rel="noopener noreferrer">gartner.com</a></li>
 <li>Microsoft, &quot;Copilot Control System measurement and reporting,&quot; Microsoft Learn &mdash; the operational / strategic / custom reporting distinction. Verified July 7, 2026. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-control-system/measurement-reporting" target="_blank" rel="noopener noreferrer">learn.microsoft.com</a></li>
 <li>NIST, &quot;Artificial Intelligence Risk Management Framework (AI RMF 1.0),&quot; NIST AI 100-1, January 2023 &mdash; MEASURE function. Verified July 7, 2026. <a href="https://doi.org/10.6028/NIST.AI.100-1" target="_blank" rel="noopener noreferrer">doi.org/10.6028/NIST.AI.100-1</a></li>
 <li>Roshni Schlund and Emily M. Zitek, &quot;Algorithmic versus human surveillance leads to lower perceptions of autonomy and increased resistance,&quot; Communications Psychology 2, article 53 (2024), ILR School, Cornell University; total N = 1,195. Verified July 7, 2026. <a href="https://doi.org/10.1038/s44271-024-00102-8" target="_blank" rel="noopener noreferrer">doi.org/10.1038/s44271-024-00102-8</a></li>
-</ol>
-</div><aside><div class="proof-box"><h3>Take it with you</h3><img class="field-note-feature-image" src="../../assets/field-note-governing-ai-operational-change-1200x627.png" alt="AI value is a workflow question: telemetry, workflow, evidence."><p>For the full argument, download the white paper. Direct download, no email address, no form.</p><div class="repo-links"><a href="../whitepapers/marco-policani-governing-ai-as-operational-change.pdf">Download the white paper (PDF, 11 pages)</a></div></div><div class="proof-box" style="margin-top:16px"><h3>Related</h3><div class="repo-links"><a href="../#frameworks">AI Resource Allocation Governance</a><a href="../#frameworks">Value Realization</a><a href="../../modules.html#ai-governance">Public AI governance modules</a><a href="../../engagements/doosan-gridtech.html">Doosan GridTech case study</a><a href="../../engagements/tmobile-revenue-technology.html">T-Mobile case study</a><a href="../">Back to Insights</a></div></div><div class="proof-box" style="margin-top:16px"><h3>Sources cited</h3><p>MIT NANDA, Gartner, Microsoft, NIST, and Cornell ILR &mdash; full list with links in Notes and sources below the article. Every figure was verified live on July 7, 2026. The measurement model is presented as a governance pattern, not a product claim.</p></div></aside></div></section>
+            </ol>
+          </details>
+        </article>
+        <aside class="field-note-download">
+          <p class="section-kicker">Go deeper</p>
+          <h2>Read the full argument.</h2>
+          <p>The white paper expands the briefing into a practical governance model, with context, evidence, and the complete reasoning.</p>
+          <a class="button" href="../whitepapers/marco-policani-governing-ai-as-operational-change.pdf">Download the white paper (11 pages)</a>
+          <a class="text-link" href="../index.html#ai-governance">Back to AI operating governance</a>
+        </aside>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="section-inner"><p>Marco Policani | <a href="../">Library</a> | <a href="../../index.html">Portfolio overview</a></p></div></footer>
-<script src="../../assets/hero-parallax.js?v=20260715-ia" defer></script>
-<script src="../../assets/portfolio-signal-field.js?v=20260613-signalfield" defer></script>
-<script src="../../assets/portfolio-hero-filament.js?v=20260613-signalfield" defer></script>
+<footer>
+  <div class="section-inner"><p class="field-note-footer-links"><span>Marco Policani</span><a href="../index.html">Governance library</a><a href="../../artifacts.html">Methods</a><a href="../../contact.html">Contact</a></p></div>
+</footer>
 <script src="../../assets/site-concierge.js?v=20260703-contact" defer></script>
 <script data-goatcounter="https://policani.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
-
