@@ -74,19 +74,20 @@ channel strategy, and staging state in planning notes or handoff notes.
 - Planning article folders may keep working website field-note source files,
   but Policani.net is served from this repo. Do not treat planning-only HTML as
   published web content.
-- Wire new governance article pages into `governance/index.html`,
-  `sitemap.xml`, and page metadata only after public-site PDFs/assets exist or
-  links are intentionally omitted.
-- A field-note page is not publication-ready if it is orphaned. Add every new
-  field note to the `governance/index.html` Field Notes grid in the intended
-  priority order, update the Governance landing page `lastmod` in
-  `sitemap.xml`, add the field-note URL to `sitemap.xml`, and update `llms.txt`
-  when the page should be discoverable by answer engines.
-- If a field note is part of a white-paper campaign, the PDF must exist in
-  `governance/whitepapers/`, be linked from both the field-note aside and the
-  `governance/index.html` card, and be listed in `sitemap.xml` before publish.
-  Do not ship a field-note-only version unless Marco explicitly approves
-  publishing without the PDF.
+- The repository-level source of truth for published governance papers is
+  `content/governance-library.json`. Prepare papers through
+  `.\site-content.ps1 -Action AddWhitepaper`; do not hand-edit generated
+  field-note HTML, landing-page cards, category counts, sitemap entries, or the
+  generated governance block in `llms.txt`.
+- The root content pipeline must validate the PDF, page count, category,
+  sequence, TL;DR, substantive preview, operating move, three-item contents
+  preview, and visible sources before it generates the public surfaces. Do not
+  ship a field-note-only version unless Marco explicitly approves publishing
+  without the PDF and the pipeline is deliberately updated for that exception.
+- `publish.ps1` runs the site content build before its standard link, leak, and
+  page-count checks. Follow `CONTENT-PUBLISHING.md` for intake and visual review;
+  then hand Marco the runnable publication command instead of pushing from a
+  Claude/Cowork sandbox.
 - Before publishing, render `governance/` locally and confirm the new Field
   Notes card is visible, ordered correctly, and links to the expected page.
 

@@ -89,6 +89,19 @@ ownership.
 - `/resources.html` is Resources: career, job-search, and writing resources for the
   broader community; it is not part of the main executive proof path.
 
+## Site Content Pipeline
+
+Repository-level content automation lives in `site-content.ps1`. Governance
+white papers are maintained through `content/governance-library.json`; the
+pipeline generates the library cards, field-note pages, counts, metadata, PDF
+links, sitemap entries, and `llms.txt` discovery entries from that manifest.
+The normal `publish.ps1` flow runs this build before validation so generated
+surfaces cannot silently drift.
+
+Use `site-content.ps1 -Action AddWhitepaper` for new papers and do not hand-edit
+generated field-note HTML or governance cards. The full intake, review,
+publishing, and live-verification procedure is in `CONTENT-PUBLISHING.md`.
+
 ## Search Console Notes
 
 - The canonical public domain is `https://policani.net/`, not the `www`

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://policani.net/content/governance-entry.schema.json",
+  "title": "Policani.net governance white-paper entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "category",
+    "title",
+    "summary",
+    "operatingMove",
+    "preview",
+    "inside",
+    "pdf",
+    "pages",
+    "sourcesHtml"
+  ],
+  "properties": {
+    "sequence": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Publication sequence. Omit during intake to use the next number."
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "category": {
+      "enum": ["portfolio-delivery", "ai-governance", "work-judgment"]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 8
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 40,
+      "description": "The opening TL;DR and landing-card summary."
+    },
+    "operatingMove": {
+      "type": "string",
+      "minLength": 60
+    },
+    "preview": {
+      "type": "string",
+      "minLength": 180,
+      "description": "A substantive expectation-setting preview of the full paper."
+    },
+    "inside": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 20
+      }
+    },
+    "pdf": {
+      "type": "string",
+      "pattern": "^marco-policani-[a-z0-9-]+\\.pdf$"
+    },
+    "pages": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "publishedLabel": {
+      "type": "string",
+      "description": "Landing-card date label. Omit during intake to use the current month."
+    },
+    "lastModified": {
+      "type": "string",
+      "format": "date",
+      "description": "Omit during intake to use the current date."
+    },
+    "socialImage": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+\\.(?:png|jpg|jpeg|webp)$"
+    },
+    "sourcesHtml": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string",
+        "minLength": 20,
+        "description": "Inner HTML for one visible source-list item."
+      }
+    }
+  }
+}
