@@ -69,7 +69,7 @@ if ($changed.Count -eq 0) {
 $broken = @()
 foreach ($file in $changedHtml) {
     $dir = Split-Path -Parent (Resolve-Path $file)
-    $html = Get-Content $file -Raw
+    $html = Get-Content $file -Raw -Encoding UTF8
     $linkMatches = [regex]::Matches($html, '(?:href|src)\s*=\s*"([^"]+)"')
     foreach ($m in $linkMatches) {
         $link = $m.Groups[1].Value
@@ -116,7 +116,7 @@ $leakPatterns = @(
 )
 $leaks = @()
 foreach ($file in $changedHtml) {
-    $html = Get-Content $file -Raw
+    $html = Get-Content $file -Raw -Encoding UTF8
     foreach ($p in $leakPatterns) {
         if ($html -like "*$p*") { $leaks += "$file contains '$p'" }
     }
@@ -133,12 +133,43 @@ if ($leaks.Count -gt 0) {
     Write-Host "==> Internal-leak scan passed on $($changedHtml.Count) changed HTML file(s)."
 }
 
+# 5b-2) Encoding scan: catch UTF-8 read as cp1252 before it reaches readers.
+#       Added 2026-07-20 after em dashes and curly quotes shipped as
+#       "&#226;<eu>" across 10 generated files. Root cause was Get-Content
+#       defaulting to ANSI in site-content.ps1; this is the backstop.
+$mojibakePatterns = @(
+    [char]0x00E2 + [char]0x20AC,   # a-circumflex + euro: mangled em dash / curly quote
+    '&#226;',                      # the same, half-escaped by HtmlEncode
+    [char]0x00C3 + [char]0x00A9,   # mangled accented e
+    [char]0xFFFD                   # replacement character
+)
+$changedText = @($changed | Where-Object {
+    ($_ -like "*.html" -or $_ -like "*.txt" -or $_ -like "*.json") -and (Test-Path $_)
+})
+$mojibake = @()
+foreach ($file in $changedText) {
+    $text = Get-Content $file -Raw -Encoding UTF8
+    foreach ($p in $mojibakePatterns) {
+        if ($text -like "*$p*") { $mojibake += "$file contains mangled encoding '$p'" }
+    }
+}
+if ($mojibake.Count -gt 0) {
+    Write-Host ""
+    Write-Host "==> ENCODING SCAN FAILED ($($mojibake.Count)):" -ForegroundColor Red
+    $mojibake | ForEach-Object { Write-Host "    $_" -ForegroundColor Red }
+    Write-Host "==> UTF-8 was read as ANSI somewhere. Check that every Get-Content" -ForegroundColor Red
+    Write-Host "    in the content pipeline passes -Encoding UTF8, then regenerate." -ForegroundColor Red
+    if (-not $Force -and -not $DryRun) { exit 1 }
+} elseif ($changedText.Count -gt 0) {
+    Write-Host "==> Encoding scan passed on $($changedText.Count) changed file(s)."
+}
+
 # 5c) Page-count parity: every PDF page-count claim in changed HTML must match the actual PDF
 #     Added 2026-07-09 after a landing card advertised 15 pages for a 13-page PDF.
 $pageMismatches = @()
 foreach ($file in $changedHtml) {
     $dir = Split-Path -Parent (Resolve-Path $file)
-    $html = Get-Content $file -Raw
+    $html = Get-Content $file -Raw -Encoding UTF8
     $claims = [regex]::Matches($html, 'href\s*=\s*"([^"]+\.pdf)[^"]*"[^>]*>[^<]*?(?:PDF,\s*)?(\d+)\s*pages')
     foreach ($m in $claims) {
         $pdfLink = ($m.Groups[1].Value -split '[?#]')[0]

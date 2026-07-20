@@ -46,7 +46,10 @@ function Read-LibraryManifest {
     if (-not (Test-Path -LiteralPath $manifestPath)) {
         throw "Missing content manifest: $manifestPath"
     }
-    return Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json
+    # -Encoding UTF8 is required: Windows PowerShell's Get-Content defaults to
+    # ANSI/cp1252, which turns every UTF-8 em dash and curly quote in the
+    # manifest into mojibake that then propagates into every generated page.
+    return Get-Content -Raw -Encoding UTF8 -LiteralPath $manifestPath | ConvertFrom-Json
 }
 
 function Get-ActualPdfPages([string]$Path) {
@@ -159,7 +162,7 @@ function New-FieldNoteHtml($Manifest, $Entry) {
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="$canonical">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
-<link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260717-fieldnotes2">
+<link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260720-fieldnote-hero">
 <script type="application/ld+json">$schema</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,7 +184,8 @@ function New-FieldNoteHtml($Manifest, $Entry) {
     </div>
   </div>
 </nav>
-<header class="field-note-hero">
+<header class="hero field-note-hero" data-parallax-travel="180">
+  <div class="portfolio-hero-filament-bg" aria-hidden="true"><canvas class="portfolio-hero-filament-canvas"></canvas></div>
   <div class="section-inner field-note-hero-grid">
     <div>
       <p class="section-kicker"><a href="../index.html#$($category.id)">$categoryHtml</a> &middot; Field note</p>
@@ -235,6 +239,8 @@ $sourcesHtml
 <footer>
   <div class="section-inner"><p class="field-note-footer-links"><span>Marco Policani</span><a href="../index.html">Governance library</a><a href="../../artifacts.html">Methods</a><a href="../../contact.html">Contact</a></p></div>
 </footer>
+<script src="../../assets/hero-parallax.js?v=20260715-ia" defer></script>
+<script src="../../assets/portfolio-hero-filament.js?v=20260613-signalfield" defer></script>
 <script src="../../assets/site-concierge.js?v=20260703-contact" defer></script>
 <script data-goatcounter="https://policani.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
@@ -277,7 +283,7 @@ function Update-LibraryIndex($Manifest) {
 }
 
 function Update-GovernanceSitemap($Manifest) {
-    [xml]$xml = Get-Content -Raw -LiteralPath $sitemapPath
+    [xml]$xml = Get-Content -Raw -Encoding UTF8 -LiteralPath $sitemapPath
     $namespace = $xml.DocumentElement.NamespaceURI
     $manager = [Xml.XmlNamespaceManager]::new($xml.NameTable)
     $manager.AddNamespace('s', $namespace)
@@ -380,7 +386,7 @@ function Build-SiteContent {
 function Add-WhitepaperEntry {
     if ([string]::IsNullOrWhiteSpace($Spec)) { throw 'AddWhitepaper requires -Spec path-to-entry.json.' }
     $specPath = (Resolve-Path -LiteralPath $Spec).Path
-    $entry = Get-Content -Raw -LiteralPath $specPath | ConvertFrom-Json
+    $entry = Get-Content -Raw -Encoding UTF8 -LiteralPath $specPath | ConvertFrom-Json
     $originalManifestText = [IO.File]::ReadAllText($manifestPath)
     $manifest = Read-LibraryManifest
 
