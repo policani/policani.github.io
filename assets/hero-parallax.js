@@ -4,8 +4,8 @@
       ["pmo-portfolio-governance-leader.html", "Profile"],
       ["operating-history.html", "Cases"],
       ["artifacts.html", "Methods"],
-      ["governance/", "Insights"],
-      ["governance/index.html", "Insights"],
+      ["governance/", "Library"],
+      ["governance/index.html", "Library"],
       ["resources/", "Labs"],
       ["contact.html", "Contact"],
       ["search.html", "Search"]
