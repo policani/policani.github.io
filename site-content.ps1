@@ -184,18 +184,14 @@ function New-FieldNoteHtml($Manifest, $Entry) {
     </div>
   </div>
 </nav>
-<header class="hero field-note-hero" data-parallax-travel="180">
+<header class="hero" data-parallax-travel="200">
   <div class="portfolio-hero-filament-bg" aria-hidden="true"><canvas class="portfolio-hero-filament-canvas"></canvas></div>
-  <div class="section-inner field-note-hero-grid">
-    <div>
-      <p class="section-kicker"><a href="../index.html#$($category.id)">$categoryHtml</a> &middot; Field note</p>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow"><a href="../index.html#$($category.id)">$categoryHtml</a> &middot; Field note</p>
       <h1>$titleHtml</h1>
-      <p class="lead">$summaryHtml</p>
+      <p class="subhead">$summaryHtml</p>
     </div>
-    <aside class="field-note-format" aria-label="Reading format">
-      <strong>Briefing and source notes</strong>
-      <span>TL;DR, scope, operating move, and sources.</span>
-    </aside>
   </div>
 </header>
 <main id="main">
