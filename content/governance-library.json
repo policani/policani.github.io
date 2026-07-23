@@ -53,7 +53,7 @@
       "slug": "business-imagination-is-the-scarce-asset-now",
       "category": "work-judgment",
       "title": "Business imagination is the scarce asset now",
-      "summary": "Cheap AI execution makes business imagination, operating judgment, and value framing more scarce—not less.",
+      "summary": "Cheap AI execution makes business imagination, operating judgment, and value framing more scarce\u2014not less.",
       "operatingMove": "Invest in problem framing, operating judgment, and the ability to imagine a better system of work. As execution gets cheaper, deciding what is worth changing becomes the higher-value capability.",
       "preview": "As AI lowers the cost of producing analysis, prototypes, and content, execution alone becomes less differentiating. This paper argues that the scarce capability shifts toward business imagination: framing valuable problems, seeing alternative operating models, and deciding which changes are worth making. It explores the portfolio implications of abundant production capacity and the leadership practices required to keep faster output connected to real strategic choice.",
       "inside": [
@@ -78,7 +78,7 @@
       "category": "work-judgment",
       "title": "The prove-it economy is coming for careers and AI programs",
       "summary": "Credibility is moving from assertion toward evidence that people and machines can inspect.",
-      "operatingMove": "Replace broad claims with evidence that another person—or a machine—can inspect: artifacts, decision records, outcomes, boundaries, and a clear explanation of what the evidence does and does not prove.",
+      "operatingMove": "Replace broad claims with evidence that another person\u2014or a machine\u2014can inspect: artifacts, decision records, outcomes, boundaries, and a clear explanation of what the evidence does and does not prove.",
       "preview": "Credibility is moving from assertion toward evidence that can be inspected by people and increasingly by machines. This paper applies that shift to both professional work and AI programs. It explains how artifacts, decision records, outcomes, methods, and clear boundaries form a stronger proof pack than broad claims, while avoiding the opposite mistake of presenting incomplete evidence as certainty.",
       "inside": [
         "Why careers and AI investments face the same credibility shift",
@@ -171,7 +171,7 @@
       "sequence": 2,
       "slug": "ai-knowledge-bases-operating-infrastructure",
       "category": "ai-governance",
-      "title": "AI knowledge bases are operating infrastructure, not “second brains”",
+      "title": "AI knowledge bases are operating infrastructure, not \u201csecond brains\u201d",
       "summary": "Govern AI knowledge bases as shared production infrastructure with ownership, quality, provenance, and lifecycle controls.",
       "operatingMove": "Treat the knowledge base like a production service: assign ownership for quality, permissions, provenance, refresh, and retirement before people or agents are expected to rely on it.",
       "preview": "A knowledge base becomes operational infrastructure as soon as people or agents depend on it to answer questions, route work, or make decisions. This paper sets expectations for that dependency: named ownership, source provenance, access boundaries, quality evaluation, refresh, and retirement. It treats retrieval quality and content lifecycle as operating responsibilities, not background technical tasks, and shows why a polished interface cannot compensate for an unmanaged corpus.",
@@ -253,7 +253,7 @@
         "Incident records and learning loops that improve future reliance decisions"
       ],
       "pdf": "marco-policani-enterprise-ai-trust-operating-evidence.pdf",
-      "pages": 12,
+      "pages": 11,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-07-17",
       "sourcesHtml": [
@@ -279,7 +279,7 @@
         "A practical operating record for reviewing and expanding agent reliance"
       ],
       "pdf": "marco-policani-every-agent-needs-a-human-operating-model.pdf",
-      "pages": 12,
+      "pages": 11,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-07-17",
       "sourcesHtml": [
@@ -305,7 +305,7 @@
         "A governance cadence for adapting or stopping the intervention"
       ],
       "pdf": "marco-policani-governing-ai-as-operational-change.pdf",
-      "pages": 11,
+      "pages": 9,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-07-17",
       "socialImage": "field-note-governing-ai-operational-change-1200x627.png",
@@ -349,7 +349,7 @@
       "title": "Confident and wrong",
       "summary": "Plausible AI output needs challenge protocols that make confidence testable before people rely on it.",
       "operatingMove": "Add a challenge protocol before consequential AI output can be relied on: identify assumptions, compare independent evidence, record uncertainty, and name the person who can stop or correct the decision.",
-      "preview": "Plausibility is one of the most useful qualities of generative AI and one of its most dangerous. This paper examines what happens when fluent output enters a workflow without a challenge protocol, independent evidence, or a named person able to reject it. It turns “verify the output” into an operating control by defining the questions, records, thresholds, and escalation paths that make confidence testable before reliance expands.",
+      "preview": "Plausibility is one of the most useful qualities of generative AI and one of its most dangerous. This paper examines what happens when fluent output enters a workflow without a challenge protocol, independent evidence, or a named person able to reject it. It turns \u201cverify the output\u201d into an operating control by defining the questions, records, thresholds, and escalation paths that make confidence testable before reliance expands.",
       "inside": [
         "Why fluent output bypasses ordinary skepticism in consequential work",
         "A repeatable challenge protocol for assumptions, evidence, and uncertainty",
@@ -374,13 +374,13 @@
       "operatingMove": "Require operating ownership, real-workflow evidence, monitoring, recovery, and a stop mechanism before moving from a successful demonstration to production reliance.",
       "preview": "A demonstration answers whether something can work under selected conditions. Production asks whether the organization can rely on it in ordinary work, under change, and when something goes wrong. This paper defines the missing operating evidence between those two states and gives leaders a readiness frame for ownership, monitoring, recovery, capacity, and stop authority.",
       "inside": [
-        "What a successful demo proves—and what it leaves unanswered",
+        "What a successful demo proves\u2014and what it leaves unanswered",
         "Production ownership, monitoring, exceptions, recovery, and support capacity",
         "A readiness gate for expanding from possibility to accountable reliance"
       ],
       "pdf": "marco-policani-demo-to-production-gap.pdf",
       "socialImage": "field-note-demo-to-production-gap-1200x627.png",
-      "pages": 11,
+      "pages": 10,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-07-17",
       "sourcesHtml": [
@@ -393,7 +393,7 @@
       "slug": "local-ai-cloud-governance",
       "category": "ai-governance",
       "title": "Local AI versus cloud AI is a governance decision",
-      "summary": "Choose local or cloud AI by data, control, operating capacity, and consequence—not fashion.",
+      "summary": "Choose local or cloud AI by data, control, operating capacity, and consequence\u2014not fashion.",
       "operatingMove": "Choose local or cloud deployment from the data boundary, consequence of failure, required controls, support capacity, and recovery model. Architecture follows the operating decision.",
       "preview": "Local and cloud AI are often framed as a technology preference, but the meaningful differences are operational: data boundaries, required control, consequence of failure, support capacity, update model, and recovery. This paper gives leaders a governance frame for comparing those tradeoffs before architecture becomes a sunk decision, including cases where a hybrid or deliberately limited solution is the better answer.",
       "inside": [
@@ -403,7 +403,7 @@
       ],
       "pdf": "marco-policani-local-ai-cloud-governance.pdf",
       "socialImage": "field-note-local-ai-cloud-governance-1200x627.png",
-      "pages": 10,
+      "pages": 11,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-07-17",
       "sourcesHtml": [
@@ -588,7 +588,7 @@
       ],
       "pdf": "marco-policani-epmo-capacity-not-calendars.pdf",
       "socialImage": "field-note-epmo-capacity-not-calendars-1200x627.png",
-      "pages": 10,
+      "pages": 7,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-07-17",
       "sourcesHtml": [
@@ -626,7 +626,7 @@
       "title": "Decision friction is a portfolio risk",
       "summary": "Make consequential choices visible before delay turns ambiguity into rework.",
       "operatingMove": "Make unresolved decisions visible with an owner, a decision date, the evidence still needed, and the cost of delay. Ambiguity should appear in portfolio review before it becomes delivery rework.",
-      "preview": "Portfolios usually report schedule, spend, and risk while unresolved decisions remain scattered across meetings and delivery teams. This paper treats that friction as a governable source of delay and rework. It shows how to make each consequential choice visible with an owner, evidence need, decision date, escalation path, and cost of delay—before ambiguity becomes a delivery problem.",
+      "preview": "Portfolios usually report schedule, spend, and risk while unresolved decisions remain scattered across meetings and delivery teams. This paper treats that friction as a governable source of delay and rework. It shows how to make each consequential choice visible with an owner, evidence need, decision date, escalation path, and cost of delay\u2014before ambiguity becomes a delivery problem.",
       "inside": [
         "A decision inventory that sits beside schedule and risk reporting",
         "Ownership, evidence, due dates, escalation, and the cost of delay",
@@ -661,8 +661,8 @@
       "lastModified": "2026-07-17",
       "socialImage": "field-note-ai-thinking-partner-1200x627.png",
       "sourcesHtml": [
-        "<a href=\"https://www.pnas.org/doi/10.1073/pnas.2422633122\" target=\"_blank\" rel=\"noopener noreferrer\">Bastani et al., “Generative AI without guardrails can harm learning,” PNAS</a>. The study examined student learning; the workplace implication is an operating-design argument.",
-        "<a href=\"https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/\" target=\"_blank\" rel=\"noopener noreferrer\">Harvard Gazette, “Professor tailored AI tutor to physics course. Engagement doubled.”</a>"
+        "<a href=\"https://www.pnas.org/doi/10.1073/pnas.2422633122\" target=\"_blank\" rel=\"noopener noreferrer\">Bastani et al., \u201cGenerative AI without guardrails can harm learning,\u201d PNAS</a>. The study examined student learning; the workplace implication is an operating-design argument.",
+        "<a href=\"https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/\" target=\"_blank\" rel=\"noopener noreferrer\">Harvard Gazette, \u201cProfessor tailored AI tutor to physics course. Engagement doubled.\u201d</a>"
       ]
     },
     {
