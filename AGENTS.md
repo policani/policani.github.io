@@ -3,6 +3,18 @@
 This file applies to the public portfolio site at `E:\Codex\policani.github.io`.
 Codex and Cursor use this file. Claude uses `CLAUDE.md`.
 
+## Direct Production Publishing
+
+For this repository, a user request to **"push"**, **"publish"**, or make a
+site change **"live"** means: commit the requested files directly to `main`,
+push `main` to `origin`, wait for the GitHub Pages deployment to complete, and
+verify the changed behavior at `https://policani.net/` before reporting the
+work as complete.
+
+Do not create a feature branch, draft pull request, or review workflow unless
+the user explicitly requests one. A pushed branch or open pull request is not
+completion for a production request.
+
 ## Public Page Content Gate
 
 Every rendered page must show finished reader-facing content. Do not publish
