@@ -1,0 +1,12 @@
+# Normalize line endings so Windows editors stop producing whole-file diffs.
+# Text is stored LF in the repository and checked out platform-native.
+* text=auto
+
+# Binary assets: never touch.
+*.png binary
+*.jpg binary
+*.webp binary
+*.pdf binary
+*.ico binary
+*.woff binary
+*.woff2 binary
