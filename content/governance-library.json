@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-17",
+  "updated": "2026-07-28",
   "categories": [
     {
       "id": "portfolio-delivery",
@@ -624,19 +624,19 @@
       "slug": "decision-friction-portfolio-risk",
       "category": "portfolio-delivery",
       "title": "Decision friction is a portfolio risk",
-      "summary": "Make consequential choices visible before delay turns ambiguity into rework.",
-      "operatingMove": "Make unresolved decisions visible with an owner, a decision date, the evidence still needed, and the cost of delay. Ambiguity should appear in portfolio review before it becomes delivery rework.",
-      "preview": "Portfolios usually report schedule, spend, and risk while unresolved decisions remain scattered across meetings and delivery teams. This paper treats that friction as a governable source of delay and rework. It shows how to make each consequential choice visible with an owner, evidence need, decision date, escalation path, and cost of delay\u2014before ambiguity becomes a delivery problem.",
+      "summary": "Make the decisions holding up the work visible before delay turns into rework.",
+      "operatingMove": "For every consequential choice, record the decision, accountable owner, evidence that could change the call, latest useful date, work at risk, and final outcome. Review the queue before waiting becomes a delivery problem.",
+      "preview": "Portfolios track work, dates, spend, and risk, but the decisions holding up that work often remain scattered across meetings, inboxes, and personal notes. This paper introduces a decision inventory that makes the queue visible: the choice, its owner, the evidence still needed, the latest useful date, the work waiting on it, and the recorded outcome. It helps leaders separate genuine delivery problems from questions that have simply been allowed to drift.",
       "inside": [
         "A decision inventory that sits beside schedule and risk reporting",
-        "Ownership, evidence, due dates, escalation, and the cost of delay",
-        "Measures for identifying recurring decision bottlenecks across the portfolio"
+        "How to name the choice, owner, evidence, useful date, and work at risk",
+        "Signals that expose recurring bottlenecks and unclear decision rights"
       ],
       "pdf": "marco-policani-decision-friction-portfolio-risk.pdf",
       "socialImage": "field-note-decision-friction-portfolio-risk-1200x627.png",
       "pages": 10,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-07-17",
+      "lastModified": "2026-07-28",
       "sourcesHtml": [
         "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
         "<a href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\">CIO</a>"
