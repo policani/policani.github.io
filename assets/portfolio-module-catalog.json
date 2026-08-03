@@ -1,6 +1,6 @@
 {
 "schemaVersion": "2026-06-03",
-"updated": "2026-06-09",
+"updated": "2026-07-28",
 "site": "https://policani.net/",
 "purpose": "Lightweight source of truth for public portfolio module labels, repository URLs, section anchors, operating phases, audiences, proof types, operating routes, standalone community resources, and packaging decisions.",
 "packagingPolicy": {
@@ -164,7 +164,7 @@
 "repositoryUrl": "https://github.com/policani/resume-evidence-engine",
 "siteSection": "https://policani.net/resources/#resources",
 "audience": "Career documentation and job-search workflow users",
-"resourceValue": "Source-truth routing, fit scoring, proof narratives, and DOCX handoff"
+"resourceValue": "Source-truth routing, fit scoring, proof narratives, an evidence-first voice gate, and DOCX handoff"
 },
 {
 "title": "Job Boards Scanner",
@@ -180,7 +180,7 @@
 "repositoryUrl": "https://github.com/policani/ai-prose-pattern-detector",
 "siteSection": "https://policani.net/resources/#resources",
 "audience": "Professional writing, portfolio, resume, and cover-letter reviewers",
-"resourceValue": "AI prose pattern detection and revision guidance"
+"resourceValue": "Substance and specificity check, AI-shaped pattern correction, and corrected copy without scores or authorship verdicts"
 }
 ]
 }
