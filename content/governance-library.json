@@ -157,7 +157,7 @@
       "pdf": "marco-policani-ai-adoption-starts-with-the-constraint.pdf",
       "pages": 14,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-07-17",
+      "lastModified": "2026-08-03",
       "socialImage": "field-note-ai-constraint-first-1200x627.png",
       "sourcesHtml": [
         "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, &quot;The state of AI in 2025: Agents, innovation, and transformation,&quot; McKinsey &amp; Company, November 5, 2025. Verified July 7, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
@@ -409,29 +409,6 @@
       "sourcesHtml": [
         "<a href=\"https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>",
         "<a href=\"https://www.cisa.gov/sites/default/files/2023-02/cloud_security_technical_reference_architecture_2.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Cybersecurity and Infrastructure Security Agency</a>"
-      ]
-    },
-    {
-      "sequence": 25,
-      "slug": "earned-ai-autonomy",
-      "category": "ai-governance",
-      "title": "AI autonomy should be earned through control evidence",
-      "summary": "Expand AI autonomy only as control evidence demonstrates that the system and its owners can carry it.",
-      "operatingMove": "Increase autonomy in stages. Each expansion should be earned by evidence that the system stays within its boundaries, exceptions are caught, recovery works, and an accountable owner can intervene.",
-      "preview": "Autonomy is often discussed as a model capability when it is really a decision about permitted action and recoverable consequence. This paper defines progressive levels of autonomy and the evidence required to move between them. It keeps expansion tied to boundary adherence, exception detection, human intervention, and demonstrated recovery rather than to the impressiveness of a single run.",
-      "inside": [
-        "Progressive autonomy levels tied to real workflow authority",
-        "Control evidence for boundaries, exceptions, intervention, and recovery",
-        "Rollback, stop conditions, and accountable ownership at each level"
-      ],
-      "pdf": "marco-policani-earned-ai-autonomy.pdf",
-      "socialImage": "field-note-earned-ai-autonomy-1200x627.png",
-      "pages": 10,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-07-17",
-      "sourcesHtml": [
-        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>",
-        "<a href=\"https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>"
       ]
     },
     {
