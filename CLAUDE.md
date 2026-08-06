@@ -111,6 +111,21 @@ verified apex-domain property:
 
 `https://search.google.com/search-console?resource_id=sc-domain%3Apolicani.net`
 
+**Authentication precondition (automated / scheduled indexing runs).** Search
+Console and Bing Webmaster work here requires a browser signed in to the Google
+account for `sc-domain:policani.net` and to Bing Webmaster Tools. In Cowork you
+have this via the `claude-in-chrome` MCP (the user's logged-in Chrome), so you
+can run the full flow: Pages review, URL inspection, and index
+requests/submissions. Confirm the property loads signed in before submitting —
+the in-app preview browser is a *different, signed-out* session, so use
+`claude-in-chrome` for this work. Scheduled Codex runs of the same automation
+are usually signed out and can only verify + log; do not read their "no
+submissions" outcome as the task being impossible — re-run it here. Bing note:
+the manual URL-Inspection UI allows ~100 submissions/day; the URL Submission API
+/ IndexNow allows up to ~10,000/day/domain but requires an API key this
+workspace does not create — so Bing stays UI-only and is not capped at Google's
+10/day.
+
 1. In **Performance**, keep the search type at **Web** and start with the
    **last 3 months**. Record clicks, impressions, CTR, and average position.
    Review both **Queries** and **Pages**.

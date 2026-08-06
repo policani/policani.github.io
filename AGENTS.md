@@ -119,6 +119,22 @@ verified apex-domain property:
 
 `https://search.google.com/search-console?resource_id=sc-domain%3Apolicani.net`
 
+**Authentication precondition (automated / scheduled indexing runs).** Search
+Console and Bing Webmaster work here requires a browser already signed in to the
+Google account for `sc-domain:policani.net` and to Bing Webmaster Tools. In
+scheduled or headless Codex runs the available browser is usually signed OUT of
+both; that is a missing capability, not a transient error. When signed out, do a
+single auth probe, then **fail fast**: perform only the offline-safe steps (curl
+the six legacy URLs for `200` + canonical; optionally sanity-check candidate URLs
+for 200/404), record status and backlog in the automation memory, and exit. Do
+NOT retry, reopen, or loop on Google/Bing — it burns tokens with no progress. The
+authenticated submission work belongs in an environment whose Chrome is signed in
+(the Cowork/Claude `claude-in-chrome` browser), or after the Codex browser
+profile has been interactively signed in to Google + Bing. Bing note: the manual
+URL-Inspection UI allows ~100 submissions/day; the URL Submission API / IndexNow
+allows up to ~10,000/day/domain but requires an API key, which this workspace
+does not create — so Bing stays UI-only and is not capped at Google's 10/day.
+
 1. In **Performance**, keep the search type at **Web** and start with the
    **last 3 months**. Record clicks, impressions, CTR, and average position.
    Review both **Queries** and **Pages**.
