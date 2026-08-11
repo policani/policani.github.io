@@ -58,6 +58,17 @@ function Get-ActualPdfPages([string]$Path) {
     return ([regex]::Matches($text, '/Type\s*/Page[^s]')).Count
 }
 
+function Get-VisibleWordCount([string]$Html) {
+    $plain = [Net.WebUtility]::HtmlDecode([regex]::Replace($Html, '<[^>]+>', ' '))
+    return ([regex]::Matches($plain, "[\p{L}\p{N}][\p{L}\p{N}'’-]*")).Count
+}
+
+function Assert-NoMojibake([string]$Text, [string]$Surface) {
+    if ($Text -match '\u00C2(?:\u00B7|\u00A0|\u00A9|\u00AE|\u2014|\u2013|\u2018|\u2019|\u201C|\u201D)|\u00E2(?:\u0152|\u201A|\u20AC)|\uFFFD') {
+        throw "${Surface}: detected mojibake or a replacement character. Use HTML entities or ASCII in generated PowerShell literals."
+    }
+}
+
 function Assert-EntrySchema($Entry) {
     if (-not (Get-Command Test-Json -ErrorAction SilentlyContinue)) { return }
     try {
@@ -93,6 +104,20 @@ function Assert-LibraryManifest($Manifest) {
         if ($categoryIds -notcontains $entry.category) { throw "$($entry.slug): unknown category '$($entry.category)'." }
         if (@($entry.inside).Count -ne 3) { throw "$($entry.slug): 'inside' must contain exactly three expectations." }
         if (@($entry.sourcesHtml).Count -lt 2) { throw "$($entry.slug): at least two visible sources are required." }
+        $requiresFullFieldNote = ($entry.PSObject.Properties.Name -contains 'requiresFullFieldNote') -and [bool]$entry.requiresFullFieldNote
+        if ($requiresFullFieldNote) {
+            if (-not ($entry.PSObject.Properties.Name -contains 'bodyHtml') -or [string]::IsNullOrWhiteSpace([string]$entry.bodyHtml)) {
+                throw "$($entry.slug): requiresFullFieldNote is true but bodyHtml is missing."
+            }
+            $bodyWords = Get-VisibleWordCount ([string]$entry.bodyHtml)
+            if ($bodyWords -lt 600) { throw "$($entry.slug): full field-note body has $bodyWords words; minimum is 600." }
+            if (-not ($entry.PSObject.Properties.Name -contains 'expectedSourceCount')) {
+                throw "$($entry.slug): requiresFullFieldNote is true but expectedSourceCount is missing."
+            }
+            if ([int]$entry.expectedSourceCount -ne @($entry.sourcesHtml).Count) {
+                throw "$($entry.slug): expected $($entry.expectedSourceCount) visible sources; found $(@($entry.sourcesHtml).Count)."
+            }
+        }
         if ($entry.pdf -notmatch '^marco-policani-[a-z0-9-]+\.pdf$') { throw "$($entry.slug): PDF filename does not follow the public naming standard." }
         if ($entry.lastModified -notmatch '^\d{4}-\d{2}-\d{2}$') { throw "$($entry.slug): lastModified must be YYYY-MM-DD." }
         if (-not [string]::IsNullOrWhiteSpace([string]$entry.socialImage)) {
@@ -190,7 +215,7 @@ function New-FieldNoteHtml($Manifest, $Entry) {
       <a href="../index.html" aria-current="page">Library</a>
       <a href="../../resources/">Labs</a>
       <a href="../../contact.html">Contact</a>
-      <a class="nav-search-link" href="/search.html" aria-label="Search" title="Search"><span aria-hidden="true">⌕</span></a>
+      <a class="nav-search-link" href="/search.html" aria-label="Search" title="Search"><span aria-hidden="true">&#x2315;</span></a>
     </div>
   </div>
 </nav>
@@ -261,7 +286,7 @@ function New-LibraryCardHtml($Entry, $Category, [bool]$Featured) {
     $summary = Encode-Html $Entry.summary
     $category = Encode-Html $Category.label
     $summaryParagraph = if ($Featured) { "<p>$summary</p>" } else { '' }
-    return '<article class="' + $class + '" data-sequence="' + $Entry.sequence + '" data-category="' + $category + '" data-summary="' + $summary + '"><span class="entry-kicker">Field note · ' + (Encode-Html $Entry.publishedLabel) + '</span><h3><a href="field-notes/' + $Entry.slug + '.html">' + $title + '</a></h3>' + $summaryParagraph + '<div class="entry-links"><a href="field-notes/' + $Entry.slug + '.html">Read note</a><a href="whitepapers/' + $Entry.pdf + '">White paper</a></div></article>'
+    return '<article class="' + $class + '" data-sequence="' + $Entry.sequence + '" data-category="' + $category + '" data-summary="' + $summary + '"><span class="entry-kicker">Field note &middot; ' + (Encode-Html $Entry.publishedLabel) + '</span><h3><a href="field-notes/' + $Entry.slug + '.html">' + $title + '</a></h3>' + $summaryParagraph + '<div class="entry-links"><a href="field-notes/' + $Entry.slug + '.html">Read note</a><a href="whitepapers/' + $Entry.pdf + '">White paper</a></div></article>'
 }
 
 function Update-LibraryIndex($Manifest) {
@@ -354,6 +379,7 @@ function Assert-GeneratedSurfaces($Manifest) {
     $generatedPages = @(Get-ChildItem -LiteralPath $fieldNotesPath -Filter '*.html')
     if ($generatedPages.Count -ne $entries.Count) { throw "Generated field-note count is $($generatedPages.Count); manifest count is $($entries.Count)." }
     if ($landing -notmatch "Search all $($entries.Count) field notes") { throw 'Governance landing total is out of sync.' }
+    Assert-NoMojibake $landing 'Governance landing page'
 
     foreach ($category in $Manifest.categories) {
         $count = @($entries | Where-Object { $_.category -eq $category.id }).Count
@@ -366,6 +392,7 @@ function Assert-GeneratedSurfaces($Manifest) {
         $pagePath = Join-Path $fieldNotesPath "$($entry.slug).html"
         if (-not (Test-Path -LiteralPath $pagePath)) { throw "$($entry.slug): generated field note is missing." }
         $page = [IO.File]::ReadAllText($pagePath)
+        Assert-NoMojibake $page "$($entry.slug): generated field note"
         foreach ($required in @('What the paper develops', 'Inside the white paper', '<section class="field-note-sources-wrap"', "whitepapers/$($entry.pdf)")) {
             if (-not $page.Contains($required)) { throw "$($entry.slug): generated page is missing '$required'." }
         }

@@ -52,6 +52,15 @@
       "minLength": 180,
       "description": "Optional trusted long-form field-note body rendered beneath the standard context heading."
     },
+    "requiresFullFieldNote": {
+      "type": "boolean",
+      "description": "Set true for new published articles. The generator then requires a substantive bodyHtml and source-count parity."
+    },
+    "expectedSourceCount": {
+      "type": "integer",
+      "minimum": 2,
+      "description": "Expected count of visible reader-facing sources when requiresFullFieldNote is true."
+    },
     "inside": {
       "type": "array",
       "minItems": 3,

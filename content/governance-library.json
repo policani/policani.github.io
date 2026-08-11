@@ -32,7 +32,7 @@
       "summary": "Govern AI on evidence of the work — a baseline, a work-output signal, and a review that separates felt speed from delivered outcome — because self-reported speedup is not operating evidence.",
       "operatingMove": "Before scaling an AI-assisted workflow, require a pre-tool baseline, a work-output signal that using the tool more cannot inflate, and a review that keeps felt speed and delivered outcome in separate columns.",
       "preview": "Ask people how much faster AI made them and you get a confident number that turns out to be a feeling, not evidence. This field note sets a small measurement standard — a baseline captured before the tool arrives, a work-output signal activity cannot inflate, and a review that reads felt speed and delivered outcome as two separate records — so AI adoption is governed on what the work did, not on how fast it felt.",
-      "bodyHtml": "<h2>The gap a good feeling hides</h2><p>Ask people how much faster AI made them and you will get a confident number. The number is a feeling, and a feeling is not operating evidence. When a program is funded, scaled, or defended on a self-reported speedup, the organization has let a feeling stand in for evidence.</p><p>The finding that should unsettle that habit is not that AI is slow. In a 2025 randomized controlled trial, the research nonprofit METR had sixteen experienced developers complete 246 real tasks with and without AI. They expected a 24 percent speedup, and afterward still believed they had gained 20 percent. The clock said they took 19 percent longer. The point that travels beyond sixteen developers and early-2025 tools is not the slowdown; it is the size and persistence of the gap between what capable people believed about their own speed and what the work recorded.</p><p>The same divergence appears at the level of a delivery system. Google's DORA program reported in 2024 that AI adoption raised individual productivity, flow, and job satisfaction while it lowered software delivery stability and throughput. People felt more productive, and the delivery system became less stable, in the same dataset. Both findings are snapshots; together they establish the variable a governance standard has to account for — felt speed and measured output are not the same signal, and the first runs ahead of the second.</p><h2>Why a feeling cannot govern</h2><p>METR's own February 2026 follow-up is blunt about the self-report problem: those estimates &ldquo;can be quite unreliable,&rdquo; and wider AI adoption &ldquo;has made it more difficult to measure task-level productivity&rdquo; as the unaided comparison erodes. The internal sensation of fluency &mdash; an instant answer, a filled page &mdash; is a poor instrument for elapsed time and reworked output. A survey that asks employees how much AI helped is measuring enthusiasm and tool preference, not delivered help.</p><p>So the durable claim is not slower or faster. It is that self-reported speedup is a low-quality signal that systematically outruns measured output, and that an organization scaling AI on that signal is scaling on sentiment. A portfolio does not fund sentiment on purpose. It does so by default, when no one built the alternative.</p><h2>A small standard that measures the work</h2><p>The alternative is the ordinary discipline of measuring an operating change. An AI-assisted workflow is governed on evidence when three things exist: a baseline captured before the tool changed the work; a work-output signal that reflects delivered value &mdash; cycle time, rework, error rate, finished units meeting standard &mdash; chosen so that using the tool more cannot move it by itself; and a review that keeps the felt experience and the delivered outcome in two separate columns. When the columns agree, reliance can grow. When they diverge, that divergence is the most valuable thing the review produces, because it is exactly the case a satisfaction survey would have scored as a win.</p><p>The hardest part is subtraction. Adoption rate, active users, prompts per employee, and self-rated speed all rise whether or not the work improved; they belong on an adoption dashboard, not in the evidence a portfolio uses to deepen reliance. As one analysis of the AI ROI gap put it, governance machinery &ldquo;sits above the work,&rdquo; while the value, or the leak, happens inside the workflow, at the level of the actual task &mdash; which is why local task gains so often show no straight line to the result the portfolio funded.</p><p>None of this slows adoption. It lets a leader say yes to deeper reliance on evidence, and redirect rather than abandon a tool whose value is leaking inside a workflow. Felt productivity is real and worth having. It is simply not the same thing as measured productivity, and only one of the two can tell a portfolio where its money went.</p>",
+      "bodyHtml": "<h2>Felt productivity is not measured productivity</h2>\n<p>Ask people how much faster AI made them and you will get a confident number. The number is a feeling, and a feeling is not operating evidence. When a program is funded, scaled, or defended on a self-reported speedup, the organization has let a feeling stand in for evidence.</p>\n<p>The finding that should unsettle that habit is not that AI is slow. In a 2025 randomized controlled trial, the research nonprofit METR had sixteen experienced developers complete 246 real tasks with and without AI. They expected a 24 percent speedup, and afterward still believed they had gained 20 percent. The clock said they took 19 percent longer. The durable lesson is the gap between what capable people believed about their own speed and what the work recorded. This study does not set a universal effect for every task or tool.</p>\n<p>The same divergence appears at the level of a delivery system. Google&#x27;s DORA program reported in 2024 that AI adoption raised individual productivity, flow, and job satisfaction while it lowered software delivery stability and throughput. People felt more productive, and the system delivered less stably, in the same dataset. Both findings are snapshots; together they establish the variable a governance standard has to account for — felt speed and measured output are not the same signal, and the first runs ahead of the second.</p>\n<h3>Why a feeling cannot govern</h3>\n<p>METR&#x27;s own February 2026 follow-up is blunt about the self-report problem: those estimates &#x27;can be quite unreliable,&#x27; and wider AI adoption &#x27;has made it more difficult to measure task-level productivity&#x27; as the unaided comparison erodes. The internal sensation of fluency — an instant answer, a filled page — is a poor instrument for elapsed time and reworked output. A survey that asks employees how much AI helped is measuring enthusiasm and tool preference, not delivered help.</p>\n<p>So the durable claim is not slower or faster. It is that self-reported speedup is a low-quality signal that systematically outruns measured output, and that an organization scaling AI on that signal is scaling on sentiment. A portfolio does not fund sentiment on purpose. It does so by default, when no one built the alternative.</p>\n<h3>A small standard that measures the work</h3>\n<p>The alternative is the ordinary discipline of measuring an operating change. First, capture a baseline before the tool changes the work. Then choose a work-output signal that reflects delivered value — cycle time, rework, error rate, or finished units meeting standard — and cannot rise merely because people use the tool more. Finally, review felt experience and delivered outcome in separate columns. When the columns agree, reliance can grow. When they diverge, the review has found the case a satisfaction survey would have counted as a win.</p>\n<p>The hard part is deciding which numbers do not count as evidence. Adoption rate, active users, prompts per employee, and self-rated speed can all rise while the work stays the same; they belong on an adoption dashboard, not in the evidence a portfolio uses to deepen reliance. A CIO analysis makes the distinction plainly: governance machinery can sit above the work while the value is created or lost inside the workflow. That is why a local task gain may never reach the result the portfolio funded.</p>\n<p>None of this slows adoption. It lets a leader say yes to deeper reliance on evidence, and redirect rather than abandon a tool whose value is leaking inside a workflow. Felt productivity is real and worth having. It is simply not the same thing as measured productivity, and only one of the two can tell a portfolio where its money went.</p>",
       "inside": [
         "Why self-reported speedup runs ahead of measured output — and stays there even after people live through the work",
         "A three-part measurement standard: a pre-tool baseline, a work-output signal activity cannot inflate, and a two-column separation review",
@@ -49,9 +49,13 @@
         "<a href=\"https://metr.org/blog/2026-02-24-uplift-update/\" target=\"_blank\" rel=\"noopener noreferrer\">METR, &quot;We Are Changing Our Developer Productivity Experiment Design,&quot; February 24, 2026</a> — the follow-up noting self-report is unreliable and that wider adoption is eroding the ability to measure task-level productivity.",
         "<a href=\"https://dora.dev/research/2024/dora-report/\" target=\"_blank\" rel=\"noopener noreferrer\">Google Cloud DORA, &quot;Accelerate State of DevOps Report 2024&quot;</a> — the system-level snapshot where AI adoption raised satisfaction while delivery stability and throughput fell.",
         "<a href=\"https://www.microsoft.com/en-us/research/publication/the-space-of-developer-productivity-theres-more-to-it-than-you-think/\" target=\"_blank\" rel=\"noopener noreferrer\">Nicole Forsgren and colleagues, &quot;The SPACE of Developer Productivity,&quot; ACM Queue, 2021</a> — why productivity cannot be measured by a single metric or activity count.",
-        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST, &quot;AI Risk Management Framework&quot; — the MEASURE function</a> — measurement as an operating control that gives management decisions a traceable basis."
+        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST, &quot;AI Risk Management Framework&quot; — the MEASURE function</a> — measurement as an operating control that gives management decisions a traceable basis.",
+        "<a href=\"https://www.cio.com/article/4183502/why-is-it-so-hard-to-measure-the-roi-of-ai.html\" target=\"_blank\" rel=\"noopener noreferrer\">Maria Korolov, &quot;Why Is It So Hard to Measure the ROI of AI?&quot; CIO, 2025</a> — explains why an AI ROI program needs a baseline and workflow-level evidence.",
+        "<a href=\"https://www.cio.com/article/4193951/the-ai-roi-gap-isnt-a-model-problem-its-a-workflow-problem.html\" target=\"_blank\" rel=\"noopener noreferrer\">Pete Johnson, &quot;The AI ROI Gap Isn&#39;t a Model Problem. It&#39;s a Workflow Problem,&quot; CIO, 2025</a> — distinguishes governance activity from evidence that the task-level workflow improved."
       ],
-      "sequence": 34.0
+      "sequence": 34.0,
+      "requiresFullFieldNote": true,
+      "expectedSourceCount": 7
     },
     {
       "slug": "separate-the-decision-from-the-outcome",
@@ -69,7 +73,7 @@
       "pdf": "marco-policani-separate-the-decision-from-the-outcome.pdf",
       "pages": 13,
       "publishedLabel": "Aug 2026",
-      "lastModified": "2026-08-10",
+      "lastModified": "2026-08-11",
       "socialImage": "field-note-separate-the-decision-from-the-outcome-1200x627.png",
       "showSocialPreview": true,
       "sourcesHtml": [
@@ -80,7 +84,9 @@
         "<a href=\"https://www.decisionprofessionals.com/assets/storage/docs/Decision-education-at-GM.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Society of Decision Professionals, &quot;Decision Education at GM&quot;</a> — six elements used here as an inspection framework, not a guarantee of results.",
         "<a href=\"https://www.newedgewealth.com/wp-content/uploads/document-805810220.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Michael J. Mauboussin and Dan Callahan, &quot;Outcome Bias and the Interpreter,&quot; Credit Suisse Global Financial Strategies, 2013</a> — practitioner framing for separating process, skill, and luck."
       ],
-      "sequence": 33.0
+      "sequence": 33.0,
+      "requiresFullFieldNote": true,
+      "expectedSourceCount": 6
     },
     {
       "sequence": 32,
@@ -98,7 +104,7 @@
       "pdf": "marco-policani-capital-reallocation-real-portfolio-decision.pdf",
       "pages": 13,
       "publishedLabel": "Aug 2026",
-      "lastModified": "2026-08-10",
+      "lastModified": "2026-08-11",
       "socialImage": "field-note-capital-reallocation-real-portfolio-decision-1200x627.png",
       "showSocialPreview": true,
       "sourcesHtml": [
@@ -109,7 +115,10 @@
         "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg, &quot;Quality Control and Due Diligence in Project Management&quot;</a> — front-end estimates of cost and benefit are poor predictors of actual outcomes; an outside-view discipline improves decisions.",
         "<a href=\"https://www.gao.gov/products/gao-04-394g\" target=\"_blank\" rel=\"noopener noreferrer\">U.S. Government Accountability Office, &quot;Information Technology Investment Management,&quot; GAO-04-394G</a> — describes actual-data portfolio reviews, predetermined performance thresholds, and resource adjustments among investments.",
         "<a href=\"https://www.apm.org.uk/resources/what-is-project-management/what-is-portfolio-management/\" target=\"_blank\" rel=\"noopener noreferrer\">Association for Project Management, &quot;What is portfolio management?&quot;</a> — frames portfolio management around strategy and delivery capacity; notes that sponsors may need to sacrifice their own project priorities for the wider portfolio."
-      ]
+      ],
+      "requiresFullFieldNote": true,
+      "expectedSourceCount": 7,
+      "bodyHtml": "<p>In the portfolios I have governed under a fixed funding ceiling, the annual plan was usually treated as the decision. Leaders argued for months. They agreed on a split of money and people across initiatives. Then they defended that split until the next planning round. The plan felt like governance. It was mostly administration.</p>\n\n<p>The decision that actually governs a portfolio is not made once a year. It is made every time the evidence shifts. Someone chooses whether to move funding and capacity toward the work that is now paying off, or to leave them where last year's argument put them. An organization that can move resources on evidence is governing its portfolio. An organization that can only wait for the next budget cycle is administering a plan it has already outgrown.</p>\n\n<p>The gap is measurable. McKinsey's <em>State of Organizations 2026</em> drew on more than 10,000 senior executives across 15 countries and 16 industries. It found that 47 percent of leaders review budget and talent only annually or less often, while only 30 percent of organizations reallocate resources enterprise-wide. The figures do not set a universal cadence, but they show how rarely the organization makes an enterprise-level move. Moving resources is how a strategy stops being a statement and becomes an allocation.</p>\n\n<h2>What an annual budget freezes</h2>\n\n<p>An annual plan is a snapshot of conviction, formed on the evidence available at one moment. The problem is not that the snapshot is wrong. It is that the organization keeps acting on it long after the evidence behind it has changed. Research on major projects finds that front-end estimates of cost and benefit are poor predictors of what happens. So the numbers that justified last year's allocation were never accurate enough to freeze for twelve months.</p>\n\n<p>When the plan becomes the decision, three things lock in place. Funding sticks to initiatives rather than to evidence, so a program missing every milestone keeps its capacity. Scarce specialists stay assigned to work that has become less valuable, because reassigning them feels like admitting the plan was wrong. And the portfolio review shifts into a conformance posture. It asks whether each initiative is on track against its plan, not whether it is still the best use of the capacity it holds. A project can be perfectly on plan and still be the wrong place for the next dollar and the next scarce specialist.</p>\n\n<h2>Reallocation is the portfolio decision</h2>\n\n<p>Portfolio management, done seriously, is not selection followed by a year of monitoring. It is the continuous act of selecting, prioritizing, accelerating, de-prioritizing, killing, and reallocating work under limited resources. The gates should accelerate winners and fail fast on losers. Gates that only wave things through are not governing.</p>\n\n<p>There is a longer-run performance case for treating reallocation as the real decision. It belongs here as background evidence for the discipline, not as investment advice. McKinsey's study of resource reallocation tracked companies over 15 years. The top third of reallocators shifted an average of 56 percent of capital across their businesses. That top third earned roughly 30 percent higher total shareholder returns each year than the bottom third, and were about 13 percent more likely to avoid acquisition or bankruptcy. The mechanism is not financial engineering. Companies that keep moving capital toward their better opportunities compound an advantage, while others slowly fund their own decline.</p>\n\n<p>That evidence carries a caveat the discipline depends on. The same research is explicit that over spans under about three years, high reallocators underperformed. Reallocation is not thrash. The advantage comes from consistent, evidence-led reallocation held over the medium term: the willingness to move when the evidence is real and durable, paired with the discipline not to move on noise.</p>\n\n<h2>The short-cycle review</h2>\n\n<p>The mechanism that makes this real is a short-cycle reallocation review. It is a standing routine, run monthly or quarterly, whose only job is to decide what should move. It is not a status meeting with reallocation bolted on. It rests on four elements: a <strong>trigger</strong>, a defined condition that puts an initiative's capacity back on the table; an <strong>evidence standard</strong> of baseline, current signals, and an honest outside-view read, not advocacy; a <strong>decision owner</strong>, a single accountable sponsor with the standing to move resources across initiative boundaries; and a <strong>move</strong>, an actual change to the allocation, or a recorded decision to hold and why.</p>\n\n<p>The forces that keep money in place are ordinary and strong. There is the sunk-cost reflex. There is the political economy of holding a budget. There is weak evidence at the point of decision. And there is the simple absence of anyone with the authority to move resources across boundaries. That is why reallocation has to be engineered as a routine rather than left to good intentions. Left to good intentions, the money does not move.</p>\n\n<h2>The portfolio view that makes a move legitimate</h2>\n\n<p>The unit of analysis is not the project that happens to be in trouble. It is the contested resource and the credible alternatives that could use it. A project-status deck is organized around activity. A reallocation brief must be organized around a choice: the resource at stake, the time window, the original benefit and baseline, the observed evidence, dependencies, alternatives, and the consequence of holding. Inaction also allocates capacity.</p>\n\n<p>Government investment-management guidance makes the control concrete: use actual investment data, predefined performance thresholds, and portfolio-level review to adjust resources among investments when necessary. A threshold does not replace judgment; it makes the condition for reconsidering an allocation known before a sponsor is under pressure to defend it. The decision still has to consider dependencies, capacity, risk, and the effects on other work.</p>\n\n<p>The trade-off is the point of portfolio management. Project sponsors can explain local evidence; the portfolio owner decides whether that evidence still warrants the capacity it consumes when compared with the enterprise alternatives. The decision record should preserve the trigger, evidence, alternatives, accountable owner, and expected next observation. That makes a move—or a deliberate hold—reversible on evidence rather than politics.</p>\n\n<p>The honest test of portfolio governance is not the quality of the annual plan; any competent organization can produce one. The test is what happens in month four, when the evidence has moved and the plan has not. The plan tells you what you believed a year ago. Reallocation is what you do about what you know now. Only one of them is governance.</p>"
     },
     {
       "sequence": 31,
@@ -128,7 +137,7 @@
       "pdf": "marco-policani-ai-deployment-is-a-jurisdiction-decision.pdf",
       "pages": 13,
       "publishedLabel": "Aug 2026",
-      "lastModified": "2026-08-10",
+      "lastModified": "2026-08-11",
       "socialImage": "field-note-ai-deployment-jurisdiction-decision-1200x627.png",
       "showSocialPreview": true,
       "sourcesHtml": [
@@ -139,7 +148,9 @@
         "<a href=\"https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence\">NIST — Generative Artificial Intelligence Profile</a> — lifecycle and third-party risk guidance.",
         "<a href=\"https://www.cisa.gov/sites/default/files/2023-05/Cloud%20Security%20Technical%20Reference%20Architecture%20v2.pdf\">CISA, U.S. Digital Service, and FedRAMP — Cloud Security Technical Reference Architecture, Version 2.0</a> — shared security responsibility.",
         "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\">NIST AI Resource Center — AI RMF Core</a> — intended purpose, context, roles, risk tolerance, and third-party risk."
-      ]
+      ],
+      "requiresFullFieldNote": true,
+      "expectedSourceCount": 7
     },
     {
       "sequence": 30,
@@ -158,7 +169,7 @@
       "pdf": "marco-policani-decision-rights-are-a-system-design-choice.pdf",
       "pages": 15,
       "publishedLabel": "Aug 2026",
-      "lastModified": "2026-08-10",
+      "lastModified": "2026-08-11",
       "socialImage": "field-note-decision-rights-are-a-system-design-choice-1200x627.png",
       "showSocialPreview": true,
       "sourcesHtml": [
@@ -171,7 +182,9 @@
         "<a href=\"https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/decision-making-with-ai.html\" target=\"_blank\" rel=\"noopener noreferrer\">David Mallon, Julie Duda, Stefano Besana, and Maya Bodan, &quot;AI and the Future of Human Decision-Making,&quot; Deloitte Insights</a>.",
         "<a href=\"https://s2.q4cdn.com/299287126/files/doc_financials/annual/2015-Letter-to-Shareholders.PDF\" target=\"_blank\" rel=\"noopener noreferrer\">Jeffrey P. Bezos, Amazon 2015 Letter to Shareholders</a>.",
         "<a href=\"https://www.strategy-business.com/article/00030\" target=\"_blank\" rel=\"noopener noreferrer\">Thomas A. Stewart, &quot;Putting Strategy into Practice,&quot; strategy+business</a>."
-      ]
+      ],
+      "requiresFullFieldNote": true,
+      "expectedSourceCount": 9
     },
     {
       "slug": "standardize-the-component-not-the-project",
@@ -198,8 +211,11 @@
         "<a href=\"https://www.gao.gov/products/gao-02-195\">U.S. GAO — NASA: Better Mechanisms Needed for Sharing Lessons Learned</a> — found that an agency-wide lessons system did not assure later application and recommended management mechanisms beyond storage."
       ],
       "sequence": 29.0,
-      "lastModified": "2026-08-10",
-      "publishedLabel": "Aug 2026"
+      "lastModified": "2026-08-11",
+      "publishedLabel": "Aug 2026",
+      "requiresFullFieldNote": true,
+      "expectedSourceCount": 7,
+      "bodyHtml": "<h2>A project folder is evidence, not a standard</h2>\n<p>A successful project finishes and its documents enter a shared repository. Another team copies them, changes what does not fit, and saves a second version. Soon the organization has several files with similar names, uncertain owners, and conflicting rules. The artifacts survived. The learning did not become dependable.</p>\n<p>PMI’s mature lessons-learned practice makes the missing work clear: capture is followed by analysis, retrieval, management action, and tracked follow-through. A GAO review of NASA reached the same boundary from the other direction. NASA had an agency-wide lessons system, yet the review found no assurance that lessons were being applied to later missions. Storage helps people find material. It cannot decide what the organization should rely on.</p>\n<p>That decision belongs in the operating model. The EPMO can turn repeated project learning into a shared asset by promoting the smallest useful component, protecting the variation that context requires, and making the component’s lifecycle visible.</p>\n<h2>Promote the component that can travel</h2>\n<p>Whole projects are poor units of standardization. Their sponsors, technologies, contracts, risks, and delivery histories differ. Copying the whole project imports those local assumptions and produces a large template that teams must obey or quietly dismantle.</p>\n<p>A reusable component is narrower. It may be an intake question that exposes whether a sponsor can name the outcome. It may be a decision record, source standard, readiness check, exception route, measure definition, or handoff rule. Each has one operating job and can be tested apart from the project that produced it.</p>\n<p>The component needs a stable core and an explicit edge. The core states what must remain true. The edge states where local judgment begins. APQC’s process guidance supports context-driven variants alongside reference models and process governance. The standard is therefore the governed relationship between the shared core and its legitimate variants.</p>\n<h2>Promotion must be earned</h2>\n<p>A useful artifact should not become a standard because an executive likes it or one project went well. Promotion is a portfolio decision about whether another team should be able to rely on it. I use five states to manage that decision: iterate, mature, canonize, lock, and monitor.</p>\n<p>Iterate keeps a new component close to the work while its purpose and limits are still being learned. Mature tests the core in another setting. Canonize publishes the supported core, owner, boundary, variants, and known limits. Lock places silent local edits under a visible change path. Monitor watches use, exceptions, workarounds, and obsolescence. These states are my governance framework, not an industry maturity scale or a promise of return.</p>\n<h2>Run a project-to-standard review</h2>\n<p>The review should stay small enough to make a decision at the table. Seven questions keep it honest:</p>\n<p>Repeated component: What exact part of the work has appeared in more than one project?</p>\n<p>Evidence of reuse: Where did another team use the core, and what changed at its intended operating point?</p>\n<p>Owner: Who can judge the core, approve variants, publish change, and retire it?</p>\n<p>Approved variants: What stays stable, where does local choice begin, and which differences are sanctioned?</p>\n<p>Version path: How does a proposed change become part of the core, an approved variant, a rejection, or a request for more evidence?</p>\n<p>Exception signal: Which repeated workaround, override, or failure forces review?</p>\n<p>Retirement trigger: What would make the component obsolete, redundant, unsafe, or too costly to maintain?</p>\n<p>Distribution is not evidence of reuse. Downloads and page views show exposure. The stronger evidence shows that the component entered the work at the intended point and changed a named ambiguity, handoff, or control condition. A project can attach a standard decision record while making the real choice in an unrecorded side meeting. The review must see that difference.</p>\n<h2>Variation is design data</h2>\n<p>Legitimate variation is part of the asset. PMI’s innovation-governance research describes the tension between rigor and flexibility and recommends governance tailored to context. The practical answer is to give each departure a status.</p>\n<p>An approved variant repeats under a named condition and preserves the component’s purpose. An exception permits a bounded departure for one case, with an owner and a return condition. A proposed core change shows that the shared rule no longer handles the work it was meant to govern. Variants are published, exceptions are watched for recurrence, and core changes enter the version path. Treating all three as local customization would hide the signal that improves the component.</p>\n<h2>Keep the EPMO in its lane</h2>\n<p>The EPMO governs promotion; it does not author every component or pull every local choice upward. Subject-matter owners retain authority over the content. Project leaders retain responsibility for fit. Control functions keep their existing rights.</p>\n<p>The EPMO is positioned to scan across projects, convene the promotion decision, keep the core and approved variants visible, and aggregate exception patterns that one project cannot see. It should also resist turning every useful local practice into an enterprise obligation. Maintenance is real work, and many candidates should remain local.</p>\n<p>A shared component earns reliance when another team can use its stable core, select a valid variant, find the current version, reach an accountable owner, report an exception, and know when the asset should retire. That is organizational learning made inspectable — without pretending that every project should look the same.</p>"
     },
     {
       "sequence": 28,
@@ -218,7 +234,7 @@
       "socialImage": "field-note-exception-path-automation-1200x627.png",
       "pages": 10,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>",
         "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel et al.</a>"
@@ -241,7 +257,7 @@
       "socialImage": "field-note-coordination-tax-1200x627.png",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-07-17",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://arxiv.org/abs/2602.18673\" target=\"_blank\" rel=\"noopener noreferrer\">Harang Ju</a>",
         "<a href=\"https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>"
@@ -264,7 +280,7 @@
       "socialImage": "field-note-production-ai-evaluation-1200x627.png",
       "pages": 10,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, NIST AI 600-1 (2024)</a>",
         "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel, Amanda Minnich, Shiven Chawla, Gary Lopez, Martin Pouliot, Whitney Maxwell, Joris de Gruyter, Katherine Pratt, Saphir Qi, Nina Chikanov, Roman Lutz, Raja Sekhar Rao Dheekonda, Bolor-Erdene Jagdagdorj, Eugenia Kim, Justin Song, Keegan Hines, Daniel Jones, Giorgio Severi, Richard Lundeen, Sam Vaughan, Victoria Westerhoff, Pete Bryan, Ram Shankar Siva Kumar, Yonatan Zunger, Chang Kawaguchi, and Mark Russinovich, Microsoft Research (2025)</a>"
@@ -287,7 +303,7 @@
       "socialImage": "field-note-local-ai-cloud-governance-1200x627.png",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, NIST AI 600-1 (2024)</a>",
         "<a href=\"https://www.cisa.gov/sites/default/files/2023-02/cloud_security_technical_reference_architecture_2.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">CISA, USDS, and FedRAMP, Cloud Security Technical Reference Architecture, Version 2.0 (2022)</a>"
@@ -310,7 +326,7 @@
       "socialImage": "field-note-demo-to-production-gap-1200x627.png",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, with Tara Balakrishnan</a>",
         "<a href=\"https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html\" target=\"_blank\" rel=\"noopener noreferrer\">Deloitte, The State of AI in the Enterprise (2026)</a>"
@@ -333,7 +349,7 @@
       "socialImage": "field-note-confident-and-wrong-1200x627.png",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-07-17",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://openai.com/index/sycophancy-in-gpt-4o/\" target=\"_blank\" rel=\"noopener noreferrer\">OpenAI</a>",
         "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel et al.</a>"
@@ -356,7 +372,7 @@
       "socialImage": "field-note-portfolio-scenarios-not-plan-1200x627.png",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-07-17",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
         "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
@@ -379,7 +395,7 @@
       "socialImage": "field-note-decision-friction-portfolio-risk-1200x627.png",
       "pages": 12,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
         "<a href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\">CIO</a>"
@@ -402,7 +418,7 @@
       "socialImage": "field-note-investment-health-dashboard-1200x627.png",
       "pages": 12,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
         "<a href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\">CIO</a>"
@@ -425,7 +441,7 @@
       "socialImage": "field-note-epmo-capacity-not-calendars-1200x627.png",
       "pages": 10,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://www.stage-gate.com/solutions/services/gate-governance/\" target=\"_blank\" rel=\"noopener noreferrer\">Stage-Gate International</a>",
         "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>"
@@ -448,7 +464,7 @@
       "socialImage": "field-note-stage-gates-with-teeth-1200x627.png",
       "pages": 10,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-07-17",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://www.stage-gate.com/solutions/services/gate-governance/\" target=\"_blank\" rel=\"noopener noreferrer\">Stage-Gate International</a>",
         "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
@@ -471,7 +487,7 @@
       "socialImage": "field-note-project-readiness-before-kickoff-1200x627.png",
       "pages": 10,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
         "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
@@ -493,7 +509,7 @@
       "pdf": "marco-policani-prove-it-economy-careers-ai-programs.pdf",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "Pranjal Aggarwal, Vishvak Murahari, Tanmay Rajpurohit, Ashwin Kalyan, Karthik Narasimhan, and Ameet Deshpande, &quot;GEO: Generative Engine Optimization,&quot; accepted to KDD 2024; arXiv:2311.09735, submitted November 16, 2023, revised June 28, 2024. <a href=\"https://arxiv.org/html/2311.09735\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
         "Matthew Arnold, Rachel K. E. Bellamy, Michael Hind, Stephanie Houde, Sameep Mehta, Aleksandra Mojsilovi&#263;, Ravi Nair, Karthikeyan Natesan Ramamurthy, Darrell Reimer, Alexandra Olteanu, David Piorkowski, Jason Tsay, and Kush R. Varshney, &quot;FactSheets: Increasing Trust in AI Services through Supplier's Declarations of Conformity,&quot; arXiv:1808.07261, submitted August 22, 2018, revised February 7, 2019. <a href=\"https://arxiv.org/abs/1808.07261\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
@@ -518,7 +534,7 @@
       "pdf": "marco-policani-portfolio-governance-funding-discipline.pdf",
       "pages": 12,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "Robert G. Cooper and Scott J. Edgett, &quot;Portfolio Management: Fundamental for New Product Success,&quot; Stage-Gate International. <a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">stage-gate.com</a>",
         "Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, &quot;From promise to impact: How companies can measure&mdash;and realize&mdash;the full value of AI,&quot; McKinsey &amp; Company, April 24, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
@@ -542,7 +558,7 @@
       "pdf": "marco-policani-oversight-capacity-ai-scale.pdf",
       "pages": 12,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "Alexander Sukharevsky, Alexis Krivkovich, Arne Gast, Arsen Storozhev, Dana Maor, Deepak Mahadevan, Lari H&auml;m&auml;l&auml;inen, and Sandra Durth, &quot;The agentic organization: Contours of the next paradigm for the AI era,&quot; McKinsey &amp; Company, September 26, 2025. Verified July 10, 2026. <a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
         "David Mallon, Brad Kreit, and Natasha Buckley, &quot;Rethinking operating models for humans with agents,&quot; Deloitte Insights, April 2, 2026. Verified July 10, 2026. <a href=\"https://www.deloitte.com/us/en/insights/topics/talent/operating-models-for-humans-ai-agents.html\" target=\"_blank\" rel=\"noopener noreferrer\">deloitte.com</a>",
@@ -566,7 +582,7 @@
       "pdf": "marco-policani-governing-ai-as-operational-change.pdf",
       "pages": 10,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "socialImage": "field-note-governing-ai-operational-change-1200x627.png",
       "sourcesHtml": [
         "Gartner, &quot;Gartner Survey Finds Generative AI Is Now the Most Frequently Deployed AI Solution in Organizations,&quot; May 7, 2024. Verified August 3, 2026. <a href=\"https://www.gartner.com/en/newsroom/press-releases/2024-05-07-gartner-survey-finds-generative-ai-is-now-the-most-frequently-deployed-ai-solution-in-organizations\" target=\"_blank\" rel=\"noopener noreferrer\">gartner.com</a>",
@@ -598,7 +614,7 @@
       "pdf": "marco-policani-every-agent-needs-a-human-operating-model.pdf",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, &quot;The state of AI in 2025: Agents, innovation, and transformation,&quot; McKinsey &amp; Company, November 5, 2025. Verified July 10, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
         "Gartner, &quot;Gartner Predicts Over 40% of Agentic AI Projects Will Be Canceled by End of 2027,&quot; press release, June 25, 2025. Verified July 10, 2026. <a href=\"https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027\" target=\"_blank\" rel=\"noopener noreferrer\">gartner.com</a>",
@@ -624,7 +640,7 @@
       "pdf": "marco-policani-enterprise-ai-trust-operating-evidence.pdf",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "Gabriel Morgan Asaftei, Roger Roberts, Abby Sticha, and Cécile Prinsen, &quot;State of AI trust in 2026: Shifting to the agentic era,&quot; McKinsey &amp; Company, March 25, 2026. <a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/tech-forward/state-of-ai-trust-in-2026-shifting-to-the-agentic-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
         "Matthew Arnold, Rachel K. E. Bellamy, Michael Hind, Stephanie Houde, Sameep Mehta, Aleksandra Mojsilovic, Ravi Nair, Karthikeyan Natesan Ramamurthy, Darrell Reimer, Alexandra Olteanu, David Piorkowski, Jason Tsay, and Kush R. Varshney, &quot;FactSheets: Increasing Trust in AI Services through Supplier&rsquo;s Declarations of Conformity,&quot; arXiv:1808.07261, 2018 (rev. 2019). <a href=\"https://arxiv.org/abs/1808.07261\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
@@ -650,7 +666,7 @@
       "pdf": "marco-policani-documentation-cross-functional-leverage.pdf",
       "pages": 10,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "Leopold M&uuml;ller, Joshua Holstein, Sarah Bause, Gerhard Satzger, and Niklas K&uuml;hl, &quot;Data Quality Challenges in Retrieval-Augmented Generation,&quot; arXiv:2510.00552, submitted October 1, 2025; accepted for ICIS 2025. <a href=\"https://arxiv.org/abs/2510.00552\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
         "National Institute of Standards and Technology, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 2024. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>",
@@ -675,7 +691,7 @@
       "pdf": "marco-policani-business-imagination-is-the-scarce-asset-now.pdf",
       "pages": 16,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "socialImage": "field-note-business-imagination-1200x627.png",
       "sourcesHtml": [
         "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, \"The state of AI in 2025: Agents, innovation, and transformation,\" McKinsey &amp; Company, November 5, 2025. Verified July 5, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai</a>",
@@ -703,7 +719,7 @@
       "pdf": "marco-policani-benefits-realization-transformations-fail.pdf",
       "pages": 12,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "Project Management Institute, &quot;Benefits Realization Management: A Practice Guide.&quot; <a href=\"https://www.pmi.org/standards\" target=\"_blank\" rel=\"noopener noreferrer\">pmi.org</a>",
         "Bent Flyvbjerg and Dan Gardner, &quot;How Big Things Get Done,&quot; Crown Currency, February 7, 2023. <a href=\"https://www.penguinrandomhouse.com/books/672118/how-big-things-get-done-by-bent-flyvbjerg-and-dan-gardner/\" target=\"_blank\" rel=\"noopener noreferrer\">penguinrandomhouse.com</a>",
@@ -726,7 +742,7 @@
       "pdf": "marco-policani-ai-value-test-automate-build-buy-hire-wait.pdf",
       "pages": 14,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "socialImage": "field-note-ai-value-test-1200x627.png",
       "sourcesHtml": [
         "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, &quot;The state of AI in 2025: Agents, innovation, and transformation,&quot; McKinsey &amp; Company, November 5, 2025. Verified July 7, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
@@ -752,7 +768,7 @@
       "pdf": "marco-policani-ai-usage-workflow-governance.pdf",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "Gabriel Morgan Asaftei, Roger Roberts, Abby Sticha, and Cécile Prinsen, &quot;State of AI trust in 2026: Shifting to the agentic era,&quot; McKinsey &amp; Company, March 25, 2026. <a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/tech-forward/state-of-ai-trust-in-2026-shifting-to-the-agentic-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
         "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>",
@@ -775,7 +791,7 @@
       "pdf": "marco-policani-ai-as-a-thinking-partner.pdf",
       "pages": 16,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-07-17",
+      "lastModified": "2026-08-11",
       "socialImage": "field-note-ai-thinking-partner-1200x627.png",
       "sourcesHtml": [
         "<a href=\"https://www.pnas.org/doi/10.1073/pnas.2422633122\" target=\"_blank\" rel=\"noopener noreferrer\">Bastani et al., “Generative AI without guardrails can harm learning,” PNAS</a>. The study examined student learning; the workplace implication is an operating-design argument.",
@@ -798,7 +814,7 @@
       "pdf": "marco-policani-ai-replacement-boomerang-governance-failure.pdf",
       "pages": 12,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "Erik Brynjolfsson, Bharat Chandar, and Ruyu Chen, &quot;Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence,&quot; Stanford Digital Economy Lab, working paper, November 13, 2025 (with a February 9, 2026 follow-up). Verified August 3, 2026. <a href=\"https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/\" target=\"_blank\" rel=\"noopener noreferrer\">digitaleconomy.stanford.edu</a>",
         "David Mallon, Brad Kreit, and Natasha Buckley, &quot;Rethinking operating models for humans with agents,&quot; Deloitte Insights, April 2, 2026. Verified July 10, 2026. <a href=\"https://www.deloitte.com/us/en/insights/topics/talent/operating-models-for-humans-ai-agents.html\" target=\"_blank\" rel=\"noopener noreferrer\">deloitte.com</a>",
@@ -823,7 +839,7 @@
       "pdf": "marco-policani-ai-knowledge-bases-operating-infrastructure.pdf",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "sourcesHtml": [
         "Leopold Mueller, Joshua Holstein, Sarah Bause, Gerhard Satzger, and Niklas Kuehl, &quot;Data Quality Challenges in Retrieval-Augmented Generation,&quot; arXiv:2510.00552, October 2025. Verified July 9, 2026. <a href=\"https://arxiv.org/abs/2510.00552\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
         "Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 26, 2024. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>",
@@ -846,7 +862,7 @@
       "pdf": "marco-policani-ai-adoption-starts-with-the-constraint.pdf",
       "pages": 14,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-11",
       "socialImage": "field-note-ai-constraint-first-1200x627.png",
       "sourcesHtml": [
         "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, &quot;The state of AI in 2025: Agents, innovation, and transformation,&quot; McKinsey &amp; Company, November 5, 2025. Verified July 7, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
