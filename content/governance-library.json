@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-03",
+  "updated": "2026-08-10",
   "categories": [
     {
       "id": "portfolio-delivery",
@@ -26,79 +26,116 @@
   ],
   "entries": [
     {
-      "sequence": 21,
-      "slug": "portfolio-scenarios-not-plan",
+      "sequence": 31,
+      "slug": "ai-deployment-is-a-jurisdiction-decision",
+      "category": "ai-governance",
+      "title": "AI Deployment Is a Jurisdiction Decision Before It Is a Model Decision",
+      "summary": "Set the operating boundary first; confirm it against the candidate before commitment.",
+      "operatingMove": "Run a two-pass review that fixes scope, data, authority, responsibility, and approval conditions before a candidate earns a score, then confirms the selected model, architecture, contract, and workflow before commitment.",
+      "preview": "AI sourcing often begins with model quality, price, and features while the intended use, data path, and action authority remain unsettled. That order lets a candidate’s defaults become the enterprise operating model. This paper defines a two-pass operating-jurisdiction review: set a provisional boundary before shortlisting, confirm it against the selected candidate before commitment, and preserve the result in a decision record with owners, evidence, conditions, and re-entry triggers.",
+      "bodyHtml": "<h2>The boundary comes before the shortlist</h2><p>Which AI model should the enterprise buy? I would not let that question start the decision. A model can be impressive and still be wrong for the work, data, and authority the business is prepared to defend. The useful first move is to set a provisional operating boundary, then ask which candidates can fit inside it.</p><p>That boundary is a jurisdiction in the practical sense. Law is part of it, but so are customer promises, data policy, security architecture, contract terms, and decision rights. Together they determine what the system may touch, what it may do, and who can answer when the workflow changes.</p><p>Model-first sourcing reverses that sequence. Teams compare quality, speed, price, integrations, and vendor road maps. Once a favorite appears, they ask where prompts are processed, whether inputs are retained, which people are affected, and whether an automated action crosses a boundary. The preferred option already has sponsors, so a boundary question starts to feel like resistance.</p><h2>Run a two-pass operating-jurisdiction review</h2><p>The review has two passes because the model and architecture can change the boundary. Pass one occurs before the shortlist. It fixes the intended use, excluded uses, allowed data classes, maximum authority, accountable owner, and firm operating limits. Candidates that cannot fit are not scored.</p><p>Pass two occurs before commitment. Reviewers test the selected model, hosting pattern, workflow, contract, supplier chain, and evidence against the provisional record. Any change to the boundary returns as an explicit governance decision. The team can revise the first pass, but it cannot let a procurement preference revise it silently.</p><p>This sequence is timely because the EU AI Act does not arrive as one undifferentiated date. The general 2 August 2026 milestone is real, while GPAI duties began earlier and major high-risk provisions now have later application dates under the enacted Digital Omnibus on AI. A single field marked “AI Act applies” cannot carry that operating detail. The intake record needs the use, actors, affected population, system role, data path, and locations so qualified legal and compliance owners can map the current obligations.</p><p>This is not legal advice or a compliance test. It is an operating-boundary method that gives counsel and control owners a reliable fact pattern before the enterprise makes a technology commitment.</p><h2>Fix five decisions</h2><p>The review produces five decisions. First, fix the scope: the process, users, affected people, locations, outcome, and exclusions. Second, fix the data boundary: allowed classes, sources, movement, retention, training use, access, deletion, and prohibited inputs.</p><p>Third, fix authority. State the strongest action the system may take and the human decision that cannot be delegated. A reviewer needs time, evidence, authority to reject, and a clear standard. A nominal human step that people cannot perform is workflow decoration.</p><p>Fourth, fix the responsibility split across the business, technology, data, security, privacy, compliance, procurement, legal, and supplier roles. Shared responsibility becomes governable when each edge has an owner: evidence, change notices, logs, incidents, continuity, exit, and the right to halt use.</p><p>Fifth, fix approval and re-entry. Name who approves the provisional boundary, who approves the candidate, and which changes reopen the decision. A new user group, geography, data class, automated action, model family, hosting region, supplier, integration, or major capability can move the deployment into a different jurisdiction.</p><h2>Keep one decision record</h2><p>Each decision is complete only when it has an owner, the evidence reviewed, and a clear status: fact, judgment, or open question. Any open condition needs an owner and due point. The record also shows whether the item is provisional in pass one or confirmed in pass two.</p><p>Preserve rejected alternatives as well. A local deployment, managed service, smaller model, non-AI workflow change, or a decision to wait may fit the boundary better. Recording the alternatives prevents the chosen path from being remembered as inevitable.</p><p>The same record makes change visible after launch. Product, data, supplier, scope, and incident triggers show when the old approval no longer describes the operating system. The response may be confirmation, a control adjustment, a temporary limit, or a stop. Continued use becomes a conscious decision when the boundary moves.</p><h2>Choose inside the boundary</h2><p>Once the operating jurisdiction is explicit, model selection becomes more useful. Teams can compare quality on the real task, total operating cost, latency, integration effort, evidence, controls, and supplier terms. A candidate that misses a firm data or authority limit falls outside the decision.</p><p>The order is the point: define the work before the tool, the data path before the contract, and the authority before the integration. Name who can approve, stop, and reopen the decision before production. Then choose the model that fits.</p>",
+      "inside": [
+        "A five-decision review for scope, data, authority, responsibility, and approval",
+        "A two-pass gate before shortlist and before commitment",
+        "A decision record with evidence, conditions, approvers, and re-entry triggers"
+      ],
+      "pdf": "marco-policani-ai-deployment-is-a-jurisdiction-decision.pdf",
+      "pages": 13,
+      "publishedLabel": "Aug 2026",
+      "lastModified": "2026-08-10",
+      "socialImage": "field-note-ai-deployment-jurisdiction-decision-1200x627.png",
+      "showSocialPreview": true,
+      "sourcesHtml": [
+        "<a href=\"https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai\">European Commission — AI Act regulatory framework</a> — current implementation timeline and the 2 August 2026 enforcement milestone.",
+        "<a href=\"https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng\">European Parliament and Council — Regulation (EU) 2024/1689</a> — original AI Act roles, categories, and application structure.",
+        "<a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202601744\">European Parliament and Council — Regulation (EU) 2026/1744</a> — enacted Digital Omnibus on AI timing changes.",
+        "<a href=\"https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10\">NIST — Artificial Intelligence Risk Management Framework 1.0</a> — voluntary cross-sector risk-management frame.",
+        "<a href=\"https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence\">NIST — Generative Artificial Intelligence Profile</a> — lifecycle and third-party risk guidance.",
+        "<a href=\"https://www.cisa.gov/sites/default/files/2023-05/Cloud%20Security%20Technical%20Reference%20Architecture%20v2.pdf\">CISA, U.S. Digital Service, and FedRAMP — Cloud Security Technical Reference Architecture, Version 2.0</a> — shared security responsibility.",
+        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\">NIST AI Resource Center — AI RMF Core</a> — intended purpose, context, roles, risk tolerance, and third-party risk."
+      ]
+    },
+    {
+      "sequence": 30,
+      "slug": "decision-rights-are-a-system-design-choice",
       "category": "portfolio-delivery",
-      "title": "A portfolio needs scenarios, not a single annual plan",
-      "summary": "Replace the brittle annual plan with scenarios that make capacity, tradeoffs, and decision consequences visible.",
-      "operatingMove": "Maintain multiple feasible portfolio scenarios that show capacity, dependencies, and tradeoffs. When conditions change, leaders should be choosing among explicit options, not improvising around a frozen annual plan.",
-      "preview": "A single annual plan becomes less useful as soon as capacity, dependencies, demand, or assumptions change. This paper replaces false precision with a small set of feasible portfolio scenarios that make tradeoffs and consequences visible. It shows how leaders can use triggers and recurring reviews to move among explicit options instead of improvising around a plan that no longer reflects reality.",
+      "title": "Decision rights are a system-design choice",
+      "summary": "Assign who recommends, agrees, decides, and performs for each consequential choice, then embed those rights in the workflow.",
+      "operatingMove": "Sample five consequential decisions, name each choice in verb form, assign Recommend, Agree, Decide, and Perform, then place the deadline, closure rule, veto boundary, escalation, and recovery path in the system of record.",
+      "preview": "A portfolio can have current evidence and still fail to act. An agent fleet can detect an exception and keep moving. This paper treats decision rights as a system-design choice made per consequential decision: one recommendation owner, narrow agreement and veto rights, an accountable closure rule, and a named performer. It shows how to carry that contract in intake, stage gates, decision records, permission boundaries, aggregate stop thresholds, escalation, and recovery without treating RAPID or RACI as doctrine or pretending that clear roles repair weak evidence and incentives.",
+      "bodyHtml": "<h2>The evidence is clear. The authority is not.</h2><p>A portfolio review can have the right data and still fail to act. An agent workflow can detect an exception and still keep moving. In both cases, the control loop stays open when no one has been assigned the right to advance, redirect, pause, or stop the work.</p><p>That is not mainly a meeting problem. It is a system-design choice. An org chart names positions; it rarely tells a cross-functional workflow who can close a particular consequential decision.</p><h2>Design the decision, not just the committee</h2><p>For each consequential recurring choice, write a short decision contract: who recommends, who must agree, who decides, and who performs. Ordinary operating choices should name one accountable decider; collective bodies need an explicit closure rule. Make veto rights narrow and require a veto to carry an alternative or an escalation path.</p><p>The model borrows a useful distinction from Bain's RAPID work without treating RAPID or RACI as doctrine. The point is to separate the case, the control right, the choice, and the follow-through. Clear rights do not repair weak evidence, poor incentives, or missing capacity. They make it possible to see who must act on those problems.</p><p>One decider is the ordinary operating default, not a claim that every decision belongs to one individual. A board, fiduciary committee, safety authority, works council, or separated approval function may legitimately share the right. In those cases, the contract names the quorum, decision rule, chair, challenge path, and missed-deadline treatment. Collective authority remains real; ambiguity does not.</p><h2>Put the rights where work crosses a boundary</h2><p>A role map in a slide deck is documentation. A role map in intake, a stage gate, a decision record, or an agent permission boundary is governance. The workflow should not let a consequential commitment advance without the required disposition.</p><p>For a portfolio, the recurring choices include admitting demand, releasing capacity, accepting an exception, redirecting funding, pausing work, and stopping it. Different decisions may have different deciders. The PMO does not need to own all of them; it needs to make the route from evidence to authorized action visible.</p><p>A portfolio capacity collision shows the point. The portfolio office can recommend a sequence using dependency and capacity evidence. A regulatory owner may hold a bounded veto over any option that misses a binding obligation. The executive accountable for the combined operating consequence closes the allocation, and delivery leaders update staffing, scope, and dates. The model does not make the trade-off painless. It prevents delay from masquerading as neutrality.</p><h2>The same contract governs an agent fleet</h2><p>A named human owner may use an agent to prepare a recommendation or perform an action inside a tested limit. A policy rule can enforce a pre-authorized stop, while the named control function holds the veto right. Consequential exceptions and recovery remain assigned to accountable people or governance bodies.</p><p>Delegated execution attaches to the action, threshold, and operating state—not to the agent as a whole. Aggregate thresholds also matter because several locally authorized actions can combine into an unauthorized outcome. Override privileges, escalation paths, stop mechanisms, and recovery ownership belong in the system.</p><p>The fleet therefore needs both local and aggregate controls. A refund agent may act within a tested amount, yet repeated credits across linked cases can cross a customer or financial boundary that no single action reached. A cumulative threshold should stop the chain, route the exception, and identify who can restart the fleet. The person who owns recovery remains named even when an agent performs the corrective steps.</p><h2>Use formal governance where consequence earns it</h2><p>Not every choice deserves a matrix. Reversible, low-cost decisions should stay light and local. Formal mapping earns its cost when a wrong choice is hard to reverse, difficult to contain, or likely to commit other work.</p><p>Measure whether the design closes choices instead of counting role charts. Track the time from a decision-complete recommendation to a disposition, work that continued because no decision arrived, vetoes that carried no alternative, and whether the performer changed the record on time. Those measures reveal whether evidence, authority, execution, or recovery broke the chain.</p><p>The test is simple: can the team name the decision, the recommender, any legitimate veto, one decider, and the performer? If not, accountability still belongs to no one.</p>",
       "inside": [
-        "How to build feasible scenarios from capacity, demand, and dependencies",
-        "Assumptions, triggers, and consequences that distinguish each option",
-        "A steering cadence for choosing and adapting the active portfolio"
+        "A four-role decision contract with a single accountable closure rule and bounded veto rights",
+        "Portfolio and agent-fleet applications that assign rights across the whole operating system",
+        "Workflow, measurement, proportionality, aggregate-stop, appeal, and recovery tests"
       ],
-      "pdf": "marco-policani-portfolio-scenarios-not-plan.pdf",
-      "socialImage": "field-note-portfolio-scenarios-not-plan-1200x627.png",
-      "pages": 11,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-07-17",
+      "pdf": "marco-policani-decision-rights-are-a-system-design-choice.pdf",
+      "pages": 15,
+      "publishedLabel": "Aug 2026",
+      "lastModified": "2026-08-10",
+      "socialImage": "field-note-decision-rights-are-a-system-design-choice-1200x627.png",
+      "showSocialPreview": true,
       "sourcesHtml": [
-        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
-        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
+        "<a href=\"https://www.bain.com/insights/who-has-the-d/\" target=\"_blank\" rel=\"noopener noreferrer\">Paul Rogers and Marcia Blenko, &quot;Who Has the D?&quot; Bain &amp; Company</a>.",
+        "Gary L. Neilson, Karla L. Martin, and Elizabeth Powers, &quot;The Secrets to Successful Strategy Execution,&quot; Harvard Business Review, June 2008. The full article is subscription-only, so no reader-facing link is provided.",
+        "<a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">Robert G. Cooper and Scott J. Edgett, &quot;Portfolio Management: Fundamental for New Product Success,&quot; Stage-Gate International</a>.",
+        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute, Pulse of the Profession 2026: Driving Success in Complex Projects</a>.",
+        "<a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era\" target=\"_blank\" rel=\"noopener noreferrer\">Alexander Sukharevsky and colleagues, &quot;The Agentic Organization,&quot; McKinsey &amp; Company</a>.",
+        "<a href=\"https://www.deloitte.com/us/en/insights/topics/talent/operating-models-for-humans-ai-agents.html\" target=\"_blank\" rel=\"noopener noreferrer\">David Mallon, Brad Kreit, and Natasha Buckley, &quot;Rethinking Operating Models for Humans with Agents,&quot; Deloitte Insights</a>.",
+        "<a href=\"https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/decision-making-with-ai.html\" target=\"_blank\" rel=\"noopener noreferrer\">David Mallon, Julie Duda, Stefano Besana, and Maya Bodan, &quot;AI and the Future of Human Decision-Making,&quot; Deloitte Insights</a>.",
+        "<a href=\"https://s2.q4cdn.com/299287126/files/doc_financials/annual/2015-Letter-to-Shareholders.PDF\" target=\"_blank\" rel=\"noopener noreferrer\">Jeffrey P. Bezos, Amazon 2015 Letter to Shareholders</a>.",
+        "<a href=\"https://www.strategy-business.com/article/00030\" target=\"_blank\" rel=\"noopener noreferrer\">Thomas A. Stewart, &quot;Putting Strategy into Practice,&quot; strategy+business</a>."
       ]
     },
     {
-      "sequence": 8,
-      "slug": "business-imagination-is-the-scarce-asset-now",
-      "category": "work-judgment",
-      "title": "Business imagination is the scarce asset now",
-      "summary": "Cheap AI execution makes business imagination, operating judgment, and value framing more scarce\u2014not less.",
-      "operatingMove": "Invest in problem framing, operating judgment, and the ability to imagine a better system of work. As execution gets cheaper, deciding what is worth changing becomes the higher-value capability.",
-      "preview": "As AI lowers the cost of producing analysis, prototypes, and content, execution alone becomes less differentiating. This paper argues that the scarce capability shifts toward business imagination: framing valuable problems, seeing alternative operating models, and deciding which changes are worth making. It explores the portfolio implications of abundant production capacity and the leadership practices required to keep faster output connected to real strategic choice.",
+      "slug": "standardize-the-component-not-the-project",
+      "category": "portfolio-delivery",
+      "title": "Standardize the Component, Not the Project",
+      "summary": "Standardize a reusable operating component only after it has earned cross-project reliance through evidence, ownership, bounded variants, visible change control, exception signals, and a retirement path.",
+      "operatingMove": "Run a project-to-standard review that names the repeated component, shows evidence of use at its intended operating point, assigns an accountable owner, publishes valid variants, defines the version path, watches exceptions, and states what would retire the asset.",
+      "preview": "Projects mature under different sponsors, risks, technologies, contracts, and delivery histories. Copying a whole project imports those local assumptions and turns variation into rework or quiet noncompliance. The more useful EPMO move is to promote the smallest operating component that can travel: an intake question, decision record, readiness check, source standard, exception route, measure definition, or handoff rule. Promotion is earned when the core has been reused, the boundary of local judgment is explicit, one owner can govern change, exceptions return as design evidence, and teams can see when the component should be revised or retired. A repository supports that system; it does not create organizational learning by itself.",
       "inside": [
-        "Why cheaper execution raises the value of problem framing and judgment",
-        "How abundant production changes portfolio selection and differentiation",
-        "Operating practices that turn imagination into testable, governed commitments"
+        "A five-state promotion path for moving a component from local iteration to managed enterprise reliance.",
+        "Seven project-to-standard review questions covering reuse, ownership, variants, versions, exceptions, and retirement.",
+        "A bounded EPMO role that connects cross-project evidence while preserving subject authority and legitimate local choice."
       ],
-      "pdf": "marco-policani-business-imagination-is-the-scarce-asset-now.pdf",
-      "pages": 16,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
-      "socialImage": "field-note-business-imagination-1200x627.png",
+      "pdf": "marco-policani-standardize-the-component-not-the-project.pdf",
+      "pages": 13,
+      "socialImage": "field-note-standardize-the-component-not-the-project-1200x627.png",
       "sourcesHtml": [
-        "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, \"The state of AI in 2025: Agents, innovation, and transformation,\" McKinsey &amp; Company, November 5, 2025. Verified July 5, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai</a>",
-        "Alexis Krivkovich and Lucia Rahilly, \"AI is everywhere. The agentic organization isn't yet,\" The McKinsey Podcast, April 2, 2026. Verified July 5, 2026. <a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/ai-is-everywhere-the-agentic-organization-isnt-yet\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/ai-is-everywhere-the-agentic-organization-isnt-yet</a>",
-        "Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, \"From promise to impact: How companies can measure and realize the full value of AI,\" McKinsey &amp; Company, April 24, 2026. Verified July 5, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai</a>",
-        "Gartner, \"Gartner Predicts 30% of Generative AI Projects Will Be Abandoned After Proof of Concept By End of 2025,\" July 29, 2024. Verified July 5, 2026. <a href=\"https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025\" target=\"_blank\" rel=\"noopener noreferrer\">gartner.com</a>",
-        "James Ryseff, Brandon F. De Bruhl, and Sydne J. Newberry, \"The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed: Avoiding the Anti-Patterns of AI,\" RAND Corporation, 2024. Verified July 5, 2026. <a href=\"https://www.rand.org/pubs/research_reports/RRA2680-1.html\" target=\"_blank\" rel=\"noopener noreferrer\">rand.org</a>",
-        "Erik Brynjolfsson, Danielle Li, and Lindsey R. Raymond, \"Generative AI at Work,\" NBER Working Paper 31161, April 2023; revised November 2023. Verified August 3, 2026. <a href=\"https://www.nber.org/papers/w31161\" target=\"_blank\" rel=\"noopener noreferrer\">nber.org</a>",
-        "National Institute of Standards and Technology, \"AI Risk Management Framework Core,\" excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>"
-      ]
+        "<a href=\"https://www.pmi.org/learning/library/lessons-learned-next-level-Communicating-7991\">Rowe and Sikes, PMI — Lessons Learned: Taking It to the Next Level</a> — mature practice connects capture, analysis, retrieval, executive measures, management action, and tracked follow-through.",
+        "<a href=\"https://www.pmi.org/learning/library/governance-innovation-projects-programs-portfolios-11796\">Knapp, Killen, Stevens, and Sankaran, PMI — Governance of Innovation in Portfolios, Programs, and Projects</a> — case research supports codified governance with context-appropriate flexibility.",
+        "<a href=\"https://www.apqc.org/resource-library/resource-listing/appropriate-process-standardization\">Kirchmer, APQC — Appropriate Process Standardization</a> — process reference models and governance can sustain a shared pattern while allowing context-driven variants.",
+        "<a href=\"https://cisr.mit.edu/publication/2025_0801_EnterpriseAIMaturityUpdate_WoernerSebastianWeillKaganer\">Woerner, Sebastian, Weill, and Káganer, MIT CISR — Grow Enterprise AI Maturity for Bottom-Line Impact</a> — describes the move from isolated capabilities to scaled ways of working and warns that no proven playbook exists.",
+        "<a href=\"https://www.sei.cmu.edu/projects/ai-adoption-maturity-model-improving-how-organizations-adopt-ai-solutions/\">Ozkaya and colleagues, CMU SEI — AI Adoption Maturity Model v1.0</a> — emphasizes repeatable outcomes, workflow redesign, governance, operations, and continuous improvement.",
+        "<a href=\"https://www.nist.gov/news-events/news/2026/03/new-report-challenges-monitoring-deployed-ai-systems\">NIST — Challenges to the Monitoring of Deployed AI Systems</a> — identifies lifecycle monitoring problems including performance degradation, fragmented logging, and scaling human review.",
+        "<a href=\"https://www.gao.gov/products/gao-02-195\">U.S. GAO — NASA: Better Mechanisms Needed for Sharing Lessons Learned</a> — found that an agency-wide lessons system did not assure later application and recommended management mechanisms beyond storage."
+      ],
+      "sequence": 29.0,
+      "lastModified": "2026-08-10",
+      "publishedLabel": "Aug 2026"
     },
     {
-      "sequence": 15,
-      "slug": "prove-it-economy-careers-ai-programs",
+      "sequence": 28,
+      "slug": "exception-path-automation",
       "category": "work-judgment",
-      "title": "The prove-it economy is coming for careers and AI programs",
-      "summary": "Credibility is moving from assertion toward evidence that people and machines can inspect.",
-      "operatingMove": "Replace broad claims with evidence that another person\u2014or a machine\u2014can inspect: artifacts, decision records, outcomes, boundaries, and a clear explanation of what the evidence does and does not prove.",
-      "preview": "Credibility is moving from assertion toward evidence that can be inspected by people and increasingly by machines. This paper applies that shift to both professional work and AI programs. It explains how artifacts, decision records, outcomes, methods, and clear boundaries form a stronger proof pack than broad claims, while avoiding the opposite mistake of presenting incomplete evidence as certainty.",
+      "title": "The exception path is the real automated workflow",
+      "summary": "Automation is only as reliable as its recovery path; classify exceptions and make accountable human response part of the workflow.",
+      "operatingMove": "Design the exception taxonomy and recovery path before declaring the happy path automated. Every exception class needs detection, routing, a response owner, and a way back to a known state.",
+      "preview": "The happy path is the easiest part of a workflow to automate and the least informative test of whether the operation is ready. This paper focuses on what happens when inputs are missing, classifications are ambiguous, dependencies change, or a case falls outside the rules. It treats exception design as part of the automated workflow itself, with detection, routing, ownership, evidence, recovery, and recurring learning.",
       "inside": [
-        "Why careers and AI investments face the same credibility shift",
-        "How to assemble artifacts, outcomes, decisions, and methods into proof",
-        "Boundaries and disclosure practices that keep evidence useful and honest"
+        "An exception taxonomy tied to detection and routing",
+        "Boundaries, response ownership, recovery decisions, and evidence records",
+        "Testing and learning practices that improve the workflow after failure"
       ],
-      "pdf": "marco-policani-prove-it-economy-careers-ai-programs.pdf",
-      "pages": 11,
+      "pdf": "marco-policani-exception-path-automation.pdf",
+      "socialImage": "field-note-exception-path-automation-1200x627.png",
+      "pages": 10,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-08-03",
       "sourcesHtml": [
-        "Pranjal Aggarwal, Vishvak Murahari, Tanmay Rajpurohit, Ashwin Kalyan, Karthik Narasimhan, and Ameet Deshpande, &quot;GEO: Generative Engine Optimization,&quot; accepted to KDD 2024; arXiv:2311.09735, submitted November 16, 2023, revised June 28, 2024. <a href=\"https://arxiv.org/html/2311.09735\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
-        "Matthew Arnold, Rachel K. E. Bellamy, Michael Hind, Stephanie Houde, Sameep Mehta, Aleksandra Mojsilovi&#263;, Ravi Nair, Karthikeyan Natesan Ramamurthy, Darrell Reimer, Alexandra Olteanu, David Piorkowski, Jason Tsay, and Kush R. Varshney, &quot;FactSheets: Increasing Trust in AI Services through Supplier's Declarations of Conformity,&quot; arXiv:1808.07261, submitted August 22, 2018, revised February 7, 2019. <a href=\"https://arxiv.org/abs/1808.07261\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
-        "National Institute of Standards and Technology, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 2024. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>",
-        "U.S. Government Accountability Office, &quot;Artificial Intelligence: An Accountability Framework for Federal Agencies and Other Entities,&quot; GAO-21-519SP, June 30, 2021. <a href=\"https://www.gao.gov/products/gao-21-519sp\" target=\"_blank\" rel=\"noopener noreferrer\">gao.gov</a>",
-        "Greg Lewis, &quot;LinkedIn Report: How AI Will Redefine Recruiting in 2025,&quot; LinkedIn Talent Blog, February 13, 2025. <a href=\"https://www.linkedin.com/business/talent/blog/talent-acquisition/future-of-recruiting-2025\" target=\"_blank\" rel=\"noopener noreferrer\">linkedin.com</a>"
+        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>",
+        "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel et al.</a>"
       ]
     },
     {
@@ -125,176 +162,306 @@
       ]
     },
     {
-      "sequence": 28,
-      "slug": "exception-path-automation",
-      "category": "work-judgment",
-      "title": "The exception path is the real automated workflow",
-      "summary": "Automation is only as reliable as its recovery path; classify exceptions and make accountable human response part of the workflow.",
-      "operatingMove": "Design the exception taxonomy and recovery path before declaring the happy path automated. Every exception class needs detection, routing, a response owner, and a way back to a known state.",
-      "preview": "The happy path is the easiest part of a workflow to automate and the least informative test of whether the operation is ready. This paper focuses on what happens when inputs are missing, classifications are ambiguous, dependencies change, or a case falls outside the rules. It treats exception design as part of the automated workflow itself, with detection, routing, ownership, evidence, recovery, and recurring learning.",
+      "sequence": 26,
+      "slug": "production-ai-evaluation",
+      "category": "ai-governance",
+      "title": "An AI evaluation is a production operating control",
+      "summary": "Treat evaluation as a living production control for changing workflow behavior, not a one-time technical test.",
+      "operatingMove": "Run evaluation as a recurring production control. Test the real workflow, monitor drift and exceptions, and change the evaluation set as users, data, models, and consequences change.",
+      "preview": "A one-time evaluation cannot protect a workflow whose users, data, models, and consequences continue to change. This paper treats evaluation as a living production control: a maintained set of representative cases, thresholds, exception review, drift signals, incident learning, and an owner who can change permitted use. The emphasis is on evidence that remains relevant after launch.",
       "inside": [
-        "An exception taxonomy tied to detection and routing",
-        "Boundaries, response ownership, recovery decisions, and evidence records",
-        "Testing and learning practices that improve the workflow after failure"
+        "A production evaluation set grounded in representative workflow cases",
+        "Thresholds, drift, exceptions, incidents, and change triggers",
+        "Ownership and cadence for updating reliance as evidence changes"
       ],
-      "pdf": "marco-policani-exception-path-automation.pdf",
-      "socialImage": "field-note-exception-path-automation-1200x627.png",
+      "pdf": "marco-policani-production-ai-evaluation.pdf",
+      "socialImage": "field-note-production-ai-evaluation-1200x627.png",
       "pages": 10,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-08-03",
       "sourcesHtml": [
-        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>",
+        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, NIST AI 600-1 (2024)</a>",
+        "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel, Amanda Minnich, Shiven Chawla, Gary Lopez, Martin Pouliot, Whitney Maxwell, Joris de Gruyter, Katherine Pratt, Saphir Qi, Nina Chikanov, Roman Lutz, Raja Sekhar Rao Dheekonda, Bolor-Erdene Jagdagdorj, Eugenia Kim, Justin Song, Keegan Hines, Daniel Jones, Giorgio Severi, Richard Lundeen, Sam Vaughan, Victoria Westerhoff, Pete Bryan, Ram Shankar Siva Kumar, Yonatan Zunger, Chang Kawaguchi, and Mark Russinovich, Microsoft Research (2025)</a>"
+      ]
+    },
+    {
+      "sequence": 24,
+      "slug": "local-ai-cloud-governance",
+      "category": "ai-governance",
+      "title": "Local AI versus cloud AI is a governance decision",
+      "summary": "Choose local or cloud AI by data, control, operating capacity, and consequence—not fashion.",
+      "operatingMove": "Choose local or cloud deployment from the data boundary, consequence of failure, required controls, support capacity, and recovery model. Architecture follows the operating decision.",
+      "preview": "Local and cloud AI are often framed as a technology preference, but the meaningful differences are operational: data boundaries, required control, consequence of failure, support capacity, update model, and recovery. This paper gives leaders a governance frame for comparing those tradeoffs before architecture becomes a sunk decision, including cases where a hybrid or deliberately limited solution is the better answer.",
+      "inside": [
+        "Data, control, consequence, performance, and support tradeoffs",
+        "Operating economics, lifecycle capacity, and recovery obligations",
+        "A decision path for local, cloud, hybrid, or bounded non-adoption"
+      ],
+      "pdf": "marco-policani-local-ai-cloud-governance.pdf",
+      "socialImage": "field-note-local-ai-cloud-governance-1200x627.png",
+      "pages": 11,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-08-03",
+      "sourcesHtml": [
+        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, NIST AI 600-1 (2024)</a>",
+        "<a href=\"https://www.cisa.gov/sites/default/files/2023-02/cloud_security_technical_reference_architecture_2.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">CISA, USDS, and FedRAMP, Cloud Security Technical Reference Architecture, Version 2.0 (2022)</a>"
+      ]
+    },
+    {
+      "sequence": 23,
+      "slug": "demo-to-production-gap",
+      "category": "ai-governance",
+      "title": "The demo-to-production gap",
+      "summary": "A demonstration proves possibility; production requires operating evidence, ownership, and recovery.",
+      "operatingMove": "Require operating ownership, real-workflow evidence, monitoring, recovery, and a stop mechanism before moving from a successful demonstration to production reliance.",
+      "preview": "A demonstration answers whether something can work under selected conditions. Production asks whether the organization can rely on it in ordinary work, under change, and when something goes wrong. This paper defines the missing operating evidence between those two states and gives leaders a readiness frame for ownership, monitoring, recovery, capacity, and stop authority.",
+      "inside": [
+        "What a successful demo proves—and what it leaves unanswered",
+        "Production ownership, monitoring, exceptions, recovery, and support capacity",
+        "A readiness gate for expanding from possibility to accountable reliance"
+      ],
+      "pdf": "marco-policani-demo-to-production-gap.pdf",
+      "socialImage": "field-note-demo-to-production-gap-1200x627.png",
+      "pages": 11,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-08-03",
+      "sourcesHtml": [
+        "<a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, with Tara Balakrishnan</a>",
+        "<a href=\"https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html\" target=\"_blank\" rel=\"noopener noreferrer\">Deloitte, The State of AI in the Enterprise (2026)</a>"
+      ]
+    },
+    {
+      "sequence": 22,
+      "slug": "confident-and-wrong",
+      "category": "ai-governance",
+      "title": "Confident and wrong",
+      "summary": "Plausible AI output needs challenge protocols that make confidence testable before people rely on it.",
+      "operatingMove": "Add a challenge protocol before consequential AI output can be relied on: identify assumptions, compare independent evidence, record uncertainty, and name the person who can stop or correct the decision.",
+      "preview": "Plausibility is one of the most useful qualities of generative AI and one of its most dangerous. This paper examines what happens when fluent output enters a workflow without a challenge protocol, independent evidence, or a named person able to reject it. It turns “verify the output” into an operating control by defining the questions, records, thresholds, and escalation paths that make confidence testable before reliance expands.",
+      "inside": [
+        "Why fluent output bypasses ordinary skepticism in consequential work",
+        "A repeatable challenge protocol for assumptions, evidence, and uncertainty",
+        "Ownership, escalation, and learning when an output fails review"
+      ],
+      "pdf": "marco-policani-confident-and-wrong.pdf",
+      "socialImage": "field-note-confident-and-wrong-1200x627.png",
+      "pages": 11,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-07-17",
+      "sourcesHtml": [
+        "<a href=\"https://openai.com/index/sycophancy-in-gpt-4o/\" target=\"_blank\" rel=\"noopener noreferrer\">OpenAI</a>",
         "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel et al.</a>"
       ]
     },
     {
-      "sequence": 1,
-      "slug": "ai-adoption-starts-with-the-constraint",
-      "category": "ai-governance",
-      "title": "AI adoption starts with the constraint, not the tool",
-      "summary": "Begin with the recurring workflow constraint, then choose the minimum intervention and proof needed to scale.",
-      "operatingMove": "Before buying or piloting anything, name the recurring workflow constraint, compare AI with simpler interventions, assign an owner, and define the evidence that would justify another increment of investment.",
-      "preview": "Most AI portfolios can show activity long before they can show value. This paper explains why tool-first adoption creates that gap and replaces it with a constraint-first operating model: identify the recurring workflow, name what limits value, compare AI with simpler interventions, and decide what evidence would justify more reliance. It connects experimentation to a five-gate portfolio cadence so that pilots become comparable investment decisions rather than isolated demonstrations.",
+      "sequence": 21,
+      "slug": "portfolio-scenarios-not-plan",
+      "category": "portfolio-delivery",
+      "title": "A portfolio needs scenarios, not a single annual plan",
+      "summary": "Replace the brittle annual plan with scenarios that make capacity, tradeoffs, and decision consequences visible.",
+      "operatingMove": "Maintain multiple feasible portfolio scenarios that show capacity, dependencies, and tradeoffs. When conditions change, leaders should be choosing among explicit options, not improvising around a frozen annual plan.",
+      "preview": "A single annual plan becomes less useful as soon as capacity, dependencies, demand, or assumptions change. This paper replaces false precision with a small set of feasible portfolio scenarios that make tradeoffs and consequences visible. It shows how leaders can use triggers and recurring reviews to move among explicit options instead of improvising around a plan that no longer reflects reality.",
       "inside": [
-        "How to distinguish a workflow constraint from a technology opportunity",
-        "A five-gate path from intake and intervention routing to value realization",
-        "A practical scorecard, evidence pack, and decision-rights model for scaling"
+        "How to build feasible scenarios from capacity, demand, and dependencies",
+        "Assumptions, triggers, and consequences that distinguish each option",
+        "A steering cadence for choosing and adapting the active portfolio"
       ],
-      "pdf": "marco-policani-ai-adoption-starts-with-the-constraint.pdf",
-      "pages": 14,
+      "pdf": "marco-policani-portfolio-scenarios-not-plan.pdf",
+      "socialImage": "field-note-portfolio-scenarios-not-plan-1200x627.png",
+      "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
-      "socialImage": "field-note-ai-constraint-first-1200x627.png",
+      "lastModified": "2026-07-17",
       "sourcesHtml": [
-        "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, &quot;The state of AI in 2025: Agents, innovation, and transformation,&quot; McKinsey &amp; Company, November 5, 2025. Verified July 7, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "James Ryseff, &quot;The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed: Avoiding the Anti-Patterns of AI,&quot; RAND Corporation, 2024. Verified July 7, 2026. <a href=\"https://www.rand.org/pubs/research_reports/RRA2680-1.html\" target=\"_blank\" rel=\"noopener noreferrer\">rand.org</a>",
-        "Arun Chandrasekaran, &quot;Why 50% of GenAI Projects Fail - And How to Beat the Odds,&quot; Gartner, January 26, 2026. Verified July 7, 2026. <a href=\"https://www.gartner.com/en/articles/genai-project-failure\" target=\"_blank\" rel=\"noopener noreferrer\">gartner.com</a>",
-        "Alexis Krivkovich and Lucia Rahilly, &quot;AI is everywhere. The agentic organization is not yet,&quot; The McKinsey Podcast, April 2, 2026. Verified July 7, 2026. <a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/ai-is-everywhere-the-agentic-organization-isnt-yet\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "NIST, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 7, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>"
+        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
+        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
       ]
     },
     {
-      "sequence": 2,
-      "slug": "ai-knowledge-bases-operating-infrastructure",
-      "category": "ai-governance",
-      "title": "AI knowledge bases are operating infrastructure, not \u201csecond brains\u201d",
-      "summary": "Govern AI knowledge bases as shared production infrastructure with ownership, quality, provenance, and lifecycle controls.",
-      "operatingMove": "Treat the knowledge base like a production service: assign ownership for quality, permissions, provenance, refresh, and retirement before people or agents are expected to rely on it.",
-      "preview": "A knowledge base becomes operational infrastructure as soon as people or agents depend on it to answer questions, route work, or make decisions. This paper sets expectations for that dependency: named ownership, source provenance, access boundaries, quality evaluation, refresh, and retirement. It treats retrieval quality and content lifecycle as operating responsibilities, not background technical tasks, and shows why a polished interface cannot compensate for an unmanaged corpus.",
+      "sequence": 20,
+      "slug": "decision-friction-portfolio-risk",
+      "category": "portfolio-delivery",
+      "title": "Decision friction is a portfolio risk",
+      "summary": "Make the decisions holding up the work visible before delay turns into rework.",
+      "operatingMove": "For every consequential choice, record the decision, accountable owner, evidence that could change the call, latest useful date, work at risk, and final outcome. Review the queue before waiting becomes a delivery problem.",
+      "preview": "Portfolios track work, dates, spend, and risk, but the decisions holding up that work often remain scattered across meetings, inboxes, and personal notes. This paper introduces a decision inventory that makes the queue visible: the choice, its owner, the evidence still needed, the latest useful date, the work waiting on it, and the recorded outcome. It helps leaders separate genuine delivery problems from questions that have simply been allowed to drift.",
       "inside": [
-        "Ownership and service boundaries for a shared knowledge layer",
-        "Controls for ingestion, provenance, permissions, retrieval quality, and evaluation",
-        "Refresh, incident response, and retirement practices across the lifecycle"
+        "A decision inventory that sits beside schedule and risk reporting",
+        "How to name the choice, owner, evidence, useful date, and work at risk",
+        "Signals that expose recurring bottlenecks and unclear decision rights"
       ],
-      "pdf": "marco-policani-ai-knowledge-bases-operating-infrastructure.pdf",
+      "pdf": "marco-policani-decision-friction-portfolio-risk.pdf",
+      "socialImage": "field-note-decision-friction-portfolio-risk-1200x627.png",
+      "pages": 12,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-08-03",
+      "sourcesHtml": [
+        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
+        "<a href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\">CIO</a>"
+      ]
+    },
+    {
+      "sequence": 19,
+      "slug": "investment-health-dashboard",
+      "category": "portfolio-delivery",
+      "title": "A PMO dashboard should show investment health",
+      "summary": "A useful PMO dashboard shows investment health, not only delivery activity.",
+      "operatingMove": "Put expected benefit, confidence, capacity pressure, unresolved decisions, and risk beside schedule and spend. A dashboard should help leaders change the portfolio, not merely observe activity.",
+      "preview": "Most PMO dashboards are strong on activity and weak on the condition of the investment. This paper defines a decision-oriented view of health that puts expected value, confidence, capacity pressure, unresolved choices, dependency, and risk beside schedule and spend. The goal is to help leaders change the portfolio while action is still possible, not explain the outcome after the fact.",
+      "inside": [
+        "A balanced view of value, confidence, capacity, risk, and delivery",
+        "Decision signals that reveal when an investment needs intervention",
+        "Review cadence and ownership for acting on the dashboard"
+      ],
+      "pdf": "marco-policani-investment-health-dashboard.pdf",
+      "socialImage": "field-note-investment-health-dashboard-1200x627.png",
+      "pages": 12,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-08-03",
+      "sourcesHtml": [
+        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
+        "<a href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\">CIO</a>"
+      ]
+    },
+    {
+      "sequence": 18,
+      "slug": "epmo-capacity-not-calendars",
+      "category": "portfolio-delivery",
+      "title": "The EPMO's job is capacity, not calendars",
+      "summary": "Govern active demand against scarce delivery capacity instead of managing calendars as a proxy.",
+      "operatingMove": "Govern demand against real constrained capacity by role, skill, and dependency. Calendar activity is an output; the portfolio decision is which work receives scarce capacity and which work waits.",
+      "preview": "A portfolio calendar can show when activity is planned without showing whether the organization has the scarce roles, skills, attention, and dependency capacity to deliver it. This paper repositions the EPMO around active demand and constrained capacity. It gives leaders a way to expose overload, compare tradeoffs, and decide which commitments move, change shape, or wait.",
+      "inside": [
+        "Demand and capacity views that go beyond project calendars",
+        "How role, skill, dependency, and decision bottlenecks shape feasible work",
+        "Scenario and sequencing choices for steering constrained portfolios"
+      ],
+      "pdf": "marco-policani-epmo-capacity-not-calendars.pdf",
+      "socialImage": "field-note-epmo-capacity-not-calendars-1200x627.png",
+      "pages": 10,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-08-03",
+      "sourcesHtml": [
+        "<a href=\"https://www.stage-gate.com/solutions/services/gate-governance/\" target=\"_blank\" rel=\"noopener noreferrer\">Stage-Gate International</a>",
+        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>"
+      ]
+    },
+    {
+      "sequence": 17,
+      "slug": "stage-gates-with-teeth",
+      "category": "portfolio-delivery",
+      "title": "Stage gates work only when they can kill projects",
+      "summary": "A stage gate only governs when it can redirect, pause, or stop work.",
+      "operatingMove": "Give each gate real authority to redirect, pause, or stop work, then specify the evidence required for the next commitment. A review without a consequential decision is only a meeting.",
+      "preview": "A stage gate that can only acknowledge progress is a reporting meeting, not a governance control. This paper restores the connection between the gate and a consequential decision: advance, redirect, narrow, pause, or stop. It shows how evidence requirements, decision authority, and explicit consequences keep gates proportionate while preventing weak commitments from becoming inevitable through momentum.",
+      "inside": [
+        "Decision authority and consequences behind each gate",
+        "Evidence requirements tied to the next commitment rather than a generic checklist",
+        "Proportionate routes to advance, redirect, narrow, pause, or stop"
+      ],
+      "pdf": "marco-policani-stage-gates-with-teeth.pdf",
+      "socialImage": "field-note-stage-gates-with-teeth-1200x627.png",
+      "pages": 10,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-07-17",
+      "sourcesHtml": [
+        "<a href=\"https://www.stage-gate.com/solutions/services/gate-governance/\" target=\"_blank\" rel=\"noopener noreferrer\">Stage-Gate International</a>",
+        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
+      ]
+    },
+    {
+      "sequence": 16,
+      "slug": "project-readiness-before-kickoff",
+      "category": "portfolio-delivery",
+      "title": "A project is not ready because a plan exists",
+      "summary": "A plan is not readiness; the next commitment needs an owner, evidence, a boundary, and a decision.",
+      "operatingMove": "Before kickoff, require an owner, evidence for the key premise, a clear boundary, and an explicit decision about the next commitment. A populated plan is not proof that the work is ready.",
+      "preview": "A plan can be complete while the work is still missing sponsorship, capacity, decision rights, evidence, or a credible path through its first dependency. This paper defines readiness as an earned condition for the next commitment, not a checklist attached to a date. It gives sponsors and delivery leaders a proportionate way to narrow, stage, delay, or approve work based on what is actually known.",
+      "inside": [
+        "Readiness dimensions across ownership, evidence, capacity, boundaries, and dependencies",
+        "A concise decision record for the next commitment",
+        "Options to narrow, stage discovery, approve, or hold work without false certainty"
+      ],
+      "pdf": "marco-policani-project-readiness-before-kickoff.pdf",
+      "socialImage": "field-note-project-readiness-before-kickoff-1200x627.png",
+      "pages": 10,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-08-03",
+      "sourcesHtml": [
+        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
+        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
+      ]
+    },
+    {
+      "sequence": 15,
+      "slug": "prove-it-economy-careers-ai-programs",
+      "category": "work-judgment",
+      "title": "The prove-it economy is coming for careers and AI programs",
+      "summary": "Credibility is moving from assertion toward evidence that people and machines can inspect.",
+      "operatingMove": "Replace broad claims with evidence that another person—or a machine—can inspect: artifacts, decision records, outcomes, boundaries, and a clear explanation of what the evidence does and does not prove.",
+      "preview": "Credibility is moving from assertion toward evidence that can be inspected by people and increasingly by machines. This paper applies that shift to both professional work and AI programs. It explains how artifacts, decision records, outcomes, methods, and clear boundaries form a stronger proof pack than broad claims, while avoiding the opposite mistake of presenting incomplete evidence as certainty.",
+      "inside": [
+        "Why careers and AI investments face the same credibility shift",
+        "How to assemble artifacts, outcomes, decisions, and methods into proof",
+        "Boundaries and disclosure practices that keep evidence useful and honest"
+      ],
+      "pdf": "marco-policani-prove-it-economy-careers-ai-programs.pdf",
       "pages": 11,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-08-03",
       "sourcesHtml": [
-        "Leopold Mueller, Joshua Holstein, Sarah Bause, Gerhard Satzger, and Niklas Kuehl, &quot;Data Quality Challenges in Retrieval-Augmented Generation,&quot; arXiv:2510.00552, October 2025. Verified July 9, 2026. <a href=\"https://arxiv.org/abs/2510.00552\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
-        "Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 26, 2024. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>",
-        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>"
+        "Pranjal Aggarwal, Vishvak Murahari, Tanmay Rajpurohit, Ashwin Kalyan, Karthik Narasimhan, and Ameet Deshpande, &quot;GEO: Generative Engine Optimization,&quot; accepted to KDD 2024; arXiv:2311.09735, submitted November 16, 2023, revised June 28, 2024. <a href=\"https://arxiv.org/html/2311.09735\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
+        "Matthew Arnold, Rachel K. E. Bellamy, Michael Hind, Stephanie Houde, Sameep Mehta, Aleksandra Mojsilovi&#263;, Ravi Nair, Karthikeyan Natesan Ramamurthy, Darrell Reimer, Alexandra Olteanu, David Piorkowski, Jason Tsay, and Kush R. Varshney, &quot;FactSheets: Increasing Trust in AI Services through Supplier's Declarations of Conformity,&quot; arXiv:1808.07261, submitted August 22, 2018, revised February 7, 2019. <a href=\"https://arxiv.org/abs/1808.07261\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
+        "National Institute of Standards and Technology, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 2024. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>",
+        "U.S. Government Accountability Office, &quot;Artificial Intelligence: An Accountability Framework for Federal Agencies and Other Entities,&quot; GAO-21-519SP, June 30, 2021. <a href=\"https://www.gao.gov/products/gao-21-519sp\" target=\"_blank\" rel=\"noopener noreferrer\">gao.gov</a>",
+        "Greg Lewis, &quot;LinkedIn Report: How AI Will Redefine Recruiting in 2025,&quot; LinkedIn Talent Blog, February 13, 2025. <a href=\"https://www.linkedin.com/business/talent/blog/talent-acquisition/future-of-recruiting-2025\" target=\"_blank\" rel=\"noopener noreferrer\">linkedin.com</a>"
       ]
     },
     {
-      "sequence": 5,
-      "slug": "ai-usage-workflow-governance",
-      "category": "ai-governance",
-      "title": "AI usage belongs in workflow governance, not blank-check access",
-      "summary": "Govern AI access where the work happens, proportioned to the stakes of each workflow.",
-      "operatingMove": "Set AI permissions at the workflow level. Match access, review, and evidence requirements to the data involved, the consequence of error, and the ability to recover when the output is wrong.",
-      "preview": "Blanket access policies treat every AI use as if the data, consequence, and recovery path were the same. This paper moves governance into the workflow, where those differences are visible. It shows how to tier uses by consequence, define permitted actions and evidence duties, and assign review and escalation without forcing low-risk work through the same controls as consequential decisions.",
+      "sequence": 14,
+      "slug": "portfolio-governance-funding-discipline",
+      "category": "portfolio-delivery",
+      "title": "Portfolio governance is a funding-discipline problem, not a reporting problem",
+      "summary": "Reporting describes the portfolio; funding discipline governs it.",
+      "operatingMove": "Release funding in increments tied to evidence and the next decision. Reporting can explain what happened; funding authority is what redirects, pauses, expands, or stops the portfolio.",
+      "preview": "Reporting can describe a portfolio without changing a single commitment. This paper argues that governance becomes real when leaders can release, redirect, expand, pause, or stop funding in response to evidence. It links incremental investment to decision rights and the next meaningful proof point, making the funding cadence part of the operating model rather than an annual administrative event.",
       "inside": [
-        "Workflow-level risk tiers for access, use, and reliance",
-        "Decision rights, evidence duties, and human review by consequence",
-        "Monitoring, exception handling, and escalation when boundaries are crossed"
+        "Why reporting visibility and governing authority are different",
+        "Incremental funding tied to evidence and the next commitment",
+        "Decision rights and gates for expanding, redirecting, pausing, or stopping"
       ],
-      "pdf": "marco-policani-ai-usage-workflow-governance.pdf",
-      "pages": 11,
+      "pdf": "marco-policani-portfolio-governance-funding-discipline.pdf",
+      "pages": 12,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-08-03",
       "sourcesHtml": [
-        "Gabriel Morgan Asaftei, Roger Roberts, Abby Sticha, and Cécile Prinsen, &quot;State of AI trust in 2026: Shifting to the agentic era,&quot; McKinsey &amp; Company, March 25, 2026. <a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/tech-forward/state-of-ai-trust-in-2026-shifting-to-the-agentic-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>",
-        "Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 26, 2024. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>"
+        "Robert G. Cooper and Scott J. Edgett, &quot;Portfolio Management: Fundamental for New Product Success,&quot; Stage-Gate International. <a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">stage-gate.com</a>",
+        "Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, &quot;From promise to impact: How companies can measure&mdash;and realize&mdash;the full value of AI,&quot; McKinsey &amp; Company, April 24, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
+        "Antoine Montard, Dago Diedrich, and Tanguy Catlin, &quot;Where AI will create value&mdash;and where it won&rsquo;t,&quot; McKinsey Quarterly, April 29, 2026. <a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/where-ai-will-create-value-and-where-it-wont\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
+        "Project Management Institute, &quot;The Standard for Portfolio Management&mdash;Fourth Edition.&quot; <a href=\"https://www.pmi.org/standards\" target=\"_blank\" rel=\"noopener noreferrer\">pmi.org</a>"
       ]
     },
     {
-      "sequence": 6,
-      "slug": "ai-value-test-automate-build-buy-hire-wait",
+      "sequence": 13,
+      "slug": "oversight-capacity-ai-scale",
       "category": "ai-governance",
-      "title": "The AI value test: automate, build, buy, hire, or wait",
-      "summary": "Compare automation, custom build, vendor buy, hiring, and waiting as portfolio choices.",
-      "operatingMove": "Compare automation, custom build, vendor purchase, hiring, and waiting against the same value, risk, capacity, and reversibility criteria before treating AI as the default answer.",
-      "preview": "AI proposals are often evaluated against doing nothing instead of against the full set of available responses. This paper creates a common decision frame for automation, custom build, vendor purchase, hiring, and waiting. It compares value mechanism, operating cost, time to evidence, reversibility, dependency, and risk so leaders can choose the smallest credible intervention without mistaking novelty for strategic fit.",
+      "title": "Oversight capacity, not model capability, is the ceiling on AI scale",
+      "summary": "Human attention available to review, correct, and answer for AI output is the real scaling constraint.",
+      "operatingMove": "Scale AI no faster than the organization can review, correct, and answer for its output. Budget oversight capacity as part of the operating model, not as invisible work added after deployment.",
+      "preview": "Organizations can deploy AI faster than they can review, correct, and answer for its output. This paper treats human oversight as a finite portfolio resource and shows how hidden review demand becomes the real ceiling on scale. It connects consequence tiers to reviewer skill, attention, escalation, and capacity planning so reliance does not grow faster than the operating system around it.",
       "inside": [
-        "A common comparison model for five intervention paths",
-        "How sequence, reversibility, capacity, and operating cost change the decision",
-        "Evidence gates for funding, expanding, redirecting, or stopping the choice"
+        "A capacity model for review, correction, escalation, and accountability",
+        "How consequence and reversibility change the required oversight tier",
+        "Staffing, training, queue, and prioritization choices for responsible scale"
       ],
-      "pdf": "marco-policani-ai-value-test-automate-build-buy-hire-wait.pdf",
-      "pages": 14,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
-      "socialImage": "field-note-ai-value-test-1200x627.png",
-      "sourcesHtml": [
-        "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, &quot;The state of AI in 2025: Agents, innovation, and transformation,&quot; McKinsey &amp; Company, November 5, 2025. Verified July 7, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "James Ryseff, &quot;The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed: Avoiding the Anti-Patterns of AI,&quot; RAND Corporation, 2024. Verified July 7, 2026. <a href=\"https://www.rand.org/pubs/research_reports/RRA2680-1.html\" target=\"_blank\" rel=\"noopener noreferrer\">rand.org</a>",
-        "Arun Chandrasekaran, &quot;Why 50% of GenAI Projects Fail - And How to Beat the Odds,&quot; Gartner, January 26, 2026. Verified July 7, 2026. <a href=\"https://www.gartner.com/en/articles/genai-project-failure\" target=\"_blank\" rel=\"noopener noreferrer\">gartner.com</a>",
-        "NIST, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 7, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>",
-        "Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, &quot;From promise to impact: How companies can measure and realize the full value of AI,&quot; McKinsey &amp; Company, April 24, 2026. Verified July 7, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>"
-      ]
-    },
-    {
-      "sequence": 10,
-      "slug": "enterprise-ai-trust-operating-evidence",
-      "category": "ai-governance",
-      "title": "Enterprise AI trust is built through operating evidence, not tool novelty",
-      "summary": "Trust grows from inspectable evidence about what AI did, on what basis, within what limits, and under whose ownership.",
-      "operatingMove": "Make AI activity inspectable: what it did, which inputs and rules it used, where its limits apply, who reviewed it, and how a mistake can be corrected.",
-      "preview": "Enterprise trust cannot be sustained by model reputation, vendor claims, or a successful pilot. This paper defines the operating evidence people need before they can rely on AI: what happened, which inputs and rules shaped it, what limits apply, who reviewed it, and how an error can be corrected. It connects traceability to ownership and incident learning so trust grows from inspectable practice.",
-      "inside": [
-        "The evidence pack behind a consequential AI-assisted action",
-        "Provenance, boundaries, human review, and ownership requirements",
-        "Incident records and learning loops that improve future reliance decisions"
-      ],
-      "pdf": "marco-policani-enterprise-ai-trust-operating-evidence.pdf",
-      "pages": 11,
+      "pdf": "marco-policani-oversight-capacity-ai-scale.pdf",
+      "pages": 12,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-08-03",
       "sourcesHtml": [
-        "Gabriel Morgan Asaftei, Roger Roberts, Abby Sticha, and Cécile Prinsen, &quot;State of AI trust in 2026: Shifting to the agentic era,&quot; McKinsey &amp; Company, March 25, 2026. <a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/tech-forward/state-of-ai-trust-in-2026-shifting-to-the-agentic-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "Matthew Arnold, Rachel K. E. Bellamy, Michael Hind, Stephanie Houde, Sameep Mehta, Aleksandra Mojsilovic, Ravi Nair, Karthikeyan Natesan Ramamurthy, Darrell Reimer, Alexandra Olteanu, David Piorkowski, Jason Tsay, and Kush R. Varshney, &quot;FactSheets: Increasing Trust in AI Services through Supplier&rsquo;s Declarations of Conformity,&quot; arXiv:1808.07261, 2018 (rev. 2019). <a href=\"https://arxiv.org/abs/1808.07261\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
-        "National Institute of Standards and Technology, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 2024. Verified July 9, 2026. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>",
-        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>",
-        "Deloitte, &quot;The State of AI in the Enterprise,&quot; 2026 AI report, Deloitte AI Institute. <a href=\"https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html\" target=\"_blank\" rel=\"noopener noreferrer\">deloitte.com</a>",
-        "Jessica Apotheker, Sylvain Duranton, Vladimir Lukic, Nicolas de Bellefonds, and Christoph Schweizer, &quot;As AI Investments Surge, CEOs Take the Lead,&quot; BCG AI Radar 2026, January 15, 2026. <a href=\"https://www.bcg.com/publications/2026/as-ai-investments-surge-ceos-take-the-lead\" target=\"_blank\" rel=\"noopener noreferrer\">bcg.com</a>"
-      ]
-    },
-    {
-      "sequence": 11,
-      "slug": "every-agent-needs-a-human-operating-model",
-      "category": "ai-governance",
-      "title": "Every agent needs a human operating model",
-      "summary": "Give every agent a role, decision rights, evidence duty, stop mechanism, and accountable human owner.",
-      "operatingMove": "Define the agent role, decision rights, evidence duty, escalation path, stop condition, and accountable human owner before it is allowed to act inside a real workflow.",
-      "preview": "An AI agent enters an organization as an operating role, not merely as software. This paper defines the human system around that role: what the agent may decide, what evidence it owes, when it must stop, how exceptions escalate, and who remains accountable. It provides a concrete design frame for moving from an impressive agent demonstration to a governable participant in recurring work.",
-      "inside": [
-        "Role, decision rights, evidence duty, boundaries, and stop authority",
-        "Human ownership and escalation across ordinary and exceptional cases",
-        "A practical operating record for reviewing and expanding agent reliance"
-      ],
-      "pdf": "marco-policani-every-agent-needs-a-human-operating-model.pdf",
-      "pages": 11,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
-      "sourcesHtml": [
-        "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, &quot;The state of AI in 2025: Agents, innovation, and transformation,&quot; McKinsey &amp; Company, November 5, 2025. Verified July 10, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "Gartner, &quot;Gartner Predicts Over 40% of Agentic AI Projects Will Be Canceled by End of 2027,&quot; press release, June 25, 2025. Verified July 10, 2026. <a href=\"https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027\" target=\"_blank\" rel=\"noopener noreferrer\">gartner.com</a>",
-        "David Mallon, Brad Kreit, and Natasha Buckley, &quot;Rethinking operating models for humans with agents,&quot; Deloitte Insights, April 2, 2026. Verified July 10, 2026. <a href=\"https://www.deloitte.com/us/en/insights/topics/talent/operating-models-for-humans-ai-agents.html\" target=\"_blank\" rel=\"noopener noreferrer\">deloitte.com</a>",
         "Alexander Sukharevsky, Alexis Krivkovich, Arne Gast, Arsen Storozhev, Dana Maor, Deepak Mahadevan, Lari H&auml;m&auml;l&auml;inen, and Sandra Durth, &quot;The agentic organization: Contours of the next paradigm for the AI era,&quot; McKinsey &amp; Company, September 26, 2025. Verified July 10, 2026. <a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 10, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>",
-        "National Institute of Standards and Technology, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 2024. Verified July 10, 2026. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>"
+        "David Mallon, Brad Kreit, and Natasha Buckley, &quot;Rethinking operating models for humans with agents,&quot; Deloitte Insights, April 2, 2026. Verified July 10, 2026. <a href=\"https://www.deloitte.com/us/en/insights/topics/talent/operating-models-for-humans-ai-agents.html\" target=\"_blank\" rel=\"noopener noreferrer\">deloitte.com</a>",
+        "National Institute of Standards and Technology, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 2024. Verified July 9, 2026. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>",
+        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>"
       ]
     },
     {
@@ -330,142 +497,55 @@
       ]
     },
     {
-      "sequence": 13,
-      "slug": "oversight-capacity-ai-scale",
+      "sequence": 11,
+      "slug": "every-agent-needs-a-human-operating-model",
       "category": "ai-governance",
-      "title": "Oversight capacity, not model capability, is the ceiling on AI scale",
-      "summary": "Human attention available to review, correct, and answer for AI output is the real scaling constraint.",
-      "operatingMove": "Scale AI no faster than the organization can review, correct, and answer for its output. Budget oversight capacity as part of the operating model, not as invisible work added after deployment.",
-      "preview": "Organizations can deploy AI faster than they can review, correct, and answer for its output. This paper treats human oversight as a finite portfolio resource and shows how hidden review demand becomes the real ceiling on scale. It connects consequence tiers to reviewer skill, attention, escalation, and capacity planning so reliance does not grow faster than the operating system around it.",
+      "title": "Every agent needs a human operating model",
+      "summary": "Give every agent a role, decision rights, evidence duty, stop mechanism, and accountable human owner.",
+      "operatingMove": "Define the agent role, decision rights, evidence duty, escalation path, stop condition, and accountable human owner before it is allowed to act inside a real workflow.",
+      "preview": "An AI agent enters an organization as an operating role, not merely as software. This paper defines the human system around that role: what the agent may decide, what evidence it owes, when it must stop, how exceptions escalate, and who remains accountable. It provides a concrete design frame for moving from an impressive agent demonstration to a governable participant in recurring work.",
       "inside": [
-        "A capacity model for review, correction, escalation, and accountability",
-        "How consequence and reversibility change the required oversight tier",
-        "Staffing, training, queue, and prioritization choices for responsible scale"
+        "Role, decision rights, evidence duty, boundaries, and stop authority",
+        "Human ownership and escalation across ordinary and exceptional cases",
+        "A practical operating record for reviewing and expanding agent reliance"
       ],
-      "pdf": "marco-policani-oversight-capacity-ai-scale.pdf",
-      "pages": 12,
+      "pdf": "marco-policani-every-agent-needs-a-human-operating-model.pdf",
+      "pages": 11,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-08-03",
       "sourcesHtml": [
-        "Alexander Sukharevsky, Alexis Krivkovich, Arne Gast, Arsen Storozhev, Dana Maor, Deepak Mahadevan, Lari H&auml;m&auml;l&auml;inen, and Sandra Durth, &quot;The agentic organization: Contours of the next paradigm for the AI era,&quot; McKinsey &amp; Company, September 26, 2025. Verified July 10, 2026. <a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
+        "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, &quot;The state of AI in 2025: Agents, innovation, and transformation,&quot; McKinsey &amp; Company, November 5, 2025. Verified July 10, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
+        "Gartner, &quot;Gartner Predicts Over 40% of Agentic AI Projects Will Be Canceled by End of 2027,&quot; press release, June 25, 2025. Verified July 10, 2026. <a href=\"https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027\" target=\"_blank\" rel=\"noopener noreferrer\">gartner.com</a>",
         "David Mallon, Brad Kreit, and Natasha Buckley, &quot;Rethinking operating models for humans with agents,&quot; Deloitte Insights, April 2, 2026. Verified July 10, 2026. <a href=\"https://www.deloitte.com/us/en/insights/topics/talent/operating-models-for-humans-ai-agents.html\" target=\"_blank\" rel=\"noopener noreferrer\">deloitte.com</a>",
+        "Alexander Sukharevsky, Alexis Krivkovich, Arne Gast, Arsen Storozhev, Dana Maor, Deepak Mahadevan, Lari H&auml;m&auml;l&auml;inen, and Sandra Durth, &quot;The agentic organization: Contours of the next paradigm for the AI era,&quot; McKinsey &amp; Company, September 26, 2025. Verified July 10, 2026. <a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
+        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 10, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>",
+        "National Institute of Standards and Technology, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 2024. Verified July 10, 2026. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>"
+      ]
+    },
+    {
+      "sequence": 10,
+      "slug": "enterprise-ai-trust-operating-evidence",
+      "category": "ai-governance",
+      "title": "Enterprise AI trust is built through operating evidence, not tool novelty",
+      "summary": "Trust grows from inspectable evidence about what AI did, on what basis, within what limits, and under whose ownership.",
+      "operatingMove": "Make AI activity inspectable: what it did, which inputs and rules it used, where its limits apply, who reviewed it, and how a mistake can be corrected.",
+      "preview": "Enterprise trust cannot be sustained by model reputation, vendor claims, or a successful pilot. This paper defines the operating evidence people need before they can rely on AI: what happened, which inputs and rules shaped it, what limits apply, who reviewed it, and how an error can be corrected. It connects traceability to ownership and incident learning so trust grows from inspectable practice.",
+      "inside": [
+        "The evidence pack behind a consequential AI-assisted action",
+        "Provenance, boundaries, human review, and ownership requirements",
+        "Incident records and learning loops that improve future reliance decisions"
+      ],
+      "pdf": "marco-policani-enterprise-ai-trust-operating-evidence.pdf",
+      "pages": 11,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-08-03",
+      "sourcesHtml": [
+        "Gabriel Morgan Asaftei, Roger Roberts, Abby Sticha, and Cécile Prinsen, &quot;State of AI trust in 2026: Shifting to the agentic era,&quot; McKinsey &amp; Company, March 25, 2026. <a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/tech-forward/state-of-ai-trust-in-2026-shifting-to-the-agentic-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
+        "Matthew Arnold, Rachel K. E. Bellamy, Michael Hind, Stephanie Houde, Sameep Mehta, Aleksandra Mojsilovic, Ravi Nair, Karthikeyan Natesan Ramamurthy, Darrell Reimer, Alexandra Olteanu, David Piorkowski, Jason Tsay, and Kush R. Varshney, &quot;FactSheets: Increasing Trust in AI Services through Supplier&rsquo;s Declarations of Conformity,&quot; arXiv:1808.07261, 2018 (rev. 2019). <a href=\"https://arxiv.org/abs/1808.07261\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
         "National Institute of Standards and Technology, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 2024. Verified July 9, 2026. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>",
-        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>"
-      ]
-    },
-    {
-      "sequence": 22,
-      "slug": "confident-and-wrong",
-      "category": "ai-governance",
-      "title": "Confident and wrong",
-      "summary": "Plausible AI output needs challenge protocols that make confidence testable before people rely on it.",
-      "operatingMove": "Add a challenge protocol before consequential AI output can be relied on: identify assumptions, compare independent evidence, record uncertainty, and name the person who can stop or correct the decision.",
-      "preview": "Plausibility is one of the most useful qualities of generative AI and one of its most dangerous. This paper examines what happens when fluent output enters a workflow without a challenge protocol, independent evidence, or a named person able to reject it. It turns \u201cverify the output\u201d into an operating control by defining the questions, records, thresholds, and escalation paths that make confidence testable before reliance expands.",
-      "inside": [
-        "Why fluent output bypasses ordinary skepticism in consequential work",
-        "A repeatable challenge protocol for assumptions, evidence, and uncertainty",
-        "Ownership, escalation, and learning when an output fails review"
-      ],
-      "pdf": "marco-policani-confident-and-wrong.pdf",
-      "socialImage": "field-note-confident-and-wrong-1200x627.png",
-      "pages": 11,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-07-17",
-      "sourcesHtml": [
-        "<a href=\"https://openai.com/index/sycophancy-in-gpt-4o/\" target=\"_blank\" rel=\"noopener noreferrer\">OpenAI</a>",
-        "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel et al.</a>"
-      ]
-    },
-    {
-      "sequence": 23,
-      "slug": "demo-to-production-gap",
-      "category": "ai-governance",
-      "title": "The demo-to-production gap",
-      "summary": "A demonstration proves possibility; production requires operating evidence, ownership, and recovery.",
-      "operatingMove": "Require operating ownership, real-workflow evidence, monitoring, recovery, and a stop mechanism before moving from a successful demonstration to production reliance.",
-      "preview": "A demonstration answers whether something can work under selected conditions. Production asks whether the organization can rely on it in ordinary work, under change, and when something goes wrong. This paper defines the missing operating evidence between those two states and gives leaders a readiness frame for ownership, monitoring, recovery, capacity, and stop authority.",
-      "inside": [
-        "What a successful demo proves\u2014and what it leaves unanswered",
-        "Production ownership, monitoring, exceptions, recovery, and support capacity",
-        "A readiness gate for expanding from possibility to accountable reliance"
-      ],
-      "pdf": "marco-policani-demo-to-production-gap.pdf",
-      "socialImage": "field-note-demo-to-production-gap-1200x627.png",
-      "pages": 11,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
-      "sourcesHtml": [
-        "<a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, with Tara Balakrishnan</a>",
-        "<a href=\"https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html\" target=\"_blank\" rel=\"noopener noreferrer\">Deloitte, The State of AI in the Enterprise (2026)</a>"
-      ]
-    },
-    {
-      "sequence": 24,
-      "slug": "local-ai-cloud-governance",
-      "category": "ai-governance",
-      "title": "Local AI versus cloud AI is a governance decision",
-      "summary": "Choose local or cloud AI by data, control, operating capacity, and consequence\u2014not fashion.",
-      "operatingMove": "Choose local or cloud deployment from the data boundary, consequence of failure, required controls, support capacity, and recovery model. Architecture follows the operating decision.",
-      "preview": "Local and cloud AI are often framed as a technology preference, but the meaningful differences are operational: data boundaries, required control, consequence of failure, support capacity, update model, and recovery. This paper gives leaders a governance frame for comparing those tradeoffs before architecture becomes a sunk decision, including cases where a hybrid or deliberately limited solution is the better answer.",
-      "inside": [
-        "Data, control, consequence, performance, and support tradeoffs",
-        "Operating economics, lifecycle capacity, and recovery obligations",
-        "A decision path for local, cloud, hybrid, or bounded non-adoption"
-      ],
-      "pdf": "marco-policani-local-ai-cloud-governance.pdf",
-      "socialImage": "field-note-local-ai-cloud-governance-1200x627.png",
-      "pages": 11,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
-      "sourcesHtml": [
-        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, NIST AI 600-1 (2024)</a>",
-        "<a href=\"https://www.cisa.gov/sites/default/files/2023-02/cloud_security_technical_reference_architecture_2.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">CISA, USDS, and FedRAMP, Cloud Security Technical Reference Architecture, Version 2.0 (2022)</a>"
-      ]
-    },
-    {
-      "sequence": 26,
-      "slug": "production-ai-evaluation",
-      "category": "ai-governance",
-      "title": "An AI evaluation is a production operating control",
-      "summary": "Treat evaluation as a living production control for changing workflow behavior, not a one-time technical test.",
-      "operatingMove": "Run evaluation as a recurring production control. Test the real workflow, monitor drift and exceptions, and change the evaluation set as users, data, models, and consequences change.",
-      "preview": "A one-time evaluation cannot protect a workflow whose users, data, models, and consequences continue to change. This paper treats evaluation as a living production control: a maintained set of representative cases, thresholds, exception review, drift signals, incident learning, and an owner who can change permitted use. The emphasis is on evidence that remains relevant after launch.",
-      "inside": [
-        "A production evaluation set grounded in representative workflow cases",
-        "Thresholds, drift, exceptions, incidents, and change triggers",
-        "Ownership and cadence for updating reliance as evidence changes"
-      ],
-      "pdf": "marco-policani-production-ai-evaluation.pdf",
-      "socialImage": "field-note-production-ai-evaluation-1200x627.png",
-      "pages": 10,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
-      "sourcesHtml": [
-        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, NIST AI 600-1 (2024)</a>",
-        "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel, Amanda Minnich, Shiven Chawla, Gary Lopez, Martin Pouliot, Whitney Maxwell, Joris de Gruyter, Katherine Pratt, Saphir Qi, Nina Chikanov, Roman Lutz, Raja Sekhar Rao Dheekonda, Bolor-Erdene Jagdagdorj, Eugenia Kim, Justin Song, Keegan Hines, Daniel Jones, Giorgio Severi, Richard Lundeen, Sam Vaughan, Victoria Westerhoff, Pete Bryan, Ram Shankar Siva Kumar, Yonatan Zunger, Chang Kawaguchi, and Mark Russinovich, Microsoft Research (2025)</a>"
-      ]
-    },
-    {
-      "sequence": 7,
-      "slug": "benefits-realization-transformations-fail",
-      "category": "portfolio-delivery",
-      "title": "Benefits realization is where transformations quietly fail",
-      "summary": "Govern the end of the lifecycle with a benefits owner, baseline, and realization gate.",
-      "operatingMove": "Keep a named benefits owner, an agreed baseline, and a realization review after delivery. A project is not complete when the output ships; it is complete when the expected operating change can be shown.",
-      "preview": "Transformation governance often becomes weakest after delivery, exactly when expected value should become measurable. This paper explains how benefits lose ownership between approval, implementation, adoption, and steady-state operations. It proposes a practical realization discipline built around a named benefits owner, a credible baseline, leading and lagging evidence, and a gate that can change the intervention when the promised operating result does not appear.",
-      "inside": [
-        "Why delivery completion and value realization are different governance events",
-        "Baselines, benefit owners, adoption evidence, and post-launch measurement",
-        "A realization gate that can sustain, redirect, narrow, or stop investment"
-      ],
-      "pdf": "marco-policani-benefits-realization-transformations-fail.pdf",
-      "pages": 12,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
-      "sourcesHtml": [
-        "Project Management Institute, &quot;Benefits Realization Management: A Practice Guide.&quot; <a href=\"https://www.pmi.org/standards\" target=\"_blank\" rel=\"noopener noreferrer\">pmi.org</a>",
-        "Bent Flyvbjerg and Dan Gardner, &quot;How Big Things Get Done,&quot; Crown Currency, February 7, 2023. <a href=\"https://www.penguinrandomhouse.com/books/672118/how-big-things-get-done-by-bent-flyvbjerg-and-dan-gardner/\" target=\"_blank\" rel=\"noopener noreferrer\">penguinrandomhouse.com</a>",
-        "Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, &quot;From promise to impact: How companies can measure&mdash;and realize&mdash;the full value of AI,&quot; McKinsey &amp; Company, April 24, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>"
+        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>",
+        "Deloitte, &quot;The State of AI in the Enterprise,&quot; 2026 AI report, Deloitte AI Institute. <a href=\"https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html\" target=\"_blank\" rel=\"noopener noreferrer\">deloitte.com</a>",
+        "Jessica Apotheker, Sylvain Duranton, Vladimir Lukic, Nicolas de Bellefonds, and Christoph Schweizer, &quot;As AI Investments Surge, CEOs Take the Lead,&quot; BCG AI Radar 2026, January 15, 2026. <a href=\"https://www.bcg.com/publications/2026/as-ai-investments-surge-ceos-take-the-lead\" target=\"_blank\" rel=\"noopener noreferrer\">bcg.com</a>"
       ]
     },
     {
@@ -494,142 +574,103 @@
       ]
     },
     {
-      "sequence": 14,
-      "slug": "portfolio-governance-funding-discipline",
-      "category": "portfolio-delivery",
-      "title": "Portfolio governance is a funding-discipline problem, not a reporting problem",
-      "summary": "Reporting describes the portfolio; funding discipline governs it.",
-      "operatingMove": "Release funding in increments tied to evidence and the next decision. Reporting can explain what happened; funding authority is what redirects, pauses, expands, or stops the portfolio.",
-      "preview": "Reporting can describe a portfolio without changing a single commitment. This paper argues that governance becomes real when leaders can release, redirect, expand, pause, or stop funding in response to evidence. It links incremental investment to decision rights and the next meaningful proof point, making the funding cadence part of the operating model rather than an annual administrative event.",
+      "sequence": 8,
+      "slug": "business-imagination-is-the-scarce-asset-now",
+      "category": "work-judgment",
+      "title": "Business imagination is the scarce asset now",
+      "summary": "Cheap AI execution makes business imagination, operating judgment, and value framing more scarce—not less.",
+      "operatingMove": "Invest in problem framing, operating judgment, and the ability to imagine a better system of work. As execution gets cheaper, deciding what is worth changing becomes the higher-value capability.",
+      "preview": "As AI lowers the cost of producing analysis, prototypes, and content, execution alone becomes less differentiating. This paper argues that the scarce capability shifts toward business imagination: framing valuable problems, seeing alternative operating models, and deciding which changes are worth making. It explores the portfolio implications of abundant production capacity and the leadership practices required to keep faster output connected to real strategic choice.",
       "inside": [
-        "Why reporting visibility and governing authority are different",
-        "Incremental funding tied to evidence and the next commitment",
-        "Decision rights and gates for expanding, redirecting, pausing, or stopping"
+        "Why cheaper execution raises the value of problem framing and judgment",
+        "How abundant production changes portfolio selection and differentiation",
+        "Operating practices that turn imagination into testable, governed commitments"
       ],
-      "pdf": "marco-policani-portfolio-governance-funding-discipline.pdf",
+      "pdf": "marco-policani-business-imagination-is-the-scarce-asset-now.pdf",
+      "pages": 16,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-08-03",
+      "socialImage": "field-note-business-imagination-1200x627.png",
+      "sourcesHtml": [
+        "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, \"The state of AI in 2025: Agents, innovation, and transformation,\" McKinsey &amp; Company, November 5, 2025. Verified July 5, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai</a>",
+        "Alexis Krivkovich and Lucia Rahilly, \"AI is everywhere. The agentic organization isn't yet,\" The McKinsey Podcast, April 2, 2026. Verified July 5, 2026. <a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/ai-is-everywhere-the-agentic-organization-isnt-yet\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/ai-is-everywhere-the-agentic-organization-isnt-yet</a>",
+        "Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, \"From promise to impact: How companies can measure and realize the full value of AI,\" McKinsey &amp; Company, April 24, 2026. Verified July 5, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai</a>",
+        "Gartner, \"Gartner Predicts 30% of Generative AI Projects Will Be Abandoned After Proof of Concept By End of 2025,\" July 29, 2024. Verified July 5, 2026. <a href=\"https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025\" target=\"_blank\" rel=\"noopener noreferrer\">gartner.com</a>",
+        "James Ryseff, Brandon F. De Bruhl, and Sydne J. Newberry, \"The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed: Avoiding the Anti-Patterns of AI,\" RAND Corporation, 2024. Verified July 5, 2026. <a href=\"https://www.rand.org/pubs/research_reports/RRA2680-1.html\" target=\"_blank\" rel=\"noopener noreferrer\">rand.org</a>",
+        "Erik Brynjolfsson, Danielle Li, and Lindsey R. Raymond, \"Generative AI at Work,\" NBER Working Paper 31161, April 2023; revised November 2023. Verified August 3, 2026. <a href=\"https://www.nber.org/papers/w31161\" target=\"_blank\" rel=\"noopener noreferrer\">nber.org</a>",
+        "National Institute of Standards and Technology, \"AI Risk Management Framework Core,\" excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>"
+      ]
+    },
+    {
+      "sequence": 7,
+      "slug": "benefits-realization-transformations-fail",
+      "category": "portfolio-delivery",
+      "title": "Benefits realization is where transformations quietly fail",
+      "summary": "Govern the end of the lifecycle with a benefits owner, baseline, and realization gate.",
+      "operatingMove": "Keep a named benefits owner, an agreed baseline, and a realization review after delivery. A project is not complete when the output ships; it is complete when the expected operating change can be shown.",
+      "preview": "Transformation governance often becomes weakest after delivery, exactly when expected value should become measurable. This paper explains how benefits lose ownership between approval, implementation, adoption, and steady-state operations. It proposes a practical realization discipline built around a named benefits owner, a credible baseline, leading and lagging evidence, and a gate that can change the intervention when the promised operating result does not appear.",
+      "inside": [
+        "Why delivery completion and value realization are different governance events",
+        "Baselines, benefit owners, adoption evidence, and post-launch measurement",
+        "A realization gate that can sustain, redirect, narrow, or stop investment"
+      ],
+      "pdf": "marco-policani-benefits-realization-transformations-fail.pdf",
       "pages": 12,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-08-03",
       "sourcesHtml": [
-        "Robert G. Cooper and Scott J. Edgett, &quot;Portfolio Management: Fundamental for New Product Success,&quot; Stage-Gate International. <a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">stage-gate.com</a>",
-        "Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, &quot;From promise to impact: How companies can measure&mdash;and realize&mdash;the full value of AI,&quot; McKinsey &amp; Company, April 24, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "Antoine Montard, Dago Diedrich, and Tanguy Catlin, &quot;Where AI will create value&mdash;and where it won&rsquo;t,&quot; McKinsey Quarterly, April 29, 2026. <a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/where-ai-will-create-value-and-where-it-wont\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "Project Management Institute, &quot;The Standard for Portfolio Management&mdash;Fourth Edition.&quot; <a href=\"https://www.pmi.org/standards\" target=\"_blank\" rel=\"noopener noreferrer\">pmi.org</a>"
+        "Project Management Institute, &quot;Benefits Realization Management: A Practice Guide.&quot; <a href=\"https://www.pmi.org/standards\" target=\"_blank\" rel=\"noopener noreferrer\">pmi.org</a>",
+        "Bent Flyvbjerg and Dan Gardner, &quot;How Big Things Get Done,&quot; Crown Currency, February 7, 2023. <a href=\"https://www.penguinrandomhouse.com/books/672118/how-big-things-get-done-by-bent-flyvbjerg-and-dan-gardner/\" target=\"_blank\" rel=\"noopener noreferrer\">penguinrandomhouse.com</a>",
+        "Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, &quot;From promise to impact: How companies can measure&mdash;and realize&mdash;the full value of AI,&quot; McKinsey &amp; Company, April 24, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>"
       ]
     },
     {
-      "sequence": 16,
-      "slug": "project-readiness-before-kickoff",
-      "category": "portfolio-delivery",
-      "title": "A project is not ready because a plan exists",
-      "summary": "A plan is not readiness; the next commitment needs an owner, evidence, a boundary, and a decision.",
-      "operatingMove": "Before kickoff, require an owner, evidence for the key premise, a clear boundary, and an explicit decision about the next commitment. A populated plan is not proof that the work is ready.",
-      "preview": "A plan can be complete while the work is still missing sponsorship, capacity, decision rights, evidence, or a credible path through its first dependency. This paper defines readiness as an earned condition for the next commitment, not a checklist attached to a date. It gives sponsors and delivery leaders a proportionate way to narrow, stage, delay, or approve work based on what is actually known.",
+      "sequence": 6,
+      "slug": "ai-value-test-automate-build-buy-hire-wait",
+      "category": "ai-governance",
+      "title": "The AI value test: automate, build, buy, hire, or wait",
+      "summary": "Compare automation, custom build, vendor buy, hiring, and waiting as portfolio choices.",
+      "operatingMove": "Compare automation, custom build, vendor purchase, hiring, and waiting against the same value, risk, capacity, and reversibility criteria before treating AI as the default answer.",
+      "preview": "AI proposals are often evaluated against doing nothing instead of against the full set of available responses. This paper creates a common decision frame for automation, custom build, vendor purchase, hiring, and waiting. It compares value mechanism, operating cost, time to evidence, reversibility, dependency, and risk so leaders can choose the smallest credible intervention without mistaking novelty for strategic fit.",
       "inside": [
-        "Readiness dimensions across ownership, evidence, capacity, boundaries, and dependencies",
-        "A concise decision record for the next commitment",
-        "Options to narrow, stage discovery, approve, or hold work without false certainty"
+        "A common comparison model for five intervention paths",
+        "How sequence, reversibility, capacity, and operating cost change the decision",
+        "Evidence gates for funding, expanding, redirecting, or stopping the choice"
       ],
-      "pdf": "marco-policani-project-readiness-before-kickoff.pdf",
-      "socialImage": "field-note-project-readiness-before-kickoff-1200x627.png",
-      "pages": 10,
+      "pdf": "marco-policani-ai-value-test-automate-build-buy-hire-wait.pdf",
+      "pages": 14,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-08-03",
+      "socialImage": "field-note-ai-value-test-1200x627.png",
+      "sourcesHtml": [
+        "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, &quot;The state of AI in 2025: Agents, innovation, and transformation,&quot; McKinsey &amp; Company, November 5, 2025. Verified July 7, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
+        "James Ryseff, &quot;The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed: Avoiding the Anti-Patterns of AI,&quot; RAND Corporation, 2024. Verified July 7, 2026. <a href=\"https://www.rand.org/pubs/research_reports/RRA2680-1.html\" target=\"_blank\" rel=\"noopener noreferrer\">rand.org</a>",
+        "Arun Chandrasekaran, &quot;Why 50% of GenAI Projects Fail - And How to Beat the Odds,&quot; Gartner, January 26, 2026. Verified July 7, 2026. <a href=\"https://www.gartner.com/en/articles/genai-project-failure\" target=\"_blank\" rel=\"noopener noreferrer\">gartner.com</a>",
+        "NIST, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 7, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>",
+        "Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, &quot;From promise to impact: How companies can measure and realize the full value of AI,&quot; McKinsey &amp; Company, April 24, 2026. Verified July 7, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>"
+      ]
+    },
+    {
+      "sequence": 5,
+      "slug": "ai-usage-workflow-governance",
+      "category": "ai-governance",
+      "title": "AI usage belongs in workflow governance, not blank-check access",
+      "summary": "Govern AI access where the work happens, proportioned to the stakes of each workflow.",
+      "operatingMove": "Set AI permissions at the workflow level. Match access, review, and evidence requirements to the data involved, the consequence of error, and the ability to recover when the output is wrong.",
+      "preview": "Blanket access policies treat every AI use as if the data, consequence, and recovery path were the same. This paper moves governance into the workflow, where those differences are visible. It shows how to tier uses by consequence, define permitted actions and evidence duties, and assign review and escalation without forcing low-risk work through the same controls as consequential decisions.",
+      "inside": [
+        "Workflow-level risk tiers for access, use, and reliance",
+        "Decision rights, evidence duties, and human review by consequence",
+        "Monitoring, exception handling, and escalation when boundaries are crossed"
+      ],
+      "pdf": "marco-policani-ai-usage-workflow-governance.pdf",
+      "pages": 11,
       "publishedLabel": "Jul 2026",
       "lastModified": "2026-08-03",
       "sourcesHtml": [
-        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
-        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
-      ]
-    },
-    {
-      "sequence": 17,
-      "slug": "stage-gates-with-teeth",
-      "category": "portfolio-delivery",
-      "title": "Stage gates work only when they can kill projects",
-      "summary": "A stage gate only governs when it can redirect, pause, or stop work.",
-      "operatingMove": "Give each gate real authority to redirect, pause, or stop work, then specify the evidence required for the next commitment. A review without a consequential decision is only a meeting.",
-      "preview": "A stage gate that can only acknowledge progress is a reporting meeting, not a governance control. This paper restores the connection between the gate and a consequential decision: advance, redirect, narrow, pause, or stop. It shows how evidence requirements, decision authority, and explicit consequences keep gates proportionate while preventing weak commitments from becoming inevitable through momentum.",
-      "inside": [
-        "Decision authority and consequences behind each gate",
-        "Evidence requirements tied to the next commitment rather than a generic checklist",
-        "Proportionate routes to advance, redirect, narrow, pause, or stop"
-      ],
-      "pdf": "marco-policani-stage-gates-with-teeth.pdf",
-      "socialImage": "field-note-stage-gates-with-teeth-1200x627.png",
-      "pages": 10,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-07-17",
-      "sourcesHtml": [
-        "<a href=\"https://www.stage-gate.com/solutions/services/gate-governance/\" target=\"_blank\" rel=\"noopener noreferrer\">Stage-Gate International</a>",
-        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
-      ]
-    },
-    {
-      "sequence": 18,
-      "slug": "epmo-capacity-not-calendars",
-      "category": "portfolio-delivery",
-      "title": "The EPMO's job is capacity, not calendars",
-      "summary": "Govern active demand against scarce delivery capacity instead of managing calendars as a proxy.",
-      "operatingMove": "Govern demand against real constrained capacity by role, skill, and dependency. Calendar activity is an output; the portfolio decision is which work receives scarce capacity and which work waits.",
-      "preview": "A portfolio calendar can show when activity is planned without showing whether the organization has the scarce roles, skills, attention, and dependency capacity to deliver it. This paper repositions the EPMO around active demand and constrained capacity. It gives leaders a way to expose overload, compare tradeoffs, and decide which commitments move, change shape, or wait.",
-      "inside": [
-        "Demand and capacity views that go beyond project calendars",
-        "How role, skill, dependency, and decision bottlenecks shape feasible work",
-        "Scenario and sequencing choices for steering constrained portfolios"
-      ],
-      "pdf": "marco-policani-epmo-capacity-not-calendars.pdf",
-      "socialImage": "field-note-epmo-capacity-not-calendars-1200x627.png",
-      "pages": 10,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
-      "sourcesHtml": [
-        "<a href=\"https://www.stage-gate.com/solutions/services/gate-governance/\" target=\"_blank\" rel=\"noopener noreferrer\">Stage-Gate International</a>",
-        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>"
-      ]
-    },
-    {
-      "sequence": 19,
-      "slug": "investment-health-dashboard",
-      "category": "portfolio-delivery",
-      "title": "A PMO dashboard should show investment health",
-      "summary": "A useful PMO dashboard shows investment health, not only delivery activity.",
-      "operatingMove": "Put expected benefit, confidence, capacity pressure, unresolved decisions, and risk beside schedule and spend. A dashboard should help leaders change the portfolio, not merely observe activity.",
-      "preview": "Most PMO dashboards are strong on activity and weak on the condition of the investment. This paper defines a decision-oriented view of health that puts expected value, confidence, capacity pressure, unresolved choices, dependency, and risk beside schedule and spend. The goal is to help leaders change the portfolio while action is still possible, not explain the outcome after the fact.",
-      "inside": [
-        "A balanced view of value, confidence, capacity, risk, and delivery",
-        "Decision signals that reveal when an investment needs intervention",
-        "Review cadence and ownership for acting on the dashboard"
-      ],
-      "pdf": "marco-policani-investment-health-dashboard.pdf",
-      "socialImage": "field-note-investment-health-dashboard-1200x627.png",
-      "pages": 12,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
-      "sourcesHtml": [
-        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
-        "<a href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\">CIO</a>"
-      ]
-    },
-    {
-      "sequence": 20,
-      "slug": "decision-friction-portfolio-risk",
-      "category": "portfolio-delivery",
-      "title": "Decision friction is a portfolio risk",
-      "summary": "Make the decisions holding up the work visible before delay turns into rework.",
-      "operatingMove": "For every consequential choice, record the decision, accountable owner, evidence that could change the call, latest useful date, work at risk, and final outcome. Review the queue before waiting becomes a delivery problem.",
-      "preview": "Portfolios track work, dates, spend, and risk, but the decisions holding up that work often remain scattered across meetings, inboxes, and personal notes. This paper introduces a decision inventory that makes the queue visible: the choice, its owner, the evidence still needed, the latest useful date, the work waiting on it, and the recorded outcome. It helps leaders separate genuine delivery problems from questions that have simply been allowed to drift.",
-      "inside": [
-        "A decision inventory that sits beside schedule and risk reporting",
-        "How to name the choice, owner, evidence, useful date, and work at risk",
-        "Signals that expose recurring bottlenecks and unclear decision rights"
-      ],
-      "pdf": "marco-policani-decision-friction-portfolio-risk.pdf",
-      "socialImage": "field-note-decision-friction-portfolio-risk-1200x627.png",
-      "pages": 12,
-      "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-03",
-      "sourcesHtml": [
-        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
-        "<a href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\">CIO</a>"
+        "Gabriel Morgan Asaftei, Roger Roberts, Abby Sticha, and Cécile Prinsen, &quot;State of AI trust in 2026: Shifting to the agentic era,&quot; McKinsey &amp; Company, March 25, 2026. <a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/tech-forward/state-of-ai-trust-in-2026-shifting-to-the-agentic-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
+        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>",
+        "Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 26, 2024. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>"
       ]
     },
     {
@@ -651,8 +692,8 @@
       "lastModified": "2026-07-17",
       "socialImage": "field-note-ai-thinking-partner-1200x627.png",
       "sourcesHtml": [
-        "<a href=\"https://www.pnas.org/doi/10.1073/pnas.2422633122\" target=\"_blank\" rel=\"noopener noreferrer\">Bastani et al., \u201cGenerative AI without guardrails can harm learning,\u201d PNAS</a>. The study examined student learning; the workplace implication is an operating-design argument.",
-        "<a href=\"https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/\" target=\"_blank\" rel=\"noopener noreferrer\">Harvard Gazette, \u201cProfessor tailored AI tutor to physics course. Engagement doubled.\u201d</a>"
+        "<a href=\"https://www.pnas.org/doi/10.1073/pnas.2422633122\" target=\"_blank\" rel=\"noopener noreferrer\">Bastani et al., “Generative AI without guardrails can harm learning,” PNAS</a>. The study examined student learning; the workplace implication is an operating-design argument.",
+        "<a href=\"https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/\" target=\"_blank\" rel=\"noopener noreferrer\">Harvard Gazette, “Professor tailored AI tutor to physics course. Engagement doubled.”</a>"
       ]
     },
     {
@@ -678,6 +719,55 @@
         "James Ryseff, Brandon F. De Bruhl, and Sydne J. Newberry, &quot;The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed: Avoiding the Anti-Patterns of AI,&quot; RAND Corporation, August 13, 2024. Verified August 3, 2026. <a href=\"https://www.rand.org/pubs/research_reports/RRA2680-1.html\" target=\"_blank\" rel=\"noopener noreferrer\">rand.org</a>",
         "Alexander Sukharevsky, Alexis Krivkovich, Arne Gast, Arsen Storozhev, Dana Maor, Deepak Mahadevan, Lari H&auml;m&auml;l&auml;inen, and Sandra Durth, &quot;The agentic organization: Contours of the next paradigm for the AI era,&quot; McKinsey &amp; Company, September 26, 2025. Verified August 3, 2026. <a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
         "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from Artificial Intelligence Risk Management Framework (AI RMF 1.0), January 2023. Verified August 3, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>"
+      ]
+    },
+    {
+      "sequence": 2,
+      "slug": "ai-knowledge-bases-operating-infrastructure",
+      "category": "ai-governance",
+      "title": "AI knowledge bases are operating infrastructure, not “second brains”",
+      "summary": "Govern AI knowledge bases as shared production infrastructure with ownership, quality, provenance, and lifecycle controls.",
+      "operatingMove": "Treat the knowledge base like a production service: assign ownership for quality, permissions, provenance, refresh, and retirement before people or agents are expected to rely on it.",
+      "preview": "A knowledge base becomes operational infrastructure as soon as people or agents depend on it to answer questions, route work, or make decisions. This paper sets expectations for that dependency: named ownership, source provenance, access boundaries, quality evaluation, refresh, and retirement. It treats retrieval quality and content lifecycle as operating responsibilities, not background technical tasks, and shows why a polished interface cannot compensate for an unmanaged corpus.",
+      "inside": [
+        "Ownership and service boundaries for a shared knowledge layer",
+        "Controls for ingestion, provenance, permissions, retrieval quality, and evaluation",
+        "Refresh, incident response, and retirement practices across the lifecycle"
+      ],
+      "pdf": "marco-policani-ai-knowledge-bases-operating-infrastructure.pdf",
+      "pages": 11,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-08-03",
+      "sourcesHtml": [
+        "Leopold Mueller, Joshua Holstein, Sarah Bause, Gerhard Satzger, and Niklas Kuehl, &quot;Data Quality Challenges in Retrieval-Augmented Generation,&quot; arXiv:2510.00552, October 2025. Verified July 9, 2026. <a href=\"https://arxiv.org/abs/2510.00552\" target=\"_blank\" rel=\"noopener noreferrer\">arxiv.org</a>",
+        "Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 26, 2024. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>",
+        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>"
+      ]
+    },
+    {
+      "sequence": 1,
+      "slug": "ai-adoption-starts-with-the-constraint",
+      "category": "ai-governance",
+      "title": "AI adoption starts with the constraint, not the tool",
+      "summary": "Begin with the recurring workflow constraint, then choose the minimum intervention and proof needed to scale.",
+      "operatingMove": "Before buying or piloting anything, name the recurring workflow constraint, compare AI with simpler interventions, assign an owner, and define the evidence that would justify another increment of investment.",
+      "preview": "Most AI portfolios can show activity long before they can show value. This paper explains why tool-first adoption creates that gap and replaces it with a constraint-first operating model: identify the recurring workflow, name what limits value, compare AI with simpler interventions, and decide what evidence would justify more reliance. It connects experimentation to a five-gate portfolio cadence so that pilots become comparable investment decisions rather than isolated demonstrations.",
+      "inside": [
+        "How to distinguish a workflow constraint from a technology opportunity",
+        "A five-gate path from intake and intervention routing to value realization",
+        "A practical scorecard, evidence pack, and decision-rights model for scaling"
+      ],
+      "pdf": "marco-policani-ai-adoption-starts-with-the-constraint.pdf",
+      "pages": 14,
+      "publishedLabel": "Jul 2026",
+      "lastModified": "2026-08-03",
+      "socialImage": "field-note-ai-constraint-first-1200x627.png",
+      "sourcesHtml": [
+        "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, &quot;The state of AI in 2025: Agents, innovation, and transformation,&quot; McKinsey &amp; Company, November 5, 2025. Verified July 7, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
+        "James Ryseff, &quot;The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed: Avoiding the Anti-Patterns of AI,&quot; RAND Corporation, 2024. Verified July 7, 2026. <a href=\"https://www.rand.org/pubs/research_reports/RRA2680-1.html\" target=\"_blank\" rel=\"noopener noreferrer\">rand.org</a>",
+        "Arun Chandrasekaran, &quot;Why 50% of GenAI Projects Fail - And How to Beat the Odds,&quot; Gartner, January 26, 2026. Verified July 7, 2026. <a href=\"https://www.gartner.com/en/articles/genai-project-failure\" target=\"_blank\" rel=\"noopener noreferrer\">gartner.com</a>",
+        "Alexis Krivkovich and Lucia Rahilly, &quot;AI is everywhere. The agentic organization is not yet,&quot; The McKinsey Podcast, April 2, 2026. Verified July 7, 2026. <a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/ai-is-everywhere-the-agentic-organization-isnt-yet\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
+        "NIST, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 7, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>"
       ]
     }
   ]

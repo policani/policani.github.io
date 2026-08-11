@@ -1450,6 +1450,16 @@ box-shadow: 0 20px 48px rgba(18, 24, 38, 0.18);
 color: #ffffff;
 }
 
+.field-note-preview {
+display: block;
+width: 100%;
+height: auto;
+margin: 0 0 22px;
+border: 1px solid rgba(255, 255, 255, 0.18);
+border-radius: 8px;
+box-shadow: 0 14px 28px rgba(3, 12, 25, 0.28);
+}
+
 .field-note-download .section-kicker {
 color: rgba(255, 255, 255, 0.65);
 }

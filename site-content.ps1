@@ -135,6 +135,11 @@ function New-FieldNoteHtml($Manifest, $Entry) {
     $titleHtml = (Encode-Html $Entry.title).Replace("'", '&#39;')
     $summaryHtml = Encode-Html $Entry.summary
     $previewHtml = Encode-Html $Entry.preview
+    $contextBodyHtml = if ($Entry.PSObject.Properties.Name -contains 'bodyHtml' -and -not [string]::IsNullOrWhiteSpace([string]$Entry.bodyHtml)) {
+        [string]$Entry.bodyHtml
+    } else {
+        "            <p>$previewHtml</p>"
+    }
     $moveHtml = Encode-Html $Entry.operatingMove
     $categoryHtml = Encode-Html $category.label
     $insideHtml = (@($Entry.inside) | ForEach-Object { '<li>' + (Encode-Html $_) + '</li>' }) -join ''
@@ -142,6 +147,11 @@ function New-FieldNoteHtml($Manifest, $Entry) {
     $sourcesHtml = (@($Entry.sourcesHtml) | ForEach-Object { '<li>' + $_.Trim() + '</li>' }) -join "`n"
     $canonical = "https://policani.net/governance/field-notes/$($Entry.slug).html"
     $socialImage = if ([string]::IsNullOrWhiteSpace([string]$Entry.socialImage)) { 'social-card-1200x630.jpg' } else { $Entry.socialImage }
+    $downloadPreviewHtml = if (($Entry.PSObject.Properties.Name -contains 'showSocialPreview') -and [bool]$Entry.showSocialPreview -and -not [string]::IsNullOrWhiteSpace([string]$Entry.socialImage)) {
+        '          <img class="field-note-preview" src="../../assets/' + (Encode-Html $Entry.socialImage) + '" alt="' + $titleHtml + ' social preview">' + "`n"
+    } else {
+        ''
+    }
     $schema = '{"@context":"https://schema.org","@type":"Article","headline":"' + (Encode-JsonString $Entry.title) + '","description":"' + (Encode-JsonString $Entry.summary) + '","dateModified":"' + $Entry.lastModified + '","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"' + $canonical + '"}'
 
     return @"
@@ -203,7 +213,7 @@ function New-FieldNoteHtml($Manifest, $Entry) {
           <p class="field-note-thesis">$summaryHtml</p>
           <div class="field-note-context">
             <h2>What the paper develops</h2>
-            <p>$previewHtml</p>
+$contextBodyHtml
           </div>
           <div class="field-note-move">
             <h2>The operating move</h2>
@@ -222,7 +232,7 @@ $sourcesHtml
           </section>
         </article>
         <aside class="field-note-download">
-          <p class="section-kicker">Go deeper</p>
+$downloadPreviewHtml          <p class="section-kicker">Go deeper</p>
           <h2>Read the full argument.</h2>
           <p>The white paper expands the briefing into a practical governance model, with context, evidence, and the complete reasoning.</p>
           <a class="button" href="../whitepapers/$($Entry.pdf)">Download the white paper ($($Entry.pages) pages)</a>

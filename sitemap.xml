@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://policani.net/governance/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -501,6 +501,42 @@
   <url>
     <loc>https://policani.net/governance/whitepapers/marco-policani-exception-path-automation.pdf</loc>
     <lastmod>2026-08-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/field-notes/standardize-the-component-not-the-project.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/whitepapers/marco-policani-standardize-the-component-not-the-project.pdf</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/field-notes/decision-rights-are-a-system-design-choice.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/whitepapers/marco-policani-decision-rights-are-a-system-design-choice.pdf</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/field-notes/ai-deployment-is-a-jurisdiction-decision.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/whitepapers/marco-policani-ai-deployment-is-a-jurisdiction-decision.pdf</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>

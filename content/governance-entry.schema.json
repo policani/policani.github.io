@@ -47,6 +47,11 @@
       "minLength": 180,
       "description": "A substantive expectation-setting preview of the full paper."
     },
+    "bodyHtml": {
+      "type": "string",
+      "minLength": 180,
+      "description": "Optional trusted long-form field-note body rendered beneath the standard context heading."
+    },
     "inside": {
       "type": "array",
       "minItems": 3,
@@ -76,6 +81,10 @@
     "socialImage": {
       "type": "string",
       "pattern": "^[a-z0-9-]+\\.(?:png|jpg|jpeg|webp)$"
+    },
+    "showSocialPreview": {
+      "type": "boolean",
+      "description": "When true, render the social preview above the white-paper download panel."
     },
     "sourcesHtml": {
       "type": "array",
