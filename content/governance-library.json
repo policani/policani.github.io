@@ -26,6 +26,35 @@
   ],
   "entries": [
     {
+      "sequence": 32,
+      "slug": "capital-reallocation-real-portfolio-decision",
+      "category": "portfolio-delivery",
+      "title": "Capital reallocation is the real portfolio decision",
+      "summary": "Govern a portfolio by moving capacity in short cycles on evidence, not by defending an annual plan.",
+      "operatingMove": "Run a short-cycle reallocation review — monthly or quarterly — with a published trigger, a consistent evidence set, one accountable decision owner, and a required output: move the resources, or record why you are holding them. The plan tells you what you believed a year ago; reallocation is what you do about what you know now.",
+      "preview": "An annual plan freezes last year's conviction, and most portfolios keep acting on it long after the evidence has changed. This paper explains why the annual cycle becomes a governance liability, why reallocation is the portfolio decision worth governing, and how a short-cycle reallocation review makes the decision routine rather than a once-a-year event. It also shows how thresholds, portfolio-level comparisons, and an inspectable decision record protect work that needs time to prove itself. The long-run performance evidence carries a caveat: value comes from consistent medium-term reallocation, not annual churn.",
+      "inside": [
+        "Why an annual budget freezes funding, capacity, and attention to a stale estimate",
+        "The short-cycle review — trigger, evidence standard, decision owner, decision horizon, and move rule",
+        "How to compare contested capacity across the portfolio, expose the four forces that keep money in place, and record the trade-off in a one-page reallocation charter"
+      ],
+      "pdf": "marco-policani-capital-reallocation-real-portfolio-decision.pdf",
+      "pages": 13,
+      "publishedLabel": "Aug 2026",
+      "lastModified": "2026-08-10",
+      "socialImage": "field-note-capital-reallocation-real-portfolio-decision-1200x627.png",
+      "showSocialPreview": true,
+      "sourcesHtml": [
+        "<a href=\"https://www.mckinsey.com/~/media/mckinsey/business%20functions/people%20and%20organizational%20performance/our%20insights/the%20state%20of%20organizations/2026/the-state-of-organizations-2026-vf.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Alexis Krivkovich and colleagues, &quot;The State of Organizations 2026,&quot; McKinsey &amp; Company</a> — 47 percent of leaders review budget and talent only annually or less often; 30 percent of organizations reallocate resources enterprise-wide.",
+        "<a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/how-to-put-your-money-where-your-strategy-is\" target=\"_blank\" rel=\"noopener noreferrer\">Stephen Hall, Dan Lovallo, and Reinier Musters, &quot;How to Put Your Money Where Your Strategy Is,&quot; McKinsey &amp; Company</a> — top-third reallocators shifted 56 percent of capital and earned roughly 30 percent higher TSR annually; outperformance emerges over consistent medium-term reallocation, not annual churn.",
+        "<a href=\"https://www.pmi.org/-/media/pmi/documents/public/pdf/certifications/standard-for-portfolio-management-third-edition.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute, &quot;The Standard for Portfolio Management,&quot; Third Edition</a> — ties portfolio performance management to resource optimization and benefits realization.",
+        "<a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">Robert G. Cooper and Scott J. Edgett, &quot;Portfolio Management: Fundamental for New Product Success,&quot; Stage-Gate International</a> — describes portfolio management as a dynamic decision process for prioritizing, accelerating, de-prioritizing, terminating, and reallocating active work.",
+        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg, &quot;Quality Control and Due Diligence in Project Management&quot;</a> — front-end estimates of cost and benefit are poor predictors of actual outcomes; an outside-view discipline improves decisions.",
+        "<a href=\"https://www.gao.gov/products/gao-04-394g\" target=\"_blank\" rel=\"noopener noreferrer\">U.S. Government Accountability Office, &quot;Information Technology Investment Management,&quot; GAO-04-394G</a> — describes actual-data portfolio reviews, predetermined performance thresholds, and resource adjustments among investments.",
+        "<a href=\"https://www.apm.org.uk/resources/what-is-project-management/what-is-portfolio-management/\" target=\"_blank\" rel=\"noopener noreferrer\">Association for Project Management, &quot;What is portfolio management?&quot;</a> — frames portfolio management around strategy and delivery capacity; notes that sponsors may need to sacrifice their own project priorities for the wider portfolio."
+      ]
+    },
+    {
       "sequence": 31,
       "slug": "ai-deployment-is-a-jurisdiction-decision",
       "category": "ai-governance",
