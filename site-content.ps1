@@ -58,9 +58,8 @@ function Get-ActualPdfPages([string]$Path) {
     return ([regex]::Matches($text, '/Type\s*/Page[^s]')).Count
 }
 
-function Get-VisibleWordCount([string]$Html) {
-    $plain = [Net.WebUtility]::HtmlDecode([regex]::Replace($Html, '<[^>]+>', ' '))
-    return ([regex]::Matches($plain, "[\p{L}\p{N}][\p{L}\p{N}'’-]*")).Count
+function Get-VisibleText([string]$Html) {
+    return ([Net.WebUtility]::HtmlDecode([regex]::Replace($Html, '<[^>]+>', ' '))).Trim()
 }
 
 function Assert-NoMojibake([string]$Text, [string]$Surface) {
@@ -109,8 +108,9 @@ function Assert-LibraryManifest($Manifest) {
             if (-not ($entry.PSObject.Properties.Name -contains 'bodyHtml') -or [string]::IsNullOrWhiteSpace([string]$entry.bodyHtml)) {
                 throw "$($entry.slug): requiresFullFieldNote is true but bodyHtml is missing."
             }
-            $bodyWords = Get-VisibleWordCount ([string]$entry.bodyHtml)
-            if ($bodyWords -lt 600) { throw "$($entry.slug): full field-note body has $bodyWords words; minimum is 600." }
+            if ([string]::IsNullOrWhiteSpace((Get-VisibleText ([string]$entry.bodyHtml)))) {
+                throw "$($entry.slug): requiresFullFieldNote is true but bodyHtml has no reader-facing text."
+            }
             if (-not ($entry.PSObject.Properties.Name -contains 'expectedSourceCount')) {
                 throw "$($entry.slug): requiresFullFieldNote is true but expectedSourceCount is missing."
             }

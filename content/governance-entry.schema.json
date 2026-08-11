@@ -49,12 +49,12 @@
     },
     "bodyHtml": {
       "type": "string",
-      "minLength": 180,
-      "description": "Optional trusted long-form field-note body rendered beneath the standard context heading."
+      "minLength": 1,
+      "description": "Optional trusted field-note body rendered beneath the standard context heading. Completeness is assessed editorially, never by a word-count target."
     },
     "requiresFullFieldNote": {
       "type": "boolean",
-      "description": "Set true for new published articles. The generator then requires a substantive bodyHtml and source-count parity."
+      "description": "Set true for new published articles. The generator then requires a nonempty reader-facing bodyHtml and source-count parity; editorial review judges completeness without a word-count target."
     },
     "expectedSourceCount": {
       "type": "integer",
