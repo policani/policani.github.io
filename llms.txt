@@ -22,6 +22,7 @@ Use the exact URL requested by the user as the answer scope. Do not combine cont
 - [AI Operating Governance](https://policani.net/governance/#ai-governance): Library chapter on accountable AI adoption, evaluation, oversight, operating evidence, and human ownership.
 - [Work, Adoption & Judgment](https://policani.net/governance/#work-judgment): Library chapter on work design, AI adoption, inspectable evidence, and human judgment.
 <!-- BEGIN GENERATED GOVERNANCE FIELD NOTES -->
+- [Felt productivity is not measured productivity](https://policani.net/governance/field-notes/felt-productivity-not-measured-productivity.html): Govern AI on evidence of the work — a baseline, a work-output signal, and a review that separates felt speed from delivered outcome — because self-reported speedup is not operating evidence.
 - [Separate the decision from the outcome](https://policani.net/governance/field-notes/separate-the-decision-from-the-outcome.html): Grade the decision from its timestamp, score the result separately, then update the system the gap points to.
 - [Capital reallocation is the real portfolio decision](https://policani.net/governance/field-notes/capital-reallocation-real-portfolio-decision.html): Govern a portfolio by moving capacity in short cycles on evidence, not by defending an annual plan.
 - [AI Deployment Is a Jurisdiction Decision Before It Is a Model Decision](https://policani.net/governance/field-notes/ai-deployment-is-a-jurisdiction-decision.html): Set the operating boundary first; confirm it against the candidate before commitment.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-10",
+  "updated": "2026-08-11",
   "categories": [
     {
       "id": "portfolio-delivery",
@@ -25,6 +25,34 @@
     }
   ],
   "entries": [
+    {
+      "slug": "felt-productivity-not-measured-productivity",
+      "category": "work-judgment",
+      "title": "Felt productivity is not measured productivity",
+      "summary": "Govern AI on evidence of the work — a baseline, a work-output signal, and a review that separates felt speed from delivered outcome — because self-reported speedup is not operating evidence.",
+      "operatingMove": "Before scaling an AI-assisted workflow, require a pre-tool baseline, a work-output signal that using the tool more cannot inflate, and a review that keeps felt speed and delivered outcome in separate columns.",
+      "preview": "Ask people how much faster AI made them and you get a confident number that turns out to be a feeling, not evidence. This field note sets a small measurement standard — a baseline captured before the tool arrives, a work-output signal activity cannot inflate, and a review that reads felt speed and delivered outcome as two separate records — so AI adoption is governed on what the work did, not on how fast it felt.",
+      "bodyHtml": "<h2>The gap a good feeling hides</h2><p>Ask people how much faster AI made them and you will get a confident number. The number is a feeling, and a feeling is not operating evidence. When a program is funded, scaled, or defended on a self-reported speedup, the organization has let a feeling stand in for evidence.</p><p>The finding that should unsettle that habit is not that AI is slow. In a 2025 randomized controlled trial, the research nonprofit METR had sixteen experienced developers complete 246 real tasks with and without AI. They expected a 24 percent speedup, and afterward still believed they had gained 20 percent. The clock said they took 19 percent longer. The point that travels beyond sixteen developers and early-2025 tools is not the slowdown; it is the size and persistence of the gap between what capable people believed about their own speed and what the work recorded.</p><p>The same divergence appears at the level of a delivery system. Google's DORA program reported in 2024 that AI adoption raised individual productivity, flow, and job satisfaction while it lowered software delivery stability and throughput. People felt more productive, and the delivery system became less stable, in the same dataset. Both findings are snapshots; together they establish the variable a governance standard has to account for — felt speed and measured output are not the same signal, and the first runs ahead of the second.</p><h2>Why a feeling cannot govern</h2><p>METR's own February 2026 follow-up is blunt about the self-report problem: those estimates &ldquo;can be quite unreliable,&rdquo; and wider AI adoption &ldquo;has made it more difficult to measure task-level productivity&rdquo; as the unaided comparison erodes. The internal sensation of fluency &mdash; an instant answer, a filled page &mdash; is a poor instrument for elapsed time and reworked output. A survey that asks employees how much AI helped is measuring enthusiasm and tool preference, not delivered help.</p><p>So the durable claim is not slower or faster. It is that self-reported speedup is a low-quality signal that systematically outruns measured output, and that an organization scaling AI on that signal is scaling on sentiment. A portfolio does not fund sentiment on purpose. It does so by default, when no one built the alternative.</p><h2>A small standard that measures the work</h2><p>The alternative is the ordinary discipline of measuring an operating change. An AI-assisted workflow is governed on evidence when three things exist: a baseline captured before the tool changed the work; a work-output signal that reflects delivered value &mdash; cycle time, rework, error rate, finished units meeting standard &mdash; chosen so that using the tool more cannot move it by itself; and a review that keeps the felt experience and the delivered outcome in two separate columns. When the columns agree, reliance can grow. When they diverge, that divergence is the most valuable thing the review produces, because it is exactly the case a satisfaction survey would have scored as a win.</p><p>The hardest part is subtraction. Adoption rate, active users, prompts per employee, and self-rated speed all rise whether or not the work improved; they belong on an adoption dashboard, not in the evidence a portfolio uses to deepen reliance. As one analysis of the AI ROI gap put it, governance machinery &ldquo;sits above the work,&rdquo; while the value, or the leak, happens inside the workflow, at the level of the actual task &mdash; which is why local task gains so often show no straight line to the result the portfolio funded.</p><p>None of this slows adoption. It lets a leader say yes to deeper reliance on evidence, and redirect rather than abandon a tool whose value is leaking inside a workflow. Felt productivity is real and worth having. It is simply not the same thing as measured productivity, and only one of the two can tell a portfolio where its money went.</p>",
+      "inside": [
+        "Why self-reported speedup runs ahead of measured output — and stays there even after people live through the work",
+        "A three-part measurement standard: a pre-tool baseline, a work-output signal activity cannot inflate, and a two-column separation review",
+        "A one-page AI work-evidence standard that names the seven things to fix before a workflow is scaled"
+      ],
+      "pdf": "marco-policani-felt-productivity-not-measured-productivity.pdf",
+      "pages": 11,
+      "publishedLabel": "Aug 2026",
+      "lastModified": "2026-08-11",
+      "socialImage": "field-note-felt-productivity-not-measured-productivity-1200x627.png",
+      "showSocialPreview": true,
+      "sourcesHtml": [
+        "<a href=\"https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/\" target=\"_blank\" rel=\"noopener noreferrer\">Joel Becker, Nate Rush, Beth Barnes, and David Rein, &quot;Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity,&quot; METR, July 10, 2025</a> — the randomized trial where developers were 19% slower with AI yet believed they were 20% faster.",
+        "<a href=\"https://metr.org/blog/2026-02-24-uplift-update/\" target=\"_blank\" rel=\"noopener noreferrer\">METR, &quot;We Are Changing Our Developer Productivity Experiment Design,&quot; February 24, 2026</a> — the follow-up noting self-report is unreliable and that wider adoption is eroding the ability to measure task-level productivity.",
+        "<a href=\"https://dora.dev/research/2024/dora-report/\" target=\"_blank\" rel=\"noopener noreferrer\">Google Cloud DORA, &quot;Accelerate State of DevOps Report 2024&quot;</a> — the system-level snapshot where AI adoption raised satisfaction while delivery stability and throughput fell.",
+        "<a href=\"https://www.microsoft.com/en-us/research/publication/the-space-of-developer-productivity-theres-more-to-it-than-you-think/\" target=\"_blank\" rel=\"noopener noreferrer\">Nicole Forsgren and colleagues, &quot;The SPACE of Developer Productivity,&quot; ACM Queue, 2021</a> — why productivity cannot be measured by a single metric or activity count.",
+        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST, &quot;AI Risk Management Framework&quot; — the MEASURE function</a> — measurement as an operating control that gives management decisions a traceable basis."
+      ],
+      "sequence": 34.0
+    },
     {
       "slug": "separate-the-decision-from-the-outcome",
       "category": "portfolio-delivery",
