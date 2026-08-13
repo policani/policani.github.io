@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-11",
+  "updated": "2026-08-13",
   "categories": [
     {
       "id": "portfolio-delivery",
@@ -25,6 +25,36 @@
     }
   ],
   "entries": [
+    {
+      "slug": "enterprise-governance-ownership",
+      "category": "portfolio-delivery",
+      "title": "Who owns governance?",
+      "summary": "In a cross-domain approval meeting, every specialist can be right while the enterprise decision goes unmade. Domain leaders keep their standards and judgment; the EPMO owns the framework that ties the combined conditions into one authorized decision anyone can reconstruct later.",
+      "operatingMove": "For any decision big enough to cross domains, have the EPMO answer six questions before approval: the outcome and who owns it, the limits that apply, the current conditions and what each option costs, the options and their effect on the portfolio, who decides and who can grant an exception, and what would reopen the decision.",
+      "preview": "The sponsor asks whether the program is approved to proceed. Security, data governance, architecture, operations, and finance each give a defensible answer, and together they describe an investment nobody actually chose. This field note shows why collecting approvals is not the same as making the decision, and what part of governance the EPMO should own.",
+      "bodyHtml": "<h2>Who owns governance?</h2><p>The sponsor asks one question: &quot;Are we approved to proceed?&quot;</p><p>Security says yes, as long as the rollout is more tightly controlled. Data governance says yes, but not using customer transcripts the way the plan assumes. Architecture can support the design once one dependency is cleared. Operations can&#x27;t run the old and new processes side by side for the whole switchover. Finance points out that all of these changes remove the cheaper option and push the payoff date back.</p><p>Every team is right about its own area. Add the answers up, though, and you get an investment nobody actually chose. All those approvals put the decision on the table. None of them made it.</p><h3>The missing job</h3><p>Think about driving. The road authority sets the rules. The car has its limits and safety systems. The driver picks the destination and owns the trip. Navigation pulls the destination, the traffic, the closures, and the routes into one view so the driver can choose. It doesn&#x27;t write the traffic laws, and it doesn&#x27;t decide where to go. It just makes a responsible choice possible.</p><p>That navigation role is the one missing in the meeting, and it&#x27;s the one the EPMO should own: the framework around a cross-domain choice. What is being decided, which evidence has to be weighed, what options remain, and who has the authority to decide.</p><h3>Approvals are not a decision</h3><p>A strategic program can finish every review and still be ungoverned. Each condition can be sound on its own while, together, they add up to a different investment than the one the sponsor asked the organization to approve. Collecting approvals is not the same as making the decision.</p><p>In the meeting above, the plan that was approved no longer works under what&#x27;s now known. The organization could keep the outcome by funding the tighter design, or narrow the outcome to fit the limits. It could change the order, free up capacity elsewhere, wait, or stop. No single function can make that enterprise choice.</p><p>The EPMO shouldn&#x27;t overrule the specialists. It should show the sponsor whether the original outcome still holds and how the remaining options would affect the portfolio. The record also has to say who can decide and what new evidence would force another look.</p><h3>What the EPMO owns</h3><p>Enterprise leaders own the strategic and risk boundaries. Domain leaders own their standards, evidence, and expert judgments. The sponsor owns the outcome. A delegated forum or executive owns the investment decision within its authority. Independent assurance owns its review and challenge.</p><p>The EPMO owns the framework that ties the decision together. It keeps track of who owns what and what evidence each domain has to bring. It frames the portfolio options and names who decides and who can grant an exception. It keeps the escalation path, the decision record, and the review triggers. The framework makes sure the authorized decision weighs the right evidence and can be reconstructed later. It doesn&#x27;t take over the expert judgments or the business outcome.</p><p>The framework comes down to six questions. What outcome are we after? Which rules and limits apply? What do we know about current conditions? What options are still open? Who decides, and who can grant an exception? What would reopen the decision? Each one produces something an authorized leader can actually use. Together, they turn separate domain reviews into one enterprise choice without stripping the domains of their authority.</p><h3>The conversation to have first</h3><p>When an organization says the EPMO owns governance, start by asking which decisions it means. Assign each standard to its domain owner and the outcome to its sponsor. Name the authority that can accept an exception or change the investment. Then define the evidence that would force another look. Those answers turn a vague assignment into a usable operating model.</p><p>The real test is whether a skeptical executive can reconstruct the decision. That executive should be able to see the intended outcome, the limits that applied, and what the experts found. The record should show the options, who decided, the conditions they accepted, and the review trigger. A stack of meetings and status colors can&#x27;t provide that.</p><p>Come back to the sponsor&#x27;s question. The honest answer isn&#x27;t a pile of domain approvals. It&#x27;s the recorded decision an authorized leader made after seeing the conditions and their combined effect on the investment. The framework that makes that decision possible is the part of governance the EPMO owns.</p>",
+      "inside": [
+        "Why a stack of domain approvals is not the same as an enterprise decision",
+        "How ownership divides across enterprise leaders, domain leaders, the sponsor, the delegated authority, assurance, and the EPMO",
+        "The six questions the EPMO answers to turn separate reviews into one authorized, reconstructable choice"
+      ],
+      "pdf": "marco-policani-enterprise-governance-ownership.pdf",
+      "pages": 9,
+      "publishedLabel": "Aug 2026",
+      "lastModified": "2026-08-13",
+      "socialImage": "field-note-enterprise-governance-ownership-1200x627.png",
+      "showSocialPreview": true,
+      "requiresFullFieldNote": true,
+      "expectedSourceCount": 5,
+      "sourcesHtml": [
+        "<a href=\"https://www.pmi.org/-/media/pmi/documents/public/pdf/certifications/standard-for-portfolio-management-third-edition.pdf?rev=67c367d7cf8f483d8e67f99af78205f7\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute, The Standard for Portfolio Management, Third Edition, 2013</a> &mdash; places portfolio governance in support of the governing body's decisions about investments, priorities, dependencies, and oversight.",
+        "<a href=\"https://www.coso.org/_files/ugd/3059fc_1607e24e43ad44bf96f725765cb8e78a.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Frank Martens and Larry Rittenberg, Risk Appetite&mdash;Critical to Success, COSO, 2020</a> &mdash; defines risk appetite as the types and amount of risk an organization will accept in pursuit of value: the enterprise boundary a decision has to stay inside.",
+        "<a href=\"https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20\" target=\"_blank\" rel=\"noopener noreferrer\">Cherilyn Pascoe, Stephen Quinn, and Karen Scarfone, The NIST Cybersecurity Framework (CSF) 2.0, NIST, 2024</a> &mdash; describes cybersecurity outcomes but does not dictate how an organization must achieve them, keeping the domain standard separate from the business decision.",
+        "<a href=\"https://csrc.nist.gov/pubs/sp/1303/final\" target=\"_blank\" rel=\"noopener noreferrer\">NIST, Cybersecurity Framework 2.0: Enterprise Risk Management Quick-Start Guide, SP 1303, 2024</a> &mdash; shows how common language and shared outcomes let an organization integrate risk information across its units and programs.",
+        "<a href=\"https://www.theiia.org/globalassets/site/communication/2020/three-lines-model-updated.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">The Institute of Internal Auditors, The IIA's Three Lines Model, 2020</a> &mdash; distinguishes governing-body, management, and internal-audit responsibilities while requiring their work to be coordinated."
+      ],
+      "sequence": 35.0
+    },
     {
       "slug": "felt-productivity-not-measured-productivity",
       "category": "work-judgment",
