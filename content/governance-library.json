@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-13",
+  "updated": "2026-08-14",
   "categories": [
     {
       "id": "portfolio-delivery",
@@ -584,26 +584,29 @@
       "slug": "oversight-capacity-ai-scale",
       "category": "ai-governance",
       "title": "Oversight capacity, not model capability, is the ceiling on AI scale",
-      "summary": "Human attention available to review, correct, and answer for AI output is the real scaling constraint.",
-      "operatingMove": "Scale AI no faster than the organization can review, correct, and answer for its output. Budget oversight capacity as part of the operating model, not as invisible work added after deployment.",
-      "preview": "Organizations can deploy AI faster than they can review, correct, and answer for its output. This paper treats human oversight as a finite portfolio resource and shows how hidden review demand becomes the real ceiling on scale. It connects consequence tiers to reviewer skill, attention, escalation, and capacity planning so reliance does not grow faster than the operating system around it.",
+      "summary": "You were told to scale the AI by adding agents, but there is a number of agents past which no one on your team can still answer for the work.",
+      "operatingMove": "Measure the span of supervision each workflow can sustain, hold live agents within it, and treat oversight as a portfolio resource: spend it where the risk is, reallocate before expanding, and protect the experienced people who supply it.",
+      "preview": "Model capability is abundant; what caps safe AI scale is oversight capacity, the finite and shared human attention to review, correct, and answer for AI output. The paper measures it as a span of supervision, budgets and reallocates it as a portfolio resource, and shows why cutting experienced staff lowers the ceiling.",
       "inside": [
-        "A capacity model for review, correction, escalation, and accountability",
-        "How consequence and reversibility change the required oversight tier",
-        "Staffing, training, queue, and prioritization choices for responsible scale"
+        "The span of supervision: how many agents one accountable human can genuinely own, and the weekly test for when it is exceeded",
+        "Layered oversight and risk-matched review that raise the ceiling without lowering the standard",
+        "Oversight as a portfolio decision, the failure signature to watch for, and why cutting experienced staff lowers the ceiling"
       ],
       "pdf": "marco-policani-oversight-capacity-ai-scale.pdf",
-      "pages": 12,
+      "pages": 9,
       "socialImage": "field-note-oversight-capacity-ai-scale-1200x627.png",
       "showSocialPreview": true,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-11",
+      "lastModified": "2026-08-14",
       "sourcesHtml": [
         "Alexander Sukharevsky, Alexis Krivkovich, Arne Gast, Arsen Storozhev, Dana Maor, Deepak Mahadevan, Lari H&auml;m&auml;l&auml;inen, and Sandra Durth, &quot;The agentic organization: Contours of the next paradigm for the AI era,&quot; McKinsey &amp; Company, September 26, 2025. Verified July 10, 2026. <a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
         "David Mallon, Brad Kreit, and Natasha Buckley, &quot;Rethinking operating models for humans with agents,&quot; Deloitte Insights, April 2, 2026. Verified July 10, 2026. <a href=\"https://www.deloitte.com/us/en/insights/topics/talent/operating-models-for-humans-ai-agents.html\" target=\"_blank\" rel=\"noopener noreferrer\">deloitte.com</a>",
         "National Institute of Standards and Technology, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 2024. Verified July 9, 2026. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>",
         "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>"
-      ]
+      ],
+      "bodyHtml": "<p>You were told to scale the AI: add agents, add use cases, get more done with what the models can now do. The plan behind that mandate assumes the limit is the model. For a widening set of tasks, it is not.</p><p>What actually caps safe scale is oversight capacity &mdash; the finite human attention and judgment available to review, correct, and answer for what the AI does. McKinsey puts it plainly: the scale of agentic adoption will be capped by how much oversight humans can provide, which makes governance itself the bottleneck. Its early-adopter figure, two to five people supervising 50 to 100 agents, reads as impressive until you read it as a ceiling &mdash; there is a number of agents past which a team can no longer answer for the work.</p><p>The limit you hit first is not in the model; it is the number of decisions your people can still stand behind. Every new agent draws on the same shared pool of human judgment, and most companies have never counted it, so they cross it without noticing. The first proof it was there is an incident nobody had the capacity to catch.</p><h2>The span of supervision</h2><p>The number that makes this manageable is the span of supervision: how many agents, decisions, or units of output one accountable human can genuinely own. It is the AI-era version of span of control. It shrinks when stakes are high and errors are hard to spot, and grows when they are low and obvious, so estimate it per workflow rather than assume one number covers everything. The test is simple and uncomfortable: for each agent, can a named human actually say what it did this week and answer for it? When the honest answer becomes no, the span has already been exceeded.</p><h2>Raising the ceiling</h2><p>The span is not fixed, and raising it without lowering the standard is the central move. Layered oversight raises it: critic agents that challenge outputs, guardrail agents that enforce policy, and compliance agents that watch regulation, all under named human accountability, with monitoring, red-teaming, and incident response wired in so drift and failures are caught by the system rather than by a person watching everything. And oversight calibrates review to risk: reviewing every action only recreates the bottleneck the AI was meant to relieve, so humans move above the loop &mdash; sampling the low-stakes, concentrating judgment where errors are costly or hidden, and escalating the uncertain. Layering raises the ceiling but keeps one &mdash; the oversight agents themselves answer to a human and cost some oversight to maintain.</p><h2>Treat oversight as a portfolio decision</h2><p>Because oversight is finite and shared, where to spend it is a portfolio decision. Every AI system competes for the same pool, so the question is never whether one deployment is worth doing on its own, but whether it is worth the oversight it will consume given everything else that oversight could cover. The highest-value move is often better allocation rather than more review: shifting oversight off a low-risk system that was over-watched and onto a high-risk one that was under-watched raises safe scale without adding a reviewer. Leaders who feel out of oversight capacity are frequently spending what they have on the wrong AI, so the first move is usually to reallocate rather than to add.</p><h2>The failure signature</h2><p>Exceeded oversight shows a recognizable signature before the incident that usually announces it. Ownership in name only: an owner on paper who cannot account for what the system has been doing. Review that has become rubber-stamping: approval standing in for inspection that is no longer possible, which produces a false record that the work was governed. And surprise: incidents surfacing from corners of the estate nobody was really watching. The corrective for all three is uncomfortable because it means slowing something down &mdash; reduce the live AI footprint to what oversight can genuinely cover, or add oversight before adding more AI.</p>",
+      "requiresFullFieldNote": true,
+      "expectedSourceCount": 4
     },
     {
       "sequence": 12,

@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Oversight capacity, not model capability, is the ceiling on AI scale | Marco Policani</title>
-<meta name="description" content="Human attention available to review, correct, and answer for AI output is the real scaling constraint.">
+<meta name="description" content="You were told to scale the AI by adding agents, but there is a number of agents past which no one on your team can still answer for the work.">
 <meta name="author" content="Marco Policani">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Oversight capacity, not model capability, is the ceiling on AI scale | Marco Policani">
-<meta property="og:description" content="Human attention available to review, correct, and answer for AI output is the real scaling constraint.">
+<meta property="og:description" content="You were told to scale the AI by adding agents, but there is a number of agents past which no one on your team can still answer for the work.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://policani.net/governance/field-notes/oversight-capacity-ai-scale.html">
 <meta property="og:image" content="https://policani.net/assets/field-note-oversight-capacity-ai-scale-1200x627.png">
@@ -16,7 +16,7 @@
 <link rel="canonical" href="https://policani.net/governance/field-notes/oversight-capacity-ai-scale.html">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260720-fieldnote-hero">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Oversight capacity, not model capability, is the ceiling on AI scale","description":"Human attention available to review, correct, and answer for AI output is the real scaling constraint.","dateModified":"2026-08-11","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"https://policani.net/governance/field-notes/oversight-capacity-ai-scale.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Oversight capacity, not model capability, is the ceiling on AI scale","description":"You were told to scale the AI by adding agents, but there is a number of agents past which no one on your team can still answer for the work.","dateModified":"2026-08-14","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"https://policani.net/governance/field-notes/oversight-capacity-ai-scale.html"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -52,19 +52,19 @@
       <div class="field-note-layout">
         <article class="field-note-tldr">
           <p class="section-kicker">TL;DR</p>
-          <p class="field-note-thesis">Human attention available to review, correct, and answer for AI output is the real scaling constraint.</p>
+          <p class="field-note-thesis">You were told to scale the AI by adding agents, but there is a number of agents past which no one on your team can still answer for the work.</p>
           <div class="field-note-context">
             <h2>What the paper develops</h2>
-            <p>Organizations can deploy AI faster than they can review, correct, and answer for its output. This paper treats human oversight as a finite portfolio resource and shows how hidden review demand becomes the real ceiling on scale. It connects consequence tiers to reviewer skill, attention, escalation, and capacity planning so reliance does not grow faster than the operating system around it.</p>
+<p>You were told to scale the AI: add agents, add use cases, get more done with what the models can now do. The plan behind that mandate assumes the limit is the model. For a widening set of tasks, it is not.</p><p>What actually caps safe scale is oversight capacity &mdash; the finite human attention and judgment available to review, correct, and answer for what the AI does. McKinsey puts it plainly: the scale of agentic adoption will be capped by how much oversight humans can provide, which makes governance itself the bottleneck. Its early-adopter figure, two to five people supervising 50 to 100 agents, reads as impressive until you read it as a ceiling &mdash; there is a number of agents past which a team can no longer answer for the work.</p><p>The limit you hit first is not in the model; it is the number of decisions your people can still stand behind. Every new agent draws on the same shared pool of human judgment, and most companies have never counted it, so they cross it without noticing. The first proof it was there is an incident nobody had the capacity to catch.</p><h2>The span of supervision</h2><p>The number that makes this manageable is the span of supervision: how many agents, decisions, or units of output one accountable human can genuinely own. It is the AI-era version of span of control. It shrinks when stakes are high and errors are hard to spot, and grows when they are low and obvious, so estimate it per workflow rather than assume one number covers everything. The test is simple and uncomfortable: for each agent, can a named human actually say what it did this week and answer for it? When the honest answer becomes no, the span has already been exceeded.</p><h2>Raising the ceiling</h2><p>The span is not fixed, and raising it without lowering the standard is the central move. Layered oversight raises it: critic agents that challenge outputs, guardrail agents that enforce policy, and compliance agents that watch regulation, all under named human accountability, with monitoring, red-teaming, and incident response wired in so drift and failures are caught by the system rather than by a person watching everything. And oversight calibrates review to risk: reviewing every action only recreates the bottleneck the AI was meant to relieve, so humans move above the loop &mdash; sampling the low-stakes, concentrating judgment where errors are costly or hidden, and escalating the uncertain. Layering raises the ceiling but keeps one &mdash; the oversight agents themselves answer to a human and cost some oversight to maintain.</p><h2>Treat oversight as a portfolio decision</h2><p>Because oversight is finite and shared, where to spend it is a portfolio decision. Every AI system competes for the same pool, so the question is never whether one deployment is worth doing on its own, but whether it is worth the oversight it will consume given everything else that oversight could cover. The highest-value move is often better allocation rather than more review: shifting oversight off a low-risk system that was over-watched and onto a high-risk one that was under-watched raises safe scale without adding a reviewer. Leaders who feel out of oversight capacity are frequently spending what they have on the wrong AI, so the first move is usually to reallocate rather than to add.</p><h2>The failure signature</h2><p>Exceeded oversight shows a recognizable signature before the incident that usually announces it. Ownership in name only: an owner on paper who cannot account for what the system has been doing. Review that has become rubber-stamping: approval standing in for inspection that is no longer possible, which produces a false record that the work was governed. And surprise: incidents surfacing from corners of the estate nobody was really watching. The corrective for all three is uncomfortable because it means slowing something down &mdash; reduce the live AI footprint to what oversight can genuinely cover, or add oversight before adding more AI.</p>
           </div>
           <div class="field-note-move">
             <h2>The operating move</h2>
-            <p>Scale AI no faster than the organization can review, correct, and answer for its output. Budget oversight capacity as part of the operating model, not as invisible work added after deployment.</p>
+            <p>Measure the span of supervision each workflow can sustain, hold live agents within it, and treat oversight as a portfolio resource: spend it where the risk is, reallocate before expanding, and protect the experienced people who supply it.</p>
             <div class="field-note-lens" aria-label="Decision lens"><span>WORKFLOW</span><span>CONTROL EVIDENCE</span><span>HUMAN OWNER</span></div>
           </div>
           <div class="field-note-inside">
             <h2>Inside the white paper</h2>
-            <ul><li>A capacity model for review, correction, escalation, and accountability</li><li>How consequence and reversibility change the required oversight tier</li><li>Staffing, training, queue, and prioritization choices for responsible scale</li></ul>
+            <ul><li>The span of supervision: how many agents one accountable human can genuinely own, and the weekly test for when it is exceeded</li><li>Layered oversight and risk-matched review that raise the ceiling without lowering the standard</li><li>Oversight as a portfolio decision, the failure signature to watch for, and why cutting experienced staff lowers the ceiling</li></ul>
           </div>
           <section class="field-note-sources-wrap" aria-labelledby="sources-heading">
             <h2 id="sources-heading">Sources and notes</h2>
@@ -81,7 +81,7 @@
           <p class="section-kicker">Go deeper</p>
           <h2>Read the full argument.</h2>
           <p>The white paper expands the briefing into a practical governance model, with context, evidence, and the complete reasoning.</p>
-          <a class="button" href="../whitepapers/marco-policani-oversight-capacity-ai-scale.pdf">Download the white paper (12 pages)</a>
+          <a class="button" href="../whitepapers/marco-policani-oversight-capacity-ai-scale.pdf">Download the white paper (9 pages)</a>
           <a class="text-link" href="../index.html#ai-governance">Back to AI operating governance</a>
         </aside>
       </div>
