@@ -225,7 +225,6 @@ function New-FieldNoteHtml($Manifest, $Entry) {
     <div class="hero-copy">
       <p class="eyebrow"><a href="../index.html#$($category.id)">$categoryHtml</a> &middot; Field note</p>
       <h1>$titleHtml</h1>
-      <p class="subhead">$summaryHtml</p>
     </div>
   </div>
 </header>
