@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-14",
+  "updated": "2026-08-20",
   "categories": [
     {
       "id": "portfolio-delivery",
@@ -356,7 +356,7 @@
       "socialImage": "field-note-demo-to-production-gap-1200x627.png",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-11",
+      "lastModified": "2026-08-20",
       "sourcesHtml": [
         "<a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, with Tara Balakrishnan</a>",
         "<a href=\"https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html\" target=\"_blank\" rel=\"noopener noreferrer\">Deloitte, The State of AI in the Enterprise (2026)</a>"
