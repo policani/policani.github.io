@@ -262,12 +262,15 @@
       ],
       "pdf": "marco-policani-exception-path-automation.pdf",
       "socialImage": "field-note-exception-path-automation-1200x627.png",
-      "pages": 10,
+      "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-20",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
         "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>",
-        "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel et al.</a>"
+        "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel et al.</a>",
+        "<a href=\"https://depositonce.tu-berlin.de/bitstreams/cafd2873-814b-4c59-bab1-addd42e249d2/download\" target=\"_blank\" rel=\"noopener noreferrer\">Parasuraman &amp; Manzey</a>",
+        "<a href=\"https://arxiv.org/abs/2202.03629\" target=\"_blank\" rel=\"noopener noreferrer\">Ji</a>",
+        "<a href=\"https://proceedings.neurips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Sculley</a>"
       ]
     },
     {
@@ -287,10 +290,13 @@
       "socialImage": "field-note-coordination-tax-1200x627.png",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-20",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
         "<a href=\"https://arxiv.org/abs/2602.18673\" target=\"_blank\" rel=\"noopener noreferrer\">Harang Ju</a>",
-        "<a href=\"https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>"
+        "<a href=\"https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">National Institute of Standards and Technology</a>",
+        "<a href=\"https://crowston.syr.edu/sites/default/files/acmcs94.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Malone &amp; Crowston</a>",
+        "<a href=\"https://arxiv.org/abs/1201.4142\" target=\"_blank\" rel=\"noopener noreferrer\">Amrit</a>",
+        "<a href=\"https://proceedings.neurips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Sculley</a>"
       ]
     },
     {
@@ -310,10 +316,13 @@
       "socialImage": "field-note-production-ai-evaluation-1200x627.png",
       "pages": 10,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-21",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
-        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, NIST AI 600-1 (2024)</a>",
-        "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel, Amanda Minnich, Shiven Chawla, Gary Lopez, Martin Pouliot, Whitney Maxwell, Joris de Gruyter, Katherine Pratt, Saphir Qi, Nina Chikanov, Roman Lutz, Raja Sekhar Rao Dheekonda, Bolor-Erdene Jagdagdorj, Eugenia Kim, Justin Song, Keegan Hines, Daniel Jones, Giorgio Severi, Richard Lundeen, Sam Vaughan, Victoria Westerhoff, Pete Bryan, Ram Shankar Siva Kumar, Yonatan Zunger, Chang Kawaguchi, and Mark Russinovich, Microsoft Research (2025)</a>"
+        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio et al.</a>",
+        "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel et al.</a>",
+        "<a href=\"https://proceedings.neurips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Sculley</a>",
+        "<a href=\"https://arxiv.org/abs/2202.03629\" target=\"_blank\" rel=\"noopener noreferrer\">Ji</a>",
+        "<a href=\"https://depositonce.tu-berlin.de/bitstreams/cafd2873-814b-4c59-bab1-addd42e249d2/download\" target=\"_blank\" rel=\"noopener noreferrer\">Parasuraman &amp; Manzey</a>"
       ]
     },
     {
@@ -333,10 +342,13 @@
       "socialImage": "field-note-local-ai-cloud-governance-1200x627.png",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-20",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
-        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, NIST AI 600-1 (2024)</a>",
-        "<a href=\"https://www.cisa.gov/sites/default/files/2023-02/cloud_security_technical_reference_architecture_2.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">CISA, USDS, and FedRAMP, Cloud Security Technical Reference Architecture, Version 2.0 (2022)</a>"
+        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio et al.</a>",
+        "<a href=\"https://www.cisa.gov/sites/default/files/2023-02/cloud_security_technical_reference_architecture_2.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Cybersecurity and Infrastructure Security Agency</a>",
+        "<a href=\"https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Mell</a>",
+        "<a href=\"https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-144.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Jansen</a>",
+        "<a href=\"https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-146.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Badger</a>"
       ]
     },
     {
@@ -356,10 +368,13 @@
       "socialImage": "field-note-demo-to-production-gap-1200x627.png",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-20",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
-        "<a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, with Tara Balakrishnan</a>",
-        "<a href=\"https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html\" target=\"_blank\" rel=\"noopener noreferrer\">Deloitte, The State of AI in the Enterprise (2026)</a>"
+        "<a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">Alex Singla et al.</a>",
+        "<a href=\"https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html\" target=\"_blank\" rel=\"noopener noreferrer\">Deloitte</a>",
+        "<a href=\"https://proceedings.neurips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Sculley</a>",
+        "<a href=\"https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/\" target=\"_blank\" rel=\"noopener noreferrer\">Estrada</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value\" target=\"_blank\" rel=\"noopener noreferrer\">Bloch</a>"
       ]
     },
     {
@@ -379,10 +394,13 @@
       "socialImage": "field-note-confident-and-wrong-1200x627.png",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-20",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
         "<a href=\"https://openai.com/index/sycophancy-in-gpt-4o/\" target=\"_blank\" rel=\"noopener noreferrer\">OpenAI</a>",
-        "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel et al.</a>"
+        "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel</a>",
+        "<a href=\"https://arxiv.org/abs/2202.03629\" target=\"_blank\" rel=\"noopener noreferrer\">Ji</a>",
+        "<a href=\"https://depositonce.tu-berlin.de/bitstreams/cafd2873-814b-4c59-bab1-addd42e249d2/download\" target=\"_blank\" rel=\"noopener noreferrer\">Parasuraman &amp; Manzey</a>",
+        "<a href=\"https://arxiv.org/abs/2512.08424\" target=\"_blank\" rel=\"noopener noreferrer\">Khanna</a>"
       ]
     },
     {
@@ -402,10 +420,13 @@
       "socialImage": "field-note-portfolio-scenarios-not-plan-1200x627.png",
       "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-20",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
         "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
-        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
+        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/how-to-put-your-money-where-your-strategy-is\" target=\"_blank\" rel=\"noopener noreferrer\">Stephen Hall et al.</a>",
+        "<a href=\"https://www.bain.com/insights/the-five-steps-to-better-decisions/\" target=\"_blank\" rel=\"noopener noreferrer\">Blenko</a>",
+        "<a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">Robert G. Cooper &amp; Scott J. Edgett</a>"
       ]
     },
     {
@@ -425,10 +446,13 @@
       "socialImage": "field-note-decision-friction-portfolio-risk-1200x627.png",
       "pages": 12,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-20",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
         "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
-        "<a href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\">CIO</a>"
+        "<a href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\">Mary K. Pratt</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency\" target=\"_blank\" rel=\"noopener noreferrer\">De Smet</a>",
+        "<a href=\"https://www.bain.com/insights/measuring-decision-effectiveness/\" target=\"_blank\" rel=\"noopener noreferrer\">Blenko</a>",
+        "<a href=\"https://www.bain.com/insights/the-five-steps-to-better-decisions/\" target=\"_blank\" rel=\"noopener noreferrer\">Blenko</a>"
       ]
     },
     {
@@ -448,10 +472,13 @@
       "socialImage": "field-note-investment-health-dashboard-1200x627.png",
       "pages": 12,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-20",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
         "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
-        "<a href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\">CIO</a>"
+        "<a href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\">Mary K. Pratt</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value\" target=\"_blank\" rel=\"noopener noreferrer\">Bloch</a>",
+        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Flyvbjerg</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/how-to-put-your-money-where-your-strategy-is\" target=\"_blank\" rel=\"noopener noreferrer\">Stephen Hall et al.</a>"
       ]
     },
     {
@@ -471,10 +498,14 @@
       "socialImage": "field-note-epmo-capacity-not-calendars-1200x627.png",
       "pages": 10,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-11",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
-        "<a href=\"https://www.stage-gate.com/solutions/services/gate-governance/\" target=\"_blank\" rel=\"noopener noreferrer\">Stage-Gate International</a>",
-        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>"
+        "<a href=\"https://www.stage-gate.com/blog/stage-gate-the-quintessential-decision-factory/\" target=\"_blank\" rel=\"noopener noreferrer\">Michelle Jones</a>",
+        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
+        "<a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">Robert G. Cooper &amp; Scott J. Edgett</a>",
+        "<a href=\"https://www.pmi.org/disciplined-agile/controlling-work-in-process-wip\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/how-to-put-your-money-where-your-strategy-is\" target=\"_blank\" rel=\"noopener noreferrer\">Stephen Hall et al.</a>",
+        "<a href=\"https://www.bain.com/insights/measuring-decision-effectiveness/\" target=\"_blank\" rel=\"noopener noreferrer\">Blenko</a>"
       ]
     },
     {
@@ -492,12 +523,16 @@
       ],
       "pdf": "marco-policani-stage-gates-with-teeth.pdf",
       "socialImage": "field-note-stage-gates-with-teeth-1200x627.png",
-      "pages": 10,
+      "pages": 11,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-20",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
         "<a href=\"https://www.stage-gate.com/solutions/services/gate-governance/\" target=\"_blank\" rel=\"noopener noreferrer\">Stage-Gate International</a>",
-        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
+        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>",
+        "<a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">Robert G. Cooper &amp; Scott J. Edgett</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value\" target=\"_blank\" rel=\"noopener noreferrer\">Bloch</a>",
+        "<a href=\"https://www.bain.com/insights/the-five-steps-to-better-decisions/\" target=\"_blank\" rel=\"noopener noreferrer\">Blenko</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/how-to-put-your-money-where-your-strategy-is\" target=\"_blank\" rel=\"noopener noreferrer\">Stephen Hall et al.</a>"
       ]
     },
     {
@@ -517,10 +552,13 @@
       "socialImage": "field-note-project-readiness-before-kickoff-1200x627.png",
       "pages": 10,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-21",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
         "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
-        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>"
+        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value\" target=\"_blank\" rel=\"noopener noreferrer\">Bloch</a>",
+        "<a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">Robert G. Cooper &amp; Scott J. Edgett</a>",
+        "<a href=\"https://www.bain.com/insights/measuring-decision-effectiveness/\" target=\"_blank\" rel=\"noopener noreferrer\">Blenko</a>"
       ]
     },
     {
@@ -571,12 +609,13 @@
       "socialImage": "field-note-portfolio-governance-funding-discipline-1200x627.png",
       "showSocialPreview": true,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-20",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
-        "Robert G. Cooper and Scott J. Edgett, &quot;Portfolio Management: Fundamental for New Product Success,&quot; Stage-Gate International. <a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">stage-gate.com</a>",
-        "Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, &quot;From promise to impact: How companies can measure&mdash;and realize&mdash;the full value of AI,&quot; McKinsey &amp; Company, April 24, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "Antoine Montard, Dago Diedrich, and Tanguy Catlin, &quot;Where AI will create value&mdash;and where it won&rsquo;t,&quot; McKinsey Quarterly, April 29, 2026. <a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/where-ai-will-create-value-and-where-it-wont\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "Project Management Institute, &quot;The Standard for Portfolio Management&mdash;Fourth Edition.&quot; <a href=\"https://www.pmi.org/standards\" target=\"_blank\" rel=\"noopener noreferrer\">pmi.org</a>"
+        "<a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">Robert G. Cooper &amp; Scott J. Edgett</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">Johannes-Tobias Lorenz et al.</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/where-ai-will-create-value-and-where-it-wont\" target=\"_blank\" rel=\"noopener noreferrer\">Antoine Montard et al.</a>",
+        "<a href=\"https://www.pmi.org/standards\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/how-to-put-your-money-where-your-strategy-is\" target=\"_blank\" rel=\"noopener noreferrer\">Stephen Hall et al.</a>"
       ]
     },
     {
@@ -597,16 +636,17 @@
       "socialImage": "field-note-oversight-capacity-ai-scale-1200x627.png",
       "showSocialPreview": true,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-28",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
-        "Alexander Sukharevsky, Alexis Krivkovich, Arne Gast, Arsen Storozhev, Dana Maor, Deepak Mahadevan, Lari H&auml;m&auml;l&auml;inen, and Sandra Durth, &quot;The agentic organization: Contours of the next paradigm for the AI era,&quot; McKinsey &amp; Company, September 26, 2025. Verified July 10, 2026. <a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "David Mallon, Brad Kreit, and Natasha Buckley, &quot;Rethinking operating models for humans with agents,&quot; Deloitte Insights, April 2, 2026. Verified July 10, 2026. <a href=\"https://www.deloitte.com/us/en/insights/topics/talent/operating-models-for-humans-ai-agents.html\" target=\"_blank\" rel=\"noopener noreferrer\">deloitte.com</a>",
-        "National Institute of Standards and Technology, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 2024. Verified July 9, 2026. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>",
-        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>"
+        "<a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era\" target=\"_blank\" rel=\"noopener noreferrer\">Alexander Sukharevsky et al.</a>",
+        "<a href=\"https://www.deloitte.com/us/en/insights/topics/talent/operating-models-for-humans-ai-agents.html\" target=\"_blank\" rel=\"noopener noreferrer\">David Mallon et al.</a>",
+        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio et al.</a>",
+        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>",
+        "<a href=\"https://depositonce.tu-berlin.de/bitstreams/cafd2873-814b-4c59-bab1-addd42e249d2/download\" target=\"_blank\" rel=\"noopener noreferrer\">Parasuraman &amp; Manzey</a>"
       ],
       "bodyHtml": "<p>You were told to scale the AI: add agents, add use cases, get more done with what the models can now do. The plan behind that mandate assumes the limit is the model. For a widening set of tasks, it is not.</p><p>What actually caps safe scale is oversight capacity: the finite human attention and judgment available to review, correct, and answer for what the AI does. It is finite, it is shared across every system you run, and it is spent whether or not anyone measures it. McKinsey states it directly — the scale of agentic adoption will be capped by how much oversight humans can provide. Its early-adopter figure, two to five people supervising 50 to 100 agents, reads as impressive until you read it as a ceiling: past some number of agents, a team can no longer answer for the work.</p><p>So the first limit you hit is not in the model. It is the number of decisions your people can still stand behind — a shared pool most companies have never counted, and cross without noticing. The first proof it was there is an incident nobody had the capacity to catch.</p><h2>The span of supervision</h2><p>The number that makes this manageable is the span of supervision: how many agents one accountable human can genuinely own. It is the AI-era version of span of control. It shrinks when stakes are high and errors are hard to spot, and grows when they are low and obvious, so estimate it per workflow rather than assume one number fits everything. The test is simple and uncomfortable: for each agent, can a named human say what it did this week and answer for it? When the honest answer becomes no, the span has already been exceeded.</p><h2>Don't review everything — calibrate to risk</h2><p>One misreading caps AI at human speed: the idea that oversight means a human reviews every action. Reviewing everything only recreates the bottleneck the AI was meant to relieve. Effective oversight samples and escalates by risk — sampling the low-stakes, concentrating judgment where errors are costly or hidden, and escalating the uncertain. That calibration is where most of the real capacity gain lives, because it stretches a fixed pool of attention across far more AI.</p><h2>Raising the ceiling with layered oversight</h2><p>The span is not fixed. Layered oversight raises it: critic agents that challenge outputs, guardrail agents that enforce policy, and compliance agents that watch regulation, all under named human accountability, with monitoring, red-teaming, and incident response wired in so drift and failures are caught by the system rather than by a person watching everything. Layering raises the ceiling but keeps one — the oversight agents themselves answer to a human and cost some oversight to maintain.</p><h2>Oversight is a portfolio decision</h2><p>Because oversight is finite and shared, where to spend it is a portfolio decision. Every AI system competes for the same pool, so the question is never whether one deployment is worth doing on its own, but whether it is worth the oversight it will consume given everything else that oversight could cover. The highest-value move is often better allocation rather than more review: shifting oversight off a low-risk system that was over-watched and onto a high-risk one that was under-watched raises safe scale without adding a reviewer. Leaders who feel out of oversight capacity are frequently spending what they have on the wrong AI, so the first move is usually to reallocate rather than to add.</p><h2>The failure signature of exceeded oversight</h2><p>Exceeded oversight shows a recognizable signature before the incident that usually announces it. Ownership in name only: an owner on paper who could not say what the system did this week. Rubber-stamp review: approval standing in for inspection that is no longer possible, which produces a false record that the work was governed. And surprise: incidents surfacing from corners of the estate nobody was really watching. The corrective for all three means slowing something down — reduce the live AI footprint to what oversight can genuinely cover, or add oversight before adding more AI.</p><h2>The operating move</h2><p>Make oversight capacity a first-class design variable. Estimate the span per workflow; budget oversight as a finite resource and charge every new deployment against the shared pool; hold live agents within the oversight available; match oversight to risk; layer automated oversight under named accountability; and instrument it with monitoring and incident response. And remember what the pool is made of: experienced people whose judgment takes years to build. Cutting the staff who supervise the AI to pay for the AI lowers the ceiling at the very moment you are scaling against it.</p><p>Go back to the mandate. More agents and better models raise output for a while; the ceiling arrives when the work outruns the people who can answer for it, and how high it sits is the part a leader actually controls. The white paper develops the full argument: the definition and economics of oversight capacity, the span-of-supervision discipline, layered oversight design, the capability-versus-oversight lever table, and the evidence gaps that remain.</p>",
       "requiresFullFieldNote": true,
-      "expectedSourceCount": 4
+      "expectedSourceCount": 5
     },
     {
       "sequence": 12,
@@ -775,15 +815,17 @@
         "A realization gate that can sustain, redirect, narrow, or stop investment"
       ],
       "pdf": "marco-policani-benefits-realization-transformations-fail.pdf",
-      "pages": 12,
+      "pages": 13,
       "socialImage": "field-note-benefits-realization-transformations-fail-1200x627.png",
       "showSocialPreview": true,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-21",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
-        "Project Management Institute, &quot;Benefits Realization Management: A Practice Guide.&quot; <a href=\"https://www.pmi.org/standards\" target=\"_blank\" rel=\"noopener noreferrer\">pmi.org</a>",
-        "Bent Flyvbjerg and Dan Gardner, &quot;How Big Things Get Done,&quot; Crown Currency, February 7, 2023. <a href=\"https://www.penguinrandomhouse.com/books/672118/how-big-things-get-done-by-bent-flyvbjerg-and-dan-gardner/\" target=\"_blank\" rel=\"noopener noreferrer\">penguinrandomhouse.com</a>",
-        "Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, &quot;From promise to impact: How companies can measure&mdash;and realize&mdash;the full value of AI,&quot; McKinsey &amp; Company, April 24, 2026. <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>"
+        "<a href=\"https://www.pmi.org/standards\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
+        "<a href=\"https://www.penguinrandomhouse.com/books/672118/how-big-things-get-done-by-bent-flyvbjerg-and-dan-gardner/\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg &amp; Dan Gardner</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">Johannes-Tobias Lorenz et al.</a>",
+        "<a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value\" target=\"_blank\" rel=\"noopener noreferrer\">Bloch</a>",
+        "<a href=\"https://web-assets.bcg.com/c7/20/907821344bbb8ade98cbe10fc2b8/bcg-flipping-the-odds-of-digital-transformation-success-oct-2020.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Forth</a>"
       ]
     },
     {
@@ -830,11 +872,13 @@
       "socialImage": "field-note-ai-usage-workflow-governance-1200x627.png",
       "showSocialPreview": true,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-28",
+      "lastModified": "2026-08-29",
       "sourcesHtml": [
-        "Gabriel Morgan Asaftei, Roger Roberts, Abby Sticha, and Cécile Prinsen, &quot;State of AI trust in 2026: Shifting to the agentic era,&quot; McKinsey &amp; Company, March 25, 2026. <a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/tech-forward/state-of-ai-trust-in-2026-shifting-to-the-agentic-era\" target=\"_blank\" rel=\"noopener noreferrer\">mckinsey.com</a>",
-        "National Institute of Standards and Technology, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 5, 2026. <a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">airc.nist.gov</a>",
-        "Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 26, 2024. <a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">doi.org</a>"
+        "<a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/tech-forward/state-of-ai-trust-in-2026-shifting-to-the-agentic-era\" target=\"_blank\" rel=\"noopener noreferrer\">Gabriel Morgan Asaftei et al.</a>",
+        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>",
+        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio et al.</a>",
+        "<a href=\"https://www.iso.org/standard/42001\" target=\"_blank\" rel=\"noopener noreferrer\">ISO</a>",
+        "<a href=\"https://www.cio.com/article/4124760/roughly-half-of-employees-are-using-unsanctioned-ai-tools-and-enterprise-leaders-are-major-culprits.html\" target=\"_blank\" rel=\"noopener noreferrer\">CIO</a>"
       ]
     },
     {
@@ -906,13 +950,15 @@
       "socialImage": "field-note-ai-knowledge-bases-operating-infrastructure-1200x627.png",
       "showSocialPreview": true,
       "publishedLabel": "Jul 2026",
-      "lastModified": "2026-08-13",
+      "lastModified": "2026-08-29",
       "requiresFullFieldNote": true,
-      "expectedSourceCount": 3,
+      "expectedSourceCount": 5,
       "sourcesHtml": [
-        "<a href=\"https://arxiv.org/abs/2510.00552\" target=\"_blank\" rel=\"noopener noreferrer\">Leopold Müller, Joshua Holstein, Sarah Bause, Gerhard Satzger, and Niklas Kühl, Data Quality Challenges in Retrieval-Augmented Generation, arXiv:2510.00552, October 1, 2025</a> — reports that source and ingestion quality problems can propagate through retrieval and generation, supporting front-loaded quality management.",
-        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile, NIST AI 600-1, July 26, 2024</a> — identifies information integrity, content provenance, and lifecycle governance as material generative-AI risk concerns.",
-        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">National Institute of Standards and Technology, AI Risk Management Framework Core, AI RMF 1.0, 2023</a> — organizes continual AI risk management through GOVERN, MAP, MEASURE, and MANAGE, including documented roles, monitoring, and response."
+        "<a href=\"https://arxiv.org/abs/2510.00552\" target=\"_blank\" rel=\"noopener noreferrer\">Leopold Müller et al.</a>",
+        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio et al.</a>",
+        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST</a>",
+        "<a href=\"https://www.iso.org/standard/68683.html\" target=\"_blank\" rel=\"noopener noreferrer\">ISO</a>",
+        "<a href=\"https://www.nasa.gov/learning-resources/for-professionals/appel-knowledge-management/\" target=\"_blank\" rel=\"noopener noreferrer\">National Aeronautics and Space Administration</a>"
       ]
     },
     {
