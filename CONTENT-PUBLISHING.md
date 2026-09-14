@@ -14,6 +14,14 @@ and `llms.txt` entries.
 - `site-content.ps1` validates and builds generated site content.
 - `publish.ps1` runs the content build before its normal site checks.
 
+Before generated surfaces are rebuilt, `publish.ps1` reconciles each white
+paper's `lastModified` value with its public PDF revision. A pending PDF
+replacement receives the release date; an older manifest date advances to the
+latest committed PDF revision. The pipeline then regenerates the companion
+field note's Article `dateModified` and both sitemap entries from that value.
+Run `./site-content.ps1 -Action SyncPdfDates` before a local review when the
+PDF date itself is part of the change under review.
+
 Do not hand-edit generated governance cards or field-note HTML. A later build
 will replace those edits.
 

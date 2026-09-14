@@ -5,6 +5,7 @@
     .\site-content.ps1 -Action Build
     .\site-content.ps1 -Action Check
     .\site-content.ps1 -Action AddWhitepaper -Spec .\path\entry.json -Pdf .\path\paper.pdf
+    .\site-content.ps1 -Action SyncPdfDates
 
   Governance content is authored in content/governance-library.json. Generated
   field-note pages, landing-page cards, counts, and sitemap entries must not be
@@ -13,7 +14,7 @@
 
 [CmdletBinding()]
 param(
-    [ValidateSet('Build', 'Check', 'AddWhitepaper')]
+    [ValidateSet('Build', 'Check', 'AddWhitepaper', 'SyncPdfDates')]
     [string]$Action = 'Check',
     [string]$Spec,
     [string]$Pdf
@@ -56,6 +57,62 @@ function Get-ActualPdfPages([string]$Path) {
     $bytes = [IO.File]::ReadAllBytes($Path)
     $text = [Text.Encoding]::ASCII.GetString($bytes)
     return ([regex]::Matches($text, '/Type\s*/Page[^s]')).Count
+}
+
+function Get-GitLastModifiedDate([string]$RelativePath) {
+    $date = @(& git -C $siteRoot log -1 --format=%cs -- $RelativePath 2>$null)[0]
+    if ([string]::IsNullOrWhiteSpace([string]$date)) { return $null }
+    if ($date -notmatch '^\d{4}-\d{2}-\d{2}$') {
+        throw "Could not read a YYYY-MM-DD Git date for '$RelativePath'."
+    }
+    return [string]$date
+}
+
+function Get-ChangedGovernancePdfs {
+    $changed = @(
+        & git -C $siteRoot diff --name-only --diff-filter=AM -- 'governance/whitepapers' 2>$null
+        & git -C $siteRoot ls-files --others --exclude-standard -- 'governance/whitepapers' 2>$null
+    ) | Where-Object { $_ -match '^governance/whitepapers/.+\.pdf$' }
+    return @($changed | Sort-Object -Unique)
+}
+
+function Sync-GovernancePdfDates {
+    $manifest = Read-LibraryManifest
+    $changedPdfs = @(Get-ChangedGovernancePdfs)
+    $today = Get-Date -Format 'yyyy-MM-dd'
+    $updates = @()
+
+    foreach ($entry in @($manifest.entries)) {
+        $relativePath = "governance/whitepapers/$($entry.pdf)"
+        # A pending PDF change is being prepared for this release, so it is
+        # stamped with today's publication date. Otherwise, reconcile an older
+        # manifest date with the newest committed public PDF revision.
+        $candidateDate = if ($changedPdfs -contains $relativePath) {
+            $today
+        } else {
+            Get-GitLastModifiedDate $relativePath
+        }
+
+        if ($candidateDate -and $candidateDate -gt [string]$entry.lastModified) {
+            $updates += [pscustomobject]@{
+                Entry = $entry
+                Date = $candidateDate
+            }
+        }
+    }
+
+    foreach ($update in $updates) {
+        $update.Entry.lastModified = $update.Date
+    }
+
+    if ($updates.Count -gt 0) {
+        $manifest.updated = Get-Date -Format 'yyyy-MM-dd'
+        Assert-LibraryManifest $manifest
+        Write-Utf8 $manifestPath ($manifest | ConvertTo-Json -Depth 12)
+        Write-Host "==> Updated lastModified for $($updates.Count) governance PDF(s)."
+    } else {
+        Write-Host '==> Governance PDF dates are already synchronized.'
+    }
 }
 
 function Get-VisibleText([string]$Html) {
@@ -485,6 +542,7 @@ function Add-WhitepaperEntry {
 Set-Location -LiteralPath $siteRoot
 switch ($Action) {
     'Build' { Build-SiteContent }
+    'SyncPdfDates' { Sync-GovernancePdfDates }
     'Check' {
         $manifest = Read-LibraryManifest
         Assert-LibraryManifest $manifest

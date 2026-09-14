@@ -39,6 +39,9 @@ if (Test-Path "_mockups") {
 #    discard working-tree files here; publication must preserve intentional edits.
 if (Test-Path '.\site-content.ps1') {
     try {
+        # Keep the sitemap and companion field-note dates aligned with a rebuilt
+        # public PDF before generated surfaces are regenerated.
+        & '.\site-content.ps1' -Action SyncPdfDates
         & '.\site-content.ps1' -Action Build
     } catch {
         Write-Host '==> Site content build failed. Nothing was published.' -ForegroundColor Red
