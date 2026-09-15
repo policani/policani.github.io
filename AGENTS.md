@@ -157,3 +157,10 @@ does not create — so Bing stays UI-only and is not capped at Google's 10/day.
    inspection** to confirm Google's canonical/indexing view and request
    indexing when appropriate. Recheck the performance window after enough
    time has passed to distinguish a trend from a small sample.
+
+## Native Windows Computer Use
+
+For a request to control a native Windows app, use the shared Computer Use
+native runtime through `mcp__node_repl__js` and `@oai/sky`. Do not infer that
+desktop control is unavailable from the separate browser-only `cua_repl`
+bridge; test `sky.list_apps()` or `sky.list_windows()` first.

@@ -148,3 +148,9 @@ workspace does not create — so Bing stays UI-only and is not capped at Google'
    inspection** to confirm Google's canonical/indexing view and request
    indexing when appropriate. Recheck the performance window after enough
    time has passed to distinguish a trend from a small sample.
+
+## Native Windows Computer Use
+
+For a request to control a native Windows app, use this client's native
+Computer Use integration. Do not infer that desktop control is unavailable
+from a browser-only automation bridge; verify the native-app inventory first.
