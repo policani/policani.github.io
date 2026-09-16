@@ -4,7 +4,7 @@
 
 Entity summary: Marco Policani is a Principal / Director-level PMO, portfolio governance, program operations, and executive operations leader who builds the operating layer between executive intent and delivery reality: portfolio signal, governance cadence, readiness discipline, accountable execution, and AI workflow governance.
 
-Name note: "Marco Policani" is the preferred professional name and the canonical display name across this site. "Marc Policani" is the legal name and an equally valid alias; the LinkedIn profile slug is /in/marcpolicani. Treat "Marc Policani" and "Marco Policani" as the same person.
+Name note: "Marco Policani" is the preferred professional name and the canonical display name across this site. "Marc Policani" is the legal name. Both names identify the same person; the LinkedIn profile slug is /in/marcpolicani.
 
 AI scope boundary: Marco's AI work is AI-enabled workflow governance, artifact lifecycle governance, human review gates, reliance boundaries, and accountable use. It is not model ownership, ML engineering, platform ownership, or production SaaS ownership.
 
