@@ -41,7 +41,7 @@
                         "pdf":  "marco-policani-why-the-kill-gate-doesnt-fire.pdf",
                         "pages":  9,
                         "publishedLabel":  "Sep 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "socialImage":  "field-note-why-the-kill-gate-doesnt-fire-1200x627.png",
                         "showSocialPreview":  true,
                         "sourcesHtml":  [
@@ -73,7 +73,7 @@
                         "pdf":  "marco-policani-enterprise-governance-ownership.pdf",
                         "pages":  10,
                         "publishedLabel":  "Aug 2026",
-                        "lastModified":  "2026-09-15",
+                        "lastModified":  "2026-09-18",
                         "socialImage":  "field-note-enterprise-governance-ownership-1200x627.png",
                         "showSocialPreview":  true,
                         "requiresFullFieldNote":  true,
@@ -104,7 +104,7 @@
                         "pdf":  "marco-policani-felt-productivity-not-measured-productivity.pdf",
                         "pages":  11,
                         "publishedLabel":  "Aug 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "socialImage":  "field-note-felt-productivity-not-measured-productivity-1200x627.png",
                         "showSocialPreview":  true,
                         "sourcesHtml":  [
@@ -134,9 +134,9 @@
                                        "Three tests for distinguishing declared uncertainty, execution divergence, and a decision-model error"
                                    ],
                         "pdf":  "marco-policani-separate-the-decision-from-the-outcome.pdf",
-                        "pages":  15,
+                        "pages":  14,
                         "publishedLabel":  "Aug 2026",
-                        "lastModified":  "2026-09-16",
+                        "lastModified":  "2026-09-18",
                         "socialImage":  "field-note-separate-the-decision-from-the-outcome-1200x627.png",
                         "showSocialPreview":  true,
                         "sourcesHtml":  [
@@ -168,7 +168,7 @@
                         "pdf":  "marco-policani-capital-reallocation-real-portfolio-decision.pdf",
                         "pages":  13,
                         "publishedLabel":  "Aug 2026",
-                        "lastModified":  "2026-09-16",
+                        "lastModified":  "2026-09-18",
                         "socialImage":  "field-note-capital-reallocation-real-portfolio-decision-1200x627.png",
                         "showSocialPreview":  true,
                         "sourcesHtml":  [
@@ -201,7 +201,7 @@
                         "pdf":  "marco-policani-ai-deployment-is-a-jurisdiction-decision.pdf",
                         "pages":  14,
                         "publishedLabel":  "Aug 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "socialImage":  "field-note-ai-deployment-jurisdiction-decision-1200x627.png",
                         "showSocialPreview":  true,
                         "sourcesHtml":  [
@@ -233,7 +233,7 @@
                         "pdf":  "marco-policani-decision-rights-are-a-system-design-choice.pdf",
                         "pages":  15,
                         "publishedLabel":  "Aug 2026",
-                        "lastModified":  "2026-09-16",
+                        "lastModified":  "2026-09-18",
                         "socialImage":  "field-note-decision-rights-are-a-system-design-choice-1200x627.png",
                         "showSocialPreview":  true,
                         "sourcesHtml":  [
@@ -276,7 +276,7 @@
                                             "\u003ca href=\"https://www.nist.gov/news-events/news/2026/03/new-report-challenges-monitoring-deployed-ai-systems\"\u003eNIST — Challenges to the Monitoring of Deployed AI Systems\u003c/a\u003e — identifies lifecycle monitoring problems including performance degradation, fragmented logging, and scaling human review."
                                         ],
                         "sequence":  29.0,
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "publishedLabel":  "Aug 2026",
                         "requiresFullFieldNote":  true,
                         "expectedSourceCount":  7,
@@ -325,7 +325,7 @@
                         "socialImage":  "field-note-coordination-tax-1200x627.png",
                         "pages":  11,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://arxiv.org/abs/2602.18673\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eHarang Ju\u003c/a\u003e",
                                             "\u003ca href=\"https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eNational Institute of Standards and Technology\u003c/a\u003e",
@@ -353,7 +353,7 @@
                         "socialImage":  "field-note-production-ai-evaluation-1200x627.png",
                         "pages":  11,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eChloe Autio et al.\u003c/a\u003e",
                                             "\u003ca href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBlake Bullwinkel et al.\u003c/a\u003e",
@@ -379,7 +379,7 @@
                         "socialImage":  "field-note-local-ai-cloud-governance-1200x627.png",
                         "pages":  11,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eChloe Autio et al.\u003c/a\u003e",
                                             "\u003ca href=\"https://www.cisa.gov/sites/default/files/2023-02/cloud_security_technical_reference_architecture_2.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eCybersecurity and Infrastructure Security Agency\u003c/a\u003e",
@@ -431,7 +431,7 @@
                         "socialImage":  "field-note-confident-and-wrong-1200x627.png",
                         "pages":  11,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://openai.com/index/sycophancy-in-gpt-4o/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eOpenAI\u003c/a\u003e",
                                             "\u003ca href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBlake Bullwinkel\u003c/a\u003e",
@@ -458,7 +458,7 @@
                         "socialImage":  "field-note-portfolio-scenarios-not-plan-1200x627.png",
                         "pages":  11,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-16",
+                        "lastModified":  "2026-09-18",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eProject Management Institute\u003c/a\u003e",
                                             "\u003ca href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBent Flyvbjerg\u003c/a\u003e",
@@ -511,7 +511,7 @@
                         "socialImage":  "field-note-investment-health-dashboard-1200x627.png",
                         "pages":  12,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eProject Management Institute\u003c/a\u003e",
                                             "\u003ca href=\"https://www.cio.com/article/272051/it-governance-a-formal-way-to-align-it-and-business-strategy.html\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eMary K. Pratt\u003c/a\u003e",
@@ -564,7 +564,7 @@
                         "socialImage":  "field-note-stage-gates-with-teeth-1200x627.png",
                         "pages":  11,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-15",
+                        "lastModified":  "2026-09-18",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://www.stage-gate.com/solutions/services/gate-governance/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eStage-Gate International\u003c/a\u003e",
                                             "\u003ca href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBent Flyvbjerg\u003c/a\u003e",
@@ -593,7 +593,7 @@
                         "socialImage":  "field-note-project-readiness-before-kickoff-1200x627.png",
                         "pages":  11,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eProject Management Institute\u003c/a\u003e",
                                             "\u003ca href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBent Flyvbjerg\u003c/a\u003e",
@@ -617,11 +617,11 @@
                                        "The evidence, confidentiality, contribution, and proportionality limits that keep both uses honest"
                                    ],
                         "pdf":  "marco-policani-prove-it-economy-careers-ai-programs.pdf",
-                        "pages":  6,
+                        "pages":  7,
                         "socialImage":  "field-note-prove-it-economy-careers-ai-programs-1200x627.png",
                         "showSocialPreview":  true,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "requiresFullFieldNote":  true,
                         "expectedSourceCount":  5,
                         "sourcesHtml":  [
@@ -650,7 +650,7 @@
                         "socialImage":  "field-note-portfolio-governance-funding-discipline-1200x627.png",
                         "showSocialPreview":  true,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://www.pmi.org/-/media/pmi/documents/public/pdf/certifications/standard-for-portfolio-management-third-edition.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eProject Management Institute\u003c/a\u003e",
                                             "\u003ca href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eRobert G. Cooper \u0026amp; Scott J. Edgett\u003c/a\u003e",
@@ -771,7 +771,7 @@
                         "pdf":  "marco-policani-enterprise-ai-trust-operating-evidence.pdf",
                         "pages":  8,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "socialImage":  "field-note-enterprise-ai-trust-operating-evidence-1200x627.png",
                         "showSocialPreview":  true,
                         "requiresFullFieldNote":  true,
@@ -803,7 +803,7 @@
                         "socialImage":  "field-note-documentation-cross-functional-leverage-1200x627.png",
                         "showSocialPreview":  true,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "sourcesHtml":  [
                                             "Leopold M\u0026uuml;ller, Joshua Holstein, Sarah Bause, Gerhard Satzger, and Niklas K\u0026uuml;hl, \u0026quot;Data Quality Challenges in Retrieval-Augmented Generation,\u0026quot; arXiv:2510.00552, submitted October 1, 2025; accepted for ICIS 2025. \u003ca href=\"https://arxiv.org/abs/2510.00552\" target=\"_blank\" rel=\"noopener noreferrer\"\u003earxiv.org\u003c/a\u003e",
                                             "National Institute of Standards and Technology, \u0026quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,\u0026quot; NIST AI 600-1, July 2024. \u003ca href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\"\u003edoi.org\u003c/a\u003e",
@@ -829,7 +829,7 @@
                         "pdf":  "marco-policani-business-imagination-is-the-scarce-asset-now.pdf",
                         "pages":  8,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-15",
+                        "lastModified":  "2026-09-18",
                         "socialImage":  "field-note-business-imagination-1200x627.png",
                         "showSocialPreview":  true,
                         "requiresFullFieldNote":  true,
@@ -915,7 +915,7 @@
                         "socialImage":  "field-note-ai-usage-workflow-governance-1200x627.png",
                         "showSocialPreview":  true,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/tech-forward/state-of-ai-trust-in-2026-shifting-to-the-agentic-era\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eGabriel Morgan Asaftei et al.\u003c/a\u003e",
                                             "\u003ca href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eNIST\u003c/a\u003e",
@@ -940,7 +940,7 @@
                         "pdf":  "marco-policani-ai-as-a-thinking-partner.pdf",
                         "pages":  15,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-15",
+                        "lastModified":  "2026-09-18",
                         "socialImage":  "field-note-ai-thinking-partner-1200x627.png",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://www.pnas.org/doi/10.1073/pnas.2422633122\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBastani et al., “Generative AI without guardrails can harm learning,” PNAS\u003c/a\u003e. The study examined student learning; the workplace implication is an operating-design argument.",
@@ -994,7 +994,7 @@
                         "socialImage":  "field-note-ai-knowledge-bases-operating-infrastructure-1200x627.png",
                         "showSocialPreview":  true,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-17",
+                        "lastModified":  "2026-09-18",
                         "requiresFullFieldNote":  true,
                         "expectedSourceCount":  5,
                         "sourcesHtml":  [
