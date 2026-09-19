@@ -297,7 +297,7 @@ function New-FieldNoteHtml($Manifest, $Entry) {
 $contextBodyHtml
           </div>
           <div class="field-note-move">
-            <h2>The operating move</h2>
+            <h2>What to do next</h2>
             <p>$moveHtml</p>
             <div class="field-note-lens" aria-label="Decision lens">$lensHtml</div>
           </div>
