@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>An AI evaluation is a production operating control | Marco Policani</title>
-<meta name="description" content="Treat evaluation as a living production control for changing workflow behavior, not a one-time technical test.">
+<meta name="description" content="A launch test cannot protect a workflow whose model, inputs, and cases keep changing. Run AI evaluation as a continuing production control instead.">
 <meta name="author" content="Marco Policani">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="An AI evaluation is a production operating control | Marco Policani">
-<meta property="og:description" content="Treat evaluation as a living production control for changing workflow behavior, not a one-time technical test.">
+<meta property="og:description" content="A launch test cannot protect a workflow whose model, inputs, and cases keep changing. Run AI evaluation as a continuing production control instead.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://policani.net/governance/field-notes/production-ai-evaluation.html">
 <meta property="og:image" content="https://policani.net/assets/field-note-production-ai-evaluation-1200x627.png">
@@ -16,7 +16,7 @@
 <link rel="canonical" href="https://policani.net/governance/field-notes/production-ai-evaluation.html">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260720-fieldnote-hero">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"An AI evaluation is a production operating control","description":"Treat evaluation as a living production control for changing workflow behavior, not a one-time technical test.","dateModified":"2026-09-18","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"https://policani.net/governance/field-notes/production-ai-evaluation.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"An AI evaluation is a production operating control","description":"A launch test cannot protect a workflow whose model, inputs, and cases keep changing. Run AI evaluation as a continuing production control instead.","dateModified":"2026-09-20","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"https://policani.net/governance/field-notes/production-ai-evaluation.html"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -52,19 +52,19 @@
       <div class="field-note-layout">
         <article class="field-note-tldr">
           <p class="section-kicker">TL;DR</p>
-          <p class="field-note-thesis">Treat evaluation as a living production control for changing workflow behavior, not a one-time technical test.</p>
+          <p class="field-note-thesis">The workflow passed its test before launch. Then the vendor updated the model, another team changed the input format, and the work was extended to cases the test never covered. Each change was reasonable on its own, and quality slipped for weeks before a downstream complaint surfaced it.</p>
           <div class="field-note-context">
             <h2>What the paper develops</h2>
-            <p>A one-time evaluation cannot protect a workflow whose users, data, models, and consequences continue to change. This paper treats evaluation as a living production control: a maintained set of representative cases, thresholds, exception review, drift signals, incident learning, and an owner who can change permitted use. The emphasis is on evidence that remains relevant after launch.</p>
+            <p>A test that runs once cannot protect a workflow whose users, data, models, and consequences keep changing. This paper treats evaluation as a control you keep running: a maintained set of true-to-life cases, thresholds set by consequence, exception review, drift signals, lessons from incidents, and an owner who can change what the workflow may rely on. The launch test is usually not wrong. It is abandoned.</p>
           </div>
           <div class="field-note-move">
             <h2>What to do next</h2>
-            <p>Run evaluation as a recurring production control. Test the real workflow, monitor drift and exceptions, and change the evaluation set as users, data, models, and consequences change.</p>
+            <p>Keep testing after launch. Hold a set of real cases, watch for drift, turn every incident into a new test case, and name who can narrow what the workflow is allowed to rely on.</p>
             <div class="field-note-lens" aria-label="Decision lens"><span>WORKFLOW</span><span>CONTROL EVIDENCE</span><span>HUMAN OWNER</span></div>
           </div>
           <div class="field-note-inside">
             <h2>Inside the white paper</h2>
-            <ul><li>A production evaluation set grounded in representative workflow cases</li><li>Thresholds, drift, exceptions, incidents, and change triggers</li><li>Ownership and cadence for updating reliance as evidence changes</li></ul>
+            <ul><li>Why a test that passed at launch stops protecting the workflow months later</li><li>How to build a case set from real work, and set thresholds by what a mistake costs</li><li>Who gets to narrow what the workflow relies on when the evidence changes</li></ul>
           </div>
           <section class="field-note-sources-wrap" aria-labelledby="sources-heading">
             <h2 id="sources-heading">Sources and notes</h2>

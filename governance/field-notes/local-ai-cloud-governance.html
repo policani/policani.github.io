@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Local AI versus cloud AI is a governance decision | Marco Policani</title>
-<meta name="description" content="Choose local or cloud AI by data, control, operating capacity, and consequence—not fashion.">
+<meta name="description" content="Local or cloud AI is a governance decision, not a technology preference. Seven boundary questions about the workflow, answered before any model is named.">
 <meta name="author" content="Marco Policani">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Local AI versus cloud AI is a governance decision | Marco Policani">
-<meta property="og:description" content="Choose local or cloud AI by data, control, operating capacity, and consequence—not fashion.">
+<meta property="og:description" content="Local or cloud AI is a governance decision, not a technology preference. Seven boundary questions about the workflow, answered before any model is named.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://policani.net/governance/field-notes/local-ai-cloud-governance.html">
 <meta property="og:image" content="https://policani.net/assets/field-note-local-ai-cloud-governance-1200x627.png">
@@ -16,7 +16,7 @@
 <link rel="canonical" href="https://policani.net/governance/field-notes/local-ai-cloud-governance.html">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260720-fieldnote-hero">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Local AI versus cloud AI is a governance decision","description":"Choose local or cloud AI by data, control, operating capacity, and consequence—not fashion.","dateModified":"2026-09-18","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"https://policani.net/governance/field-notes/local-ai-cloud-governance.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Local AI versus cloud AI is a governance decision","description":"Local or cloud AI is a governance decision, not a technology preference. Seven boundary questions about the workflow, answered before any model is named.","dateModified":"2026-09-20","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"https://policani.net/governance/field-notes/local-ai-cloud-governance.html"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -52,19 +52,19 @@
       <div class="field-note-layout">
         <article class="field-note-tldr">
           <p class="section-kicker">TL;DR</p>
-          <p class="field-note-thesis">Choose local or cloud AI by data, control, operating capacity, and consequence—not fashion.</p>
+          <p class="field-note-thesis">Teams often argue local against cloud as if it were a technology preference. It is not. The answer falls out of seven questions about the work itself, and two workflows in the same company can land on different answers.</p>
           <div class="field-note-context">
             <h2>What the paper develops</h2>
-            <p>Local and cloud AI are often framed as a technology preference, but the meaningful differences are operational: data boundaries, required control, consequence of failure, support capacity, update model, and recovery. This paper gives leaders a governance frame for comparing those tradeoffs before architecture becomes a sunk decision, including cases where a hybrid or deliberately limited solution is the better answer.</p>
+            <p>Local or cloud is usually argued as a technology preference. This paper treats it as a governance decision instead: seven questions about the workflow itself, answered before any model is named. Where the data may go, who can reach the system, what it is allowed to do, how its behavior gets checked, what happens when it fails, who supports it, and how you leave. One camp has benchmarked the frontier cloud models and wants the best one. The other wants anything sensitive on hardware the company can touch. Both argue about models, and architecture becomes a sunk decision while they do. The paper also covers where a hybrid or a deliberately limited setup is the better answer.</p>
           </div>
           <div class="field-note-move">
             <h2>What to do next</h2>
-            <p>Choose local or cloud deployment from the data boundary, consequence of failure, required controls, support capacity, and recovery model. Architecture follows the operating decision.</p>
+            <p>Before anyone names a model, answer seven things for the workflow: where the data may go, who can reach the system, what it is allowed to do, how its behavior gets checked as things change, what happens when it fails, who runs it in year three, and how you leave.</p>
             <div class="field-note-lens" aria-label="Decision lens"><span>WORKFLOW</span><span>CONTROL EVIDENCE</span><span>HUMAN OWNER</span></div>
           </div>
           <div class="field-note-inside">
             <h2>Inside the white paper</h2>
-            <ul><li>Data, control, consequence, performance, and support tradeoffs</li><li>Operating economics, lifecycle capacity, and recovery obligations</li><li>A decision path for local, cloud, hybrid, or bounded non-adoption</li></ul>
+            <ul><li>The seven questions that decide local or cloud, none of which is about the model</li><li>What each choice costs to run, who supports it, and how you recover when it fails</li><li>Why two workflows in the same company can correctly land on different answers</li></ul>
           </div>
           <section class="field-note-sources-wrap" aria-labelledby="sources-heading">
             <h2 id="sources-heading">Sources and notes</h2>

@@ -216,6 +216,12 @@ function New-FieldNoteHtml($Manifest, $Entry) {
     # remains byte-stable with the established page template.
     $titleHtml = (Encode-Html $Entry.title).Replace("'", '&#39;')
     $summaryHtml = Encode-Html $Entry.summary
+    # Search-facing description is a separate surface from the on-page TL;DR:
+    # the TL;DR sets the tension and may run long, a meta description truncates
+    # in results past ~160 characters. Use metaDescription when authored, else
+    # fall back to the summary.
+    $metaDescription = if (($Entry.PSObject.Properties.Name -contains 'metaDescription') -and -not [string]::IsNullOrWhiteSpace([string]$Entry.metaDescription)) { [string]$Entry.metaDescription } else { [string]$Entry.summary }
+    $metaHtml = Encode-Html $metaDescription
     $previewHtml = Encode-Html $Entry.preview
     $contextBodyHtml = if ($Entry.PSObject.Properties.Name -contains 'bodyHtml' -and -not [string]::IsNullOrWhiteSpace([string]$Entry.bodyHtml)) {
         [string]$Entry.bodyHtml
@@ -234,7 +240,7 @@ function New-FieldNoteHtml($Manifest, $Entry) {
     } else {
         ''
     }
-    $schema = '{"@context":"https://schema.org","@type":"Article","headline":"' + (Encode-JsonString $Entry.title) + '","description":"' + (Encode-JsonString $Entry.summary) + '","dateModified":"' + $Entry.lastModified + '","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"' + $canonical + '"}'
+    $schema = '{"@context":"https://schema.org","@type":"Article","headline":"' + (Encode-JsonString $Entry.title) + '","description":"' + (Encode-JsonString $metaDescription) + '","dateModified":"' + $Entry.lastModified + '","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"' + $canonical + '"}'
 
     return @"
 <!doctype html>
@@ -243,11 +249,11 @@ function New-FieldNoteHtml($Manifest, $Entry) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>$titleHtml | Marco Policani</title>
-<meta name="description" content="$summaryHtml">
+<meta name="description" content="$metaHtml">
 <meta name="author" content="Marco Policani">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="$titleHtml | Marco Policani">
-<meta property="og:description" content="$summaryHtml">
+<meta property="og:description" content="$metaHtml">
 <meta property="og:type" content="article">
 <meta property="og:url" content="$canonical">
 <meta property="og:image" content="https://policani.net/assets/$socialImage">

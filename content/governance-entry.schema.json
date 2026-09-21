@@ -27,7 +27,11 @@
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
     },
     "category": {
-      "enum": ["portfolio-delivery", "ai-governance", "work-judgment"]
+      "enum": [
+        "portfolio-delivery",
+        "ai-governance",
+        "work-judgment"
+      ]
     },
     "title": {
       "type": "string",
@@ -37,6 +41,12 @@
       "type": "string",
       "minLength": 40,
       "description": "The opening TL;DR and landing-card summary."
+    },
+    "metaDescription": {
+      "type": "string",
+      "minLength": 60,
+      "maxLength": 165,
+      "description": "Search-facing description for meta/og/JSON-LD. Separate surface from the on-page TL;DR (summary), which may run longer. Optional; falls back to summary."
     },
     "operatingMove": {
       "type": "string",
