@@ -566,34 +566,37 @@
                                         ]
                     },
                     {
-                        "sequence":  17,
-                        "slug":  "stage-gates-with-teeth",
-                        "category":  "portfolio-delivery",
-                        "title":  "Stage gates work only when they can kill projects",
-                        "summary":  "Ask a gate forum when it last stopped something. In one portfolio the answer was never: four years of reviews, hundreds of approvals, no terminations and no redirections.",
-                        "metaDescription":  "A gate that cannot stop anything is a status meeting. Stage gates govern only when they carry real authority to redirect, pause, or kill a project.",
-                        "operatingMove":  "Give each gate real authority to redirect, pause, or stop the work, and say what evidence the next commitment requires. A review that cannot change anything is a meeting.",
-                        "preview":  "A gate that can only acknowledge progress is a reporting meeting, not a control. In one such forum, leaders could ask for clarification, express concern, and request another slide. What they could not do in any practical sense was decline. This paper reconnects the gate to a real choice: advance, redirect, narrow, pause, or stop. It shows how evidence requirements, clear authority, and explicit consequences keep gates proportionate while stopping weak commitments from becoming inevitable through momentum.",
-                        "inside":  [
-                                       "How a gate decays into a status meeting that cannot decline anything",
-                                       "The five properties that let a gate advance, redirect, narrow, pause, or stop work",
-                                       "How to restore authority to a gate process that already exists"
-                                   ],
-                        "pdf":  "marco-policani-stage-gates-with-teeth.pdf",
-                        "socialImage":  "field-note-stage-gates-with-teeth-1200x627.png",
-                        "pages":  11,
-                        "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-20",
-                        "sourcesHtml":  [
-                                            "\u003ca href=\"https://www.stage-gate.com/solutions/services/gate-governance/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eStage-Gate International\u003c/a\u003e",
-                                            "\u003ca href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBent Flyvbjerg\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eRobert G. Cooper \u0026amp; Scott J. Edgett\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBloch\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.bain.com/insights/the-five-steps-to-better-decisions/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBlenko\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/how-to-put-your-money-where-your-strategy-is\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eStephen Hall et al.\u003c/a\u003e",
-                                            "\u003ca href=\"http://www.iot.ntnu.no/innovation/norsi-pims-courses/huber/Sleesman,%20Conlon%20\u0026amp;%20McNamara%20(2012).pdf\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eDustin J. Sleesman et al.\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.nber.org/papers/w3307\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eRobert S. Pindyck\u003c/a\u003e"
-                                        ]
+                      "sequence": 17,
+                      "slug": "stage-gates-with-teeth",
+                      "category": "portfolio-delivery",
+                      "title": "Stage gates work only when they can kill projects",
+                      "summary": "A gate earns its place only when evidence can change the next commitment of money, people, or scope.",
+                      "metaDescription": "A gate that cannot stop anything is a status meeting. Stage gates govern only when they carry real authority to redirect, pause, or kill a project.",
+                      "operatingMove": "Test one mid-sized gate. Give the forum five real choices, tie evidence to the next commitment, and confirm that money and people move with the decision.",
+                      "preview": "A gate that can only note progress is not governing the work. This paper shows how to give a review forum real authority, ask for evidence that fits the next commitment, keep five outcomes open, check key claims independently, and reopen approval when conditions change.",
+                      "inside": [
+                        "Why sunk cost and personal ownership can keep weak work moving",
+                        "The five properties that let a gate change a real commitment",
+                        "How to test one gate before changing the whole process"
+                      ],
+                      "pdf": "marco-policani-stage-gates-with-teeth.pdf",
+                      "socialImage": "field-note-stage-gates-with-teeth-1200x627.png",
+                      "pages": 9,
+                      "publishedLabel": "Jul 2026",
+                      "lastModified": "2026-09-23",
+                      "sourcesHtml": [
+                        "<a href=\"https://www.stage-gate.com/solutions/services/gate-governance/\" target=\"_blank\" rel=\"noopener noreferrer\">Stage-Gate International, &quot;Gate Governance.&quot;</a> — Stage-Gate International describes gate governance as an established commercial method; it is a vendor source, not outcome evidence.",
+                        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg, &quot;Quality Control and Due Diligence in Project Management,&quot; 2013</a> — Flyvbjerg explains the planning fallacy and the use of an outside view in project due diligence.",
+                        "<a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">Robert G. Cooper and Scott J. Edgett, &quot;Portfolio Management: Fundamental for New Product Success,&quot; Stage-Gate International</a> — Cooper and Edgett describe portfolio management as a dynamic process that can accelerate, stop, or lower the priority of projects and move resources among them.",
+                        "<a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value\" target=\"_blank\" rel=\"noopener noreferrer\">Michael Bloch, Sven Blumberg, and Jurgen Laartz, &quot;Delivering large-scale IT projects on time, on budget, and on value,&quot; McKinsey &amp; Company, 2012</a> — The McKinsey-Oxford study reports that large IT projects delivered 56 percent less value than forecast on average; it does not test this paper&#x27;s gate design.",
+                        "<a href=\"https://www.bain.com/insights/the-five-steps-to-better-decisions/\" target=\"_blank\" rel=\"noopener noreferrer\">Marcia Blenko, Michael Mankins, and Paul Rogers, &quot;The Five Steps to Better Decisions,&quot; Bain &amp; Company, August 6, 2013</a> — Bain reports a strong link between decision effectiveness and financial performance across more than 1,000 companies; the evidence is correlational.",
+                        "<a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/how-to-put-your-money-where-your-strategy-is\" target=\"_blank\" rel=\"noopener noreferrer\">Stephen Hall, Dan Lovallo, and Reinier Musters, &quot;How to Put Your Money Where Your Strategy Is,&quot; McKinsey &amp; Company, March 1, 2012</a> — McKinsey reports an association between larger capital shifts across business units and higher returns; it does not show that project stops caused those returns.",
+                        "<a href=\"http://www.iot.ntnu.no/innovation/norsi-pims-courses/huber/Sleesman,%20Conlon%20&amp;%20McNamara%20(2012).pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Dustin J. Sleesman, Donald E. Conlon, Gerry McNamara, and Jonathan E. Miles, &quot;Cleaning Up the Big Muddy: A Meta-Analytic Review of the Determinants of Escalation of Commitment,&quot; Academy of Management Journal 55(3), 2012, 541-562</a> — This meta-analysis links personal responsibility and negative framing with escalation of commitment; it finds a positive average sunk-cost effect that varies widely.",
+                        "<a href=\"https://www.nber.org/papers/w3307\" target=\"_blank\" rel=\"noopener noreferrer\">Robert S. Pindyck, “Irreversibility, Uncertainty, and Investment,” Journal of Economic Literature 29(3), 1991, 1110–1148; NBER Working Paper 3307, 1990</a> — Pindyck&#x27;s investment theory explains that an irreversible choice gives up the option to wait for more information; it is not a study of project reviews."
+                      ],
+                      "bodyHtml": "<p>Ask a portfolio board when its last review changed a project&#x27;s money, people, or scope. If no one can name a case, the board may be tracking work rather than governing it. A real stage gate is a decision point. It decides whether the organization should continue, redirect, narrow, pause, or stop its next commitment to a project.</p><p>This matters because momentum gets harder to break. Leaders announce the work. Teams defend it. Contracts are signed. Early doubt becomes sunk cost, and stopping starts to feel like failure. Research on escalation of commitment shows that personal responsibility and negative framing can keep people tied to a failing course. The average sunk-cost effect is positive, though it varies across studies.</p><h3>Five properties give a gate teeth</h3><p>First, the forum needs written authority to act. Its charter should say what it may decide, what still belongs to a sponsor or executive committee, and how conflicts move upward. A condition is real only if funding, staffing, scope, or reliance changes when the forum sets it.</p><p>Second, the evidence should fit the next commitment. A short, reversible test needs less proof than a large spend or a dependency that other programs will build around. Start with the decision, then name the few facts that must be true. Put those facts on a one-page evidence map with the test, result, owner, and open question.</p><p>Third, all five outcomes must work in practice: continue, redirect, narrow, pause, and stop. Define what happens to people, money, and unfinished work after each choice. Otherwise, every choice except continue becomes a new negotiation, and the board will keep weak work moving because that path is easiest.</p><p>Fourth, advocates should not be the only owners of key evidence. A sponsor may argue for the project. Finance can still check the benefit math, operations can test whether the change can be absorbed, and architecture can review the integration claim. This is not a claim of bad faith. It is a way to keep hope from becoming the only forecast.</p><p>Fifth, approval conditions need a trigger and an end date. If a key supplier slips, adoption falls, or the cost rises past an agreed point, the decision returns to the forum. An old approval should not become permanent permission for work that has changed.</p><h3>Test one gate before changing the whole process</h3><p>Choose one mid-sized decision with real stakes. Replace the standing checklist with a one-page evidence map. Write down the five possible outcomes before the meeting. Record the choice, conditions, dissent, owner, and expiry date in the room. Then confirm that money and people moved as directed.</p><p>After two or three reviews, ask a blunt question: What changed because this gate met? If the answer is still nothing material, fix the authority before adding more templates. A gate earns its place when evidence can change the next commitment while the organization still has options.</p>",
+                      "expectedSourceCount": 8,
+                      "requiresFullFieldNote": true
                     },
                     {
                         "sequence":  16,
