@@ -1067,30 +1067,35 @@
                                         ]
                     },
                     {
-                        "sequence":  1,
-                        "slug":  "ai-adoption-starts-with-the-constraint",
-                        "category":  "ai-governance",
-                        "title":  "AI adoption starts with the constraint, not the tool",
-                        "summary":  "Start with the work that repeats and what is actually holding it up. Then choose the smallest thing that would fix it — which may not be AI.",
-                        "operatingMove":  "Before buying or piloting anything, name the work that repeats and what limits it. Compare AI against simpler fixes. Give it an owner. Then say what evidence would justify spending more.",
-                        "preview":  "Most AI portfolios can show activity long before they can show value. This paper explains why starting with the tool creates that gap, and starts with the constraint instead: find the work that repeats, name what limits its value, compare AI with simpler fixes, and decide what evidence would justify relying on it further. It connects experiments to a five-gate portfolio rhythm so pilots become investment decisions you can compare, rather than one-off demonstrations.",
-                        "inside":  [
-                                       "How to tell a real workflow constraint from an interesting piece of technology",
-                                       "Why the smallest fix that works is often not AI, and how to compare them honestly",
-                                       "A five-gate path from intake to proven value, with a scorecard and the evidence to keep"
-                                   ],
-                        "pdf":  "marco-policani-ai-adoption-starts-with-the-constraint.pdf",
-                        "pages":  14,
-                        "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-20",
-                        "socialImage":  "field-note-ai-constraint-first-1200x627.png",
-                        "sourcesHtml":  [
-                                            "Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, \u0026quot;The state of AI in 2025: Agents, innovation, and transformation,\u0026quot; McKinsey \u0026amp; Company, November 5, 2025. Verified July 7, 2026. \u003ca href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025\" target=\"_blank\" rel=\"noopener noreferrer\"\u003emckinsey.com\u003c/a\u003e",
-                                            "James Ryseff, \u0026quot;The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed: Avoiding the Anti-Patterns of AI,\u0026quot; RAND Corporation, 2024. Verified July 7, 2026. \u003ca href=\"https://www.rand.org/pubs/research_reports/RRA2680-1.html\" target=\"_blank\" rel=\"noopener noreferrer\"\u003erand.org\u003c/a\u003e",
-                                            "Arun Chandrasekaran, \u0026quot;Why 50% of GenAI Projects Fail - And How to Beat the Odds,\u0026quot; Gartner, January 26, 2026. Verified July 7, 2026. \u003ca href=\"https://www.gartner.com/en/articles/genai-project-failure\" target=\"_blank\" rel=\"noopener noreferrer\"\u003egartner.com\u003c/a\u003e",
-                                            "Alexis Krivkovich and Lucia Rahilly, \u0026quot;AI is everywhere. The agentic organization is not yet,\u0026quot; The McKinsey Podcast, April 2, 2026. Verified July 7, 2026. \u003ca href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/ai-is-everywhere-the-agentic-organization-isnt-yet\" target=\"_blank\" rel=\"noopener noreferrer\"\u003emckinsey.com\u003c/a\u003e",
-                                            "NIST, \u0026quot;AI Risk Management Framework Core,\u0026quot; excerpt from AI RMF 1.0, 2023. Verified July 7, 2026. \u003ca href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eairc.nist.gov\u003c/a\u003e"
-                                        ]
+                      "sequence": 1,
+                      "slug": "ai-adoption-starts-with-the-constraint",
+                      "category": "ai-governance",
+                      "title": "AI adoption starts with the constraint, not the tool",
+                      "summary": "Start with recurring work and what holds it back. Then choose the smallest change that can help, whether it uses AI or not.",
+                      "operatingMove": "Take one AI request. Name the recurring work, its current limit, the smallest useful change, the owner, and the evidence needed before spending more.",
+                      "preview": "AI portfolios can show activity long before they show value. This paper gives leaders a constraint-first path: name the recurring work, find what limits it, compare AI with simpler changes, and define what proof earns more reliance. Five gates turn pilots into investment choices that a portfolio can compare.",
+                      "inside": [
+                        "How to separate a workflow constraint from an attractive tool",
+                        "How to compare AI with simpler changes before funding",
+                        "Five gates from a clear problem to proven value"
+                      ],
+                      "pdf": "marco-policani-ai-adoption-starts-with-the-constraint.pdf",
+                      "pages": 9,
+                      "publishedLabel": "Jul 2026",
+                      "lastModified": "2026-09-24",
+                      "socialImage": "field-note-ai-constraint-first-1200x627.png",
+                      "sourcesHtml": [
+                        "<a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025\" target=\"_blank\" rel=\"noopener noreferrer\">Alex Singla, Alexander Sukharevsky, Bryce Hall, Lareina Yee, Michael Chui, and Tara Balakrishnan, &quot;The state of AI in 2025: Agents, innovation, and transformation,&quot; McKinsey &amp; Company, November 5, 2025. Verified July 7, 2026</a> — McKinsey reports broad AI use, lower enterprise-level EBIT impact, and an association between high performance and workflow redesign.",
+                        "<a href=\"https://www.rand.org/pubs/research_reports/RRA2680-1.html\" target=\"_blank\" rel=\"noopener noreferrer\">James Ryseff, Brandon F. De Bruhl, and Sydne J. Newberry, &quot;The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed: Avoiding the Anti-Patterns of AI,&quot; RAND Corporation, 2024. Verified July 7, 2026</a> — RAND identifies misunderstood problems, wrong measures, technology-first choices, and weak data among common AI project failure causes.",
+                        "<a href=\"https://www.gartner.com/en/articles/genai-project-failure\" target=\"_blank\" rel=\"noopener noreferrer\">Arun Chandrasekaran, &quot;Why 50% of GenAI Projects Fail - And How to Beat the Odds,&quot; Gartner, January 26, 2026. Verified July 7, 2026</a> — Gartner reports that many GenAI proofs of concept were abandoned because of data, risk, cost, and unclear-value problems.",
+                        "<a href=\"https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/ai-is-everywhere-the-agentic-organization-isnt-yet\" target=\"_blank\" rel=\"noopener noreferrer\">Alexis Krivkovich and Lucia Rahilly, &quot;AI is everywhere. The agentic organization is not yet,&quot; The McKinsey Podcast, April 2, 2026. Verified July 7, 2026</a> — A McKinsey podcast argues that agentic AI requires changes to daily workflows, working practices, governance, and risk controls.",
+                        "<a href=\"https://airc.nist.gov/airmf-resources/airmf/5-sec-core/\" target=\"_blank\" rel=\"noopener noreferrer\">NIST, &quot;AI Risk Management Framework Core,&quot; excerpt from AI RMF 1.0, 2023. Verified July 7, 2026</a> — The NIST AI RMF Core organizes continuing work around Govern, Map, Measure, and Manage.",
+                        "<a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai\" target=\"_blank\" rel=\"noopener noreferrer\">Johannes-Tobias Lorenz, Joshan Cherian Abraham, Robert Levin, and Douglas Ziman, &quot;From promise to impact: How companies can measure and realize the full value of AI,&quot; McKinsey &amp; Company, April 24, 2026. Verified July 7, 2026</a> — McKinsey separates technical performance, adoption, operating measures, strategic outcomes, and financial impact when measuring AI value.",
+                        "<a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/where-ai-will-create-value-and-where-it-wont\" target=\"_blank\" rel=\"noopener noreferrer\">Antoine Montard, Dago Diedrich, and Tanguy Catlin, &quot;Where AI will create value - and where it will not,&quot; McKinsey Quarterly, April 29, 2026. Verified July 7, 2026</a> — McKinsey argues that AI value differs by use and can require changes to offerings or business models; the paper treats this as advisory analysis, not causal proof."
+                      ],
+                      "bodyHtml": "<p>Most AI requests start one step too late. A team sees a tool, model, or agent and asks where it could fit. Pilots begin. Usage grows. Only then do leaders ask where value should appear.</p><p>Start with the recurring work instead. Name what limits that work today. Then compare the changes that could remove the limit. AI may be the best choice. It may also be data cleanup, clearer authority, training, a workflow change, simple automation, a vendor feature, or a decision to wait.</p><p>McKinsey reported broad AI use in 2025, while far fewer respondents reported an effect on earnings across the enterprise. RAND and Gartner describe a related risk: AI efforts can fail after teams choose the wrong problem, use weak data, miss controls, or cannot show clear value. These sources use different methods. Together, they show why a working demo is not enough.</p><p>A constraint is the current condition that limits value in recurring work. It might be a slow handoff, missing data, unclear approval, poor exception handling, or scarce review time. A useful request names the work, the baseline, the owner, and the evidence that would show improvement.</p><p>Compare workflow, data, people, fixed-rule automation, vendor features, AI, and waiting. Choose the least complex option that can move the constraint with enough reliability, safety, speed, and value. Fund a missing prerequisite before adding technology on top of it.</p><p>Move from constraint intake to intervention choice, proof design, a reliance decision, and normal value review. Each gate answers one question and leaves a short record. The pilot earns more funding only when real workflow evidence supports it.</p><p>Before the next steering meeting, replace one tool name with the recurring work it is meant to change. Write the constraint, baseline, owner, options, and one result that would justify another funding step. Start with the constraint. Then choose the tool.</p>",
+                      "expectedSourceCount": 7,
+                      "requiresFullFieldNote": true
                     }
                 ]
 }
