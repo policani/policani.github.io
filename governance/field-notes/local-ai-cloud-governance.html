@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Local AI versus cloud AI is a governance decision | Marco Policani</title>
+<title>Where should this AI run? | Marco Policani</title>
 <meta name="description" content="Local or cloud AI is a governance decision, not a technology preference. Answer seven questions about the workflow before you name a model.">
 <meta name="author" content="Marco Policani">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Local AI versus cloud AI is a governance decision | Marco Policani">
+<meta property="og:title" content="Where should this AI run? | Marco Policani">
 <meta property="og:description" content="Local or cloud AI is a governance decision, not a technology preference. Answer seven questions about the workflow before you name a model.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://policani.net/governance/field-notes/local-ai-cloud-governance.html">
@@ -16,7 +16,7 @@
 <link rel="canonical" href="https://policani.net/governance/field-notes/local-ai-cloud-governance.html">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="stylesheet" href="../../assets/portfolio-site.css?v=20260720-fieldnote-hero">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Local AI versus cloud AI is a governance decision","description":"Local or cloud AI is a governance decision, not a technology preference. Answer seven questions about the workflow before you name a model.","dateModified":"2026-09-21","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"https://policani.net/governance/field-notes/local-ai-cloud-governance.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Where should this AI run?","description":"Local or cloud AI is a governance decision, not a technology preference. Answer seven questions about the workflow before you name a model.","dateModified":"2026-09-25","author":{"@type":"Person","name":"Marco Policani","url":"https://policani.net/"},"mainEntityOfPage":"https://policani.net/governance/field-notes/local-ai-cloud-governance.html"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
   <div class="hero-inner">
     <div class="hero-copy">
       <p class="eyebrow"><a href="../index.html#ai-governance">AI operating governance</a> &middot; Field note</p>
-      <h1>Local AI versus cloud AI is a governance decision</h1>
+      <h1>Where should this AI run?</h1>
     </div>
   </div>
 </header>
@@ -52,28 +52,28 @@
       <div class="field-note-layout">
         <article class="field-note-tldr">
           <p class="section-kicker">TL;DR</p>
-          <p class="field-note-thesis">Teams often argue local against cloud as if it were a technology preference. It is not. The answer falls out of seven questions about the work itself, and two workflows in the same company can land on different answers.</p>
+          <p class="field-note-thesis">A claims tool and a writing aid can need different answers. Compare local, cloud, and hybrid options against each workflow's data, access, actions, support, and exit needs.</p>
           <div class="field-note-context">
             <h2>What the paper develops</h2>
-            <p>Local or cloud is usually argued as a technology preference. This paper treats it as a governance decision instead: seven questions about the workflow itself, answered before any model is named. Where the data may go, who can reach the system, what it is allowed to do, how its behavior gets checked, what happens when it fails, who supports it, and how you leave. One camp has benchmarked the frontier cloud models and wants the best one. The other wants anything sensitive on hardware the company can touch. Both argue about models, and architecture becomes a sunk decision while they do. The paper also covers where a hybrid or a deliberately limited setup is the better answer.</p>
+<p>A claims team wants AI to help with sensitive records. One group favors a local model. Another offers a cloud service with stronger support. The leader cannot choose from model quality alone: neither offer yet says who may read the records, what AI may do, or who restores service when it fails.</p><p>A low-risk writing aid may need a different answer. Local, cloud, and hybrid are ways to run AI. Each has to meet the needs of the work it supports.</p><p>Check data, access, actions, changes, failures, operations, and supplier exit for each workflow. Have the workflow owner recommend an option. A leader with approval authority makes the choice, accepts the remaining risk within that authority, and records when the choice must be reviewed again.</p>
           </div>
           <div class="field-note-move">
             <h2>What to do next</h2>
-            <p>Before anyone names a model, answer seven things for the workflow: where the data may go, who can reach the system, what it is allowed to do, how its behavior gets checked as things change, what happens when it fails, who runs it in year three, and how you leave.</p>
+            <p>Run seven checks on two real workflows. Have the workflow owner recommend an option and name who can approve it and accept the remaining risk.</p>
             <div class="field-note-lens" aria-label="Decision lens"><span>WORKFLOW</span><span>CONTROL EVIDENCE</span><span>HUMAN OWNER</span></div>
           </div>
           <div class="field-note-inside">
             <h2>Inside the white paper</h2>
-            <ul><li>The seven questions that decide local or cloud, none of which is about the model</li><li>What each choice costs to run, who supports it, and how you recover when it fails</li><li>Why two workflows in the same company can correctly land on different answers</li></ul>
+            <ul><li>Why a model comparison misses the business decision</li><li>How two workflows lead to different hosting choices</li><li>Who recommends, approves, and accepts the remaining risk</li></ul>
           </div>
           <section class="field-note-sources-wrap" aria-labelledby="sources-heading">
             <h2 id="sources-heading">Sources and notes</h2>
             <ol class="field-note-sources">
-<li><a href="https://doi.org/10.6028/NIST.AI.600-1" target="_blank" rel="noopener noreferrer">Chloe Autio et al.</a></li>
-<li><a href="https://www.cisa.gov/sites/default/files/2023-02/cloud_security_technical_reference_architecture_2.pdf" target="_blank" rel="noopener noreferrer">Cybersecurity and Infrastructure Security Agency</a></li>
-<li><a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf" target="_blank" rel="noopener noreferrer">Mell</a></li>
-<li><a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-144.pdf" target="_blank" rel="noopener noreferrer">Jansen</a></li>
-<li><a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-146.pdf" target="_blank" rel="noopener noreferrer">Badger</a></li>
+<li><a href="https://doi.org/10.6028/NIST.AI.600-1" target="_blank" rel="noopener noreferrer">Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 26, 2024</a> — NIST&#x27;s Generative AI Profile addresses risk management across the AI lifecycle and third-party components.</li>
+<li><a href="https://www.cisa.gov/sites/default/files/2023-02/cloud_security_technical_reference_architecture_2.pdf" target="_blank" rel="noopener noreferrer">Cybersecurity and Infrastructure Security Agency, United States Digital Service, and Federal Risk and Authorization Management Program, &quot;Cloud Security Technical Reference Architecture,&quot; Version 2.0, June 2022</a> — CISA&#x27;s cloud architecture describes shared responsibilities that vary by the service used.</li>
+<li><a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf" target="_blank" rel="noopener noreferrer">Peter Mell and Timothy Grance, &quot;The NIST Definition of Cloud Computing,&quot; NIST Special Publication 800-145, September 2011</a> — NIST defines cloud computing through service and deployment models.</li>
+<li><a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-144.pdf" target="_blank" rel="noopener noreferrer">Wayne Jansen and Timothy Grance, &quot;Guidelines on Security and Privacy in Public Cloud Computing,&quot; NIST Special Publication 800-144, December 2011</a> — NIST&#x27;s public-cloud guidance explains security and privacy considerations.</li>
+<li><a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-146.pdf" target="_blank" rel="noopener noreferrer">Lee Badger, Tim Grance, Robert Patt-Corner, and Jeff Voas, &quot;Cloud Computing Synopsis and Recommendations,&quot; NIST Special Publication 800-146, May 2012</a> — NIST&#x27;s cloud synopsis discusses cloud computing choices and recommendations.</li>
             </ol>
           </section>
         </article>
@@ -81,7 +81,7 @@
           <p class="section-kicker">Go deeper</p>
           <h2>Read the full argument.</h2>
           <p>The white paper expands the briefing into a practical governance model, with context, evidence, and the complete reasoning.</p>
-          <a class="button" href="../whitepapers/marco-policani-local-ai-cloud-governance.pdf">Download the white paper (11 pages)</a>
+          <a class="button" href="../whitepapers/marco-policani-local-ai-cloud-governance.pdf">Download the white paper (6 pages)</a>
           <a class="text-link" href="../index.html#ai-governance">Back to AI operating governance</a>
         </aside>
       </div>
