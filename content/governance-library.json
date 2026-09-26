@@ -347,31 +347,34 @@
                                         ]
                     },
                     {
-                        "sequence":  26,
-                        "slug":  "production-ai-evaluation",
-                        "category":  "ai-governance",
-                        "title":  "An AI evaluation is a production operating control",
-                        "summary":  "The workflow passed its test before launch. Then the vendor updated the model, another team changed the input format, and the work was extended to cases the test never covered. Each change was reasonable on its own, and quality slipped for weeks before a downstream complaint surfaced it.",
-                        "metaDescription":  "A launch test cannot protect a workflow whose model, inputs, and cases keep changing. Run AI evaluation as a continuing production control instead.",
-                        "operatingMove":  "Keep testing after launch. Hold a set of real cases, watch for drift, turn every incident into a new test case, and name who can narrow what the workflow is allowed to rely on.",
-                        "preview":  "A test that runs once cannot protect a workflow whose users, data, models, and consequences keep changing. This paper treats evaluation as a control you keep running: a maintained set of true-to-life cases, thresholds set by consequence, exception review, drift signals, lessons from incidents, and an owner who can change what the workflow may rely on. The launch test is usually not wrong. It is abandoned.",
-                        "inside":  [
-                                       "Why a test that passed at launch stops protecting the workflow months later",
-                                       "How to build a case set from real work, and set thresholds by what a mistake costs",
-                                       "Who gets to narrow what the workflow relies on when the evidence changes"
-                                   ],
-                        "pdf":  "marco-policani-production-ai-evaluation.pdf",
-                        "socialImage":  "field-note-production-ai-evaluation-1200x627.png",
-                        "pages":  11,
-                        "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-20",
-                        "sourcesHtml":  [
-                                            "\u003ca href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eChloe Autio et al.\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBlake Bullwinkel et al.\u003c/a\u003e",
-                                            "\u003ca href=\"https://proceedings.neurips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eSculley\u003c/a\u003e",
-                                            "\u003ca href=\"https://arxiv.org/abs/2202.03629\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eJi\u003c/a\u003e",
-                                            "\u003ca href=\"https://depositonce.tu-berlin.de/bitstreams/cafd2873-814b-4c59-bab1-addd42e249d2/download\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eParasuraman \u0026amp; Manzey\u003c/a\u003e"
-                                        ]
+                      "sequence": 26,
+                      "slug": "production-ai-evaluation",
+                      "category": "ai-governance",
+                      "title": "An AI evaluation is a production operating control",
+                      "summary": "A workflow can pass its launch evaluation even as the model and cases soon change around it. The vendor updates the model, another team changes inputs, and the business adds new case types. The old result cannot show whether the team can still rely on it, so the workflow owner needs a current test and authority to limit use.",
+                      "metaDescription": "A launch test cannot protect a workflow whose model, inputs, and cases keep changing. Run AI evaluation as a continuing production control instead.",
+                      "operatingMove": "Compare the date of the last production evaluation with the last material change to the model, data, or workflow. If the change came later, retest affected cases or limit use until the evidence catches up.",
+                      "preview": "A launch test describes one version of the system and one set of cases. A production evaluation keeps checking real work as it changes, turning failures into new cases and sending warnings to a named owner who can limit, pause, or restore use.",
+                      "inside": [
+                        "Why a passing launch test can grow old as models, data, and cases change",
+                        "How to test real cases and set passing limits before seeing results",
+                        "Who can limit, pause, or restore use when the evidence changes"
+                      ],
+                      "pdf": "marco-policani-production-ai-evaluation.pdf",
+                      "socialImage": "field-note-production-ai-evaluation-1200x627.png",
+                      "pages": 10,
+                      "publishedLabel": "Jul 2026",
+                      "lastModified": "2026-09-25",
+                      "sourcesHtml": [
+                        "<a href=\"https://doi.org/10.6028/NIST.AI.600-1\" target=\"_blank\" rel=\"noopener noreferrer\">Chloe Autio, Reva Schwartz, Jesse Dunietz, Shomik Jain, Martin Stanley, Elham Tabassi, Patrick Hall, and Kamie Roberts, &quot;Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile,&quot; NIST AI 600-1, July 26, 2024</a> — NIST describes ongoing measurement across the generative AI life cycle.",
+                        "<a href=\"https://www.microsoft.com/en-us/research/publication/lessons-from-red-teaming-100-generative-ai-products/\" target=\"_blank\" rel=\"noopener noreferrer\">Blake Bullwinkel, Amanda Minnich, Shiven Chawla, Gary Lopez, Martin Pouliot, Whitney Maxwell, Joris de Gruyter, Katherine Pratt, Saphir Qi, Nina Chikanov, Roman Lutz, Raja Sekhar Rao Dheekonda, Bolor-Erdene Jagdagdorj, Eugenia Kim, Justin Song, Keegan Hines, Daniel Jones, Giorgio Severi, Richard Lundeen, Sam Vaughan, Victoria Westerhoff, Pete Bryan, Ram Shankar Siva Kumar, Yonatan Zunger, Chang Kawaguchi, and Mark Russinovich, &quot;Lessons From Red Teaming 100 Generative AI Products,&quot; Microsoft Research, January 2025</a> — Microsoft Research distinguishes red teaming from safety benchmarking.",
+                        "<a href=\"https://proceedings.neurips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">D. Sculley, Gary Holt, Daniel Golovin, et al., &quot;Hidden Technical Debt in Machine Learning Systems,&quot; Advances in Neural Information Processing Systems 28 (NeurIPS 2015)</a> — Sculley and colleagues describe hidden upkeep costs in machine learning systems.",
+                        "<a href=\"https://arxiv.org/abs/2202.03629\" target=\"_blank\" rel=\"noopener noreferrer\">Ziwei Ji, Nayeon Lee, Rita Frieske, et al., &quot;Survey of Hallucination in Natural Language Generation,&quot; ACM Computing Surveys, 2023</a> — Ji and colleagues review errors in fluent generated text.",
+                        "<a href=\"https://depositonce.tu-berlin.de/bitstreams/cafd2873-814b-4c59-bab1-addd42e249d2/download\" target=\"_blank\" rel=\"noopener noreferrer\">Raja Parasuraman and Dietrich H. Manzey, &quot;Complacency and Bias in Human Use of Automation: An Attentional Integration,&quot; Human Factors 52, no. 3 (2010): 381-410</a> — Parasuraman and Manzey examine missed automation failures and human bias."
+                      ],
+                      "bodyHtml": "<p>Consider a workflow that passes a careful launch test, then falls behind the work it was built to handle. Later, the vendor updates its model, another team changes the input format, and the business adds a case type the test never covered. Each change seems reasonable alone. If no one checks the combined effect, poor results may go unnoticed until a complaint reaches the team.</p><p>The launch test was sound, but its result grew old as the system and the work changed. A production evaluation must keep checking today&#x27;s cases and give the workflow owner power to limit use when the evidence no longer fits.</p><p>A benchmark compares models on common tasks, while a red team searches for ways to make one fail. A production evaluation asks whether this team can rely on this system for its current cases. Each result covers only what its test checked, so the team should not use one test to answer another question.</p><p>Seven jobs keep that answer current. Choose cases, set limits, keep the tests distinct, watch live work, retest after change, learn from failures, and give someone authority to act.</p><h3>Build true-to-life cases</h3><p>Choose cases from real work, including messy inputs and rare errors that would cost the team dearly. Record where those cases came from, then limit use to the kinds of work they represent.</p><h3>Set thresholds by consequence</h3><p>A high average can hide failure in a critical case type, so set a limit for each type before testing. Make the limit stricter where an error costs more or where a person must review the answer.</p><h3>Monitor production signals</h3><p>Watch for new inputs, more human corrections, rising exceptions, and reviewers who disagree about the same cases. Give each warning a clear trigger and an owner who must respond when it fires.</p><h3>Turn change into a test event</h3><p>A model update, prompt edit, or new data source may change answers the team once trusted. Retest the cases that change could affect before people rely on the new version.</p><h3>Learn from incidents and near misses</h3><p>After a failure or near miss, look for its cause across the model, data, instructions, and review process. Add a case that would catch it next time, then check whether the fix holds.</p><h3>Assign authority to change reliance</h3><p>Name the workflow owner who can limit, pause, or restore use as the evidence changes. A warning becomes a control only when it reaches someone with the power to decide.</p><h3>Run it as one system</h3><p>Cases give the limits meaning; live warnings and system changes tell the team when to retest. Incidents improve the cases, and the owner uses those results to decide how much the workflow may rely on the system.</p><p>A passing result supports only the kinds of cases and conditions the evaluation actually covered. It cannot promise that the system will be safe in every future setting, and it should never approve new case types by analogy. When a model version, source, or workflow changes, the owner must decide whether the existing cases still represent the work and whether allowed use must narrow while the team retests.</p><p>The cost of this care should match the stakes. A low-impact workflow may need a modest sample and periodic review, while a workflow people depend on every day needs more frequent checks and a practiced way to stop.</p><p>Compare the date of the last production test with the last material change to the model, data, or workflow. If the change is newer, ask what that old test still covers, then retest or limit use until the evidence catches up.</p><p>Build the next test from real work, set limits before seeing results, and give each live warning an owner. Fund the time to keep those checks current. The white paper shows how the seven jobs connect and how to match the effort to the risk.</p>",
+                      "expectedSourceCount": 5,
+                      "requiresFullFieldNote": true
                     },
                     {
                       "sequence": 24,
@@ -602,31 +605,34 @@
                       "requiresFullFieldNote": true
                     },
                     {
-                        "sequence":  16,
-                        "slug":  "project-readiness-before-kickoff",
-                        "category":  "portfolio-delivery",
-                        "title":  "A project is not ready because a plan exists",
-                        "summary":  "A finished plan is not readiness. Before more money and people go in, four things have to be true: someone can make the first hard decisions, the outcome and its limits are written down, the people you need have agreed dates, and the capacity is named.",
-                        "metaDescription":  "A finished plan is not readiness. Confirm four things first: who decides, what the outcome is, who takes part, and who is free to do the work.",
-                        "operatingMove":  "Before kickoff, confirm in writing who can make the first hard decisions. Name one business outcome you can test, and say what this stage will not attempt. Turn the stakeholder list into dated commitments from their managers. Then name the people and the hours. A filled-in plan is not proof that the project is ready.",
-                        "preview":  "A plan can be complete while the project is still missing its sponsor, its capacity, its decision rights, its evidence, or any credible path through the first dependency. This paper treats readiness as something earned before the next commitment, not a checklist attached to a date. It gives sponsors and delivery leaders a proportionate way to narrow, stage, delay, or approve the work based on what is actually known.",
-                        "inside":  [
-                                       "How a fully populated plan passes for readiness when it is not",
-                                       "The four commitments to confirm before more money and people go in",
-                                       "Why one weak commitment defeats the other three, and what to do instead of approving"
-                                   ],
-                        "pdf":  "marco-policani-project-readiness-before-kickoff.pdf",
-                        "socialImage":  "field-note-project-readiness-before-kickoff-1200x627.png",
-                        "pages":  11,
-                        "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-09-21",
-                        "sourcesHtml":  [
-                                            "\u003ca href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eProject Management Institute\u003c/a\u003e",
-                                            "\u003ca href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBent Flyvbjerg\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBloch\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eRobert G. Cooper \u0026amp; Scott J. Edgett\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.bain.com/insights/measuring-decision-effectiveness/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBlenko\u003c/a\u003e"
-                                        ]
+                      "sequence": 16,
+                      "slug": "project-readiness-before-kickoff",
+                      "category": "portfolio-delivery",
+                      "title": "A project is not ready because a plan exists",
+                      "summary": "A complete plan can still hide missing promises. Before kickoff, check who can decide, what result will count, which people will take part, and whether named staff have time.",
+                      "metaDescription": "A finished plan is not readiness. Confirm four things first: who decides, what the outcome is, who takes part, and who is free to do the work.",
+                      "operatingMove": "Before setting a start date, list the first hard decisions and who can make them. Agree on one result and its limits, confirm the people and dates, then check each person's other work.",
+                      "preview": "A sound schedule and signed charter can hide a sponsor who cannot decide or an expert promised to several projects; four short questions help leaders find those gaps before a team starts work it cannot support.",
+                      "inside": [
+                        "How a complete plan can hide missing promises",
+                        "Four questions to ask before kickoff",
+                        "What to do when one answer is weak"
+                      ],
+                      "pdf": "marco-policani-project-readiness-before-kickoff.pdf",
+                      "socialImage": "field-note-project-readiness-before-kickoff-1200x627.png",
+                      "pages": 10,
+                      "publishedLabel": "Jul 2026",
+                      "lastModified": "2026-09-25",
+                      "sourcesHtml": [
+                        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute, &quot;Pulse of the Profession 2026: Driving Success in Complex Projects,&quot; May 2026</a> — PMI&#x27;s 2026 survey describes how complexity affects projects. It does not test this readiness method.",
+                        "<a href=\"https://arxiv.org/abs/1302.2544\" target=\"_blank\" rel=\"noopener noreferrer\">Bent Flyvbjerg, &quot;Quality Control and Due Diligence in Project Management: Getting Decisions Right by Taking the Outside View,&quot; 2013</a> — Flyvbjerg argues for checking early project estimates against an outside view before a decision.",
+                        "<a href=\"https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value\" target=\"_blank\" rel=\"noopener noreferrer\">Michael Bloch, Sven Blumberg, and Jurgen Laartz, &quot;Delivering large-scale IT projects on time, on budget, and on value,&quot; McKinsey &amp; Company, 2012</a> — The McKinsey-Oxford study reports average cost and value gaps in large IT projects. It does not assign those gaps to this paper&#x27;s four checks.",
+                        "<a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">Robert G. Cooper and Scott J. Edgett, &quot;Portfolio Management: Fundamental for New Product Success,&quot; Stage-Gate International</a> — Cooper and Edgett describe new-product portfolio management as a series of choices to select, rank, speed up, or stop work.",
+                        "<a href=\"https://www.bain.com/insights/measuring-decision-effectiveness/\" target=\"_blank\" rel=\"noopener noreferrer\">Marcia W. Blenko and Michael C. Mankins, &quot;Measuring Decision Effectiveness,&quot; Bain &amp; Company, June 5, 2012</a> — Bain reports a link between decision effectiveness and financial results; that link does not validate this readiness method."
+                      ],
+                      "bodyHtml": "<p>I have watched projects arrive at kickoff with a sound schedule, a signed charter, and supportive leaders in the room, yet still be unready to start.</p><p>The missing pieces were promises from people outside the delivery team: who would settle the first hard decision, and which result would guide that choice? Which business experts would join design and testing, and did the named architect have hours left after the meeting ended?</p><p>A kickoff date creates its own momentum, because once invitations go out, asking whether the project should start can sound like obstruction. Leaders should test readiness before the date goes on the calendar, while the sponsor still has to explain why the project can start.</p><p>The sponsor should answer four questions with proof a reviewer can check before leaders grant the project a start date. The questions look past the plan to the people and choices on which that plan depends.</p><h3>Can the sponsor decide?</h3><p>The sponsor must be able to settle the choices the project will face, or confirm that another leader will take the question. Before kickoff, list the first three or four hard decisions and write down who can make each one. A sponsor who avoids naming those choices may lack the authority the project needs.</p><h3>What result will count?</h3><p>Name one result the business can test and state what this stage of work leaves out. &quot;Implement the platform&quot; names a product, but it does not say what should improve after people use it. The person who will live with the result should agree to the result and its limits in writing.</p><h3>Will the right people take part?</h3><p>Support in a meeting does not reserve anyone&#x27;s time, so name the experts needed for workshops, tests, data checks, and the handover. Set dates their managers can confirm. Forty names on a list may be useful for communication; six people with confirmed hours tell leaders whether the work can start.</p><h3>Do named staff have time?</h3><p>Check the architect, product owner, data expert, and other scarce roles against work already under way. I have seen the same expert named in several approved plans that each looked sound alone, even though those plans asked for more hours than one person had. No one had added the assignments across projects.</p><p>Three firm promises cannot make up for one hopeful answer, because a sponsor with authority but no clear result may make a fast choice about the wrong thing. A clear result will not help if business experts never join the work, so reviewers should press hardest on the weakest answer.</p><p>Run the review before kickoff with the sponsor, the person who owns the result, and the person who can settle staff conflicts. Leaders can start, reduce the work, fund a short discovery stage, or wait, but they should record why they chose that path. Review the four promises again if a key person, result, or promised date changes.</p><p>A readiness review may take time, but an unsupported start can create more delay. Measure speed from approval to the first useful result, and track which missing promises caused projects to need a new start. Those records tell leaders whether the review saved time and which question needs to change.</p>",
+                      "expectedSourceCount": 5,
+                      "requiresFullFieldNote": true
                     },
                     {
                         "sequence":  15,
