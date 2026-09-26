@@ -2,8 +2,8 @@
 
 The repository owns the publication process for the whole site. Governance is
 the first generated collection: one manifest drives its landing-page cards,
-field-note pages, category counts, PDF links, page counts, metadata, and sitemap
-and `llms.txt` entries.
+field-note pages, category counts, PDF links, page counts, metadata, site-search
+results, sitemap entries, and `llms.txt` entries.
 
 ## Source of truth
 
@@ -22,8 +22,8 @@ field note's Article `dateModified` and both sitemap entries from that value.
 Run `./site-content.ps1 -Action SyncPdfDates` before a local review when the
 PDF date itself is part of the change under review.
 
-Do not hand-edit generated governance cards or field-note HTML. A later build
-will replace those edits.
+Do not hand-edit generated governance cards, field-note HTML, or the governance
+block in `assets/site-search.js`. A later build will replace those edits.
 
 ## Add a white paper
 
@@ -68,6 +68,7 @@ The root pipeline rejects:
 - previews without exactly three contents expectations;
 - fewer than two visible sources;
 - field-note pages that are not represented in the manifest;
+- published HTML pages missing from the site-search index;
 - missing optional social images.
 
 The normal publishing workflow continues to check changed HTML for broken local

@@ -30,6 +30,7 @@ $whitepapersPath = Join-Path $governancePath 'whitepapers'
 $libraryIndexPath = Join-Path $governancePath 'index.html'
 $sitemapPath = Join-Path $siteRoot 'sitemap.xml'
 $llmsPath = Join-Path $siteRoot 'llms.txt'
+$siteSearchPath = Join-Path $siteRoot 'assets\site-search.js'
 
 function Write-Utf8([string]$Path, [string]$Content) {
     [IO.File]::WriteAllText($Path, $Content, [Text.UTF8Encoding]::new($false))
@@ -344,11 +345,12 @@ $downloadPreviewHtml          <p class="section-kicker">Go deeper</p>
 
 function New-LibraryCardHtml($Entry, $Category, [bool]$Featured) {
     $class = if ($Featured) { 'library-entry entry-feature' } else { 'library-entry' }
+    $sequence = if ($Entry.sequence -is [double]) { ([double]$Entry.sequence).ToString('0.0', [Globalization.CultureInfo]::InvariantCulture) } else { [string]$Entry.sequence }
     $title = Encode-Html $Entry.title
     $summary = Encode-Html $Entry.summary
     $category = Encode-Html $Category.label
     $summaryParagraph = if ($Featured) { "<p>$summary</p>" } else { '' }
-    return '<article class="' + $class + '" data-sequence="' + $Entry.sequence + '" data-category="' + $category + '" data-summary="' + $summary + '"><span class="entry-kicker">Field note &middot; ' + (Encode-Html $Entry.publishedLabel) + '</span><h3><a href="field-notes/' + $Entry.slug + '.html">' + $title + '</a></h3>' + $summaryParagraph + '<div class="entry-links"><a href="field-notes/' + $Entry.slug + '.html">Read note</a><a href="whitepapers/' + $Entry.pdf + '">White paper</a></div></article>'
+    return '<article class="' + $class + '" data-sequence="' + $sequence + '" data-category="' + $category + '" data-summary="' + $summary + '"><span class="entry-kicker">Field note &middot; ' + (Encode-Html $Entry.publishedLabel) + '</span><h3><a href="field-notes/' + $Entry.slug + '.html">' + $title + '</a></h3>' + $summaryParagraph + '<div class="entry-links"><a href="field-notes/' + $Entry.slug + '.html">Read note</a><a href="whitepapers/' + $Entry.pdf + '">White paper</a></div></article>'
 }
 
 function Update-LibraryIndex($Manifest) {
@@ -433,11 +435,33 @@ function Update-LlmsIndex($Manifest) {
     Write-Utf8 $llmsPath $text
 }
 
+function Update-SiteSearchIndex($Manifest) {
+    $text = [IO.File]::ReadAllText($siteSearchPath)
+    $start = '    // BEGIN GENERATED GOVERNANCE SEARCH ENTRIES'
+    $end = '    // END GENERATED GOVERNANCE SEARCH ENTRIES'
+    if (-not $text.Contains($start) -or -not $text.Contains($end)) {
+        throw 'assets/site-search.js is missing the generated governance-search markers.'
+    }
+
+    $lines = @($Manifest.entries | Sort-Object { [int]$_.sequence } -Descending | ForEach-Object {
+        $category = Get-Category $Manifest $_.category
+        $title = Encode-JsonString ([string]$_.title)
+        $summary = Encode-JsonString ([string]$_.summary)
+        $keywords = Encode-JsonString (([string]$_.slug).Replace('-', ' ') + ' ' + ([string]$category.label) + ' ' + ([string]$_.operatingMove))
+        '    { title: "' + $title + '", url: "/governance/field-notes/' + $_.slug + '.html", type: "Field note", summary: "' + $summary + '", keywords: "' + $keywords + '" }'
+    })
+    $replacement = $start + "`n" + ($lines -join ",`n") + "`n" + $end
+    $pattern = '(?s)' + [regex]::Escape($start) + '.*?' + [regex]::Escape($end)
+    $text = [regex]::Replace($text, $pattern, [Text.RegularExpressions.MatchEvaluator]{ param($match) $replacement })
+    Write-Utf8 $siteSearchPath $text
+}
+
 function Assert-GeneratedSurfaces($Manifest) {
     $entries = @($Manifest.entries)
     $landing = [IO.File]::ReadAllText($libraryIndexPath)
     $sitemap = [IO.File]::ReadAllText($sitemapPath)
     $llms = [IO.File]::ReadAllText($llmsPath)
+    $siteSearch = [IO.File]::ReadAllText($siteSearchPath)
     $generatedPages = @(Get-ChildItem -LiteralPath $fieldNotesPath -Filter '*.html')
     if ($generatedPages.Count -ne $entries.Count) { throw "Generated field-note count is $($generatedPages.Count); manifest count is $($entries.Count)." }
     if ($landing -notmatch "Search all $($entries.Count) field notes") { throw 'Governance landing total is out of sync.' }
@@ -462,6 +486,28 @@ function Assert-GeneratedSurfaces($Manifest) {
         if (-not $landing.Contains("field-notes/$($entry.slug).html")) { throw "$($entry.slug): landing card is missing." }
         if (-not $sitemap.Contains("field-notes/$($entry.slug).html") -or -not $sitemap.Contains("whitepapers/$($entry.pdf)")) { throw "$($entry.slug): sitemap entries are missing." }
         if (-not $llms.Contains("field-notes/$($entry.slug).html")) { throw "$($entry.slug): llms.txt entry is missing." }
+        if (-not $siteSearch.Contains('url: "/governance/field-notes/' + $entry.slug + '.html"')) { throw "$($entry.slug): site-search entry is missing." }
+    }
+
+    $searchUrls = @([regex]::Matches($siteSearch, 'url:\s*"([^"]+)"') | ForEach-Object {
+        $path = $_.Groups[1].Value
+        if ($path -eq '/') { '/' } else { $path.TrimEnd('/') }
+    })
+    $duplicateSearchUrls = @($searchUrls | Group-Object | Where-Object { $_.Count -gt 1 } | ForEach-Object { $_.Name })
+    if ($duplicateSearchUrls.Count -gt 0) {
+        throw "Site search has duplicate URL entries: $($duplicateSearchUrls -join ', ')."
+    }
+
+    [xml]$sitemapXml = $sitemap
+    $publicHtmlPaths = @($sitemapXml.urlset.url.loc | ForEach-Object {
+        $path = ([uri]([string]$_)).AbsolutePath
+        if ($path -eq '/' -or $path.EndsWith('.html') -or $path -in @('/governance/', '/resources/')) {
+            if ($path -eq '/') { '/' } else { $path.TrimEnd('/') }
+        }
+    } | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Sort-Object -Unique)
+    $missingSearchUrls = @($publicHtmlPaths | Where-Object { $searchUrls -notcontains $_ })
+    if ($missingSearchUrls.Count -gt 0) {
+        throw "Public sitemap pages missing from site search: $($missingSearchUrls -join ', ')."
     }
 }
 
@@ -476,6 +522,7 @@ function Build-SiteContent {
     Update-LibraryIndex $manifest
     Update-GovernanceSitemap $manifest
     Update-LlmsIndex $manifest
+    Update-SiteSearchIndex $manifest
     Write-Host "==> Governance library built from manifest: $(@($manifest.entries).Count) entries."
 }
 

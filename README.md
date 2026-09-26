@@ -94,7 +94,8 @@ ownership.
 Repository-level content automation lives in `site-content.ps1`. Governance
 white papers are maintained through `content/governance-library.json`; the
 pipeline generates the library cards, field-note pages, counts, metadata, PDF
-links, sitemap entries, and `llms.txt` discovery entries from that manifest.
+links, site-search entries, sitemap entries, and `llms.txt` discovery entries
+from that manifest.
 The normal `publish.ps1` flow runs this build before validation so generated
 surfaces cannot silently drift.
 
