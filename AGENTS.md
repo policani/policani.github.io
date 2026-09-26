@@ -90,7 +90,15 @@ channel strategy, and staging state in planning notes or handoff notes.
   `content/governance-library.json`. Add papers through
   `.\site-content.ps1 -Action AddWhitepaper`; do not hand-edit generated
   field-note HTML, landing-page cards, category counts, sitemap entries, or the
-  generated governance block in `llms.txt`.
+  generated governance blocks in `llms.txt`.
+- Content publication and site-search publication are one change. A governance
+  build must regenerate the Pagefind index. `build-search.ps1` indexes the main
+  content of every sitemap HTML page and extracts searchable text from every
+  sitemap PDF. Do not hand-edit the generated `pagefind/` directory.
+- `assets/site-search.js` is the search interface, not the content index. Search
+  ranking gives extra weight to titles, summaries, and categories while still
+  matching body and PDF text. Keep likely reader terms in the reader-facing
+  copy; do not add hidden keyword lists.
 - The root content pipeline must validate the PDF, page count, category,
   sequence, TL;DR, substantive preview, operating move, three-item contents
   preview, and visible sources before it generates the public surfaces. Do not
@@ -106,6 +114,15 @@ channel strategy, and staging state in planning notes or handoff notes.
 
 - New public pages must be added to `sitemap.xml`.
 - When changing a page materially, update its sitemap `lastmod`.
+- `build-search.ps1` updates the search asset fingerprint automatically. Run
+  `.\site-content.ps1 -Action Check`; it must report every public sitemap HTML
+  page and PDF in search, with no missing or duplicate result URL.
+- Before publishing, search locally for the new or renamed page by its title and
+  one distinctive indexed term at a smartphone width. For governance content,
+  test both `search.html` and the Governance Library filter with a body-only or
+  PDF-only phrase. After deployment, repeat at least one query on each affected
+  search surface; a commit or visible library card alone does not prove search
+  is current.
 - Run the local publish dry run when the change set is nontrivial:
   `cd E:\Codex\policani.github.io; .\publish.ps1 -DryRun`
 - After deployment, verify the live `https://policani.net` URL for changed

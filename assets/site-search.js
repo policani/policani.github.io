@@ -1,162 +1,184 @@
 (() => {
-  const entries = [
-    { title: "Marco Policani: Portfolio Overview", url: "/", type: "Portfolio", summary: "Program, project, PMO, and portfolio leadership for complex work requiring clear priorities, decision-ready review, and evidenced delivery.", keywords: "marco policani portfolio overview principal director pmo epmo program project portfolio governance" },
-    { title: "Role Fit: Program, Project, PMO & Portfolio Manager", url: "/pmo-portfolio-governance-leader.html", type: "Role fit", summary: "Role fit and evidence for Program Manager, Project Manager, PMO Manager, and Portfolio Manager roles.", keywords: "program manager project manager pmo manager portfolio manager recruiter hiring leadership" },
-    { title: "Cases", url: "/operating-history.html", type: "Case studies", summary: "Ten public-safe case studies across enterprise software, telecom, SaaS, energy, and infrastructure.", keywords: "experience outcomes microsoft t-mobile avalara doosan gridtech miso delivery program project portfolio" },
-    { title: "Methods: Walkthroughs", url: "/artifacts.html", type: "Methods", summary: "Client-safe walkthroughs showing how ambiguous work becomes governable.", keywords: "methods walkthroughs workflow intake prioritization readiness delivery proof" },
-    { title: "Methods: Modules and PoCs", url: "/modules.html", type: "Methods", summary: "Reusable modules and proof-of-concept structures for intake, scoring, charters, readiness, value, and AI workflow governance.", keywords: "methods modules pocs workflow systems portfolio prioritization charter value realization" },
-    { title: "Insights: Portfolio, Delivery, and AI Operations", url: "/governance/", type: "Insights", summary: "Guides, field notes, and white papers on portfolio leadership, delivery, executive decision support, and AI operations.", keywords: "insights governance pmo ai operations executive decision support" },
-    { title: "Labs: Applied AI Systems and Tools", url: "/resources/", type: "Labs", summary: "Applied AI systems, career tools, and experiments from Marco Policani.", keywords: "labs ai systems tools knowledge career experiments memventory subagent" },
-    { title: "Memventory: Visual Second Brain", url: "/resources/memventory.html", type: "Lab", summary: "Keep AI context continuous across projects while preserving the local guidance that makes each piece of work distinct.", keywords: "memventory visual second brain ai memory context knowledge personal team management console" },
-    { title: "Job Boards Scanner", url: "/job-boards-scanner.html", type: "Lab", summary: "Scan job-board results against a saved role profile, then review and rank relevant openings in one browser-based workspace.", keywords: "job boards scanner job search role profile openings career browser tool" },
-    { title: "Hero Banner Lab", url: "/hero-banner-lab.html", type: "Lab", summary: "Configure full-screen animated hero banners with parallax, pointer response, and exportable JSON settings.", keywords: "hero banner lab animation parallax design visual json" },
-    { title: "Orbit Raiders", url: "/orbit-raiders.html", type: "Lab", summary: "Play a browser-based radial arcade shooter with keyboard, touch, fullscreen, and audio controls.", keywords: "orbit raiders browser game arcade shooter touch" },
-    { title: "Contact Marco Policani", url: "/contact.html", type: "Contact", summary: "Contact Marco about remote program, project, PMO, portfolio, and governance roles.", keywords: "contact recruiter hiring remote program project pmo portfolio manager" },
-    { title: "T-Mobile: Revenue Technology Portfolio", url: "/engagements/tmobile-revenue-technology.html", type: "Case study", summary: "Resetting portfolio signal and readiness-gated flow across a large revenue technology portfolio.", keywords: "t-mobile program manager portfolio delivery readiness cycle time" },
-    { title: "Doosan GridTech: Delivery Sequencing", url: "/engagements/doosan-gridtech.html", type: "Case study", summary: "Sequencing software, construction, and security under capital and engineering constraints.", keywords: "doosan gridtech project manager program delivery capital cybersecurity" },
-    { title: "Avalara: PPMO Formation", url: "/engagements/avalara-ppmo.html", type: "Case study", summary: "Forming a portfolio and program management office during acquisition-driven growth.", keywords: "avalara ppmo pmo manager portfolio governance investment" },
-    { title: "Avalara: Billing Integrity", url: "/engagements/avalara-billing.html", type: "Case study", summary: "Stabilizing billing integrity across acquired platforms through governed transformation.", keywords: "avalara project manager billing transformation governance" },
-    { title: "Microsoft: Commerce Finance Readiness", url: "/engagements/microsoft-commerce-finance.html", type: "Case study", summary: "Compressing finance-critical validation cycles with delivery readiness governance.", keywords: "microsoft project manager uat readiness finance delivery" },
-    { title: "Microsoft: GDPR Remediation", url: "/engagements/microsoft-gdpr-remediation.html", type: "Case study", summary: "Closing a supplier compliance blind spot across acquired entities.", keywords: "microsoft program manager gdpr compliance remediation" },
-    { title: "Microsoft: Software Assurance Governance", url: "/engagements/microsoft-software-assurance.html", type: "Case study", summary: "Governing a global partner-delivered platform under contract and liability pressure.", keywords: "microsoft portfolio program governance partner platform" },
-    { title: "Microsoft: SharePoint Launch Evidence", url: "/engagements/microsoft-sharepoint-evidence.html", type: "Case study", summary: "Turning partner readiness into launch evidence against a fixed deadline.", keywords: "microsoft project manager launch readiness partner evidence" },
-    { title: "Microsoft: Mobile Device Manager Pilots", url: "/engagements/microsoft-mdm-pilots.html", type: "Case study", summary: "Governing concurrent enterprise pilots across customer environments.", keywords: "microsoft program manager pilots portfolio" },
-    { title: "MISO Energy: R&D Portfolio", url: "/engagements/miso-rd-portfolio.html", type: "Case study", summary: "Structuring R&D demand for executive comparison and investment decisions.", keywords: "miso portfolio manager r&d intake prioritization" },
-    { title: "Messy Demand to Executive Review", url: "/walkthroughs/messy-demand-to-executive-review.html", type: "Walkthrough", summary: "How unstructured intake becomes a governed pipeline and executive review.", keywords: "demand intake program pmo prioritization executive review" },
-    { title: "Tradeoffs to Executive Decision", url: "/walkthroughs/tradeoffs-to-executive-decision.html", type: "Walkthrough", summary: "How comparable tradeoffs move through scoring, sequencing, and decision follow-through.", keywords: "portfolio prioritization scoring capacity decision support" },
-    { title: "Approved Intent to Chartered Delivery", url: "/walkthroughs/approved-intent-to-chartered-delivery-start.html", type: "Walkthrough", summary: "How approved intent becomes a business case, charter, and delivery start.", keywords: "project manager charter business case delivery start" },
-    { title: "Delivery Readiness to Value Realization", url: "/walkthroughs/delivery-readiness-to-value-realization.html", type: "Walkthrough", summary: "How readiness evidence, launch controls, benefits, and value realization become reviewable.", keywords: "delivery readiness uat release value realization project program" },
-    { title: "AI Governance and Artifact Lifecycle", url: "/walkthroughs/ai-idea-to-governed-artifact-lifecycle.html", type: "Walkthrough", summary: "How AI ideas and artifacts move through value proof, reliance boundaries, and governed adoption.", keywords: "ai governance workflow lifecycle human review" },
-    { title: "Public-Safe Proof Review", url: "/walkthroughs/artifact-source-to-public-safe-proof-review.html", type: "Walkthrough", summary: "How anonymized artifacts become inspectable public-safe proof.", keywords: "evidence public safe proof confidentiality" },
-    { title: "Partner Ecosystem Governance", url: "/walkthroughs/partner-ecosystem-governance.html", type: "Walkthrough", summary: "How partner, vendor, and external delivery work becomes governable.", keywords: "partner vendor ecosystem governance readiness" },
-    // BEGIN GENERATED GOVERNANCE SEARCH ENTRIES
-    { title: "Why the kill gate doesn't fire", url: "/governance/field-notes/why-the-kill-gate-doesnt-fire.html", type: "Field note", summary: "A committee can have the power to stop a failing program and still approve more funding. People who approved it may want to keep it going. For a big program, let someone with no prior approval decide after a missed target.", keywords: "why the kill gate doesnt fire Portfolio & delivery governance For a big program, record its minimum result, due date, how the sponsor will be judged, and a reviewer who did not approve it." },
-    { title: "Who owns governance?", url: "/governance/field-notes/enterprise-governance-ownership.html", type: "Field note", summary: "In a meeting that crosses domains, every domain signs off on its own area. Nobody in the room owns the enterprise decision itself. A stack of approvals is not a decision — so who owns it?", keywords: "enterprise governance ownership Portfolio & delivery governance For any decision big enough to cross domains, have the EPMO answer six questions before approval. What outcome are we after, and who owns it? Which rules and limits apply? What do we know about conditions now? What options are still open, and what does each cost the portfolio? Who decides, and who can grant an exception? What would reopen the decision?" },
-    { title: "Felt productivity is not measured productivity", url: "/governance/field-notes/felt-productivity-not-measured-productivity.html", type: "Field note", summary: "People can badly misjudge how much AI speeds them up. Judge the tool on what it delivered, measured against a baseline taken before the tool arrived, and keep self-reported speed in a record of its own.", keywords: "felt productivity not measured productivity Work, adoption & judgment Before scaling an AI-assisted workflow, require three things: a baseline from before the tool, an output measure that heavier tool use cannot inflate, and a review that keeps felt speed and delivered output in separate columns." },
-    { title: "Separate the decision from the outcome", url: "/governance/field-notes/separate-the-decision-from-the-outcome.html", type: "Field note", summary: "A green target does not prove a good full outcome or a sound approval. Review the outcome, the route, and the first decision separately.", keywords: "separate the decision from the outcome Portfolio & delivery governance At the next review, first grade the decision from its approval record. Then score the full outcome and compare the route taken with the approved route." },
-    { title: "Capital reallocation is the real portfolio decision", url: "/governance/field-notes/capital-reallocation-real-portfolio-decision.html", type: "Field note", summary: "The annual plan records what leaders believed at the start. Portfolio governance shows what they do when the evidence changes.", keywords: "capital reallocation real portfolio decision Portfolio & delivery governance Choose one scarce resource shared by two initiatives. Write the trigger, evidence, owner, and fair test period. Then run one review and record a move or hold." },
-    { title: "Choose AI limits before the model", url: "/governance/field-notes/ai-deployment-is-a-jurisdiction-decision.html", type: "Field note", summary: "Before comparing AI vendors, set the use, data, action limit, work split, and review triggers. Then choose a model that fits.", keywords: "ai deployment is a jurisdiction decision AI operating governance Take one AI request entering sourcing. Write its five limits on one page before comparing vendors." },
-    { title: "Who gets to decide", url: "/governance/field-notes/decision-rights-are-a-system-design-choice.html", type: "Field note", summary: "Evidence does not change work by itself. For choices that matter, name who builds the case, flags a binding constraint, decides, and changes the work.", keywords: "decision rights are a system design choice Portfolio & delivery governance Pick five recent decisions. Name who built the case, could block an option for a stated reason, decided, and changed the work." },
-    { title: "Standardize the component, not the project", url: "/governance/field-notes/standardize-the-component-not-the-project.html", type: "Field note", summary: "A project folder can preserve files without helping the next team. Share the small part of the work that another team has used, and name who will keep it current.", keywords: "standardize the component not the project Portfolio & delivery governance Review one repeated check or handoff rule. Ask where another team used it, what may change, who owns it, and when to retire it." },
-    { title: "The exception path is the real automated workflow", url: "/governance/field-notes/exception-path-automation.html", type: "Field note", summary: "Ask a team that calls its workflow automated to show you the exception queue. It is often a shared mailbox where everything the automation could not handle quietly piles up. No owners, no classification, no record of what was tried.", keywords: "exception path automation Work, adoption & judgment Design the exception path before you call the main path automated. Every kind of exception needs to be detected, routed to a named owner, contained, and brought back to a known state." },
-    { title: "The coordination tax", url: "/governance/field-notes/coordination-tax.html", type: "Field note", summary: "In one report-drafting workflow, drafting time per report fell from four hours to twenty minutes. The function's total output did not move. The saved hours went into picking source data, fixing formats, explaining what was generated, waiting on a new approval, and reconciling numbers against the ledger.", keywords: "coordination tax Work, adoption & judgment Before you claim a workflow is streamlined, map what happens between the tasks: the handoffs, the queues, the approvals, and who owns the exceptions. Automation that leaves that work untouched moves the cost instead of removing it." },
-    { title: "An AI evaluation is a production operating control", url: "/governance/field-notes/production-ai-evaluation.html", type: "Field note", summary: "A workflow can pass its launch evaluation even as the model and cases soon change around it. The vendor updates the model, another team changes inputs, and the business adds new case types. The old result cannot show whether the team can still rely on it, so the workflow owner needs a current test and authority to limit use.", keywords: "production ai evaluation AI operating governance Compare the date of the last production evaluation with the last material change to the model, data, or workflow. If the change came later, retest affected cases or limit use until the evidence catches up." },
-    { title: "Where should this AI run?", url: "/governance/field-notes/local-ai-cloud-governance.html", type: "Field note", summary: "A claims tool and a writing aid can need different answers. Compare local, cloud, and hybrid options against each workflow's data, access, actions, support, and exit needs.", keywords: "local ai cloud governance AI operating governance Run seven checks on two real workflows. Have the workflow owner recommend an option and name who can approve it and accept the remaining risk." },
-    { title: "The demo-to-production gap", url: "/governance/field-notes/demo-to-production-gap.html", type: "Field note", summary: "A demo shows what a system can do with inputs someone chose in advance. Production asks whether real work can depend on it in ordinary conditions, under change, and when something goes wrong.", keywords: "demo to production gap AI operating governance Before a real workflow depends on a system that has only passed a demo, name who owns it, test it on the messy cases, put monitoring and a recovery path in place, and agree how it gets stopped and who can stop it." },
-    { title: "Confident and wrong", url: "/governance/field-notes/confident-and-wrong.html", type: "Field note", summary: "Fluent AI output is convincing whether or not it is right. Before anyone leans on it for a decision that matters, someone has to be able to test that confidence — and be allowed to reject the answer.", keywords: "confident and wrong AI operating governance Before AI output can be relied on for a decision that matters, require four things. Name the assumptions. Check the claim against evidence from somewhere else. Write down what is still uncertain. And name the person who can stop or correct it." },
-    { title: "A portfolio needs scenarios, not a single annual plan", url: "/governance/field-notes/portfolio-scenarios-not-plan.html", type: "Field note", summary: "One annual plan stops describing reality the moment capacity, demand, or assumptions change. Keep a few workable versions of the portfolio instead. Agree in advance what you would protect, delay, reshape, or stop.", keywords: "portfolio scenarios not plan Portfolio & delivery governance Keep a small set of workable portfolio shapes that show capacity, dependencies, and tradeoffs. Agree the triggers ahead of time. When conditions change, leaders should be choosing between options they already prepared, not improvising around a frozen plan." },
-    { title: "Decision friction is a portfolio risk", url: "/governance/field-notes/decision-friction-portfolio-risk.html", type: "Field note", summary: "The post-mortem starts with the usual suspects: estimation, complexity, the vendor. Then someone walks the calendar and finds five weeks spent waiting on a policy question, a tradeoff, or an owner who was never named.", keywords: "decision friction portfolio risk Portfolio & delivery governance Keep a list of the choices the work is waiting on. For each one, record what has to be decided, who decides it, what evidence could change the decision, the last useful date, what stops if it slips, and what was finally decided." },
-    { title: "A PMO dashboard should show investment health", url: "/governance/field-notes/investment-health-dashboard.html", type: "Field note", summary: "A CFO asks the simplest question about the biggest investment on the page: if we stopped this today, what would we lose? The deck knows the burn rate, the milestone variance, and the issue count. It cannot answer.", keywords: "investment health dashboard Portfolio & delivery governance Put expected benefit, confidence, capacity pressure, unresolved decisions, and risk next to schedule and spend. A dashboard should help leaders change the portfolio, not just watch it." },
-    { title: "The EPMO's job is capacity, not calendars", url: "/governance/field-notes/epmo-capacity-not-calendars.html", type: "Field note", summary: "Every project has a date and every plan looks solid on its own. But the same few people, systems, and approval forums turn up in all of them. Each plan is fine. The sum is fiction.", keywords: "epmo capacity not calendars Portfolio & delivery governance Govern real demand against the people and systems you actually have, by role, skill, and dependency. The calendar shows what everyone intends to do. The decision is which work gets the scarce capacity and which work waits." },
-    { title: "Stage gates work only when they can kill projects", url: "/governance/field-notes/stage-gates-with-teeth.html", type: "Field note", summary: "A gate earns its place only when evidence can change the next commitment of money, people, or scope.", keywords: "stage gates with teeth Portfolio & delivery governance Test one mid-sized gate. Give the forum five real choices, tie evidence to the next commitment, and confirm that money and people move with the decision." },
-    { title: "A project is not ready because a plan exists", url: "/governance/field-notes/project-readiness-before-kickoff.html", type: "Field note", summary: "A complete plan can still hide missing promises. Before kickoff, check who can decide, what result will count, which people will take part, and whether named staff have time.", keywords: "project readiness before kickoff Portfolio & delivery governance Before setting a start date, list the first hard decisions and who can make them. Agree on one result and its limits, confirm the people and dates, then check each person's other work." },
-    { title: "The prove-it economy is coming for careers and AI programs", url: "/governance/field-notes/prove-it-economy-careers-ai-programs.html", type: "Field note", summary: "A working demonstration and a credible leadership story can still leave a sponsor unable to inspect the claim. One record built during the work can carry two things: the next AI investment decision, and the leader's later account of their own part in it.", keywords: "prove it economy careers ai programs Work, adoption & judgment Before the next review that matters, pick one claim the decision rests on. Write down six things: the claim, the context and the work, the evidence, the result or what was learned, the limits, and who owns it and what they decide next. Narrow or delay any claim the record cannot support." },
-    { title: "Portfolio governance is a funding-discipline problem, not a reporting problem", url: "/governance/field-notes/portfolio-governance-funding-discipline.html", type: "Field note", summary: "Most organizations think they have a governance problem when what they have is a reporting habit. They can produce status all day. What they cannot reliably do is start, redirect, and stop investments on evidence and make it stick.", keywords: "portfolio governance funding discipline Portfolio & delivery governance Release funding in stages, tied to evidence and the next decision. Reporting explains what happened. Funding authority is what redirects, pauses, expands, or stops an investment." },
-    { title: "AI can grow only as fast as people can supervise it", url: "/governance/field-notes/oversight-capacity-ai-scale.html", type: "Field note", summary: "Every AI agent adds work that a named person must review, own, and explain.", keywords: "oversight capacity ai scale AI operating governance Measure one workflow for four weeks. Count the owner's review and follow-up time, then adjust the number of live agents before adding another." },
-    { title: "Measure AI by the workflow it changes", url: "/governance/field-notes/governing-ai-as-operational-change.html", type: "Field note", summary: "Usage shows who opened the tool. It does not show whether cycle time, quality, or rework improved.", keywords: "governing ai as operational change AI operating governance Choose one recurring workflow. Set the baseline, measures, comparison, and four possible decisions before the team sees the result." },
-    { title: "Every agent needs a human operating model", url: "/governance/field-notes/every-agent-needs-a-human-operating-model.html", type: "Field note", summary: "A capable agent clears its pilot, and the decision to switch it on lands with one leader who will answer for everything it does next. What has to be true before it is allowed to touch real work?", keywords: "every agent needs a human operating model AI operating governance Before an agent goes live, name the human who answers for it. They should be able to answer seven questions: its role and scope, who decides what, how it escalates and stops, how its output gets challenged, what counts as acceptable, what evidence it must leave behind, and who is accountable. Make that completed canvas the gate an agent has to clear before it is funded." },
-    { title: "Enterprise AI trust is built through operating evidence, not tool novelty", url: "/governance/field-notes/enterprise-ai-trust-operating-evidence.html", type: "Field note", summary: "A capable AI pilot can impress everyone and still stall before it reaches important work. A better model will not move it if the people accountable for its use still lack proof they can rely on it. That proof supports judgment; it does not certify the system.", keywords: "enterprise ai trust operating evidence AI operating governance Choose the AI use that would cause the most harm if it were wrong. Build one current evidence pack with a named owner for that use. Show what the system did, the basis for its result, its tested limits, and who answers for relying on it. The pack does not certify the system or replace judgment; it supports the owner's decision to rely, retest, or hold back." },
-    { title: "The write-up you skipped never gets blamed", url: "/governance/field-notes/documentation-cross-functional-leverage.html", type: "Field note", summary: "When a meeting ends and nobody writes down what was decided, the next team has to stop and ask or start and guess. The hour you saved comes back in their queue, logged as a clarification, a redesign, or a reopened decision. What it never gets logged as is the write-up nobody did.", keywords: "documentation cross functional leverage Portfolio & delivery governance Before you hand work to another team, write down what you decided, why, what you agreed to bend, who does what next, and when to revisit it. Then let them say whether the handoff is done." },
-    { title: "Business imagination is the scarce asset now", url: "/governance/field-notes/business-imagination-is-the-scarce-asset-now.html", type: "Field note", summary: "A portfolio review can see several promising AI proposals and still lack a sound basis for choosing which ones deserve scarce capacity.", keywords: "business imagination is the scarce asset now Work, adoption & judgment Before funding an AI tool, require one brief. Name the workflow or decision to change, the stakes, the evidence, the owner, the choices people still make, and the best route." },
-    { title: "Benefits realization is where transformations quietly fail", url: "/governance/field-notes/benefits-realization-transformations-fail.html", type: "Field note", summary: "The program ships without missing a deadline anyone notices. The milestones are checked, the team is thanked, everyone moves on. Months later the value that justified the whole thing has not appeared, and nobody is sure anyone is still measuring.", keywords: "benefits realization transformations fail Portfolio & delivery governance Name someone who owns the benefit, agree the baseline before you start, and book the realization gate at approval rather than arranging it after go-live. A project is not finished when the output ships. It is finished when you can show the operating change." },
-    { title: "The AI value test: automate, build, buy, hire, or wait", url: "/governance/field-notes/ai-value-test-automate-build-buy-hire-wait.html", type: "Field note", summary: "AI proposals usually get compared against doing nothing. Compare them against the real options instead: automate it, build it, buy it, hire for it, or wait.", keywords: "ai value test automate build buy hire wait AI operating governance Judge automation, building, buying, hiring, and waiting against the same questions: what it is worth, what it risks, what capacity it needs, and how easily you could undo it. Do that before treating AI as the default answer." },
-    { title: "AI usage belongs in workflow governance, not blank-check access", url: "/governance/field-notes/ai-usage-workflow-governance.html", type: "Field note", summary: "Govern AI access where the work happens, and match the controls to what is at stake in that particular workflow.", keywords: "ai usage workflow governance AI operating governance Set AI permissions at the workflow level. Match the access, the review, and the evidence you require to the data involved, what happens if the output is wrong, and how easily you can recover." },
-    { title: "AI should make people better thinkers, not just faster producers", url: "/governance/field-notes/ai-should-make-people-better-thinkers.html", type: "Field note", summary: "A polished AI answer can hide who formed the view, tested it, and owns the final decision.", keywords: "ai should make people better thinkers Work, adoption & judgment For high-judgment work, have people state their first view, key assumptions, and what would change their mind. Then let AI challenge it." },
-    { title: "The AI replacement boomerang is a governance failure", url: "/governance/field-notes/ai-replacement-boomerang-governance-failure.html", type: "Field note", summary: "Cutting people because AI can do part of their work looks like immediate value. If nobody redesigned the work itself, the cost comes back as rework, lost know-how, and a capability pipeline you cannot quickly rehire.", keywords: "ai replacement boomerang governance failure Work, adoption & judgment Do not book the savings until the work, the exception path, the handover of knowledge, and the way people learn the job have all been redesigned. Removing people without redesigning the system moves cost into rework and fragility." },
-    { title: "AI knowledge bases need owners and current sources", url: "/governance/field-notes/ai-knowledge-bases-operating-infrastructure.html", type: "Field note", summary: "An AI answer can sound right while citing an old policy. Name who approves each source, when it must be checked again, and how readers can trace the answer back to it.", keywords: "ai knowledge bases operating infrastructure AI operating governance Choose one area where a wrong answer would matter. Have a named owner approve its sources, then test real questions against those pages." },
-    { title: "AI adoption starts with the constraint, not the tool", url: "/governance/field-notes/ai-adoption-starts-with-the-constraint.html", type: "Field note", summary: "Start with recurring work and what holds it back. Then choose the smallest change that can help, whether it uses AI or not.", keywords: "ai adoption starts with the constraint AI operating governance Take one AI request. Name the recurring work, its current limit, the smallest useful change, the owner, and the evidence needed before spending more." }
-    // END GENERATED GOVERNANCE SEARCH ENTRIES
-  ];
-
+  const SEARCH_INDEX_VERSION = "aa1f88acb3ee";
+  const PAGE_SIZE = 10;
   const form = document.querySelector("[data-site-search-form]");
   const input = document.querySelector("[data-site-search-input]");
+  const filter = document.querySelector("[data-site-search-filter]");
   const status = document.querySelector("[data-site-search-status]");
   const results = document.querySelector("[data-site-search-results]");
+  const pagination = document.querySelector("[data-site-search-pagination]");
 
-  if (!form || !input || !status || !results) return;
+  if (!form || !input || !filter || !status || !results || !pagination) return;
 
-  const normalize = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  let pagefind;
+  let page = 1;
+  let requestId = 0;
+  let debounceTimer;
 
-  const scoreEntry = (entry, query) => {
-    const title = normalize(entry.title);
-    const keywords = normalize(entry.keywords);
-    const summary = normalize(entry.summary);
-    const tokens = normalize(query).split(" ").filter(Boolean);
-    if (!tokens.length) return 0;
-
-    let score = title.includes(normalize(query)) ? 12 : 0;
-    if (keywords.includes(normalize(query))) score += 8;
-    if (summary.includes(normalize(query))) score += 4;
-
-    for (const token of tokens) {
-      if (title.includes(token)) score += 5;
-      if (keywords.includes(token)) score += 3;
-      if (summary.includes(token)) score += 1;
-    }
-    return score;
+  const setUrl = () => {
+    const url = new URL(window.location.href);
+    const query = input.value.trim();
+    const type = filter.value;
+    if (query) url.searchParams.set("q", query);
+    else url.searchParams.delete("q");
+    if (type) url.searchParams.set("type", type);
+    else url.searchParams.delete("type");
+    window.history.replaceState({}, "", url);
   };
 
-  const addResult = (entry) => {
+  const safeExcerpt = (html) => {
+    const template = document.createElement("template");
+    template.innerHTML = html || "";
+    template.content.querySelectorAll("*").forEach((element) => {
+      if (element.tagName !== "MARK") element.replaceWith(document.createTextNode(element.textContent || ""));
+      else [...element.attributes].forEach((attribute) => element.removeAttribute(attribute.name));
+    });
+    return template.content;
+  };
+
+  const addResult = (data) => {
     const item = document.createElement("li");
     item.className = "site-search-result";
 
     const type = document.createElement("span");
     type.className = "site-search-result-type";
-    type.textContent = entry.type;
+    type.textContent = data.meta.type || "Page";
 
     const link = document.createElement("a");
-    link.href = entry.url;
-    link.textContent = entry.title;
+    link.href = data.meta.resultUrl || data.url;
+    link.textContent = data.meta.title || "Untitled result";
 
     const summary = document.createElement("p");
-    summary.textContent = entry.summary;
+    const excerpt = data.excerpt || data.meta.summary || data.meta.description || "";
+    summary.append(safeExcerpt(excerpt));
 
-    item.append(type, link, summary);
+    item.append(type, link);
+    if (summary.textContent.trim()) item.append(summary);
     results.append(item);
   };
 
-  const render = (query) => {
+  const addPagination = (total) => {
+    pagination.replaceChildren();
+    const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+    if (totalPages <= 1) return;
+
+    const previous = document.createElement("button");
+    previous.type = "button";
+    previous.className = "button secondary";
+    previous.textContent = "Previous";
+    previous.disabled = page === 1;
+    previous.addEventListener("click", () => {
+      page -= 1;
+      render();
+      status.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    const position = document.createElement("span");
+    position.textContent = `Page ${page} of ${totalPages}`;
+
+    const next = document.createElement("button");
+    next.type = "button";
+    next.className = "button secondary";
+    next.textContent = "Next";
+    next.disabled = page === totalPages;
+    next.addEventListener("click", () => {
+      page += 1;
+      render();
+      status.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    pagination.append(previous, position, next);
+  };
+
+  const render = async () => {
+    if (!pagefind) return;
+    const thisRequest = ++requestId;
+    const query = input.value.trim();
+    const type = filter.value;
+    status.textContent = "Searching…";
     results.replaceChildren();
-    const trimmed = query.trim();
+    pagination.replaceChildren();
 
-    if (!trimmed) {
-      status.textContent = "Search by role, operating problem, case study, method, or insight.";
-      entries.slice(0, 8).forEach(addResult);
-      return;
+    try {
+      const response = await pagefind.search(query || null, type ? { filters: { type } } : undefined);
+      if (thisRequest !== requestId) return;
+      const total = response.results.length;
+      const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+      if (page > totalPages) page = totalPages;
+      const start = (page - 1) * PAGE_SIZE;
+      const visible = response.results.slice(start, start + PAGE_SIZE);
+      const data = await Promise.all(visible.map((result) => result.data()));
+      if (thisRequest !== requestId) return;
+
+      data.forEach(addResult);
+      const context = type ? ` in ${type}` : "";
+      status.textContent = total
+        ? `${total} ${total === 1 ? "result" : "results"}${query ? ` for “${query}”` : ""}${context}.`
+        : `No results${query ? ` for “${query}”` : ""}${context}. Try a shorter term or clear the content filter.`;
+      addPagination(total);
+    } catch (error) {
+      console.error("Portfolio search failed", error);
+      status.textContent = "Search could not load. Browse the Library, Cases, Methods, or Labs from the navigation above.";
     }
-
-    const matches = entries
-      .map((entry) => ({ entry, score: scoreEntry(entry, trimmed) }))
-      .filter((result) => result.score > 0)
-      .sort((left, right) => right.score - left.score || left.entry.title.localeCompare(right.entry.title))
-      .slice(0, 12)
-      .map((result) => result.entry);
-
-    status.textContent = matches.length
-      ? `${matches.length} ${matches.length === 1 ? "result" : "results"} for “${trimmed}”.`
-      : `No results for “${trimmed}”. Try a role, case study, or topic such as delivery readiness.`;
-    matches.forEach(addResult);
   };
 
-  const updateUrl = (query) => {
-    const url = new URL(window.location.href);
-    if (query.trim()) url.searchParams.set("q", query.trim());
-    else url.searchParams.delete("q");
-    window.history.replaceState({}, "", url);
+  const populateFilters = async () => {
+    const available = await pagefind.filters();
+    const types = available.type || {};
+    Object.entries(types)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .forEach(([name, count]) => {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = `${name} (${count})`;
+        filter.append(option);
+      });
+    const requested = new URLSearchParams(window.location.search).get("type") || "";
+    if ([...filter.options].some((option) => option.value === requested)) filter.value = requested;
   };
 
-  const initialQuery = new URLSearchParams(window.location.search).get("q") || "";
-  input.value = initialQuery;
-  render(initialQuery);
+  const initialize = async () => {
+    status.textContent = "Loading the search index…";
+    try {
+      pagefind = await import(`/pagefind/pagefind.js?v=${SEARCH_INDEX_VERSION}`);
+      await pagefind.options({
+        ranking: {
+          termFrequency: 0.65,
+          pageLength: 0.45,
+          metaWeights: { title: 8, summary: 3, category: 2 }
+        }
+      });
+      input.value = new URLSearchParams(window.location.search).get("q") || "";
+      await populateFilters();
+      await render();
+    } catch (error) {
+      console.error("Portfolio search initialization failed", error);
+      status.textContent = "Search could not load. Browse the Library, Cases, Methods, or Labs from the navigation above.";
+    }
+  };
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    updateUrl(input.value);
-    render(input.value);
+    clearTimeout(debounceTimer);
+    page = 1;
+    setUrl();
+    render();
   });
 
   input.addEventListener("input", () => {
-    updateUrl(input.value);
-    render(input.value);
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      page = 1;
+      setUrl();
+      render();
+    }, 180);
   });
+
+  filter.addEventListener("change", () => {
+    page = 1;
+    setUrl();
+    render();
+  });
+
+  initialize();
 })();

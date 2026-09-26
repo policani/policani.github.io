@@ -30,7 +30,7 @@ $whitepapersPath = Join-Path $governancePath 'whitepapers'
 $libraryIndexPath = Join-Path $governancePath 'index.html'
 $sitemapPath = Join-Path $siteRoot 'sitemap.xml'
 $llmsPath = Join-Path $siteRoot 'llms.txt'
-$siteSearchPath = Join-Path $siteRoot 'assets\site-search.js'
+$searchBuildPath = Join-Path $siteRoot 'build-search.ps1'
 
 function Write-Utf8([string]$Path, [string]$Content) {
     [IO.File]::WriteAllText($Path, $Content, [Text.UTF8Encoding]::new($false))
@@ -356,7 +356,11 @@ function New-LibraryCardHtml($Entry, $Category, [bool]$Featured) {
 function Update-LibraryIndex($Manifest) {
     $html = [IO.File]::ReadAllText($libraryIndexPath)
     $total = @($Manifest.entries).Count
-    $html = [regex]::Replace($html, 'Search all \d+ field notes', "Search all $total field notes")
+    $html = $html.Replace(
+        'Browse every field note on one page. Search by a decision, operating problem, or topic, or move directly to the chapter closest to the work in front of you.',
+        'Browse every field note on one page. Search across the full notes and white papers by a decision, operating problem, or topic, or move directly to the chapter closest to the work in front of you.'
+    )
+    $html = [regex]::Replace($html, 'Search all \d+ field notes(?: and papers)?', "Search all $total field notes and papers")
     $html = [regex]::Replace($html, 'Showing all \d+ field notes\.', "Showing all $total field notes.")
 
     foreach ($category in $Manifest.categories) {
@@ -435,33 +439,11 @@ function Update-LlmsIndex($Manifest) {
     Write-Utf8 $llmsPath $text
 }
 
-function Update-SiteSearchIndex($Manifest) {
-    $text = [IO.File]::ReadAllText($siteSearchPath)
-    $start = '    // BEGIN GENERATED GOVERNANCE SEARCH ENTRIES'
-    $end = '    // END GENERATED GOVERNANCE SEARCH ENTRIES'
-    if (-not $text.Contains($start) -or -not $text.Contains($end)) {
-        throw 'assets/site-search.js is missing the generated governance-search markers.'
-    }
-
-    $lines = @($Manifest.entries | Sort-Object { [int]$_.sequence } -Descending | ForEach-Object {
-        $category = Get-Category $Manifest $_.category
-        $title = Encode-JsonString ([string]$_.title)
-        $summary = Encode-JsonString ([string]$_.summary)
-        $keywords = Encode-JsonString (([string]$_.slug).Replace('-', ' ') + ' ' + ([string]$category.label) + ' ' + ([string]$_.operatingMove))
-        '    { title: "' + $title + '", url: "/governance/field-notes/' + $_.slug + '.html", type: "Field note", summary: "' + $summary + '", keywords: "' + $keywords + '" }'
-    })
-    $replacement = $start + "`n" + ($lines -join ",`n") + "`n" + $end
-    $pattern = '(?s)' + [regex]::Escape($start) + '.*?' + [regex]::Escape($end)
-    $text = [regex]::Replace($text, $pattern, [Text.RegularExpressions.MatchEvaluator]{ param($match) $replacement })
-    Write-Utf8 $siteSearchPath $text
-}
-
 function Assert-GeneratedSurfaces($Manifest) {
     $entries = @($Manifest.entries)
     $landing = [IO.File]::ReadAllText($libraryIndexPath)
     $sitemap = [IO.File]::ReadAllText($sitemapPath)
     $llms = [IO.File]::ReadAllText($llmsPath)
-    $siteSearch = [IO.File]::ReadAllText($siteSearchPath)
     $generatedPages = @(Get-ChildItem -LiteralPath $fieldNotesPath -Filter '*.html')
     if ($generatedPages.Count -ne $entries.Count) { throw "Generated field-note count is $($generatedPages.Count); manifest count is $($entries.Count)." }
     if ($landing -notmatch "Search all $($entries.Count) field notes") { throw 'Governance landing total is out of sync.' }
@@ -486,28 +468,6 @@ function Assert-GeneratedSurfaces($Manifest) {
         if (-not $landing.Contains("field-notes/$($entry.slug).html")) { throw "$($entry.slug): landing card is missing." }
         if (-not $sitemap.Contains("field-notes/$($entry.slug).html") -or -not $sitemap.Contains("whitepapers/$($entry.pdf)")) { throw "$($entry.slug): sitemap entries are missing." }
         if (-not $llms.Contains("field-notes/$($entry.slug).html")) { throw "$($entry.slug): llms.txt entry is missing." }
-        if (-not $siteSearch.Contains('url: "/governance/field-notes/' + $entry.slug + '.html"')) { throw "$($entry.slug): site-search entry is missing." }
-    }
-
-    $searchUrls = @([regex]::Matches($siteSearch, 'url:\s*"([^"]+)"') | ForEach-Object {
-        $path = $_.Groups[1].Value
-        if ($path -eq '/') { '/' } else { $path.TrimEnd('/') }
-    })
-    $duplicateSearchUrls = @($searchUrls | Group-Object | Where-Object { $_.Count -gt 1 } | ForEach-Object { $_.Name })
-    if ($duplicateSearchUrls.Count -gt 0) {
-        throw "Site search has duplicate URL entries: $($duplicateSearchUrls -join ', ')."
-    }
-
-    [xml]$sitemapXml = $sitemap
-    $publicHtmlPaths = @($sitemapXml.urlset.url.loc | ForEach-Object {
-        $path = ([uri]([string]$_)).AbsolutePath
-        if ($path -eq '/' -or $path.EndsWith('.html') -or $path -in @('/governance/', '/resources/')) {
-            if ($path -eq '/') { '/' } else { $path.TrimEnd('/') }
-        }
-    } | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Sort-Object -Unique)
-    $missingSearchUrls = @($publicHtmlPaths | Where-Object { $searchUrls -notcontains $_ })
-    if ($missingSearchUrls.Count -gt 0) {
-        throw "Public sitemap pages missing from site search: $($missingSearchUrls -join ', ')."
     }
 }
 
@@ -522,7 +482,7 @@ function Build-SiteContent {
     Update-LibraryIndex $manifest
     Update-GovernanceSitemap $manifest
     Update-LlmsIndex $manifest
-    Update-SiteSearchIndex $manifest
+    & $searchBuildPath -Action Build
     Write-Host "==> Governance library built from manifest: $(@($manifest.entries).Count) entries."
 }
 
@@ -600,6 +560,7 @@ switch ($Action) {
         $manifest = Read-LibraryManifest
         Assert-LibraryManifest $manifest
         Assert-GeneratedSurfaces $manifest
+        & $searchBuildPath -Action Check
         Write-Host "==> Site content is synchronized and valid: $(@($manifest.entries).Count) governance entries."
     }
     'AddWhitepaper' { Add-WhitepaperEntry }

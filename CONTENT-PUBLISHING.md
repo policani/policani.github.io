@@ -2,8 +2,8 @@
 
 The repository owns the publication process for the whole site. Governance is
 the first generated collection: one manifest drives its landing-page cards,
-field-note pages, category counts, PDF links, page counts, metadata, site-search
-results, sitemap entries, and `llms.txt` entries.
+field-note pages, category counts, PDF links, page counts, metadata, sitemap
+entries, `llms.txt` entries, and inputs to the full-text search build.
 
 ## Source of truth
 
@@ -11,6 +11,10 @@ results, sitemap entries, and `llms.txt` entries.
 - `content/governance-entry.schema.json` defines the intake fields.
 - `governance/whitepapers/` contains the public PDFs.
 - `assets/` contains an optional 1200x630 social image named by `socialImage`.
+- `assets/site-search.js` renders Pagefind results, filters, excerpts, and
+  pagination. It does not contain the search corpus.
+- `build-search.ps1` builds the generated `pagefind/` index from the public HTML
+  and PDF URLs in `sitemap.xml`.
 - `site-content.ps1` validates and builds generated site content.
 - `publish.ps1` runs the content build before its normal site checks.
 
@@ -22,8 +26,8 @@ field note's Article `dateModified` and both sitemap entries from that value.
 Run `./site-content.ps1 -Action SyncPdfDates` before a local review when the
 PDF date itself is part of the change under review.
 
-Do not hand-edit generated governance cards, field-note HTML, or the governance
-block in `assets/site-search.js`. A later build will replace those edits.
+Do not hand-edit generated governance cards, field-note HTML, or the generated
+`pagefind/` directory. A later build will replace those edits.
 
 ## Add a white paper
 
@@ -42,7 +46,15 @@ block in `assets/site-search.js`. A later build will replace those edits.
 
 The command copies the PDF, adds the manifest entry, validates the full library,
 regenerates every affected surface, updates counts, and creates sitemap entries.
-It also updates the answer-engine index in `llms.txt`. It does not publish.
+It also rebuilds the site-search index and updates the answer-engine index in
+`llms.txt`.
+It does not publish.
+
+Site search is full-text search. Pagefind indexes the main content of every
+public sitemap HTML page and extracted text from every public sitemap PDF.
+Titles, summaries, headings, and categories receive more ranking weight, but
+body and PDF wording can produce results. The generated index also supplies
+highlighted excerpts, content-type filters, and paginated results.
 
 ## Review and publish
 
@@ -52,11 +64,18 @@ It also updates the answer-engine index in `llms.txt`. It does not publish.
 3. Confirm the landing-card order, category color, full toolbar, TL;DR, paper
    preview, operating move, contents preview, visible sources, PDF download, and
    source links.
-4. Run `.\publish.ps1 -DryRun`.
-5. Inspect the exact Git changes. Keep unrelated files out of the release.
-6. Publish with `.\publish.ps1 "Add governance paper: <title>"` only after the
+4. Search locally at a smartphone width for the paper by title, one distinctive
+   field-note body phrase, and one phrase found only in the PDF. Confirm the
+   expected content type, excerpt, and link on `search.html`, and confirm the
+   matching card through the Governance Library filter. The build updates the
+   search asset fingerprints automatically.
+5. Run `.\publish.ps1 -DryRun`.
+6. Inspect the exact Git changes. Keep unrelated files out of the release.
+7. Publish with `.\publish.ps1 "Add governance paper: <title>"` only after the
    public change is approved.
-7. Verify the live landing page, field note, and PDF on `https://policani.net`.
+8. Verify the live landing page, field note, PDF, and successful search result
+   on `https://policani.net`. Publication is incomplete if the content is live
+   but its search result is absent or stale.
 
 ## Build and validation guarantees
 
@@ -68,7 +87,9 @@ The root pipeline rejects:
 - previews without exactly three contents expectations;
 - fewer than two visible sources;
 - field-note pages that are not represented in the manifest;
-- published HTML pages missing from the site-search index;
+- published HTML pages or PDFs missing from the site-search index;
+- duplicate result URLs or a Pagefind page count that differs from the sitemap
+  search corpus;
 - missing optional social images.
 
 The normal publishing workflow continues to check changed HTML for broken local
