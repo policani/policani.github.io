@@ -13,8 +13,8 @@ entries, `llms.txt` entries, and inputs to the full-text search build.
 - `assets/` contains an optional 1200x630 social image named by `socialImage`.
 - `assets/site-search.js` renders Pagefind results, filters, excerpts, and
   pagination. It does not contain the search corpus.
-- `build-search.ps1` builds the generated `pagefind/` index from the public HTML
-  and PDF URLs in `sitemap.xml`.
+- `build-search.ps1` discovers self-canonical public HTML and manifest-backed
+  PDFs, synchronizes `sitemap.xml`, and builds the generated `pagefind/` index.
 - `site-content.ps1` validates and builds generated site content.
 - `publish.ps1` runs the content build before its normal site checks.
 
@@ -51,7 +51,11 @@ It also rebuilds the site-search index and updates the answer-engine index in
 It does not publish.
 
 Site search is full-text search. Pagefind indexes the main content of every
-public sitemap HTML page and extracted text from every public sitemap PDF.
+self-canonical public HTML page and extracted text from every manifest-backed
+public PDF. The build adds those URLs to the sitemap automatically. `noindex`
+pages and legacy pages canonicalized to a different URL are deliberately left
+out of both surfaces. Changed and newly discovered public files also receive the
+current sitemap `lastmod` during the build.
 Titles, summaries, headings, and categories receive more ranking weight, but
 body and PDF wording can produce results. The generated index also supplies
 highlighted excerpts, content-type filters, and paginated results.
@@ -88,8 +92,8 @@ The root pipeline rejects:
 - fewer than two visible sources;
 - field-note pages that are not represented in the manifest;
 - published HTML pages or PDFs missing from the site-search index;
-- duplicate result URLs or a Pagefind page count that differs from the sitemap
-  search corpus;
+- drift or duplicate URLs among discovered public content, the sitemap, and the
+  Pagefind corpus;
 - missing optional social images.
 
 The normal publishing workflow continues to check changed HTML for broken local

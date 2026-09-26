@@ -202,10 +202,10 @@ if ($pageMismatches.Count -gt 0) {
     Write-Host "==> Page-count parity check passed."
 }
 
-# 6) Warn if pages changed but sitemap.xml did not
-if ($changedHtml.Count -gt 0 -and ($changed -notcontains "sitemap.xml")) {
-    Write-Host "==> NOTE: HTML changed but sitemap.xml was not touched. Update lastmod if these pages are listed." -ForegroundColor Yellow
-}
+# 6) Public-page discovery, sitemap membership, sitemap lastmod, and Pagefind
+#    coverage were synchronized and validated by the content build above. A
+#    clean sitemap diff can be correct when a changed page is noindex, an alias,
+#    or already carries today's lastmod.
 
 # 7) Dry run stops here
 if ($DryRun) {

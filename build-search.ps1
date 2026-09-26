@@ -1,9 +1,11 @@
 <#
   Builds the static Pagefind index served by policani.net.
 
-  The sitemap defines the public HTML and PDF corpus. HTML is indexed from its
-  <main> element. Governance PDFs are converted to text only while building;
-  the extracted text is not published separately.
+  Self-canonical public HTML and manifest-backed governance PDFs define the
+  discoverable corpus. The build synchronizes sitemap.xml from that inventory,
+  then indexes HTML from its <main> element (or <body> fallback). Governance
+  PDFs are converted to text only while building; the extracted text is not
+  published separately.
 #>
 
 [CmdletBinding()]
@@ -59,6 +61,20 @@ function Get-MetaContent([string]$Html, [string]$Name) {
     return ''
 }
 
+function Get-CanonicalHref([string]$Html) {
+    foreach ($tagMatch in [regex]::Matches($Html, '<link\b[^>]*>', 'IgnoreCase')) {
+        $tag = $tagMatch.Value
+        $relMatch = [regex]::Match($tag, '\brel\s*=\s*(?:"([^"]*)"|''([^'']*)'')', 'IgnoreCase')
+        $rel = if ($relMatch.Groups[1].Success) { $relMatch.Groups[1].Value } else { $relMatch.Groups[2].Value }
+        if (@($rel -split '\s+' | Where-Object { $_ -eq 'canonical' }).Count -eq 0) { continue }
+        $hrefMatch = [regex]::Match($tag, '\bhref\s*=\s*(?:"([^"]*)"|''([^'']*)'')', 'IgnoreCase')
+        if ($hrefMatch.Success) {
+            return [Net.WebUtility]::HtmlDecode($(if ($hrefMatch.Groups[1].Success) { $hrefMatch.Groups[1].Value } else { $hrefMatch.Groups[2].Value }))
+        }
+    }
+    return ''
+}
+
 function Get-DocumentTitle([string]$Html) {
     $heading = [regex]::Match($Html, '<h1\b[^>]*>(.*?)</h1>', 'IgnoreCase, Singleline')
     if ($heading.Success) {
@@ -85,28 +101,162 @@ function Get-PageType([string]$UrlPath) {
 }
 
 function Get-PublicRecords {
-    [xml]$sitemap = [IO.File]::ReadAllText($sitemapPath)
     $records = @()
-    foreach ($location in $sitemap.urlset.url.loc) {
-        $uri = [uri]([string]$location)
-        $urlPath = $uri.AbsolutePath
-        if ($urlPath.EndsWith('.pdf')) {
-            $relative = $urlPath.TrimStart('/').Replace('/', [IO.Path]::DirectorySeparatorChar)
-            $records += [pscustomobject]@{ Kind = 'pdf'; Url = $urlPath; RelativePath = $relative }
-            continue
+    $rootPrefix = [IO.Path]::GetFullPath($siteRoot).TrimEnd([IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
+    $htmlFiles = @(Get-ChildItem -LiteralPath $siteRoot -Recurse -File -Filter '*.html' | Where-Object {
+        $relative = [IO.Path]::GetFullPath($_.FullName).Substring($rootPrefix.Length).Replace([IO.Path]::DirectorySeparatorChar, '/')
+        $relative -notmatch '^(?:\.git|\.site-tools|pagefind)(?:/|$)'
+    })
+
+    foreach ($file in $htmlFiles) {
+        $relativeUrlPath = [IO.Path]::GetFullPath($file.FullName).Substring($rootPrefix.Length).Replace([IO.Path]::DirectorySeparatorChar, '/')
+        if ($relativeUrlPath -match '^google[a-z0-9]+\.html$') { continue }
+
+        $html = [IO.File]::ReadAllText($file.FullName)
+        $robots = Get-MetaContent $html 'robots'
+        if ($robots -match '(?i)(?:^|[,\s])noindex(?:[,\s]|$)') { continue }
+
+        $canonical = Get-CanonicalHref $html
+        if ([string]::IsNullOrWhiteSpace($canonical)) {
+            throw "$relativeUrlPath must declare a self-canonical URL or use robots noindex."
         }
-        if ($urlPath -eq '/') {
-            $relative = 'index.html'
-        } elseif ($urlPath.EndsWith('/')) {
-            $relative = ($urlPath.Trim('/').Replace('/', [IO.Path]::DirectorySeparatorChar)) + [IO.Path]::DirectorySeparatorChar + 'index.html'
-        } elseif ($urlPath.EndsWith('.html')) {
-            $relative = $urlPath.TrimStart('/').Replace('/', [IO.Path]::DirectorySeparatorChar)
+        try { $canonicalUri = [uri]$canonical } catch { throw "$relativeUrlPath has an invalid canonical URL: $canonical" }
+        if (-not $canonicalUri.IsAbsoluteUri -or $canonicalUri.Scheme -ne 'https' -or $canonicalUri.Host -ne 'policani.net') {
+            throw "$relativeUrlPath canonical URL must use https://policani.net/: $canonical"
+        }
+
+        $expectedUrl = if ($relativeUrlPath -eq 'index.html') {
+            '/'
+        } elseif ($relativeUrlPath.EndsWith('/index.html')) {
+            '/' + $relativeUrlPath.Substring(0, $relativeUrlPath.Length - 'index.html'.Length)
         } else {
+            '/' + $relativeUrlPath
+        }
+        if ($canonicalUri.AbsolutePath -ne $expectedUrl) {
+            # Canonical aliases remain reachable but should not compete with the
+            # destination page in either search or the sitemap.
             continue
         }
-        $records += [pscustomobject]@{ Kind = 'html'; Url = $urlPath; RelativePath = $relative }
+        $records += [pscustomobject]@{
+            Kind = 'html'
+            Url = $expectedUrl
+            RelativePath = $relativeUrlPath.Replace('/', [IO.Path]::DirectorySeparatorChar)
+        }
     }
-    return @($records | Sort-Object Kind, Url -Unique)
+
+    $manifest = Get-Content -Raw -Encoding UTF8 -LiteralPath $manifestPath | ConvertFrom-Json
+    foreach ($entry in $manifest.entries) {
+        $pdfName = [string]$entry.pdf
+        if ([string]::IsNullOrWhiteSpace($pdfName)) { throw "$($entry.slug): manifest PDF is missing." }
+        $relativeUrlPath = "governance/whitepapers/$pdfName"
+        $records += [pscustomobject]@{
+            Kind = 'pdf'
+            Url = '/' + $relativeUrlPath
+            RelativePath = $relativeUrlPath.Replace('/', [IO.Path]::DirectorySeparatorChar)
+        }
+    }
+
+    $duplicates = @($records | Group-Object Url | Where-Object Count -gt 1 | ForEach-Object Name)
+    if ($duplicates.Count) { throw "Public content discovery produced duplicate URLs: $($duplicates -join ', ')." }
+    return @($records | Sort-Object Kind, Url)
+}
+
+function Get-SitemapUrls {
+    [xml]$xml = [IO.File]::ReadAllText($sitemapPath)
+    return @($xml.urlset.url.loc | ForEach-Object { ([uri]([string]$_)).AbsolutePath })
+}
+
+function Assert-SitemapCoverage($Records) {
+    $expected = @($Records | ForEach-Object Url | Sort-Object -Unique)
+    $actual = @(Get-SitemapUrls)
+    $duplicates = @($actual | Group-Object | Where-Object Count -gt 1 | ForEach-Object Name)
+    $missing = @($expected | Where-Object { $actual -notcontains $_ })
+    $extra = @($actual | Sort-Object -Unique | Where-Object { $expected -notcontains $_ })
+    if ($duplicates.Count -or $missing.Count -or $extra.Count) {
+        throw "Sitemap differs from discovered public content. Missing: $($missing -join ', '); extra: $($extra -join ', '); duplicates: $($duplicates -join ', '). Run .\build-search.ps1 -Action Build."
+    }
+}
+
+function Get-ChangedRepositoryPaths {
+    $changed = @(& git -C $siteRoot diff --name-only --diff-filter=ACMRTUXB HEAD --)
+    if ($LASTEXITCODE -ne 0) { throw 'Could not inspect changed files for sitemap lastmod synchronization.' }
+    $untracked = @(& git -C $siteRoot ls-files --others --exclude-standard)
+    if ($LASTEXITCODE -ne 0) { throw 'Could not inspect new files for sitemap lastmod synchronization.' }
+    $lookup = @{}
+    foreach ($path in @($changed) + @($untracked)) {
+        if (-not [string]::IsNullOrWhiteSpace([string]$path)) {
+            $lookup[[string]$path.Replace('\', '/')] = $true
+        }
+    }
+    return $lookup
+}
+
+function Sync-Sitemap($Records) {
+    [xml]$xml = [IO.File]::ReadAllText($sitemapPath)
+    $namespace = $xml.DocumentElement.NamespaceURI
+    $manager = [Xml.XmlNamespaceManager]::new($xml.NameTable)
+    $manager.AddNamespace('s', $namespace)
+    $expected = @{}
+    foreach ($record in $Records) { $expected[[string]$record.Url] = $record }
+    $seen = @{}
+    $changed = $false
+    $today = Get-Date -Format 'yyyy-MM-dd'
+    $changedPaths = Get-ChangedRepositoryPaths
+
+    foreach ($node in @($xml.SelectNodes('//s:url', $manager))) {
+        $url = ([uri]([string]$node.loc)).AbsolutePath
+        if (-not $expected.ContainsKey($url) -or $seen.ContainsKey($url)) {
+            [void]$xml.DocumentElement.RemoveChild($node)
+            $changed = $true
+            continue
+        }
+        $seen[$url] = $true
+        $record = $expected[$url]
+        $relativePath = ([string]$record.RelativePath).Replace('\', '/')
+        if ($changedPaths.ContainsKey($relativePath) -and [string]$node.lastmod -ne $today) {
+            if ($node.lastmod) {
+                $node.lastmod = $today
+            } else {
+                $lastmod = $xml.CreateElement('lastmod', $namespace)
+                $lastmod.InnerText = $today
+                [void]$node.AppendChild($lastmod)
+            }
+            $changed = $true
+        }
+    }
+
+    foreach ($record in @($Records | Sort-Object Kind, Url)) {
+        if ($seen.ContainsKey([string]$record.Url)) { continue }
+        $node = $xml.CreateElement('url', $namespace)
+        $loc = $xml.CreateElement('loc', $namespace)
+        $loc.InnerText = 'https://policani.net' + [string]$record.Url
+        [void]$node.AppendChild($loc)
+        $lastmod = $xml.CreateElement('lastmod', $namespace)
+        $lastmod.InnerText = $today
+        [void]$node.AppendChild($lastmod)
+        $changefreq = $xml.CreateElement('changefreq', $namespace)
+        $changefreq.InnerText = 'monthly'
+        [void]$node.AppendChild($changefreq)
+        $priority = $xml.CreateElement('priority', $namespace)
+        $priority.InnerText = if ($record.Kind -eq 'pdf') { '0.5' } else { '0.7' }
+        [void]$node.AppendChild($priority)
+        [void]$xml.DocumentElement.AppendChild($node)
+        $seen[[string]$record.Url] = $true
+        $changed = $true
+    }
+
+    if ($changed) {
+        $settings = [Xml.XmlWriterSettings]::new()
+        $settings.Indent = $true
+        $settings.IndentChars = '  '
+        $settings.Encoding = [Text.UTF8Encoding]::new($false)
+        $settings.NewLineChars = "`n"
+        $settings.NewLineHandling = [Xml.NewLineHandling]::Replace
+        $writer = [Xml.XmlWriter]::Create($sitemapPath, $settings)
+        try { $xml.Save($writer) } finally { $writer.Dispose() }
+        Write-Host '==> Sitemap synchronized from self-canonical public content.'
+    }
+    Assert-SitemapCoverage $Records
 }
 
 function Get-PagefindExecutable {
@@ -219,7 +369,7 @@ function Assert-SearchIndex($Records) {
     $missingPdf = @($expectedPdf | Where-Object { $indexedPdf -notcontains $_ })
     $extraPdf = @($indexedPdf | Where-Object { $expectedPdf -notcontains $_ })
     if ($missingHtml.Count -or $extraHtml.Count -or $missingPdf.Count -or $extraPdf.Count) {
-        throw "Search coverage differs from sitemap. Missing HTML: $($missingHtml -join ', '); extra HTML: $($extraHtml -join ', '); missing PDFs: $($missingPdf -join ', '); extra PDFs: $($extraPdf -join ', ')."
+        throw "Search coverage differs from discovered public content. Missing HTML: $($missingHtml -join ', '); extra HTML: $($extraHtml -join ', '); missing PDFs: $($missingPdf -join ', '); extra PDFs: $($extraPdf -join ', ')."
     }
 
     $allUrls = @($indexedHtml) + @($indexedPdf)
@@ -228,7 +378,7 @@ function Assert-SearchIndex($Records) {
     $entry = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $indexPath 'pagefind-entry.json') | ConvertFrom-Json
     $indexedPageCount = @($entry.languages.psobject.Properties | ForEach-Object { [int]$_.Value.page_count } | Measure-Object -Sum).Sum
     if ($indexedPageCount -ne $allUrls.Count) {
-        throw "Pagefind indexed $indexedPageCount results, but the sitemap search corpus contains $($allUrls.Count)."
+        throw "Pagefind indexed $indexedPageCount results, but the discovered public corpus contains $($allUrls.Count)."
     }
     Write-Host "==> Search index valid: $($indexedHtml.Count) HTML pages and $($indexedPdf.Count) PDFs."
 }
@@ -267,7 +417,7 @@ function Build-SearchIndex($Records) {
     try {
         foreach ($record in @($Records | Where-Object Kind -eq 'html')) {
             $source = Join-Path $siteRoot $record.RelativePath
-            if (-not (Test-Path -LiteralPath $source)) { throw "Sitemap HTML file is missing: $($record.Url)" }
+            if (-not (Test-Path -LiteralPath $source)) { throw "Discovered public HTML file is missing: $($record.Url)" }
             $destination = Join-Path $stagePath $record.RelativePath
             New-Item -ItemType Directory -Path (Split-Path -Parent $destination) -Force | Out-Null
             $html = [IO.File]::ReadAllText($source)
@@ -308,9 +458,9 @@ function Build-SearchIndex($Records) {
         New-Item -ItemType Directory -Path $pdfStage -Force | Out-Null
         foreach ($record in @($Records | Where-Object Kind -eq 'pdf')) {
             $source = Join-Path $siteRoot $record.RelativePath
-            if (-not (Test-Path -LiteralPath $source)) { throw "Sitemap PDF file is missing: $($record.Url)" }
+            if (-not (Test-Path -LiteralPath $source)) { throw "Manifest-backed public PDF file is missing: $($record.Url)" }
             $pdfName = [IO.Path]::GetFileName($source)
-            if (-not $entriesByPdf.ContainsKey($pdfName)) { throw "Sitemap PDF has no governance manifest entry: $pdfName" }
+            if (-not $entriesByPdf.ContainsKey($pdfName)) { throw "Public PDF has no governance manifest entry: $pdfName" }
             $entry = $entriesByPdf[$pdfName]
             $textPath = Join-Path $stagePath ("pdf-text-" + [guid]::NewGuid().ToString('N') + '.txt')
             & $pdftotext -enc UTF-8 -nopgbrk $source $textPath
@@ -387,7 +537,9 @@ function Build-SearchIndex($Records) {
 Set-Location -LiteralPath $siteRoot
 $records = Get-PublicRecords
 if ($Action -eq 'Check') {
+    Assert-SitemapCoverage $records
     Assert-SearchIndex $records
 } else {
+    Sync-Sitemap $records
     Build-SearchIndex $records
 }

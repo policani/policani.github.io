@@ -79,10 +79,12 @@ channel strategy, and staging state in planning notes or handoff notes.
   `.\site-content.ps1 -Action AddWhitepaper`; do not hand-edit generated
   field-note HTML, landing-page cards, category counts, sitemap entries, or the
   generated governance blocks in `llms.txt`.
-- Content publication and site-search publication are one change. A governance
-  build must regenerate the Pagefind index. `build-search.ps1` indexes the main
-  content of every sitemap HTML page and extracts searchable text from every
-  sitemap PDF. Do not hand-edit the generated `pagefind/` directory.
+- Content publication, sitemap discovery, and site-search publication are one
+  change. A governance build must regenerate the Pagefind index.
+  `build-search.ps1` discovers every self-canonical public HTML page plus every
+  manifest-backed white-paper PDF, synchronizes `sitemap.xml`, and then indexes
+  the full corpus. `noindex` pages and pages canonicalized to another URL stay
+  out. Do not hand-edit the generated `pagefind/` directory.
 - `assets/site-search.js` is the search interface, not the content index. Search
   ranking gives extra weight to titles, summaries, and categories while still
   matching body and PDF text. Keep likely reader terms in the reader-facing
@@ -101,11 +103,16 @@ channel strategy, and staging state in planning notes or handoff notes.
 
 ## Publishing Checks
 
-- New public pages must be added to `sitemap.xml`.
-- When changing a page materially, update its sitemap `lastmod`.
+- A new public HTML page must declare a self-canonical `https://policani.net/`
+  URL. The build discovers it and adds it to `sitemap.xml` and Pagefind
+  automatically. Use `robots noindex` for intentionally excluded pages; use a
+  canonical pointing at the destination for legacy aliases.
+- The build updates sitemap `lastmod` for changed or newly discovered public
+  files; do not maintain it as a separate manual step.
 - `build-search.ps1` updates the search asset fingerprint automatically. Run
-  `.\site-content.ps1 -Action Check`; it must report every public sitemap HTML
-  page and PDF in search, with no missing or duplicate result URL.
+  `.\site-content.ps1 -Action Check`; it must report exact agreement among the
+  discovered public corpus, sitemap, and Pagefind, with no missing or duplicate
+  result URL.
 - Before publishing, search locally for the new or renamed page by its title and
   one distinctive indexed term at a smartphone width. For governance content,
   test both `search.html` and the Governance Library filter with a body-only or

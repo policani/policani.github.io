@@ -95,9 +95,11 @@ Repository-level content automation lives in `site-content.ps1`. Governance
 white papers are maintained through `content/governance-library.json`; the
 pipeline generates the library cards, field-note pages, counts, metadata, PDF
 links, sitemap entries, and `llms.txt` discovery entries from that manifest.
-`build-search.ps1` then generates a Pagefind full-text index from every public
-sitemap HTML page and PDF, including body text, weighted metadata, filters, and
-search excerpts.
+`build-search.ps1` then discovers every self-canonical public HTML page and each
+manifest-backed white-paper PDF, synchronizes `sitemap.xml`, and generates the
+Pagefind full-text index, including body text, weighted metadata, filters, and
+search excerpts. New and changed public files receive a synchronized sitemap
+`lastmod`; `noindex` pages and canonical aliases are excluded.
 The normal `publish.ps1` flow runs this build before validation so generated
 surfaces cannot silently drift.
 
