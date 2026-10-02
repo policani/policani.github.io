@@ -544,32 +544,33 @@
                                         ]
                     },
                     {
-                        "sequence":  18,
-                        "slug":  "epmo-capacity-not-calendars",
-                        "category":  "portfolio-delivery",
-                        "title":  "The EPMO\u0027s job is capacity, not calendars",
-                        "summary":  "Every project has a date and every plan looks solid on its own. But the same few people, systems, and approval forums turn up in all of them. Each plan is fine. The sum is fiction.",
-                        "metaDescription":  "Every plan looks sound alone while the same scarce people appear in all of them. Govern EPMO demand against real capacity, not against the calendar.",
-                        "operatingMove":  "Govern real demand against the people and systems you actually have, by role, skill, and dependency. The calendar shows what everyone intends to do. The decision is which work gets the scarce capacity and which work waits.",
-                        "preview":  "A portfolio calendar shows when activity is planned. It does not show whether the organization has the scarce roles, skills, attention, and dependency capacity to deliver it. This paper puts the EPMO\u0027s attention on active demand and the capacity that constrains it, and gives leaders a way to expose overload, compare tradeoffs, and decide which commitments move, change shape, or wait.",
-                        "inside":  [
-                                       "Why every plan can be sound on its own and the sum still impossible",
-                                       "How to model the roles, skills, and approval forums that actually constrain the work",
-                                       "How to present choices about what waits, instead of one plan that cannot hold"
-                                   ],
-                        "pdf":  "marco-policani-epmo-capacity-not-calendars.pdf",
-                        "socialImage":  "field-note-epmo-capacity-not-calendars-1200x627.png",
-                        "pages":  10,
-                        "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-10-01",
-                        "sourcesHtml":  [
-                                            "\u003ca href=\"https://www.stage-gate.com/blog/stage-gate-the-quintessential-decision-factory/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eMichelle Jones\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eProject Management Institute\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eRobert G. Cooper \u0026amp; Scott J. Edgett\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.pmi.org/disciplined-agile/controlling-work-in-process-wip\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eProject Management Institute\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/how-to-put-your-money-where-your-strategy-is\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eStephen Hall et al.\u003c/a\u003e",
-                                            "\u003ca href=\"https://www.bain.com/insights/measuring-decision-effectiveness/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eBlenko\u003c/a\u003e"
-                                        ]
+                      "sequence": 18,
+                      "slug": "epmo-capacity-not-calendars",
+                      "category": "portfolio-delivery",
+                      "title": "The EPMO's job is capacity, not calendars",
+                      "summary": "Every project has a date and every plan looks solid on its own. But the same few people, systems, and approval forums turn up in all of them. Each plan is fine. The sum is fiction.",
+                      "metaDescription": "Every plan looks sound alone while the same scarce people appear in all of them. Govern EPMO demand against real capacity, not against the calendar.",
+                      "operatingMove": "Govern real demand against the people and systems you actually have, by role, skill, and dependency. The calendar shows what everyone intends to do. The decision is which work gets the scarce capacity and which work waits.",
+                      "preview": "A portfolio calendar shows when activity is planned. It does not show whether the organization has the scarce roles, skills, attention, and dependency capacity to deliver it. This paper puts the EPMO's attention on active demand and the capacity that constrains it, and gives leaders a way to expose overload, compare tradeoffs, and decide which commitments move, change shape, or wait.",
+                      "inside": [
+                        "Why every plan can be sound on its own and the sum still impossible",
+                        "How to model the roles, skills, and approval forums that actually constrain the work",
+                        "How to present choices about what waits, instead of one plan that cannot hold"
+                      ],
+                      "pdf": "marco-policani-epmo-capacity-not-calendars.pdf",
+                      "socialImage": "field-note-epmo-capacity-not-calendars-1200x627.png",
+                      "pages": 10,
+                      "publishedLabel": "Jul 2026",
+                      "lastModified": "2026-10-01",
+                      "sourcesHtml": [
+                        "<a href=\"https://www.stage-gate.com/blog/stage-gate-the-quintessential-decision-factory/\" target=\"_blank\" rel=\"noopener noreferrer\">Michelle Jones</a>",
+                        "<a href=\"https://www.pmi.org/learning/thought-leadership/driving-success-in-complex-projects\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
+                        "<a href=\"https://www.stage-gate.com/blog/portfolio-management-fundamental-for-new-product-success/\" target=\"_blank\" rel=\"noopener noreferrer\">Robert G. Cooper &amp; Scott J. Edgett</a>",
+                        "<a href=\"https://www.pmi.org/disciplined-agile/controlling-work-in-process-wip\" target=\"_blank\" rel=\"noopener noreferrer\">Project Management Institute</a>",
+                        "<a href=\"https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/how-to-put-your-money-where-your-strategy-is\" target=\"_blank\" rel=\"noopener noreferrer\">Stephen Hall et al.</a>",
+                        "<a href=\"https://www.bain.com/insights/measuring-decision-effectiveness/\" target=\"_blank\" rel=\"noopener noreferrer\">Blenko</a>"
+                      ],
+                      "showSocialPreview": true
                     },
                     {
                       "sequence": 17,
