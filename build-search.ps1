@@ -215,7 +215,7 @@ function Sync-Sitemap($Records) {
         $relativePath = ([string]$record.RelativePath).Replace('\', '/')
         if ($changedPaths.ContainsKey($relativePath) -and [string]$node.lastmod -ne $today) {
             if ($node.lastmod) {
-                $node.lastmod = $today
+                $node.SelectSingleNode("*[local-name()='lastmod']").InnerText = $today
             } else {
                 $lastmod = $xml.CreateElement('lastmod', $namespace)
                 $lastmod.InnerText = $today
