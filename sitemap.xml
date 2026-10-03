@@ -600,4 +600,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://policani.net/governance/field-notes/average-error-is-not-the-exposure.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/whitepapers/marco-policani-average-error-is-not-the-exposure.pdf</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/field-notes/talent-review-list-hides-the-people-the-portfolio-needs.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://policani.net/governance/whitepapers/marco-policani-talent-review-list-hides-the-people-the-portfolio-needs.pdf</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>
