@@ -473,20 +473,20 @@
                         "slug":  "demo-to-production-gap",
                         "category":  "ai-governance",
                         "title":  "The demo-to-production gap",
-                        "summary":  "A demo shows what a system can do with inputs someone chose in advance. Production asks whether real work can depend on it in ordinary conditions, under change, and when something goes wrong.",
-                        "metaDescription":  "A demo proves what can work with chosen inputs. Production needs an owner, the messy cases, monitoring, recovery, and a way to stop it.",
-                        "operatingMove":  "Before a real workflow depends on a system that has only passed a demo, name who owns it, test it on the messy cases, put monitoring and a recovery path in place, and agree how it gets stopped and who can stop it.",
-                        "preview":  "The demo runs clean: a handful of cases picked from thousands, in the formats the system handles best, with none of the messy ones that make up a third of the real work. Nothing dishonest happens in that room. Demos exist to show what is possible. The failure comes afterward, when possibility is quietly promoted to proof and nobody asks what changed between the two worlds. This paper sets out the evidence you need before ordinary users, ordinary data, and ordinary pressure are allowed to depend on it.",
+                        "summary":  "A demo shows what an AI tool can do with inputs someone chose in advance. Real work asks whether the business can depend on it in ordinary use, as things change, and when something goes wrong.",
+                        "metaDescription":  "A demo proves what can work with hand-picked inputs. Real use needs an owner, tested hard cases, a plan for failures, and a way to shut the tool off.",
+                        "operatingMove":  "Before real work depends on an AI tool that has only passed a demo, name who owns it, test it on the hard cases, set up monitoring and a recovery plan, and agree in advance who can shut it off and how.",
+                        "preview":  "The demo runs clean: a handful of cases picked from thousands, in the formats the tool handles best, with none of the messy ones that make up a third of the real work. Nothing dishonest happens in that room. Demos exist to show what is possible. The failure comes afterward, when a good demo is quietly treated as proof the tool will work in daily use and nobody asks what changed. This paper sets out the evidence the business needs before ordinary users, ordinary data, and ordinary pressure are allowed to depend on it.",
                         "inside":  [
                                        "What a clean demo proves, and what it quietly leaves out",
-                                       "The evidence a real workflow needs: an owner, the messy cases, monitoring, and recovery",
-                                       "Who can stop it, and how that authority gets agreed before anyone depends on it"
+                                       "The evidence real work needs: an owner, the hard cases, monitoring, and recovery",
+                                       "Who can shut the tool off, and how that gets agreed before anyone depends on it"
                                    ],
                         "pdf":  "marco-policani-demo-to-production-gap.pdf",
                         "socialImage":  "field-note-demo-to-production-gap-1200x627.png",
                         "pages":  14,
                         "publishedLabel":  "Jul 2026",
-                        "lastModified":  "2026-10-03",
+                        "lastModified":  "2026-10-04",
                         "sourcesHtml":  [
                                             "\u003ca href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eAlex Singla et al.\u003c/a\u003e",
                                             "\u003ca href=\"https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eDeloitte\u003c/a\u003e",
