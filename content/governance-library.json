@@ -473,10 +473,10 @@
                         "slug":  "demo-to-production-gap",
                         "category":  "ai-governance",
                         "title":  "The demo-to-production gap",
-                        "summary":  "A demo shows what an AI tool can do with inputs someone chose in advance. Real work asks whether the business can depend on it in ordinary use, as things change, and when something goes wrong.",
+                        "summary":  "AI has made demos cheap to build, so more of them reach a funding decision with less checking. A demo shows what an AI tool can do with inputs someone chose in advance. Real work asks whether the business can depend on it day to day, as things change, and when something goes wrong.",
                         "metaDescription":  "A demo proves what can work with hand-picked inputs. Real use needs an owner, tested hard cases, a plan for failures, and a way to shut the tool off.",
                         "operatingMove":  "Before real work depends on an AI tool that has only passed a demo, name who owns it, test it on the hard cases, set up monitoring and a recovery plan, and agree in advance who can shut it off and how.",
-                        "preview":  "The demo runs clean: a handful of cases picked from thousands, in the formats the tool handles best, with none of the messy ones that make up a third of the real work. Nothing dishonest happens in that room. Demos exist to show what is possible. The failure comes afterward, when a good demo is quietly treated as proof the tool will work in daily use and nobody asks what changed. This paper sets out the evidence the business needs before ordinary users, ordinary data, and ordinary pressure are allowed to depend on it.",
+                        "preview":  "The demo runs clean: a handful of cases picked from thousands, with none of the messy ones that make up a third of the real work. Nothing dishonest happens in that room. Demos exist to show what is possible. The failure comes afterward, when a good demo is treated as proof the tool will work in daily use and nobody asks what changed. AI has made that failure more common, because demos are now cheap to build. This paper sets out the evidence the business needs before ordinary users, data, and pressure are allowed to depend on it.",
                         "inside":  [
                                        "What a clean demo proves, and what it quietly leaves out",
                                        "The evidence real work needs: an owner, the hard cases, monitoring, and recovery",
@@ -484,7 +484,7 @@
                                    ],
                         "pdf":  "marco-policani-demo-to-production-gap.pdf",
                         "socialImage":  "field-note-demo-to-production-gap-1200x627.png",
-                        "pages":  14,
+                        "pages":  15,
                         "publishedLabel":  "Jul 2026",
                         "lastModified":  "2026-10-04",
                         "sourcesHtml":  [
