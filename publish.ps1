@@ -115,7 +115,9 @@ $leakPatterns = @(
     'This is the complete version',
     'pending Marco review',
     'Editorial Gate',
-    'article-packet'
+    'article-packet',
+    '<<<<<<< ',
+    '>>>>>>> '
 )
 $leaks = @()
 foreach ($file in $changedHtml) {
