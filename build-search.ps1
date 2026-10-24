@@ -105,7 +105,9 @@ function Get-PublicRecords {
     $rootPrefix = [IO.Path]::GetFullPath($siteRoot).TrimEnd([IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
     $htmlFiles = @(Get-ChildItem -LiteralPath $siteRoot -Recurse -File -Filter '*.html' | Where-Object {
         $relative = [IO.Path]::GetFullPath($_.FullName).Substring($rootPrefix.Length).Replace([IO.Path]::DirectorySeparatorChar, '/')
-        $relative -notmatch '^(?:\.git|\.site-tools|pagefind)(?:/|$)'
+        # prospecting/ is the Claim Access Directory, a separate site built
+        # elsewhere and kept out of this site's sitemap and search.
+        $relative -notmatch '^(?:\.git|\.site-tools|pagefind|prospecting)(?:/|$)'
     })
 
     foreach ($file in $htmlFiles) {
