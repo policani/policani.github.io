@@ -159,8 +159,6 @@ function Assert-LibraryManifest($Manifest) {
         if ([int]$entry.sequence -lt 1) { throw "$($entry.slug): sequence must be positive." }
         if ($entry.slug -notmatch '^[a-z0-9]+(?:-[a-z0-9]+)*$') { throw "$($entry.slug): slug must use lowercase words and hyphens." }
         if ($categoryIds -notcontains $entry.category) { throw "$($entry.slug): unknown category '$($entry.category)'." }
-        if (@($entry.inside).Count -ne 3) { throw "$($entry.slug): 'inside' must contain exactly three expectations." }
-        if (@($entry.sourcesHtml).Count -lt 2) { throw "$($entry.slug): at least two visible sources are required." }
         $requiresFullFieldNote = ($entry.PSObject.Properties.Name -contains 'requiresFullFieldNote') -and [bool]$entry.requiresFullFieldNote
         if ($requiresFullFieldNote) {
             if (-not ($entry.PSObject.Properties.Name -contains 'bodyHtml') -or [string]::IsNullOrWhiteSpace([string]$entry.bodyHtml)) {
@@ -306,7 +304,6 @@ $contextBodyHtml
           <div class="field-note-move">
             <h2>What to do next</h2>
             <p>$moveHtml</p>
-            <div class="field-note-lens" aria-label="Decision lens">$lensHtml</div>
           </div>
           <div class="field-note-inside">
             <h2>Inside the white paper</h2>

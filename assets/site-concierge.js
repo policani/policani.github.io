@@ -3,6 +3,11 @@
   const emailParts = ["policani", "outlook", "com"];
   const emailAddress = `${emailParts[0]}@${emailParts[1]}.${emailParts[2]}`;
 
+  // Links are written from the site root; resolve them against this script's folder so they
+  // work from pages at any depth.
+  const scriptSrc = document.currentScript && document.currentScript.src;
+  const siteRoot = scriptSrc ? new URL("../", scriptSrc) : new URL("/", window.location.href);
+
   const links = [
     ["Role fit", "pmo-portfolio-governance-leader.html"],
     ["Cases", "operating-history.html#entries"],
@@ -69,7 +74,7 @@
     const linkList = createElement("nav", "concierge-link-list");
     linkList.setAttribute("aria-label", "Helpful portfolio links");
     links.forEach(([label, href]) => {
-      linkList.append(buildLink(label, href));
+      linkList.append(buildLink(label, new URL(href, siteRoot).href));
     });
     body.append(linkList);
 

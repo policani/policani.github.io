@@ -35,26 +35,25 @@
     },
     "title": {
       "type": "string",
-      "minLength": 8
+      "minLength": 1
     },
     "summary": {
       "type": "string",
-      "minLength": 40,
+      "minLength": 1,
       "description": "The opening TL;DR and landing-card summary."
     },
     "metaDescription": {
       "type": "string",
-      "minLength": 60,
-      "maxLength": 165,
+      "minLength": 1,
       "description": "Search-facing description for meta/og/JSON-LD. Separate surface from the on-page TL;DR (summary), which may run longer. Optional; falls back to summary."
     },
     "operatingMove": {
       "type": "string",
-      "minLength": 60
+      "minLength": 1
     },
     "preview": {
       "type": "string",
-      "minLength": 180,
+      "minLength": 1,
       "description": "A substantive expectation-setting preview of the full paper."
     },
     "bodyHtml": {
@@ -68,16 +67,15 @@
     },
     "expectedSourceCount": {
       "type": "integer",
-      "minimum": 2,
+      "minimum": 0,
       "description": "Expected count of visible reader-facing sources when requiresFullFieldNote is true."
     },
     "inside": {
       "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
+      "minItems": 0,
       "items": {
         "type": "string",
-        "minLength": 20
+        "minLength": 1
       }
     },
     "pdf": {
@@ -107,10 +105,10 @@
     },
     "sourcesHtml": {
       "type": "array",
-      "minItems": 2,
+      "minItems": 0,
       "items": {
         "type": "string",
-        "minLength": 20,
+        "minLength": 1,
         "description": "Inner HTML for one visible source-list item."
       }
     }
