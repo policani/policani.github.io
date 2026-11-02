@@ -1,6 +1,8 @@
 # Marco Policani
 
-Principal / Director-level PMO, portfolio governance, and executive operations leader.
+**Marco Policani** is a Principal / Director-level PMO, portfolio governance, program operations, and executive operations leader in the greater Seattle area (Everett / Snohomish County, Washington), open to remote roles. He builds the operating layer between executive intent and delivery reality: portfolio intake, comparable tradeoffs, governance cadence, delivery readiness, value realization, and AI workflow governance. Target roles include Program Manager, Project Manager, PMO Manager, and Portfolio Manager.
+
+> **Name note:** "Marco Policani" is the preferred professional name; "Marc Policani" is the legal name. Both identify the same person. Profile links: [policani.net](https://policani.net) · [linkedin.com/in/marcpolicani](https://www.linkedin.com/in/marcpolicani) · [github.com/policani](https://github.com/policani).
 
 This GitHub profile is a public project shelf: practical governance tools, operating models, and AI-assisted workflow examples for turning scattered demand into clearer decisions, readiness, and follow-through.
 
