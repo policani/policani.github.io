@@ -88,6 +88,8 @@
     gap:14px;
     align-items:start;
   }
+  .grid > * { min-width:0; }
+  .table-scroll { overflow-x:auto; }
   .card {
     background:var(--paper);
     border:1px solid var(--line);
@@ -123,6 +125,7 @@
     color:var(--ink);
   }
   .check-option input { width:auto; margin:0; }
+  .tz-grid { grid-template-columns:repeat(4, minmax(0, 1fr)); margin-bottom:4px; }
   .location-grid {
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -280,24 +283,100 @@
     text-decoration:none;
   }
   .nowrap { white-space:nowrap; }
+  .topbar {
+    position:sticky;
+    top:0;
+    z-index:5;
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    margin:-22px -22px 16px;
+    padding:14px 22px;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    box-shadow:var(--shadow);
+  }
+  .brand { min-width:0; flex:1 1 320px; }
+  .summary { margin:2px 0 0; font-size:12px; overflow-wrap:anywhere; }
+  .toolbar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .tabs { display:flex; gap:2px; flex:1 1 100%; margin:2px -22px -14px; padding:0 22px; border-top:1px solid var(--line); }
+  .tabs button { background:transparent; border:0; border-bottom:3px solid transparent; border-radius:0; color:var(--muted); padding:10px 14px 9px; }
+  .tabs button:hover { color:var(--blue2); }
+  .tabs button[aria-selected="true"] { color:var(--blue2); border-bottom-color:var(--blue2); }
+  .tabs button:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
+  .config-view[hidden], .results-view[hidden] { display:none; }
+  .config-head {
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    margin-bottom:4px;
+  }
+  .config-head h2 { font-size:16px; text-transform:none; letter-spacing:0; margin-bottom:2px; }
+  .config-grid {
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:14px;
+    align-items:start;
+    margin-top:10px;
+  }
+  .config-grid .card + .card { margin-top:0; }
+  .config-grid .span-all { grid-column:1 / -1; }
+  .config-grid .criteria-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+  .results-view .card + .card, .results-view > .card { margin-top:0; margin-bottom:14px; }
+  .count { font-weight:600; color:var(--muted); }
+  @media (max-width:900px) {
+    body { padding:16px; }
+    .topbar { margin:-16px -16px 14px; padding:12px 16px; }
+    .tabs { margin:2px -16px -12px; padding:0 16px; }
+    .config-grid, .config-grid .criteria-grid { grid-template-columns:minmax(0, 1fr); }
+  }
   @media (max-width:1100px) {
-    .grid { grid-template-columns:1fr; }
+    .grid { grid-template-columns:minmax(0,1fr); }
     .stats { grid-template-columns:repeat(2,1fr); }
     .report-grid { grid-template-columns:repeat(2,1fr); }
     .check-grid, .location-grid { grid-template-columns:1fr; }
+    .tz-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .diag-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .source-row { flex-wrap:wrap; overflow-wrap:anywhere; }
+    .source-row span:last-child { text-align:left; }
+    .log { overflow-wrap:anywhere; }
   }
 </style>
 </head>
 <body>
-<div class="top">
-  <div>
+<header class="topbar">
+  <div class="brand">
     <h1>Job Boards Scanner</h1>
-    <p>Local job search tool for filtering job-board results by posting age, location, pay, title terms, evidence terms, and exclusions.</p>
+    <p class="summary" id="configSummary">Local job search across employer job boards.</p>
   </div>
-</div>
+  <div class="toolbar">
+    <button id="runBtn">Run Search</button>
+    <button class="warn" id="stopBtn" disabled>Stop</button>
+    <button class="secondary" id="csvBtn">Export CSV</button>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="View">
+    <button type="button" role="tab" id="tabSearch" aria-selected="true" aria-controls="resultsView">Search</button>
+    <button type="button" role="tab" id="tabConfig" aria-selected="false" aria-controls="configView" tabindex="-1">Configuration</button>
+  </nav>
+</header>
 
-<div class="grid">
-  <div>
+<section class="config-view" id="configView" role="tabpanel" aria-labelledby="tabConfig" hidden>
+  <div class="config-head">
+    <div>
+      <h2>Configuration</h2>
+      <p class="field-help">Settings save automatically in this browser. Run Search uses them and switches to the Search view.</p>
+    </div>
+    <div class="toolbar">
+      <button class="secondary" id="saveBtn">Save Settings</button>
+      <button class="secondary" id="resetBtn">Reset Settings</button>
+    </div>
+  </div>
+  <div class="status" id="saveStatus"></div>
+  <div class="config-grid">
     <div class="card">
       <h2>Run Profile</h2>
       <label for="ageDays">Posting age</label>
@@ -316,6 +395,10 @@
         <label class="check-option"><input type="checkbox" id="locHybrid"> Hybrid</label>
         <label class="check-option"><input type="checkbox" id="locOnsite"> Onsite</label>
       </div>
+      <div class="row" style="margin-top:8px">
+        <button class="secondary" id="presetRemoteUsBtn">Apply Remote-US preset</button>
+      </div>
+      <div class="hint">One click: 14-day window, US remote only, clears the metro filter, and turns off "posted salary required" (keeps your salary floor). Widening the age window is the biggest lever for more matches.</div>
 
       <div class="location-grid">
         <div>
@@ -342,7 +425,17 @@
         <p class="field-help">Metro matching uses this editable city list. Use one city per line.</p>
         <textarea id="metroCities" placeholder="Seattle&#10;Everett&#10;Bellevue"></textarea>
       </div>
-      <div class="hint">Default: remote roles in the United States. Metro areas load from a free local data file and use editable city lists.</div>
+      <div class="hint">US searches require a US location or explicit US/worldwide hiring eligibility. A bare "Remote" label is not enough. Check each posting for state restrictions. Metro areas use editable city lists.</div>
+      <label>Working hours I can cover (US time zones)</label>
+      <div class="check-grid tz-grid">
+        <label class="check-option"><input type="checkbox" id="tzPacific" checked> Pacific</label>
+        <label class="check-option"><input type="checkbox" id="tzMountain" checked> Mountain</label>
+        <label class="check-option"><input type="checkbox" id="tzCentral" checked> Central</label>
+        <label class="check-option"><input type="checkbox" id="tzEastern" checked> Eastern</label>
+      </div>
+      <div class="hint">Uncheck a time zone to screen out roles that explicitly require working its hours, such as "must work Eastern Time hours." Roles that name no time zone, or also allow a checked one, stay in.</div>
+      <label class="check-option" style="margin-top:8px"><input type="checkbox" id="excludeNonUsHours" checked> Exclude roles requiring non-US working hours</label>
+      <div class="hint">Screens explicit foreign business-hours requirements. A global team or occasional overseas meeting alone is not a restriction. Unstated schedules still need review.</div>
 
       <label for="compFloor">Minimum acceptable base salary</label>
       <select id="compFloor"></select>
@@ -350,24 +443,11 @@
       <div class="hint">A job appears when the selected salary amount is covered by its posted range. For example, a role listed at $160,000-$240,000 appears when this is set to $220,000.</div>
 
       <div class="hint">One day is the daily scan; use seven days when the window needs backfill.</div>
-
-      <div class="row" style="margin-top:12px">
-        <button id="runBtn">Run Search</button>
-        <button class="secondary" id="saveBtn">Save Settings</button>
-        <button class="secondary" id="resetBtn">Reset Settings</button>
-      </div>
-      <div class="status" id="saveStatus"></div>
-      <div class="row" style="margin-top:8px">
-        <button class="secondary" id="csvBtn">Export CSV</button>
-      </div>
     </div>
 
     <div class="card">
-      <h2>Editable Criteria</h2>
-
-      <details open>
-        <summary>Discovery and Routing</summary>
-        <div class="criteria-grid">
+      <h2>Title Keywords</h2>
+      <div class="criteria-grid">
           <div class="criteria-block">
             <label for="titleStrong">Primary title keywords</label>
             <p class="field-help">Use one title keyword or phrase per line. Multi-word phrases can also match titles with a short word gap, such as AI Manager matching AI Program Manager. Quotation marks are not required.</p>
@@ -388,44 +468,39 @@
             <p class="field-help">Use one title keyword or phrase per line. Matching titles are removed before body-text evidence is considered.</p>
             <textarea id="titleExclude" placeholder="Account Executive&#10;Software Engineer&#10;Recruiter"></textarea>
           </div>
-        </div>
-      </details>
+      </div>
+    </div>
 
-      <details>
-        <summary>Body Evidence</summary>
+    <div class="card">
+      <h2>Body Evidence</h2>
         <div class="criteria-block">
           <label for="bodyEvidence">Body evidence keywords</label>
           <p class="field-help">Use one keyword or phrase per line. These are searched in the job description to prove the role contains work you care about, not just a matching title.</p>
           <textarea id="bodyEvidence" placeholder="Portfolio governance&#10;Executive reporting&#10;Capacity planning&#10;Cross-functional delivery"></textarea>
         </div>
-      </details>
+    </div>
 
-      <details>
-        <summary>Hard Stops and Exclusions</summary>
+    <div class="card">
+      <h2>Hard Stops and Exclusions</h2>
         <div class="criteria-block">
           <label for="bodyExclude">Body exclusion keywords</label>
           <p class="field-help">Use one keyword or phrase per line. If a phrase appears in the title, location, or job description, the role is removed as a hard stop.</p>
           <textarea id="bodyExclude" placeholder="Security clearance&#10;Quota carrying&#10;Travel required&#10;Must be fluent in Spanish"></textarea>
         </div>
-      </details>
+    </div>
 
-      <details>
-        <summary>Sources</summary>
+    <div class="card span-all">
+      <h2>Sources</h2>
         <div class="criteria-block">
-          <label for="sourceList">Source list</label>
+          <label for="sourceList">Source list <span class="count" id="sourceCount"></span></label>
           <p class="field-help">Use one source per line. At least one source is required before a search can run. Supported formats are shown below; each platform has its own source identifier.</p>
-          <textarea id="sourceList" style="min-height:160px" placeholder="greenhouse|company-slug&#10;ashby|company-slug&#10;lever|company-slug&#10;recruitee|company-slug&#10;smartrecruiters|CompanySlug&#10;workday|Company|host|tenant|site&#10;himalayas|keyword-search"></textarea>
+          <textarea id="sourceList" style="min-height:320px" placeholder="greenhouse|company-slug&#10;ashby|company-slug&#10;lever|company-slug&#10;recruitee|company-slug&#10;smartrecruiters|CompanySlug&#10;workable|company-slug&#10;breezy|company-slug&#10;bamboohr|company-slug&#10;personio|company-slug&#10;workday|Company|host|tenant|site&#10;himalayas|keyword-search&#10;remotive|keyword-search&#10;arbeitnow|remote-board&#10;themuse|role-category-discovery&#10;jobicy|remote-board"></textarea>
         </div>
-      </details>
     </div>
   </div>
+</section>
 
-  <div>
-    <div class="card">
-      <h2>Source Links</h2>
-      <div class="links" id="searchLinks"></div>
-    </div>
-
+<main class="results-view" id="resultsView" role="tabpanel" aria-labelledby="tabSearch">
     <div class="card">
       <h2>Run Log</h2>
       <div class="progress-wrap">
@@ -452,10 +527,17 @@
     <div id="mainResults"></div>
     <div id="reviewResults"></div>
     <div id="diagnostics"></div>
-  </div>
-</div>
+
+    <div class="card">
+      <h2>Source Links</h2>
+      <div class="links" id="searchLinks"></div>
+    </div>
+</main>
 
 <script>
+// Location gate hook. Every posting passes here; the location settings do the filtering.
+function screenCandidateLocation(job, text) { return { decision: "PASS_LOCATION_GATE", reasons: [], evidence: [] }; }
+
 // Free local metro data for Job Boards Scanner.
 // Generated from U.S. Census Bureau July 2023 CBSA delineations and GeoNames US populated places.
 // GeoNames data is licensed under CC BY 4.0: https://www.geonames.org/
@@ -465,24 +547,69 @@ window.JOB_SEARCH_METRO_DATA = {"version":"2023-census-geonames-pop1000","source
 const STORAGE_KEY = "jobSearchEngineCriteria_v1";
 const LEGACY_STORAGE_KEYS = [];
 const SOURCE_CONCURRENCY = 8;
-const DEFAULT_COMP_FLOOR = 170000;
+// Set while a run is in progress; Stop aborts it so in-flight requests end at once.
+let runController = null;
+function requestSignal(timeout) {
+  const timer = AbortSignal.timeout(timeout);
+  return runController ? AbortSignal.any([timer, runController.signal]) : timer;
+}
+function stopScout() {
+  if (!runController || runController.signal.aborted) return;
+  runController.abort();
+  $("stopBtn").disabled = true;
+  log("Stop requested: finishing up and keeping results collected so far.");
+}
+const DEFAULT_COMP_FLOOR = 0;
 function splitSourceText(text) {
   return String(text || "").split(/\s+/).map(x => x.trim()).filter(Boolean);
 }
 const GH_SOURCE_SLUGS = splitSourceText(`
-smartsheet figma gitlab aha asana airtable pendo amplitude hubspot mixpanel qualtrics remote degreed lattice brex gongio salesloft showpad 6sense invoca five9 crossbeam cresta partnerstack iterable dialpad impact braze klaviyo listrak bombora labelbox apollo anthropic databricks starburst fivetran sisense intercom chainguard cloudflare verkada onetrust samsara okta zscaler axonius jfrog veracode logicmonitor postman workato celigo carta newrelic payoneer gusto pleo melio faire flexport fourkites collibra nice project44 anaplan wrike modernhealth affirm calm coursera udemy udacity skillsoft 2u justworks pagerduty zuora stripe toast twilio sendbird vonage zenvia algolia elastic bandwidth bird fastspring ivalua solarwinds bridgeu learnupon chargepoint icon netcracker flexe make kayak skyscanner 7shifts alloy bob checkr conga datadog guidde honeycomb hyperproof instabase laika mixmax packlink pandadoc pirateship reachdesk relativity sendcloud sterling stitch taxbit workstream launchdarkly zenoti descript netlify grafanalabs dbtlabsinc boulevard homelight buildkite buildkite-talent-community webflow upgrade echodynecorp echodyneinternships hopskipdrive aiserajobs omadahealth philo talkdesk2 mntn hs headspaceproviders gofundme placementsio snorkelai paveakatroveinformationtechnologies whalarinc sourcegraph91 mdclarity runpod extrahopnetworks reddit trustwill astranis xealth casago scopely robinhood dropbox pinterest discord instacart airbnb lyft chime sofi squarespace roblox
+smartsheet figma gitlab aha asana airtable pendo hubspot mixpanel qualtrics remote degreed lattice brex gongio salesloft showpad 6sense invoca five9 crossbeam cresta partnerstack dialpad impact braze klaviyo listrak bombora labelbox anthropic databricks starburst fivetran intercom chainguard cloudflare verkada onetrust samsara okta zscaler axonius jfrog veracode logicmonitor postman workato celigo carta newrelic payoneer gusto melio faire flexport fourkites collibra nice project44 anaplan wrike modernhealth affirm calm coursera udemy udacity skillsoft 2u justworks pagerduty zuora stripe toast twilio sendbird vonage zenvia algolia elastic bandwidth bird fastspring ivalua solarwinds learnupon chargepoint icon netcracker flexe make alloy bob checkr conga datadog guidde honeycomb hyperproof instabase laika mixmax packlink pandadoc pirateship reachdesk relativity sendcloud sterling stitch taxbit workstream launchdarkly zenoti descript netlify grafanalabs boulevard homelight buildkite buildkite-talent-community upgrade echodynecorp hopskipdrive aiserajobs omadahealth talkdesk2 mntn hs headspaceproviders gofundme placementsio snorkelai paveakatroveinformationtechnologies whalarinc sourcegraph91 mdclarity extrahopnetworks reddit trustwill astranis xealth casago scopely robinhood dropbox pinterest discord instacart airbnb lyft chime sofi squarespace roblox
+coinbase duolingo fastly scaleai xai vercel peloton
+mongodb cockroachlabs twitch seatgeek sweetgreen roku circleci zoominfo gemini
+metalab skylighthq trussworksinc evergreenaction headlandstechnologiesllc horizonindustrieslimited
+tailscale canonical huntress cribl cognite
+3cloud 8thlightrebuild abacusinsights able ag1 alphasense amiralearning apexit attentive
+aviary blinkhealth branch braveheartbio carrotfertility cloverhealth courtyardinc daylightsecurity doordashusa
+dragos episodesixlinkedin fairmarkit fortrobotics goldengateinstituteforai hugeinc intrinsicfirm itd karat
+konovo lendzfinancial liminalai lindawernerassociates myriad360 networkbio nttdatausa openfx openmined
+pathward pfm pindropsecurity pingidentity planetscale precisionmedicinegroup prolific purestorage redwoodsoftware
+spauldingridge stackadapt swordhealth thehunleygroup trace3 updater valimail velir vulncheck mercury Wizinc boomilp
 `);
 const ASHBY_SOURCE_SLUGS = splitSourceText(`
-ashby linear loom fellow tango dovetail orbit sierra perplexity salesloft mistral harvey cohere orca wiz langchain drata oneleet mercury wrapbook numeric camunda ramp vanta abacum notion 1password airtable temporal plane inngest amplitude posthog fullstory prometheus sentry prefect astronomer conductor windmill kestra anyscale modal airbyte coalesce sesame lightdash deel pave cube compa persona sardine talkdesk homebase socure kira anrok project44 convey hyperscience nanonets kustomer lemlist helpscout paddle stytch workos gorgias clerk absorblms angi atlan boomi capchase clearco clickup datafold demandbase docebo echo expensify g2 gainsight hopper jobber kiwi kong leapsome mosaic mural n8n openai orum plaid planhat procurify qualified runway sift snowflake snyk spendesk synthesia thumbtack vitally whatnot writer zapier zip tilthq chilipiper alchemy virtahealth betterup hiya frontcareers pinecone assembledhq Maven-agi pearpop read-ai cinder rula revenuecat goteleport hinge-health
+ashby linear fellow tango dovetail orbit sierra perplexity harvey cohere orca langchain drata oneleet wrapbook numeric camunda ramp vanta abacum notion 1password temporal plane inngest amplitude posthog fullstory prometheus sentry prefect astronomer conductor windmill kestra anyscale modal airbyte coalesce sesame lightdash deel pave cube compa persona sardine homebase socure kira anrok convey hyperscience nanonets kustomer lemlist helpscout paddle stytch workos gorgias clerk absorblms angi atlan capchase clearco clickup datafold demandbase docebo echo expensify g2 gainsight hopper jobber kiwi kong leapsome mosaic mural n8n openai orum plaid planhat procurify runway sift snowflake snyk spendesk synthesia thumbtack vitally whatnot writer zapier zip tilthq chilipiper alchemy virtahealth betterup hiya frontcareers pinecone assembledhq Maven-agi pearpop read-ai cinder rula revenuecat goteleport hinge-health
+replit supabase anysphere
+triggerdev rerun spruceid
+docker baseten
+actcareers allocate alphaorigin applausejobs circle ciroos clarium clickhouse climb-ai
+colibri-group compass-surgical-partners curri Cyberhaven elevenlabs exa fieldguide gridunity headway
+hims-and-hers limbic Lorikeet lumin-digital macrohealth masabi miramace mma-global obsidiansystems
+openloophealth optro orderful parloa quo rabc Redis render rightfoot
+roboflow sanity second-nature sentilink shield skydio sovra tessera-labs Tremendous
+uptimeai vanna-health-inc vClusterLabs vesta webflow secureframe iterable verint sisense apollo pleo kayak 7shifts philo runpod mistral.ai marqeta-inc kraken.com eb485598-6bf3-40a5-8560-d70150131305
 `);
 const SMARTRECRUITERS_SOURCE_SLUGS = splitSourceText(`
-SAPSalesCloud SAP Oracle Workday ServiceNow Salesforce Microsoft Adobe Veeva IQVIA Medidata Parexel ICON Syneos CharlesRiver Procore Autodesk Trimble Hexagon AVEVA Bentley PTC Guidewire DuckCreek Majesco Sapiens FIS Fiserv JackHenry SSC Broadridge Temenos IronMountain OpenText Hyland Laserfiche Documentum Verint NICE Genesys Avaya RingCentral 8x8 Informatica Talend Tibco MuleSoft Boomi Jitterbit SnapLogic Celigo Coupa Ivalua JAGGAER Proactis Determine Tradeshift Anaplan Planful Workiva AdaptiveInsights Vena Prophix Jedox Tagetik Solver Avalara Vertex Sovos TaxJar Flexport Project44 FourKites Loadsmart Echo Coyote CHRobinson ZuoraInc Chargebee Recurly Chargify Palantir C3AI Samsara Aspentech HoneywellConnected GEDigital bigcommerce bigtincan docusign freshworks gainsight glean gong hibob justworks lyra mindtickle mosaic namely newrelic nextgen servicetitan together topdesk wise zenefits
+SAPSalesCloud SAP Oracle Workday ServiceNow Salesforce Microsoft Adobe IQVIA Parexel ICON Syneos CharlesRiver Procore Autodesk Trimble Hexagon AVEVA Bentley PTC Guidewire DuckCreek Majesco Sapiens FIS Fiserv JackHenry SSC Broadridge Temenos IronMountain OpenText Hyland Laserfiche Genesys Avaya RingCentral 8x8 Informatica Tibco Jitterbit JAGGAER Tradeshift Planful Workiva Vena Jedox Solver Avalara Vertex Sovos Echo CHRobinson ZuoraInc Chargebee Palantir C3AI Aspentech HoneywellConnected GEDigital bigcommerce bigtincan docusign freshworks gainsight glean gong hibob justworks lyra mindtickle mosaic namely newrelic nextgen servicetitan together topdesk wise zenefits canva BridgeU1
 `);
 const LEVER_SOURCE_SLUGS = splitSourceText(`
-15five 360learning acceldata accurate alloy atlassian brilliant clari contentsquare conversica cornerstone coupa deputy docebo emburse floqast freshworks highspot kpler loadsmart logrocket matillion metabase mindtickle onit orum outreach palantir pigment plaid saviynt secureframe snaplogic sonatype tecton terminus topdesk trinet veeva workramp oleria-security panopto doubledown perforce
+15five 360learning acceldata accurate alloy atlassian brilliant contentsquare conversica cornerstone coupa deputy emburse floqast highspot kpler loadsmart logrocket matillion metabase mindtickle onit outreach palantir pigment saviynt snaplogic sonatype tecton terminus topdesk trinet veeva oleria-security panopto doubledown perforce
+spotify 
+epoch-ai idmworks
+aledade apryse atmosera avalerehealth bazaarvoice brillio-2 chownow egen
+firemon intersect openx planettechnologies sitetracker supermove ttecdigital
 `);
 const RECRUITEE_SOURCE_SLUGS = splitSourceText(`
 hygraph
+aerolab
+`);
+const WORKABLE_SOURCE_SLUGS = splitSourceText(`
+huggingface flosum care-harmony v4c prophix recurly corcentric
+`);
+const BREEZY_SOURCE_SLUGS = splitSourceText(`
+`);
+const BAMBOOHR_SOURCE_SLUGS = splitSourceText(`
+`);
+const PERSONIO_SOURCE_SLUGS = splitSourceText(`
 `);
 const WORKDAY_SOURCE_TENANTS = [
   ["Salesforce", "salesforce.wd12", "salesforce", "External_Career_Site"],
@@ -521,17 +648,97 @@ const WORKDAY_SOURCE_TENANTS = [
 const DEFAULT_SOURCE_LIST = [
   ...GH_SOURCE_SLUGS.map(slug => `greenhouse|${slug}`),
   ...ASHBY_SOURCE_SLUGS.map(slug => `ashby|${slug}`),
+  "ashby|Gray Swan AI",
+  "ashby|Stride Build",
   ...LEVER_SOURCE_SLUGS.map(slug => `lever|${slug}`),
   ...RECRUITEE_SOURCE_SLUGS.map(slug => `recruitee|${slug}`),
   ...SMARTRECRUITERS_SOURCE_SLUGS.map(slug => `smartrecruiters|${slug}`),
+  ...WORKABLE_SOURCE_SLUGS.map(slug => `workable|${slug}`),
+  ...BREEZY_SOURCE_SLUGS.map(slug => `breezy|${slug}`),
+  ...BAMBOOHR_SOURCE_SLUGS.map(slug => `bamboohr|${slug}`),
+  ...PERSONIO_SOURCE_SLUGS.map(slug => `personio|${slug}`),
   ...WORKDAY_SOURCE_TENANTS.map(parts => `workday|${parts.join("|")}`),
-  "himalayas|remote-keyword-discovery"
+  "himalayas|remote-keyword-discovery",
+  "remotive|remote-keyword-discovery",
+  "arbeitnow|remote-board",
+  "themuse|role-category-discovery",
+  "jobicy|remote-board"
+];
+// Former default sources (employer moved boards, was acquired, or was listed twice).
+// They are removed from saved source lists on load. Maintained with the catalog.
+const RETIRED_DEFAULT_SOURCES = [
+  "ashby|salesloft",
+  "greenhouse|amplitude",
+  "lever|docebo",
+  "lever|freshworks",
+  "smartrecruiters|Veeva",
+  "lever|orum",
+  "ashby|airtable",
+  "lever|plaid",
+  "smartrecruiters|SnapLogic",
+  "ashby|project44",
+  "smartrecruiters|Project44",
+  "smartrecruiters|Coupa",
+  "smartrecruiters|NICE",
+  "smartrecruiters|Anaplan",
+  "smartrecruiters|Celigo",
+  "smartrecruiters|Ivalua",
+  "smartrecruiters|Loadsmart",
+  "smartrecruiters|Samsara",
+  "smartrecruiters|Flexport",
+  "smartrecruiters|FourKites",
+  "greenhouse|webflow",
+  "ashby|mercury",
+  "lever|secureframe",
+  "greenhouse|iterable",
+  "smartrecruiters|Verint",
+  "lever|canva",
+  "greenhouse|sisense",
+  "greenhouse|apollo",
+  "smartrecruiters|Prophix",
+  "smartrecruiters|Recurly",
+  "greenhouse|pleo",
+  "greenhouse|kayak",
+  "greenhouse|7shifts",
+  "greenhouse|philo",
+  "greenhouse|runpod",
+  "ashby|mistral",
+  "greenhouse|marqeta",
+  "ashby|wiz",
+  "lever|kraken",
+  "ashby|boomi",
+  "smartrecruiters|Boomi",
+  "greenhouse|skyscanner",
+  "greenhouse|bridgeu",
+  "ashby|talkdesk",
+  "greenhouse|echodyneinternships",
+  "lever|clari",
+  "greenhouse|dbtlabsinc",
+  "ashby|qualified",
+  "lever|workramp",
+  "ashby|loom",
+  "smartrecruiters|TaxJar",
+  "smartrecruiters|Talend",
+  "smartrecruiters|MuleSoft",
+  "smartrecruiters|AdaptiveInsights",
+  "smartrecruiters|Chargify",
+  "smartrecruiters|Tagetik",
+  "smartrecruiters|Documentum",
+  "smartrecruiters|Proactis",
+  "smartrecruiters|Coyote",
+  "smartrecruiters|Medidata",
+  "smartrecruiters|Determine",
 ];
 const RUN_DEFAULTS = {
   ageDays: "1",
   locRemote: true,
   locHybrid: false,
   locOnsite: false,
+  excludeNonUsHours: true,
+  tzPacific: true,
+  tzMountain: true,
+  tzCentral: true,
+  tzEastern: true,
   countryPreset: "United States",
   customCountry: "",
   metroPreset: "",
@@ -667,6 +874,11 @@ function moneyFull(n) {
 function populateCompFloorOptions() {
   const el = $("compFloor");
   if (!el || el.options.length) return;
+  const none = document.createElement("option");
+  none.value = "0";
+  none.textContent = "No minimum";
+  if (DEFAULT_COMP_FLOOR === 0) none.selected = true;
+  el.appendChild(none);
   for (let amount = 30000; amount <= 260000; amount += 10000) {
     const opt = document.createElement("option");
     opt.value = String(amount);
@@ -677,7 +889,9 @@ function populateCompFloorOptions() {
 }
 function salaryRangeCoversSelection(comp, settings) {
   if (!settings.compFloor) return Boolean(comp?.low && comp?.high);
-  return Boolean(comp?.low && comp?.high && comp.low <= settings.compFloor && comp.high >= settings.compFloor);
+  // Minimum acceptable salary: any posted range that reaches it passes,
+  // including ranges entirely above it. Unposted pay is handled separately.
+  return Boolean(comp?.low && comp?.high && comp.high >= settings.compFloor);
 }
 function metroData() {
   const data = window.JOB_SEARCH_METRO_DATA;
@@ -736,6 +950,8 @@ function currentLocationSettings() {
       onsite: $("locOnsite").checked
     },
     locationCountry: country,
+    excludeNonUsHours: $("excludeNonUsHours").checked,
+    usTimeZones: US_TIME_ZONES.filter(z => $(z.id).checked).map(z => z.key),
     metroPreset,
     metroCities
   };
@@ -852,6 +1068,17 @@ function loadCriteria(reset = false) {
   }
   if (stored && !hasSourceListValue(stored.sourceList)) {
     stored.sourceList = DEFAULT_SOURCE_LIST;
+  } else if (stored && hasSourceListValue(stored.sourceList)) {
+    // Merge in any newly-added default sources (e.g. aggregators, new companies)
+    // so a saved list still picks up sources added in newer versions of the app.
+    const lines = Array.isArray(stored.sourceList) ? stored.sourceList : String(stored.sourceList).split(/\r?\n/);
+    const retired = new Set(RETIRED_DEFAULT_SOURCES.map(x => x.toLowerCase()));
+    const merged = lines.map(x => String(x || "").trim()).filter(x => x && !retired.has(x.toLowerCase()));
+    const seen = new Set(merged);
+    for (const line of DEFAULT_SOURCE_LIST) {
+      if (!seen.has(line)) { seen.add(line); merged.push(line); }
+    }
+    stored.sourceList = merged;
   }
   for (const [key, val] of Object.entries(DEFAULTS)) {
     const el = $(key);
@@ -988,17 +1215,19 @@ function parseComp(text) {
   if (!candidates.length) return null;
   return candidates.sort((a, b) => b.high - a.high)[0];
 }
-function remoteClass(location, body) {
+function remoteClass(location, body, workplaceType = "") {
   const loc = String(location || "");
   const bodyText = String(body || "");
   const text = `${loc} ${bodyText}`;
+  const declared = norm(workplaceType);
   const nonUs = /\b(canada|mexico|uk|united kingdom|ireland|india|australia|germany|france|netherlands|singapore|emea|apac|latam|brazil|colombia|philippines|dubai|united arab emirates|uae|poland|london|toronto|dublin|bangalore|bengaluru|sydney|berlin|paris|vancouver)\b/i;
   // US-remote signal: only phrases that actually denote a US-based remote role.
   // Bare country mentions ("United States", "USA", "U.S.") are NOT remote signals
   // because work-authorization boilerplate ("authorized to work in the United States")
   // appears in almost every posting and would mislabel onsite/hybrid roles as remote.
   const usRemote = /\b(us-remote|us remote|remote us|remote - us|remote, us|remote, united states|remote \(us\)|remote within the united states|remote in the united states|anywhere in the united states|remote role based in the us|remote anywhere in the us)\b/i;
-  const structuralOfficeBody = /\b(hybrid|onsite|on-site|relocation required|local candidates only|commute to|three days per week|two days per week|office days|in person collaboration|must be located|must reside|within commuting distance)\b|\b(this role|this position|the role|the position)\b.{0,90}\b(office-based|in-office|work from our office|work out of our office)\b/i;
+  const hybridRequirement = /\bhybrid (?:role|position|work model|work arrangement|schedule|workplace)\b|\b(?:role|position|work model|work arrangement|workplace)\s*(?:is|:|will be)\s*(?:a\s+)?hybrid\b/i;
+  const structuralOfficeBody = /\b(relocation required|local candidates only|within commuting distance|(?:mandatory|required) office attendance|(?:onsite|on-site|in-office) (?:role|position|work|attendance))\b|\b(?:must|required to|expected to)\b[^.!?]{0,65}\b(?:work|report|be) (?:on[- ]site|in[- ]office|(?:in|from|at) (?:the|our) office)\b|\b(?:office|on[- ]site|in[- ]office)\b[^.!?]{0,36}\b(?:days? (?:per|a) week|weekly|monthly)\b|\b(?:days? (?:per|a) week|weekly|monthly)\b[^.!?]{0,36}\b(?:office|on[- ]site|in[- ]office)\b|\b(this role|this position|the role|the position)\b.{0,90}\b(office-based|in-office|work from our office|work out of our office)\b/i;
   const nonUsRemote = /\bremote\b.{0,60}\b(canada|mexico|uk|united kingdom|ireland|india|australia|germany|france|netherlands|singapore|emea|apac|latam|brazil|colombia|philippines|dubai|united arab emirates|uae|poland|bengaluru)\b|\b(canada|mexico|uk|united kingdom|ireland|india|australia|germany|france|netherlands|singapore|emea|apac|latam|brazil|colombia|philippines|dubai|united arab emirates|uae|poland|bengaluru)\b.{0,60}\bremote\b/i;
   const remoteModelRx = /\b(fully remote|100% remote|remote-first|remote first|remote eligible|remote-friendly|distributed team|distributed workforce|work remotely from anywhere|this role is remote|this position is remote|remote position|remote role|home-based role|work from home position)\b/i;
   const remotePerkOnly = /\b(work|working)?\s*(remote|remotely|from home|from anywhere)\b.{0,90}\b(up to|for|maximum of)?\s*(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+(days?|weeks?)\s+(a|per|each)?\s*(year|annually|month)\b/i.test(bodyText) ||
@@ -1015,10 +1244,12 @@ function remoteClass(location, body) {
     (hasRemoteInLocation && /\b(united states|usa|u\.s\.|us)\b/i.test(loc));
   const genericUsLocation = /^\s*(united states|usa|u\.s\.|us)\s*$/i.test(loc);
   const specificLocation = Boolean(loc.trim()) && !hasRemoteInLocation && !genericUsLocation;
-  if (/\bhybrid\b/i.test(loc) || /\bhybrid\b/i.test(bodyText)) return "hybrid";
+  if (declared === "hybrid" || /\bhybrid\b/i.test(loc) || hybridRequirement.test(bodyText)) return "hybrid";
+  if (/^(?:on site|onsite|in office|office based)$/.test(declared)) return "onsite";
   if (/\b(onsite|on-site|office-based|in-office|relocation required|local candidates only|commute to|three days per week|two days per week|office days)\b/i.test(loc)) return "onsite";
-  if (nonUs.test(loc) && !locUsRemote) return "onsite";
   if (structuralOfficeBody.test(bodyText)) return "onsite";
+  if (declared === "remote") return "remote";
+  if (nonUs.test(loc) && !locUsRemote) return "onsite";
   if (remotePerkOnly && !explicitRemoteBody) return "unclear";
   if (/\b(remote,\s*)?(north america|americas)\b/i.test(loc) && !usRemote.test(loc)) return "unclear";
   if (locUsRemote) return "remote";
@@ -1074,7 +1305,7 @@ function containsMetroLocation(text, settings) {
 }
 function containsUsStateName(text) {
   const n = norm(text);
-  return Object.values(US_STATE_NAMES).some(stateName => n.includes(stateName));
+  return Object.values(US_STATE_NAMES).some(stateName => stateName !== "georgia" && new RegExp(`\\b${stateName}\\b`).test(n));
 }
 // True when the location string uses the standard "City, ST" form with a real US state code.
 function locHasUsStateCode(loc) {
@@ -1082,25 +1313,102 @@ function locHasUsStateCode(loc) {
   return segs.some(seg => Object.prototype.hasOwnProperty.call(US_STATE_NAMES, seg.replace(/[,\s]/g, "").toLowerCase()));
 }
 const US_MAJOR_CITY_RX = /\b(new york|nyc|los angeles|san francisco|san jose|san diego|chicago|boston|austin|dallas|houston|denver|atlanta|miami|phoenix|philadelphia|portland|minneapolis|charlotte|nashville|pittsburgh|detroit|raleigh|columbus|salt lake city|las vegas|san antonio|sacramento|orlando|tampa|brooklyn|silicon valley|bay area)\b/;
-const US_REMOTE_FILLER_RX = /\b(remote|fully|hybrid|onsite|on site|anywhere|flexible|wfh|work from home|home based|distributed|first|friendly|eligible|optional|preferred)\b/g;
-// Decide whether a LOCATION string is consistent with a United States filter.
-// Allowlist approach: accept on a positive US signal or a generic (country-less)
-// remote location, and reject anything that names a non-US place. This is robust
-// against the long tail of foreign country/city spellings without enumerating them,
-// and it ignores the job body so work-authorization boilerplate ("authorized to
-// work in the United States") can no longer pull a foreign role into US results.
-function isUsLocation(loc, settings) {
+const NON_US_LOCATION_RX = /\b(france|french|paris|germany|berlin|munich|uk|united kingdom|london|europe|european|emea|apac|apj|latam|canada|toronto|ontario|quebec|mexico|brazil|india|bengaluru|bangalore|australia|sydney|new zealand|ireland|dublin|netherlands|amsterdam|spain|italy|poland|portugal|singapore|japan|china|philippines|south africa|nigeria|kenya|pakistan|bangladesh|indonesia|malaysia|vietnam|thailand|uae|united arab emirates|dubai|norway|oslo|sweden|switzerland|austria|south korea|georgia)\b/;
+function explicitUsLocation(loc) {
   const l = norm(loc);
-  if (!l) return true; // no location info: do not reject on absence
-  if (/\b(usa|us|u s a|u s|united states|north america|americas|nationwide|stateside)\b/.test(l)) return true;
-  if (containsMetroCity(loc, settings)) return true;
+  return /\b(usa|us|u s a|u s|united states|stateside)\b/.test(l);
+}
+function isUsLocation(loc) {
+  const l = norm(loc);
+  if (explicitUsLocation(loc)) return true;
+  // Country names beat ambiguous state abbreviations (Berlin, DE; Remote, IN).
+  const countryNamed = /\b(france|germany|united kingdom|europe|emea|apac|canada|mexico|brazil|india|australia|new zealand|ireland|netherlands|spain|italy|poland|portugal|singapore|japan|china|philippines|south africa|nigeria|kenya|pakistan|bangladesh|indonesia|malaysia|vietnam|thailand|uae|united arab emirates|norway|sweden|switzerland|austria|south korea)\b/;
+  if (countryNamed.test(l)) return false;
+  if (locHasUsStateCode(loc) && !/\b(?:berlin|munich|paris|london|toronto|dublin|sydney|bengaluru|bangalore|amsterdam|oslo)\s*,\s*(?:DE|IN|CA|CO|IL|ME|LA|MA|MD|MO|PA)\b/i.test(loc) && !/^\s*remote\s*,\s*(?:DE|IN|CA|CO|IL|ME|LA|MA|MD|MO|PA)\s*$/i.test(loc)) return true;
+  if (NON_US_LOCATION_RX.test(l)) return false;
   if (containsUsStateName(loc)) return true;
-  if (locHasUsStateCode(loc)) return true;
   if (US_MAJOR_CITY_RX.test(l)) return true;
-  // Strip remote/filler words; if no concrete place name remains, treat it as a
-  // generic US-remote posting. Otherwise it names a non-US place: reject.
-  const residual = l.replace(US_REMOTE_FILLER_RX, " ").replace(/[0-9]+/g, " ").replace(/\s+/g, " ").trim();
-  return !residual;
+  return false;
+}
+function usEligibilityReason(job) {
+  const loc = String(job.location || "");
+  const body = String(job.body || "");
+  const text = `${loc} ${body}`;
+  // Explicit exclusions beat a worldwide label. Work-authorization / company-office
+  // boilerplate never establishes where this particular role may be performed.
+  if (/\b(?:not (?:available|open)|unavailable) (?:to|for|in) (?:candidates (?:in|from) )?(?:the )?(?:united states|usa|u\.?s\.?)\b|\b(?:excluding|except|excludes) (?:candidates (?:in|from) )?(?:the )?(?:united states|usa|u\.?s\.?)\b/i.test(text)) return "US hiring explicitly excluded";
+  if (/\b(?:cannot hire|can not hire|not hiring) (?:candidates )?(?:in|from) (?:the )?(?:united states|usa|u\.?s\.?)\b|\b(?:united states|usa|u\.?s\.?) (?:candidates )?(?:are )?not eligible\b/i.test(text)) return "US hiring explicitly excluded";
+  if (titleNamesNonUsRegion(job.title)) return "non-US hiring region in title";
+  const restrictedAbroad = body.split(/[.!?;\n]+/).some(clause =>
+    /\b(?:must|need to|required to) (?:be based|be located|reside|live)\b/i.test(clause) &&
+    NON_US_LOCATION_RX.test(norm(clause)) && !/\bunited states\b|\bUSA?\b|\bU\.S\./.test(clause));
+  if (restrictedAbroad) return "non-US residency required";
+  if (isUsLocation(loc)) return "";
+  if (NON_US_LOCATION_RX.test(norm(loc))) return "non-US job location";
+  let host = "";
+  try { host = new URL(job.url || job.applyUrl).hostname; } catch {}
+  if (/(^|\.)arbeitnow\.(fr|co\.uk|de|nl|ch)$/i.test(host)) return "non-US regional job board without US location";
+  if (/\b(worldwide|world wide|globally|anywhere in the world|global remote)\b/i.test(loc) || /^\s*anywhere\s*$/i.test(loc)) return "";
+  // Only role-specific remote eligibility can supplement sparse location metadata.
+  if (/\b(?:remote (?:from|within|in|across|anywhere in) |work remotely (?:from|within|in) |(?:this role|this position) is open to (?:candidates (?:in|from) )?)(?:the )?(?:united states|usa|u\.?s\.?)(?=[\s,;:.!?)]|$)/i.test(body)) return "";
+  return "US hiring eligibility unverified";
+}
+function hasRequiredNonUsHours(text) {
+  const foreignHours = /\b(?:CET|CEST|GMT(?!\s*[+-]\s*\d)|BST|IST|AEST|AEDT|SGT|JST|NZST|NZDT)\b|\b(?:Central European|British|India Standard|Australian Eastern|Japan Standard|Singapore Standard) Time\b|\b(?:European|Europe|France|French|Paris|UK|United Kingdom|India|Indian|Australia|Australian|Singapore|Asia|APAC|EMEA)[ -]+(?:business |working |office |core )?(?:hours|time ?zones?)\b/i;
+  return String(text || '').split(/[.!?;\n]+/).some(clause => {
+    if (!foreignHours.test(clause)) return false;
+    if (/\b(?:occasional(?:ly)?|optional|preferred|a plus)\b|\b(?:not required|no requirement|do not require)\b/i.test(clause)) return false;
+    return /\b(?:must|required|requirement|expected to|needs? to)\b.{0,100}\b(?:work|working|hours|overlap|align|availability|available|time ?zone)\b/i.test(clause) ||
+      /\b(?:work|working|business|office|core) (?:hours|schedule)\s*(?:are|is|:|will be|in|follow)\b/i.test(clause) ||
+      /\b(?:work|working|business|office|core) hours\s*:/i.test(clause) ||
+      /\b(?:this role|this position|working schedule)\b.{0,30}\b(?:operates on|follows|aligns with)\b/i.test(clause) ||
+      /\b(?:business|working|office|core) hours\s+(?:are )?required\b/i.test(clause);
+  });
+}
+// US time zones a posting explicitly requires working hours in. Abbreviations are
+// case-sensitive; bare MT and CT are left out because they are also state codes.
+const US_TIME_ZONES = [
+  { key: "pacific", id: "tzPacific", name: "Pacific", abbr: /\b(?:PST|PDT|PT)\b/, word: /\bPacific (?:standard |daylight )?(?:time|hours|business hours|time ?zone)\b/i },
+  { key: "mountain", id: "tzMountain", name: "Mountain", abbr: /\b(?:MST|MDT)\b/, word: /\bMountain (?:standard |daylight )?(?:time|hours|business hours|time ?zone)\b/i },
+  { key: "central", id: "tzCentral", name: "Central", abbr: /\b(?:CST|CDT)\b/, word: /\bCentral (?:standard |daylight )?(?:time|hours|business hours|time ?zone)\b/i },
+  { key: "eastern", id: "tzEastern", name: "Eastern", abbr: /\b(?:EST|EDT|ET)\b/, word: /\bEastern (?:standard |daylight )?(?:time|hours|business hours|time ?zone)\b/i }
+];
+function requiredUsTimeZones(text) {
+  const found = new Set();
+  String(text || "").split(/[.!?;\n]+/).forEach(clause => {
+    const zones = US_TIME_ZONES.filter(z => z.abbr.test(clause) || z.word.test(clause));
+    if (!zones.length) return;
+    if (/\b(?:occasional(?:ly)?|optional|preferred|a plus|flexible|any (?:US )?time ?zone|all (?:US )?time ?zones)\b|\b(?:not required|no requirement|do not require)\b/i.test(clause)) return;
+    const required = /\b(?:must|required|requirement|expected to|needs? to)\b.{0,100}\b(?:work|working|hours|overlap|align|availability|available|time ?zones?|based|located|reside)\b/i.test(clause) ||
+      /\b(?:work|working|business|office|core) (?:hours|schedule)\b/i.test(clause) ||
+      /\b(?:located|based|reside|open to candidates) in\b.{0,40}\btime ?zones?\b/i.test(clause);
+    if (required) zones.forEach(z => found.add(z.key));
+  });
+  return found;
+}
+function timeZoneScreenReason(job, settings) {
+  const allowed = settings.usTimeZones;
+  if (!Array.isArray(allowed) || allowed.length === US_TIME_ZONES.length) return "";
+  const required = requiredUsTimeZones(job.body);
+  if (!required.size || [...required].some(z => allowed.includes(z))) return "";
+  const names = US_TIME_ZONES.filter(z => required.has(z.key)).map(z => z.name).join("/");
+  return `requires ${names} time zone working hours`;
+}
+function locationScreenReason(job, settings) {
+  if (settings.excludeNonUsHours !== false && hasRequiredNonUsHours(job.body)) return "required non-US working hours";
+  const zoneReason = timeZoneScreenReason(job, settings);
+  if (zoneReason) return zoneReason;
+  if (isUnitedStatesCountry(settings.locationCountry)) return usEligibilityReason(job);
+  return "";
+}
+// Aggregators often list a role as just "Remote" and put the hiring region in the
+// title ("Engagement Manager - EMEA"). A title that names a non-US region, with no
+// US/Americas marker alongside it, is not a US role.
+const TITLE_NON_US_REGION_RX = /\b(emea|apac|apj|latam|europe|uk|united kingdom|dach|nordics|benelux|anz|india|canada|mexico|brazil|germany|france|spain|italy|netherlands|ireland|poland|singapore|japan|australia|london|berlin|paris|dublin|toronto|amsterdam|munich)\b/;
+const TITLE_US_REGION_RX = /\b(us|usa|u s|united states|north america|americas|amer)\b/;
+function titleNamesNonUsRegion(title) {
+  const t = norm(title);
+  return TITLE_NON_US_REGION_RX.test(t) && !TITLE_US_REGION_RX.test(t);
 }
 function countryMatches(loc, settings) {
   const country = norm(settings.locationCountry);
@@ -1116,12 +1424,14 @@ function locationMatches(job, settings) {
   const wantOffice = selected.includes("hybrid") || selected.includes("onsite");
   const hasMetro = (settings.metroCities || []).length > 0;
   const inMetro = !hasMetro || containsMetroLocation(locationText, settings);
+  if (locationScreenReason(job, settings)) return false;
+  const countryOk = isUnitedStatesCountry(settings.locationCountry) || countryMatches(locationText, settings);
 
-  // Country matching uses the LOCATION field only, never the job body, so that
-  // work-authorization boilerplate in the description cannot pull a foreign role in.
+  // US eligibility uses location metadata or a narrowly scoped role-specific
+  // remote-hiring statement; work-authorization boilerplate is insufficient.
   // Remote roles are location-independent: gate by country only, never by metro.
   if (job.remote === "remote") {
-    return wantRemote && countryMatches(locationText, settings);
+    return wantRemote && countryOk;
   }
 
   // Office-based roles (hybrid / onsite, or a specific-location role left unclear)
@@ -1129,7 +1439,7 @@ function locationMatches(job, settings) {
   // to the selected metro city area(s) when any are set.
   const officeRole = job.remote === "hybrid" || job.remote === "onsite" || (job.remote === "unclear" && hasMetro);
   if (wantOffice && officeRole) {
-    return inMetro && countryMatches(locationText, settings);
+    return inMetro && countryOk;
   }
 
   return false;
@@ -1173,13 +1483,15 @@ function analyzeJob(job, settings, criteria, stats = state.stats) {
   const bodyExcludeHits = hasAny(combined, criteria.bodyExclude);
   if (bodyExcludeHits.length) return finish("suppressed", "body exclude: " + bodyExcludeHits[0]);
 
-  if (!locationMatches(job, settings)) return finish("suppressed", "location mismatch");
+  const locationReason = locationScreenReason(job, settings);
+  if (locationReason) return finish("suppressed", locationReason);
+  if (!locationMatches(job, settings)) return finish("suppressed", "work arrangement or metro mismatch");
   if (!locationKnown(job.remote)) risks.push("location unclear");
 
   const hasSalaryRange = Boolean(job.comp?.low && job.comp?.high);
   const salaryMatchesSelection = salaryRangeCoversSelection(job.comp, settings);
   if (settings.requireSalaryRange && !hasSalaryRange) return finish("suppressed", "salary range required");
-  if (hasSalaryRange && !salaryMatchesSelection) risks.push("selected salary outside posted range");
+  if (hasSalaryRange && !salaryMatchesSelection) return finish("suppressed", "posted salary range is below the selected minimum");
   if (!hasSalaryRange) risks.push("compensation unknown");
 
   const titleManagement = /\b(manager|management|lead|head of|director|principal|chief of staff|program manager|portfolio manager|pmo manager|operations manager|delivery manager|governance manager)\b/i.test(title);
@@ -1223,7 +1535,7 @@ function analyzeJob(job, settings, criteria, stats = state.stats) {
   score += evidenceHits >= 3 ? 3 : 0;
 
   if (!locationKnown(job.remote)) score -= 8;
-  if (!hasSalaryRange) score -= 8;
+  if (!hasSalaryRange) score -= 4;
   if (hasSalaryRange && !salaryMatchesSelection) score = Math.min(score, 74);
 
   const allGates = gates.seniority && gates.function && gates.operatingProblem && gates.scale;
@@ -1253,6 +1565,11 @@ function analyzeJob(job, settings, criteria, stats = state.stats) {
   const balancedNearMiss = score >= 75 && salaryReviewReady && gates.management && capabilityReady && confidence !== "Low" && (laneTitle || substantialEvidence || allGates);
   const reviewCandidate = titleLaneReview || balancedNearMiss || (salaryReviewReady && score >= reviewFloor && gates.management && (laneTitle || evidenceHits >= 2 || evidenceDepth >= 3));
 
+  const locationGate = screenCandidateLocation(job, body);
+  if (locationGate.decision === 'REVIEW' && (qualifiesMain || reviewCandidate)) {
+    risks.push(locationGate.reasons.join(' '));
+    return finish('review', locationGate.reasons.join(' '));
+  }
   if (qualifiesMain && !mainBlockingRisk) {
     return finish("main", "strong search match");
   }
@@ -1296,7 +1613,7 @@ function leverListText(list) {
   return [list?.text, contentText].filter(Boolean).join(" ");
 }
 async function fetchJson(url, timeout = 15000, options = {}) {
-  const r = await fetch(url, { ...options, signal: AbortSignal.timeout(timeout) });
+  const r = await fetch(url, { ...options, signal: requestSignal(timeout) });
   if (!r.ok) throw new Error("HTTP " + r.status);
   return r.json();
 }
@@ -1321,9 +1638,13 @@ async function fetchAshby(slug) {
       if (tier.minValue || tier.maxValue) comp = { low: tier.minValue || "", high: tier.maxValue || "", display: c.summary || "", currency: tier.currencyCode || "USD", period: tier.interval || "year" };
     }
     if (!comp) comp = parseComp(body);
-    let remote = remoteClass(j.location || "", body);
-    if (j.isRemote === true && remote === "unclear" && /\b(remote|united states|usa|u\.s\.|us)\b/i.test(j.location || "")) remote = "remote";
-    return baseJob(company, j.title || "", "ashby", j.applyUrl || j.jobUrl || "", j.location || "", String(j.publishedAt || ""), body, comp, remote);
+    const country = j.address?.postalAddress?.addressCountry;
+    const rawLocation = String(j.location || "").trim();
+    const location = country && (!rawLocation || /^remote$/i.test(rawLocation))
+      ? [rawLocation, country].filter(Boolean).join(", ") : rawLocation;
+    const workplace = j.workplaceType || (j.isRemote === true ? "remote" : "");
+    const remote = remoteClass(location, body, workplace);
+    return baseJob(company, j.title || "", "ashby", j.applyUrl || j.jobUrl || "", location, String(j.publishedAt || ""), body, comp, remote);
   });
 }
 async function fetchLever(slug) {
@@ -1382,6 +1703,91 @@ async function fetchSmartRecruiters(slug) {
   }
   return jobs;
 }
+function workableLocationStr(entry) {
+  if (!entry) return "";
+  if (entry.location_str) return String(entry.location_str);
+  return [entry.city, entry.region || entry.state_code, entry.country || entry.country_name].filter(Boolean).join(", ");
+}
+async function fetchWorkable(slug) {
+  const data = await fetchJson(`https://apply.workable.com/api/v1/widget/accounts/${encodeURIComponent(slug)}?details=true`, 20000);
+  const company = data.name || data.account?.name || slug;
+  return (data.jobs || []).filter(j => j && j.title && (j.url || j.shortlink || j.shortcode)).map(j => {
+    const location = workableLocationStr(j.location)
+      || (j.locations || []).map(workableLocationStr).filter(Boolean).join(" / ");
+    const body = words([j.description, j.full_description, j.requirements, j.benefits].filter(Boolean).join(" "));
+    const telecommuting = Boolean(j.location?.telecommuting)
+      || String(j.location?.workplace_type || "").toLowerCase() === "remote"
+      || (j.locations || []).some(l => l && (l.telecommuting || String(l.workplace_type || "").toLowerCase() === "remote"));
+    const remoteTitle = /\b(?:US|USA|United States)[ ,/-]+remote\b|\bremote[ ,/-]+(?:US|USA|United States)\b/i.test(j.title);
+    const workplace = j.workplaceType || j.workplace_type || j.location?.workplace_type || (telecommuting || remoteTitle ? "remote" : "");
+    const remote = remoteClass(location, body, workplace);
+    const posted = String(j.published_on || j.created_at || j.publishedOn || "");
+    const url = j.url || j.shortlink || (j.shortcode ? `https://apply.workable.com/${slug}/j/${j.shortcode}/` : "");
+    return baseJob(company, j.title || "", "workable", url, location, posted, body, parseComp(body), remote);
+  });
+}
+async function fetchBreezy(slug) {
+  const data = await fetchJson(`https://${encodeURIComponent(slug)}.breezy.hr/json`, 20000);
+  const list = Array.isArray(data) ? data : (data.positions || []);
+  return list.filter(j => j && j.name).map(j => {
+    const loc = j.location || {};
+    const location = loc.name || [loc.city, loc.state?.name || loc.state, loc.country?.name || loc.country].filter(Boolean).join(", ");
+    const body = words(j.description || "");
+    const workModel = [location, loc.is_remote ? "remote" : ""].filter(Boolean).join(" ");
+    let remote = remoteClass(workModel, body);
+    if (loc.is_remote && remote === "unclear" && /\b(united states|usa|u\.s\.|us|remote)\b/i.test(workModel)) remote = "remote";
+    const posted = String(j.published_date || j.creation_date || j.updated_date || "");
+    const id = j._id || j.id || j.friendly_id || "";
+    const url = j.url || (id ? `https://${slug}.breezy.hr/p/${id}` : "");
+    return baseJob(slug, j.name || "", "breezy", url, location, posted, body, parseComp(body), remote);
+  });
+}
+async function fetchBambooHR(slug) {
+  const list = await fetchJson(`https://${encodeURIComponent(slug)}.bamboohr.com/careers/list`, 20000);
+  const items = list.result || list.jobs || [];
+  const jobs = [];
+  for (const j of items) {
+    const id = j.id || j.jobOpeningId || "";
+    let body = "";
+    let posted = String(j.datePosted || j.postedDate || j.atsGoLiveDate || "");
+    try {
+      const detail = await fetchJson(`https://${encodeURIComponent(slug)}.bamboohr.com/careers/${encodeURIComponent(id)}/detail`, 10000);
+      const jo = detail.result?.jobOpening || detail.result || {};
+      body = words(jo.description || jo.jobDescription || "");
+      if (jo.datePosted) posted = String(jo.datePosted);
+    } catch {}
+    const locObj = j.location || {};
+    const location = j.locationLabel || [locObj.city, locObj.state, locObj.country].filter(Boolean).join(", ");
+    const isRemote = Boolean(j.isRemote || locObj.isRemote);
+    const workModel = [location, isRemote ? "remote" : ""].filter(Boolean).join(" ");
+    let remote = remoteClass(workModel, body);
+    if (isRemote && remote === "unclear" && /\b(united states|usa|u\.s\.|us|remote)\b/i.test(workModel)) remote = "remote";
+    jobs.push(baseJob(slug, j.jobOpeningName || j.title || "", "bamboohr", `https://${slug}.bamboohr.com/careers/${id}`, location, posted, body, parseComp(body), remote));
+  }
+  return jobs;
+}
+async function fetchText(url, timeout = 20000) {
+  const r = await fetch(url, { signal: requestSignal(timeout) });
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  return r.text();
+}
+async function fetchPersonio(slug) {
+  const host = slug.includes(".") ? slug : `${slug}.jobs.personio.com`;
+  const xml = await fetchText(`https://${host}/xml`, 20000);
+  const doc = new DOMParser().parseFromString(xml, "application/xml");
+  if (doc.getElementsByTagName("parsererror").length) throw new Error("Personio XML parse error");
+  return [...doc.getElementsByTagName("position")].map(p => {
+    const get = t => p.getElementsByTagName(t)[0]?.textContent?.trim() || "";
+    const id = get("id");
+    const location = get("office");
+    const descParts = [...p.getElementsByTagName("jobDescription")].map(d => d.getElementsByTagName("value")[0]?.textContent || "");
+    const body = words(descParts.join(" ") || get("jobDescriptions"));
+    const remote = remoteClass(location, body);
+    const posted = get("createdAt");
+    const url = id ? `https://${host}/job/${id}?language=en` : `https://${host}/`;
+    return baseJob(slug, get("name"), "personio", url, location, posted, body, parseComp(body), remote);
+  });
+}
 function himalayasRemoteClass(location, body) {
   if (/\b(canada|mexico|uk|united kingdom|ireland|india|australia|germany|france|netherlands|singapore|emea|apac|latam|brazil|colombia|philippines|dubai|united arab emirates|uae|poland|bengaluru)\b/i.test(location || "")) return "onsite";
   const remote = remoteClass(location, body);
@@ -1395,30 +1801,151 @@ function himalayasQueries(criteria) {
     .slice(0, 20);
 }
 async function fetchHimalayas(criteria) {
-  const queries = himalayasQueries(criteria);
-  if (!queries.length) throw new Error("Himalayas needs title keywords");
+  // Himalayas moved its public API to /jobs/api (paginated firehose, no q= search).
+  // Pull several recent pages; the app's own title/criteria filters narrow it down.
   const jobs = [];
   const seen = new Set();
   let failures = 0;
-  for (const query of queries) {
+  const pages = 6;
+  const pageSize = 100;
+  for (let i = 0; i < pages; i++) {
     try {
-      const data = await fetchJson(`https://himalayas.app/jobs/api/search?q=${encodeURIComponent(query)}&remote=true&limit=20`, 15000);
-      for (const j of data.jobs || data.results || []) {
-        const company = j.company?.name || j.company_name || "Unknown";
+      const data = await fetchJson(`https://himalayas.app/jobs/api?limit=${pageSize}&offset=${i * pageSize}`, 15000);
+      const list = data.jobs || [];
+      if (!list.length) break;
+      for (const j of list) {
+        const url = j.applicationLink || j.guid || "";
+        const company = j.companyName || j.company?.name || "Unknown";
         const title = j.title || "";
-        const key = `${norm(company)}|${norm(title)}|${j.url || j.apply_url || ""}`;
+        const key = `${norm(company)}|${norm(title)}|${url}`;
         if (seen.has(key)) continue;
         seen.add(key);
-        const body = words(j.description || j.description_html || j.descriptionHtml || "");
-        const location = j.location || "Remote";
-        const comp = parseComp([j.salary_range, j.salaryRange, body].filter(Boolean).join(" "));
-        jobs.push(baseJob(company, title, "himalayas", j.url || j.apply_url || "", location, String(j.published_at || j.updated_at || j.created_at || ""), body, comp, himalayasRemoteClass(location, body)));
+        const location = (j.locationRestrictions || []).join(", ") || "Remote";
+        const body = words(j.description || j.excerpt || "");
+        let comp = null;
+        if (j.minSalary || j.maxSalary) {
+          comp = { low: j.minSalary || "", high: j.maxSalary || "", display: "", currency: j.currency || "USD", period: j.salaryPeriod === "annual" ? "year" : (j.salaryPeriod || "year") };
+        }
+        if (!comp) comp = parseComp(body);
+        const posted = j.pubDate ? new Date(j.pubDate * 1000).toISOString() : "";
+        jobs.push(baseJob(company, title, "himalayas", url, location, posted, body, comp, himalayasRemoteClass(location, body)));
       }
     } catch {
       failures++;
     }
   }
-  if (failures === queries.length && !jobs.length) throw new Error("Himalayas search unavailable");
+  if (failures === pages && !jobs.length) throw new Error("Himalayas search unavailable");
+  return jobs;
+}
+function aggregatorQueries(criteria) {
+  return [...(criteria.titleStrong || []), ...(criteria.titleModerate || [])]
+    .map(x => String(x || "").trim())
+    .filter(Boolean)
+    .slice(0, 12);
+}
+async function fetchRemotive(criteria) {
+  const queries = aggregatorQueries(criteria);
+  if (!queries.length) throw new Error("Remotive needs title keywords");
+  const jobs = [];
+  const seen = new Set();
+  let failures = 0;
+  for (const query of queries) {
+    try {
+      const data = await fetchJson(`https://remotive.com/api/remote-jobs?search=${encodeURIComponent(query)}&limit=50`, 15000);
+      for (const j of data.jobs || []) {
+        const url = j.url || "";
+        const company = j.company_name || "Unknown";
+        const title = j.title || "";
+        const key = `${norm(company)}|${norm(title)}|${url}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        const location = j.candidate_required_location || "Remote";
+        const body = words(j.description || "");
+        const comp = parseComp([j.salary, body].filter(Boolean).join(" "));
+        jobs.push(baseJob(company, title, "remotive", url, location, String(j.publication_date || ""), body, comp, himalayasRemoteClass(location, body)));
+      }
+    } catch {
+      failures++;
+    }
+  }
+  if (failures === queries.length && !jobs.length) throw new Error("Remotive search unavailable");
+  return jobs;
+}
+async function fetchArbeitnow(criteria) {
+  const jobs = [];
+  const seen = new Set();
+  let failures = 0;
+  const pages = 3;
+  for (let page = 1; page <= pages; page++) {
+    try {
+      const data = await fetchJson(`https://www.arbeitnow.com/api/job-board-api?page=${page}`, 15000);
+      for (const j of data.data || []) {
+        const url = j.url || "";
+        const company = j.company_name || "Unknown";
+        const title = j.title || "";
+        const key = `${norm(company)}|${norm(title)}|${url}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        const location = j.location || (j.remote ? "Remote" : "");
+        const body = words(j.description || "");
+        const posted = j.created_at ? new Date(j.created_at * 1000).toISOString() : "";
+        let remote = himalayasRemoteClass(location, body);
+        if (j.remote === true && remote === "unclear") remote = "remote";
+        jobs.push(baseJob(company, title, "arbeitnow", url, location, posted, body, parseComp(body), remote));
+      }
+    } catch {
+      failures++;
+    }
+  }
+  if (failures === pages && !jobs.length) throw new Error("Arbeitnow unavailable");
+  return jobs;
+}
+async function fetchTheMuse(criteria) {
+  const categories = ["Project Management", "Operations", "Business & Strategy", "Product Management", "Data Science"];
+  const jobs = [];
+  const seen = new Set();
+  let failures = 0, attempts = 0;
+  for (const category of categories) {
+    for (let page = 1; page <= 2; page++) {
+      attempts++;
+      try {
+        const data = await fetchJson(`https://www.themuse.com/api/public/jobs?category=${encodeURIComponent(category)}&page=${page}`, 15000);
+        for (const j of data.results || []) {
+          const url = j.refs?.landing_page || "";
+          const company = j.company?.name || "Unknown";
+          const title = j.name || "";
+          const key = `${norm(company)}|${norm(title)}|${url}`;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          const location = (j.locations || []).map(l => l && l.name).filter(Boolean).join(", ") || "Flexible / Remote";
+          const body = words(j.contents || "");
+          jobs.push(baseJob(company, title, "themuse", url, location, String(j.publication_date || ""), body, parseComp(body), himalayasRemoteClass(location, body)));
+        }
+      } catch {
+        failures++;
+      }
+    }
+  }
+  if (failures === attempts && !jobs.length) throw new Error("The Muse unavailable");
+  return jobs;
+}
+async function fetchJobicy(criteria) {
+  const jobs = [];
+  const seen = new Set();
+  const data = await fetchJson(`https://jobicy.com/api/v2/remote-jobs?count=50`, 15000);
+  for (const j of data.jobs || []) {
+    const url = j.url || "";
+    const company = j.companyName || "Unknown";
+    const title = j.jobTitle || "";
+    const key = `${norm(company)}|${norm(title)}|${url}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const location = j.jobGeo || "Remote";
+    const body = words(j.jobDescription || j.jobExcerpt || "");
+    const salaryText = (j.annualSalaryMin && j.annualSalaryMax) ? `$${j.annualSalaryMin} - $${j.annualSalaryMax}` : "";
+    const comp = parseComp([salaryText, body].filter(Boolean).join(" "));
+    jobs.push(baseJob(company, title, "jobicy", url, location, String(j.pubDate || ""), body, comp, himalayasRemoteClass(location, body)));
+  }
   return jobs;
 }
 function workdaySearchLink(src) {
@@ -1434,7 +1961,15 @@ async function fetchSource(src, criteria) {
   if (src.platform === "lever") return fetchLever(src.slug);
   if (src.platform === "recruitee") return fetchRecruitee(src.slug);
   if (src.platform === "smartrecruiters") return fetchSmartRecruiters(src.slug);
+  if (src.platform === "workable") return fetchWorkable(src.slug);
+  if (src.platform === "breezy") return fetchBreezy(src.slug);
+  if (src.platform === "bamboohr") return fetchBambooHR(src.slug);
+  if (src.platform === "personio") return fetchPersonio(src.slug);
   if (src.platform === "himalayas") return fetchHimalayas(criteria);
+  if (src.platform === "remotive") return fetchRemotive(criteria);
+  if (src.platform === "arbeitnow") return fetchArbeitnow(criteria);
+  if (src.platform === "themuse") return fetchTheMuse(criteria);
+  if (src.platform === "jobicy") return fetchJobicy(criteria);
   if (src.platform === "workday") {
     state.blockedLinks.push({ label: src.parts[1] || src.slug || "Workday", url: workdaySearchLink(src) });
     throw new Error("Workday is link-only in this single-file build");
@@ -1549,7 +2084,7 @@ async function runScout() {
   };
   const criteria = currentCriteria();
   state.stats.totalSources = criteria.sources.length;
-  log(`Job Boards Scanner: location ${locationSummary(settings)}, age ${settings.ageDays}d, selected salary ${money(settings.compFloor)}${settings.requireSalaryRange ? ", salary range required" : ""}`);
+  log(`Job Boards Scanner: location ${locationSummary(settings)}, age ${settings.ageDays}d, ${settings.compFloor ? `selected salary ${money(settings.compFloor)}` : "no salary minimum"}${settings.requireSalaryRange ? ", salary range required" : ""}`);
   log(`Sources: ${criteria.sources.length}.`);
   if (!criteria.sources.length) {
     log("No sources are configured. Add at least one source in the Source list, then run the search again.");
@@ -1557,21 +2092,32 @@ async function runScout() {
     render();
     return;
   }
+  if (!criteria.titleStrong.length && !criteria.titleModerate.length) {
+    log("No title keywords are set. Open Configuration, add primary or secondary title keywords, then run the search again.");
+    updateProgress(0, 0, "Add title keywords in Configuration");
+    render();
+    return;
+  }
   if (criteria.sources.some(src => src.platform === "workday")) log("Workday sources are link-only in this single-file build.");
   updateProgress(0, criteria.sources.length, "Starting run");
 
   $("runBtn").disabled = true;
+  runController = new AbortController();
+  const stopSignal = runController.signal;
+  $("stopBtn").disabled = false;
   let nextIndex = 0;
   let completed = 0;
   const workerCount = Math.min(SOURCE_CONCURRENCY, criteria.sources.length);
   async function worker() {
-    while (nextIndex < criteria.sources.length) {
+    while (nextIndex < criteria.sources.length && !stopSignal.aborted) {
       const index = nextIndex++;
       const src = criteria.sources[index];
       const label = `${src.platform}/${src.slug}`;
       state.stats.sourcesAttempted++;
       updateProgress(completed, criteria.sources.length, `Checking ${label}`);
       const result = await processSource(src, settings, criteria);
+      // A source cut off by Stop is incomplete, not broken: drop it rather than log an error.
+      if (stopSignal.aborted) break;
       mergeSourceResult(result);
       completed++;
       updateProgress(completed, criteria.sources.length, `Completed ${label}`);
@@ -1579,21 +2125,29 @@ async function runScout() {
     }
   }
   await Promise.all(Array.from({ length: workerCount }, () => worker()));
+  runController = null;
   $("runBtn").disabled = false;
-  log(`Done: main ${state.main.length}, review ${state.review.length}, screened out ${state.suppressed.length}, source issues ${sourceIssueCount()}, run errors ${state.errors.length}`);
-  updateProgress(criteria.sources.length, criteria.sources.length, "Run complete");
+  $("stopBtn").disabled = true;
+  const summary = `main ${state.main.length}, review ${state.review.length}, screened out ${state.suppressed.length}, source issues ${sourceIssueCount()}, run errors ${state.errors.length}`;
+  if (stopSignal.aborted) {
+    log(`Stopped after ${completed} of ${criteria.sources.length} sources: ${summary}`);
+    updateProgress(completed, criteria.sources.length, `Stopped after ${completed} of ${criteria.sources.length} sources`);
+  } else {
+    log(`Done: ${summary}`);
+    updateProgress(criteria.sources.length, criteria.sources.length, "Run complete");
+  }
   render();
 }
+// The same role often appears under several URLs (aggregator mirror domains,
+// reposts), so dedupe on company + title + location and keep the best-scored copy.
 function uniqueResults(list) {
-  const seen = new Set();
-  const out = [];
+  const best = new Map();
   for (const r of list) {
-    const key = norm(r.company) + "|" + norm(r.title) + "|" + norm(r.url);
-    if (seen.has(key)) continue;
-    seen.add(key);
-    out.push(r);
+    const key = norm(r.company) + "|" + norm(r.title) + "|" + norm(r.location);
+    const prior = best.get(key);
+    if (!prior || (Number(r.score) || 0) > (Number(prior.score) || 0)) best.set(key, r);
   }
-  return out;
+  return [...best.values()];
 }
 function renderTags(items, cls = "tag") {
   return (items || []).slice(0, 5).map(x => `<span class="${cls}">${esc(x)}</span>`).join("");
@@ -1633,7 +2187,7 @@ function renderTable(list, title, target, emptyText) {
     sortHeader("Link", "link", target),
   ].join("");
   $(target).innerHTML = list.length
-    ? `<div class="section-title">${esc(title)}</div><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>`
+    ? `<div class="section-title">${esc(title)}</div><div class="table-scroll"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`
     : `<div class="section-title">${esc(title)}</div><div class="empty">${esc(emptyText)}</div>`;
 }
 function remoteLabel(v) {
@@ -1854,6 +2408,61 @@ function exportCsv() {
   a.remove();
   URL.revokeObjectURL(url);
 }
+function applyRemoteUsPreset() {
+  $("ageDays").value = "14";
+  $("locRemote").checked = true;
+  $("locHybrid").checked = false;
+  $("locOnsite").checked = false;
+  $("countryPreset").value = "United States";
+  $("metroPreset").value = "";
+  if ($("metroCities")) $("metroCities").value = "";
+  $("requireSalaryRange").checked = false;
+  // Fire change events so the app's own handlers apply + persist every field (age was not sticking before).
+  ["ageDays", "locRemote", "locHybrid", "locOnsite", "countryPreset", "metroPreset", "metroCities", "requireSalaryRange"].forEach(id => {
+    const el = $(id);
+    if (el) el.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+  saveCriteria();
+  renderLinks();
+  render();
+  if ($("saveStatus")) {
+    $("saveStatus").textContent = "Preset applied: age 14 days, US remote, metro cleared, posted-salary not required. Now click Run Search.";
+    setTimeout(() => { if ($("saveStatus")) $("saveStatus").textContent = ""; }, 4000);
+  }
+}
+// Two views: Search (results, the default on every load) and Configuration.
+function setView(view) {
+  const config = view === "config";
+  $("configView").hidden = !config;
+  $("resultsView").hidden = config;
+  $("tabSearch").setAttribute("aria-selected", String(!config));
+  $("tabConfig").setAttribute("aria-selected", String(config));
+  $("tabSearch").tabIndex = config ? -1 : 0;
+  $("tabConfig").tabIndex = config ? 0 : -1;
+  updateConfigSummary();
+  window.scrollTo(0, 0);
+}
+function updateConfigSummary() {
+  const parts = [];
+  const age = Number($("ageDays").value) || 1;
+  parts.push(age === 1 ? "Posted in the last day" : `Posted in the last ${age} days`);
+  const work = [["locRemote", "Remote"], ["locHybrid", "Hybrid"], ["locOnsite", "Onsite"]]
+    .filter(([id]) => $(id).checked).map(([, name]) => name);
+  parts.push(work.length ? work.join(", ") : "No work arrangement selected");
+  const country = $("countryPreset").value === "custom" ? $("customCountry").value.trim() : $("countryPreset").value;
+  parts.push(country || "Any country");
+  const zones = US_TIME_ZONES.filter(z => $(z.id).checked);
+  if (zones.length < US_TIME_ZONES.length) parts.push(zones.length ? `${zones.map(z => z.name).join("/")} hours` : "No US time zone selected");
+  const metro = $("metroPreset");
+  if (metro.value) parts.push(metro.options[metro.selectedIndex]?.text || metro.value);
+  const floor = $("compFloor");
+  if (floor.value && Number(floor.value) > 0) parts.push(`${floor.options[floor.selectedIndex]?.text || floor.value} minimum`);
+  const sources = parseSources($("sourceList").value);
+  const count = sources.length;
+  parts.push(`${count.toLocaleString()} sources`);
+  $("configSummary").textContent = parts.join(" · ");
+  $("sourceCount").textContent = `(${count.toLocaleString()})`;
+}
 function init() {
   populateCompFloorOptions();
   populateMetroOptions();
@@ -1868,10 +2477,27 @@ function init() {
     renderLinks();
     render();
   }));
-  $("runBtn").addEventListener("click", runScout);
+  $("runBtn").addEventListener("click", () => { setView("search"); runScout(); });
+  $("stopBtn").addEventListener("click", stopScout);
   $("saveBtn").addEventListener("click", saveSettingsWithNotice);
-  $("resetBtn").addEventListener("click", () => { loadCriteria(true); render(); });
+  $("resetBtn").addEventListener("click", () => { loadCriteria(true); render(); updateConfigSummary(); });
+  $("presetRemoteUsBtn").addEventListener("click", () => { applyRemoteUsPreset(); updateConfigSummary(); });
   $("csvBtn").addEventListener("click", exportCsv);
+  $("tabSearch").addEventListener("click", () => setView("search"));
+  $("tabConfig").addEventListener("click", () => setView("config"));
+  document.querySelector(".tabs").addEventListener("keydown", e => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+    e.preventDefault();
+    let view = $("configView").hidden ? "config" : "search";
+    if (e.key === "Home") view = "search";
+    if (e.key === "End") view = "config";
+    setView(view);
+    $(view === "config" ? "tabConfig" : "tabSearch").focus();
+  });
+  document.querySelectorAll("#configView textarea, #configView input, #configView select").forEach(el => {
+    el.addEventListener("change", updateConfigSummary);
+  });
+  setView("search");
   render();
 }
 init();
