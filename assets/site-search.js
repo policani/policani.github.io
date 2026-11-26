@@ -1,5 +1,5 @@
 (() => {
-  const SEARCH_INDEX_VERSION = "db4182b5dad1";
+  const SEARCH_INDEX_VERSION = "c6e2c3ed3d14";
   const PAGE_SIZE = 10;
   const form = document.querySelector("[data-site-search-form]");
   const input = document.querySelector("[data-site-search-input]");
