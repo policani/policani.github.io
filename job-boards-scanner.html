@@ -124,6 +124,12 @@
     padding:10px;
     font:12px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;
   }
+  .scan-viz-wrap { margin-bottom:10px; border-radius:7px; background:#101827; overflow:hidden; }
+  .scan-viz { display:block; width:100%; height:132px; }
+  .scan-viz-legend { display:flex; flex-wrap:wrap; align-items:center; gap:4px 16px; padding:7px 10px 8px; border-top:1px solid #1d2a3f; font-size:12px; color:#a9bbd0; }
+  .scan-viz-legend .viz-key { display:inline-flex; align-items:center; gap:6px; }
+  .scan-viz-legend .viz-mark { font-weight:800; width:12px; text-align:center; }
+  .scan-viz-legend .viz-totals { margin-left:auto; color:#dbe6f2; font-variant-numeric:tabular-nums; }
   .progress-wrap { margin-bottom:10px; }
   .progress-meta {
     display:flex;
@@ -690,6 +696,16 @@
         </div>
         <div class="progress-track" aria-label="Run progress">
           <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+      <div class="scan-viz-wrap">
+        <canvas class="scan-viz" id="scanViz" aria-hidden="true"></canvas>
+        <div class="scan-viz-legend">
+          <span class="viz-key"><span class="viz-mark" style="color:#4ade80">&#10003;</span>Jobs found</span>
+          <span class="viz-key"><span class="viz-mark" style="color:#8ea2bb">&#9675;</span>Empty board</span>
+          <span class="viz-key"><span class="viz-mark" style="color:#fbbf24">!</span>Unavailable</span>
+          <span class="viz-key"><span class="viz-mark" style="color:#f87171">&#10005;</span>Error</span>
+          <span class="viz-totals" id="scanVizTotals"></span>
         </div>
       </div>
       <div class="log" id="log"></div>
@@ -1670,8 +1686,9 @@ function esc(s) {
   return String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
 }
 function log(msg) {
-  $("log").textContent += msg + "\n";
-  $("log").scrollTop = $("log").scrollHeight;
+  const el = $("log");
+  el.append(msg + "\n");
+  el.scrollTop = el.scrollHeight;
 }
 function updateProgress(done, total, label) {
   const pct = total ? Math.round((done / total) * 100) : 0;
@@ -2804,6 +2821,266 @@ async function fetchSource(src, criteria) {
   }
   throw new Error("unsupported source");
 }
+// Live scan view: one lane per parallel connection. A request travels from the
+// scanner to a board, the board pulses while it answers, then the lane shows one
+// clear outcome: jobs found, empty board, unavailable, or error. Drawing only;
+// it never changes what the scan does.
+const scanViz = (() => {
+  const C = { lane:"#22314a", trail:"#2f4a72", text:"#c8d8ea", muted:"#71849e", hub:"#1e6091", req:"#7cc4ff",
+    jobs:"#4ade80", empty:"#8ea2bb", unavailable:"#fbbf24", error:"#f87171", stopped:"#71849e" };
+  const DUR = { request:260, response:420, hold:700 };
+  const ABBR = { greenhouse:"GH", ashby:"AS", lever:"LV", smartrecruiters:"SR", workable:"WK", breezy:"BZ", bamboohr:"BH",
+    personio:"PE", recruitee:"RC", workday:"WD", himalayas:"HM", remotive:"RM", arbeitnow:"AN", themuse:"TM", jobicy:"JB" };
+  const reduced = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : { matches:false };
+  let canvas = null, ctx = null, w = 0, h = 0, lanes = [], raf = 0, lastTick = 0, phase = "idle";
+  let totals = { jobs:0, empty:0, unavailable:0, error:0 };
+  const ease = t => t <= 0 ? 0 : t >= 1 ? 1 : 1 - Math.pow(1 - t, 3);
+  const laneHeight = n => n > 10 ? 20 : n > 6 ? 24 : 30;
+  const durations = () => reduced.matches ? { request:0, response:0, hold:DUR.hold } : DUR;
+  // Finished lanes dim, but failures stay bright enough to spot at a glance.
+  const settled = outcome => outcome === "error" || outcome === "unavailable" ? 0.85 : 0.5;
+  function makeLanes(n) {
+    lanes = Array.from({ length:Math.max(1, n) }, () => ({ queue:[], last:null }));
+    if (canvas) canvas.style.height = Math.max(132, 30 + lanes.length * laneHeight(lanes.length) + 10) + "px";
+  }
+  function resize() {
+    if (!canvas) return;
+    const dpr = window.devicePixelRatio || 1;
+    w = canvas.clientWidth; h = canvas.clientHeight;
+    canvas.width = Math.max(1, Math.round(w * dpr));
+    canvas.height = Math.max(1, Math.round(h * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw(performance.now());
+  }
+  function init() {
+    canvas = $("scanViz");
+    ctx = canvas && canvas.getContext ? canvas.getContext("2d") : null;
+    if (!ctx) { canvas = null; return; }
+    makeLanes(SOURCE_CONCURRENCY);
+    if (window.ResizeObserver) new ResizeObserver(resize).observe(canvas);
+    else window.addEventListener("resize", resize);
+    resize();
+    renderTotals();
+  }
+  function reset(n) {
+    totals = { jobs:0, empty:0, unavailable:0, error:0 };
+    phase = "running";
+    makeLanes(n);
+    renderTotals();
+    kick();
+  }
+  function start(slot, src) {
+    const lane = lanes[slot];
+    if (!lane) return;
+    lane.queue.push({ platform:String(src.platform || ""), slug:String(src.slug || src.platform || ""), startedAt:performance.now(), clock:0, outcome:null, run:null });
+    kick();
+  }
+  function finish(slot, result) {
+    const item = lanes[slot]?.queue.find(it => !it.outcome);
+    if (!item) return;
+    const run = result?.sourceRun || {};
+    item.run = run;
+    item.outcome = run.status === "ok" ? (run.fetched ? "jobs" : "empty") : run.status === "unavailable" ? "unavailable" : "error";
+    totals[item.outcome]++;
+    renderTotals();
+    kick();
+  }
+  function cancel(slot) {
+    (lanes[slot]?.queue || []).forEach(it => { if (!it.outcome) it.outcome = "stopped"; });
+    kick();
+  }
+  function done(stopped) {
+    phase = stopped ? "stopped" : "done";
+    kick();
+  }
+  function renderTotals() {
+    const el = $("scanVizTotals");
+    if (!el) return;
+    const n = v => v.toLocaleString();
+    el.textContent = phase === "idle" ? "" :
+      `${n(totals.jobs)} with jobs · ${n(totals.empty)} empty · ${n(totals.unavailable)} unavailable · ${n(totals.error)} errors`;
+  }
+  function kick() {
+    if (!canvas || raf) return;
+    lastTick = performance.now();
+    raf = requestAnimationFrame(tick);
+  }
+  // Advance a lane's current item. A backlog plays faster, so the view never lags the scan.
+  function advance(lane, dt) {
+    const item = lane.queue[0];
+    if (!item) return false;
+    const d = durations();
+    const rate = 1 + (lane.queue.length - 1) * 3;
+    if (item.outcome || item.clock < d.request) item.clock += dt * rate;
+    if (!item.outcome && item.clock > d.request) item.clock = d.request;
+    if (item.outcome && item.clock >= d.request + d.response + d.hold) {
+      lane.last = item;
+      lane.queue.shift();
+    }
+    return true;
+  }
+  function tick(now) {
+    const dt = Math.min(80, now - lastTick);
+    lastTick = now;
+    let active = false;
+    lanes.forEach(lane => { if (advance(lane, dt)) active = true; });
+    draw(now);
+    raf = active ? requestAnimationFrame(tick) : 0;
+  }
+  function fit(text, max) {
+    if (max <= 8) return "";
+    if (ctx.measureText(text).width <= max) return text;
+    let s = text;
+    while (s.length > 1 && ctx.measureText(s + "…").width > max) s = s.slice(0, -1);
+    return s + "…";
+  }
+  function dot(x, y, r, color, alpha = 1) {
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = color;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  function ring(x, y, r, color, alpha = 1, width = 1.5) {
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = color; ctx.lineWidth = width;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  function line(x1, y1, x2, y2, color, width = 1, alpha = 1) {
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = color; ctx.lineWidth = width;
+    ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  // The outcome mark at the board: check, hollow circle, exclamation, or cross.
+  function mark(outcome, x, y, r, alpha) {
+    const color = C[outcome];
+    if (outcome === "empty" || outcome === "stopped") { ring(x, y, r, color, alpha, 1.6); return; }
+    dot(x, y, r + 1.5, color, alpha);
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = "#101827"; ctx.fillStyle = "#101827"; ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    if (outcome === "jobs") {
+      ctx.moveTo(x - r * 0.55, y); ctx.lineTo(x - r * 0.1, y + r * 0.5); ctx.lineTo(x + r * 0.65, y - r * 0.5); ctx.stroke();
+    } else if (outcome === "unavailable") {
+      ctx.fillRect(x - 0.9, y - r * 0.7, 1.8, r * 0.85);
+      ctx.fillRect(x - 0.9, y + r * 0.35, 1.8, 1.8);
+    } else {
+      const k = r * 0.5;
+      ctx.moveTo(x - k, y - k); ctx.lineTo(x + k, y + k); ctx.moveTo(x + k, y - k); ctx.lineTo(x - k, y + k); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+  function resultText(item) {
+    const run = item.run || {};
+    if (item.outcome === "jobs") {
+      let text = `${(run.fetched || 0).toLocaleString()} jobs`;
+      if (run.main) text += ` · ${run.main} main`;
+      else if (run.review) text += ` · ${run.review} review`;
+      return text;
+    }
+    return { empty:"no jobs", unavailable:"unavailable", error:"error", stopped:"stopped" }[item.outcome] || "";
+  }
+  function label(item, y, x, right, status, statusColor, alpha) {
+    ctx.globalAlpha = alpha;
+    ctx.textBaseline = "middle";
+    ctx.font = "700 12px ui-monospace,SFMono-Regular,Consolas,monospace";
+    ctx.textAlign = "right";
+    ctx.fillStyle = statusColor;
+    ctx.fillText(status, right, y);
+    const statusW = status ? ctx.measureText(status).width + 12 : 0;
+    ctx.textAlign = "left";
+    ctx.font = "600 10px ui-monospace,SFMono-Regular,Consolas,monospace";
+    const abbr = ABBR[item.platform] || item.platform.slice(0, 2).toUpperCase();
+    ctx.fillStyle = C.muted;
+    ctx.fillText(abbr, x, y);
+    const abbrW = ctx.measureText(abbr).width + 6;
+    ctx.font = "12px ui-monospace,SFMono-Regular,Consolas,monospace";
+    ctx.fillStyle = C.text;
+    ctx.fillText(fit(item.slug, right - statusW - x - abbrW), x + abbrW, y);
+    ctx.globalAlpha = 1;
+  }
+  function draw(now) {
+    if (!ctx || !w || !h) return;
+    ctx.clearRect(0, 0, w, h);
+    const n = lanes.length, lh = laneHeight(n), top = 28;
+    const hubX = 40, labelW = Math.max(150, Math.min(340, w * 0.38)), boardX = w - labelW - 10;
+    const labelX = boardX + 14, right = w - 12, r = lh > 24 ? 6 : 5;
+    const d = durations();
+    ctx.textBaseline = "middle";
+    ctx.font = "700 10px ui-monospace,SFMono-Regular,Consolas,monospace";
+    ctx.fillStyle = C.muted; ctx.textAlign = "left";
+    ctx.fillText("SCANNER", 12, 13);
+    ctx.textAlign = "right";
+    const busy = lanes.filter(l => l.queue.length).length;
+    const header = phase === "running" ? `${busy} of ${n} connections busy` : phase === "done" ? "Run complete" : phase === "stopped" ? "Stopped" : "";
+    ctx.fillText(header, right, 13);
+    // Scanner hub: the left bar every lane starts from.
+    ctx.fillStyle = C.hub;
+    ctx.fillRect(14, top, 8, n * lh);
+    lanes.forEach((lane, i) => {
+      const y = top + i * lh + lh / 2;
+      line(22, y, boardX, y, C.lane);
+      const item = lane.queue[0];
+      if (!item) {
+        if (lane.last) {
+          const a = settled(lane.last.outcome);
+          mark(lane.last.outcome, boardX, y, r, a);
+          label(lane.last, y, labelX, right, resultText(lane.last), C[lane.last.outcome], a);
+        } else ring(boardX, y, r - 1, C.lane, 1, 1.2);
+        return;
+      }
+      const t = item.clock;
+      if (!item.outcome || t < d.request) {
+        const p = d.request ? ease(t / d.request) : 1;
+        const x = hubX + (boardX - hubX) * p;
+        line(22, y, x, y, C.trail, 1.5);
+        if (p < 1) { dot(x, y, 6, C.req, 0.25); dot(x, y, 3, C.req); }
+        if (!item.outcome && p >= 1) {
+          const k = ((now - item.startedAt) % 1000) / 1000;
+          ring(boardX, y, r + k * 9, C.req, 1 - k);
+          dot(boardX, y, r - 1, C.req);
+          const secs = Math.floor((now - item.startedAt) / 1000);
+          label(item, y, labelX, right, secs >= 2 ? `checking ${secs}s` : "checking", C.muted, 1);
+        } else {
+          ring(boardX, y, r - 1, C.lane, 1, 1.2);
+          label(item, y, labelX, right, "", C.muted, 1);
+        }
+        return;
+      }
+      const color = C[item.outcome];
+      const q = d.response ? Math.min(1, (t - d.request) / d.response) : 1;
+      if (item.outcome === "jobs" && q < 1) {
+        // Jobs travel back to the scanner as a short stream of dots.
+        for (let j = 0; j < 4; j++) {
+          const pq = ease((q - j * 0.12) / 0.64);
+          if (pq <= 0 || pq >= 1) continue;
+          dot(boardX - (boardX - hubX) * pq, y, 2.6, color);
+        }
+      } else if (item.outcome === "error" || item.outcome === "unavailable") {
+        // Failures flash the lane and burst at the board.
+        line(22, y, boardX, y, color, 2, 0.6 * (1 - q * 0.6));
+        if (q < 1) ring(boardX, y, r + q * 12, color, 1 - q, 2);
+      }
+      const hold = Math.max(0, t - d.request - d.response);
+      const floor = settled(item.outcome);
+      const fade = Math.max(floor, 1 - Math.max(0, hold - d.hold * 0.6) / (d.hold * 0.4) * (1 - floor));
+      mark(item.outcome, boardX, y, r, fade);
+      label(item, y, labelX, right, resultText(item), color, fade);
+    });
+    if (phase === "idle") {
+      ctx.globalAlpha = 0.92;
+      ctx.fillStyle = "#101827";
+      ctx.fillRect(0, top - 6, w, n * lh + 12);
+      ctx.globalAlpha = 1;
+      ctx.textAlign = "center";
+      ctx.font = "13px system-ui,-apple-system,Segoe UI,sans-serif";
+      ctx.fillStyle = C.text;
+      ctx.fillText(`Run Search to watch boards being checked, up to ${n} at a time.`, w / 2, top + (n * lh) / 2, w - 24);
+    }
+  }
+  return { init, reset, start, finish, cancel, done };
+})();
 function resetState() {
   state.main = [];
   state.review = [];
@@ -2937,23 +3214,27 @@ async function runScout() {
   let nextIndex = 0;
   let completed = 0;
   const workerCount = Math.min(SOURCE_CONCURRENCY, criteria.sources.length);
-  async function worker() {
+  scanViz.reset(workerCount);
+  async function worker(slot) {
     while (nextIndex < criteria.sources.length && !stopSignal.aborted) {
       const index = nextIndex++;
       const src = criteria.sources[index];
       const label = `${src.platform}/${src.slug}`;
       state.stats.sourcesAttempted++;
       updateProgress(completed, criteria.sources.length, `Checking ${label}`);
+      scanViz.start(slot, src);
       const result = await processSource(src, settings, criteria);
       // A source cut off by Stop is incomplete, not broken: drop it rather than log an error.
-      if (stopSignal.aborted) break;
+      if (stopSignal.aborted) { scanViz.cancel(slot); break; }
+      scanViz.finish(slot, result);
       mergeSourceResult(result);
       completed++;
       updateProgress(completed, criteria.sources.length, `Completed ${label}`);
       if (completed % 10 === 0 || result.main.length || result.review.length || completed === criteria.sources.length) render();
     }
   }
-  await Promise.all(Array.from({ length: workerCount }, () => worker()));
+  await Promise.all(Array.from({ length: workerCount }, (_, slot) => worker(slot)));
+  scanViz.done(stopSignal.aborted);
   runController = null;
   $("runBtn").disabled = false;
   $("stopBtn").disabled = true;
@@ -3697,6 +3978,7 @@ function init() {
     el.addEventListener("change", updateConfigSummary);
   });
   initConfigWidgets();
+  scanViz.init();
   setView("search");
   render();
 }
