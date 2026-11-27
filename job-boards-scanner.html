@@ -2985,7 +2985,8 @@ const scanViz = (() => {
   function resultText(item) {
     const run = item.run || {};
     if (item.outcome === "jobs") {
-      let text = `${(run.fetched || 0).toLocaleString()} jobs`;
+      const count = run.fetched || 0;
+      let text = `${count.toLocaleString()} job${count === 1 ? "" : "s"}`;
       if (run.main) text += ` · ${run.main} main`;
       else if (run.review) text += ` · ${run.review} review`;
       return text;
