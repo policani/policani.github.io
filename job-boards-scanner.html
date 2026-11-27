@@ -101,43 +101,6 @@
   .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
   .row > * { flex:1; }
   .hint { font-size:12px; color:var(--muted); margin-top:4px; }
-  .field-help {
-    font-size:12px;
-    color:var(--muted);
-    margin:0 0 8px;
-  }
-  .check-grid {
-    display:grid;
-    grid-template-columns:repeat(3, minmax(0, 1fr));
-    gap:8px;
-    margin-top:6px;
-  }
-  .check-option {
-    display:flex;
-    align-items:center;
-    gap:7px;
-    border:1px solid var(--line);
-    border-radius:7px;
-    padding:8px 9px;
-    background:var(--soft);
-    font-size:13px;
-    font-weight:700;
-    color:var(--ink);
-  }
-  .check-option input { width:auto; margin:0; }
-  .tz-grid { grid-template-columns:repeat(4, minmax(0, 1fr)); margin-bottom:4px; }
-  .location-grid {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-  }
-  .status {
-    min-height:18px;
-    font-size:12px;
-    color:var(--green);
-    margin-top:6px;
-  }
-  .optional-field[hidden] { display:none; }
   details {
     border-top:1px solid #edf1f5;
     padding-top:10px;
@@ -151,18 +114,6 @@
     list-style:none;
   }
   summary::-webkit-details-marker { display:none; }
-  .criteria-block {
-    border:1px solid #e2eaf2;
-    border-radius:8px;
-    padding:10px;
-    margin-top:8px;
-    background:#fbfdff;
-  }
-  .criteria-grid {
-    display:grid;
-    grid-template-columns:1fr;
-    gap:10px;
-  }
   .log {
     height:190px;
     overflow:auto;
@@ -307,43 +258,147 @@
   .tabs button[aria-selected="true"] { color:var(--blue2); border-bottom-color:var(--blue2); }
   .tabs button:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
   .config-view[hidden], .results-view[hidden] { display:none; }
-  .config-head {
-    display:flex;
-    gap:12px;
-    align-items:flex-start;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    margin-bottom:4px;
-  }
-  .config-head h2 { font-size:16px; text-transform:none; letter-spacing:0; margin-bottom:2px; }
-  .config-grid {
-    display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:14px;
-    align-items:start;
-    margin-top:10px;
-  }
-  .config-grid .card + .card { margin-top:0; }
-  .config-grid .span-all { grid-column:1 / -1; }
-  .config-grid .criteria-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
   .results-view .card + .card, .results-view > .card { margin-top:0; margin-bottom:14px; }
   .count { font-weight:600; color:var(--muted); }
   @media (max-width:900px) {
     body { padding:16px; }
     .topbar { margin:-16px -16px 14px; padding:12px 16px; }
     .tabs { margin:2px -16px -12px; padding:0 16px; }
-    .config-grid, .config-grid .criteria-grid { grid-template-columns:minmax(0, 1fr); }
   }
   @media (max-width:1100px) {
     .grid { grid-template-columns:minmax(0,1fr); }
     .stats { grid-template-columns:repeat(2,1fr); }
     .report-grid { grid-template-columns:repeat(2,1fr); }
-    .check-grid, .location-grid { grid-template-columns:1fr; }
-    .tz-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
     .diag-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
     .source-row { flex-wrap:wrap; overflow-wrap:anywhere; }
     .source-row span:last-child { text-align:left; }
     .log { overflow-wrap:anywhere; }
+  }
+  /* Configuration tab. Every rule is scoped to .config-view so the Search view keeps its styles. */
+  .sr-only { position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+  .config-view { width:100%; }
+  .config-view [hidden] { display:none !important; }
+  .config-view p { margin:0; }
+  .config-view fieldset { min-inline-size:0; border:0; margin:0; padding:0; }
+  .config-view fieldset.cfg-field { margin-top:16px; }
+  .config-view :focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+  .config-view select,
+  .config-view input[type="text"],
+  .config-view textarea { border-color:#7f8fa3; font-size:.8125rem; line-height:1.4; }
+  .config-view input[type="checkbox"] { width:auto; margin:0; padding:0; accent-color:var(--blue); flex:none; }
+  .config-view ::placeholder { color:var(--muted); opacity:1; }
+
+  .cfg-top { display:flex; gap:12px 20px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; }
+  .cfg-top-text { flex:1 1 300px; min-width:0; }
+  .config-view .cfg-page-title { font-size:1.125rem; font-weight:600; line-height:1.25; color:var(--ink); text-transform:none; letter-spacing:0; margin:0 0 4px; }
+  .cfg-intro { font-size:.8125rem; line-height:1.45; color:var(--muted); max-width:72ch; }
+  .cfg-preset { display:flex; flex-direction:column; align-items:flex-end; gap:4px; max-width:40%; }
+  .cfg-preset .cfg-help { text-align:right; }
+  .cfg-status { min-height:3em; margin:6px 0 4px; font-size:.75rem; line-height:1.5; color:var(--ink); display:flex; align-items:flex-start; gap:6px; }
+  .cfg-status.is-saved { color:var(--muted); }
+  .cfg-status svg { color:var(--green); flex:none; margin-top:2px; }
+
+  .cfg-section { background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--line); border-radius:8px; box-shadow:var(--shadow); padding:20px; }
+  .cfg-section.cfg-scores { border-left-color:#b9dcc9; }
+  .cfg-section.cfg-screens { border-left-color:#efc98d; }
+  .cfg-group { display:flex; flex-direction:column; gap:12px; margin:28px 0; }
+  .cfg-section-head { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+  .config-view .cfg-section-title { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:0; font-size:1rem; font-weight:600; line-height:1.3; color:var(--ink); }
+  .cfg-section-line { margin-top:4px !important; font-size:.8125rem; line-height:1.45; color:var(--muted); max-width:80ch; }
+
+  .effect-tag { display:inline-flex; align-items:center; gap:5px; padding:2px 8px 2px 6px; border:1px solid; border-radius:4px; font-size:.75rem; font-weight:600; line-height:1.33; }
+  .tag-screens { color:var(--amber); background:#fff6e6; border-color:#efc98d; }
+  .tag-scores { color:var(--green); background:#eaf5ef; border-color:#b9dcc9; }
+  .tag-sources { color:var(--muted); background:var(--soft); border-color:var(--line); }
+
+  .config-view details.cfg-how { border-top:0; padding:0; margin:10px 0 0; }
+  .config-view details.cfg-how summary { display:inline-flex; align-items:center; gap:6px; min-height:24px; font-size:.8125rem; font-weight:400; line-height:1.35; color:var(--blue2); border-radius:4px; }
+  .config-view details.cfg-how summary:hover { text-decoration:underline; }
+  .config-view details.cfg-how summary::before { content:""; width:0; height:0; border-left:5px solid currentColor; border-top:4px solid transparent; border-bottom:4px solid transparent; transition:transform .15s; }
+  .config-view details.cfg-how[open] summary::before { transform:rotate(90deg); }
+  .cfg-how-body { margin-top:8px; padding:10px 12px; background:var(--soft); border-radius:7px; max-width:72ch; display:flex; flex-direction:column; gap:8px; }
+  .cfg-how-body p { font-size:.8125rem; line-height:1.55; color:var(--ink); }
+  .cfg-how-body b { font-weight:600; }
+
+  .cfg-field { margin-top:16px; min-width:0; }
+  .cfg-subfield { margin-top:10px; }
+  .config-view .cfg-label { display:block; margin:0 0 6px; padding:0; font-size:.8125rem; font-weight:600; line-height:1.35; color:var(--ink); }
+  .config-view .cfg-label .count { font-weight:600; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .cfg-help { margin-top:4px !important; font-size:.75rem; line-height:1.45; color:var(--muted); max-width:72ch; }
+  .cfg-lead { margin:0 0 8px !important; font-size:.75rem; line-height:1.45; color:var(--muted); max-width:72ch; }
+  .cfg-check-help { margin-left:24px !important; }
+  .config-view .cfg-check-top { margin-top:0; }
+  /* Columns are fractions of the available width. Inside a row, labels, help, and inputs line up across columns. */
+  .cfg-cols { display:grid; grid-template-columns:minmax(0, 1fr); column-gap:2.5%; }
+  .cfg-cols > .cfg-field { display:grid; grid-template-rows:subgrid; grid-row:span 4; align-content:start; }
+  .cfg-cols-plain > .cfg-field { display:block; grid-row:auto; }
+  @media (min-width:720px) {
+    .cfg-cols-2, .cfg-cols-4 { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width:900px) {
+    .cfg-cols-3 { grid-template-columns:repeat(3, minmax(0, 1fr)); }
+  }
+  @media (min-width:1280px) {
+    .cfg-cols-4 { grid-template-columns:repeat(4, minmax(0, 1fr)); }
+  }
+
+  .cfg-toggles { display:flex; flex-wrap:wrap; gap:8px; }
+  .config-view .cfg-toggle { display:inline-flex; align-items:center; gap:7px; min-height:36px; min-width:104px; margin:0; padding:6px 12px 6px 10px; border:1px solid var(--line); border-radius:8px; background:var(--paper); font-size:.8125rem; font-weight:400; line-height:1.3; color:var(--ink); cursor:pointer; }
+  .config-view .cfg-toggle:hover { border-color:#b8d8ef; }
+  .config-view .cfg-toggle:has(input:checked) { background:#e3eef7; border-color:var(--blue); color:var(--blue2); }
+  .config-view .cfg-toggle:has(input:focus-visible) { outline:2px solid var(--blue); outline-offset:2px; }
+  .config-view .cfg-check { display:flex; align-items:center; gap:8px; min-height:24px; margin:12px 0 0; font-size:.8125rem; font-weight:400; line-height:1.4; color:var(--ink); cursor:pointer; }
+
+  .chip-box { display:flex; flex-wrap:wrap; align-items:center; align-content:flex-start; justify-content:flex-start; gap:6px; min-height:42px; padding:6px; border:1px solid #7f8fa3; border-radius:7px; background:var(--soft); cursor:text; }
+  .chip-box:has(.chip-input:focus-visible) { outline:2px solid var(--blue); outline-offset:2px; }
+  .chip-list { display:flex; flex-wrap:wrap; gap:6px; max-width:100%; list-style:none; margin:0; padding:0; }
+  .chip { display:inline-flex; align-items:center; gap:2px; max-width:100%; padding:3px 4px 3px 10px; border:1px solid #c6d9e9; border-radius:999px; background:var(--paper); color:var(--ink); font-size:.8125rem; line-height:1.4; cursor:default; }
+  .chip-text { overflow-wrap:anywhere; }
+  .config-view .chip-x { display:inline-flex; align-items:center; justify-content:center; min-width:24px; min-height:24px; padding:0; border:0; border-radius:999px; background:transparent; color:var(--muted); font-weight:400; }
+  .config-view .chip-x:hover { background:#f0f6fa; color:var(--ink); }
+  .config-view .chip-x:focus-visible { outline-offset:1px; }
+  .config-view .chip-input { flex:1 1 12ch; min-width:12ch; width:auto; border:0; padding:4px; background:transparent; }
+  .config-view .chip-input:focus-visible { outline:none; }
+
+  .cfg-alert { display:flex; align-items:flex-start; gap:8px; margin-top:12px; padding:8px 10px; border:1px solid; border-left-width:3px; border-radius:6px; font-size:.8125rem; line-height:1.4; }
+  .cfg-alert svg { flex:none; margin-top:1px; }
+  .cfg-alert b { font-weight:600; }
+  .cfg-alert-error { background:#fbefed; border-color:#e6c3be; border-left-color:var(--red); color:var(--red); }
+  .cfg-alert-warning { background:#fff6e6; border-color:#efc98d; border-left-color:var(--amber); color:#7f5209; }
+  .cfg-alert-warning svg { color:var(--amber); }
+  .cfg-alert-note { background:var(--soft); border-color:var(--line); border-left-color:var(--blue); color:var(--ink); }
+  .cfg-alert-note svg { color:var(--blue); }
+
+  .cfg-summary-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px 12px; margin-top:14px; padding:10px 12px; background:var(--soft); border:1px solid var(--line); border-radius:7px; font-size:.8125rem; line-height:1.4; color:var(--ink); }
+  #metroCitiesWrap .cfg-summary-row { margin-top:0; }
+  .cfg-source-summary { flex:1 1 280px; display:flex; align-items:center; flex-wrap:wrap; gap:4px 10px; min-width:0; }
+  .cfg-count { font-weight:600; font-variant-numeric:tabular-nums; }
+  .cfg-pill { display:inline-flex; padding:1px 8px; border:1px solid var(--line); border-radius:999px; background:var(--paper); font-size:.75rem; color:var(--ink); }
+  .cfg-pill.is-custom { background:#e3eef7; border-color:#b8d8ef; color:var(--blue2); }
+  .cfg-breakdown { flex-basis:100%; font-size:.75rem; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .config-view .cfg-small-btn { display:inline-flex; align-items:center; min-height:24px; padding:6px 10px; font-size:.8125rem; }
+  .cfg-editor { margin-top:12px; }
+  .config-view .cfg-city-list { min-height:120px; font-family:inherit; }
+  .config-view .cfg-source-list { height:280px; min-height:160px; font-size:.75rem; line-height:1.5; }
+  .cfg-formats { display:grid; grid-template-columns:max-content minmax(0, 1fr); gap:4px 14px; margin:10px 0; padding:10px 12px; background:var(--soft); border-radius:7px; font-size:.75rem; line-height:1.5; color:var(--ink); }
+  .cfg-formats dt { font-weight:600; }
+  .cfg-formats dd { margin:0; display:flex; flex-wrap:wrap; gap:2px 10px; align-items:baseline; }
+  .cfg-formats dd span { color:var(--muted); }
+  .cfg-formats code { font:.75rem/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; overflow-wrap:anywhere; }
+  .cfg-editor-foot { display:flex; justify-content:flex-end; margin-top:6px; }
+  .config-view .cfg-link-btn { display:inline-flex; align-items:center; min-height:24px; padding:6px 0; border:0; background:none; color:var(--muted); font-size:.8125rem; font-weight:400; line-height:1.4; text-decoration:underline; text-underline-offset:2px; }
+  .config-view .cfg-link-btn:hover { color:var(--red); }
+  .cfg-footer { margin-top:24px; padding-top:8px; border-top:1px solid var(--line); }
+  @media (max-width:640px) {
+    .cfg-section { padding:16px; }
+    .cfg-formats { grid-template-columns:minmax(0, 1fr); }
+    .cfg-preset { align-items:flex-start; max-width:none; }
+    .cfg-preset .cfg-help { text-align:left; }
+    .cfg-toggles-hours { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .config-view .cfg-toggle { min-height:44px; min-width:0; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .config-view details.cfg-how summary::before { transition:none; }
   }
 </style>
 </head>
@@ -365,140 +420,265 @@
 </header>
 
 <section class="config-view" id="configView" role="tabpanel" aria-labelledby="tabConfig" hidden>
-  <div class="config-head">
-    <div>
-      <h2>Configuration</h2>
-      <p class="field-help">Settings save automatically in this browser. Run Search uses them and switches to the Search view.</p>
+  <div class="cfg-top">
+    <div class="cfg-top-text">
+      <h2 class="cfg-page-title">Configuration</h2>
+      <p class="cfg-intro">Settings save automatically in this browser. Run Search uses them and switches to the Search view.</p>
     </div>
-    <div class="toolbar">
-      <button class="secondary" id="saveBtn">Save Settings</button>
-      <button class="secondary" id="resetBtn">Reset Settings</button>
+    <div class="cfg-preset">
+      <button type="button" class="secondary" id="presetRemoteUsBtn" aria-describedby="presetHelp">Apply Remote-US preset</button>
+      <p class="cfg-help" id="presetHelp">14 days, US remote, any metro, range not required. Keeps your salary minimum.</p>
     </div>
   </div>
-  <div class="status" id="saveStatus"></div>
-  <div class="config-grid">
-    <div class="card">
-      <h2>Run Profile</h2>
-      <label for="ageDays">Posting age</label>
-      <select id="ageDays">
-        <option value="1" selected>1 day: daily scan</option>
-        <option value="2">2 days</option>
-        <option value="3">3 days</option>
-        <option value="7">7 days: backfill</option>
-        <option value="14">14 days</option>
-        <option value="30">30 days</option>
-      </select>
+  <div class="cfg-status" id="saveStatus" role="status"></div>
 
-      <label>Work arrangement</label>
-      <div class="check-grid">
-        <label class="check-option"><input type="checkbox" id="locRemote" checked> Remote</label>
-        <label class="check-option"><input type="checkbox" id="locHybrid"> Hybrid</label>
-        <label class="check-option"><input type="checkbox" id="locOnsite"> Onsite</label>
+  <section class="cfg-section cfg-scores" aria-labelledby="secRole">
+    <div class="cfg-section-head">
+      <h3 class="cfg-section-title" id="secRole">Role match<span class="sr-only">, </span><span class="effect-tag tag-scores"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M1 11h2.4V7.4H1zM4.8 11h2.4V4.2H4.8zM8.6 11H11V1H8.6z" fill="currentColor"/></svg>Scores jobs</span></h3>
+    </div>
+    <p class="cfg-section-line">Within each list, entries are alternatives: a job needs to match any one. The four lists add up to one score, and adding entries never removes a job. Strong matches go to Main, near-misses to Review, and weak matches are screened out.</p>
+    <details class="cfg-how">
+      <summary>How this works<span class="sr-only">, Role match</span></summary>
+      <div class="cfg-how-body">
+        <p>Press Enter to add each entry. Pasting several lines adds one entry per line. Double-click an entry to edit it. Matching ignores capitalization and punctuation.</p>
+        <p><b>Primary titles.</b> Use one title keyword or phrase per entry. Multi-word phrases can also match titles with a short word gap, such as AI Manager matching AI Program Manager. Quotation marks are not required.</p>
+        <p><b>Related titles.</b> Use one related title word or phrase per entry. These broaden discovery when the exact title varies across employers, including short word gaps in title phrases. Very general words such as Strategy, Strategic, Initiatives, or Readiness add score but do not count as a title match on their own.</p>
+        <p><b>Seniority words.</b> Use one seniority word or phrase per entry. These are checked against the job title, such as Director, Principal, Lead, or Senior Manager.</p>
+        <p><b>Body evidence.</b> Use one keyword or phrase per entry. These are searched in the job description to prove the role contains work you care about, not just a matching title.</p>
       </div>
-      <div class="row" style="margin-top:8px">
-        <button class="secondary" id="presetRemoteUsBtn">Apply Remote-US preset</button>
+    </details>
+    <div class="cfg-alert cfg-alert-error" id="titlesRequired" hidden></div>
+    <div class="cfg-cols cfg-cols-4">
+      <div class="cfg-field">
+        <label class="cfg-label" for="titleStrong-entry" id="titleStrong-lbl">Primary titles</label>
+        <p class="cfg-lead" id="titleStrong-help">The job titles you are aiming for. A match is the strongest title signal and the usual route into Main. Phrases also match with a few words between, so AI Manager matches AI Program Manager.</p>
+        <div class="chip-box" data-field="titleStrong" data-label="Primary titles">
+          <ul class="chip-list" role="list" aria-labelledby="titleStrong-lbl" hidden></ul>
+          <input class="chip-input" id="titleStrong-entry" type="text" autocomplete="off" placeholder="e.g. Program Manager" aria-describedby="titleStrong-help titlesRequired">
+          <textarea id="titleStrong" hidden></textarea>
+        </div>
       </div>
-      <div class="hint">One click: 14-day window, US remote only, clears the metro filter, and turns off "posted salary required" (keeps your salary floor). Widening the age window is the biggest lever for more matches.</div>
+      <div class="cfg-field">
+        <label class="cfg-label" for="titleModerate-entry" id="titleModerate-lbl">Related titles</label>
+        <p class="cfg-lead" id="titleModerate-help">Broader title words for roles you would also consider. A match scores lower than a primary title: one usually goes to Review, while two related matches, or one plus two body-evidence matches, can reach Main.</p>
+        <div class="chip-box" data-field="titleModerate" data-label="Related titles">
+          <ul class="chip-list" role="list" aria-labelledby="titleModerate-lbl" hidden></ul>
+          <input class="chip-input" id="titleModerate-entry" type="text" autocomplete="off" placeholder="e.g. Operations" aria-describedby="titleModerate-help titlesRequired">
+          <textarea id="titleModerate" hidden></textarea>
+        </div>
+      </div>
+      <div class="cfg-field">
+        <label class="cfg-label" for="seniorityTerms-entry" id="seniorityTerms-lbl">Seniority words</label>
+        <p class="cfg-lead" id="seniorityTerms-help">Levels you want, such as Director or Senior, checked in the job title. A match adds a small boost. Adding words only helps; it never removes a job.</p>
+        <div class="chip-box" data-field="seniorityTerms" data-label="Seniority words">
+          <ul class="chip-list" role="list" aria-labelledby="seniorityTerms-lbl" hidden></ul>
+          <input class="chip-input" id="seniorityTerms-entry" type="text" autocomplete="off" placeholder="e.g. Director" aria-describedby="seniorityTerms-help">
+          <textarea id="seniorityTerms" hidden></textarea>
+        </div>
+      </div>
+      <div class="cfg-field">
+        <label class="cfg-label" for="bodyEvidence-entry" id="bodyEvidence-lbl">Body evidence</label>
+        <p class="cfg-lead" id="bodyEvidence-help">Phrases from job descriptions that show the work fits, such as capacity planning. Each match raises the score, and two or more help a job reach Main. Adding phrases never removes a job.</p>
+        <div class="chip-box" data-field="bodyEvidence" data-label="Body evidence">
+          <ul class="chip-list" role="list" aria-labelledby="bodyEvidence-lbl" hidden></ul>
+          <input class="chip-input" id="bodyEvidence-entry" type="text" autocomplete="off" placeholder="e.g. Portfolio governance" aria-describedby="bodyEvidence-help">
+          <textarea id="bodyEvidence" hidden></textarea>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="location-grid">
-        <div>
-          <label for="countryPreset">Country</label>
-          <select id="countryPreset">
+  <div class="cfg-group cfg-group-screen">
+    <section class="cfg-section cfg-screens" aria-labelledby="secStops">
+      <div class="cfg-section-head">
+        <h3 class="cfg-section-title" id="secStops">Hard stops<span class="sr-only">, </span><span class="effect-tag tag-screens"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M1 1.5h10L7.2 6.4V10L4.8 11.2V6.4Z" fill="currentColor"/></svg>Screens out jobs</span></h3>
+      </div>
+      <p class="cfg-section-line">Any single match removes the job, so every entry you add can only remove more jobs. Matching ignores capitalization and punctuation.</p>
+      <details class="cfg-how">
+        <summary>How this works<span class="sr-only">, Hard stops</span></summary>
+        <div class="cfg-how-body">
+          <p><b>Excluded titles.</b> Use one title keyword or phrase per entry. Matching titles are removed before body-text evidence is considered.</p>
+          <p><b>Body exclusions.</b> Use one keyword or phrase per entry. If a phrase appears in the title, location, or job description, the role is removed as a hard stop.</p>
+        </div>
+      </details>
+      <div class="cfg-cols cfg-cols-2">
+        <div class="cfg-field">
+          <label class="cfg-label" for="titleExclude-entry" id="titleExclude-lbl">Excluded titles</label>
+          <p class="cfg-lead" id="titleExclude-help">Removes any job whose title contains one of these. It also matches inside longer words, so Engineer removes Engineering Manager.</p>
+          <div class="chip-box" data-field="titleExclude" data-label="Excluded titles">
+            <ul class="chip-list" role="list" aria-labelledby="titleExclude-lbl" hidden></ul>
+            <input class="chip-input" id="titleExclude-entry" type="text" autocomplete="off" placeholder="e.g. Account Executive" aria-describedby="titleExclude-help">
+            <textarea id="titleExclude" hidden></textarea>
+          </div>
+        </div>
+        <div class="cfg-field">
+          <label class="cfg-label" for="bodyExclude-entry" id="bodyExclude-lbl">Body exclusions</label>
+          <p class="cfg-lead" id="bodyExclude-help">Removes any job that mentions one of these in its title, location, or description, even inside a phrase like &ldquo;no security clearance required.&rdquo; Use specific phrases; a common word can remove good jobs.</p>
+          <div class="chip-box" data-field="bodyExclude" data-label="Body exclusions">
+            <ul class="chip-list" role="list" aria-labelledby="bodyExclude-lbl" hidden></ul>
+            <input class="chip-input" id="bodyExclude-entry" type="text" autocomplete="off" placeholder="e.g. Security clearance" aria-describedby="bodyExclude-help">
+            <textarea id="bodyExclude" hidden></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cfg-section cfg-screens" aria-labelledby="secWhere">
+      <div class="cfg-section-head">
+        <h3 class="cfg-section-title" id="secWhere">Where &amp; when<span class="sr-only">, </span><span class="effect-tag tag-screens"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M1 1.5h10L7.2 6.4V10L4.8 11.2V6.4Z" fill="currentColor"/></svg>Screens out jobs</span></h3>
+      </div>
+      <p class="cfg-section-line">A job must pass every setting here. Within Work arrangement and Required working hours, any checked option can match.</p>
+      <details class="cfg-how">
+        <summary>How this works<span class="sr-only">, Where &amp; when</span></summary>
+        <div class="cfg-how-body">
+          <p>One day is the daily scan; use seven days when the window needs backfill.</p>
+          <p>The Remote-US preset, in one click: 14-day window, US remote only, clears the metro filter, and turns off "Only show jobs with a posted salary range" (keeps your salary minimum).</p>
+          <p>US searches require a US location or explicit US/worldwide hiring eligibility. A bare "Remote" label is not enough. Check each posting for state restrictions. Metro areas use editable city lists.</p>
+          <p>Required working hours reads the job description, not the job's location. Unchecking a time zone removes roles that require working its hours, such as "must work Eastern Time hours," "core hours are 9am-5pm ET," or "Hours: 9-5 ET." Roles that name no time zone, also allow a checked one, or call the hours preferred or flexible stay in, wherever the job is located. To limit hybrid and onsite roles by place, use Metro area.</p>
+          <p>Screens explicit foreign business-hours requirements. A global team or occasional overseas meeting alone is not a restriction. Unstated schedules still need review.</p>
+        </div>
+      </details>
+
+      <div class="cfg-cols cfg-cols-3">
+        <div class="cfg-field">
+          <label class="cfg-label" for="ageDays">Posted within</label>
+          <p class="cfg-lead" id="ageDays-help">Only jobs posted within this window are kept. Widening the age window is the biggest lever for more matches.</p>
+          <select id="ageDays" aria-describedby="ageDays-help">
+          <option value="1" selected>1 day: daily scan</option>
+          <option value="2">2 days</option>
+          <option value="3">3 days</option>
+          <option value="7">7 days: backfill</option>
+          <option value="14">14 days</option>
+          <option value="30">30 days</option>
+          </select>
+        </div>
+        <div class="cfg-field">
+          <label class="cfg-label" for="countryPreset">Country</label>
+          <p class="cfg-lead" id="countryPreset-help">Jobs must be located in this country or open to remote hiring from it.</p>
+          <select id="countryPreset" aria-describedby="countryPreset-help">
             <option value="United States" selected>United States</option>
             <option value="Canada">Canada</option>
             <option value="United Kingdom">United Kingdom</option>
             <option value="">Any country</option>
             <option value="custom">Custom country</option>
           </select>
-          <input class="optional-field" id="customCountry" placeholder="Country name" hidden>
+          <div class="cfg-subfield" id="customCountryWrap" hidden>
+            <label class="cfg-label" for="customCountry">Country name</label>
+            <input id="customCountry" type="text" autocomplete="off" placeholder="e.g. Germany" hidden>
+          </div>
         </div>
-        <div>
-          <label for="metroPreset">Metro area</label>
-          <select id="metroPreset">
+        <div class="cfg-field">
+          <label class="cfg-label" for="metroPreset">Metro area</label>
+          <p class="cfg-lead" id="metroPreset-help">Limits hybrid and onsite roles to one area's cities. Remote roles ignore it.</p>
+          <select id="metroPreset" aria-describedby="metroPreset-help">
             <option value="" selected>Any metro area</option>
             <option value="custom">Custom city list</option>
           </select>
         </div>
       </div>
-      <div class="optional-field" id="metroCitiesWrap" hidden>
-        <label for="metroCities">Included cities</label>
-        <p class="field-help">Metro matching uses this editable city list. Use one city per line.</p>
-        <textarea id="metroCities" placeholder="Seattle&#10;Everett&#10;Bellevue"></textarea>
-      </div>
-      <div class="hint">US searches require a US location or explicit US/worldwide hiring eligibility. A bare "Remote" label is not enough. Check each posting for state restrictions. Metro areas use editable city lists.</div>
-      <label>Working hours I can cover (US time zones)</label>
-      <div class="check-grid tz-grid">
-        <label class="check-option"><input type="checkbox" id="tzPacific" checked> Pacific</label>
-        <label class="check-option"><input type="checkbox" id="tzMountain" checked> Mountain</label>
-        <label class="check-option"><input type="checkbox" id="tzCentral" checked> Central</label>
-        <label class="check-option"><input type="checkbox" id="tzEastern" checked> Eastern</label>
-      </div>
-      <div class="hint">Uncheck a time zone to screen out roles that explicitly require working its hours, such as "must work Eastern Time hours." Roles that name no time zone, or also allow a checked one, stay in.</div>
-      <label class="check-option" style="margin-top:8px"><input type="checkbox" id="excludeNonUsHours" checked> Exclude roles requiring non-US working hours</label>
-      <div class="hint">Screens explicit foreign business-hours requirements. A global team or occasional overseas meeting alone is not a restriction. Unstated schedules still need review.</div>
-
-      <label for="compFloor">Minimum acceptable base salary</label>
-      <select id="compFloor"></select>
-      <label class="check-option" style="margin-top:8px"><input type="checkbox" id="requireSalaryRange"> Only show jobs with a posted salary range</label>
-      <div class="hint">A job appears when the selected salary amount is covered by its posted range. For example, a role listed at $160,000-$240,000 appears when this is set to $220,000.</div>
-
-      <div class="hint">One day is the daily scan; use seven days when the window needs backfill.</div>
-    </div>
-
-    <div class="card">
-      <h2>Title Keywords</h2>
-      <div class="criteria-grid">
-          <div class="criteria-block">
-            <label for="titleStrong">Primary title keywords</label>
-            <p class="field-help">Use one title keyword or phrase per line. Multi-word phrases can also match titles with a short word gap, such as AI Manager matching AI Program Manager. Quotation marks are not required.</p>
-            <textarea id="titleStrong" placeholder="Program Manager&#10;Portfolio Manager&#10;Director of Operations"></textarea>
-          </div>
-          <div class="criteria-block">
-            <label for="titleModerate">Related title keywords</label>
-            <p class="field-help">Use one related title word or phrase per line. These broaden discovery when the exact title varies across employers, including short word gaps in title phrases.</p>
-            <textarea id="titleModerate" placeholder="Operations&#10;Strategic Initiatives&#10;Transformation"></textarea>
-          </div>
-          <div class="criteria-block">
-            <label for="seniorityTerms">Seniority title keywords</label>
-            <p class="field-help">Use one seniority word or phrase per line. These are checked against the job title, such as Director, Principal, Lead, or Senior Manager.</p>
-            <textarea id="seniorityTerms" placeholder="Director&#10;Principal&#10;Senior Manager&#10;Lead"></textarea>
-          </div>
-          <div class="criteria-block">
-            <label for="titleExclude">Excluded title keywords</label>
-            <p class="field-help">Use one title keyword or phrase per line. Matching titles are removed before body-text evidence is considered.</p>
-            <textarea id="titleExclude" placeholder="Account Executive&#10;Software Engineer&#10;Recruiter"></textarea>
-          </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Body Evidence</h2>
-        <div class="criteria-block">
-          <label for="bodyEvidence">Body evidence keywords</label>
-          <p class="field-help">Use one keyword or phrase per line. These are searched in the job description to prove the role contains work you care about, not just a matching title.</p>
-          <textarea id="bodyEvidence" placeholder="Portfolio governance&#10;Executive reporting&#10;Capacity planning&#10;Cross-functional delivery"></textarea>
+      <div class="cfg-field" id="metroCitiesWrap" hidden>
+        <div class="cfg-summary-row" id="metroSummaryRow">
+          <span id="metroSummary"></span>
+          <button type="button" class="secondary cfg-small-btn" id="metroEditBtn" aria-expanded="false" aria-controls="metroEditor">Edit list<span class="sr-only">, cities</span></button>
         </div>
-    </div>
-
-    <div class="card">
-      <h2>Hard Stops and Exclusions</h2>
-        <div class="criteria-block">
-          <label for="bodyExclude">Body exclusion keywords</label>
-          <p class="field-help">Use one keyword or phrase per line. If a phrase appears in the title, location, or job description, the role is removed as a hard stop.</p>
-          <textarea id="bodyExclude" placeholder="Security clearance&#10;Quota carrying&#10;Travel required&#10;Must be fluent in Spanish"></textarea>
+        <div class="cfg-editor" id="metroEditor" hidden>
+          <label class="cfg-label" for="metroCities">Included cities</label>
+          <p class="cfg-help" id="metroCities-help">Metro matching uses this editable city list. Use one city per line.</p>
+          <textarea id="metroCities" class="cfg-city-list" placeholder="Seattle&#10;Everett&#10;Bellevue" aria-describedby="metroCities-help metroEmptyNote"></textarea>
         </div>
-    </div>
+        <div class="cfg-alert cfg-alert-note" id="metroEmptyNote" hidden></div>
+      </div>
 
-    <div class="card span-all">
-      <h2>Sources</h2>
-        <div class="criteria-block">
-          <label for="sourceList">Source list <span class="count" id="sourceCount"></span></label>
-          <p class="field-help">Use one source per line. At least one source is required before a search can run. Supported formats are shown below; each platform has its own source identifier.</p>
-          <textarea id="sourceList" style="min-height:320px" placeholder="greenhouse|company-slug&#10;ashby|company-slug&#10;lever|company-slug&#10;recruitee|company-slug&#10;smartrecruiters|CompanySlug&#10;workable|company-slug&#10;breezy|company-slug&#10;bamboohr|company-slug&#10;personio|company-slug&#10;workday|Company|host|tenant|site&#10;himalayas|keyword-search&#10;remotive|keyword-search&#10;arbeitnow|remote-board&#10;themuse|role-category-discovery&#10;jobicy|remote-board"></textarea>
+      <div class="cfg-cols cfg-cols-2 cfg-cols-plain">
+        <fieldset class="cfg-field">
+          <legend class="cfg-label">Work arrangement</legend>
+          <p class="cfg-lead" id="arrangement-help">Check every arrangement you would accept. A job needs to match any one.</p>
+          <div class="cfg-toggles">
+            <label class="cfg-toggle"><input type="checkbox" id="locRemote" checked aria-describedby="arrangement-help arrangementWarning"> Remote</label>
+            <label class="cfg-toggle"><input type="checkbox" id="locHybrid" aria-describedby="arrangement-help arrangementWarning"> Hybrid</label>
+            <label class="cfg-toggle"><input type="checkbox" id="locOnsite" aria-describedby="arrangement-help arrangementWarning"> Onsite</label>
+          </div>
+          <div class="cfg-alert cfg-alert-warning" id="arrangementWarning" hidden></div>
+        </fieldset>
+        <fieldset class="cfg-field">
+          <legend class="cfg-label">Required working hours (US time zones)</legend>
+          <p class="cfg-lead" id="hours-help">This is not a location filter. Keep checked every time zone whose hours you can work; unchecking one removes jobs whose description requires its hours. Most postings state no hours, so they stay in wherever the job is.</p>
+          <div class="cfg-toggles cfg-toggles-hours">
+            <label class="cfg-toggle"><input type="checkbox" id="tzPacific" checked aria-describedby="hours-help"> Pacific</label>
+            <label class="cfg-toggle"><input type="checkbox" id="tzMountain" checked aria-describedby="hours-help"> Mountain</label>
+            <label class="cfg-toggle"><input type="checkbox" id="tzCentral" checked aria-describedby="hours-help"> Central</label>
+            <label class="cfg-toggle"><input type="checkbox" id="tzEastern" checked aria-describedby="hours-help"> Eastern</label>
+          </div>
+          <label class="cfg-check"><input type="checkbox" id="excludeNonUsHours" checked aria-describedby="nonUsHours-help"> Exclude roles requiring non-US working hours</label>
+          <p class="cfg-help cfg-check-help" id="nonUsHours-help">Removes jobs that require working foreign business hours.</p>
+        </fieldset>
+      </div>
+    </section>
+
+    <section class="cfg-section cfg-screens" aria-labelledby="secSalary">
+      <div class="cfg-section-head">
+        <h3 class="cfg-section-title" id="secSalary">Salary<span class="sr-only">, </span><span class="effect-tag tag-screens"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M1 1.5h10L7.2 6.4V10L4.8 11.2V6.4Z" fill="currentColor"/></svg>Screens out jobs</span></h3>
+      </div>
+      <p class="cfg-section-line">Removes jobs by posted pay. Jobs without a posted salary stay in unless you require a range.</p>
+      <details class="cfg-how">
+        <summary>How this works<span class="sr-only">, Salary</span></summary>
+        <div class="cfg-how-body">
+          <p>A job appears when its posted range reaches the selected salary amount, including ranges entirely above it. For example, a role listed at $160,000-$240,000 appears when this is set to $220,000.</p>
         </div>
+      </details>
+      <div class="cfg-cols cfg-cols-2 cfg-cols-plain">
+        <div class="cfg-field">
+          <label class="cfg-label" for="compFloor">Minimum base salary</label>
+          <p class="cfg-lead" id="compFloor-help">Removes jobs whose posted range tops out below this amount. Jobs with no posted salary still appear unless you require a range.</p>
+          <select id="compFloor" aria-describedby="compFloor-help"></select>
+        </div>
+        <div class="cfg-field">
+          <span class="cfg-label" aria-hidden="true">Posted salary</span>
+          <label class="cfg-check cfg-check-top"><input type="checkbox" id="requireSalaryRange" aria-describedby="requireSalaryRange-help"> Only show jobs with a posted salary range</label>
+          <p class="cfg-help cfg-check-help" id="requireSalaryRange-help">Removes every job that does not post a salary range.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="cfg-section cfg-sources" aria-labelledby="secSources">
+    <div class="cfg-section-head">
+      <h3 class="cfg-section-title" id="secSources">Sources<span class="sr-only">, </span><span class="effect-tag tag-sources"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M1 1.6h10V3H1zM1 5.3h10v1.4H1zM1 9h10v1.4H1z" fill="currentColor"/></svg>Where to look</span></h3>
     </div>
+    <div class="cfg-summary-row">
+      <div class="cfg-source-summary">
+        <span class="cfg-count" id="sourceSummaryCount"></span>
+        <span class="cfg-pill" id="sourceSummaryState"></span>
+        <span class="cfg-breakdown" id="sourceSummaryBreakdown"></span>
+      </div>
+      <button type="button" class="secondary cfg-small-btn" id="sourceEditBtn" aria-expanded="false" aria-controls="sourceEditor">Edit list<span class="sr-only">, sources</span></button>
+    </div>
+    <div class="cfg-alert cfg-alert-error" id="sourcesRequired" hidden></div>
+    <div class="cfg-editor" id="sourceEditor" hidden>
+      <label class="cfg-label" for="sourceList">Source list <span class="count" id="sourceCount"></span></label>
+      <p class="cfg-help" id="sourceList-help">Use one source per line. At least one source is required before a search can run. Supported formats are shown below; each platform has its own source identifier.</p>
+      <dl class="cfg-formats">
+        <dt>Most job boards</dt><dd><code>greenhouse|company-slug</code> <span>also ashby, lever, recruitee, workable, breezy, bamboohr, personio</span></dd>
+        <dt>SmartRecruiters</dt><dd><code>smartrecruiters|CompanySlug</code></dd>
+        <dt>Workday (link-only)</dt><dd><code>workday|Company|host|tenant|site</code></dd>
+        <dt>Keyword search</dt><dd><code>himalayas|remote-keyword-discovery</code> <code>remotive|remote-keyword-discovery</code></dd>
+        <dt>Remote boards</dt><dd><code>arbeitnow|remote-board</code> <code>jobicy|remote-board</code></dd>
+        <dt>The Muse</dt><dd><code>themuse|role-category-discovery</code></dd>
+        <dt>Comments</dt><dd>Lines starting with <code>#</code> are ignored.</dd>
+      </dl>
+      <textarea id="sourceList" class="cfg-source-list" aria-describedby="sourceList-help sourcesRequired"></textarea>
+      <div class="cfg-editor-foot">
+        <button type="button" class="cfg-link-btn" id="restoreSourcesBtn">Restore default list</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="cfg-footer">
+    <button type="button" class="cfg-link-btn cfg-reset" id="resetBtn">Reset all settings…</button>
   </div>
 </section>
+
+<div class="sr-only" id="cfgAnnounce" aria-live="polite" aria-atomic="true"></div>
 
 <main class="results-view" id="resultsView" role="tabpanel" aria-labelledby="tabSearch">
     <div class="card">
@@ -1593,6 +1773,7 @@ function currentLocationSettings() {
 function syncLocationUi(changedId = "") {
   if (!$("countryPreset") || !$("metroPreset")) return;
   $("customCountry").hidden = $("countryPreset").value !== "custom";
+  if ($("customCountryWrap")) $("customCountryWrap").hidden = $("customCountry").hidden;
   const metro = normalizeMetroValue($("metroPreset").value);
   if ($("metroPreset").value !== metro) $("metroPreset").value = metro;
   const showCities = Boolean(metro);
@@ -1659,6 +1840,7 @@ function hasPhrase(text, term) {
   return norm(text).includes(norm(term));
 }
 function saveCriteria() {
+  cancelPendingSave();
   const data = {};
   for (const key of Object.keys(DEFAULTS)) {
     const el = $(key);
@@ -1670,15 +1852,13 @@ function saveCriteria() {
     if (!el) continue;
     data[key] = el.type === "checkbox" ? el.checked : el.value;
   }
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  data.sourceDefaultsRemoved = removedDefaultSources($("sourceList").value);
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch (e) {
+    setStatus("Settings could not be saved in this browser: " + (e?.message || e), { sticky: true });
+  }
   renderLinks();
-}
-function saveSettingsWithNotice() {
-  saveCriteria();
-  $("saveStatus").textContent = "Settings saved. They will load automatically next time.";
-  setTimeout(() => {
-    if ($("saveStatus")) $("saveStatus").textContent = "";
-  }, 2200);
 }
 function readStoredCriteria(key) {
   try {
@@ -1706,11 +1886,14 @@ function loadCriteria(reset = false) {
     // Merge in any newly-added default sources (e.g. aggregators, new companies)
     // so a saved list still picks up sources added in newer versions of the app.
     const lines = Array.isArray(stored.sourceList) ? stored.sourceList : String(stored.sourceList).split(/\r?\n/);
-    const retired = new Set(RETIRED_DEFAULT_SOURCES.map(x => x.toLowerCase()));
-    const merged = lines.map(x => String(x || "").trim()).filter(x => x && !retired.has(x.toLowerCase()));
-    const seen = new Set(merged);
+    const retired = new Set(RETIRED_DEFAULT_SOURCES.map(sourceKey));
+    const merged = lines.map(x => String(x || "").trim()).filter(x => x && !retired.has(sourceKey(x)));
+    // Defaults the user deleted are recorded at save time and are not merged back.
+    const removed = new Set((Array.isArray(stored.sourceDefaultsRemoved) ? stored.sourceDefaultsRemoved : []).map(sourceKey));
+    const seen = new Set(merged.map(sourceKey));
     for (const line of DEFAULT_SOURCE_LIST) {
-      if (!seen.has(line)) { seen.add(line); merged.push(line); }
+      const key = sourceKey(line);
+      if (!seen.has(key) && !removed.has(key)) { seen.add(key); merged.push(line); }
     }
     stored.sourceList = merged;
   }
@@ -1735,6 +1918,7 @@ function loadCriteria(reset = false) {
   }
   syncLocationUi();
   renderLinks();
+  refreshConfigWidgets();
 }
 function currentCriteria() {
   return {
@@ -2007,14 +2191,24 @@ const US_TIME_ZONES = [
   { key: "central", id: "tzCentral", name: "Central", abbr: /\b(?:CST|CDT)\b/, word: /\bCentral (?:standard |daylight )?(?:time|hours|business hours|time ?zone)\b/i },
   { key: "eastern", id: "tzEastern", name: "Eastern", abbr: /\b(?:EST|EDT|ET)\b/, word: /\bEastern (?:standard |daylight )?(?:time|hours|business hours|time ?zone)\b/i }
 ];
+// A list of zone names sharing one noun: "Eastern or Central time zone",
+// "Pacific, Mountain, and Central time".
+const US_ZONE_LIST_RX = /\b(?:Pacific|Mountain|Central|Eastern)(?:\s*(?:,|\/|&|\bor\b|\band\b)\s*(?:(?:or|and)\s+)?(?:Pacific|Mountain|Central|Eastern))+\s+(?:standard |daylight )?(?:time|hours|business hours|time ?zones?)\b/gi;
+// A clock range tied to a zone: "9-5 ET", "8:00 AM - 5:00 PM EST", "9am to 6pm Pacific".
+const US_ZONE_HOURS_RANGE_RX = /\b\d{1,2}(?::\d{2})?\s*(?:[aApP]\.?[mM]\.?)?\s*(?:-|–|—|to|until)\s*\d{1,2}(?::\d{2})?\s*(?:[aApP]\.?[mM]\.?)?\s*(?:PST|PDT|PT|MST|MDT|CST|CDT|EST|EDT|ET|Pacific|Mountain|Central|Eastern)\b/;
 function requiredUsTimeZones(text) {
   const found = new Set();
   String(text || "").split(/[.!?;\n]+/).forEach(clause => {
-    const zones = US_TIME_ZONES.filter(z => z.abbr.test(clause) || z.word.test(clause));
+    const range = clause.match(US_ZONE_HOURS_RANGE_RX);
+    const hoursRange = range && (/[aApP]\.?[mM]\b|:\d{2}/.test(range[0]) || /\b(?:hours|schedule|shift|work|working|available|availability|overlap)\b/i.test(clause)) ? range[0] : "";
+    const listed = (clause.match(US_ZONE_LIST_RX) || []).join(" ") + " " + hoursRange.replace(/^.*?(\w+)$/, "$1");
+    const zones = US_TIME_ZONES.filter(z => z.abbr.test(clause) || z.word.test(clause) || new RegExp(`\\b${z.name}\\b`, "i").test(listed));
     if (!zones.length) return;
     if (/\b(?:occasional(?:ly)?|optional|preferred|a plus|flexible|any (?:US )?time ?zone|all (?:US )?time ?zones)\b|\b(?:not required|no requirement|do not require)\b/i.test(clause)) return;
     const required = /\b(?:must|required|requirement|expected to|needs? to)\b.{0,100}\b(?:work|working|hours|overlap|align|availability|available|time ?zones?|based|located|reside)\b/i.test(clause) ||
       /\b(?:work|working|business|office|core) (?:hours|schedule)\b/i.test(clause) ||
+      /\bhours\s*:/i.test(clause) ||
+      Boolean(hoursRange) ||
       /\b(?:located|based|reside|open to candidates) in\b.{0,40}\btime ?zones?\b/i.test(clause);
     if (required) zones.forEach(z => found.add(z.key));
   });
@@ -2727,7 +2921,7 @@ async function runScout() {
     return;
   }
   if (!criteria.titleStrong.length && !criteria.titleModerate.length) {
-    log("No title keywords are set. Open Configuration, add primary or secondary title keywords, then run the search again.");
+    log("No title keywords are set. Open Configuration, add primary or related title keywords, then run the search again.");
     updateProgress(0, 0, "Add title keywords in Configuration");
     render();
     return;
@@ -2739,6 +2933,7 @@ async function runScout() {
   runController = new AbortController();
   const stopSignal = runController.signal;
   $("stopBtn").disabled = false;
+  if (document.activeElement === document.body || document.activeElement === $("runBtn")) $("stopBtn").focus();
   let nextIndex = 0;
   let completed = 0;
   const workerCount = Math.min(SOURCE_CONCURRENCY, criteria.sources.length);
@@ -2762,6 +2957,7 @@ async function runScout() {
   runController = null;
   $("runBtn").disabled = false;
   $("stopBtn").disabled = true;
+  if (document.activeElement === document.body || document.activeElement === $("stopBtn")) $("runBtn").focus();
   const summary = `main ${state.main.length}, review ${state.review.length}, screened out ${state.suppressed.length}, source issues ${sourceIssueCount()}, run errors ${state.errors.length}`;
   if (stopSignal.aborted) {
     log(`Stopped after ${completed} of ${criteria.sources.length} sources: ${summary}`);
@@ -3059,10 +3255,8 @@ function applyRemoteUsPreset() {
   saveCriteria();
   renderLinks();
   render();
-  if ($("saveStatus")) {
-    $("saveStatus").textContent = "Preset applied: age 14 days, US remote, metro cleared, posted-salary not required. Now click Run Search.";
-    setTimeout(() => { if ($("saveStatus")) $("saveStatus").textContent = ""; }, 4000);
-  }
+  refreshConfigDerived(false);
+  setStatus("Preset applied: age 14 days, US remote, metro cleared, posted-salary not required. Now click Run Search.", { sticky: true });
 }
 // Two views: Search (results, the default on every load) and Configuration.
 function setView(view) {
@@ -3085,8 +3279,8 @@ function updateConfigSummary() {
   parts.push(work.length ? work.join(", ") : "No work arrangement selected");
   const country = $("countryPreset").value === "custom" ? $("customCountry").value.trim() : $("countryPreset").value;
   parts.push(country || "Any country");
-  const zones = US_TIME_ZONES.filter(z => $(z.id).checked);
-  if (zones.length < US_TIME_ZONES.length) parts.push(zones.length ? `${zones.map(z => z.name).join("/")} hours` : "No US time zone selected");
+  const blockedZones = US_TIME_ZONES.filter(z => !$(z.id).checked);
+  if (blockedZones.length) parts.push(blockedZones.length === US_TIME_ZONES.length ? "Excludes jobs requiring US time-zone hours" : `Excludes ${blockedZones.map(z => z.name).join("/")}-hours jobs`);
   const metro = $("metroPreset");
   if (metro.value) parts.push(metro.options[metro.selectedIndex]?.text || metro.value);
   const floor = $("compFloor");
@@ -3096,6 +3290,373 @@ function updateConfigSummary() {
   parts.push(`${count.toLocaleString()} sources`);
   $("configSummary").textContent = parts.join(" · ");
   $("sourceCount").textContent = `(${count.toLocaleString()})`;
+}
+// ---- Configuration view: keyword chips, inline alerts, list summaries, autosave status ----
+// Every chip field keeps its original hidden <textarea id> as the stored value (one entry per line),
+// so saving, loading, and the scoring logic read exactly what they read before.
+let saveTimer = null;
+let savedNoticeTimer = null;
+let statusSticky = false;
+let metroEditorOpen = false;
+let sourceEditorOpen = false;
+let defaultSourceKeys = null;
+const lastAlertState = {};
+const CHIP_FIELDS = ["titleStrong", "titleModerate", "seniorityTerms", "bodyEvidence", "titleExclude", "bodyExclude"];
+const PLATFORM_NAMES = { greenhouse: "Greenhouse", lever: "Lever", ashby: "Ashby", smartrecruiters: "SmartRecruiters", recruitee: "Recruitee", workable: "Workable", breezy: "Breezy HR", bamboohr: "BambooHR", personio: "Personio", workday: "Workday", himalayas: "Himalayas", remotive: "Remotive", arbeitnow: "Arbeitnow", themuse: "The Muse", jobicy: "Jobicy" };
+const ICON_CHECK = '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ICON_X = '<svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" focusable="false"><path d="M2 2l6 6M8 2L2 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+const ALERT_ICONS = {
+  error: '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M7.1 3.8h1.8l-.3 5.4H7.4zM7 10.8h2v1.8H7z" fill="#fff"/></svg>',
+  warning: '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M8 1.2L15.2 14H.8z" fill="currentColor"/><path d="M7.2 5.5h1.6l-.25 4.3H7.45zM7.1 10.8h1.8v1.6H7.1z" fill="#fff"/></svg>',
+  note: '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M7.1 6.8h1.8v5.4H7.1zM7.1 3.6h1.8v1.8H7.1z" fill="#fff"/></svg>'
+};
+const ALERT_PREFIX = { error: "Error: ", warning: "Warning: ", note: "Note: " };
+
+// Source-list identity: same normalization the run uses to dedupe sources.
+function sourceKey(line) {
+  return String(line || "").split("|").map(x => x.trim()).join("|").toLowerCase();
+}
+function getDefaultSourceKeys() {
+  if (!defaultSourceKeys) defaultSourceKeys = new Set(DEFAULT_SOURCE_LIST.map(sourceKey));
+  return defaultSourceKeys;
+}
+// Default sources the user deleted, so a reload does not merge them back in.
+// An empty or comment-only list records nothing and falls back to the defaults on reload.
+function removedDefaultSources(text) {
+  if (!parseSources(text).length) return [];
+  const have = new Set(String(text || "").split(/\n+/).map(sourceKey));
+  return DEFAULT_SOURCE_LIST.filter(line => !have.has(sourceKey(line)));
+}
+
+function cancelPendingSave() {
+  clearTimeout(saveTimer);
+  saveTimer = null;
+}
+// Typing in the city list, source list, or custom country saves after a pause. It only saves:
+// it never re-syncs location fields, so a preset metro's list is not refilled mid-edit.
+function scheduleSave(delay = 800) {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    saveTimer = null;
+    saveCriteria();
+    updateConfigSummary();
+    refreshConfigDerived(false);
+  }, delay);
+}
+function flushPendingSave() {
+  if (saveTimer) saveCriteria();
+}
+
+let announceQueue = [];
+let announceTimer = null;
+function announce(message) {
+  const el = $("cfgAnnounce");
+  if (!el || !message) return;
+  if (!announceQueue.includes(message)) announceQueue.push(message);
+  clearTimeout(announceTimer);
+  el.textContent = "";
+  announceTimer = setTimeout(() => {
+    el.textContent = announceQueue.join(" ");
+    announceQueue = [];
+  }, 60);
+}
+// Preset, reset, and restore messages stay until the user's next edit; "Saved" appears after edits.
+function setStatus(message, { sticky = false } = {}) {
+  const el = $("saveStatus");
+  clearTimeout(savedNoticeTimer);
+  statusSticky = sticky;
+  el.classList.remove("is-saved");
+  el.textContent = message;
+}
+function noteSaved() {
+  if (statusSticky) return;
+  clearTimeout(savedNoticeTimer);
+  savedNoticeTimer = setTimeout(() => {
+    const el = $("saveStatus");
+    if (statusSticky) return;
+    if (!el.classList.contains("is-saved")) {
+      el.classList.add("is-saved");
+      el.innerHTML = ICON_CHECK + "<span>Saved</span>";
+    }
+    savedNoticeTimer = setTimeout(() => {
+      if (!statusSticky && el.classList.contains("is-saved")) {
+        el.classList.remove("is-saved");
+        el.textContent = "";
+      }
+    }, 3000);
+  }, 1000);
+}
+
+function setAlert(id, level, message) {
+  const el = $(id);
+  if (!el) return false;
+  if (!message) {
+    el.hidden = true;
+    el.textContent = "";
+    return false;
+  }
+  el.hidden = false;
+  el.innerHTML = `${ALERT_ICONS[level]}<span><span class="sr-only">${ALERT_PREFIX[level]}</span>${esc(message)}</span>`;
+  return true;
+}
+function refreshAlerts(announceNew = false) {
+  const noTitles = !lines("titleStrong").length && !lines("titleModerate").length;
+  const noArrangement = !["locRemote", "locHybrid", "locOnsite"].some(id => $(id).checked);
+  const noCities = normalizeMetroValue($("metroPreset").value) === "custom" && !lines("metroCities").length;
+  const noSources = !parseSources($("sourceList").value).length;
+  const alerts = {
+    titlesRequired: noTitles && ["error", "Add at least one title to Primary or Related titles to run a search."],
+    arrangementWarning: noArrangement && ["warning", "Select at least one work arrangement. With none selected, every job is screened out."],
+    metroEmptyNote: noCities && ["note", "No cities listed, so hybrid and onsite roles from any metro area are included."],
+    sourcesRequired: noSources && ["error", "Add at least one source to run a search."]
+  };
+  for (const [id, alert] of Object.entries(alerts)) {
+    const shown = setAlert(id, alert && alert[0], alert && alert[1]);
+    if (shown && announceNew && !lastAlertState[id]) announce(alert[1]);
+    lastAlertState[id] = shown;
+  }
+  ["titleStrong-entry", "titleModerate-entry"].forEach(id => {
+    if (noTitles) $(id).setAttribute("aria-invalid", "true");
+    else $(id).removeAttribute("aria-invalid");
+  });
+  if (noSources) {
+    $("sourceList").setAttribute("aria-invalid", "true");
+    setSourceEditor(true);
+  } else {
+    $("sourceList").removeAttribute("aria-invalid");
+  }
+}
+
+function setSourceEditor(open) {
+  sourceEditorOpen = open;
+  $("sourceEditor").hidden = !open;
+  $("sourceEditBtn").setAttribute("aria-expanded", String(open));
+  $("sourceEditBtn").firstChild.textContent = open ? "Hide list" : "Edit list";
+}
+function refreshSourceSummary() {
+  const text = $("sourceList").value;
+  const sources = parseSources(text);
+  const keys = new Set(String(text).split(/\n+/).map(x => x.trim()).filter(x => x && !x.startsWith("#")).map(sourceKey));
+  const defaults = getDefaultSourceKeys();
+  let added = 0;
+  let removed = 0;
+  keys.forEach(k => { if (!defaults.has(k)) added++; });
+  defaults.forEach(k => { if (!keys.has(k)) removed++; });
+  $("sourceSummaryCount").textContent = `${sources.length.toLocaleString()} ${sources.length === 1 ? "source" : "sources"}`;
+  const pill = $("sourceSummaryState");
+  const custom = Boolean(added || removed);
+  pill.classList.toggle("is-custom", custom);
+  pill.textContent = custom ? `Custom list: +${added.toLocaleString()} added, −${removed.toLocaleString()} removed` : "Default list";
+  const byPlatform = new Map();
+  sources.forEach(src => byPlatform.set(src.platform, (byPlatform.get(src.platform) || 0) + 1));
+  $("sourceSummaryBreakdown").textContent = [...byPlatform.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([platform, n]) => `${PLATFORM_NAMES[platform] || platform} ${n.toLocaleString()}`)
+    .join(" · ");
+}
+function refreshMetroUi() {
+  const isCustom = normalizeMetroValue($("metroPreset").value) === "custom";
+  const count = lines("metroCities").length;
+  $("metroSummaryRow").hidden = isCustom;
+  $("metroSummary").textContent = `${count.toLocaleString()} ${count === 1 ? "city" : "cities"} included`;
+  const open = isCustom || metroEditorOpen;
+  $("metroEditor").hidden = !open;
+  $("metroEditBtn").setAttribute("aria-expanded", String(open));
+  $("metroEditBtn").firstChild.textContent = metroEditorOpen ? "Hide list" : "Edit list";
+}
+
+function chipBox(id) {
+  return $(id).closest(".chip-box");
+}
+function chipEntry(id) {
+  return $(`${id}-entry`);
+}
+function renderChips(id) {
+  const box = chipBox(id);
+  const label = box.dataset.label;
+  const items = lines(id);
+  const list = box.querySelector(".chip-list");
+  list.innerHTML = items.map((text, i) => `<li class="chip"><span class="chip-text">${esc(text)}</span><button type="button" class="chip-x" data-index="${i}" aria-label="Remove ${esc(text)} from ${esc(label)}">${ICON_X}</button></li>`).join("");
+  list.hidden = !items.length;
+  // The "e.g." example shows only while the field is empty, so it never reads as an entry.
+  const entry = chipEntry(id);
+  if (entry.dataset.example === undefined) entry.dataset.example = entry.placeholder;
+  entry.placeholder = items.length ? "" : entry.dataset.example;
+}
+function writeChips(id, items) {
+  $(id).value = items.join("\n");
+  $(id).dispatchEvent(new Event("change", { bubbles: true }));
+  renderChips(id);
+  noteSaved();
+}
+// Adds entries the user typed or pasted. Refuses an entry already in the list,
+// but never removes duplicates that are already stored (they count toward the score).
+function addChips(id, values) {
+  const label = chipBox(id).dataset.label;
+  const items = lines(id);
+  const have = new Set(items.map(norm));
+  const added = [];
+  const dupes = [];
+  for (const raw of values) {
+    const value = String(raw || "").trim();
+    if (!value) continue;
+    if (have.has(norm(value))) { dupes.push(value); continue; }
+    have.add(norm(value));
+    items.push(value);
+    added.push(value);
+  }
+  if (added.length) writeChips(id, items);
+  if (added.length === 1 && !dupes.length) announce(`Added ${added[0]} to ${label}.`);
+  else if (added.length) announce(`Added ${added.length} to ${label}${dupes.length ? `; ${dupes.length} duplicate${dupes.length === 1 ? "" : "s"} skipped` : ""}.`);
+  else if (dupes.length) announce(`${dupes[0]} is already in ${label}.`);
+  return added.length;
+}
+function removeChip(id, index, moveFocus = true) {
+  const label = chipBox(id).dataset.label;
+  const items = lines(id);
+  if (index < 0 || index >= items.length) return;
+  const [gone] = items.splice(index, 1);
+  writeChips(id, items);
+  announce(`Removed ${gone} from ${label}.`);
+  if (!moveFocus) return;
+  const buttons = chipBox(id).querySelectorAll(".chip-x");
+  (buttons[index] || buttons[index - 1] || chipEntry(id)).focus();
+}
+function commitEntry(id) {
+  const entry = chipEntry(id);
+  const value = entry.value.trim();
+  entry.value = "";
+  if (value) addChips(id, [value]);
+}
+function wireChipField(id) {
+  const box = chipBox(id);
+  const entry = chipEntry(id);
+  entry.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      commitEntry(id);
+    } else if (e.key === "Backspace" && !entry.value && entry.selectionStart === 0 && !e.repeat) {
+      const count = lines(id).length;
+      if (count) {
+        e.preventDefault();
+        removeChip(id, count - 1, false);
+      }
+    }
+  });
+  entry.addEventListener("paste", e => {
+    const text = e.clipboardData?.getData("text") || "";
+    if (!/[\r\n]/.test(text)) return;
+    e.preventDefault();
+    const typed = entry.value;
+    entry.value = "";
+    addChips(id, [typed, ...text.split(/\r?\n/)]);
+  });
+  entry.addEventListener("blur", () => commitEntry(id));
+  box.addEventListener("mousedown", e => {
+    if (e.target.closest(".chip-x")) e.preventDefault();
+  });
+  box.addEventListener("click", e => {
+    const remove = e.target.closest(".chip-x");
+    if (remove) {
+      removeChip(id, Number(remove.dataset.index));
+      return;
+    }
+    if (!e.target.closest(".chip")) entry.focus();
+  });
+  // Mouse shortcut: double-click an entry to edit it (keyboard users remove and re-add).
+  box.addEventListener("dblclick", e => {
+    const chip = e.target.closest(".chip");
+    if (!chip || e.target.closest(".chip-x")) return;
+    const index = [...box.querySelectorAll(".chip")].indexOf(chip);
+    const items = lines(id);
+    if (index < 0 || index >= items.length) return;
+    const [text] = items.splice(index, 1);
+    writeChips(id, items);
+    entry.value = text;
+    entry.focus();
+  });
+}
+
+function refreshConfigDerived(announceNew = true) {
+  refreshAlerts(announceNew);
+  refreshMetroUi();
+  refreshSourceSummary();
+}
+// Rebuilds every widget from the stored values; called after settings load, reset, or restore.
+function refreshConfigWidgets() {
+  CHIP_FIELDS.forEach(id => {
+    renderChips(id);
+    chipEntry(id).value = "";
+  });
+  refreshConfigDerived(false);
+}
+
+// Run Search checks the required settings before switching views, so a blocked run
+// keeps the previous results and shows the problem where it can be fixed.
+function validateRunInputs() {
+  CHIP_FIELDS.forEach(commitEntry);
+  const criteria = currentCriteria();
+  const problems = [];
+  if (!criteria.titleStrong.length && !criteria.titleModerate.length) problems.push({ focus: "titleStrong-entry", message: "Add at least one title to Primary or Related titles to run a search." });
+  if (!criteria.sources.length) problems.push({ focus: "sourceList", message: "Add at least one source to run a search." });
+  if (!problems.length) return true;
+  setView("config");
+  refreshAlerts(false);
+  if (!criteria.sources.length) setSourceEditor(true);
+  $(problems[0].focus).focus();
+  announce(problems.map(p => p.message).join(" "));
+  return false;
+}
+function resetAllSettings() {
+  if (!confirm("Reset all settings to defaults? This clears your keywords, filters, and source edits in this browser.")) return;
+  cancelPendingSave();
+  metroEditorOpen = false;
+  setSourceEditor(false);
+  loadCriteria(true);
+  render();
+  updateConfigSummary();
+  setStatus("Settings reset to defaults.", { sticky: true });
+}
+function restoreDefaultSources() {
+  if (!confirm("Restore the default source list? Sources you added or removed will be lost.")) return;
+  cancelPendingSave();
+  $("sourceList").value = DEFAULT_SOURCE_LIST.join("\n");
+  $("sourceList").dispatchEvent(new Event("change", { bubbles: true }));
+  setStatus("Default source list restored.", { sticky: true });
+}
+function initConfigWidgets() {
+  const view = $("configView");
+  CHIP_FIELDS.forEach(wireChipField);
+  // A user's own edit clears a preset/reset message and earns a "Saved" notice.
+  const onUserAction = e => {
+    if (!e.isTrusted) return;
+    if (statusSticky) {
+      statusSticky = false;
+      $("saveStatus").textContent = "";
+    }
+    if (!e.target.classList?.contains("chip-input")) noteSaved();
+  };
+  ["input", "change"].forEach(type => view.addEventListener(type, onUserAction, true));
+  view.addEventListener("change", e => {
+    if (e.target.id === "metroPreset") metroEditorOpen = false;
+    if (!e.target.classList?.contains("chip-input")) refreshConfigDerived(true);
+  });
+  ["metroCities", "sourceList", "customCountry"].forEach(id => $(id).addEventListener("input", () => scheduleSave(800)));
+  $("metroCities").addEventListener("input", () => refreshAlerts(true));
+  window.addEventListener("pagehide", flushPendingSave);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") flushPendingSave();
+  });
+  $("metroEditBtn").addEventListener("click", () => {
+    metroEditorOpen = !metroEditorOpen;
+    refreshMetroUi();
+  });
+  $("sourceEditBtn").addEventListener("click", () => {
+    if (sourceEditorOpen && !parseSources($("sourceList").value).length) return;
+    setSourceEditor(!sourceEditorOpen);
+  });
+  $("restoreSourcesBtn").addEventListener("click", restoreDefaultSources);
+  refreshConfigWidgets();
 }
 function init() {
   populateCompFloorOptions();
@@ -3111,10 +3672,14 @@ function init() {
     renderLinks();
     render();
   }));
-  $("runBtn").addEventListener("click", () => { setView("search"); runScout(); });
+  $("runBtn").addEventListener("click", () => {
+    if (!validateRunInputs()) return;
+    setView("search");
+    announce("Search view. Search started.");
+    runScout();
+  });
   $("stopBtn").addEventListener("click", stopScout);
-  $("saveBtn").addEventListener("click", saveSettingsWithNotice);
-  $("resetBtn").addEventListener("click", () => { loadCriteria(true); render(); updateConfigSummary(); });
+  $("resetBtn").addEventListener("click", resetAllSettings);
   $("presetRemoteUsBtn").addEventListener("click", () => { applyRemoteUsPreset(); updateConfigSummary(); });
   $("csvBtn").addEventListener("click", exportCsv);
   $("tabSearch").addEventListener("click", () => setView("search"));
@@ -3131,6 +3696,7 @@ function init() {
   document.querySelectorAll("#configView textarea, #configView input, #configView select").forEach(el => {
     el.addEventListener("change", updateConfigSummary);
   });
+  initConfigWidgets();
   setView("search");
   render();
 }
