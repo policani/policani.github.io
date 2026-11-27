@@ -354,6 +354,13 @@
     .cfg-cols-4 { grid-template-columns:repeat(4, minmax(0, 1fr)); }
   }
 
+  .cfg-start { margin-top:8px !important; padding:8px 10px; border:1px solid var(--line); border-left:3px solid var(--blue); border-radius:6px; background:var(--soft); font-size:.8125rem; line-height:1.45; color:var(--ink); max-width:80ch; }
+  .config-view input[type="number"] { width:6em; border-color:#7f8fa3; font-size:.8125rem; line-height:1.4; font-variant-numeric:tabular-nums; }
+  .cfg-points-row { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:8px; padding:6px 10px; border-radius:6px; background:#eaf5ef; }
+  .config-view .cfg-points-row label { font-size:.75rem; font-weight:600; color:var(--green); }
+  .cfg-points-row input[type="number"] { width:5em; }
+  .cfg-pct { display:flex; align-items:center; gap:6px; font-size:.8125rem; color:var(--muted); }
+  .cfg-weights-foot { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; justify-content:space-between; margin-top:12px; }
   .cfg-toggles { display:flex; flex-wrap:wrap; gap:8px; }
   .config-view .cfg-toggle { display:inline-flex; align-items:center; gap:7px; min-height:36px; min-width:104px; margin:0; padding:6px 12px 6px 10px; border:1px solid var(--line); border-radius:8px; background:var(--paper); font-size:.8125rem; font-weight:400; line-height:1.3; color:var(--ink); cursor:pointer; }
   .config-view .cfg-toggle:hover { border-color:#b8d8ef; }
@@ -436,6 +443,7 @@
     <div class="cfg-top-text">
       <h2 class="cfg-page-title">Configuration</h2>
       <p class="cfg-intro">Settings save automatically in this browser. Run Search uses them and switches to the Search view.</p>
+      <p class="cfg-start" id="cfgStart" hidden><b>Start here.</b> Add at least one Primary or Related title below, adjust the screens if you like, then click Run Search. Next time, the scanner opens on Search.</p>
     </div>
     <div class="cfg-preset">
       <button type="button" class="secondary" id="presetRemoteUsBtn" aria-describedby="presetHelp">Apply Remote-US preset</button>
@@ -448,13 +456,13 @@
     <div class="cfg-section-head">
       <h3 class="cfg-section-title" id="secRole">Role match<span class="sr-only">, </span><span class="effect-tag tag-scores"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M1 11h2.4V7.4H1zM4.8 11h2.4V4.2H4.8zM8.6 11H11V1H8.6z" fill="currentColor"/></svg>Scores jobs</span></h3>
     </div>
-    <p class="cfg-section-line">Within each list, entries are alternatives: a job needs to match any one. The four lists add up to one score, and adding entries never removes a job. Strong matches go to Main, near-misses to Review, and weak matches are screened out.</p>
+    <p class="cfg-section-line">Within each list, entries are alternatives: a job needs to match any one. Each list earns the points set under it, and the points add up to one score (see Scoring below). Adding entries to a list never lowers a score. Strong matches go to Main, near-misses to Review, and weak matches are screened out.</p>
     <details class="cfg-how">
       <summary>How this works<span class="sr-only">, Role match</span></summary>
       <div class="cfg-how-body">
         <p>Press Enter to add each entry. Pasting several lines adds one entry per line. Double-click an entry to edit it. Matching ignores capitalization and punctuation.</p>
         <p><b>Primary titles.</b> Use one title keyword or phrase per entry. Multi-word phrases can also match titles with a short word gap, such as AI Manager matching AI Program Manager. Quotation marks are not required.</p>
-        <p><b>Related titles.</b> Use one related title word or phrase per entry. These broaden discovery when the exact title varies across employers, including short word gaps in title phrases. Very general words such as Strategy, Strategic, Initiatives, or Readiness add score but do not count as a title match on their own.</p>
+        <p><b>Related titles.</b> Use one related title word or phrase per entry. These broaden discovery when the exact title varies across employers, including short word gaps in title phrases.</p>
         <p><b>Seniority words.</b> Use one seniority word or phrase per entry. These are checked against the job title, such as Director, Principal, Lead, or Senior Manager.</p>
         <p><b>Body evidence.</b> Use one keyword or phrase per entry. These are searched in the job description to prove the role contains work you care about, not just a matching title.</p>
       </div>
@@ -469,35 +477,73 @@
           <input class="chip-input" id="titleStrong-entry" type="text" autocomplete="off" placeholder="e.g. Program Manager" aria-describedby="titleStrong-help titlesRequired">
           <textarea id="titleStrong" hidden></textarea>
         </div>
+        <div class="cfg-points-row"><label for="pts_primaryTitle">Points for a match</label><input type="number" id="pts_primaryTitle" min="0" max="100" step="1" inputmode="numeric" aria-describedby="titleStrong-help"></div>
       </div>
       <div class="cfg-field">
         <label class="cfg-label" for="titleModerate-entry" id="titleModerate-lbl">Related titles</label>
-        <p class="cfg-lead" id="titleModerate-help">Broader title words for roles you would also consider. A match scores lower than a primary title: one usually goes to Review, while two related matches, or one plus two body-evidence matches, can reach Main.</p>
+        <p class="cfg-lead" id="titleModerate-help">Broader title words for roles you would also consider. A match usually earns fewer points than a primary title, so these jobs tend to land in Review.</p>
         <div class="chip-box" data-field="titleModerate" data-label="Related titles">
           <ul class="chip-list" role="list" aria-labelledby="titleModerate-lbl" hidden></ul>
           <input class="chip-input" id="titleModerate-entry" type="text" autocomplete="off" placeholder="e.g. Operations" aria-describedby="titleModerate-help titlesRequired">
           <textarea id="titleModerate" hidden></textarea>
         </div>
+        <div class="cfg-points-row"><label for="pts_relatedTitle">Points for a match</label><input type="number" id="pts_relatedTitle" min="0" max="100" step="1" inputmode="numeric" aria-describedby="titleModerate-help"></div>
       </div>
       <div class="cfg-field">
         <label class="cfg-label" for="seniorityTerms-entry" id="seniorityTerms-lbl">Seniority words</label>
-        <p class="cfg-lead" id="seniorityTerms-help">Levels you want, such as Director or Senior, checked in the job title. A match adds a small boost. Adding words only helps; it never removes a job.</p>
+        <p class="cfg-lead" id="seniorityTerms-help">Levels you want, such as Senior or Junior, checked in the job title. Leave it empty if level doesn't matter: once it has entries, jobs without a match score a little lower.</p>
         <div class="chip-box" data-field="seniorityTerms" data-label="Seniority words">
           <ul class="chip-list" role="list" aria-labelledby="seniorityTerms-lbl" hidden></ul>
           <input class="chip-input" id="seniorityTerms-entry" type="text" autocomplete="off" placeholder="e.g. Director" aria-describedby="seniorityTerms-help">
           <textarea id="seniorityTerms" hidden></textarea>
         </div>
+        <div class="cfg-points-row"><label for="pts_seniority">Points for a match</label><input type="number" id="pts_seniority" min="0" max="100" step="1" inputmode="numeric" aria-describedby="seniorityTerms-help"></div>
       </div>
       <div class="cfg-field">
         <label class="cfg-label" for="bodyEvidence-entry" id="bodyEvidence-lbl">Body evidence</label>
-        <p class="cfg-lead" id="bodyEvidence-help">Phrases from job descriptions that show the work fits, such as capacity planning. Each match raises the score, and two or more help a job reach Main. Adding phrases never removes a job.</p>
+        <p class="cfg-lead" id="bodyEvidence-help">Phrases from job descriptions that show the work fits, such as no experience required. Each matching phrase earns points, up to three phrases.</p>
         <div class="chip-box" data-field="bodyEvidence" data-label="Body evidence">
           <ul class="chip-list" role="list" aria-labelledby="bodyEvidence-lbl" hidden></ul>
           <input class="chip-input" id="bodyEvidence-entry" type="text" autocomplete="off" placeholder="e.g. Portfolio governance" aria-describedby="bodyEvidence-help">
           <textarea id="bodyEvidence" hidden></textarea>
         </div>
+        <div class="cfg-points-row"><label for="pts_evidence">Points per phrase, up to 3</label><input type="number" id="pts_evidence" min="0" max="100" step="1" inputmode="numeric" aria-describedby="bodyEvidence-help"></div>
       </div>
     </div>
+  </section>
+
+  <section class="cfg-section cfg-scores" aria-labelledby="secScoring">
+    <div class="cfg-section-head">
+      <h3 class="cfg-section-title" id="secScoring">Scoring<span class="sr-only">, </span><span class="effect-tag tag-scores"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M1 11h2.4V7.4H1zM4.8 11h2.4V4.2H4.8zM8.6 11H11V1H8.6z" fill="currentColor"/></svg>Scores jobs</span></h3>
+    </div>
+    <!-- BEGIN scoring section -->
+    <p class="cfg-section-line">A job's score is the share of the available points it earns from your Role match lists and salary minimum. Only lists you fill in count, so a primary title match can score 100% when titles are all you entered.</p>
+    <details class="cfg-how">
+      <summary>How this works<span class="sr-only">, Scoring</span></summary>
+      <div class="cfg-how-body">
+        <p><b>Points.</b> Each Role match list has its own point value, set under the list. A title earns the larger of its Primary or Related points, Seniority words earn their points once, and Body evidence earns its points for each matching phrase, up to three. The salary minimum earns its points when a job posts a range that meets it.</p>
+        <p><b>Score.</b> The points a job earns, divided by the points it could earn from the lists you filled in, as a percentage. An empty list adds nothing, so it never counts against a job.</p>
+        <p><b>Routing.</b> Jobs at or above the Main candidate score go to Main Candidates, jobs at or above the Review queue score go to the Review Queue, and the rest are screened out. A job whose location is unclear goes to Review even with a Main score. Hard stops, Where &amp; when, and Salary screen jobs out before any scoring.</p>
+      </div>
+    </details>
+    <div class="cfg-alert cfg-alert-warning" id="scoreOrderWarning" hidden></div>
+    <div class="cfg-cols cfg-cols-2 cfg-cols-plain cfg-thresholds">
+      <div class="cfg-field">
+        <label class="cfg-label" for="scoreMain">Main candidate score</label>
+        <p class="cfg-lead" id="scoreMain-help">Jobs at or above this percentage go to Main Candidates. Raise it to make Main stricter.</p>
+        <div class="cfg-pct"><input type="number" id="scoreMain" min="0" max="100" step="1" inputmode="numeric" aria-describedby="scoreMain-help"><span aria-hidden="true">%</span></div>
+      </div>
+      <div class="cfg-field">
+        <label class="cfg-label" for="scoreReview">Review queue score</label>
+        <p class="cfg-lead" id="scoreReview-help">Jobs at or above this percentage that miss Main go to the Review Queue. The rest are screened out.</p>
+        <div class="cfg-pct"><input type="number" id="scoreReview" min="0" max="100" step="1" inputmode="numeric" aria-describedby="scoreReview-help"><span aria-hidden="true">%</span></div>
+      </div>
+    </div>
+    <div class="cfg-weights-foot">
+      <p class="cfg-help" id="weightTotal" aria-live="polite"></p>
+      <button type="button" class="secondary" id="resetScoringBtn">Reset scoring to defaults</button>
+    </div>
+    <!-- END scoring section -->
   </section>
 
   <div class="cfg-group cfg-group-screen">
@@ -641,8 +687,9 @@
       <div class="cfg-cols cfg-cols-2 cfg-cols-plain">
         <div class="cfg-field">
           <label class="cfg-label" for="compFloor">Minimum base salary</label>
-          <p class="cfg-lead" id="compFloor-help">Removes jobs whose posted range tops out below this amount. Jobs with no posted salary still appear unless you require a range.</p>
+          <p class="cfg-lead" id="compFloor-help">Removes jobs whose posted range tops out below this amount. Jobs with no posted salary still appear unless you require a range, but miss these points.</p>
           <select id="compFloor" aria-describedby="compFloor-help"></select>
+        <div class="cfg-points-row"><label for="pts_salary">Points when a posted range meets it</label><input type="number" id="pts_salary" min="0" max="100" step="1" inputmode="numeric" aria-describedby="compFloor-help"></div>
         </div>
         <div class="cfg-field">
           <span class="cfg-label" aria-hidden="true">Posted salary</span>
@@ -1616,6 +1663,31 @@ const DEFAULTS = {
   bodyExclude: [],
   sourceList: DEFAULT_SOURCE_LIST
 };
+// BEGIN scoring model
+// Scoring. Points come only from the lists you fill in. A job's score is the share of the
+// available points it earns, where available points count only lists that have entries.
+const SCORE_DEFAULTS = { scoreMain: 60, scoreReview: 30 };
+const POINT_FIELDS = [
+  { key: "primaryTitle", list: "titleStrong", def: 50 },
+  { key: "relatedTitle", list: "titleModerate", def: 30 },
+  { key: "seniority", list: "seniorityTerms", def: 10 },
+  { key: "evidence", list: "bodyEvidence", def: 10 },
+  { key: "salary", list: null, def: 10 }
+];
+const EVIDENCE_MAX = 3;
+const pointsId = key => "pts_" + key;
+const DEFAULT_POINTS = Object.fromEntries(POINT_FIELDS.map(f => [f.key, f.def]));
+Object.assign(DEFAULTS, Object.fromEntries(Object.entries(SCORE_DEFAULTS).map(([k, v]) => [k, String(v)])),
+  Object.fromEntries(POINT_FIELDS.map(f => [pointsId(f.key), String(f.def)])));
+// The points a job can earn with these lists and settings. Empty lists add nothing.
+function availablePoints(P, criteria, settings) {
+  const titleMax = Math.max(criteria.titleStrong.length ? P.primaryTitle : 0, criteria.titleModerate.length ? P.relatedTitle : 0);
+  return titleMax +
+    (criteria.seniorityTerms.length ? P.seniority : 0) +
+    (criteria.bodyEvidence.length ? P.evidence * EVIDENCE_MAX : 0) +
+    (Number(settings.compFloor) > 0 ? P.salary : 0);
+}
+// END scoring model
 const US_STATE_NAMES = {
   al: "alabama", ak: "alaska", az: "arizona", ar: "arkansas", ca: "california",
   co: "colorado", ct: "connecticut", de: "delaware", fl: "florida", ga: "georgia",
@@ -1928,7 +2000,7 @@ function loadCriteria(reset = false) {
     if (!el) continue;
     const current = stored && stored[key] !== undefined ? stored[key] : val;
     if (el.type === "checkbox") el.checked = Boolean(current);
-    else el.value = Array.isArray(current) ? current.join("\n") : String(current || "");
+    else el.value = Array.isArray(current) ? current.join("\n") : String(current ?? "");
   }
   for (const [key, val] of Object.entries(RUN_DEFAULTS)) {
     const el = $(key);
@@ -2308,7 +2380,11 @@ function hardTitleExcludeReason(title, excludeHits) {
 function titleHardRegex(title) {
   return false;
 }
+// BEGIN scoring engine
 function analyzeJob(job, settings, criteria, stats = state.stats) {
+  const P = settings.points || DEFAULT_POINTS;
+  const mainScore = settings.scoreMain ?? SCORE_DEFAULTS.scoreMain;
+  const reviewScore = settings.scoreReview ?? SCORE_DEFAULTS.scoreReview;
   const title = job.title || "";
   const body = job.body || "";
   const combined = `${title} ${job.location || ""} ${body}`;
@@ -2322,12 +2398,10 @@ function analyzeJob(job, settings, criteria, stats = state.stats) {
   const moderateTitle = hasAnyTitle(title, criteria.titleModerate);
   const seniorTitle = hasAnyTitle(title, criteria.seniorityTerms);
   const bodyEvidenceHits = hasAny(body, criteria.bodyEvidence);
-  const allFunctionTerms = [...criteria.titleStrong, ...criteria.titleModerate];
-  const bodyFunction = hasAny(body, allFunctionTerms);
 
   if (strongTitle.length || moderateTitle.length || seniorTitle.length) stats.titleMatched++;
 
-  const finish = (bucket, why) => ({ ...job, bucket, reason: why || reason, risks, signals, gates, score: Math.max(0, Math.min(95, Math.round(score))), confidence: confidenceLabel(job, gates, risks, signals, settings) });
+  const finish = (bucket, why) => ({ ...job, bucket, reason: why || reason, risks, signals, gates, score: Math.max(0, Math.min(100, Math.round(score))), confidence: confidenceLabel(job, gates, risks) });
 
   const excludeHits = hasAny(title, criteria.titleExclude);
   const hardTitleExclude = hardTitleExcludeReason(title, excludeHits);
@@ -2348,114 +2422,49 @@ function analyzeJob(job, settings, criteria, stats = state.stats) {
   if (hasSalaryRange && !salaryMatchesSelection) return finish("suppressed", "posted salary range is below the selected minimum");
   if (!hasSalaryRange) risks.push("compensation unknown");
 
-  const titleManagement = /\b(manager|management|lead|head of|director|principal|chief of staff|program manager|portfolio manager|pmo manager|operations manager|delivery manager|governance manager)\b/i.test(title);
-  const bodyManagement = /\b(own|owns|lead|leads|oversee|oversees|accountable|responsible for|manage|manages|management|decision rights|governance authority)\b.{0,100}\b(portfolio|program|pmo|operations|function|team|roadmap|delivery|initiative|initiatives|cadence|stakeholders?)\b/i.test(body);
-  gates.seniority = Boolean(seniorTitle.length || /\b(own|owns|lead|leads|oversee|oversees|accountable|decision rights|governance authority)\b.{0,80}\b(portfolio|program|pmo|operations|function|team|roadmap|delivery)\b/i.test(body));
-  gates.function = Boolean(strongTitle.length || moderateTitle.length || bodyFunction.length || bodyEvidenceHits.length);
-  gates.management = Boolean(titleManagement || bodyManagement);
+  const evidenceCount = Math.min(bodyEvidenceHits.length, EVIDENCE_MAX);
+  const salaryCounts = Number(settings.compFloor) > 0;
+  gates.title = Boolean(strongTitle.length || moderateTitle.length);
+  gates.seniority = Boolean(seniorTitle.length);
+  gates.evidence = evidenceCount > 0;
+  gates.salary = salaryCounts && hasSalaryRange && salaryMatchesSelection;
+  if (gates.title || gates.evidence) stats.titleRouted++;
 
-  gates.operatingProblem = Boolean(
-    bodyEvidenceHits.length ||
-    /\b(intake|prioritization|sequencing|operating cadence|operating rhythm|executive decision support|dependency management|value realization|capacity planning|investment prioritization|release readiness|deployment governance|uat)\b/i.test(body)
-  );
-  gates.scale = /\b(enterprise|global|cross-functional|executive leadership|c-suite|board|multi-year|multi-team|multi-product|platform|budget|capital|revenue|regulatory|customer impact)\b/i.test(body);
-
-  if (strongTitle.length) signals.push("strong title: " + strongTitle.slice(0, 2).join(", "));
-  if (!strongTitle.length && moderateTitle.length) signals.push("title route: " + moderateTitle.slice(0, 2).join(", "));
+  if (strongTitle.length) signals.push("primary title: " + strongTitle.slice(0, 2).join(", "));
+  if (!strongTitle.length && moderateTitle.length) signals.push("related title: " + moderateTitle.slice(0, 2).join(", "));
   if (seniorTitle.length) signals.push("seniority: " + seniorTitle.slice(0, 2).join(", "));
   if (bodyEvidenceHits.length) signals.push("body evidence: " + bodyEvidenceHits.slice(0, 3).join(", "));
+  if (gates.salary) signals.push("posted salary meets minimum");
 
-  const evidenceHits = bodyEvidenceHits.length;
-  const authorityOwnership = bodyManagement || /\b(own|owns|lead|leads|oversee|oversees|accountable|responsible for|drive|drives|manage|manages)\b.{0,100}\b(portfolio|program|governance|transformation|operations|roadmap|planning|delivery|initiative|initiatives|cadence)\b/i.test(body);
-  const operatingKeywords = /\b(intake|prioritization|sequencing|operating cadence|operating rhythm|dependency management|value realization|capacity planning|investment prioritization|release readiness|deployment governance|program integrity|milestones|roadmaps?|large-scale transformational)\b/i.test(body);
-  const execScope = /\b(executive leadership|c-suite|senior leadership|board reporting|leadership team|executive forum|exec forum)\b/i.test(body);
-  const governanceAuthority = /\b(decision rights|governance authority|accountable|standardize reporting|portfolio governance|delivery governance)\b/i.test(body);
+  const titlePoints = Math.max(strongTitle.length ? P.primaryTitle : 0, moderateTitle.length ? P.relatedTitle : 0);
+  const earned = titlePoints + (gates.seniority ? P.seniority : 0) + evidenceCount * P.evidence + (gates.salary ? P.salary : 0);
+  const available = availablePoints(P, criteria, settings);
+  score = available > 0 ? (100 * earned) / available : 0;
+  const rounded = Math.round(score);
 
-  if (gates.function) stats.titleRouted++;
-  score += locationMatches(job, settings) ? 10 : 0;
-  score += 5;
-  score += hasSalaryRange ? (salaryMatchesSelection ? 22 : 5) : 0;
-  score += strongTitle.length ? 18 : (moderateTitle.length ? 12 : (bodyFunction.length ? 8 : 0));
-  score += gates.management ? 14 : 0;
-  score += gates.seniority ? 6 : 0;
-  score += authorityOwnership ? 7 : 0;
-  score += gates.operatingProblem ? 16 : 0;
-  score += gates.scale ? 8 : 0;
-  score += Math.min(evidenceHits, 5) * 3;
-  score += operatingKeywords ? 5 : 0;
-  score += execScope ? 3 : 0;
-  score += governanceAuthority ? 3 : 0;
-  score += evidenceHits >= 2 ? 4 : 0;
-  score += evidenceHits >= 3 ? 3 : 0;
-
-  if (!locationKnown(job.remote)) score -= 8;
-  if (!hasSalaryRange) score -= 4;
-  if (hasSalaryRange && !salaryMatchesSelection) score = Math.min(score, 74);
-
-  const allGates = gates.seniority && gates.function && gates.operatingProblem && gates.scale;
-  const gateCount = Object.values(gates).filter(Boolean).length;
-  const meaningfulModerateTitle = moderateTitle.filter(term => !["strategy", "strategic", "initiatives", "readiness", "office of"].includes(norm(term)));
-  const laneTitle = Boolean(strongTitle.length || meaningfulModerateTitle.length);
-  const laneMainReady = Boolean(strongTitle.length || meaningfulModerateTitle.length >= 2 || evidenceHits >= 2);
-  const substantialEvidence = evidenceHits >= 2 ||
-    (evidenceHits >= 1 && (authorityOwnership || operatingKeywords || execScope || governanceAuthority)) ||
-    (operatingKeywords && (authorityOwnership || execScope || governanceAuthority));
-  const evidenceDepth = Math.min(evidenceHits, 3) +
-    (authorityOwnership ? 1 : 0) +
-    (operatingKeywords ? 1 : 0) +
-    (execScope ? 1 : 0) +
-    (governanceAuthority ? 1 : 0);
-  const salaryReady = Boolean((!settings.requireSalaryRange && !hasSalaryRange) || salaryMatchesSelection);
-  const salaryReviewReady = salaryReady;
-  const capabilityReady = Boolean(gates.function && (gates.operatingProblem || substantialEvidence || evidenceDepth >= 2 || bodyFunction.length >= 2));
-  const keyGates = gates.management && capabilityReady;
-  const confidence = confidenceLabel(job, gates, risks, signals, settings);
-  const titleLaneReview = locationMatches(job, settings) && salaryReviewReady && gates.management && laneTitle && (strongTitle.length || meaningfulModerateTitle.length >= 2);
-  const mainRiskBlockers = risks.filter(r => ["selected salary outside posted range", "location unclear"].includes(r) || /^title risk:/.test(r));
-  const mainBlockingRisk = mainRiskBlockers.length > 0;
-  const balancedMain = score >= 75 && salaryReady && keyGates && laneTitle && laneMainReady && substantialEvidence && confidence !== "Low";
-  const qualifiesMain = balancedMain;
-  const reviewFloor = 60;
-  const balancedNearMiss = score >= 75 && salaryReviewReady && gates.management && capabilityReady && confidence !== "Low" && (laneTitle || substantialEvidence || allGates);
-  const reviewCandidate = titleLaneReview || balancedNearMiss || (salaryReviewReady && score >= reviewFloor && gates.management && (laneTitle || evidenceHits >= 2 || evidenceDepth >= 3));
-
+  if (rounded < reviewScore && rounded < mainScore) return finish("suppressed", "below the Review queue score");
   const locationGate = screenCandidateLocation(job, body);
-  if (locationGate.decision === 'REVIEW' && (qualifiesMain || reviewCandidate)) {
-    risks.push(locationGate.reasons.join(' '));
-    return finish('review', locationGate.reasons.join(' '));
+  if (locationGate.decision === "REVIEW") {
+    risks.push(locationGate.reasons.join(" "));
+    return finish("review", locationGate.reasons.join(" "));
   }
-  if (qualifiesMain && !mainBlockingRisk) {
-    return finish("main", "strong search match");
-  }
-  if (reviewCandidate) return finish("review", reviewReason(gates, risks, laneTitle, substantialEvidence, mainRiskBlockers));
-  return finish("suppressed", !laneTitle && score >= reviewFloor ? "missing: role-lane title" : (allGates ? "low match score" : missingGateReason(gates)));
+  if (rounded >= mainScore && locationKnown(job.remote)) return finish("main", "meets the Main candidate score");
+  return finish("review", rounded >= mainScore ? "location unclear" : missedPoints(criteria, strongTitle, seniorTitle, evidenceCount));
 }
-function confidenceLabel(job, gates, risks, signals, settings = { locationTypes: {} }) {
-  const gateCount = Object.values(gates || {}).filter(Boolean).length;
-  const materialRisk = risks.some(r => ["location unclear", "compensation unknown", "selected salary outside posted range"].includes(r));
-  if (locationMatches(job, settings) && job.body && gateCount >= 4 && signals.length >= 3 && !materialRisk) return "High";
-  if (gateCount >= 3 && signals.length >= 2) return "Medium";
+// High: a title match plus description evidence and a known location. Medium: a title match.
+function confidenceLabel(job, gates, risks) {
+  if (gates?.title && gates?.evidence && !(risks || []).includes("location unclear")) return "High";
+  if (gates?.title) return "Medium";
   return "Low";
 }
-function missingGateReason(gates) {
-  const missing = [];
-  if (!gates.seniority) missing.push("seniority");
-  if (!gates.function) missing.push("function");
-  if (!gates.operatingProblem) missing.push("operating problem");
-  if (!gates.scale) missing.push("scale");
-  return missing.length ? "missing: " + missing.join(", ") : "weak body evidence";
+function missedPoints(criteria, strongTitle, seniorTitle, evidenceCount) {
+  const missed = [];
+  if (criteria.titleStrong.length && !strongTitle.length) missed.push("no primary title");
+  if (criteria.seniorityTerms.length && !seniorTitle.length) missed.push("no seniority word");
+  if (criteria.bodyEvidence.length && !evidenceCount) missed.push("no body evidence");
+  return missed.length ? missed.join("; ") : "below the Main candidate score";
 }
-function reviewReason(gates, risks, laneTitle, substantialEvidence, mainRiskBlockers) {
-  const reasons = [];
-  const missing = missingGateReason(gates);
-  if (missing.startsWith("missing:")) reasons.push(missing);
-  for (const risk of mainRiskBlockers || []) reasons.push(risk);
-  if (!laneTitle) reasons.push("missing role-lane title");
-  if (!substantialEvidence) reasons.push("thin body evidence");
-  if (!reasons.length && (risks || []).includes("compensation unknown")) reasons.push("salary unknown");
-  if (!reasons.length) reasons.push("needs human review");
-  return [...new Set(reasons)].join("; ");
-}
+// END scoring engine
 function baseJob(company, title, source, url, location, posted, body, comp, remote) {
   return { company, title, source, url, applyUrl: url, location, posted, body: body || "", comp: comp || null, remote };
 }
@@ -2471,14 +2480,73 @@ async function fetchJson(url, timeout = 15000, options = {}) {
   if (!r.ok) throw new Error("HTTP " + r.status);
   return r.json();
 }
-async function fetchGreenhouse(slug) {
-  const data = await fetchJson(`https://boards-api.greenhouse.io/v1/boards/${encodeURIComponent(slug)}/jobs?content=true`);
-  return (data.jobs || []).map(j => {
-    const body = words(j.content || "");
-    const comp = parseComp(body);
-    const remote = remoteClass(j.location?.name, body);
-    return baseJob(slug, j.title || "", "greenhouse", j.absolute_url || "", j.location?.name || "", String(j.updated_at || ""), body, comp, remote);
+// Greenhouse: download the light job list (no descriptions), then fetch the description
+// only for jobs inside the posting-age window. Boards with many fresh jobs, or any failed
+// detail request, fall back to the single full download, so results match either way.
+const GH_DETAIL_LIMIT = 12;
+const GH_DETAIL_CONCURRENCY = 4;
+// Greenhouse briefly refuses a browser that sends requests too quickly, and a refused
+// request fails at once, which would let the scan race through every remaining board.
+// All Greenhouse requests share one pace: a refusal pauses them, slows the pace, and
+// retries; successes speed it back up.
+const ghPace = { gap: 0, next: 0, pausedUntil: 0, failStreak: 0 };
+function pauseFor(ms) {
+  return new Promise((resolve, reject) => {
+    const signal = runController?.signal;
+    if (signal?.aborted) return reject(new DOMException("Stopped", "AbortError"));
+    const timer = setTimeout(() => { signal?.removeEventListener("abort", stop); resolve(); }, ms);
+    const stop = () => { clearTimeout(timer); reject(new DOMException("Stopped", "AbortError")); };
+    signal?.addEventListener("abort", stop, { once: true });
   });
+}
+async function ghFetchJson(url) {
+  for (let attempt = 0; ; attempt++) {
+    const now = Date.now();
+    const start = Math.max(now, ghPace.next, ghPace.pausedUntil);
+    ghPace.next = start + ghPace.gap;
+    if (start > now) await pauseFor(start - now);
+    try {
+      const data = await fetchJson(url);
+      ghPace.failStreak = 0;
+      ghPace.gap = Math.max(0, ghPace.gap - 1);
+      return data;
+    } catch (e) {
+      const refused = /Failed to fetch|NetworkError|Load failed/i.test(e?.message || "");
+      if (!refused || runController?.signal.aborted || attempt >= 3 || ghPace.failStreak >= 40) throw e;
+      ghPace.failStreak++;
+      ghPace.gap = Math.min(250, Math.max(40, ghPace.gap * 2));
+      ghPace.pausedUntil = Math.max(ghPace.pausedUntil, Date.now() + 4000);
+    }
+  }
+}
+function greenhouseJob(slug, j) {
+  const body = words(j.content || "");
+  const comp = parseComp(body);
+  const remote = remoteClass(j.location?.name, body);
+  return baseJob(slug, j.title || "", "greenhouse", j.absolute_url || "", j.location?.name || "", String(j.updated_at || ""), body, comp, remote);
+}
+async function fetchGreenhouse(slug, ageDays) {
+  const base = `https://boards-api.greenhouse.io/v1/boards/${encodeURIComponent(slug)}/jobs`;
+  const fetchFull = async () => ((await ghFetchJson(`${base}?content=true`)).jobs || []).map(j => greenhouseJob(slug, j));
+  if (!(ageDays > 0)) return fetchFull();
+  const list = (await ghFetchJson(base)).jobs || [];
+  const fresh = list.filter(j => isFresh(String(j.updated_at || ""), ageDays));
+  if (fresh.length > GH_DETAIL_LIMIT) return fetchFull();
+  const details = new Map();
+  try {
+    let next = 0;
+    const pull = async () => {
+      while (next < fresh.length) {
+        const j = fresh[next++];
+        details.set(j.id, await ghFetchJson(`${base}/${encodeURIComponent(j.id)}`));
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(GH_DETAIL_CONCURRENCY, fresh.length) }, pull));
+  } catch (e) {
+    if (runController?.signal.aborted) throw e;
+    return fetchFull();
+  }
+  return list.map(j => greenhouseJob(slug, details.get(j.id) || j));
 }
 async function fetchAshby(slug) {
   const data = await fetchJson(`https://api.ashbyhq.com/posting-api/job-board/${encodeURIComponent(slug)}?includeCompensation=true`, 25000);
@@ -2809,8 +2877,8 @@ function workdaySearchLink(src) {
   if (host && site) return `https://${host}.myworkdayjobs.com/en-US/${site}`;
   return `https://www.google.com/search?q=${encodeURIComponent(company + " myworkdayjobs careers")}`;
 }
-async function fetchSource(src, criteria) {
-  if (src.platform === "greenhouse") return fetchGreenhouse(src.slug);
+async function fetchSource(src, criteria, settings = {}) {
+  if (src.platform === "greenhouse") return fetchGreenhouse(src.slug, settings.ageDays);
   if (src.platform === "ashby") return fetchAshby(src.slug);
   if (src.platform === "lever") return fetchLever(src.slug);
   if (src.platform === "recruitee") return fetchRecruitee(src.slug);
@@ -3087,6 +3155,7 @@ const scanViz = (() => {
   return { init, reset, start, finish, cancel, done };
 })();
 function resetState() {
+  Object.assign(ghPace, { gap: 0, next: 0, pausedUntil: 0, failStreak: 0 });
   state.main = [];
   state.review = [];
   state.suppressed = [];
@@ -3117,7 +3186,7 @@ async function processSource(src, settings, criteria) {
   const localStats = { titleMatched: 0, titleRouted: 0, bodyHydrated: 0 };
   const result = { main: [], review: [], suppressed: [], sourceRun: null, error: null, sourceIssue: false };
   try {
-    const jobs = await fetchSource(src, criteria);
+    const jobs = await fetchSource(src, criteria, settings);
     const sourceRun = {
       source: label,
       status: "ok",
@@ -3191,6 +3260,7 @@ async function runScout() {
     ...currentLocationSettings(),
     compFloor: Number($("compFloor").value || 0),
     requireSalaryRange: $("requireSalaryRange").checked,
+    ...currentScoring()
   };
   const criteria = currentCriteria();
   state.stats.totalSources = criteria.sources.length;
@@ -3544,7 +3614,7 @@ function applyRemoteUsPreset() {
   refreshConfigDerived(false);
   setStatus("Preset applied: age 14 days, US remote, metro cleared, posted-salary not required. Now click Run Search.", { sticky: true });
 }
-// Two views: Search (results, the default on every load) and Configuration.
+// Two views: Search (results, the default once a title is set) and Configuration.
 function setView(view) {
   const config = view === "config";
   $("configView").hidden = !config;
@@ -3863,7 +3933,53 @@ function wireChipField(id) {
   });
 }
 
+function scoreInput(id, fallback) {
+  const raw = $(id)?.value;
+  const n = Number(raw);
+  return raw === "" || raw == null || !Number.isFinite(n) ? fallback : n;
+}
+// BEGIN scoring settings
+function currentScoring() {
+  const clamp = n => Math.max(0, Math.min(100, Math.round(n)));
+  const points = Object.fromEntries(POINT_FIELDS.map(f => [f.key, Math.max(0, scoreInput(pointsId(f.key), f.def))]));
+  return {
+    points,
+    scoreMain: clamp(scoreInput("scoreMain", SCORE_DEFAULTS.scoreMain)),
+    scoreReview: clamp(scoreInput("scoreReview", SCORE_DEFAULTS.scoreReview))
+  };
+}
+function refreshScoringNotes() {
+  const { points: P, scoreMain, scoreReview } = currentScoring();
+  const criteria = { titleStrong: lines("titleStrong"), titleModerate: lines("titleModerate"), seniorityTerms: lines("seniorityTerms"), bodyEvidence: lines("bodyEvidence") };
+  const compFloor = Number($("compFloor").value || 0);
+  const available = availablePoints(P, criteria, { compFloor });
+  const pct = n => available ? Math.round((100 * n) / available) : 0;
+  const parts = [];
+  if (available) {
+    parts.push(`Your lists add up to ${available} points.`);
+    if (criteria.titleStrong.length) parts.push(`A primary title match alone scores ${pct(P.primaryTitle)}%.`);
+    if (criteria.titleModerate.length) parts.push(`A related title match alone scores ${pct(P.relatedTitle)}%.`);
+  } else {
+    parts.push("Add entries to a Role match list to start scoring.");
+  }
+  if (!compFloor) parts.push("Salary points count once you set a minimum base salary.");
+  $("weightTotal").textContent = parts.join(" ");
+  let warning = "";
+  if (scoreReview > scoreMain) warning = "The Review queue score is above the Main candidate score, so jobs that miss Main also miss Review.";
+  else if (available && P.primaryTitle + P.relatedTitle + P.seniority + P.evidence + P.salary === 0) warning = "Every point value is 0, so every job scores 0% and is screened out.";
+  setAlert("scoreOrderWarning", warning && "warning", warning);
+}
+function resetScoring() {
+  for (const [key, val] of Object.entries(SCORE_DEFAULTS)) $(key).value = String(val);
+  for (const f of POINT_FIELDS) $(pointsId(f.key)).value = String(f.def);
+  saveCriteria();
+  refreshScoringNotes();
+  setStatus("Scoring reset to defaults.", { sticky: true });
+}
+// END scoring settings
 function refreshConfigDerived(announceNew = true) {
+  if (hasRoleTitles()) $("cfgStart").hidden = true;
+  refreshScoringNotes();
   refreshAlerts(announceNew);
   refreshMetroUi();
   refreshSourceSummary();
@@ -3942,7 +4058,12 @@ function initConfigWidgets() {
     setSourceEditor(!sourceEditorOpen);
   });
   $("restoreSourcesBtn").addEventListener("click", restoreDefaultSources);
+  $("resetScoringBtn").addEventListener("click", resetScoring);
+  $("configView").addEventListener("input", e => { if (e.target.type === "number") refreshScoringNotes(); });
   refreshConfigWidgets();
+}
+function hasRoleTitles() {
+  return Boolean(lines("titleStrong").length || lines("titleModerate").length);
 }
 function init() {
   populateCompFloorOptions();
@@ -3984,7 +4105,10 @@ function init() {
   });
   initConfigWidgets();
   scanViz.init();
-  setView("search");
+  // Until a title is set there is nothing to search for, so a first visit opens Configuration.
+  const configured = hasRoleTitles();
+  $("cfgStart").hidden = configured;
+  setView(configured ? "search" : "config");
   render();
 }
 init();
